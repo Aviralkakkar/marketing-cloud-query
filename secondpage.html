@@ -227,7 +227,7 @@
 function drag(ev) {
   console.log("ev.target.id-----> " + ev.target.id); 
   console.log(ev) ;
-  consol.log(ev.dataTransfer);
+  console.log(ev.dataTransfer);
   ev.dataTransfer.setData("text/html", ev.target.id);}  
 function drop(ev) {  
 ev.preventDefault();  
