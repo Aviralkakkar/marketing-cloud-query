@@ -229,7 +229,8 @@ function drag(ev) {
   console.log(ev) ;
   console.log(ev.dataTransfer);
   console.log(ev.originalEvent.dataTransfer);
-  ev.push('dataTransfer');
+ // ev.push('dataTransfer');
+  $.ev.addProp('dataTransfer');
   ev.dataTransfer.setData("text/html", ev.target.id);}  
 function drop(ev) {  
 ev.preventDefault();  
