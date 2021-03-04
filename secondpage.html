@@ -149,9 +149,10 @@
         
         button.setAttribute("draggable","true");
         button.setAttribute("id","drag1" +i);
+        button.addEventListener('ondragstart',drag(event)) ; 
         document.getElementById("Fields").appendChild(button) +  "<br>";
         
-        button.addEventListener('ondragstart',drag(event)) ; 
+        
        // += fieldList[i]+ 
 
       }
@@ -224,14 +225,14 @@
     
   });
   function allowDrop(ev) {ev.preventDefault();}  
-function drag(ev) {
-  console.log("ev.target.id-----> " + ev.target.id); 
-  console.log(ev) ;
-  console.log(ev.dataTransfer);
-  console.log(ev.originalEvent.dataTransfer);
+function drag(event) {
+  console.log("ev.target.id-----> " + event.target.id); 
+  console.log(event) ;
+  console.log(event.dataTransfer);
+  console.log(event.originalEvent.dataTransfer);
  // ev.push('dataTransfer');
-  $.ev.addProp('dataTransfer');
-  ev.dataTransfer.setData("text/html", ev.target.id);}  
+//  $.event.addProp('dataTransfer');
+  event.dataTransfer.setData("text/html", ev.target.id);}  
 function drop(ev) {  
 ev.preventDefault();  
 var data = ev.dataTransfer.getData("text/html");  
