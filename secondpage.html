@@ -151,7 +151,7 @@
         button.setAttribute("id","drag1" +i);
         
         document.getElementById("Fields").appendChild(button) +  "<br>";
-        button.setAttribute('ondrag',drag(event)) ; 
+        button.setAttribute('ondragstart',drag(event)) ; 
         
        // += fieldList[i]+ 
 
@@ -232,6 +232,7 @@ function drag(event) {
 //  console.log(event.originalEvent.dataTransfer);
  // ev.push('dataTransfer');
 //  $.event.addProp('dataTransfer');
+  jQuery.event.props.push('dataTransfer');
   event.dataTransfer.setData("text/html", ev.target.id);}  
 function drop(ev) {  
 ev.preventDefault();  
