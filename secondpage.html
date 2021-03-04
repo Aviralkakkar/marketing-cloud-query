@@ -146,10 +146,12 @@
         var button = document.createElement("input");
         button.type = "button";
         button.value = fieldList[i];
-        button.ondragstart= drag(event) ;
+        
         button.setAttribute("draggable","true");
         button.setAttribute("id","drag1");
         document.getElementById("Fields").appendChild(button) +  "<br>";
+        button.ondragstart= drag(event) ;
+        button.addEventListener('ondragstart',drag(event)) ; 
        // += fieldList[i]+ 
 
       }
