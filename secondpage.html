@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css" integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw==" crossorigin="anonymous" />
     
     <script>
+        var deArray1 = [];
+        var fieldList=[];
+        var result = {};
         var url="/asset";
                                       
 
@@ -27,17 +30,13 @@
    console.log(data);
    var parsedData = JSON.parse(data).targetDEArray;
    console.log("parsed data  : " + JSON.stringify(parsedData) );
- //  var a = "55C8455F-B11D-4A56-927A-6D482CD65C20";
- //  console.log(parsedData.targetDEArray.a); 
-  // console.log();
-
- //   console.log(data.targetDEArray);
- var dataextensionArray = []; 
+ 
+ /*var dataextensionArray = []; 
  for (const [keyimage, value] of Object.entries(parsedData)) 
  {
-        console.log("yeh key hai : " + keyimage);
+     //  console.log("yeh key hai : " + keyimage);
         
-        console.log("yeh value hai : " + value);
+     //  console.log("yeh value hai : " + value);
     //    document.getElementById("Data Extensions").innerHTML = value ;
         dataextensionArray.push(value); 
 
@@ -63,16 +62,17 @@
         //    }
         //    }
       
-     }
+     }*/
 
-     dataextensionArray.forEach(function(slide) {
+     //dataextensionArray.forEach(function(slide) {
+        for (const [keyimage, value] of Object.entries(parsedData)){
         //      str += '<input type="checkbox" id = "checkbox" onclick=' + "handleClick()" + '>'+ slide  + '<br />';
-        console.log("yeh for loop ki slide hai" + dataextensionArray);
+       // console.log("yeh for loop ki slide hai" + dataextensionArray);
               var checkbox = document.createElement('input');
                           checkbox.setAttribute("type","checkbox"); 
-                          checkbox.setAttribute("id",slide);
-                          checkbox.setAttribute("value",slide);
-                          checkbox.setAttribute("name",slide);
+                          checkbox.setAttribute("id",keyimage);
+                          checkbox.setAttribute("value",value);
+                          checkbox.setAttribute("name",value);
                           checkbox.addEventListener('click',handleClick)    
                           
            // document.getElementById("check").innerHTML = checkbox ;
@@ -80,26 +80,26 @@
          //   var textnode = document.createTextNode(slide);         // Create a text node
 
              var label=document.createElement('label');
-             label.setAttribute("for",slide);
+             label.setAttribute("for",value);
         //   var labelId = 'label'+slide ; 
         //   console.log ("labelId"  + labelId) ; 
-             label.setAttribute("id",slide);
-             label.innerHTML = slide;
+             label.setAttribute("id",keyimage);
+             label.innerHTML = value;
              document.getElementById("Data Extensions").appendChild(label);
          //    document.getElementById("check").appendChild(label);
              
             
             node.appendChild(checkbox);
             node.appendChild(label); 
-         //    document.getElementById("demoId" ).appendChild(slide);                             // Append the text to <li>
+         //   document.getElementById("demoId" ).appendChild(slide);                             // Append the text to <li>
             document.getElementById("Data Extensions").appendChild(node);
         //    document.getElementById("check").appendChild(slide);
         //    document.getElementById("check").iannerHTML = checkbox ;
         //    console.log(checkbox.id); 
             
-            }); 
+            }; 
             function handleClick()
-            {
+            {    fieldList=[];
             //    console.log("Button clicked" + checkbox.name);
                 var frameQuery = document.getElementById('Data Extensions');
    
@@ -111,14 +111,16 @@
       {
         if( checkboxes[i].checked == true)
           {
-            console.log("CHECKBOXES[i]" + checkboxes[i])
+            // console.log("CHECKBOXES[i]" + checkboxes[i])
             //  console.log(checkboxes[i].value);
             console.log("yeh checkbox id hai: " + checkboxes[i].id);
             console.log("yeh hai checkbox ki value json : " + checkboxes[i].name);
-          //  console.log("yeh hai checkbox ki value name : " + checkboxes[i].name.name);
-          //  console.log("yeh hai checkbox ki value targetName : " + checkboxes[i].name.targetName);
+            // console.log("yeh hai checkbox ki value name : " + checkboxes[i].name.name);
+            // console.log("yeh hai checkbox ki value targetName : " + checkboxes[i].name.targetName);
+            result[checkboxes[i].id] = checkboxes[i].name;
+            console.log("checknew "+JSON.stringify(result));
             checkedEmailArray.push(checkboxes[i].id);
-            console.log(checkedEmailArray);
+          //  console.log("check "+checkedEmailArray);
           //  var id=checkboxes[i].id;
           //  var url=checkboxes[i].name;
           //  emailjson[id]=checkboxes[i].name;
@@ -127,8 +129,27 @@
 
           }
       }; 
-      
+      for (var i = 0; i < checkedEmailArray.length; i++){
+        for (var j = 0; j < deArray1.length; j++){
+            if(checkedEmailArray[i]==deArray1[j].CustomerKey){
+            fieldList.push(deArray1[j].FieldName);
+            
             }
+        }
+      }
+      console.log("fields "+ fieldList);
+      document.getElementById("Fields").innerHTML="";
+      for (var i = 0; i < fieldList.length; i++){
+      document.getElementById("Fields").innerHTML += fieldList[i]+ "<br>";
+      }
+
+
+
+
+
+
+      
+            } 
 
      var url="/fields";
                                       
@@ -147,30 +168,33 @@
           })
        .then(response => response.text())
 .then(data => {
-});
+    var parsedData1 = JSON.parse(data).favorites;
+  //  console.log("parsed data  : " + JSON.stringify(parsedData1) );
+   
+
 
  
 
- //var deArray = []
- /*for ( i in parsedData ) 
+ 
+ for ( i in parsedData1 ) 
    {
     // console.log(i);
-      console.log(parsedData[i]);
-      deArray.push(parsedData[i]);
-      console.log("deArray" + deArray );
-  //    document.getElementById("deArray").innerHTML = "/n" +  parsedData[i]  + "/n" ;
-   } */
-  // alert(typeof deArray);
- //  var res = deArray.toString().split(',');
- //  console.log("yeh res hai :  " + res);
+     //console.log(parsedData1[i]);
+      deArray1.push(parsedData1[i]);
+    //  console.log("deArray " + JSON.stringify(deArray1));
+     //document.getElementById("Fields").innerHTML = "/n" +  parsedData1[i]  + "/n" ;
+   } 
+      //var res1 = deArray1.toString().split(',');
+      //console.log("yeh res hai :  " + res1);
    
- /*  for (i in res)
-   {
-    console.log(i);
-    console.log(res[i]);
-    document.getElementById("deArray").innerHTML = res[i] ;
+  for (i in deArray1)
+   { 
+    //console.log(i);
+  // console.log("response "+JSON.stringify(deArray1[i]));
+   //console.log("response2 "+JSON.stringify(deArray1[i].FieldName));
+   //document.getElementById("Fields").innerHTML = JSON.stringify(deArray1[i].FieldName);
 
-   } */
+   } 
 
   /* var str = '<ul>'
 
@@ -183,7 +207,7 @@
    
    */
 
-
+});
     
   });
 
@@ -233,10 +257,16 @@
                                                 
                                         </div>
                                     </div> 
-                                    <div id ="check">
-                                        Yaha checked wale aainge 
-
-                                    </div>
+                                    <div class="slds-panel__header">
+                                        <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data Extensions Fields</h2>
+                                       </div>
+                                    <div class="slds-scrollable"  style="height:54rem;width:24rem" >
+                                 
+                                        <div class="slds-text-longform" id= "Header" style="width:150%"></div>
+                                        <div class="slds-text-longform" id= "Fields" style="width:150%"> 
+                                               
+                                       </div>
+                                   </div> 
                                
                                  
                              </ul>
