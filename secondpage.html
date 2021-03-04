@@ -141,8 +141,16 @@
       document.getElementById("Fields").innerHTML="";
       for (var i = 0; i < fieldList.length; i++)
       {
+        <button class="slds-button slds-button_neutral">fieldList[i]</button>
+        var button = document.createElement("input");
+        button.type = "button";
+        button.value = fieldList[i];
+        button.ondragstart= drag(event) ;
+        button.setAttribute("draggable","true");
+        button.setAttribute("id","drag" + i);
+        document.getElementById("Fields").appendChild(button) +  "<br>";
+       // += fieldList[i]+ 
 
-      document.getElementById("Fields").innerHTML += fieldList[i]+ "<br>";
       }
 
 
@@ -212,6 +220,13 @@
 });
     
   });
+  function allowDrop(ev) {ev.preventDefault();}  
+function drag(ev) {ev.dataTransfer.setData("text/html", ev.target.id);}  
+function drop(ev) {  
+ev.preventDefault();  
+var data = ev.dataTransfer.getData("text/html");  
+ev.target.appendChild(document.getElementById(data));  
+}  
 
 
     </script>
@@ -249,9 +264,9 @@
 <body>
   
   <div  >
-    <div id = "main-div" class="slds-float_right" style="width:64%;height:100%;">
-      Hello Bro
-     </div>
+    <div id = "main-div" class="slds-float_right" style="width:64%;height:100%;" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+      
+    </div>
   
     <div class="slds-float_left" style="width:15%;height:100%;">
         <div class="slds-panel slds-size_small slds-panel_docked slds-panel_docked-left slds-is-open" style="position: fixed;" aria-hidden="false">
