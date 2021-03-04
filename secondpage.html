@@ -148,7 +148,7 @@
         button.value = fieldList[i];
         
         button.setAttribute("draggable","true");
-        button.setAttribute("id","drag1");
+        button.setAttribute("id","drag1" +i);
         document.getElementById("Fields").appendChild(button) +  "<br>";
         button.ondragstart= drag(event) ;
         button.addEventListener('ondragstart',drag(event)) ; 
