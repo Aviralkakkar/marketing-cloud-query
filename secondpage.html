@@ -71,7 +71,7 @@
                           checkbox.setAttribute("id",keyimage);
                           checkbox.setAttribute("value",value);
                           checkbox.setAttribute("name",value);
-                          checkbox.addEventListener('click',handleClick(this))    
+                          checkbox.addEventListener('click',handleClick)    
                           
            // document.getElementById("check").innerHTML = checkbox;
             var node = document.createElement("LI");                 // Create a <li> node
@@ -96,7 +96,7 @@
         //    console.log(checkbox.id); 
             
             }; 
-            function handleClick(this) {   
+            function handleClick() {   
                 document.getElementById("Fields").innerHTML="";
                
                 fieldList=[];
@@ -160,7 +160,7 @@
     }
     else if (checkedcheckboxes.length)
     {
-      this.checked =false;
+      checkedcheckboxes[checkedcheckboxes.length].checked = false;
       alert(checkedcheckboxes.length);
     }
     
