@@ -128,9 +128,10 @@
 
           }
       }; 
-      if(checkedcheckboxes == 1)
-      {
+     
       for (const [key, value] of Object.entries(result)){
+        if(checkedcheckboxes == 1)
+        {
         var newdiv = document.createElement("div");
         newdiv.innerHTML =value;
         document.getElementById("Fields").appendChild(newdiv);
@@ -155,11 +156,12 @@
             }
         }
       }
-      }
       else
       {
-        alert(checkedcheckboxes. length);
+        alert(checkedcheckboxes);
       }
+      }
+    
       
      /* for ( let rec of fieldList ){
         document.getElementById("Fields").innerHTML += rec.fieldName+"     "+rec.DeName+ "<br>";
