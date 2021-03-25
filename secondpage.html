@@ -128,10 +128,10 @@
 
           }
       }; 
-     
-      for (const [key, value] of Object.entries(result)){
-        if(checkedcheckboxes.length == 1)
+      if(checkedcheckboxes.length == 1)
         {
+      for (const [key, value] of Object.entries(result)){
+        
         var newdiv = document.createElement("div");
         newdiv.innerHTML =value;
         document.getElementById("Fields").appendChild(newdiv);
@@ -155,12 +155,13 @@
            document.getElementById("Fields").appendChild(NewNode)+ "<br>";
             }
         }
+      
       }
-      else
-      {
-        alert(checkedcheckboxes.length);
-      }
-      }
+    }
+    else if (checkedcheckboxes.length)
+    {
+      alert(checkedcheckboxes.length);
+    }
     
       
      /* for ( let rec of fieldList ){
