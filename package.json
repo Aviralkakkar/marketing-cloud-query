@@ -1,0 +1,29 @@
+{
+  "name": "marketing-cloud-query-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "loginpage.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avichalsalesforce/marketing-cloud-query-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avichalsalesforce/marketing-cloud-query-app/issues"
+  },
+  "homepage": "https://github.com/avichalsalesforce/marketing-cloud-query-app#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "form-data": "^3.0.0",
+    "html": "^1.0.0",
+    "request": "^2.88.2",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23",
+    "xml2json": "^0.12.0"
+  }
+}

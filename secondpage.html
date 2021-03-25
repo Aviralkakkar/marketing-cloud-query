@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css" integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A==" crossorigin="anonymous" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.sanitized.min.css" integrity="sha512-O9RC97AHIeSWK6mAA/b1GBPzrBsmNBT8nN2yz6vghHn0Eatt4P7ilv4H+uO5mp7WIDh9sKbUoKSg3pGsPM8ShA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css" integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw==" crossorigin="anonymous" />
+    
+    <script>
+        var deArray1 = [];
+        var fieldList=[];
+        var result = {};
+        var url="/asset";
+        var button;
+        var words;
+                                      
+
+        fetch(url, {  //provide URL of the processing page
+                 method: "POST",
+
+                 headers: {
+                     "Content-Type": "application/json"
+                 },
+                 body: {
+                     "assetType":"image",
+
+                 },
+                 dataType : "json"
+             })
+          .then(response => response.text())
+  .then(data => {
+   console.log(data);
+   var parsedData = JSON.parse(data).targetDEArray;
+   console.log("parsed data  : " + JSON.stringify(parsedData) );
+ 
+ /*var dataextensionArray = []; 
+ for (const [keyimage, value] of Object.entries(parsedData)) 
+ {
+     //  console.log("yeh key hai : " + keyimage);
+        
+     //  console.log("yeh value hai : " + value);
+    //    document.getElementById("Data Extensions").innerHTML = value ;
+        dataextensionArray.push(value); 
+        var str = '<ul>'
+            
+            
+            str += '</ul>';
+            
+        //    var button = document.createElement("button");
+        //    button.innerHTML = str;
+        //    document.getElementById("Data Extensions").innerHTML = str;
+        //    function handleClick() {
+        //     console.log("Clicked, new value = ");
+        //    }
+        //    document.getElementById('check').onchange = function() {
+        //    var checkboxes = document.getElementsByName('checkbox');
+        //    for (var checkbox of checkboxes) {
+        //        if (checkbox.checked)
+        //        document.body.append(checkbox.value + ' ');
+        //    }
+        //    }
+      
+     }*/
+
+     //dataextensionArray.forEach(function(slide) {
+        for (const [keyimage, value] of Object.entries(parsedData)){
+       //      str += '<input type="checkbox" id = "checkbox" onclick=' + "handleClick()" + '>'+ slide  + '<br />';
+      // console.log("yeh for loop ki slide hai" + dataextensionArray);
+              var checkbox = document.createElement('input');
+                          checkbox.setAttribute("type","checkbox"); 
+                          checkbox.setAttribute("id",keyimage);
+                          checkbox.setAttribute("value",value);
+                          checkbox.setAttribute("name",value);
+                          checkbox.addEventListener('click',handleClick)    
+                          
+           // document.getElementById("check").innerHTML = checkbox;
+            var node = document.createElement("LI");                 // Create a <li> node
+         //   var textnode = document.createTextNode(slide);         // Create a text node
+
+             var label=document.createElement('label');
+             label.setAttribute("for",value);
+        //   var labelId = 'label'+slide ; 
+        //   console.log ("labelId"  + labelId) ; 
+             label.setAttribute("id",keyimage);
+             label.innerHTML = value;
+             document.getElementById("Data Extensions").appendChild(label);
+         //    document.getElementById("check").appendChild(label);
+             
+            
+            node.appendChild(checkbox);
+            node.appendChild(label); 
+         //   document.getElementById("demoId" ).appendChild(slide);                             // Append the text to <li>
+            document.getElementById("Data Extensions").appendChild(node);
+        //    document.getElementById("check").appendChild(slide);
+        //    document.getElementById("check").iannerHTML = checkbox ;
+        //    console.log(checkbox.id); 
+            
+            }; 
+            function handleClick() {   
+                document.getElementById("Fields").innerHTML="";
+               
+                fieldList=[];
+                result={};
+            //    console.log("Button clicked" + checkbox.name);
+                var frameQuery = document.getElementById('Data Extensions');
+   
+                var checkboxes = frameQuery.getElementsByTagName('input');
+
+                var checkedcheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                alert(checkboxes. length);
+
+
+           //     console.log(checkboxes) ; 
+    var checkedEmailArray = [];
+    
+    for (var i = 0; i < checkboxes.length; i++)
+      {        
+     if( checkboxes[i].checked == true)
+          
+          {
+
+            console.log("yeh checkbox id hai: " + checkboxes[i].id);
+            console.log("yeh hai checkbox ki value json : " + checkboxes[i].name);
+            result[checkboxes[i].id]= checkboxes[i].name;
+            //console.log("checknew "+JSON.stringify(result));
+            checkedEmailArray.push(checkboxes[i].id);
+           
+
+          }
+      }; 
+    
+      for (const [key, value] of Object.entries(result)){
+        var newdiv = document.createElement("div");
+        newdiv.innerHTML =value;
+        document.getElementById("Fields").appendChild(newdiv);
+       /* console.log("Dearray"+JSON.stringify(deArray1));
+        console.log("key "+key);
+        console.log("value "+value);
+        console.log("length "+deArray1.length);*/
+        for (var i = 0; i < deArray1.length; i++){
+            if(key==deArray1[i].CustomerKey){
+               button = document.createElement("INPUT");
+                        button.type = "button";
+                        button.value = deArray1[i].FieldName;
+                        button.name=deArray1[i].CustomerKey;
+                        button.id="drag1" +i
+                        button.setAttribute("draggable",true);
+                      //  button.addEventListener("ondragstart",drag);
+
+           var NewNode = document.createElement("LI");
+           NewNode.appendChild(button); 
+           
+           document.getElementById("Fields").appendChild(NewNode)+ "<br>";
+            }
+        }
+       
+
+
+      }
+      
+     /* for ( let rec of fieldList ){
+        document.getElementById("Fields").innerHTML += rec.fieldName+"     "+rec.DeName+ "<br>";
+        //console.log("new2 "+rec.fieldName);
+    }
+    var newdiv = document.createElement("div");
+    newdiv.innerHTML ="DE Header";
+    document.getElementById("Header").appendChild(newdiv);
+     // document.getElementById("Header").innerHTML =  value + "<br>";
+     // console.log("fields "+ JSON.stringify(fieldList));
+*/
+
+
+    /*
+     for (var i = 0; i < checkedEmailArray.length; i++){
+        for (var j = 0; j < deArray1.length; j++){
+            if(checkedEmailArray[i]==deArray1[j].CustomerKey){
+            fieldList.push(deArray1[j].FieldName);
+            
+            }
+        }
+      }
+      console.log("fields "+ fieldList);
+      document.getElementById("Fields").innerHTML="";
+      for (var i = 0; i < fieldList.length; i++){
+      document.getElementById("Fields").innerHTML += fieldList[i]+ "<br>";
+      }
+      */
+      
+
+
+
+
+
+
+      
+       } 
+            
+     var url="/fields";
+                                      
+
+     fetch(url, {  //provide URL of the processing page
+              method: "POST",
+
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: {
+                  "assetType":"fields",
+
+              },
+              dataType : "json"
+          })
+       .then(response => response.text())
+.then(data => {
+    var parsedData1 = JSON.parse(data).favorites;
+  //  console.log("parsed data  : " + JSON.stringify(parsedData1));
+   
+
+
+ 
+
+ 
+ for ( i in parsedData1 ) 
+   {
+    // console.log(i);
+     //console.log(parsedData1[i]);
+      deArray1.push(parsedData1[i]);
+    // console.log("deArray " + JSON.stringify(deArray1));
+     //document.getElementById("Fields").innerHTML = "/n" +  parsedData1[i]  + "/n" ;
+   } 
+      //var res1 = deArray1.toString().split(',');
+      //console.log("yeh res hai :  " + res1);
+   
+  for (i in deArray1)
+   { 
+    //console.log(i);
+  // console.log("response "+JSON.stringify(deArray1[i]));
+   //console.log("response2 "+JSON.stringify(deArray1[i].FieldName));
+   //document.getElementById("Fields").innerHTML = JSON.stringify(deArray1[i].FieldName);
+
+   } 
+
+  /* var str = '<ul>'
+    res.forEach(function(slide) {
+      str += '<li>'+ slide + '</li>';
+    }); 
+    
+    str += '</ul>';
+    document.getElementById("Data Extensions").innerHTML = str;
+   
+   */
+
+});
+    
+  });
+  
+
+  function allowDrop(ev) {
+ev.preventDefault();
+}
+
+  document.ondragstart=function(event) {
+    
+       console.log("ev.target.id-----> "+event.target.id);
+       console.log("ev.target.value-----> " + event.target.value); 
+       console.log("ev.target.name-----> " + event.target.name); 
+       var obj={id:event.target.id,value:event.target.value,name:event.target.name};
+        event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+
+       /* if(document.getElementById("demo").innerHTML.length == 0){ 
+            document.getElementById("demo").innerHTML += 'Select '+event.target.value; 
+        }
+        else{ 
+          document.getElementById("demo").innerHTML += ' , '+event.target.value ; 
+          }*/
+          /*
+          if(document.getElementById("demo").innerHTML.length == 0){ 
+           words= 'SELECT '+event.target.value;
+           document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
+          }
+           else{ 
+            words += ' , '+event.target.value; 
+            document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
+            }*/
+  };
+ //   }
+//    console.log(event) ;
+   // console.log(event.dataTransfer);
+  //  console.log(event.originalEvent.dataTransfer);
+   // ev.push('dataTransfer');
+  //  $.event.addProp('dataTransfer');
+ /*   jQuery.event.props.push('dataTransfer');
+    event.dataTransfer.setData("text/html", ev.target.id);}  
+  function drop(ev) {  
+  ev.preventDefault();  
+  var data = ev.dataTransfer.getData("text/html");  
+  ev.target.appendChild(document.getElementById(data));  
+  */
+  document.ondragover = function(event) { 
+    event.preventDefault(); 
+}; 
+  //document.ondrop = function(event,target) {
+    function drop(event, target) { 
+  event.preventDefault(); 
+  
+
+  var datafromDrag = event.dataTransfer.getData("text/plain"); 
+  //event.target.appendChild(document.getElementById(data1));
+  var parsedDragData=JSON.parse(datafromDrag);
+
+  if(document.getElementById("demo").innerHTML.length == 0){ 
+           words= 'SELECT '+parsedDragData.value;
+           document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
+          }
+           else{ 
+            words += ' , '+parsedDragData.value; 
+            document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
+            } 
+};
+
+  //function allowDrop(ev) {ev.preventDefault();} 
+   
+  
+  
+  
+
+
+    </script>
+
+    <style>
+      #marketing-asideLeft {
+  
+  width:30%;
+  height: 80%;
+  vertical-align:top;
+  
+  }
+  #marketing-asideRight {
+  
+  width:100%;
+  height: 100%;
+  vertical-align:top;
+  }
+  #main-div {
+    width: 100px;
+    height: 100px;
+    background-color:white;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 15px;
+    right: 0;
+      
+    margin: auto;
+  }
+  .button1 {
+    border: none;
+    color:blue;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 1040px;
+    transition-duration: 0.4s;
+  }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div  >
+    <div id = "main-div" class="slds-float_right" style="width: 82%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event)"> 
+      <p id="demo" contentEditable="true"></p> 
+       
+        <button class="button1">Validate Query</button>
+     
+    </div>
+    
+  
+    <div class="slds-float_left" style="width:15%;height:100%;">
+        <div class="slds-panel slds-size_small slds-panel_docked slds-panel_docked-left slds-is-open" style="position: fixed;" aria-hidden="false">
+          <div class="slds-panel__header">
+              <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data Extensions</h2>
+             </div>
+                 <div class="slds-panel__body">
+  
+                     <div class="demo-only" style="width:100%">
+                     <nav class="slds-nav-vertical" aria-label="Sub page">
+                     <div class="slds-nav-vertical__section">
+                             <h2 id="entity-header" class="slds-nav-vertical__title"> </h2>
+                             <ul aria-describedby="entity-header">
+                                                        
+                             <!--   <button class="slds-nav-vertical__action slds-button" onclick="contentblockbutton()" style="padding-top:0px;padding-bottom:0px;padding-left:4px;">Content blocks</button>    
+                                  <div class="slds-nav-vertical__section" id= "deArray">   </div>        -->
+                                  
+                                    <div class="slds-scrollable"  style="height:54rem;width:24rem" >
+                                 
+                                        <div class="slds-text-longform" id= "Data Extensions" style="width:150%"> 
+                                                
+                                        </div>
+                                      </div>
+                                    <div class="slds-panel__header">
+                                        <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data Extensions Fields</h2>
+                                       </div>
+                                     
+                                  <div class="slds-scrollable"  style="height:54rem;width:24rem" > ---->
+                                 
+                                        <div class="slds-text-longform" id= "Fields" style="width:150%"> 
+                                               
+                                       </div>
+                                   </div> 
+                               
+                                 
+                             </ul>
+                     </div>
+                     </nav>
+                    </div>
+             </div> 
+   </div >
+  
+  </div>
+
+</body>
+</html>
