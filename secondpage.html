@@ -107,7 +107,7 @@
                 var checkboxes = frameQuery.getElementsByTagName('input');
 
                 var checkedcheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                alert(checkedcheckboxes. length);
+               // alert(checkedcheckboxes. length);
 
 
            //     console.log(checkboxes) ; 
@@ -128,7 +128,8 @@
 
           }
       }; 
-    
+      if(checkedcheckboxes == 1)
+      {
       for (const [key, value] of Object.entries(result)){
         var newdiv = document.createElement("div");
         newdiv.innerHTML =value;
@@ -153,9 +154,11 @@
            document.getElementById("Fields").appendChild(NewNode)+ "<br>";
             }
         }
-       
-
-
+      }
+      }
+      else
+      {
+        alert(checkedcheckboxes. length);
       }
       
      /* for ( let rec of fieldList ){
