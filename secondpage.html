@@ -217,15 +217,7 @@
     
   });
   
-  function handleSelectChange() {
-
-    //  document.getElementById('select-object').innerHTML.value 
-      console.log("Heyyyyy");
-      var selectedobject  = $('#select-object').find(":selected").text();
-      console.log("yeh hai selected object " + selectedobject) ;
-      
-
-    }
+  
   function allowDrop(ev) {
 ev.preventDefault();
 }
@@ -303,6 +295,15 @@ ev.preventDefault();
    });
   return deArray1;  
  } 
+
+ function handleSelectChange() {
+
+  //  document.getElementById('select-object').innerHTML.value 
+    console.log("Heyyyyy");
+    var selectedobject  = $('#select-object').find(":selected").text();
+    console.log("yeh hai selected object " + selectedobject) ;
+    
+  }
   
   
 
