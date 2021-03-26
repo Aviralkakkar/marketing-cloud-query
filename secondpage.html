@@ -158,14 +158,14 @@
       
       }
     }
-    else if (checkedcheckboxes.length != 1)
+    else 
     {
       checkedcheckboxes[checkedcheckboxes.length - 1].checked = false;
       var firstcheckedcheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
       console.log("first check box " + firstcheckedcheckboxes);
     //  alert(firstcheckedcheckboxes.value);
       alert(firstcheckedcheckboxes[0].name);
-      alert(firstcheckedcheckboxes[0].label);
+      alert(firstcheckedcheckboxes[0].label); 
 
       alert(firstcheckedcheckboxes.length);
 
@@ -220,6 +220,7 @@
        .then(response => response.text())
 .then(data => {
     var parsedData1 = JSON.parse(data).favorites;
+    console.log(parsedData1);
   //  console.log("parsed data  : " + JSON.stringify(parsedData1));
    
 
