@@ -13,8 +13,11 @@
         var url="/asset";
         var button;
         var words;
+        var parsedData;
+        var checkedEmailArray = [];
+        var fieldsArray;
                                       
-
+     // document.getElementById('relationPopup').style.display='none';
         fetch(url, {  //provide URL of the processing page
                  method: "POST",
 
@@ -28,9 +31,9 @@
                  dataType : "json"
              })
           .then(response => response.text())
-  .then(data => {
+  .then( data => {
    console.log(data);
-   var parsedData = JSON.parse(data).targetDEArray;
+   parsedData = JSON.parse(data).targetDEArray;
    console.log("parsed data  : " + JSON.stringify(parsedData) );
  
  /*var dataextensionArray = []; 
@@ -96,7 +99,7 @@
         //    console.log(checkbox.id); 
             
             }; 
-            function handleClick() {   
+           async  function handleClick() {   
                 document.getElementById("Fields").innerHTML="";
                
                 fieldList=[];
@@ -105,46 +108,43 @@
                 var frameQuery = document.getElementById('Data Extensions');
    
                 var checkboxes = frameQuery.getElementsByTagName('input');
-
                 var checkedcheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-               // alert(checkedcheckboxes. length);
-
 
            //     console.log(checkboxes) ; 
-    var checkedEmailArray = [];
     
-    for (var i = 0; i < checkboxes.length; i++)
-      {        
-     if( checkboxes[i].checked == true)
-          
-          {
+    console.log("--------------Length-----------------------",checkboxes.length);
 
+  if(checkedcheckboxes.length==1 )
+  {
+    for (var i = 0; i < checkboxes.length; i++)
+      {
+     if( checkboxes[i].checked == true)
+          {
             console.log("yeh checkbox id hai: " + checkboxes[i].id);
             console.log("yeh hai checkbox ki value json : " + checkboxes[i].name);
             result[checkboxes[i].id]= checkboxes[i].name;
-            //console.log("checknew "+JSON.stringify(result));
             checkedEmailArray.push(checkboxes[i].id);
-           
 
           }
       }; 
-      if(checkedcheckboxes.length == 1)
-        {
+
       for (const [key, value] of Object.entries(result)){
-        
+        console.log(key);
+        console.log(value);
+
+
         var newdiv = document.createElement("div");
         newdiv.innerHTML =value;
         document.getElementById("Fields").appendChild(newdiv);
-       /* console.log("Dearray"+JSON.stringify(deArray1));
-        console.log("key "+key);
-        console.log("value "+value);
-        console.log("length "+deArray1.length);*/
-        for (var i = 0; i < deArray1.length; i++){
-            if(key==deArray1[i].CustomerKey){
+        fieldsArray = await getFields();
+        console.log(fieldsArray.length);
+
+        for (var i = 0; i < fieldsArray.length; i++){
+            if(key==fieldsArray[i].CustomerKey){
                button = document.createElement("INPUT");
                         button.type = "button";
-                        button.value = deArray1[i].FieldName;
-                        button.name=deArray1[i].CustomerKey;
+                        button.value = fieldsArray[i].FieldName;
+                        button.name=fieldsArray[i].CustomerKey;
                         button.id="drag1" +i
                         button.setAttribute("draggable",true);
                       //  button.addEventListener("ondragstart",drag);
@@ -155,110 +155,64 @@
            document.getElementById("Fields").appendChild(NewNode)+ "<br>";
             }
         }
-      
+       
+
+
       }
-    }
-    else 
+  }
+  else if(checkedcheckboxes.length==0)
+  {
+    console.log("Do nothing have fun");
+  }
+  else
+  {
+    document.getElementById('RelationPopup').style.display='block';
+    var Secondcheckedcheckbox=checkedcheckboxes[checkedcheckboxes.length - 1];
+    var Firstcheckedcheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
+    document.getElementById('relationshipMainObject').innerHTML='Create RelationShip with '+Firstcheckedcheckbox[0].name;
+
+    var innerJoin=Firstcheckedcheckbox[0].name+' Common '+Secondcheckedcheckbox.name;
+    var OuterJoin=Firstcheckedcheckbox[0].name+' With Whole '+Secondcheckedcheckbox.name;
+    var leftJoin=Firstcheckedcheckbox[0].name+' Without '+Secondcheckedcheckbox.name;
+    var rightJoin=Firstcheckedcheckbox[0].name+' With '+Secondcheckedcheckbox.name;
+
+    document.getElementById('select-relationship').innerHTML +=  '<option value =innerjoin>'+ innerJoin +'</option>' ;
+    document.getElementById('select-relationship').innerHTML +=  '<option value = outerjoin>'+ OuterJoin +'</option>' ;
+    document.getElementById('select-relationship').innerHTML +=  '<option value = leftjoin>'+ leftJoin +'</option>' ;
+    document.getElementById('select-relationship').innerHTML +=  '<option value = rightjoin>'+ rightJoin +'</option>' ;
+   
+
+    for (const [keyimage, value] of Object.entries(parsedData))
     {
-      checkedcheckboxes[checkedcheckboxes.length - 1].checked = false;
-      var firstcheckedcheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-      console.log("first check box " + firstcheckedcheckboxes);
-    //  alert(firstcheckedcheckboxes.value);
-      alert(firstcheckedcheckboxes[0].name);
-      alert(firstcheckedcheckboxes[0].label); 
-
-      alert(firstcheckedcheckboxes.length);
+      if(value==Secondcheckedcheckbox.name)
+      {
+        document.getElementById('select-object').innerHTML +=  '<option value = "' + keyimage + '" selected>'+ value +'</option>' ;
+      }
+      else
+      {
+      document.getElementById('select-object').innerHTML +=  '<option value = "' + keyimage + '">'+ value +'</option>' ;
+      }
 
     }
-    
-      
-     /* for ( let rec of fieldList ){
-        document.getElementById("Fields").innerHTML += rec.fieldName+"     "+rec.DeName+ "<br>";
-        //console.log("new2 "+rec.fieldName);
-    }
-    var newdiv = document.createElement("div");
-    newdiv.innerHTML ="DE Header";
-    document.getElementById("Header").appendChild(newdiv);
-     // document.getElementById("Header").innerHTML =  value + "<br>";
-     // console.log("fields "+ JSON.stringify(fieldList));
-*/
 
-
-    /*
-     for (var i = 0; i < checkedEmailArray.length; i++){
-        for (var j = 0; j < deArray1.length; j++){
-            if(checkedEmailArray[i]==deArray1[j].CustomerKey){
-            fieldList.push(deArray1[j].FieldName);
-            
+    result[Secondcheckedcheckbox.id]= Secondcheckedcheckbox.name;
+    checkedEmailArray.push(Secondcheckedcheckbox.id);
+    console.log("Result",result);
+    for (const [key, value] of Object.entries(result)){
+      console.log(fieldsArray.length);
+        for (var i = 0; i < fieldsArray.length; i++){
+            if(key==fieldsArray[i].CustomerKey && Secondcheckedcheckbox.id==fieldsArray[i].CustomerKey){
+              console.log("inddddididiid");
+              document.getElementById('select-objectFields').innerHTML +=  '<option value = "' + fieldsArray[i].FieldName + '">'+ fieldsArray[i].FieldName +'</option>' ;
             }
         }
       }
-      console.log("fields "+ fieldList);
-      document.getElementById("Fields").innerHTML="";
-      for (var i = 0; i < fieldList.length; i++){
-      document.getElementById("Fields").innerHTML += fieldList[i]+ "<br>";
-      }
-      */
+
+  }
       
        } 
             
-     var url="/fields";
-                                      
 
-     fetch(url, {  //provide URL of the processing page
-              method: "POST",
-
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: {
-                  "assetType":"fields",
-
-              },
-              dataType : "json"
-          })
-       .then(response => response.text())
-.then(data => {
-    var parsedData1 = JSON.parse(data).favorites;
-    console.log(parsedData1);
-  //  console.log("parsed data  : " + JSON.stringify(parsedData1));
-   
-
-
- 
-
- 
- for ( i in parsedData1 ) 
-   {
-    // console.log(i);
-     //console.log(parsedData1[i]);
-      deArray1.push(parsedData1[i]);
-    // console.log("deArray " + JSON.stringify(deArray1));
-     //document.getElementById("Fields").innerHTML = "/n" +  parsedData1[i]  + "/n" ;
-   } 
-      //var res1 = deArray1.toString().split(',');
-      //console.log("yeh res hai :  " + res1);
-   console.log("Yeh hai deArray----->" + deArray1)
-  for (i in deArray1)
-   { 
-    //console.log(i);
-  // console.log("response "+JSON.stringify(deArray1[i]));
-   //console.log("response2 "+JSON.stringify(deArray1[i].FieldName));
-   //document.getElementById("Fields").innerHTML = JSON.stringify(deArray1[i].FieldName);
-
-   } 
-
-  /* var str = '<ul>'
-    res.forEach(function(slide) {
-      str += '<li>'+ slide + '</li>';
-    }); 
-    
-    str += '</ul>';
-    document.getElementById("Data Extensions").innerHTML = str;
-   
-   */
-
-});
     
   });
   
@@ -290,20 +244,7 @@ ev.preventDefault();
             words += ' , '+event.target.value; 
             document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
             }*/
-  };
- //   }
-//    console.log(event) ;
-   // console.log(event.dataTransfer);
-  //  console.log(event.originalEvent.dataTransfer);
-   // ev.push('dataTransfer');
-  //  $.event.addProp('dataTransfer');
- /*   jQuery.event.props.push('dataTransfer');
-    event.dataTransfer.setData("text/html", ev.target.id);}  
-  function drop(ev) {  
-  ev.preventDefault();  
-  var data = ev.dataTransfer.getData("text/html");  
-  ev.target.appendChild(document.getElementById(data));  
-  */
+  };  
   document.ondragover = function(event) { 
     event.preventDefault(); 
 }; 
@@ -328,7 +269,31 @@ ev.preventDefault();
 
   //function allowDrop(ev) {ev.preventDefault();} 
    
-  
+ async function getFields()
+ {
+  var url="/fields";
+  fetch(url, {  //provide URL of the processing page
+    method: "POST",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: {
+       "assetType":"fields",
+    },
+    dataType : "json"
+  })
+  .then(response => response.text())
+  .then(data => {
+    var parsedData1 = JSON.parse(data).favorites;
+    for ( i in parsedData1 ) 
+    {
+     deArray1.push(parsedData1[i]);
+    
+    
+    }  
+   });
+  return deArray1;  
+ } 
   
   
 
@@ -415,7 +380,7 @@ ev.preventDefault();
                                         <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data Extensions Fields</h2>
                                        </div>
                                      
-                                  <div class="slds-scrollable"  style="height:54rem;width:24rem" > ---->
+                                  <div class="slds-scrollable"  style="height:54rem;width:24rem" >
                                  
                                         <div class="slds-text-longform" id= "Fields" style="width:150%"> 
                                                
@@ -432,5 +397,78 @@ ev.preventDefault();
   
   </div>
 
+
+<div style="display: none;" id="RelationPopup">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create Relationships</h2>
+        <p class="slds-m-top_x-small" id="relationshipMainObject"></a></p>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          
+          <br>
+          
+          
+              <div class="slds-form-element slds-float_left">
+                  <label class="slds-form-element__label" for="select-object"></label>
+                  <div class="slds-form-element__control">
+                  <div class="slds-select_container">
+                      <select class="slds-select" id="select-object" onchange="handleSelectChange()">
+                      <option >Select Object </option>
+                      </select>
+                  </div>
+                  </div>
+              </div>
+  
+              <div class="slds-form-element slds-float_right" >
+                  <label class="slds-form-element__label" for="select-objectFields"></label>
+                  <div class="slds-form-element__control">
+                  <div class="slds-select_container">
+                      <select class="slds-select" id="select-objectFields" >
+                      <option>Select Field</option>
+                      </select>
+                  </div>
+                  </div>
+              </div>
+  
+              <div style="width: 100%;">
+                  <img class="slds-align_absolute-center" style="width:300px; height:120px;" src="https://i.pinimg.com/originals/3e/25/03/3e2503ea72fd268141d65f2361e6a7a9.png">
+                  <br>
+                  <br>
+                  <div class="slds-form-element slds-align_absolute-center " style="width:300px;">
+                      <label class="slds-form-element__label" for="select-relationship"></label>
+                      <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                          <select class="slds-select" id="select-relationship">
+                            <option>Select Relationship</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+         
+      </div>
+      <footer class="slds-modal__footer">
+        <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
+        <button class="slds-button slds-button_brand">Save</button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</div>
+
+<script>
+  function CancelPopup()
+  {
+    document.getElementById('RelationPopup').style.display='none';
+  }
+</script>
 </body>
 </html>
