@@ -640,7 +640,7 @@ body {
     <input type="text" name="email" placeholder="Email" />
     <input type="password" name="pass" placeholder="Password" />
     <input type="password" name="cpass" placeholder="Confirm Password" />
-    <input type="button" name="next" class="next action-button" value="Next" onclick="next1()"/>
+    <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Social Profiles</h2>
@@ -649,7 +649,7 @@ body {
     <input type="text" name="facebook" placeholder="Facebook" />
     <input type="text" name="gplus" placeholder="Google Plus" />
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" value="Next" onclick="next1()"/>
+    <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Personal Details</h2>
@@ -677,7 +677,7 @@ body {
     var left, opacity, scale; //fieldset properties which we will animate
     var animating; //flag to prevent quick multi-click glitches
     
-    function next1(){
+    $(".next").click(function(){
       console.log("next pe click toh hora h ");
       if(animating) return false;
       animating = true;
@@ -714,7 +714,7 @@ body {
         //this comes from the custom easing plugin
         easing: 'easeInOutBack'
       });
-    }
+    });
     
     $(".previous").click(function(){
       if(animating) return false;
