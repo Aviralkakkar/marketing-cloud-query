@@ -367,8 +367,40 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   var parsedDragData=JSON.parse(datafromDrag);
   console.log("yeh parsedDragData--------> " + parsedDragData.value) ;
   dataExtensionName = parsedDragData.value ;
+  var dataExtensionId = parsedDragData.id ; 
   document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
   console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData)) ;
+
+  fieldList=[];
+  result={};
+
+  var url="/fields";
+  fetch(url, {  //provide URL of the processing page
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: {
+      "assetType":"fields",
+    },
+    dataType : "json"
+  })
+  .then(response => response.text())
+  .then(data =>  {
+    parsedData1 = JSON.parse(data).favorites;
+    for ( i in parsedData1 ) 
+    {
+      fieldsArray.push(parsedData1[i]);
+    } 
+
+    for (var i = 0; i < fieldsArray.length; i++){
+      if( fieldsArray[i].CustomerKey == dataExtensionId){
+        console.log("inddddididiid");
+        document.getElementById('grid-1-de').innerHTML +=  fieldsArray[i].FieldName  ;
+      }
+
+    }
+  });
 
 
 
@@ -505,7 +537,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
           
-        <div class="slds-grid slds-gutters">
+        <div class="slds-grid slds-gutters" id = "grid-1-de">
           <div class="slds-col slds-size_2-of-4">
             <span>1</span>
           </div>
