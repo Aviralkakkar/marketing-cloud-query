@@ -20,6 +20,7 @@
         var fieldsArray=[];
         var defieldsArray=[];
         var parsedData1;
+        var dataExtensionName ;
       function onloadofBody()
       {  
   fetch('/fields', {  //provide URL of the processing page
@@ -354,15 +355,19 @@ ev.preventDefault();
     event.preventDefault(); 
 }; 
   //document.ondrop = function(event,target) {
-    function drop(event, target) { 
+    function drop(event, target) {
+       
   event.preventDefault(); 
   
 console.log("Dropppp");
 console.log(event.target.id);
-
+console.log("yeh de ki value -----> " + event.target.value) ;
   var datafromDrag = event.dataTransfer.getData("text/plain"); 
   //event.target.appendChild(document.getElementById(data1));
   var parsedDragData=JSON.parse(datafromDrag);
+  console.log("yeh parsedDragData--------> " + parsedDragData) ;
+
+
 
   document.getElementById('RelationPopup').style.display='block';
 
@@ -491,7 +496,7 @@ console.log(event.target.id);
           </svg>
           <span class="slds-assistive-text">Close</span>
         </button>
-        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Create Relationships</h2>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Select Data Extension Fields</h2>
         <p class="slds-m-top_x-small" id="relationshipMainObject"></a></p>
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
