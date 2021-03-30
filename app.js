@@ -202,7 +202,7 @@ var options = {
 request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log("yeh response body validate query ka --- > " + response.body);
-  var responsee = response.body ;
+  var responsee = JSON.parse(response.body) ;
   var fal = responsee.queryValid ;
   console.log(fal) ;
   console.log(response.queryValid);
