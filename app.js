@@ -203,6 +203,9 @@ request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log("yeh response body validate query ka --- > " + response.body);
   console.log(response.body.queryValid) ;
+  console.log(response.body.errors) ;
+  
+  
   resCall.json({validatequery : response.body.queryValid});
 });
 
