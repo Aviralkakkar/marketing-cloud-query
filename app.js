@@ -205,11 +205,8 @@ request(options, function (error, response) {
   var responsee = JSON.parse(response.body) ;
   var fal = responsee.queryValid ;
   console.log(fal) ;
-  console.log(response.queryValid);
-  console.log(response.body.queryValid) ;
   
-  
-  resCall.json({validatequery : response.body.queryValid});
+  resCall.json({validatequery : fal});
 });
 
  
