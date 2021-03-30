@@ -327,8 +327,9 @@ ev.preventDefault();
   .then(response => response.text())
   .then(data => {
    console.log("validate query ke response me agaya ") ;
-  
-  
+   var validatequery = JSON.parse(data).validatequery;
+   console.log(validatequery) ; 
+   
   });
   }
   
