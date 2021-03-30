@@ -114,6 +114,7 @@ app.post("/secondpage", async function (req, res) {
     
    });
 
+
    app.post("/fields", async (reqCall,resCall)=>
    {
     console.log("yeh app.post fields wale me hai token " + access_token);
@@ -182,6 +183,29 @@ app.post("/secondpage", async function (req, res) {
 
    });
 
+});
+
+app.post("/validatequery", async (reqCall,resCall)=>
+   {
+    console.log("validate query access token" + access_token);
+    var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/actions/validate/',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + access_token
+  },
+  body: JSON.stringify({"Text":"SELECT [First Name],[Email Address] as [Email Id] FROM NTOSubscribers"})
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log("yeh response body validate query ka --- > " + response.body);
+  alert (response.body) ; 
+});
+
+ 
 });
 
 

@@ -305,9 +305,31 @@ ev.preventDefault();
 
   //  document.getElementById('select-object').innerHTML.value 
     console.log("Heyyyyy");
-    var selectedobject  = $('#select-object').find(":selected").text();
-    console.log("yeh hai selected object " + selectedobject) ;
+  //  var selectedobject  = $('#select-object').find(":selected").text();
+  //  console.log("yeh hai selected object " + selectedobject) ;
     
+  }
+
+  function validateQuery()  {
+
+   
+    var url="/validatequery";
+  fetch(url, {  //provide URL of the processing page
+    method: "POST",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: {
+       "assetType":"validatequery",
+    },
+    dataType : "json"
+  })
+  .then(response => response.text())
+  .then(data => {
+   console.log("validate query ke response me agaya ") ;
+  
+  
+  });
   }
   
   
@@ -364,7 +386,7 @@ ev.preventDefault();
     <div id = "main-div" class="slds-float_right" style="width: 82%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event)"> 
       <p id="demo" contentEditable="true"></p> 
        
-        <button class="button1">Validate Query</button>
+        <button class="button1" onclick="validateQuery()">Validate Query</button>
      
     </div>
     
