@@ -6,13 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.sanitized.min.css" integrity="sha512-O9RC97AHIeSWK6mAA/b1GBPzrBsmNBT8nN2yz6vghHn0Eatt4P7ilv4H+uO5mp7WIDh9sKbUoKSg3pGsPM8ShA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css" integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw==" crossorigin="anonymous" />
     
-    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
-<script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
     <script>
-        var deArray1 = [];
+      console.log("on load calll");
         var fieldList=[];
         var result = {};
         var url="/asset";
@@ -20,8 +15,29 @@
         var words;
         var parsedData;
         var checkedEmailArray = [];
-        var fieldsArray;
-                                      
+        var fieldsArray=[];
+        var defieldsArray=[];
+        var parsedData1;
+      function onloadofBody()
+      {  
+  fetch('/fields', {  //provide URL of the processing page
+    method: "POST",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: {
+       "assetType":"fields",
+    },
+    dataType : "json"
+  })
+  .then(response => response.text())
+  .then(data =>  {
+   parsedData1 = JSON.parse(data).favorites;
+    for ( i in parsedData1 ) 
+    {
+      defieldsArray.push(parsedData1[i]);
+    }
+  });                            
      // document.getElementById('relationPopup').style.display='none';
         fetch(url, {  //provide URL of the processing page
                  method: "POST",
@@ -72,17 +88,19 @@
 
      //dataextensionArray.forEach(function(slide) {
         for (const [keyimage, value] of Object.entries(parsedData)){
-       //      str += '<input type="checkbox" id = "checkbox" onclick=' + "handleClick()" + '>'+ slide  + '<br />';
+     var  html = '<input type="checkbox" id = "'+keyimage+'" onclick="handleClick(this)" value="'+value+'" name="'+value+'">'+value;
+     var node = '<li >'+html+'</li>';
       // console.log("yeh for loop ki slide hai" + dataextensionArray);
-              var checkbox = document.createElement('input');
-                          checkbox.setAttribute("type","checkbox"); 
-                          checkbox.setAttribute("id",keyimage);
-                          checkbox.setAttribute("value",value);
-                          checkbox.setAttribute("name",value);
-                          checkbox.addEventListener('click',handleClick)    
+            /*  var checkbox = document.createElement('input');
+              checkbox.setAttribute("type","checkbox"); 
+              checkbox.setAttribute("id",keyimage);
+              checkbox.setAttribute("value",value);
+              checkbox.setAttribute("name",value);
+              checkbox.addEventListener('click',handleClick(this))    
                           
            // document.getElementById("check").innerHTML = checkbox;
-            var node = document.createElement("LI");                 // Create a <li> node
+    var node = '<li ><label for="'+value+'" id="'+keyimage+'">'+value+'</label>'+html';
+    document.createElement("LI");                 // Create a <li> node
          //   var textnode = document.createTextNode(slide);         // Create a text node
 
              var label=document.createElement('label');
@@ -97,13 +115,18 @@
             
             node.appendChild(checkbox);
             node.appendChild(label); 
-         //   document.getElementById("demoId" ).appendChild(slide);                             // Append the text to <li>
-            document.getElementById("Data Extensions").appendChild(node);
-        //    document.getElementById("check").appendChild(slide);
-        //    document.getElementById("check").iannerHTML = checkbox ;
-        //    console.log(checkbox.id); 
-            
+         //   document.getElementById("demoId" ).appendChild(slide); 
+         */                            // Append the text to <li>
+            document.getElementById("Data Extensions").innerHTML;
+            console.log("--------------------Before----------------------------");
+            console.log(document.getElementById("Data Extensions").innerHTML);
+            document.getElementById("Data Extensions").innerHTML+=node;
+            console.log("--------------------After----------------------------");
+            console.log(document.getElementById("Data Extensions").innerHTML);
             }; 
+            /*
+          
+            
            async  function handleClick() {   
                 document.getElementById("Fields").innerHTML="";
                
@@ -129,11 +152,28 @@
             console.log("yeh hai checkbox ki value json : " + checkboxes[i].name);
             result[checkboxes[i].id]= checkboxes[i].name;
             checkedEmailArray.push(checkboxes[i].id);
-
-          }
-      }; 
-
-      for (const [key, value] of Object.entries(result)){
+            var parsedData1;
+            console.log("hiii");
+            var url="/fields";
+            fetch(url, {  //provide URL of the processing page
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: {
+                "assetType":"fields",
+              },
+              dataType : "json"
+            })
+            .then(response => response.text())
+            .then(data =>  {
+            
+              parsedData1 = JSON.parse(data).favorites;
+              for ( i in parsedData1 ) 
+              {
+                fieldsArray.push(parsedData1[i]);
+              } 
+              for (const [key, value] of Object.entries(result)){
         console.log(key);
         console.log(value);
 
@@ -141,7 +181,8 @@
         var newdiv = document.createElement("div");
         newdiv.innerHTML =value;
         document.getElementById("Fields").appendChild(newdiv);
-        fieldsArray = await getFields();
+        
+        console.log(fieldsArray);
         console.log(fieldsArray.length);
 
         for (var i = 0; i < fieldsArray.length; i++){
@@ -164,6 +205,20 @@
 
 
       }
+              console.log(fieldsArray);
+              console.log(fieldsArray.length);
+            });
+           // fieldsArray = await getFields();
+            console.log("-----------Fields Array --------------");
+            console.log(fieldsArray);
+            var k=fieldsArray;
+            console.log(k.length);
+            console.log(fieldsArray.length);
+
+          }
+      }; 
+
+      
   }
   else if(checkedcheckboxes.length==0)
   {
@@ -213,21 +268,59 @@
         }
       }
 
-      
   }
       
        } 
             
-
+*/
     
   });
+}
+
+  function handleClick(cb)
+  {
+    console.log("Clicked, new name = " + cb.name);
+    console.log("Clicked, new value = " + cb.value);
+    console.log("Clicked, new id = " + cb.id);
+    console.log("Clicked, new value = " + cb.checked);
+    console.log("------------Handle Click",defieldsArray);
+
+    if(cb.checked==true)
+    {
+     // result[cb.id]= cb.name;
+      //checkedEmailArray.push(cb.id);
+   // getFields(cb.id,cb.value,"CheckboxClick")
+    var divid=cb.value+'div';
+    var divHtml= '<div id="'+divid+'" title="'+cb.id+'">'+cb.value+'</div>';
+    document.getElementById("Fields").innerHTML+=divHtml;
+    for (var i =0; i < defieldsArray.length; i++){
+    if(cb.id==defieldsArray[i].CustomerKey)
+    {
+      console.log("----------------Id-     ",cb.id);
+      console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
+      var buttonHtml='<li><input type="button" value="'+defieldsArray[i].FieldName+'" name="'+defieldsArray[i].CustomerKey+'" id="drag'+i+'" draggable=true></li>';
+      document.getElementById(divid).innerHTML+=buttonHtml;
+
+    }
+   
+  }
+    }
+
+  }
   
-  
-  function allowDrop(ev) {
+
+  function allowDrop(ev,event) {
+    console.log("Inside allowdrop");
+    console.log("------------Event--------------");
+  console.log(event.id);
+  console.log("----------------ev--------------");
+  console.log(ev);
 ev.preventDefault();
 }
 
   document.ondragstart=function(event) {
+    console.log(event.class);
+    console.log(event.id);
     
        console.log("ev.target.id-----> "+event.target.id);
        console.log("ev.target.value-----> " + event.target.value); 
@@ -251,13 +344,18 @@ ev.preventDefault();
             document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
             }*/
   };  
-  document.ondragover = function(event) { 
+  document.ondragover = function(event,ev) { 
+  console.log("Inside ondragover");
+  console.log(event);
+  console.log(ev);
     event.preventDefault(); 
 }; 
   //document.ondrop = function(event,target) {
     function drop(event, target) { 
   event.preventDefault(); 
   
+console.log("Dropppp");
+console.log(event.target.id);
 
   var datafromDrag = event.dataTransfer.getData("text/plain"); 
   //event.target.appendChild(document.getElementById(data1));
@@ -272,69 +370,6 @@ ev.preventDefault();
             document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
             } 
 };
-
-  //function allowDrop(ev) {ev.preventDefault();} 
-   
- async function getFields()
- {
-  var url="/fields";
-  fetch(url, {  //provide URL of the processing page
-    method: "POST",
-     headers: {
-       "Content-Type": "application/json"
-     },
-     body: {
-       "assetType":"fields",
-    },
-    dataType : "json"
-  })
-  .then(response => response.text())
-  .then(data => {
-    var parsedData1 = JSON.parse(data).favorites;
-    for ( i in parsedData1 ) 
-    {
-     deArray1.push(parsedData1[i]);
-    
-    
-    }  
-   });
-  return deArray1;  
- } 
-
- function handleSelectChange() {
-
-  //  document.getElementById('select-object').innerHTML.value 
-    console.log("Heyyyyy");
-  //  var selectedobject  = $('#select-object').find(":selected").text();
-  //  console.log("yeh hai selected object " + selectedobject) ;
-    
-  }
-
-  function validateQuery()  {
-
-   
-    var url="/validatequery";
-  fetch(url, {  //provide URL of the processing page
-    method: "POST",
-     headers: {
-       "Content-Type": "application/json"
-     },
-     body: {
-       "assetType":"validatequery",
-    },
-    dataType : "json"
-  })
-  .then(response => response.text())
-  .then(data => {
-   console.log("validate query ke response me agaya ") ;
-   var validatequery = JSON.parse(data).validatequery;
-   console.log(validatequery) ; 
-   
-  });
-  }
-  
-  
-
 
     </script>
 
@@ -382,12 +417,14 @@ ev.preventDefault();
 <body>
 
 
-
+<script>
+  onloadofBody();
+</script>
   <div  >
-    <div id = "main-div" class="slds-float_right" style="width: 82%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event)"> 
+    <div id = "main-div" class="slds-float_right" style="width: 82%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event,this)"> 
       <p id="demo" contentEditable="true"></p> 
        
-        <button class="button1" onclick="validateQuery()">Validate Query</button>
+        <button class="button1">Validate Query</button>
      
     </div>
     
@@ -406,11 +443,12 @@ ev.preventDefault();
                              <ul aria-describedby="entity-header">
                                                         
                              <!--   <button class="slds-nav-vertical__action slds-button" onclick="contentblockbutton()" style="padding-top:0px;padding-bottom:0px;padding-left:4px;">Content blocks</button>    
-                                  <div class="slds-nav-vertical__section" id= "deArray">   </div>        -->
+                                  <div class="slds-nav-vertical__section" id= "deArray"> <ul id="dataExtensionList"></ul>  </div>        -->
                                   
                                     <div class="slds-scrollable"  style="height:54rem;width:24rem" >
                                  
                                         <div class="slds-text-longform" id= "Data Extensions" style="width:150%"> 
+                                          
                                                 
                                         </div>
                                       </div>
