@@ -88,8 +88,9 @@
 
      //dataextensionArray.forEach(function(slide) {
         for (const [keyimage, value] of Object.entries(parsedData)){
-     var  html = '<input type="checkbox" id = "'+keyimage+'" onclick="handleClick(this)" value="'+value+'" name="'+value+'">'+value;
+     var  html = '<input  id = "'+keyimage+'"  value="'+value+'" id="drag'+keyimage+'" draggable=true name="'+value+' ">'+value;
      var node = '<li >'+html+'</li>';
+     console.log("data extensions printed ");     
       // console.log("yeh for loop ki slide hai" + dataextensionArray);
             /*  var checkbox = document.createElement('input');
               checkbox.setAttribute("type","checkbox"); 
@@ -361,7 +362,10 @@ console.log(event.target.id);
   //event.target.appendChild(document.getElementById(data1));
   var parsedDragData=JSON.parse(datafromDrag);
 
-  if(document.getElementById("demo").innerHTML.length == 0){ 
+  document.getElementById('RelationPopup').style.display='block';
+
+
+/*  if(document.getElementById("demo").innerHTML.length == 0){ 
            words= 'SELECT '+parsedDragData.value;
            document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
           }
@@ -369,6 +373,7 @@ console.log(event.target.id);
             words += ' , '+parsedDragData.value; 
             document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
             } 
+*/
 };
 
     </script>
