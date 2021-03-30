@@ -365,7 +365,9 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   var datafromDrag = event.dataTransfer.getData("text/plain"); 
   //event.target.appendChild(document.getElementById(data1));
   var parsedDragData=JSON.parse(datafromDrag);
-  console.log("yeh parsedDragData--------> " + parsedDragData) ;
+  console.log("yeh parsedDragData--------> " + parsedDragData.value) ;
+  dataExtensionName = parsedDragData.value ;
+  document.getElementById("modal-heading-01").innerHTML = dataExtensionName + "Data Extension Fields";
   console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData)) ;
 
 
