@@ -88,7 +88,7 @@
 
      //dataextensionArray.forEach(function(slide) {
         for (const [keyimage, value] of Object.entries(parsedData)){
-     var  html = '<input  id = "'+keyimage+'"  value="'+value+'" id="drag'+keyimage+'" draggable=true name="'+value+' ">'+value;
+     var  html = '<input type="button" id = "'+keyimage+'"  value="'+value+'" id="drag'+keyimage+'" draggable=true name="'+value+' ">';
      var node = '<li >'+html+'</li>';
      console.log("data extensions printed ");     
       // console.log("yeh for loop ki slide hai" + dataextensionArray);
