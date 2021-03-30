@@ -206,7 +206,7 @@ request(options, function (error, response) {
   var fal = responsee.queryValid ;
   console.log(fal) ;
   console.log(response.queryValid);
-  console.log(responsee.errors) ;
+  console.log(response.body.queryValid) ;
   
   
   resCall.json({validatequery : response.body.queryValid});
