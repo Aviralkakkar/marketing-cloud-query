@@ -403,9 +403,9 @@ console.log("yeh de ki value -----> " + event.target.value) ;
 
         var checkbox = document.createElement('input');
               checkbox.setAttribute("type","checkbox"); 
-              checkbox.setAttribute("id",keyimage);
-              checkbox.setAttribute("value",value);
-              checkbox.setAttribute("name",value);
+              checkbox.setAttribute("id",fieldsArray[i].CustomerKey + i);
+              checkbox.setAttribute("value",fieldsArray[i].FieldName );
+              checkbox.setAttribute("name",fieldsArray[i].FieldName );
               checkbox.addEventListener('click',handleClick(this))    
 
         document.getElementById('grid-1-de').innerHTML +=  checkbox +  '<br>' ;
