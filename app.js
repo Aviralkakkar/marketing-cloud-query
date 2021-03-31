@@ -162,7 +162,7 @@ app.post("/secondpage", async function (req, res) {
           if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
-              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
+            //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
               "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
               "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
               "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
@@ -173,7 +173,7 @@ app.post("/secondpage", async function (req, res) {
           else {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
-              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
+            //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
               "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
               "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
               "FieldMaxLength": "",
