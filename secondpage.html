@@ -394,7 +394,8 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     console.log("Field api me aarha hai ");
     console.log("Field Array --- > " + JSON.stringify(fieldsArray) ); 
     for (var i = 0; i < fieldsArray.length; i++){
-     
+      console.log(fieldsArray[i].CustomerKey);
+      console.log(dataExtensionId);
       if( fieldsArray[i].CustomerKey == dataExtensionId){
     //    console.log(fieldsArray[i].CustomerKey);
     //    console.log("DE ID   " + dataExtensionId);
