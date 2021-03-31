@@ -11,6 +11,7 @@ var xml;
 var jsonRes;
 var SourceListDEResult;
 var xml2js = require('xml2js');
+const { stringify } = require("querystring");
 var xml2jsParser = new xml2js.Parser();
 var DEListMap={};
 var favorites = [];
@@ -117,6 +118,9 @@ app.post("/secondpage", async function (req, res) {
 
    app.post("/fields", async (reqCall,resCall)=>
    {
+     console.log(reqCall) ; 
+     console.log(JSON.stringify(reqCall) ) ; 
+     
      console.log(reqCall.body) ;
     console.log("Data Extension Id -- > " + reqCall.body.dataExtensionId) ; 
     console.log("yeh app.post fields wale me hai token " + access_token);
