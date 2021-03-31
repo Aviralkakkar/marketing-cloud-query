@@ -392,12 +392,12 @@ console.log("yeh de ki value -----> " + event.target.value) ;
       fieldsArray.push(parsedData1[i]);
     } 
     console.log("Field api me aarha hai ");
-    console.log("Field Array --- > " + fieldsArray); 
+    console.log("Field Array --- > " + JSON.stringify(fieldsArray) ); 
     for (var i = 0; i < fieldsArray.length; i++){
      
       if( fieldsArray[i].CustomerKey == dataExtensionId){
-        console.log(fieldsArray[i].CustomerKey);
-        console.log("DE ID   " + dataExtensionId);
+    //    console.log(fieldsArray[i].CustomerKey);
+    //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
         document.getElementById('grid-1-de').innerHTML +=  fieldsArray[i].FieldName +  '<br>' ;
         //fieldsArray[i].FieldName  
