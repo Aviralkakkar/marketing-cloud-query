@@ -163,22 +163,22 @@ app.post("/secondpage", async function (req, res) {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
             //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-              "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
-              "FieldScale": SourceDEFieldsResult[key].Scale[0],
-              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
+            //  "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
+            //  "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
+            //  "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
+            //  "FieldScale": SourceDEFieldsResult[key].Scale[0],
+            //  "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
             };
           }
           else {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
             //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-              "FieldMaxLength": "",
-              "FieldScale": "",
-              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
+            //  "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
+            //  "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
+            //  "FieldMaxLength": "",
+            //  "FieldScale": "",
+            //  "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
             };
           }
            
