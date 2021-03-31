@@ -314,8 +314,17 @@
   
   function handlecheckboxclick()
   {
+    console.log("Clicked, new name = " + cb.name);
+    console.log("Clicked, new value = " + cb.value);
+    console.log("Clicked, new id = " + cb.id);
+    console.log("Clicked, new value = " + cb.checked);
+  //  console.log("------------Handle Click",defieldsArray);
+  if(cb.checked==true)
+  {
+    document.getElementById("grid-2-de").innerHTML+=cb.value;
 
-    alert("wow");
+  }
+    
   }
 
   function allowDrop(ev,event) {
@@ -561,17 +570,17 @@ console.log("yeh de ki value -----> " + event.target.value) ;
         <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Select Data Extension Fields</h2>
         <p class="slds-m-top_x-small" id="relationshipMainObject"></a></p>
       </header>
-      <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
+
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col" id="grid-1-de">
           
-        <!-- <div class="slds-grid slds-gutters " id = "grid-1-de">
-          <div class="slds-col slds-size_2-of-4">
-            
-          </div>
-          <div class="slds-col slds-size_2-of-4">
-            <span>2</span>
-          </div>
-        </div> -->
+        </div>
+        <div class="slds-col"  id="grid-2-de">
           
+        </div>
+      </div>
+      
+     
 <!--           
               <div class="slds-form-element slds-float_left">
                   <label class="slds-form-element__label" for="select-object"></label>
