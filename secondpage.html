@@ -400,7 +400,15 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log(fieldsArray[i].CustomerKey);
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
-        document.getElementById('grid-1-de').innerHTML +=  fieldsArray[i].FieldName +  '<br>' ;
+
+        var checkbox = document.createElement('input');
+              checkbox.setAttribute("type","checkbox"); 
+              checkbox.setAttribute("id",keyimage);
+              checkbox.setAttribute("value",value);
+              checkbox.setAttribute("name",value);
+              checkbox.addEventListener('click',handleClick(this))    
+
+        document.getElementById('grid-1-de').innerHTML +=  checkbox +  '<br>' ;
         //fieldsArray[i].FieldName  
     //  }
 
