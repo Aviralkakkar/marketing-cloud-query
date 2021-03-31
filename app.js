@@ -144,22 +144,22 @@ app.post("/secondpage", async function (req, res) {
       console.log("Data Extension field response ----->>>" + SourceDEFieldsResult) ; 
      
 
-        // xml2jsParser.parseString(SourceDEFieldsResult, function (err, result) {
-        // // console.log('mera result : ' + JSON.stringify(result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results']));
-        //   SourceDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-        // // console.log('my new result '+JSON.stringify(SourceDEFieldsResult));
-        // });
-      //  for (var key in SourceDEFieldsResult) {
-      //  // DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
-      //   DEListMap= {
-      //     "FieldName": SourceDEFieldsResult[key].Name[0],
-      //     "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]
-      //  };
-      //   favorites.push(DEListMap);
+        xml2jsParser.parseString(SourceDEFieldsResult, function (err, result) {
+        // console.log('mera result : ' + JSON.stringify(result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results']));
+          SourceDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+        // console.log('my new result '+JSON.stringify(SourceDEFieldsResult));
+        });
+       for (var key in SourceDEFieldsResult) {
+       // DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
+        DEListMap= {
+          "FieldName": SourceDEFieldsResult[key].Name[0],
+          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]
+       };
+        favorites.push(DEListMap);
         
         
         
-        /*  if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
+          if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
               "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
@@ -180,14 +180,15 @@ app.post("/secondpage", async function (req, res) {
               "FieldScale": "",
               "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
             };
-          }*/
+          }
            
           
-      //  }
+        }
 
-     //  console.log("DEListMap" + JSON.stringify(favorites)); 
+       console.log("DEListMap" + JSON.stringify(favorites)); 
+       console.log("DE LIST MAP MAIN" + DEListMap) ;
     
-      //  resCall.json({favorites : favorites});
+        resCall.json({favorites : favorites});
 
 
    });
