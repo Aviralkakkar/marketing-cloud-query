@@ -401,7 +401,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
         var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' ">';
-        var node = '<li >'+html+ '</li>';
+        var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
 
              var checkbox = document.createElement('input');
               checkbox.setAttribute("type","checkbox"); 
