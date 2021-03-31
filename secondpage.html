@@ -315,10 +315,10 @@
 
   function allowDrop(ev,event) {
     console.log("Inside allowdrop");
-    console.log("------------Event--------------");
+  /*  console.log("------------Event--------------");
   console.log(event.id);
   console.log("----------------ev--------------");
-  console.log(ev);
+  console.log(ev); */
 ev.preventDefault();
 }
 
@@ -349,16 +349,15 @@ ev.preventDefault();
             }*/
   };  
   document.ondragover = function(event,ev) { 
-  console.log("Inside ondragover");
+ /* console.log("Inside ondragover");
   console.log(event);
-  console.log(ev);
-    event.preventDefault(); 
+  console.log(ev); */
+    event.preventDefault();  
 }; 
   //document.ondrop = function(event,target) {
     function drop(event, target) {
        
-  event.preventDefault(); 
-  
+event.preventDefault(); 
 console.log("Dropppp");
 console.log(event.target.id);
 console.log("yeh de ki value -----> " + event.target.value) ;
@@ -392,7 +391,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     {
       fieldsArray.push(parsedData1[i]);
     } 
-
+    console.log("Field api me aarha hai ");
     for (var i = 0; i < fieldsArray.length; i++){
       if( fieldsArray[i].CustomerKey == dataExtensionId){
         console.log("inddddididiid");
