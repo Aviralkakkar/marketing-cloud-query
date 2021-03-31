@@ -415,11 +415,11 @@ console.log("yeh de ki value -----> " + event.target.value) ;
            //   var textnode = document.createTextNode(slide);         // Create a text node
   
                var label=document.createElement('label');
-               label.setAttribute("for",value);
+               label.setAttribute("for",fieldsArray[i].FieldName);
           //   var labelId = 'label'+slide ; 
           //   console.log ("labelId"  + labelId) ; 
-               label.setAttribute("id",keyimage);
-               label.innerHTML = value;
+               label.setAttribute("id",fieldsArray[i].CustomerKey + i);
+               label.innerHTML = fieldsArray[i].FieldName;
                document.getElementById("Data Extensions").appendChild(label);
            //    document.getElementById("check").appendChild(label);
                
