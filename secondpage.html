@@ -374,13 +374,29 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   result={};
 
   var url="/fields";
-  fetch(url, {  //provide URL of the processing page
+  $.ajax
+            ({
+                url: '/fields',
+                data: {
+                    'dataExtensionId': dataExtensionId
+                },
+                type: "POST",
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (data) {
+                }
+            })
+            
+ /* fetch(url, {  //provide URL of the processing page
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({"dataExtensionId": dataExtensionId })
-    //dataType : "string"
+    body: {
+      "dataExtensionId": dataExtensionId
+    },
+    dataType : "json"
   })
   .then(response => response.text())
   .then(data =>  {
@@ -402,7 +418,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
       }
 
     }
-  });
+  }); /*
 
 
 
