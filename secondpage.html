@@ -136,7 +136,7 @@
                
                 fieldList=[];
                 result={};
-            //    console.log("Button clicked" + checkbox.name);
+            //  console.log("Button clicked" + checkbox.name);
                 var frameQuery = document.getElementById('Data Extensions');
    
                 var checkboxes = frameQuery.getElementsByTagName('input');
@@ -197,7 +197,7 @@
                         button.name=fieldsArray[i].CustomerKey;
                         button.id="drag1" +i
                         button.setAttribute("draggable",true);
-                      //  button.addEventListener("ondragstart",drag);
+                    //  button.addEventListener("ondragstart",drag);
 
            var NewNode = document.createElement("LI");
            NewNode.appendChild(button); 
@@ -400,6 +400,8 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log(fieldsArray[i].CustomerKey);
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
+        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' ">';
+        var node = '<li >'+html+'</li>';
 
              var checkbox = document.createElement('input');
               checkbox.setAttribute("type","checkbox"); 
@@ -408,26 +410,12 @@ console.log("yeh de ki value -----> " + event.target.value) ;
               checkbox.setAttribute("name",fieldsArray[i].FieldName );
               checkbox.addEventListener('click',handleClick(this)) ;
               
-                              
-           // document.getElementById("check").innerHTML = checkbox;
-       var node = '<li ><label for="'+fieldsArray[i].FieldName+'" id="'+fieldsArray[i].CustomerKey + i+'">'+fieldsArray[i].FieldName+'</label>'
-      document.createElement("LI");                 // Create a <li> node
-           //   var textnode = document.createTextNode(slide);         // Create a text node
-  
-               var label=document.createElement('label');
-               label.setAttribute("for",fieldsArray[i].FieldName);
-          //   var labelId = 'label'+slide ; 
-          //   console.log ("labelId"  + labelId) ; 
-               label.setAttribute("id",fieldsArray[i].CustomerKey + i);
-               label.innerHTML = fieldsArray[i].FieldName;
-               document.getElementById("Data Extensions").appendChild(label);
-           //    document.getElementById("check").appendChild(label);
+           
                
               
-              node.appendChild(checkbox);
-              node.appendChild(label); 
-
-        document.getElementById('grid-1-de').innerHTML +=  checkbox +  '<br>' ;
+              node.appendChild(checkbox); 
+           
+        document.getElementById('grid-1-de').innerHTML +=  node  ;
         //fieldsArray[i].FieldName  
     //  }
 
