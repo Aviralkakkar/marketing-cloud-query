@@ -396,7 +396,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     for (var i = 0; i < fieldsArray.length; i++){
       if( fieldsArray[i].CustomerKey == dataExtensionId){
         console.log("inddddididiid");
-        document.getElementById('grid-1-de').innerHTML +=  "Hello" ;
+        document.getElementById('grid-1-de').innerHTML +=  fieldsArray[i].FieldName +  '<br>' ;
         //fieldsArray[i].FieldName  
       }
 
