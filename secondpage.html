@@ -401,12 +401,31 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
 
-        var checkbox = document.createElement('input');
+             var checkbox = document.createElement('input');
               checkbox.setAttribute("type","checkbox"); 
               checkbox.setAttribute("id",fieldsArray[i].CustomerKey + i);
               checkbox.setAttribute("value",fieldsArray[i].FieldName );
               checkbox.setAttribute("name",fieldsArray[i].FieldName );
-              checkbox.addEventListener('click',handleClick(this))    
+              checkbox.addEventListener('click',handleClick(this)) ;
+              
+                              
+           // document.getElementById("check").innerHTML = checkbox;
+       var node = '<li ><label for="'+fieldsArray[i].FieldName+'" id="'+fieldsArray[i].CustomerKey + i+'">'+fieldsArray[i].FieldName+'</label>'
+      document.createElement("LI");                 // Create a <li> node
+           //   var textnode = document.createTextNode(slide);         // Create a text node
+  
+               var label=document.createElement('label');
+               label.setAttribute("for",value);
+          //   var labelId = 'label'+slide ; 
+          //   console.log ("labelId"  + labelId) ; 
+               label.setAttribute("id",keyimage);
+               label.innerHTML = value;
+               document.getElementById("Data Extensions").appendChild(label);
+           //    document.getElementById("check").appendChild(label);
+               
+              
+              node.appendChild(checkbox);
+              node.appendChild(label); 
 
         document.getElementById('grid-1-de').innerHTML +=  checkbox +  '<br>' ;
         //fieldsArray[i].FieldName  
