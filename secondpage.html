@@ -312,7 +312,7 @@
 
   }
   
- /* function handlecheckboxclick()
+  function handlecheckboxclick(cbb)
   {
     console.log("Hey");
     console.log("Clicked, new name = " + cbb.name);
@@ -328,7 +328,7 @@
   
     
   }
-*/
+
   function allowDrop(ev,event) {
     console.log("Inside allowdrop");
   /*  console.log("------------Event--------------");
@@ -416,7 +416,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log(fieldsArray[i].CustomerKey);
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
-        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' "  ">';
+        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
         var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
          
 
@@ -627,10 +627,9 @@ console.log("yeh de ki value -----> " + event.target.value) ;
         <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
         <button class="slds-button slds-button_brand">Save</button>
       </footer>
-    </section>
-    <div class="slds-backdrop slds-backdrop_open"></div>
     </div>
-  
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
 </div>
 
 <script>
