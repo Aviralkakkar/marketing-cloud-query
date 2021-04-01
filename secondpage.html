@@ -392,7 +392,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey ) ;
     if(dataExtensionId==defieldsArray[i].CustomerKey)
     {
-      console.log("----------------Id-     ",cb.id);
+     // console.log("----------------Id-     ",cb.id);
       console.log("Data extension field name " + fieldsArray[i].FieldName);
       console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
       var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
