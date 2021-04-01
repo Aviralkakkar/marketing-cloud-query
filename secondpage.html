@@ -38,7 +38,7 @@
      parsedData1 = JSON.parse(data).favorites;
       for ( i in parsedData1 ) 
       {
-        console.log(parsedData1[i]);
+      //  console.log(parsedData1[i]);
         defieldsArray.push(parsedData1[i]);
       }
     });                          
@@ -391,6 +391,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     if(dataExtensionId==defieldsArray[i].CustomerKey)
     {
       console.log("----------------Id-     ",cb.id);
+      console.log("Data extension field name " + fieldsArray[i].FieldName);
       console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
       var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
         var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
@@ -535,7 +536,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
        
       </div>
       <footer class="slds-modal__footer">
-        <button class="slds-button slds-button_neutral">Cancel</button>
+        <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
         <button class="slds-button slds-button_brand">Save</button>
       </footer>
     </div>
