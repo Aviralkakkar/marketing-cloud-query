@@ -346,18 +346,13 @@
     var li = document.createElement('li');     // create li element.
     li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
     li.setAttribute('style', 'display: block;');    // remove the bullets.
-
+    li.setAttribute('draggable', 'true'); 
     ul.appendChild(li);     // append li to ul.
    
     }
 
     constList.appendChild(ul);
       
-    
-    
-    
-       
-
     
   }
 
@@ -627,7 +622,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
       <div class="demo-only" style="width:320px">
   <nav class="slds-nav-vertical" aria-label="Sub page">
     <div class="slds-nav-vertical__section">
-      <h2 id="entity-header" class="slds-nav-vertical__title">Reports</h2>
+      <h2 id="entity-header" class="slds-nav-vertical__title">Data Extensions Fields</h2>
       <div id="ulList"></div>
        
       </ul>
