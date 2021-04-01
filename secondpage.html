@@ -312,10 +312,10 @@
 
   }
   
-  function handlecheckboxclick()
+ /* function handlecheckboxclick()
   {
     console.log("Hey");
-  /*  console.log("Clicked, new name = " + cbb.name);
+    console.log("Clicked, new name = " + cbb.name);
     console.log("Clicked, new value = " + cbb.value);
     console.log("Clicked, new id = " + cbb.id);
     console.log("Clicked, new value = " + cbb.checked);
@@ -325,10 +325,10 @@
     document.getElementById("grid-2-de").innerHTML+=cbb.value;
 
   }
-  */
+  
     
   }
-
+*/
   function allowDrop(ev,event) {
     console.log("Inside allowdrop");
   /*  console.log("------------Event--------------");
@@ -416,7 +416,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     //    console.log(fieldsArray[i].CustomerKey);
     //    console.log("DE ID   " + dataExtensionId);
         console.log("inddddididiid");
-        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick= "'+"handlecheckboxclick()"+' ">';
+        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' "  ">';
         var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
          
 
