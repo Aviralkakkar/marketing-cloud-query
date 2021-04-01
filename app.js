@@ -26,9 +26,12 @@ app.get("/", function (req, res) {
 })
 app.set('view engine', 'html');
 app.post("/secondpage", async function (req, res) {
-   var clientidSource = req.body.clientid;
-   var clientsecretSource = req.body.clientsecret;
-   var clinentauthurl= req.body.authurl;
+  // var clientidSource = req.body.clientid;
+   var clientidSource = "sr7id7zht854bwdco8t9qdym";
+  // var clientsecretSource = req.body.clientsecret;
+  // var clinentauthurl= req.body.authurl;
+   var clientsecretSource = "vhmEsBaxDl3LVeqYbLUxsg6p";
+   var clinentauthurl= "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/";
    var granttypeSource = "client_credentials" ;
   //  console.log('Avi '+ clientidSource,'Avi1 '+ clientsecretSource,'Avi2 '+ clinentauthurl);
    //alert('Avi'+ clientidSource,'Avi1'+ clientsecretSource,'Avi2'+ clinentauthurl);
