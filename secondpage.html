@@ -393,10 +393,10 @@ console.log("yeh de ki value -----> " + event.target.value) ;
     if(dataExtensionId==defieldsArray[i].CustomerKey)
     {
      // console.log("----------------Id-     ",cb.id);
-      console.log("Data extension field name " + fieldsArray[i].FieldName);
+      console.log("Data extension field name " + defieldsArray[i].FieldName);
       console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
-      var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
-        var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
+      var  html = '<input type="checkbox" id = "'+defieldsArray[i].CustomerKey+i+'"  value="'+defieldsArray[i].FieldName+'" id="drag'+defieldsArray[i].CustomerKey+i+'" draggable=true name="'+defieldsArray[i].FieldName+' " label="'+defieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
+        var node = '<li >'+html+ defieldsArray[i].FieldName + '</li>';
 
         document.getElementById('grid-1-de').innerHTML +=  node  ;
     }
