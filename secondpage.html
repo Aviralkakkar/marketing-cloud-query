@@ -312,16 +312,16 @@
 
   }
   
-  function handlecheckboxclick()
+  function handlecheckboxclick(cbb)
   {
-    console.log("Clicked, new name = " + cb.name);
-    console.log("Clicked, new value = " + cb.value);
-    console.log("Clicked, new id = " + cb.id);
-    console.log("Clicked, new value = " + cb.checked);
+    console.log("Clicked, new name = " + cbb.name);
+    console.log("Clicked, new value = " + cbb.value);
+    console.log("Clicked, new id = " + cbb.id);
+    console.log("Clicked, new value = " + cbb.checked);
   //  console.log("------------Handle Click",defieldsArray);
-  if(cb.checked==true)
+  if(cbb.checked==true)
   {
-    document.getElementById("grid-2-de").innerHTML+=cb.value;
+    document.getElementById("grid-2-de").innerHTML+=cbb.value;
 
   }
     
