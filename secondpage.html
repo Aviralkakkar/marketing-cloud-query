@@ -21,26 +21,27 @@
         var defieldsArray=[];
         var parsedData1;
         var dataExtensionName ;
-      function onloadofBody()
-      {  
-  fetch('/fields', {  //provide URL of the processing page
-    method: "POST",
-     headers: {
-       "Content-Type": "application/json"
-     },
-     body: {
-       "assetType":"fields",
-    },
-    dataType : "json"
-  })
-  .then(response => response.text())
-  .then(data =>  {
-   parsedData1 = JSON.parse(data).favorites;
-    for ( i in parsedData1 ) 
-    {
-      defieldsArray.push(parsedData1[i]);
-    }
-  });                            
+        function onloadofBody()
+        {  
+    fetch('/fields', {  //provide URL of the processing page
+      method: "POST",
+       headers: {
+         "Content-Type": "application/json"
+       },
+       body: {
+         "assetType":"fields",
+      },
+      dataType : "json"
+    })
+    .then(response => response.text())
+    .then(data =>  {
+     parsedData1 = JSON.parse(data).favorites;
+      for ( i in parsedData1 ) 
+      {
+        console.log(parsedData1[i]);
+        defieldsArray.push(parsedData1[i]);
+      }
+    });                          
      // document.getElementById('relationPopup').style.display='none';
         fetch(url, {  //provide URL of the processing page
                  method: "POST",
@@ -386,61 +387,19 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
   console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData)) ;
 
-  fieldList=[];
-  result={};
-
-  var url='/fields';
-  console.log("dataExtensionId   ----  > " +  dataExtensionId);
-  fetch(url, {  //provide URL of the processing page
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: 
-      JSON.stringify( {"dataExtensionId": dataExtensionId } )  ,
-    dataType : "json"
-  })
-  .then(response => response.text())
-  .then(data =>  {
-    parsedData1 = JSON.parse(data).favorites;
-    for ( i in parsedData1 ) 
+  for (var i =0; i < defieldsArray.length; i++){
+    if(dataExtensionId==defieldsArray[i].CustomerKey)
     {
-      fieldsArray.push(parsedData1[i]);
-    } 
-    console.log("Field api me aarha hai ");
-    console.log("Field Array --- > " + JSON.stringify(fieldsArray) ); 
-    for (var i = 0; i < fieldsArray.length; i++){
-      console.log(fieldsArray[i].CustomerKey);
-      console.log(dataExtensionId);
-    //  if( fieldsArray[i].CustomerKey == dataExtensionId){
-    //    console.log(fieldsArray[i].CustomerKey);
-    //    console.log("DE ID   " + dataExtensionId);
-        console.log("inddddididiid");
-        var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
+      console.log("----------------Id-     ",cb.id);
+      console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
+      var  html = '<input type="checkbox" id = "'+fieldsArray[i].CustomerKey+i+'"  value="'+fieldsArray[i].FieldName+'" id="drag'+fieldsArray[i].CustomerKey+i+'" draggable=true name="'+fieldsArray[i].FieldName+' " label="'+fieldsArray[i].FieldName+' " onclick="'+ "handlecheckboxclick(this)"+' " >';
         var node = '<li >'+html+ fieldsArray[i].FieldName + '</li>';
-         
 
-             var checkbox = document.createElement('input');
-              checkbox.setAttribute("type","checkbox"); 
-              checkbox.setAttribute("id",fieldsArray[i].CustomerKey + i);
-              checkbox.setAttribute("value",fieldsArray[i].FieldName );
-              checkbox.setAttribute("name",fieldsArray[i].FieldName );
-              checkbox.addEventListener('click',handleClick(this)) ;
-              
-           
-               
-              
-            //  node.appendChild(checkbox); 
-           
         document.getElementById('grid-1-de').innerHTML +=  node  ;
-        //fieldsArray[i].FieldName  
-    //  }
-
     }
-  });
+  }
 
-
-
+  
 
   document.getElementById('RelationPopup').style.display='block';
 
@@ -570,8 +529,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
           <span class="slds-assistive-text">Close</span>
         </button>
         <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h2>
-        <p class="slds-m-top_x-small">Here's a tagline if you need it. It is allowed to extend across mulitple lines, so I'm making up content to show that to you. It is allowed to
-          <a href="#">contain links or be a link</a>.</p>
+      
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
        

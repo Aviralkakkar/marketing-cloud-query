@@ -121,16 +121,8 @@ app.post("/secondpage", async function (req, res) {
 
    app.post("/fields", async (reqCall,resCall)=>
    {
-   
-    // console.log(reqCall) ; 
-    // console.log(JSON.stringify(reqCall) ) ; 
-   // console.log("stringify --> " + JSON.stringify(reqCall)) ;
-   // console.log('reqCall',reqCall) ;
-    dataExtensionId = "BEE63092-0ECA-456C-B4AE-3E042E407C4D";
-    console.log("Data Extension Id -- > " + reqCall.body.dataExtensionId) ; 
     console.log("yeh app.post fields wale me hai token " + access_token);
-    var body='<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtensionField</ObjectType>\r\n                <Properties>Client.ID</Properties>\r\n                <Properties>CreatedDate</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>DataExtension.CustomerKey</Properties>\r\n                <Properties>DefaultValue</Properties>\r\n                <Properties>FieldType</Properties>\r\n                <Properties>IsPrimaryKey</Properties>\r\n                <Properties>IsRequired</Properties>\r\n                <Properties>MaxLength</Properties>\r\n                <Properties>ModifiedDate</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>Ordinal</Properties>\r\n                <Properties>Scale</Properties>\r\n\r\n                               <QueryAllAccounts>true</QueryAllAccounts>\r\n                <Retrieves />\r\n                <Options>\r\n                    <SaveOptions />\r\n                    <IncludeObjects>true</IncludeObjects>\r\n                </Options>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
-    var body2 = '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n   <s:Header>\r\n      <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n      <a:MessageID>urn:uuid:e3f7fdfe-d225-47fb-a764-ad4f465fb724</a:MessageID>\r\n      <a:ReplyTo>\r\n         <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n      </a:ReplyTo>\r\n      <a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>\r\n     <fueloauth xmlns="http://exacttarget.com">' + access_token + ' </fueloauth>\r\n   </s:Header>\r\n   <s:Body xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n      <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n         <RetrieveRequest>\r\n            <ObjectType>DataExtensionField</ObjectType>\r\n            <Properties>Client.ID</Properties>\r\n          \r\n            <Properties>CustomerKey</Properties>\r\n            <Properties>DataExtension.CustomerKey</Properties>\r\n            <Properties>DefaultValue</Properties>\r\n            <Properties>FieldType</Properties>\r\n\r\n            <Properties>Name</Properties>\r\n            <Properties>ObjectID</Properties>\r\n	    \r\n	    <Filter xsi:type="SimpleFilterPart">\r\n               <Property>DataExtension.CustomerKey</Property>\r\n               <SimpleOperator>equals</SimpleOperator>\r\n               <Value>' + dataExtensionId  + '</Value>\r\n            </Filter>\r\n       \r\n           \r\n            <QueryAllAccounts>true</QueryAllAccounts>\r\n            <Retrieves />\r\n            <Options>\r\n               <SaveOptions />\r\n               <IncludeObjects>true</IncludeObjects>\r\n            </Options>\r\n         </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>\r\n'
+    var body2='<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtensionField</ObjectType>\r\n                <Properties>Client.ID</Properties>\r\n                <Properties>CreatedDate</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>DataExtension.CustomerKey</Properties>\r\n                <Properties>DefaultValue</Properties>\r\n                <Properties>FieldType</Properties>\r\n                <Properties>IsPrimaryKey</Properties>\r\n                <Properties>IsRequired</Properties>\r\n                <Properties>MaxLength</Properties>\r\n                <Properties>ModifiedDate</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>Ordinal</Properties>\r\n                <Properties>Scale</Properties>\r\n\r\n                               <QueryAllAccounts>true</QueryAllAccounts>\r\n                <Retrieves />\r\n                <Options>\r\n                    <SaveOptions />\r\n                    <IncludeObjects>true</IncludeObjects>\r\n                </Options>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
     var options = {
       'method': 'POST',
       'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
@@ -142,11 +134,7 @@ app.post("/secondpage", async function (req, res) {
     };
     request(options, function (error, response)  {
       if (error) throw new Error(error);
-       
       SourceDEFieldsResult = response.body;
-      console.log("Data Extension field response ----->>>" + SourceDEFieldsResult) ; 
-     
-
         xml2jsParser.parseString(SourceDEFieldsResult, function (err, result) {
         // console.log('mera result : ' + JSON.stringify(result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results']));
           SourceDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
@@ -154,48 +142,41 @@ app.post("/secondpage", async function (req, res) {
         });
        for (var key in SourceDEFieldsResult) {
        // DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
+         console.log(SourceDEFieldsResult[key].Name[0]);
+         console.log(SourceDEFieldsResult[key].FieldType[0]);
         DEListMap= {
           "FieldName": SourceDEFieldsResult[key].Name[0],
-          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]
+          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+          "Field Type":SourceDEFieldsResult[key].FieldType[0]
        };
         favorites.push(DEListMap);
-        
-        
-        
-          if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
+        /*  if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
-            //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-            //  "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-            //  "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-            //  "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
-            //  "FieldScale": SourceDEFieldsResult[key].Scale[0],
-            //  "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
+              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
+              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
+              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
+              "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
+              "FieldScale": SourceDEFieldsResult[key].Scale[0],
+              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
             };
           }
           else {
             DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
               "FieldName": SourceDEFieldsResult[key].Name[0],
-            //  "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-            //  "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-            //  "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-            //  "FieldMaxLength": "",
-            //  "FieldScale": "",
-            //  "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
+              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
+              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
+              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
+              "FieldMaxLength": "",
+              "FieldScale": "",
+              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
             };
-          }
-           
-          
+          }*/
         }
-
-       console.log("DEListMap" + JSON.stringify(favorites)); 
-       console.log("DE LIST MAP MAIN" + DEListMap) ;
-    
+     //  console.log("DEListMap" + JSON.stringify(favorites)); 
+      //  console.log(favorites);
         resCall.json({favorites : favorites});
-
-
    });
-
 });
 
 // app.post("/validatequery", async (reqCall,resCall)=>
