@@ -333,6 +333,22 @@
     document.getElementById('RelationPopup').style.display='none';
     document.getElementById('SecondModal').style.display='block';
     
+    
+
+    for (var i =0; i < deFieldListarray.length; i++){
+      var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
+      document.getElementById('verticalul').append +=  node  ;
+
+    }
+
+    
+      
+    
+    
+    
+       
+
+    
   }
 
   function Previous()
@@ -600,34 +616,11 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   <nav class="slds-nav-vertical" aria-label="Sub page">
     <div class="slds-nav-vertical__section">
       <h2 id="entity-header" class="slds-nav-vertical__title">Reports</h2>
-      <ul aria-describedby="entity-header">
+      <ul aria-describedby="entity-header" id= "verticalul">
         <li class="slds-nav-vertical__item slds-is-active">
           <a href="#" class="slds-nav-vertical__action" aria-current="true">Recent</a>
         </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">Created by Me</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">Private Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">Public Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">All Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">All Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">All Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">All Reports</a>
-        </li>
-        <li class="slds-nav-vertical__item">
-          <a href="#" class="slds-nav-vertical__action">All Reports</a>
-        </li>
+       
       </ul>
     </div>
        
