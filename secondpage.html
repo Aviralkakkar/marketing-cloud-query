@@ -388,6 +388,8 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData)) ;
 
   for (var i =0; i < defieldsArray.length; i++){
+    console.log("Data Extension Id : " + dataExtensionId ) ;
+    console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey ) ;
     if(dataExtensionId==defieldsArray[i].CustomerKey)
     {
       console.log("----------------Id-     ",cb.id);
