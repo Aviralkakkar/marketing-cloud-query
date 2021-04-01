@@ -21,8 +21,8 @@
         var defieldsArray=[];
         var parsedData1;
         var dataExtensionName ;
-        
-        var deFieldListrray = [];
+
+        var deFieldListarray = [];
         function onloadofBody()
         {  
     fetch('/fields', {  //provide URL of the processing page
@@ -430,11 +430,11 @@ console.log("yeh de ki value -----> " + event.target.value) ;
         document.getElementById('grid-1-de').innerHTML +=  node  ;
 
         fieldList= {
-          "FieldName": SourceDEFieldsResult[key].Name[0],
-          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-          "Field Type":SourceDEFieldsResult[key].FieldType[0]
+          "FieldName": defieldsArray[i].FieldName,
+          "CustomerKey":defieldsArray[i].CustomerKey,
+          "Field Type":defieldsArray[i].FieldType
        };
-        deFieldListrray.push(fieldList);
+        deFieldListarray.push(fieldList);
     }
   }
 
@@ -595,8 +595,32 @@ console.log("yeh de ki value -----> " + event.target.value) ;
         <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Select the Filter Criteria</h2>
       
       </header>
-      <div class="slds-modal__content slds-p-around_medium" id="grid-2-modal">
+
+      <div class="demo-only" style="width:320px">
+  <nav class="slds-nav-vertical" aria-label="Sub page">
+    <div class="slds-nav-vertical__section">
+      <h2 id="entity-header" class="slds-nav-vertical__title">Reports</h2>
+      <ul aria-describedby="entity-header">
+        <li class="slds-nav-vertical__item slds-is-active">
+          <a href="#" class="slds-nav-vertical__action" aria-current="true">Recent</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="#" class="slds-nav-vertical__action">Created by Me</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="#" class="slds-nav-vertical__action">Private Reports</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="#" class="slds-nav-vertical__action">Public Reports</a>
+        </li>
+        <li class="slds-nav-vertical__item">
+          <a href="#" class="slds-nav-vertical__action">All Reports</a>
+        </li>
+      </ul>
+    </div>
        
+     
+     
       </div>
       <footer class="slds-modal__footer">
         <button class="slds-button slds-button_neutral slds-float_left" onclick="Previous()">Previous</button>
