@@ -336,9 +336,14 @@
     
 
     for (var i =0; i < deFieldListarray.length; i++){
-      var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
-      document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-
+    //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
+    //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
+      
+      var li = document.createElement('li');     // create li element.
+      li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
+      li.setAttribute('style', 'display: block;');    // remove the bullets.
+      document.getElementById('verticalul').appendChild +=  li  ;
+   
     }
 
     
