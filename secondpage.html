@@ -484,6 +484,11 @@ else if(parsedDragData2.name=='Date')
   var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option>';
   var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select>'+optionforDateType+'</select><input type="date"><br>';
 }
+else{
+  console.log("Email type else me aaya") ;
+  var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option>';
+  var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select>'+optionforDateType+'</select><input type="date"><br>';
+}
 document.getElementById('filter-div').innerHTML+=html;
 
 };
