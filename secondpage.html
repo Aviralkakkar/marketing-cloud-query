@@ -456,10 +456,12 @@ console.log(event.target.id);
 console.log("yeh de ki value -----> " + event.target.value) ;
 var datafromDrag2 = event.dataTransfer.getData("text/plain"); 
 //event.target.appendChild(document.getElementById(data1));
-var parsedDragData2=JSON.parse(datafromDrag2);
+var parsedDragData2=JSON.parse(datafromDrag2).trim();
+
 console.log("yeh parsedDragData-------->" + parsedDragData2.name + 'haaaa') ;
 
 console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData2)) ;
+
 
 if(parsedDragData2.name=='Text ' || parsedDragData2.name=='EmailAddress ' || parsedDragData2.name=='Locale' || parsedDragData2.name=='Phone')
   {
