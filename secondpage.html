@@ -443,6 +443,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
 
 function Previous()
 {
+  
   document.getElementById('SecondModal').style.display='none';
   document.getElementById('RelationPopup').style.display='block';
   document.getElementById('ulList').innerHTML='';
@@ -455,8 +456,9 @@ function Next()
 
     document.getElementById('RelationPopup').style.display='none';
     document.getElementById('SecondModal').style.display='block';
+    document.getElementById('ulList').innerHTML='';
 
-    var constList = document.getElementById('ulList').value; 
+    var constList = document.getElementById('ulList'); 
     console.log("Value of the ulList --- > " + constList)
     var ul = document.createElement('ul');
     ul.setAttribute('style', 'padding: 0; margin: 0;');
