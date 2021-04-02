@@ -327,36 +327,7 @@
 
   }
 
-  function Next()
-  {
-
-    document.getElementById('RelationPopup').style.display='none';
-    document.getElementById('SecondModal').style.display='block';
-
-    var constList = document.getElementById('ulList'); 
-    
-    var ul = document.createElement('ul');
-    ul.setAttribute('style', 'padding: 0; margin: 0;');
-    ul.setAttribute('id', 'theList');
-
-    for (var i =0; i < deFieldListarray.length; i++){
-    //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
-    //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-    
-    var li = document.createElement('li');     // create li element.
-    li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
-    li.setAttribute('style', 'display: block;');    // remove the bullets.
-    li.setAttribute('draggable', 'display: block;'); 
-    ul.appendChild(li);     // append li to ul.
-   
-    }
-
-    constList.appendChild(ul);
-      
-    
-  }
-
- 
+  
   
   function handlecheckboxclick(cbb)
   {
@@ -478,6 +449,35 @@ function Previous()
 
 
 }
+
+function Next()
+  {
+
+    document.getElementById('RelationPopup').style.display='none';
+    document.getElementById('SecondModal').style.display='block';
+
+    var constList = document.getElementById('ulList'); 
+    
+    var ul = document.createElement('ul');
+    ul.setAttribute('style', 'padding: 0; margin: 0;');
+    ul.setAttribute('id', 'theList');
+
+    for (var i =0; i < deFieldListarray.length; i++){
+    //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
+    //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
+    
+    var li = document.createElement('li');     // create li element.
+    li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
+    li.setAttribute('style', 'display: block;');    // remove the bullets.
+    li.setAttribute('draggable', 'display: block;'); 
+    ul.appendChild(li);     // append li to ul.
+   
+    }
+
+    constList.appendChild(ul);
+      
+    
+  }
     </script>
 
     <style>
