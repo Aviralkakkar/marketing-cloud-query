@@ -473,7 +473,7 @@ function Next()
     var li = document.createElement('li');     // create li element.
     li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
     li.setAttribute('style', 'display: block;');    // remove the bullets.
-    li.setAttribute('draggable', 'display: block;'); 
+    li.setAttribute('draggable', 'true'); 
   //  ul.appendChild(li);     // append li to ul.
     document.getElementById('ulList').innerHTML+= li;
    
