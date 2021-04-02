@@ -147,7 +147,7 @@ app.post("/secondpage", async function (req, res) {
         DEListMap= {
           "FieldName": SourceDEFieldsResult[key].Name[0],
           "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-          "Field Type":SourceDEFieldsResult[key].FieldType[0]
+          "FieldType":SourceDEFieldsResult[key].FieldType[0]
        };
         favorites.push(DEListMap);
         /*  if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
