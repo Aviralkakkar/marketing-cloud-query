@@ -449,6 +449,7 @@ function drop2(event, target) {
 
 event.preventDefault(); 
 
+
 console.log("Dropppp 2222");
 console.log(event.target.id);
 console.log("yeh de ki value -----> " + event.target.value) ;
@@ -458,6 +459,27 @@ var parsedDragData2=JSON.parse(datafromDrag2);
 console.log("yeh parsedDragData--------> " + parsedDragData2.value) ;
 
 console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData2)) ;
+
+if(parsedDragData2.name=='Text' || parsedDragData2.name=='EmailAddress' || parsedDragData2.name=='Locale' || parsedDragData2.name=='Phone')
+{
+  var optionforTextType="<option value=  Equals  >is equal to </option><option  value=  NotEquals  >'is not equal to </option><option  value=  GreaterThan  >is greater than </option><option  value=  GreaterThanOrEquals  >is greater than or equal to </option><option  value=  LessThan  >is less than </option><option  value=  LessThanOrEquals  >is less than or equal to </option><option  value=  ExistsIn  >exists in </option><option  value=  ExistsInWholeWord  >exists in whole word </option><option  value=  NotExistsIn  >does not exist in </option><option  value=  Begins  >begins with </option><option  value=  Ends  >ends with </option><option  value=  Contains  >contains </option><option  value=  NotContains  >does not contain </option><option  value=  IsEmpty  > is empty </option><option  value=  IsNotEmpty  > is not empty </option>";
+var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select>'+optionforTextType+'</select><input type="text"><br>';
+}
+else if(parsedDragData2.name=='Number' || parsedDragData2.name=='Decimal')
+{
+  var optionforNumberType='<option value="Equals"> is equal to  </option><option value="NotEquals"> is not equal to  </option><option value="GreaterThan"> is greater than  </option><option value="GreaterThanOrEquals"> is greater than or equal to  </option><option value="LessThan"> is less than  </option><option value="LessThanOrEquals"> is less than or equal to  </option><option value="IsEmpty"> is empty  </option><option value="IsNotEmpty"> is not empty  </option><option value="In"> in  </option><option value="NotIn"> not in  </option>';
+  var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select>'+optionforNumberType+'</select><input type="number"><br>';
+}
+else if(parsedDragData2.name=='Boolean')
+{
+  var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select><option>is</option></select><select><option>True</option><option>False</option></select><br>';
+}
+else if(parsedDragData2.name=='Date')
+{
+  var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option>';
+  var html='<button class="slds-button slds-button_neutral">'+parsedDragData2.value+'</button> <select>'+optionforDateType+'</select><input type="date"><br>';
+}
+document.getElementById('filter-div').innerHTML+=html;
 
 };
 
@@ -492,7 +514,7 @@ function Next()
     //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
     //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
    
-    var  html = '<input type="button" value="'+deFieldListarray[i].FieldName+'" id="drag'+deFieldListarray[i].FieldName+'" draggable=true name="'+deFieldListarray[i].FieldName+' ">';
+    var  html = '<input type="button" value="'+deFieldListarray[i].FieldName+'" id="drag'+deFieldListarray[i].CustomerKey+i+'" draggable=true name="'+deFieldListarray[i].FieldType+' ">';
     var node = '<li >'+html+'</li>';
     
     
@@ -667,14 +689,8 @@ function Next()
               
             </div>  
         </div>
-        <div class="slds-float_right" id = "filter-div" style="width:65%;height:100%;" ondrop="drop2(event, this)">
-          <p> Hey Hello How are you guys
-          </p>
-          <p> Hey Hello How are you guys
-          </p>
-          <p> Hey Hello How are you guys
-          </p>
-
+        <div class="slds-float_right" id = "filter-div" style="width:65%;height:100%;margin-left: 17%;" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+          
 
 
 
