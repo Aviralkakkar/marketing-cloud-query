@@ -456,7 +456,7 @@ function Next()
     document.getElementById('RelationPopup').style.display='none';
     document.getElementById('SecondModal').style.display='block';
 
-    var constList = document.getElementById('ulList'); 
+    var constList = document.getElementById('ulList').value; 
     console.log("Value of the ulList --- > " + constList)
     var ul = document.createElement('ul');
     ul.setAttribute('style', 'padding: 0; margin: 0;');
