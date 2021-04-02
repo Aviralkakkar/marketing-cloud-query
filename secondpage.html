@@ -444,6 +444,23 @@ console.log("yeh de ki value -----> " + event.target.value) ;
 */
 };
 
+
+function drop2(event, target) {
+
+event.preventDefault(); 
+
+console.log("Dropppp 2222");
+console.log(event.target.id);
+console.log("yeh de ki value -----> " + event.target.value) ;
+var datafromDrag2 = event.dataTransfer.getData("text/plain"); 
+//event.target.appendChild(document.getElementById(data1));
+var parsedDragData2=JSON.parse(datafromDrag2);
+console.log("yeh parsedDragData--------> " + parsedDragData2.value) ;
+
+console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData2)) ;
+
+};
+
 function Previous()
 {
   
@@ -638,7 +655,7 @@ function Next()
       <div class="slds-modal__content slds-p-around_medium" id="grid-2-de">
        
       <div > 
-        <div class="slds-float_left" style="width:15%;height:100%;">
+        <div class="slds-float_left" style="width:35%;height:100%;">
           <nav class="slds-nav-vertical" aria-label="Sub page">
             <div class="slds-nav-vertical__section">
               <h2 id="entity-header" class="slds-nav-vertical__title">Data Extensions Fields</h2>
@@ -649,7 +666,7 @@ function Next()
               
             </div>  
         </div>
-        <div class="slds-float_right" style="width:85%;height:100%;">
+        <div class="slds-float_right" id = "filter-div" style="width:65%;height:100%;" ondrop="drop2(event, this)">
            <p> Hey Hello How are you guys
            </p>
            <p> Hey Hello How are you guys
