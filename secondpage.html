@@ -461,6 +461,8 @@ function Next()
     document.getElementById('SecondModal').style.display='block';
     document.getElementById('ulList').innerHTML='';
 
+    
+
   /*  var constList = document.getElementById('ulList'); 
     console.log("Value of the ulList --- > " + constList)
     var ul = document.createElement('ul');
@@ -472,13 +474,18 @@ function Next()
     for (var i =0; i < deFieldListarray.length; i++){
     //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
     //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
+   
+    var  html = '<input type="button" value="'+deFieldListarray[i].FieldName+'" id="drag'+deFieldListarray[i].FieldName+'" draggable=true name="'+deFieldListarray[i].FieldName+' ">';
+    var node = '<li >'+html+'</li>';
     
-    var li = document.createElement('li');     // create li element.
-    li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
-    li.setAttribute('style', 'display: block;');    // remove the bullets.
-    li.setAttribute('draggable', 'true'); 
+    
+    
+  //  var li = document.createElement('li');     // create li element.
+  //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
+  //  li.setAttribute('style', 'display: block;');    // remove the bullets.
+  //  li.setAttribute('draggable', 'true'); 
   //  ul.appendChild(li);     // append li to ul.
-    document.getElementById('ulList').appendChild(li);
+    document.getElementById('ulList').appendChild(node);
    
     }
 
