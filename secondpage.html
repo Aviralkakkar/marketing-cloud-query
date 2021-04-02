@@ -391,6 +391,7 @@ ev.preventDefault();
     function drop(event, target) {
        
 event.preventDefault(); 
+document.getElementById('ulList').innerHTML='';
 console.log("Dropppp");
 console.log(event.target.id);
 console.log("yeh de ki value -----> " + event.target.value) ;
