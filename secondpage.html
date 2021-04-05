@@ -752,18 +752,20 @@ function Next()
   function DetailsSave()
   {
     var checkboxArray = {}; 
+    
     var checkboxList = [];
     console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
-    checkboxArray[defieldsArray[i].value] = checkbox.value;
+    checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
   //  checkboxList.push(checkboxArray);
-    console.log("Checkbox Array : "  + checkboxArray);
-    console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
+    
     var  criteriaValue = document.getElementById("filter-div").innerHTML; 
     console.log("criteriaValue : "  +  criteriaValue) ; 
     }
+    console.log("Checkbox Array : "  + checkboxArray);
+    console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
   }
 </script>
 </body>
