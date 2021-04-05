@@ -414,7 +414,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
      // console.log("----------------Id-     ",cb.id);
       console.log("Data extension field name " + defieldsArray[i].FieldName);
       console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
-      var  html = '<input type="checkbox" id = "'+defieldsArray[i].CustomerKey+i+'"  value="'+defieldsArray[i].FieldName+'" id="drag'+defieldsArray[i].CustomerKey+i+'" draggable=true name="'+defieldsArray[i].FieldName+' " label="'+defieldsArray[i].FieldName+'  " >';
+      var  html = '<input type="checkbox" name = "'+defieldsArray[i].CustomerKey+'"  value="'+defieldsArray[i].FieldName+'" id="drag'+defieldsArray[i].CustomerKey+i+'" draggable=true name="'+defieldsArray[i].FieldName+' " label="'+defieldsArray[i].FieldName+'  " >';
         var node = '<li >'+html+ defieldsArray[i].FieldName + '</li>';
 
         document.getElementById('grid-1-de').innerHTML +=  node  ;
@@ -751,12 +751,12 @@ function Next()
 
   function DetailsSave()
   {
-    var checkboxArray = [] ; 
-    console.log("save me aaya ");
+    var checkboxArray = {}; 
+    console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
-    checkboxArray.push(checkbox);
+    checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
     console.log("Checkbox Array : "  + checkboxArray);
     }
   }
