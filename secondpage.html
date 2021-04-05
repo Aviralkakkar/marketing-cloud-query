@@ -752,13 +752,15 @@ function Next()
   function DetailsSave()
   {
     var checkboxArray = {}; 
+    var checkboxList = [];
     console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
     checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
-    console.log("Checkbox Array : "  + checkboxArray);
-    console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
+    checkboxList.push(checkboxArray);
+    console.log("Checkbox Array : "  + checkboxList);
+    console.log("Checkbox Array : "  + JSON.stringify(checkboxList));
     var  criteriaValue = document.getElementById("filter-div").innerHTML; ;
     console.log("criteriaValue : "  +  criteriaValue) ; 
     }
