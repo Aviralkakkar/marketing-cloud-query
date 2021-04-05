@@ -756,7 +756,7 @@ function Next()
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
-    checkboxArray.append(checkbox);
+    checkboxArray.push(checkbox);
     console.log("Checkbox Array : "  + checkboxArray);
     }
   }
