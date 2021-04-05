@@ -751,7 +751,7 @@ function Next()
 
   function DetailsSave()
   {
-    var checkboxArray = []; 
+    var checkboxArray = {}; 
     console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
@@ -759,7 +759,7 @@ function Next()
     checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
     console.log("Checkbox Array : "  + checkboxArray);
     console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
-    var  criteriaValue = document.getElementById("filter-div").innerHTML ;
+    var  criteriaValue = document.getElementById("filter-div").innerHTML.data() ;
     console.log("criteriaValue : "  +  criteriaValue) ; 
     }
   }
