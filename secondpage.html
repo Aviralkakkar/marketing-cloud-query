@@ -464,7 +464,7 @@ var datatypevalue = parsedDragData2.name.trim();
 console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa') ;
 console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2)) ;
 
-parsedDragData2Array[parsedDragData2.id] = parsedDragData2.value ;
+parsedDragData2Array[parsedDragData2.id].push(parsedDragData2.value) ;
 console.log(parsedDragData2.id);
 console.log("parsedDragData2.value : " + parsedDragData2.value);
 console.log(parsedDragData2Array);
