@@ -778,18 +778,18 @@ function Next()
     console.log("Checkbox Array : "  + checkboxArray);
     console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
 
-    console.log("parsedDragData2.value in save" + parsedDragData2Array[i].value)
-    var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i].value);
+    console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
+    var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
     console.log( "fieldClassList :  " + fieldClassList);
     
     
       console.log(fieldClassList.item(0).innerHTML );
     
   //  console.log(fieldClassList.item(0).innerHTML + "OK");
-    var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i].value+ "criteria");
+    var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
     console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
 
-    var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i].value + "input");
+    var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
     console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
   }
   }
