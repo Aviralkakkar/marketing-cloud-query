@@ -760,6 +760,7 @@ function Next()
     var checkboxArray = {}; 
     var criteriaList = {}
     var checkboxList = [];
+    var criteriaListArray = [];
     console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     for (var checkbox of checkboxes) {
@@ -783,23 +784,27 @@ function Next()
     console.log( "fieldClassList :  " + fieldClassList);
     
     
-      console.log(fieldClassList.item(1).innerHTML );
+      console.log(fieldClassList.item(0).innerHTML );
     
   //  console.log(fieldClassList.item(0).innerHTML + "OK");
     var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
-    console.log( "fieldClassList2 :  " + fieldClassList2.item(1).value);
+    console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
 
     var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
-    console.log( "fieldClassList3 :  " + fieldClassList3.item(1).value);
+    console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
 
-    
     criteriaList= {
-      "FieldName": fieldClassList.item(i).innerHTML,
-      "Criteria":fieldClassList2.item(i).value,
-      "Value": fieldClassList3.item(i).value
+      "FieldName": fieldClassList.item(0).innerHTML,
+      "Criteria":fieldClassList2.item(0).value,
+      "Value": fieldClassList3.item(0).value
     };
+    criteriaListArray.push(criteriaList);
   }
   console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
+  console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
+  console.log("criteriaListArray   : " + criteriaListArray); 
+  
+
   }
 </script>
 </body>
