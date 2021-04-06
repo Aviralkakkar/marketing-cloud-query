@@ -22,7 +22,7 @@
         var parsedData1;
         var dataExtensionName ;
         var parsedDragData2 = {} ;
-
+        var parsedDragData2Array = {};
         var deFieldListarray = [];
         function onloadofBody()
         {  
@@ -415,7 +415,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
      // console.log("----------------Id-     ",cb.id);
       console.log("Data extension field name " + defieldsArray[i].FieldName);
       console.log("-------Array Id----     ",defieldsArray[i].CustomerKey);
-      var  html = '<input type="checkbox" name = "'+defieldsArray[i].CustomerKey+'"  value="'+defieldsArray[i].FieldName+'" id="drag'+defieldsArray[i].CustomerKey+i+'" draggable=true name="'+defieldsArray[i].FieldName+' " label="'+defieldsArray[i].FieldName+'  " >';
+      var  html = '<input type="checkbox" name = "'+defieldsArray[i].CustomerKey+'"  value="'+defieldsArray[i].FieldName+'" id='+defieldsArray[i].CustomerKey+' draggable=true name="'+defieldsArray[i].FieldName+' " label="'+defieldsArray[i].FieldName+'  " >';
         var node = '<li >'+html+ defieldsArray[i].FieldName + '</li>';
 
         document.getElementById('grid-1-de').innerHTML +=  node  ;
@@ -463,6 +463,8 @@ console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa') ;
 var datatypevalue = parsedDragData2.name.trim();
 console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa') ;
 console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2)) ;
+
+parsedDragData2Array[parsedDragData2.id] = parsedDragData2.value ;
 
 
 if(datatypevalue=='Text' || datatypevalue=='EmailAddress' || datatypevalue=='Locale' || datatypevalue=='Phone')
