@@ -771,9 +771,9 @@ function Next()
     console.log("parsedDragData2.value in save" + parsedDragData2.value)
     var fieldClassList = document.getElementsByClassName(parsedDragData2.value);
     console.log( "fieldClassList :  " + fieldClassList);
-
+    console.log(fieldClassList.item(0) + "OK");
     for (i = 0; i < fieldClassList.length; i++) {
-      console.log(fieldClassList[i].tagName + "<br>");
+      console.log(fieldClassList[i].item(0) + "<br>");
     }
 
     var fieldClassList2 = document.getElementsByClassName(parsedDragData2.value + "select");
