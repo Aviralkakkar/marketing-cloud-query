@@ -794,9 +794,9 @@ function Next()
 
     
     criteriaList= {
-      "FieldName": fieldClassList.item(0).innerHTML,
-      "Criteria":fieldClassList2.item(0).value,
-      "Value": fieldClassList3.item(0).value
+      "FieldName": fieldClassList.item(i).innerHTML,
+      "Criteria":fieldClassList2.item(i).value,
+      "Value": fieldClassList3.item(i).value
     };
   }
   console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
