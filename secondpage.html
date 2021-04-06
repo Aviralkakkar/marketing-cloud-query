@@ -772,11 +772,15 @@ function Next()
     var fieldClassList = document.getElementsByClassName(parsedDragData2.value);
     console.log( "fieldClassList :  " + fieldClassList);
 
+    for (i = 0; i < fieldClassList.length; i++) {
+      console.log(fieldClassList[i] + "<br>");
+    }
+
     var fieldClassList2 = document.getElementsByClassName(parsedDragData2.value + "select");
     console.log( "fieldClassList2 :  " + fieldClassList2.length);
 
-    var fieldClassList3 = document.getElementsByClassName(parsedDragData2.value + "input").innerHTML;
-    console.log( "fieldClassList3 :  " + fieldClassList3.length);
+    var fieldClassList3 = document.getElementsByClassName(parsedDragData2.value + "input");
+    console.log( "fieldClassList3 :  " + fieldClassList3);
   }
 
 </script>
