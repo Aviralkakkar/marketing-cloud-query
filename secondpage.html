@@ -667,7 +667,7 @@ function Next()
   </div>
 
 
-<div style="display: none;" id="RelationPopup">
+<div style="display: none; width: 160px;" id="RelationPopup">
   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
     <div class="slds-modal__container">
       <header class="slds-modal__header">
@@ -693,7 +693,7 @@ function Next()
 </div>
 
 
-<div style="display: none;width: 80px;" id="SecondModal">
+<div style="display: none;width: 160px;" id="SecondModal">
   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
     <div class="slds-modal__container">
       <header class="slds-modal__header">
@@ -782,8 +782,7 @@ function Next()
   //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
     var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
     console.log( "fieldClassList :  " + fieldClassList);
-    
-    
+       
       console.log(fieldClassList.item(0).innerHTML );
     
   //  console.log(fieldClassList.item(0).innerHTML + "OK");
@@ -803,7 +802,6 @@ function Next()
   console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
   console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
   console.log("criteriaListArray   : " + criteriaListArray); 
-  
 
   }
 </script>
