@@ -769,8 +769,8 @@ function Next()
     console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
 
     console.log("parsedDragData2.value in save" + parsedDragData2.value)
-    var fieldClassList = document.getElementsByClassName(parsedDragData2.value).value;
-    console.log( "fieldClassList :  " + fieldClassList.length);
+    var fieldClassList = document.getElementsByClassName(parsedDragData2.value);
+    console.log( "fieldClassList :  " + fieldClassList);
 
     var fieldClassList2 = document.getElementsByClassName(parsedDragData2.value + "select");
     console.log( "fieldClassList2 :  " + fieldClassList2.length);
