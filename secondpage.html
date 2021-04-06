@@ -457,7 +457,7 @@ console.log(event.target.id);
 console.log("yeh de ki value -----> " + event.target.value) ;
 var datafromDrag2 = event.dataTransfer.getData("text/plain"); 
 //event.target.appendChild(document.getElementById(data1));
-var parsedDragData2=JSON.parse(datafromDrag2);
+parsedDragData2=JSON.parse(datafromDrag2);
 
 console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa') ;
 var datatypevalue = parsedDragData2.name.trim();
