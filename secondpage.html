@@ -464,9 +464,9 @@ var datatypevalue = parsedDragData2.name.trim();
 console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa') ;
 console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2)) ;
 
-parsedDragData2Array[parsedDragData2.id] = parsedDragData2.value ;
-console.log(parsedDragData2.id);
-console.log("parsedDragData2.value : " +parsedDragData2.value);
+parsedDragData2Array.push(parsedDragData2.value) ;
+//console.log(parsedDragData2.id);
+//console.log("parsedDragData2.value : " +parsedDragData2.value);
 console.log(parsedDragData2Array);
 
 
@@ -770,24 +770,29 @@ function Next()
     var  criteriaValue = document.getElementById("filter-div").innerHTML; 
     console.log("criteriaValue : "  +  criteriaValue) ; 
     }
+
+    for( i=0;i<parsedDragData2Array.length;i++)
+    {
+
+    
     console.log("Checkbox Array : "  + checkboxArray);
     console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
 
-    console.log("parsedDragData2.value in save" + parsedDragData2.value)
-    var fieldClassList = document.getElementsByClassName(parsedDragData2.value);
+    console.log("parsedDragData2.value in save" + parsedDragData2Array[i].value)
+    var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i].value);
     console.log( "fieldClassList :  " + fieldClassList);
     
-    for (i = 0; i < fieldClassList.length; i++) {
-      console.log(fieldClassList.item(0).innerHTML + "OK");
-    }
+    
+      console.log(fieldClassList.item(0).innerHTML );
+    
   //  console.log(fieldClassList.item(0).innerHTML + "OK");
-    var fieldClassList2 = document.getElementsByClassName(parsedDragData2.value+ "criteria");
+    var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i].value+ "criteria");
     console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
 
-    var fieldClassList3 = document.getElementsByClassName(parsedDragData2.value + "input");
+    var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i].value + "input");
     console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
   }
-
+  }
 </script>
 </body>
 </html>
