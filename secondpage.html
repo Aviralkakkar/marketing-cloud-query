@@ -758,7 +758,7 @@ function Next()
   function DetailsSave()
   {
     var checkboxArray = {}; 
-    
+    var criteriaList = {}
     var checkboxList = [];
     console.log(" save me aaya ");
     var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -775,10 +775,10 @@ function Next()
     {
 
     
-    console.log("Checkbox Array : "  + checkboxArray);
-    console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
+   // console.log("Checkbox Array : "  + checkboxArray);
+   // console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
 
-    console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
+  //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
     var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
     console.log( "fieldClassList :  " + fieldClassList);
     
@@ -791,7 +791,15 @@ function Next()
 
     var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
     console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
+
+    
+    criteriaList= {
+      "FieldName": fieldClassList.item(0).innerHTML,
+      "Criteria":fieldClassList2.item(0).value,
+      "Value": fieldClassList3.item(0).value
+    };
   }
+  console.log("criteriaList  : " + criteriaList); 
   }
 </script>
 </body>
