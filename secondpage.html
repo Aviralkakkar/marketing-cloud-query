@@ -475,23 +475,23 @@ else if(datatypevalue.name=='Number' || datatypevalue.name=='Decimal')
 {
   console.log("Email type me aaya 2") ;
   var optionforNumberType='<option value="Equals"> is equal to  </option><option value="NotEquals"> is not equal to  </option><option value="GreaterThan"> is greater than  </option><option value="GreaterThanOrEquals"> is greater than or equal to  </option><option value="LessThan"> is less than  </option><option value="LessThanOrEquals"> is less than or equal to  </option><option value="IsEmpty"> is empty  </option><option value="IsNotEmpty"> is not empty  </option><option value="In"> in  </option><option value="NotIn"> not in  </option>';
-  var html='<button class="slds-button slds-button_neutral "'+ parsedDragData2.value  +'"">'+parsedDragData2.value+'</button> <select class=" "'+ parsedDragData2.value  +'"criteria">'+optionforNumberType+'</select><input class= " "' + parsedDragData2.value  + '"input" type="number"><br>';
+  var html='<button class="slds-button slds-button_neutral '+ parsedDragData2.value  +'">'+parsedDragData2.value+'</button> <select class=" '+ parsedDragData2.value  +'criteria">'+optionforNumberType+'</select><input class= " ' + parsedDragData2.value  + 'input" type="number"><br>';
 }
 else if(datatypevalue.name=='Boolean')
 {
   console.log("Email type me aaya 3") ;
-  var html='<button class="slds-button slds-button_neutral "'+ parsedDragData2.value  +'"">'+parsedDragData2.value+'</button> <select class=" "'+ parsedDragData2.value  +'"criteria"><option>is</option></select><select class= " "'+ parsedDragData2.value  +'"input   "><option>True</option><option>False</option></select><br>';
+  var html='<button class="slds-button slds-button_neutral '+ parsedDragData2.value  +'">'+parsedDragData2.value+'</button> <select class=" '+ parsedDragData2.value  +'criteria"><option>is</option></select><select class= " '+ parsedDragData2.value  +'input   "><option>True</option><option>False</option></select><br>';
 }
 else if(datatypevalue.name=='Date')
 {
   console.log("Email type me aaya 4") ;
   var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option>';
-  var html='<button class="slds-button slds-button_neutral "'+ parsedDragData2.value +'"">'+parsedDragData2.value+'</button> <select class=""'+ parsedDragData2.value  +'"criteria"  ' + parsedDragData2.value  + ' "criteria   ">'+optionforDateType+'</select><input class= " "'+ parsedDragData2.value  +'"input   " type="date"><br>';
+  var html='<button class="slds-button slds-button_neutral '+ parsedDragData2.value +'">'+parsedDragData2.value+'</button> <select class="'+ parsedDragData2.value  +'criteria">'+optionforDateType+'</select><input class= " '+ parsedDragData2.value  +'input   " type="date"><br>';
 }
 else{
   console.log("Email type else me aaya") ;
   var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option>';
-  var html='<button class="slds-button slds-button_neutral "'+ parsedDragData2.value  +'"">'+parsedDragData2.value+'</button> <select class=""'+ parsedDragData2.value  +'"criteria">'+optionforDateType+'</select><input class= ""'+ parsedDragData2.value  +'"input   " type="date"><br>';
+  var html='<button class="slds-button slds-button_neutral '+ parsedDragData2.value  +'">'+parsedDragData2.value+'</button> <select class="'+ parsedDragData2.value  +'criteria">'+optionforDateType+'</select><input class= "'+ parsedDragData2.value  +'input   " type="date"><br>';
 }
 document.getElementById('filter-div').innerHTML+=html;
 
