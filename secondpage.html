@@ -813,10 +813,10 @@ function Next()
     console.log("event.target.id  :  " + event.target.id);
     var buttoninnerhtml =  document.getElementsByClassName(event.target.id).innerHTML ;
     console.log(buttoninnerhtml);
-    document.getElementsByClassName(event.target.id + "criteria").value = "";
-    console.log(document.getElementsByClassName(event.target.id + "criteria").value)
-    document.getElementsByClassName(event.target.id + "input").value = "";
-    console.log(document.getElementsByClassName(event.target.id + "input").value);
+    document.getElementsByClassName(event.target.id + "criteria") = "";
+    console.log(document.getElementsByClassName(event.target.id + 'criteria'));
+    document.getElementsByClassName(event.target.id + "input") = "";
+    console.log(document.getElementsByClassName(event.target.id+ 'input'));
     
   }
 </script>
