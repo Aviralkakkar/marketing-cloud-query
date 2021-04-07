@@ -475,7 +475,7 @@ if(datatypevalue=='Text' || datatypevalue=='EmailAddress' || datatypevalue=='Loc
   {
     console.log("Email type me aaya 1 ") ;
     var optionforTextType ="<option value=  Equals  >is equal to </option><option  value=  NotEquals  >'is not equal to </option><option  value=  GreaterThan  >is greater than </option><option  value=  GreaterThanOrEquals  >is greater than or equal to </option><option  value=  LessThan  >is less than </option><option  value=  LessThanOrEquals  >is less than or equal to </option><option  value=  ExistsIn  >exists in </option><option  value=  ExistsInWholeWord  >exists in whole word </option><option  value=  NotExistsIn  >does not exist in </option><option  value=  Begins  >begins with </option><option  value=  Ends  >ends with </option><option  value=  Contains  >contains </option><option  value=  NotContains  >does not contain </option><option  value=  IsEmpty  > is empty </option><option  value=  IsNotEmpty  > is not empty </option>";
-    var html='<button class="slds-button slds-button_neutral  ' + parsedDragData2.value  + '  ">'+parsedDragData2.value+'</button> <select class=" '+parsedDragData2.value+'criteria   ">'+optionforTextType+'</select><input class= " '+ parsedDragData2.value  +'input"   type="text"><br><span><button class="slds-button slds-button_neutral" iconName="standard:delete"></button></span>';
+    var html='<button class="slds-button slds-button_neutral  ' + parsedDragData2.value  + '  ">'+parsedDragData2.value+'</button> <select class=" '+parsedDragData2.value+'criteria   ">'+optionforTextType+'</select><input class= " '+ parsedDragData2.value  +'input"   type="text"><br><span><button class="delete"></button></span>';
   }
 else if(datatypevalue.name=='Number' || datatypevalue.name=='Decimal')
 {
