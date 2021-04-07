@@ -811,12 +811,12 @@ function Next()
   function deleteCriteria(event, target)
   {
     console.log("event.target.id  :  " + event.target.id);
-    var buttoninnerhtml =  document.getElementsByClassName(event.target.id).innerHTML ;
+    var buttoninnerhtml =  document.getElementsByClassName(event.target.id) ;
     console.log(buttoninnerhtml);
-    document.getElementsByClassName(event.target.id + "criteria") = "";
-    console.log(document.getElementsByClassName(event.target.id + 'criteria'));
-    document.getElementsByClassName(event.target.id + "input") = "";
-    console.log(document.getElementsByClassName(event.target.id+ 'input'));
+    var buttoninnerhtml1 = document.getElementsByClassName(event.target.id + "criteria") ;
+    console.log(buttoninnerhtml1);
+    var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + "input") ;
+    console.log(buttoninnerhtml2);
     
   }
 </script>
