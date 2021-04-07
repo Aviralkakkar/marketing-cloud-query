@@ -813,12 +813,16 @@ function Next()
     console.log("event.target.id  :  " + event.target.id);
     var buttoninnerhtml =  document.getElementsByClassName(event.target.id) ;
     console.log(buttoninnerhtml);
-    buttoninnerhtml.remove();
+    for (var i = 0; i < buttoninnerhtml.length; i++) {
+      var sidebarAd = buttoninnerhtml[i];
+        sidebarAd.parentNode.removeChild(sidebarAd);
+    }
+   
     var buttoninnerhtml1 = document.getElementsByClassName(event.target.id + "criteria") ;
-    buttoninnerhtml1.remove();
+  
     console.log(buttoninnerhtml1);
     var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + "input") ;
-    buttoninnerhtml2.remove();
+    
     console.log(buttoninnerhtml2);
     
   }
