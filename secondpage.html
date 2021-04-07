@@ -819,14 +819,14 @@ function Next()
     }
    
     var buttoninnerhtml1 = document.getElementsByClassName(event.target.id + "criteria") ;
-    for (var i = 0; i < buttoninnerhtml.length; i++) {
+    for (var i = 0; i < buttoninnerhtml1.length; i++) {
       var sidebarAd1 = buttoninnerhtml1[i];
         sidebarAd1.parentNode.removeChild(sidebarAd1);
     }
   
     console.log(buttoninnerhtml1);
-    var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + "input") ;
-    for (var i = 0; i < buttoninnerhtml.length; i++) {
+    var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + 'input') ;
+    for (var i = 0; i < buttoninnerhtml2.length; i++) {
       var sidebarAd2 = buttoninnerhtml2[i];
         sidebarAd2.parentNode.removeChild(sidebarAd2);
     }
