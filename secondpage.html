@@ -796,12 +796,14 @@ function Next()
     var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
   //  console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
       if(fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null)
+      {
     criteriaList= {
       "FieldName": fieldClassList.item(0).innerHTML,
       "Criteria":fieldClassList2.item(0).value,
       "Value": fieldClassList3.item(0).value
     };
     criteriaListArray.push(criteriaList);
+  }
   }
   console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
   console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
