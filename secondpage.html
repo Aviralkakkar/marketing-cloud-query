@@ -482,8 +482,10 @@ var fieldNameValue = fieldwithspace.split(" ").join("") ;
 console.log("fieldNameValue : " + fieldNameValue);
 
 //var html1 = '<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
-var html = fieldwithspace;
-document.getElementById('RichTextEditor').innerHTML+=html;
+
+  insertTextAtCaret(fieldwithspace);
+ // var html = fieldwithspace;
+//document.getElementById('RichTextEditor').innerHTML+=html;
 
 //This code is for dropping criteria in 2nd modal
 /*
@@ -526,6 +528,56 @@ document.getElementById('filter-div').innerHTML+=html;
 */
 };
 
+function insertTextAtCaret(fieldwithspace)
+{
+  var sel, range;
+	console.log( ' window.getSelection'  + window.getSelection);
+    if (window.getSelection) 
+            {
+			        
+                sel = window.getSelection();
+			//	var conceptName = $('#aioConceptName').find(":selected").val();
+				console.log("selection----------------->" + sel); 
+				console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
+				console.log("window.getSelection().anchorNode.parentNode.parentNode.id ----->" + window.getSelection().anchorNode.parentNode.parentNode.id);
+							
+                console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
+                console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
+                var parentID = window.getSelection().anchorNode.parentNode.id;
+                var anchorID = window.getSelection().anchorNode.id;
+			//	var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id ; 
+				
+				//console.log("yeh hai parent Id" + parentID) ;
+				//console.log("yeh hai anchor Id" + anchorID) ;
+
+         //       if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') 
+         //       {
+                    if (sel.getRangeAt && sel.rangeCount) 
+                    {
+                        range = sel.getRangeAt(0);
+
+					 	            console.log("yeh range ahi --- >  " + range);
+                        range.deleteContents();
+                        range.insertNode( document.createTextNode(fieldwithspace) );
+						
+                    }
+				//}
+              
+			  /*  else if (document.selection && document.selection.createRange) 
+			{
+                if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor" )
+                {
+					console.log("I don't know what this is" + document.selection.createRange().text);
+					document.selection.createRange().text = text;
+					console.log("Text-------->" + text);
+					
+            	}
+        } */
+	//	document.getElementById('none').selected=true;
+	
+	}
+}
+
 function Previous()
 {
   
@@ -557,7 +609,7 @@ function Next()
     //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
     //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
     console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
-    var  html = '<input type="button" value="'+deFieldListarray[i].FieldName+'" id="'+deFieldListarray[i].CustomerKey+'" draggable=true name="'+deFieldListarray[i].FieldType+' ">';
+    var  html = '<input type="button" value="'+deFieldListarray[i].FieldName+'" id="'+deFieldListarray[i].CustomerKey+'" draggable=true name="'+deFieldListarray[i].FieldType+'">';
     var node = '<li >'+html+'</li>';
     
     
