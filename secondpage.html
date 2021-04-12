@@ -481,6 +481,10 @@ var  fieldwithspace = parsedDragData2.value;
 var fieldNameValue = fieldwithspace.split(" ").join("") ;
 console.log("fieldNameValue : " + fieldNameValue);
 
+var html1 = '<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
+var html = fieldwithspace;
+document.getElementById('filter-div').innerHTML+=html;
+
 //This code is for dropping criteria in 2nd modal
 /*
 if(datatypevalue=='Text' || datatypevalue=='EmailAddress' || datatypevalue=='Locale' || datatypevalue=='Phone')
@@ -743,7 +747,7 @@ function Next()
         </div>
       <!-- <div class="slds-float_right" id = "filter-div" style="width:65%;height:346px;background-color: cadetblue;" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">   --> 
           
-        <div id="RichTextEditor" class="editor slds-float_right " style="overflow:scroll;width:65%;height:300px;border: 5px solid black"contenteditable='true'>
+        <div id="RichTextEditor" class="editor slds-float_right " style="overflow:scroll;width:65%;height:330px;border: 5px solid black" contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
 
 
         </div>
