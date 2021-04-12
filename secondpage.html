@@ -555,8 +555,7 @@ function insertTextAtCaret(fieldwithspace)
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
-
-					 	            console.log("yeh range ahi --- >  " + range);
+					 	            console.log("yeh range hai --- >  " + range);
                         range.deleteContents();
                         range.insertNode( document.createTextNode(fieldwithspace) );
 						
