@@ -550,8 +550,8 @@ function insertTextAtCaret(fieldwithspace)
 				//console.log("yeh hai parent Id" + parentID) ;
 				//console.log("yeh hai anchor Id" + anchorID) ;
 
-         //       if(parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') 
-         //       {
+                if(parentID == 'RichTextEditor') 
+                {
                     if (sel.getRangeAt && sel.rangeCount) 
                     {
                         range = sel.getRangeAt(0);
@@ -574,7 +574,7 @@ function insertTextAtCaret(fieldwithspace)
             	}
         } */
 	//	document.getElementById('none').selected=true;
-	
+      }
 	}
 }
 
