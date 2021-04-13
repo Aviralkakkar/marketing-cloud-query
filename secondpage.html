@@ -791,14 +791,16 @@ function Next()
     }
     var criteriaValue = document.getElementById("RichTextEditor").innerHTML; 
     console.log("criteriaValue : "  +  criteriaValue) ;
-    criteriaValue.toString();
-    var criteriaValuediv = criteriaValue.replace("<div>/g", " ");
-    var criteriaValuediv2 =  criteriaValue.replace("</div>/g", " ");
-    var criteriaValuebr = criteriaValue.replace("<br>/g", " ");
+    
+    var question_num = ' ';
+    answer_form = criteriaValue.replace(/<div>/g, question_num); 
+    answer_form1 = answer_form.replace(/<br>/g, question_num); 
 
-    console.log("criteriaValue after : "  +  criteriaValuediv);
-    console.log("criteriaValue after : "  +  criteriaValuediv2);
-    console.log("criteriaValue after : "  +  criteriaValuebr);
+    answer_form2 = answer_form1.replace(/<\/div>/g, question_num); 
+  
+
+    console.log("criteriaValue after : "  +  criteriaValue);
+    
     
 
     
