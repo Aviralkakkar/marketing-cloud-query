@@ -103,42 +103,11 @@
 
      //dataextensionArray.forEach(function(slide) {
         for (const [keyimage, value] of Object.entries(parsedData)){
-     var  html = '<input type="button" id = "'+keyimage+'"  value="'+value+'" id="drag'+keyimage+'" draggable=true name="'+value+' ">';
-     var node = '<li >'+html+'</li>';
+     var  html = '<button class="slds-nav-vertical__action slds-button " style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "'+keyimage+'"  draggable=true name="'+value+' ">'+value+'</button>';
+var node = '<li class="slds-nav-vertical__item "> '+html+'</li>';
+document.getElementById("Data Extensions").innerHTML+=node;
      console.log("data extensions printed ");     
-      // console.log("yeh for loop ki slide hai" + dataextensionArray);
-            /*  var checkbox = document.createElement('input');
-              checkbox.setAttribute("type","checkbox"); 
-              checkbox.setAttribute("id",keyimage);
-              checkbox.setAttribute("value",value);
-              checkbox.setAttribute("name",value);
-              checkbox.addEventListener('click',handleClick(this))    
-                          
-           // document.getElementById("check").innerHTML = checkbox;
-    var node = '<li ><label for="'+value+'" id="'+keyimage+'">'+value+'</label>'+html';
-    document.createElement("LI");                 // Create a <li> node
-         //   var textnode = document.createTextNode(slide);         // Create a text node
 
-             var label=document.createElement('label');
-             label.setAttribute("for",value);
-        //   var labelId = 'label'+slide ; 
-        //   console.log ("labelId"  + labelId) ; 
-             label.setAttribute("id",keyimage);
-             label.innerHTML = value;
-             document.getElementById("Data Extensions").appendChild(label);
-         //    document.getElementById("check").appendChild(label);
-             
-            
-            node.appendChild(checkbox);
-            node.appendChild(label); 
-         //   document.getElementById("demoId" ).appendChild(slide); 
-         */                            // Append the text to <li>
-            document.getElementById("Data Extensions").innerHTML;
-            console.log("--------------------Before----------------------------");
-            console.log(document.getElementById("Data Extensions").innerHTML);
-            document.getElementById("Data Extensions").innerHTML+=node;
-            console.log("--------------------After----------------------------");
-            console.log(document.getElementById("Data Extensions").innerHTML);
             }; 
             /*
           
