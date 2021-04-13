@@ -848,31 +848,33 @@ function Next()
     checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
   //  checkboxList.push(checkboxArray);
     
-    var  criteriaValue = document.getElementById("RichTextEditor").innerHTML.value; 
+    var criteriaValue = document.getElementById("RichTextEditor").innerHTML.value; 
     console.log("criteriaValue : "  +  criteriaValue) ; 
     }
 
-    for( i=0;i<parsedDragData2Array.length;i++)
-    {
+    
+
+  //  for( i=0;i<parsedDragData2Array.length;i++)
+  //  {
 
     
    // console.log("Checkbox Array : "  + checkboxArray);
    // console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
 
   //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
-    var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
+  //  var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
 
     //  console.log( "fieldClassList :  " + fieldClassList);
        
     //  console.log(fieldClassList.item(0).innerHTML );
     
   //  console.log(fieldClassList.item(0).innerHTML + "OK");
-    var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
+  //  var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
   //  console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
-    var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
+  //  var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
   //  console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
-      if( fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null )
-      {
+    /*  if( fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null )
+       {
        console.log("loop me toh aarha h ") ;
        console.log(fieldClassList);
        console.log(fieldClassList2);
@@ -884,11 +886,11 @@ function Next()
       "Value": fieldClassList3.item(0).value
     };
     criteriaListArray.push(criteriaList);
-  }
-  }
-  console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
-  console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
-  console.log("criteriaListArray   : " + criteriaListArray); 
+  } */
+  //}
+  //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
+  //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
+  //console.log("criteriaListArray   : " + criteriaListArray); 
 
   }
 
