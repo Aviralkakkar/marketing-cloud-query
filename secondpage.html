@@ -846,11 +846,16 @@ function Next()
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
     checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
-  //  checkboxList.push(checkboxArray);
-    
+  //  checkboxList.push(checkboxArray);  
     }
     var criteriaValue = document.getElementById("RichTextEditor").innerHTML; 
-    console.log("criteriaValue : "  +  criteriaValue) ; 
+    console.log("criteriaValue : "  +  criteriaValue) ;
+    criteriaValue.replace("<div>", " ");
+    criteriaValue.replace("</div>", " ");
+    criteriaValue.replace("<br>", " ");
+
+    console.log("criteriaValue after : "  +  criteriaValue);
+    
 
     
 
