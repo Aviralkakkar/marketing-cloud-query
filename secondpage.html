@@ -792,11 +792,13 @@ function Next()
     var criteriaValue = document.getElementById("RichTextEditor").innerHTML; 
     console.log("criteriaValue : "  +  criteriaValue) ;
     criteriaValue.toString();
-    criteriaValue.replace("<div>", " ");
-    criteriaValue.replace("</div>", " ");
-    criteriaValue.replace("<br>", " ");
+    var criteriaValuediv = criteriaValue.replace("<div>", " ");
+    var criteriaValuediv2 =  criteriaValue.replace("</div>", " ");
+    var criteriaValuebr = criteriaValue.replace("<br>", " ");
 
-    console.log("criteriaValue after : "  +  criteriaValue);
+    console.log("criteriaValue after : "  +  criteriaValuediv);
+    console.log("criteriaValue after : "  +  criteriaValuediv2);
+    console.log("criteriaValue after : "  +  criteriaValuebr);
     
 
     
