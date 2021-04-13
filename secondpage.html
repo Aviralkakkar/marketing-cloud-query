@@ -793,8 +793,8 @@ function Next()
     console.log("criteriaValue : "  +  criteriaValue) ;
     criteriaValue.toString();
     var criteriaValuediv = criteriaValue.replace("/<div>/g", " ");
-    var criteriaValuediv2 =  criteriaValue.replace("</div>", " ");
-    var criteriaValuebr = criteriaValue.replace("<br>", " ");
+    var criteriaValuediv2 =  criteriaValue.replace("/</div>/g", " ");
+    var criteriaValuebr = criteriaValue.replace("/<br>/g", " ");
 
     console.log("criteriaValue after : "  +  criteriaValuediv);
     console.log("criteriaValue after : "  +  criteriaValuediv2);
