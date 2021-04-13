@@ -558,6 +558,29 @@ function Previous()
 
 }
 
+function validateQuery()  {
+
+   
+  var url="/validatequery";
+fetch(url, {  //provide URL of the processing page
+  method: "POST",
+   headers: {
+     "Content-Type": "application/json"
+   },
+   body: {
+     "assetType":"validatequery",
+  },
+  dataType : "json"
+})
+.then(response => response.text())
+.then(data => {
+ console.log("validate query ke response me agaya ") ;
+ var validatequery = JSON.parse(data).validatequery;
+ console.log(validatequery) ; 
+ 
+});
+}
+
 function Next()
   {
 
@@ -662,7 +685,8 @@ function Next()
 </script>
   <div  >
     <div id = "main-div" class="slds-float_right" style="width: 70%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event,this)"> 
-      <p id="demo" contentEditable="true"></p> 
+      <p id="demo" ></p> 
+      <button onclick="validateQuery()"> Validate Query </button>
     </div>
     
   
@@ -787,6 +811,7 @@ function Next()
     for (var checkbox of checkboxes) {
     console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
     checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
+    criteriaListArray.push(checkbox.value); 
   //  checkboxList.push(checkboxArray);  
     }
     var criteriaValue = document.getElementById("RichTextEditor").innerHTML; 
@@ -799,9 +824,17 @@ function Next()
     answer_form2 = answer_form1.replace(/<\/div>/g, question_num); 
   
 
-    console.log("criteriaValue after : "  +  criteriaValue);
+    console.log("criteriaValue after : "  +  answer_form2);
     
-    
+   /* words = 'SELECT' 
+    for( var x of checkboxes) 
+    {
+      if (words == 'SELECT')
+      {
+         words += ',' + checkboxes[x] ;
+      }
+    }
+    /*
 
     
 
