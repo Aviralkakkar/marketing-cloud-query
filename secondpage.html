@@ -103,8 +103,9 @@
 
      //dataextensionArray.forEach(function(slide) {
         for (const [keyimage, value] of Object.entries(parsedData)){
+          console.log("Initial Value ---> " + value); 
      var  html = '<button class="slds-nav-vertical__action slds-button " style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "'+keyimage+'"  draggable=true name="'+value+' ">'+value+'</button>';
-var node = '<li class="slds-nav-vertical__item "> '+html+'</li>';
+var node = '<li class="slds-nav-vertical__item " > '+html+'</li>';
 document.getElementById("Data Extensions").innerHTML+=node;
      console.log("data extensions printed ");     
 
