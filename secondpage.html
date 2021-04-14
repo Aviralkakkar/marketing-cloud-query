@@ -830,7 +830,7 @@ function Next()
     console.log("criteriaValue after : "  +  answer_form2);
     
     words = 'SELECT' 
-    for( var x of criteriaListArray) 
+    for( var x in criteriaListArray) 
     console.log("checkboxes x --- > " + x) ;
     console.log("checkboxes[x] --- > " + criteriaListArray[x]) ;
     console.log("checkboxes --- > " + criteriaListArray) ;
@@ -840,7 +840,7 @@ function Next()
         console.log("main part me aaya");
         words +=  x ; 
       }
-      else
+      else 
       {
 
         console.log("Else part me aagya "); 
