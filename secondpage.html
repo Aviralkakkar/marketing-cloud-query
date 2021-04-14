@@ -826,14 +826,24 @@ function Next()
 
     console.log("criteriaValue after : "  +  answer_form2);
     
-   /* words = 'SELECT' 
+    words = 'SELECT' 
     for( var x of checkboxes) 
     {
       if (words == 'SELECT')
       {
-         words += ',' + checkboxes[x] ;
+        words +=  checkboxes[x] ;
+      }
+      else
+      {
+
+        words += ', ' +  checkboxes[x]
+
       }
     }
+    
+    words += ' ' + 'FROM ' + dataExtensionName ;
+
+    console.log("Words Query : " + words) ;
     /*
 
     
