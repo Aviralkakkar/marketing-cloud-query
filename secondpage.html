@@ -830,11 +830,13 @@ function Next()
     console.log("criteriaValue after : "  +  answer_form2);
     
     words = 'SELECT' 
-    for( var x in criteriaListArray) 
-    console.log("checkboxes x --- > " + x) ;
-    console.log("checkboxes[x] --- > " + criteriaListArray[x]) ;
-    console.log("checkboxes --- > " + criteriaListArray) ;
+    console.log("criteriaListArrayHai  :  " + criteriaListArray);
+    for( var i = 0 ; i<criteriaListArray.length; i++) 
     {
+    console.log("checkboxes x --- > " + i) ;
+    console.log("checkboxes[x] --- > " + criteriaListArray[i]) ;
+  
+    
       if (words == 'SELECT')
       {
         console.log("main part me aaya");
