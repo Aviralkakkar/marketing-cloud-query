@@ -834,16 +834,16 @@ function Next()
     {
       if (words == 'SELECT')
       {
-        words +=  criteriaListArray[x] ;
+        words +=  x ;
       }
       else
       {
 
-        words += ', ' +  criteriaListArray[x]
+        words += ', ' +  x
 
       }
     }
-    
+    console.log("dataExtensionName" + dataExtensionName) ; 
     words += ' ' + 'FROM ' + dataExtensionName ;
 
     console.log("Words Query : " + words) ;
