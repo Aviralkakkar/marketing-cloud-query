@@ -380,6 +380,7 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   var parsedDragData=JSON.parse(datafromDrag);
   console.log("yeh parsedDragData--------> " + parsedDragData.value) ;
   dataExtensionName = parsedDragData.value ;
+  console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
   var dataExtensionId = parsedDragData.id ; 
   document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
   console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData)) ;
@@ -834,10 +835,11 @@ function Next()
     {
       if (words == 'SELECT')
       {
-        words +=  x ;
+        words +=  x ; 
       }
       else
       {
+
         console.log("Else part me aagya "); 
         words += ', ' +  x ; 
 
