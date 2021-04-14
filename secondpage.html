@@ -825,7 +825,7 @@ function Next()
     answer_form1 = answer_form.replace(/<br>/g, question_num); 
 
     answer_form2 = answer_form1.replace(/<\/div>/g, question_num); 
-  
+    answer_form3 = answer_form2.trim();
 
     console.log("criteriaValue after : "  +  answer_form2);
     
@@ -853,7 +853,7 @@ function Next()
     console.log("dataExtensionName" + dataExtensionName) ; 
     words += ' ' + 'FROM ' + dataExtensionName ;
 
-    words += ' WHERE ' + answer_form2 ; 
+    words += ' WHERE ' + answer_form3 ; 
     console.log("Words Query : " + words) ;
     /*
 
