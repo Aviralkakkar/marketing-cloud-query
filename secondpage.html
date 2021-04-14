@@ -561,7 +561,7 @@ function Previous()
 
 }
 
-function validateQuery()  {
+function validateQuery(dynamicQuery)  {
 
    
   var url="/validatequery";
@@ -571,7 +571,7 @@ fetch(url, {  //provide URL of the processing page
      "Content-Type": "application/json"
    },
    body: {
-     "assetType":"validatequery",
+     "dynamicQuery": dynamicQuery,
   },
   dataType : "json"
 })
@@ -689,7 +689,7 @@ function Next()
   <div  >
     <div id = "main-div" class="slds-float_right" style="width: 70%;height:100%;margin-left: 17%;" ondrop="drop(event, this)"  ondragover="allowDrop(event,this)"> 
       <p id="demo" ></p> 
-      <!-- <button onclick="validateQuery()"> Validate Query </button> -->
+      <!-- <button onclick="validateQuery()"> Validate Query </button>  -->
     </div>
     
   
@@ -855,6 +855,8 @@ function Next()
 
     words += ' WHERE ' + answer_form3 ; 
     console.log("Words Query : " + words) ;
+
+    validateQuery(words) ;
     /*
 
     
