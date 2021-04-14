@@ -190,7 +190,7 @@ var options = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + access_token
   },
-  body: JSON.stringify({"Text":"SELECT [First Name],[Email Address] as [Email Id] FROM NTOSubscribers"})
+  body: JSON.stringify({"Text":"SELECT [EmailAddress],[FirstName] FROM Adventure"})
 
 };
 request(options, function (error, response) {
