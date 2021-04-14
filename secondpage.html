@@ -827,19 +827,19 @@ function Next()
     console.log("criteriaValue after : "  +  answer_form2);
     
     words = 'SELECT' 
-    for( var x of checkboxes) 
+    for( var x of criteriaListArray) 
     console.log("checkboxes x --- > " + x) ;
-    console.log("checkboxes[x] --- > " + checkboxes[x]) ;
-    console.log("checkboxes --- > " + checkboxes) ;
+    console.log("checkboxes[x] --- > " + criteriaListArray[x]) ;
+    console.log("checkboxes --- > " + criteriaListArray) ;
     {
       if (words == 'SELECT')
       {
-        words +=  checkboxes[x] ;
+        words +=  criteriaListArray[x] ;
       }
       else
       {
 
-        words += ', ' +  checkboxes[x]
+        words += ', ' +  criteriaListArray[x]
 
       }
     }
