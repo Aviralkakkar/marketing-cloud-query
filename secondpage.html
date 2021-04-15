@@ -570,6 +570,7 @@ fetch(url, {  //provide URL of the processing page
    headers: {
      "Content-Type": "application/json"
    },
+   data: { "dynamicQuery": dynamicQuery }, 
    body: {
      "dynamicQuery": dynamicQuery,
   },
@@ -580,7 +581,7 @@ fetch(url, {  //provide URL of the processing page
  console.log("validate query ke response me agaya ") ;
  var validatequery = JSON.parse(data).validatequery;
  console.log(validatequery) ; 
- 
+
 });
 }
 
