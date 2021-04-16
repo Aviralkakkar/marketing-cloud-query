@@ -571,7 +571,7 @@ fetch(url, {  //provide URL of the processing page
      "Content-Type": "application/x-www-form-urlencoded"
    },
 
-   body: {'dynamicQuery':dynamicQuery},
+   body: JSON.stringify(dynamicQuery),
    dataType : "json"
 })
 .then(response => response.text())
