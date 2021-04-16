@@ -105,7 +105,7 @@
         for (const [keyimage, value] of Object.entries(parsedData))
            {
              console.log("keyimage--->" + keyimage) ;
-             
+
           console.log("Initial Value ---> " + value); 
      var  html = '<button class="slds-nav-vertical__action slds-button " style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "'+keyimage+'" value='+ value +' draggable=true name="'+value+' ">'+value+'</button>';
 var node = '<li class="slds-nav-vertical__item " > '+html+'</li>';
@@ -382,8 +382,8 @@ console.log("yeh de ki value -----> " + event.target.value) ;
   var datafromDrag = event.dataTransfer.getData("text/plain"); 
   //event.target.appendChild(document.getElementById(data1));
   var parsedDragData=JSON.parse(datafromDrag);
-  console.log("yeh parsedDragData--------> " + parsedDragData.value) ;
-  dataExtensionName = parsedDragData.value ;
+  console.log("yeh parsedDragData--------> " + parsedDragData.name) ;
+  dataExtensionName = parsedDragData.name ;
   console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
   var dataExtensionId = parsedDragData.id ; 
   document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
