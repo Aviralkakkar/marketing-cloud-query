@@ -570,11 +570,9 @@ fetch(url, {  //provide URL of the processing page
    headers: {
      "Content-Type": "application/json"
    },
-   data: { "dynamicQuery": dynamicQuery }, 
-   body: {
-     "dynamicQuery": dynamicQuery,
-  },
-  dataType : "json"
+
+   body: dynamicQuery,
+   dataType : "json"
 })
 .then(response => response.text())
 .then(data => {
