@@ -564,10 +564,25 @@ function Previous()
 
 }
 
-function validateQuery(dynamicQuery)  {
+ function validateQuery(dynamicQuery)  {
 
    console.log("dynamic Query --> " + dynamicQuery);
-  var url="/validatequery";
+
+   $.ajax({
+    url: "/validatequery",
+    dataType: "JSONP",
+    type: "POST",
+    jsonpCallback: "callback",
+    data: {
+      dynamicQuery:dynamicQuery
+    },
+    success: function() 
+    { console.log("res", "Ajax ke response me aaya ") 
+  }
+});
+
+
+/*  var url="/validatequery";
 fetch(url, {  //provide URL of the processing page
   method: "POST",
    headers: {
@@ -584,8 +599,8 @@ fetch(url, {  //provide URL of the processing page
  var validatequery = JSON.parse(data).validatequery;
  console.log(validatequery) ; 
 
-});
-}
+}); */
+} 
 
 function Next()
   {
