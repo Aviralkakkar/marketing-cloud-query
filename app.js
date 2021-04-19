@@ -181,8 +181,8 @@ app.post("/secondpage", async function (req, res) {
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
-     console.log(reqCall);
-     console.log("reqCall.body validatequery" + JSON.stringify(reqCall));  
+     console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data.dynamicQuery);
+     console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
   //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data.dynamicQuery));  
    //  console.log("reqCall.body validatequery2" + reqCall.data.dynamicQuery);    
   //  console.log("reqCall.body validatequery" + JSON.stringify(reqCall.body));
