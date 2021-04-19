@@ -571,10 +571,11 @@ function validateQuery(dynamicQuery)  {
 fetch(url, {  //provide URL of the processing page
   method: "POST",
    headers: {
-     "Content-Type": "application/x-www-form-urlencoded"
+    // "Content-Type": "application/x-www-form-urlencoded"
+    "Content-Type": "application/json" 
    },
 
-   body: dynamicQuery
+   body: {'dynamicQuery':dynamicQuery}
   
 })
 .then(response => response.text())
