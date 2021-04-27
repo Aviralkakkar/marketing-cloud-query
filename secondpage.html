@@ -2084,6 +2084,7 @@ else
     };
     //document.ondrop = function(event,target) {
     function drop(event, target) {
+      document.getElementById('grid-1-de').innerHTML = '';
 
       deFieldListarray = [];
 
@@ -2113,6 +2114,22 @@ else
         //console.log("Data Extension Id : " + dataExtensionId);
         //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
         if (dataExtensionId == defieldsArray[i].CustomerKey) {
+          // console.log("----------------Id-     ",cb.id);
+          //console.log("Data extension field name " + defieldsArray[i].FieldName);
+          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
+          var html = '<input type="checkbox" name = "' + defieldsArray[i].CustomerKey + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '">';
+          var node = '<li>' + html + ' ' + defieldsArray[i].FieldName + '</li>';
+
+          document.getElementById('grid-1-de').innerHTML += node;
+
+          fieldList = {
+            "FieldName": defieldsArray[i].FieldName,
+            "CustomerKey": defieldsArray[i].CustomerKey,
+            "FieldType": defieldsArray[i].FieldType
+          };
+          //console.log("FieldType  " + defieldsArray[i].FieldType);
+          deFieldListarray.push(fieldList);
+
 
           //faizal code
           if (dataExtensionNameMap[dataExtensionName]) {
@@ -2135,25 +2152,7 @@ else
           //code  khatam
 
 
-          
 
-
-          // console.log("----------------Id-     ",cb.id);
-          //console.log("Data extension field name " + defieldsArray[i].FieldName);
-          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-          var html = '<input type="checkbox" name = "' + defieldsArray[i].CustomerKey + '"  value="' + defieldsArray[i].FieldName + '" id=' + defieldsArray[i].CustomerKey + ' draggable=true name="' + defieldsArray[i].FieldName + ' " label="' + defieldsArray[i].FieldName + '  " >';
-          var node = '<li >' + html + defieldsArray[i].FieldName + '</li>';
-
-          document.getElementById('grid-1-de').innerHTML += node;
-
-          fieldList = {
-
-            "FieldName": defieldsArray[i].FieldName,
-            "CustomerKey": defieldsArray[i].CustomerKey,
-            "FieldType": defieldsArray[i].FieldType
-          };
-          //console.log("FieldType  " + defieldsArray[i].FieldType);
-          deFieldListarray.push(fieldList);
         }
       }
 
