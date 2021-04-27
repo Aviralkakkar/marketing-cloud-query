@@ -2102,6 +2102,11 @@ else
       document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
       console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
       var fieldList = {};
+
+      
+      defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
+
+
       for (var i = 0; i < defieldsArray.length; i++) {
         console.log("Data Extension Id : " + dataExtensionId);
         console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
@@ -2126,6 +2131,9 @@ else
             }
           }
           //code  khatam
+
+
+          
 
 
           // console.log("----------------Id-     ",cb.id);
