@@ -7,6 +7,8 @@ const axios = require('axios');
 var token;
 var request = require('request');
 const xmlParser = require('xml2json');
+var Set = require("collections/set");
+
 var xml;
 var jsonRes;
 var SourceListDEResult;
@@ -143,41 +145,34 @@ app.post("/secondpage", async function (req, res) {
           SourceDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
         // console.log('my new result '+JSON.stringify(SourceDEFieldsResult));
         });
-       for (var key in SourceDEFieldsResult) {
-       // DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
-         console.log(SourceDEFieldsResult[key].Name[0]);
-         console.log(SourceDEFieldsResult[key].FieldType[0]);
-        DEListMap= {
-          "FieldName": SourceDEFieldsResult[key].Name[0],
-          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-          "FieldType":SourceDEFieldsResult[key].FieldType[0]
-       };
-        favorites.push(DEListMap);
-        /*  if('MaxLength' in SourceDEFieldsResult[key] && 'Scale' in SourceDEFieldsResult[key] ) {
-            DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
-              "FieldName": SourceDEFieldsResult[key].Name[0],
-              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-              "FieldMaxLength": SourceDEFieldsResult[key].MaxLength[0],
-              "FieldScale": SourceDEFieldsResult[key].Scale[0],
-              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
-            };
-          }
-          else {
-            DEListMap[SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0]] = {
-              "FieldName": SourceDEFieldsResult[key].Name[0],
-              "FieldIsRequired": SourceDEFieldsResult[key].IsRequired[0],
-              "FieldIsPrimaryKey": SourceDEFieldsResult[key].IsPrimaryKey[0],
-              "FieldFieldType": SourceDEFieldsResult[key].FieldType[0],
-              "FieldMaxLength": "",
-              "FieldScale": "",
-              "FieldDefaultValue": SourceDEFieldsResult[key].DefaultValue[0]
-            };
-          }*/
+
+
+        //code Faizal
+        var FieldSet = new Set();
+        for (var key in SourceDEFieldsResult) {
+          FieldSet.add(JSON.stringify({
+            "CustomerKey": SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+            "FieldName": SourceDEFieldsResult[key].Name[0],
+            "FieldType": SourceDEFieldsResult[key].FieldType[0]
+          }));
         }
-     //  console.log("DEListMap" + JSON.stringify(favorites)); 
-      //  console.log(favorites);
+        for (var val of Array.from(FieldSet)) {
+          favorites.push(JSON.parse(val));
+        }
+        //code khatm
+
+
+        /*
+        for (var key in SourceDEFieldsResult) {
+          DEListMap= {
+            "FieldName": SourceDEFieldsResult[key].Name[0],
+            "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+            "FieldType":SourceDEFieldsResult[key].FieldType[0]
+          };
+          favorites.push(DEListMap);
+        }
+        */
+       
         resCall.json({favorites : favorites});
    });
 });
