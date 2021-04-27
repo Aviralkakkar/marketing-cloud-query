@@ -4662,38 +4662,48 @@ else
       }
 
       function SaveJoinQuery() {
-        var strQuery = 'SELECT';
-        for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
-          strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key] + '],';
-        }
-        for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-          strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
-        }
-        strQuery = strQuery.slice(0, -1);
-        strQuery += ' FROM [' + currentClickedDEGlobal + ']';
-        if (document.getElementById('select-01').value == 'Left Outer Join') {
-          strQuery += ' LEFT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
-        }
-        else if (document.getElementById('select-01').value == 'Left Outer Join with Exclusion') {
-          strQuery += ' LEFT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + '] IS NULL';
-        }
-        else if (document.getElementById('select-01').value == 'Right Outer Join') {
-          strQuery += ' RIGHT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
-        }
-        else if (document.getElementById('select-01').value == 'Right Outer Join with Exclusion') {
-          strQuery += ' RIGHT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] IS NULL';
-        }
-        else if (document.getElementById('select-01').value == 'Inner Join') {
-          strQuery += ' INNER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
-        }
-        else if (document.getElementById('select-01').value == 'Full Outer Join') {
-          strQuery += ' FULL OUTER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
-        }
-        else if (document.getElementById('select-01').value == 'Outer Join') {
-          strQuery += ' FULL OUTER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] IS NULL OR [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + '] IS NULL';;
-        }
+        if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
+          if(document.getElementById('select-02').value) {
+            if(dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
+              if(document.getElementById('FirstDEField').value) {
+                if(document.getElementById('SecondDEField').value) {
+                  var strQuery = 'SELECT';
+                  for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
+                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key] + '],';
+                  }
+                  for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                  }
+                  strQuery = strQuery.slice(0, -1);
+                  strQuery += ' FROM [' + currentClickedDEGlobal + ']';
+                  if (document.getElementById('select-01').value == 'Left Outer Join') {
+                    strQuery += ' LEFT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
+                  }
+                  else if (document.getElementById('select-01').value == 'Left Outer Join with Exclusion') {
+                    strQuery += ' LEFT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + '] IS NULL';
+                  }
+                  else if (document.getElementById('select-01').value == 'Right Outer Join') {
+                    strQuery += ' RIGHT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
+                  }
+                  else if (document.getElementById('select-01').value == 'Right Outer Join with Exclusion') {
+                    strQuery += ' RIGHT JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] IS NULL';
+                  }
+                  else if (document.getElementById('select-01').value == 'Inner Join') {
+                    strQuery += ' INNER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
+                  }
+                  else if (document.getElementById('select-01').value == 'Full Outer Join') {
+                    strQuery += ' FULL OUTER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']';
+                  }
+                  else if (document.getElementById('select-01').value == 'Outer Join') {
+                    strQuery += ' FULL OUTER JOIN [' + document.getElementById('select-02').value + '] ON [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] = [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + ']' + ' WHERE [' + currentClickedDEGlobal + '].[' + document.getElementById('FirstDEField').value + '] IS NULL OR [' + document.getElementById('select-02').value + '].[' + document.getElementById('SecondDEField').value + '] IS NULL';;
+                  }
 
-        console.log('strQuery : ' + strQuery);
+                  console.log('strQuery : ' + strQuery);
+                }
+              }
+            }
+          }
+        }
       }
 
       function deleteCriteria(event, target) {
