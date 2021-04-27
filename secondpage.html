@@ -2156,15 +2156,6 @@ else
         }
       }
 
-      console.log('Before Sort');
-      for(var x in dataExtensionNameMap[dataExtensionName].AllFields) {
-        console.log(dataExtensionNameMap[dataExtensionName].AllFields[x])
-      }
-      dataExtensionNameMap[dataExtensionName].AllFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
-      console.log('After Sort');
-      for(var x in dataExtensionNameMap[dataExtensionName].AllFields) {
-        console.log(dataExtensionNameMap[dataExtensionName].AllFields[x])
-      }
 
       document.getElementById('RelationPopup').style.display = 'block';
 
