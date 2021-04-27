@@ -156,6 +156,7 @@ app.post("/secondpage", async function (req, res) {
             "FieldType": SourceDEFieldsResult[key].FieldType[0]
           }));
         }
+        favorites = [];
         for (var val of Array.from(FieldSet)) {
           favorites.push(JSON.parse(val));
         }
@@ -172,7 +173,7 @@ app.post("/secondpage", async function (req, res) {
           favorites.push(DEListMap);
         }
         */
-       
+
         resCall.json({favorites : favorites});
    });
 });
