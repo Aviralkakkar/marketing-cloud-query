@@ -2103,9 +2103,10 @@ else
       console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
       var fieldList = {};
 
-      
-      defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
 
+      //Code Faizal
+      defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
+      //Code Khatam
 
       for (var i = 0; i < defieldsArray.length; i++) {
         console.log("Data Extension Id : " + dataExtensionId);
@@ -2155,7 +2156,9 @@ else
         }
       }
 
-
+      //Code Faizal
+      dataExtensionNameMap.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
+      //Code Khatam
 
       document.getElementById('RelationPopup').style.display = 'block';
 
@@ -4597,6 +4600,8 @@ else
           '<div class="slds-select_container">' +
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
+        
+        dataExtensionNameMapFinal[currentClickedDE].AllFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
         for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
           joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '</option>';
         }
