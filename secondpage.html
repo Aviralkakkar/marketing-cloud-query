@@ -4598,8 +4598,6 @@ else
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
         
-        console.log(JSON.stringify(dataExtensionNameMapFinal[currentClickedDE].AllFields));
-        dataExtensionNameMapFinal[currentClickedDE].AllFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
         for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
           joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '</option>';
         }
