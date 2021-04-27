@@ -2138,8 +2138,8 @@ else
 
 
           // console.log("----------------Id-     ",cb.id);
-          console.log("Data extension field name " + defieldsArray[i].FieldName);
-          console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
+          //console.log("Data extension field name " + defieldsArray[i].FieldName);
+          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
           var html = '<input type="checkbox" name = "' + defieldsArray[i].CustomerKey + '"  value="' + defieldsArray[i].FieldName + '" id=' + defieldsArray[i].CustomerKey + ' draggable=true name="' + defieldsArray[i].FieldName + ' " label="' + defieldsArray[i].FieldName + '  " >';
           var node = '<li >' + html + defieldsArray[i].FieldName + '</li>';
 
@@ -2151,7 +2151,7 @@ else
             "CustomerKey": defieldsArray[i].CustomerKey,
             "FieldType": defieldsArray[i].FieldType
           };
-          console.log("FieldType  " + defieldsArray[i].FieldType);
+          //console.log("FieldType  " + defieldsArray[i].FieldType);
           deFieldListarray.push(fieldList);
         }
       }
@@ -4644,6 +4644,7 @@ else
 
       function SecondDEChange() {
         if (document.getElementById('select-02').value in dataExtensionNameMapFinal) {
+          document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
           for (var DEField in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '">' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '</option>';
           }
