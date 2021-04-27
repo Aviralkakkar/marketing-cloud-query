@@ -4280,6 +4280,10 @@ else
 
       }
 
+      function OpenWhere() {
+        document.getElementById('SecondModal').style.display = 'block';
+      }
+
       function DetailsSave() {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'none';
@@ -4364,7 +4368,7 @@ else
           '<div class="graph-object-footer">' +
           '<!--Add footer-->' +
           '<div class="graph-object-title" data-original-title="" title="">' +
-          '<span title="' + dataExtensionName + '" style="color:#2168a7;">WHERE </span>' +
+          '<span onclick="OpenWhere()" title="' + dataExtensionName + '" style="color:#2168a7;">WHERE </span>' +
           '<ul class="attributes_second">' +
           '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
           '</ul>' +
