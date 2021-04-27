@@ -4704,7 +4704,8 @@ else
                     console.log('strQuery : ' + strQuery);
                   }
                   else {
-                    var tempQueryList = strQuery.split("] From [");
+                    var tempQueryList = strQuery.split("] FROM [");
+                    //console.log(tempQueryList);
                     for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
                       tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
                     }
