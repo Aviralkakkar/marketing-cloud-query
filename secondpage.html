@@ -1733,7 +1733,7 @@
 
 
   <script type="text/javascript">
-    console.log("on load calll");
+    //console.log("on load calll");
     var fieldList = [];
     var result = {};
     var url = "/asset";
@@ -1786,9 +1786,9 @@
       })
         .then(response => response.text())
         .then(data => {
-          console.log(data);
+          //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
-          console.log("parsed data  : " + JSON.stringify(parsedData));
+          //console.log("parsed data  : " + JSON.stringify(parsedData));
 
           /*var dataextensionArray = []; 
           for (const [keyimage, value] of Object.entries(parsedData)) 
@@ -1821,13 +1821,13 @@
 
           //dataextensionArray.forEach(function(slide) {
           for (const [keyimage, value] of Object.entries(parsedData)) {
-            console.log("keyimage--->" + keyimage);
+            //console.log("keyimage--->" + keyimage);
 
-            console.log("Initial Value ---> " + value);
+            //console.log("Initial Value ---> " + value);
             var html = '<button class="slds-nav-vertical__action slds-button " style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "' + keyimage + '" value=' + value + ' draggable=true name="' + value + ' ">' + value + '</button>';
             var node = '<li class="slds-nav-vertical__item " > ' + html + '</li>';
             document.getElementById("Data Extensions").innerHTML += node;
-            console.log("data extensions printed ");
+            //console.log("data extensions printed ");
 
           };
           /*
@@ -1996,11 +1996,11 @@ else
     }
 
     function handleClick(cb) {
-      console.log("Clicked, new name = " + cb.name);
-      console.log("Clicked, new value = " + cb.value);
-      console.log("Clicked, new id = " + cb.id);
-      console.log("Clicked, new value = " + cb.checked);
-      console.log("------------Handle Click", defieldsArray);
+      //console.log("Clicked, new name = " + cb.name);
+      //console.log("Clicked, new value = " + cb.value);
+      //console.log("Clicked, new id = " + cb.id);
+      //console.log("Clicked, new value = " + cb.checked);
+      //console.log("------------Handle Click", defieldsArray);
 
       if (cb.checked == true) {
         // result[cb.id]= cb.name;
@@ -2011,8 +2011,8 @@ else
         document.getElementById("Fields").innerHTML += divHtml;
         for (var i = 0; i < defieldsArray.length; i++) {
           if (cb.id == defieldsArray[i].CustomerKey) {
-            console.log("----------------Id-     ", cb.id);
-            console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
+            //console.log("----------------Id-     ", cb.id);
+            //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
             var buttonHtml = '<li><input type="button" value="' + defieldsArray[i].FieldName + '" name="' + defieldsArray[i].CustomerKey + '" id="drag' + i + '" draggable=true></li>';
             document.getElementById(divid).innerHTML += buttonHtml;
 
@@ -2026,11 +2026,11 @@ else
 
 
     function handlecheckboxclick(cbb) {
-      console.log("Hey");
-      console.log("Clicked, new name = " + cbb.name);
-      console.log("Clicked, new value = " + cbb.value);
-      console.log("Clicked, new id = " + cbb.id);
-      console.log("Clicked, new value = " + cbb.checked);
+      //console.log("Hey");
+      //console.log("Clicked, new name = " + cbb.name);
+      //console.log("Clicked, new value = " + cbb.value);
+      //console.log("Clicked, new id = " + cbb.id);
+      //console.log("Clicked, new value = " + cbb.checked);
       //  console.log("------------Handle Click",defieldsArray);
       if (cbb.checked == true) {
         document.getElementById("grid-2-de").innerHTML += cbb.value;
@@ -2041,7 +2041,7 @@ else
     }
 
     function allowDrop(ev, event) {
-      console.log("Inside allowdrop");
+      //console.log("Inside allowdrop");
       /*  console.log("------------Event--------------");
       console.log(event.id);
       console.log("----------------ev--------------");
@@ -2050,12 +2050,12 @@ else
     }
 
     document.ondragstart = function (event) {
-      console.log(event.class);
-      console.log(event.id);
+      //console.log(event.class);
+      //console.log(event.id);
 
-      console.log("ev.target.id-----> " + event.target.id);
-      console.log("ev.target.value-----> " + event.target.value);
-      console.log("ev.target.name-----> " + event.target.name);
+      //console.log("ev.target.id-----> " + event.target.id);
+      //console.log("ev.target.value-----> " + event.target.value);
+      //console.log("ev.target.name-----> " + event.target.name);
       var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
 
@@ -2088,19 +2088,19 @@ else
 
       event.preventDefault();
       document.getElementById('ulList').innerHTML = '';
-      console.log("Dropppp");
-      console.log(event.target.id);
-      console.log("yeh de ki value -----> " + event.target.value);
+      //console.log("Dropppp");
+      //console.log(event.target.id);
+      //console.log("yeh de ki value -----> " + event.target.value);
       var datafromDrag = event.dataTransfer.getData("text/plain");
       //event.target.appendChild(document.getElementById(data1));
       var parsedDragData = JSON.parse(datafromDrag);
-      console.log("yeh parsedDragData--------> " + parsedDragData.name);
+      //console.log("yeh parsedDragData--------> " + parsedDragData.name);
       dataExtensionName = parsedDragData.name;
 
-      console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
+      //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
       var dataExtensionId = parsedDragData.id;
       document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
-      console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
+      //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
       var fieldList = {};
 
 
@@ -2156,9 +2156,8 @@ else
         }
       }
 
-      //Code Faizal
-      dataExtensionNameMap.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
-      //Code Khatam
+      dataExtensionNameMap[dataExtensionName].AllFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
+      
 
       document.getElementById('RelationPopup').style.display = 'block';
 
@@ -2180,25 +2179,25 @@ else
       event.preventDefault();
 
       parsedDragData2 = {};
-      console.log("Dropppp 2222");
-      console.log(event.target.id);
-      console.log("yeh de ki value -----> " + event.target.value);
+      //console.log("Dropppp 2222");
+      //console.log(event.target.id);
+      //console.log("yeh de ki value -----> " + event.target.value);
       var datafromDrag2 = event.dataTransfer.getData("text/plain");
       //event.target.appendChild(document.getElementById(data1));
       parsedDragData2 = JSON.parse(datafromDrag2);
 
-      console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
+      //console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
       var datatypevalue = parsedDragData2.name.trim();
-      console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa');
-      console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2));
+      //console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa');
+      //console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2));
 
       parsedDragData2Array.push(parsedDragData2.value);
       //console.log(parsedDragData2.id);
       //console.log("parsedDragData2.value : " +parsedDragData2.value);
-      console.log(parsedDragData2Array);
+      //console.log(parsedDragData2Array);
       var fieldwithspace = parsedDragData2.value;
       var fieldNameValue = fieldwithspace.split(" ").join("");
-      console.log("fieldNameValue : " + fieldNameValue);
+      //console.log("fieldNameValue : " + fieldNameValue);
 
       //var html1 = '<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
 
@@ -2249,17 +2248,17 @@ else
 
     function insertTextAtCaret(fieldwithspace) {
       var sel, range;
-      console.log(' window.getSelection' + window.getSelection);
+      //console.log(' window.getSelection' + window.getSelection);
       if (window.getSelection) {
 
         sel = window.getSelection();
         //	var conceptName = $('#aioConceptName').find(":selected").val();
-        console.log("selection----------------->" + sel);
-        console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
-        console.log("window.getSelection().anchorNode.parentNode.parentNode.id ----->" + window.getSelection().anchorNode.parentNode.parentNode.id);
+        //console.log("selection----------------->" + sel);
+        //console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
+        //console.log("window.getSelection().anchorNode.parentNode.parentNode.id ----->" + window.getSelection().anchorNode.parentNode.parentNode.id);
 
-        console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
-        console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
+        //console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
+        //console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
         var parentID = window.getSelection().anchorNode.parentNode.id;
         var anchorID = window.getSelection().anchorNode.id;
         var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
@@ -2270,7 +2269,7 @@ else
         if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
           if (sel.getRangeAt && sel.rangeCount) {
             range = sel.getRangeAt(0);
-            console.log("yeh range hai --- >  " + range);
+            //console.log("yeh range hai --- >  " + range);
             range.deleteContents();
             range.insertNode(document.createTextNode(fieldwithspace));
 
@@ -2369,12 +2368,12 @@ else
         ul.setAttribute('style', 'padding: 0; margin: 0;');
         ul.setAttribute('id', 'theList');
         */
-      console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
-      console.log("deFieldListarray   :    " + deFieldListarray);
+      //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
+      //console.log("deFieldListarray   :    " + deFieldListarray);
       for (var i = 0; i < deFieldListarray.length; i++) {
         //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
         //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-        console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
+        //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
         var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
         var node = '<li >' + html + '</li>';
 
@@ -4290,7 +4289,7 @@ else
         var checkboxList = [];
         var criteriaListArray = [];
         var fieldsListForRelationDiv = '';
-        console.log(" save me aaya ");
+        //console.log(" save me aaya ");
         var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
         //code faizal
@@ -4310,7 +4309,7 @@ else
 
           document.getElementById('RichTextEditor').innerHTML = '';
 
-          console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
+          //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
           // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
           criteriaListArray.push(checkbox.value);
           //  checkboxList.push(checkboxArray);  
@@ -4391,7 +4390,7 @@ else
 
 
         var criteriaValue = document.getElementById("RichTextEditor").innerHTML;
-        console.log("criteriaValue : " + criteriaValue);
+        //console.log("criteriaValue : " + criteriaValue);
 
         var question_num = ' ';
         answer_form = criteriaValue.replace(/<div>/g, question_num);
@@ -4402,31 +4401,31 @@ else
 
         answer_form3 = answer_form4.trim();
 
-        console.log("criteriaValue after : " + answer_form2);
+        //console.log("criteriaValue after : " + answer_form2);
 
         words = 'SELECT'
-        console.log("criteriaListArrayHai  :  " + criteriaListArray);
+        //console.log("criteriaListArrayHai  :  " + criteriaListArray);
         for (var i = 0; i < criteriaListArray.length; i++) {
-          console.log("checkboxes x --- > " + i);
-          console.log("checkboxes[x] --- > " + criteriaListArray[i]);
+          //console.log("checkboxes x --- > " + i);
+          //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
 
 
           if (words == 'SELECT') {
-            console.log("main part me aaya");
+            //console.log("main part me aaya");
             words += ' ' + criteriaListArray[i];
           }
           else {
 
-            console.log("Else part me aagya ");
+            //console.log("Else part me aagya ");
             words += ', ' + criteriaListArray[i];
 
           }
         }
-        console.log("dataExtensionName" + dataExtensionName);
+        //console.log("dataExtensionName" + dataExtensionName);
         words += ' ' + 'FROM ' + dataExtensionName;
 
         words += ' WHERE ' + answer_form3;
-        console.log("Words Query : " + words);
+        //console.log("Words Query : " + words);
 
         validateQuery(words);
         /*
@@ -4638,7 +4637,7 @@ else
           '<div class="slds-backdrop slds-backdrop_open"></div>';
         document.getElementById('ThirdModal').innerHTML = joinTwoDivString;
         document.getElementById('ThirdModal').style.display = 'block';
-        console.log('currentClickedDE : ' + currentClickedDE);
+        //console.log('currentClickedDE : ' + currentClickedDE);
 
       }
 
@@ -4699,7 +4698,7 @@ else
       function deleteCriteria(event, target) {
         console.log("event.target.name  :  " + event.target.name);
         var buttoninnerhtml = document.getElementsByClassName(event.target.name);
-        console.log(buttoninnerhtml);
+        //console.log(buttoninnerhtml);
         document.getElementById(event.target.name).innerHTML = '';
 
         /*  for (var i = 0; i < buttoninnerhtml.length; i++) {
