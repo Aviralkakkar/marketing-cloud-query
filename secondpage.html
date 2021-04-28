@@ -4267,33 +4267,7 @@ else
 
 
   <script>
-    // Aviral --> Function to fetch the data extension records.
-<<<<<<< HEAD
-    function deRecordFetch() {
-      console.log("JoinQueryDetails" +  JoinQueryDetails[0].FirstDE.DEName);
-      console.log("JoinQueryDetails extKey " +  JoinQueryDetails[0].FirstDE.DEExtKey);
-      console.log(JSON.stringify(JoinQueryDetails) );
-      
-      var url="/deRecordFetch";
-    fetch(url, {  //provide URL of the processing page
-      method: "POST",
-       headers: {
-        // "Content-Type": "application/x-www-form-urlencoded"
-        "Content-Type": "application/json" 
-       },
-    
-       body: JoinQueryDetails
-      
-    })
-    .then(response => response.text())
-    .then(data => {
-     console.log("DE Record Fetch ke response me agaya ") ;
-   //  var validatequery = JSON.parse(data).validatequery;
-   //  console.log(validatequery) ; 
-    
-    });
 
-=======
     function RunQuery() {
       fetch("/RunQuery", {
         method: "POST",
@@ -4306,7 +4280,6 @@ else
       .then(data => {
         console.log('data : ' + JSON.stringify(data))
       });
->>>>>>> 98f5d9a0d0990a934c9fde82018e7b1b5d39a82b
     }
 
     function CancelPopup() {
