@@ -252,7 +252,12 @@ app.post("/RunQuery", async (reqCall,resCall)=>
           });
           console.log('SourceDEDataResult : ' + SourceDEDataResult);
           for (var key1 in SourceDEDataResult) {
-            DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]); 
+            if(DERecordMap[key]) {
+              DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]);
+            }
+            else {
+              DERecordMap[key] = [SourceDEDataResult[key1].Properties[0]];
+            }
           }
 
           resolve(DERecordMap);
