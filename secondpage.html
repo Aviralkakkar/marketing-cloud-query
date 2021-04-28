@@ -4294,7 +4294,7 @@ else
       //code faizal
       dataExtensionNameMapFinal[dataExtensionName] = {
         "DESelectedFields" : [],
-        "DEExtKey" : dataExtensionId,
+        "DEExtKey" : dataExtensionNameMap[dataExtensionName].DEExtKey,
         "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
       }
       //code khatam
@@ -4721,7 +4721,7 @@ else
                     }
                   });
                   console.log('JoinQueryDetails : ' + JoinQueryDetails);
-                  
+
                   var tempQueryList = strQuery.split("] FROM [");
                   //console.log(tempQueryList);
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
