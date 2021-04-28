@@ -1751,6 +1751,8 @@
     var num = 0;
     var dataExtensionNameMap = {};
     var dataExtensionNameMapFinal = {};
+    var JoinQueryDetails = [];
+
     function onloadofBody() {
       fetch('/fields', {  //provide URL of the processing page
         method: "POST",
@@ -4151,7 +4153,7 @@ else
       ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
       <p id="demo"></p>
       <!-- <button onclick="validateQuery()"> Validate Query </button>  -->
-
+      <button class="slds-float_right" onclick="deRecordFetch()"> RUN </button>
       <!-- Code Faizal -->
       <div id="RelationshipDiv"> </div>
       <!-- Code Khatam -->
@@ -4265,6 +4267,33 @@ else
 
 
   <script>
+    // Aviral --> Function to fetch the data extension records.
+    function deRecordFetch() {
+      console.log("JoinQueryDetails" +  JoinQueryDetails[0].FirstDE.DEName);
+      console.log("JoinQueryDetails extKey " +  JoinQueryDetails[0].FirstDE.DEExtKey);
+      console.log(JSON.stringify(JoinQueryDetails) );
+      
+      var url="/deRecordFetch";
+    fetch(url, {  //provide URL of the processing page
+      method: "POST",
+       headers: {
+        // "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded" 
+       },
+    
+       body: ""
+      
+    })
+    .then(response => response.text())
+    .then(data => {
+     console.log("DE Record Fetch ke response me agaya ") ;
+     var validatequery = JSON.parse(data).validatequery;
+     console.log(validatequery) ; 
+    
+    });
+
+    }
+
     function CancelPopup() {
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
@@ -4659,7 +4688,7 @@ else
       document.getElementById('ThirdModal').style.display = 'none';
     }
 
-    var JoinQueryDetails;
+    
     var strQuery = '';
     function SaveJoinQuery() {
       if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
@@ -4686,7 +4715,7 @@ else
                       "JoinField" : document.getElementById('SecondDEField').value
                     }
                   }];
-                  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+              //    console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
                   
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
@@ -4720,7 +4749,7 @@ else
                       "JoinField" : document.getElementById('SecondDEField').value
                     }
                   });
-                  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+                 // console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
 
                   var tempQueryList = strQuery.split("] FROM [");
                   //console.log(tempQueryList);
