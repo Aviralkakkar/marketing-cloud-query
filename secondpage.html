@@ -4271,12 +4271,29 @@ else
     function RunQuery() {
       console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDetails));
 
+      /*$.ajax
+            ({
+                url: '/RunQuery',
+                data: {
+                    'reqForDEList': 'True'
+                },
+                type: "POST",
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (data) {
+                    console.log(data)
+                }
+            })*/
+
       fetch("/RunQuery", {
         method: "POST",
         headers: {
           "Content-Type": "application/json" 
         },
-        body: JoinQueryDetails
+        body: {
+          'reqForDEList': JoinQueryDetails
+        }
       })
       .then(response => response.text())
       .then(data => {
