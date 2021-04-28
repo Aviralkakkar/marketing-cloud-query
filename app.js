@@ -178,6 +178,7 @@ app.post("/secondpage", async function (req, res) {
         resCall.json({favorites : favorites});
    });
 });
+
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
   var JoinQueryDetails = reqCall.body;
