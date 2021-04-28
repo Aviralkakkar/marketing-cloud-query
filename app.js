@@ -178,11 +178,64 @@ app.post("/secondpage", async function (req, res) {
         resCall.json({favorites : favorites});
    });
 });
-app.post("/deRecordFetch", async (reqCall,resCall)=>
-   {
-    
+app.post("/RunQuery", async (reqCall,resCall)=>
+{
+  var JoinQueryDetails = reqCall.body;
+  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
   
- // resCall.json({validatequery : fal});
+  function DERecordFetch() {
+    var DEDataBody = '';
+      DEDataBody =  '<?xml version="1.0" encoding="UTF-8"?>' +
+                    '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">' +
+                      '<s:Header>' +
+                        '<a:Action s:mustUnderstand="1">Retrieve</a:Action>' +
+                        '<a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>' +
+                        '<a:ReplyTo>' +
+                          '<a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>' +
+                        '</a:ReplyTo>' +
+                        '<a:To s:mustUnderstand="1">' + SourceSoapURL + 'Service.asmx' + '</a:To>' +
+                        '<fueloauth xmlns="http://exacttarget.com">' + SourceAccessToken + '</fueloauth>' +
+                      '</s:Header>' +
+                      '<s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">' +
+                        '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
+                          '<RetrieveRequest>' +
+                            '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
+      for (var OneDEJSON of JoinQueryDetails) {
+        DEDataBody = DEDataBody + '<Properties>' + DEListMap[key].DEFieldMap[key1]["FieldName"] + '</Properties>';
+      }
+      DEDataBody = DEDataBody + '<Options>' +
+                                  '<BatchSize>2500</BatchSize>' +
+                                '</Options>' +
+                                '</RetrieveRequest>' +
+                              '</RetrieveRequestMsg>' +
+                            '</s:Body>' +
+                          '</s:Envelope>';
+
+      var DEDataOptions = {
+        'method': 'POST',
+        'url': SourceSoapURL + 'Service.asmx',
+        'headers': {
+          'Content-Type': 'text/xml',
+          'SoapAction': 'Retrieve',
+          'Authorization': 'Bearer ' + SourceAccessToken
+        },
+        body: DEDataBody
+      };
+
+      request(DEDataOptions, async function (error, response) {
+        if (error) throw new Error(error);
+
+        var DEDataRequestId;
+        SourceDEDataResult = response.body;
+        xml2jsParser.parseString(SourceDEDataResult, function (err, result) {
+          SourceDEDataResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+          DEDataRequestId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['RequestID'][0]
+        });
+
+        resolve(DEListMap[key].DEDataMap);
+      });
+  }
+  
 });
 
 app.post("/validatequery", async (reqCall,resCall)=>
