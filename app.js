@@ -191,11 +191,10 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   }
   for (var key of Array.from(DESet)) {
     console.log('key : ' + key)
-    DERecordMap = await DERecordFetch(key);
-    console.log('--------------------------------------------');
-    console.log('DERecordMap : ' + JSON.stringify(DERecordMap[key]));
+    await DERecordFetch(key);
   }
-  
+  console.log('--------------------------------------------');
+  console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
 
 
 
@@ -227,7 +226,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
                                 '</RetrieveRequestMsg>' +
                               '</s:Body>' +
                             '</s:Envelope>';
-        console.log('body : ' + DEDataBody);
+        
 
         var DEDataOptions = {
           'method': 'POST',
