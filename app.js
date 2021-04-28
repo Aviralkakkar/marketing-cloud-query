@@ -190,10 +190,12 @@ app.post("/RunQuery", async (reqCall,resCall)=>
     DESet.add(key);
   }
   for (var key of Array.from(DESet)) {
+    console.log('key : ' + key)
     DERecordMap = await DERecordFetch(key);
+    console.log('--------------------------------------------');
+    console.log('DERecordMap : ' + JSON.stringify(DERecordMap[key]));
   }
-  console.log('--------------------------------------------');
-  console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
+  
 
 
 
@@ -215,7 +217,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
                           '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
                             '<RetrieveRequest>' +
                               '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
-        for (var FieldName of JoinQueryDESelectedFields[key]) {
+        for (var FieldName in JoinQueryDESelectedFields[key]) {
           DEDataBody = DEDataBody + '<Properties>' + FieldName + '</Properties>';
         }
         DEDataBody = DEDataBody + '<Options>' +
@@ -225,6 +227,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
                                 '</RetrieveRequestMsg>' +
                               '</s:Body>' +
                             '</s:Envelope>';
+        console.log('body : ' + DEDataBody);
 
         var DEDataOptions = {
           'method': 'POST',
