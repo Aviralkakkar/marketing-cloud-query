@@ -250,14 +250,21 @@ app.post("/RunQuery", async (reqCall,resCall)=>
             //DEDataRequestId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['RequestID'][0]
           });
           console.log('SourceDEDataResult : ' + SourceDEDataResult);
-          for (var key1 in SourceDEDataResult) {
-            if(DERecordMap[key]) {
-              DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]);
-            }
-            else {
-              DERecordMap[key] = [SourceDEDataResult[key1].Properties[0]];
+
+          if(SourceDEDataResult) {
+            for (var key1 in SourceDEDataResult) {
+              if(DERecordMap[key]) {
+                DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]);
+              }
+              else {
+                DERecordMap[key] = [SourceDEDataResult[key1].Properties[0]];
+              }
             }
           }
+          else {
+            DERecordMap[key] = [];
+          }
+
 
           resolve(DERecordMap);
         });

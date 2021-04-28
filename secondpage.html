@@ -4284,7 +4284,18 @@ else
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
                 success: function (data) {
-                    console.log(data)
+                    //console.log(data);
+                    if(data) {
+                      for(var key1 in data) {
+                        if(data[key1].length != 0) {
+                          for(var key2 in data[key1]) {
+                            for(var key3 in data[key1][key2]["Property"]) {
+                              console.log('Field : ' + data[key1][key2]["Property"][key3]["Name"][0] + ' , Value : ' + data[key1][key2]["Property"][key3]["Value"][0]);
+                            }
+                          }
+                        }
+                      }
+                    }
                 }
             })
     }
