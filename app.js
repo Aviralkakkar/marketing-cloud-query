@@ -218,7 +218,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
                             '<RetrieveRequest>' +
                               '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
         for (var FieldName in JoinQueryDESelectedFields[key]) {
-          DEDataBody = DEDataBody + '<Properties>' + FieldName + '</Properties>';
+          DEDataBody = DEDataBody + '<Properties>' + JoinQueryDESelectedFields[key][FieldName] + '</Properties>';
         }
         DEDataBody = DEDataBody + '<Options>' +
                                     '<BatchSize>2500</BatchSize>' +
