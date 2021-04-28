@@ -182,7 +182,7 @@ app.post("/secondpage", async function (req, res) {
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
   var JoinQueryDetails = reqCall.body;
-  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+  console.log('JoinQueryDetails : ' + JSON.stringify(reqCall.body));
   
   function DERecordFetch() {
     var DEDataBody = '';

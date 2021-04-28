@@ -4810,6 +4810,7 @@ else
       else {
         console.log('Some Fields are Missing');
       }
+      document.getElementById('ThirdModal').style.display = 'none';
       function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
