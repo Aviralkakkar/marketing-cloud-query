@@ -1752,6 +1752,7 @@
     var dataExtensionNameMap = {};
     var dataExtensionNameMapFinal = {};
     var JoinQueryDetails = {};
+    var JoinQueryDESelectedFields = {};
 
     function onloadofBody() {
       fetch('/fields', {  //provide URL of the processing page
@@ -4275,7 +4276,8 @@ else
             ({
                 url: '/RunQuery',
                 data: {
-                    'RunQueryDetails': JoinQueryDetails
+                  'RunQueryDetails': JoinQueryDetails,
+                  'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
                 },
                 type: "POST",
                 headers: {
@@ -4715,6 +4717,8 @@ else
                     "DEForJoin" : {}
                   }
 
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields;
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields] = dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields;
 
                   JoinQueryDetails["PrimaryDE"][dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = {
                     "DEName" : currentClickedDEGlobal,
@@ -4769,6 +4773,10 @@ else
                       "JoinField" : document.getElementById('SecondDEField').value
                     }
                   });*/
+
+
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields;
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields] = dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields;
 
 
 
