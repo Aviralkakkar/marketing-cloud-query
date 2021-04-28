@@ -4297,13 +4297,12 @@ else
                               
                               //console.log('Field : ' + data[key1][key2]["Property"][key3]["Name"][0] + ' , Value : ' + data[key1][key2]["Property"][key3]["Value"][0]);
                             }
-                            if(DeRecordJSON[key1]) {
-                              DeRecordJSON[key1].push(temp);
-                            }
-                            else {
-                              DeRecordJSON[key1] = [temp];
-                            }
-                            
+                          }
+                          if(DeRecordJSON[key1]) {
+                            DeRecordJSON[key1].push(temp);
+                          }
+                          else {
+                            DeRecordJSON[key1] = [temp];
                           }
                         }
                       }
