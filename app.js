@@ -177,7 +177,7 @@ app.post("/secondpage", async function (req, res) {
         resCall.json({favorites : favorites});
    });
 });
-app.post("/deRecordFetch", async (reqCall,resCall)=>
+app.post("/deRecordFetch",  (reqCall,resCall)=>
    {
     
    console.log(reqCall);
