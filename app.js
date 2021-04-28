@@ -179,11 +179,12 @@ app.post("/secondpage", async function (req, res) {
    });
 });
 
-app.post("/RunQuery", async (reqCall,resCall)=>
+app.post("/RunQuery", (reqCall,resCall)=>
 {
-  console.log("Yeh hai Join Query Details --> " + JSON.stringify(reqCall)); 
   var JoinQueryDetails = reqCall.body.JoinQueryDetails;
   console.log('JoinQueryDetails : ' + reqCall.body.JoinQueryDetails);
+  console.log('JoinQueryDetails : ' + reqCall);
+
 
 
 
