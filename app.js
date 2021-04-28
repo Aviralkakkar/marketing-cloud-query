@@ -181,9 +181,9 @@ app.post("/secondpage", async function (req, res) {
 
 app.post("/RunQuery", (reqCall,resCall)=>
 {
-  var JoinQueryDetails = reqCall.body.JoinQueryDetails;
-  console.log('JoinQueryDetails : ' + reqCall.body.JoinQueryDetails);
-  console.log('JoinQueryDetails : ' + reqCall);
+  var JoinQueryDetails = reqCall.body;
+  console.log('JoinQueryDetails : ' + reqCall.body);
+  console.log('JoinQueryDetails : ' + JoinQueryDetails);
 
 
 
