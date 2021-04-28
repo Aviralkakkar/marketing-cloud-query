@@ -183,7 +183,7 @@ app.post("/RunQuery", (reqCall,resCall)=>
 {
   var JoinQueryDetails = reqCall.body;
   console.log('JoinQueryDetails : ' + reqCall.body);
-  console.log('JoinQueryDetails : ' + JoinQueryDetails);
+  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
 
 
 
