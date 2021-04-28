@@ -193,7 +193,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
     await DERecordFetch(key);
   }
   console.log('--------------------------------------------');
-  console.log('DERecordMap : ' + DERecordMap);
+  console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
 
   function DERecordFetch(key) {
     return new Promise(async function (resolve, reject) {
