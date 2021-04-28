@@ -4269,8 +4269,8 @@ else
   <script>
     // Aviral --> Function to fetch the data extension records.
     function deRecordFetch() {
-      console.log("JoinQueryDetails" +  JoinQueryDetails.FirstDE.DEName);
-      console.log("JoinQueryDetails extKey " +  JoinQueryDetails.FirstDE.DEExtKey);
+      console.log("JoinQueryDetails" +  JoinQueryDetails[0].FirstDE.DEName);
+      console.log("JoinQueryDetails extKey " +  JoinQueryDetails[0].FirstDE.DEExtKey);
       console.log(JSON.stringify(JoinQueryDetails) );
       
       var url="/deRecordFetch";
