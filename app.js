@@ -180,7 +180,8 @@ app.post("/secondpage", async function (req, res) {
 app.post("/deRecordFetch", async (reqCall,resCall)=>
    {
     
-  
+   console.log(reqCall);
+   console.log(JSON.stringify(reqCall));
  // resCall.json({validatequery : fal});
 });
 

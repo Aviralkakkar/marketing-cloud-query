@@ -4278,17 +4278,17 @@ else
       method: "POST",
        headers: {
         // "Content-Type": "application/x-www-form-urlencoded"
-        "Content-Type": "application/x-www-form-urlencoded" 
+        "Content-Type": "application/json" 
        },
     
-       body: ""
+       body: JoinQueryDetails 
       
     })
     .then(response => response.text())
     .then(data => {
      console.log("DE Record Fetch ke response me agaya ") ;
-     var validatequery = JSON.parse(data).validatequery;
-     console.log(validatequery) ; 
+   //  var validatequery = JSON.parse(data).validatequery;
+   //  console.log(validatequery) ; 
     
     });
 
