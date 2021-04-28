@@ -4269,10 +4269,11 @@ else
   <script>
 
     function RunQuery() {
+      console.log("Join Wuery Details ----> " + JoinQueryDetails) ;
       fetch("/RunQuery", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded" 
+          "Content-Type": "application/json" 
         },
         body: JSON.stringify(JoinQueryDetails)
       })
@@ -4730,7 +4731,7 @@ else
                     "SecondDESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
                     "SecondDEJoinField" : document.getElementById('SecondDEField').value
                   };
-                  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+      //            console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
                   
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
