@@ -4269,6 +4269,7 @@ else
 
   <script>
 
+    var DeRecordJSON = {};
     function RunQuery() {
       console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDetails));
 
@@ -4285,18 +4286,29 @@ else
                 },
                 success: function (data) {
                     //console.log(data);
+                    var temp = {};
                     if(data) {
                       for(var key1 in data) {
                         console.log('key1 : ---------------------- ' + key1);
                         if(data[key1].length != 0) {
                           for(var key2 in data[key1]) {
                             for(var key3 in data[key1][key2]["Property"]) {
-                              console.log('Field : ' + data[key1][key2]["Property"][key3]["Name"][0] + ' , Value : ' + data[key1][key2]["Property"][key3]["Value"][0]);
+                              temp[data[key1][key2]["Property"][key3]["Name"][0]] = data[key1][key2]["Property"][key3]["Value"][0];
+                              
+                              //console.log('Field : ' + data[key1][key2]["Property"][key3]["Name"][0] + ' , Value : ' + data[key1][key2]["Property"][key3]["Value"][0]);
                             }
+                            if(DeRecordJSON[key1]) {
+                              DeRecordJSON[key1].push(temp);
+                            }
+                            else {
+                              DeRecordJSON[key1] = [temp];
+                            }
+                            
                           }
                         }
                       }
                     }
+                    console.log("final : " + DeRecordJSON)
                 }
             })
     }
