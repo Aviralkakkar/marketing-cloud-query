@@ -236,8 +236,8 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         resolve(DEListMap[key].DEDataMap);
       });
   }
-  
-});
+})
+
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
