@@ -183,7 +183,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 {
   var JoinQueryDetails = reqCall.body;
   console.log('JoinQueryDetails : ' + JSON.stringify(reqCall.body));
-  
+  console.log('JoinQueryDetails : ' + reqCall.body);
   function DERecordFetch() {
     var DEDataBody = '';
       DEDataBody =  '<?xml version="1.0" encoding="UTF-8"?>' +
