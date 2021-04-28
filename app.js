@@ -190,14 +190,14 @@ app.post("/RunQuery", async (reqCall,resCall)=>
     DESet.add(key);
   }
   for (var key of Array.from(DESet)) {
-    await DERecordFetch(key);
+    DERecordMap = await DERecordFetch(key);
   }
   console.log('--------------------------------------------');
   console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
 
 
 
-  res.send(DERecordMap);
+  resCall.send(DERecordMap);
   function DERecordFetch(key) {
     return new Promise(async function (resolve, reject) {
       var DEDataBody = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -242,15 +242,17 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
           //var DEDataRequestId;
           var SourceDEDataResult = response.body;
+          console.log('response.body : ' + response.body);
           xml2jsParser.parseString(SourceDEDataResult, function (err, result) {
             SourceDEDataResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             //DEDataRequestId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['RequestID'][0]
           });
+          console.log('SourceDEDataResult : ' + SourceDEDataResult);
           for (var key1 in SourceDEDataResult) {
             DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]); 
           }
 
-          resolve(DERecordMap[key]);
+          resolve(DERecordMap);
         });
     })
   }
