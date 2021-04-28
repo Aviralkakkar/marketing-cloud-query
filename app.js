@@ -177,6 +177,12 @@ app.post("/secondpage", async function (req, res) {
         resCall.json({favorites : favorites});
    });
 });
+app.post("/deRecordFetch", async (reqCall,resCall)=>
+   {
+    
+  
+ // resCall.json({validatequery : fal});
+});
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
