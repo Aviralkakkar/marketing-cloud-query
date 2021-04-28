@@ -195,6 +195,9 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   console.log('--------------------------------------------');
   console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
 
+
+
+  res.send(DERecordMap);
   function DERecordFetch(key) {
     return new Promise(async function (resolve, reject) {
       var DEDataBody = '<?xml version="1.0" encoding="UTF-8"?>' +
