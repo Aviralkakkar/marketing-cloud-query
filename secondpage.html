@@ -4269,13 +4269,14 @@ else
   <script>
 
     function RunQuery() {
-      console.log("Join Wuery Details ----> " + JoinQueryDetails) ;
+      console.log("Join Query Details ----> " + JoinQueryDetails) ;
+      console.log("Join Query Details ----> " + JoinQueryDetails[0].DEName) ;
       fetch("/RunQuery", {
         method: "POST",
         headers: {
           "Content-Type": "application/json" 
         },
-        body: JSON.stringify(JoinQueryDetails)
+        body: JoinQueryDetails
       })
       .then(response => response.text())
       .then(data => {
