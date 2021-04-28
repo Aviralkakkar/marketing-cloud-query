@@ -4271,11 +4271,11 @@ else
     function RunQuery() {
       console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDetails));
 
-      /*$.ajax
+      $.ajax
             ({
                 url: '/RunQuery',
                 data: {
-                    'reqForDEList': 'True'
+                    'RunQueryDetails': JoinQueryDetails
                 },
                 type: "POST",
                 headers: {
@@ -4284,21 +4284,7 @@ else
                 success: function (data) {
                     console.log(data)
                 }
-            })*/
-
-      fetch("/RunQuery", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json" 
-        },
-        body: {
-          'reqForDEList': JoinQueryDetails
-        }
-      })
-      .then(response => response.text())
-      .then(data => {
-        console.log('data : ' + JSON.stringify(data))
-      });
+            })
     }
 
     function CancelPopup() {
