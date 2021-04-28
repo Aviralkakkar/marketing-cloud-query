@@ -4159,8 +4159,6 @@ else
 
     </div>
 
-
-
     <div class="slds-float_left" style="width:20%;height:100%;">
       <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed"
         aria-hidden="false">
@@ -4181,7 +4179,6 @@ else
         </div>
       </div>
     </div>
-
 
     <div style="display: none; width: 160px;" id="RelationPopup">
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -4208,7 +4205,6 @@ else
       </section>
       <div class="slds-backdrop slds-backdrop_open"></div>
     </div>
-
 
     <div style="display: none;width: 160px;" id="SecondModal">
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
@@ -4262,550 +4258,547 @@ else
 
     <!-- Code Faizal -->
     <div style="display: none;width: 160px;" id="ThirdModal">
-
     </div>
     <!-- Code Khatam -->
+  </div>
 
 
 
+  <script>
+    function CancelPopup() {
+      document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('ulList').innerHTML = '';
+      document.getElementById('RelationPopup').style.display = 'none';
 
-    <script>
-      function CancelPopup() {
-        document.getElementById('grid-1-de').innerHTML = '';
-        document.getElementById('ulList').innerHTML = '';
-        document.getElementById('RelationPopup').style.display = 'none';
+      document.getElementById('SecondModal').style.display = 'none';
+      document.getElementById('RichTextEditor').innerHTML = '';
+      //document.getElementById('filter-div').innerHTML='';
 
-        document.getElementById('SecondModal').style.display = 'none';
+    }
+
+    function OpenWhere() {
+      document.getElementById('SecondModal').style.display = 'block';
+    }
+
+    function DetailsSave() {
+      document.getElementById('RelationPopup').style.display = 'none';
+      document.getElementById('SecondModal').style.display = 'none';
+      var checkboxArray = {};
+      var criteriaList = {}
+      var checkboxList = [];
+      var criteriaListArray = [];
+      var fieldsListForRelationDiv = '';
+      //console.log(" save me aaya ");
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+      //code faizal
+      dataExtensionNameMapFinal[dataExtensionName] = {
+        "DESelectedFields" : [],
+        "DEExtKey" : dataExtensionId,
+        "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
+      }
+      //code khatam
+
+      for (var checkbox of checkboxes) {
+        //code faizal
+        if(dataExtensionName in dataExtensionNameMap) {
+          dataExtensionNameMapFinal[dataExtensionName].DESelectedFields.push(checkbox.value);
+          fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
+        }
+        //code khatam
+
         document.getElementById('RichTextEditor').innerHTML = '';
-        //document.getElementById('filter-div').innerHTML='';
 
+        //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
+        // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
+        criteriaListArray.push(checkbox.value);
+        //  checkboxList.push(checkboxArray);  
       }
 
-      function OpenWhere() {
-        document.getElementById('SecondModal').style.display = 'block';
-      }
 
-      function DetailsSave() {
-        document.getElementById('RelationPopup').style.display = 'none';
-        document.getElementById('SecondModal').style.display = 'none';
-        var checkboxArray = {};
-        var criteriaList = {}
-        var checkboxList = [];
-        var criteriaListArray = [];
-        var fieldsListForRelationDiv = '';
-        //console.log(" save me aaya ");
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      //code faizal
+      var relationDivString = '<style>' +
+        '.mydiv {' +
+        'position: absolute;' +
+        'z-index: 9;' +
+        'background-color: #f1f1f1;' +
+        'text-align: center;' +
+        'border: 1px solid #d3d3d3;' +
+        '}' +
+        '.mydivheader {' +
+        'padding: 10px;' +
+        'cursor: move;' +
+        'z-index: 10;' +
+        '}' +
+        '.scrollableClass {' +
+        'background-color: lightblue;' +
+        'height: 150px;' +
+        'overflow: auto;' +
+        '}' +
+        '</style>' +
+        '<div class="graph-object-figure attribute-set-figure expanded active mydiv" style="left: 140px; top: 36px;">' +
+        '<div class="graph-object-menu as-actions" id="' + dataExtensionName + '" onclick="joinTwoDiv(this.id)">' +
+        '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
+        '</div>' +
+        '<div class="graph-object-primary attribute-set">' +
+        '<div class="graph-object-header as-actions">' +
+        '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
+        '<span title="' + dataExtensionName + '">' + dataExtensionName + '</span>' +
+        '</div>' +
+        '<div class="as-action as-edit" title="Edit Properties">' +
+        '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
+        '<use  xlink:href="C:\\Users\\HP\\Downloads\\salesforce-lightning-design-system-2.13.7\\assets\\icons\\utility-sprite\\svg\\symbols.svg#edit"></use>' +
+        '</svg>' +
+        '</div>' +
+        '</div>' +
+        '<div class="graph-object-data-sources">   ' +
+        '<div class="icons">' +
+        '<ul class="horizontal-list">' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '<div class="graph-object-body">' +
+        '<ul class="attributes scrollableClass">';
+      relationDivString += fieldsListForRelationDiv;
+      relationDivString += '</ul>' +
+        '</div>' +
+        '<div class="graph-object-footer">' +
+        '<!--Add footer-->' +
+        '<div class="graph-object-title" data-original-title="" title="">' +
+        '<span onclick="OpenWhere()" title="' + dataExtensionName + '" style="color:#2168a7;">WHERE </span>' +
+        '<ul class="attributes_second">' +
+        '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
 
-        //code faizal
-        dataExtensionNameMapFinal[dataExtensionName] = {
-          "DESelectedFields" : [],
-          "DEExtKey" : dataExtensionId,
-          "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
-        }
-        //code khatam
-
-        for (var checkbox of checkboxes) {
-          //code faizal
-          if(dataExtensionName in dataExtensionNameMap) {
-            dataExtensionNameMapFinal[dataExtensionName].DESelectedFields.push(checkbox.value);
-            fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
-          }
-          //code khatam
-
-          document.getElementById('RichTextEditor').innerHTML = '';
-
-          //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
-          // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
-          criteriaListArray.push(checkbox.value);
-          //  checkboxList.push(checkboxArray);  
-        }
-
-
-        //code faizal
-        var relationDivString = '<style>' +
-          '.mydiv {' +
-          'position: absolute;' +
-          'z-index: 9;' +
-          'background-color: #f1f1f1;' +
-          'text-align: center;' +
-          'border: 1px solid #d3d3d3;' +
-          '}' +
-          '.mydivheader {' +
-          'padding: 10px;' +
-          'cursor: move;' +
-          'z-index: 10;' +
-          '}' +
-          '.scrollableClass {' +
-          'background-color: lightblue;' +
-          'height: 150px;' +
-          'overflow: auto;' +
-          '}' +
-          '</style>' +
-          '<div class="graph-object-figure attribute-set-figure expanded active mydiv" style="left: 140px; top: 36px;">' +
-          '<div class="graph-object-menu as-actions" id="' + dataExtensionName + '" onclick="joinTwoDiv(this.id)">' +
-          '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
-          '</div>' +
-          '<div class="graph-object-primary attribute-set">' +
-          '<div class="graph-object-header as-actions">' +
-          '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
-          '<span title="' + dataExtensionName + '">' + dataExtensionName + '</span>' +
-          '</div>' +
-          '<div class="as-action as-edit" title="Edit Properties">' +
-          '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
-          '<use  xlink:href="C:\\Users\\HP\\Downloads\\salesforce-lightning-design-system-2.13.7\\assets\\icons\\utility-sprite\\svg\\symbols.svg#edit"></use>' +
-          '</svg>' +
-          '</div>' +
-          '</div>' +
-          '<div class="graph-object-data-sources">   ' +
-          '<div class="icons">' +
-          '<ul class="horizontal-list">' +
-          '</ul>' +
-          '</div>' +
-          '</div>' +
-          '<div class="graph-object-body">' +
-          '<ul class="attributes scrollableClass">';
-        relationDivString += fieldsListForRelationDiv;
-        relationDivString += '</ul>' +
-          '</div>' +
-          '<div class="graph-object-footer">' +
-          '<!--Add footer-->' +
-          '<div class="graph-object-title" data-original-title="" title="">' +
-          '<span onclick="OpenWhere()" title="' + dataExtensionName + '" style="color:#2168a7;">WHERE </span>' +
-          '<ul class="attributes_second">' +
-          '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
-          '</ul>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>';
-
-        document.getElementById("RelationshipDiv").innerHTML += relationDivString;
-        if (document.getElementsByClassName("mydiv")) {
-          for (var classEle in document.getElementsByClassName("mydiv")) {
-            dragElement(document.getElementsByClassName("mydiv")[classEle]);
-          }
-        }
-        //code khatam
-
-
-
-
-
-
-
-
-        var criteriaValue = document.getElementById("RichTextEditor").innerHTML;
-        //console.log("criteriaValue : " + criteriaValue);
-
-        var question_num = ' ';
-        answer_form = criteriaValue.replace(/<div>/g, question_num);
-        answer_form1 = answer_form.replace(/<br>/g, question_num);
-
-        answer_form2 = answer_form1.replace(/<\/div>/g, question_num);
-        answer_form4 = answer_form2.replace(/&nbsp;/g, question_num);
-
-        answer_form3 = answer_form4.trim();
-
-        //console.log("criteriaValue after : " + answer_form2);
-
-        words = 'SELECT'
-        //console.log("criteriaListArrayHai  :  " + criteriaListArray);
-        for (var i = 0; i < criteriaListArray.length; i++) {
-          //console.log("checkboxes x --- > " + i);
-          //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
-
-
-          if (words == 'SELECT') {
-            //console.log("main part me aaya");
-            words += ' ' + criteriaListArray[i];
-          }
-          else {
-
-            //console.log("Else part me aagya ");
-            words += ', ' + criteriaListArray[i];
-
-          }
-        }
-        //console.log("dataExtensionName" + dataExtensionName);
-        words += ' ' + 'FROM ' + dataExtensionName;
-
-        words += ' WHERE ' + answer_form3;
-        //console.log("Words Query : " + words);
-
-        validateQuery(words);
-        /*
-    
-        
-    
-      //  for( i=0;i<parsedDragData2Array.length;i++)
-      //  {
-    
-        
-       // console.log("Checkbox Array : "  + checkboxArray);
-       // console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
-    
-      //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
-      //  var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
-    
-        //  console.log( "fieldClassList :  " + fieldClassList);
-           
-        //  console.log(fieldClassList.item(0).innerHTML );
-        
-      //  console.log(fieldClassList.item(0).innerHTML + "OK");
-      //  var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
-      //  console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
-      //  var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
-      //  console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
-        /*  if( fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null )
-           {
-           console.log("loop me toh aarha h ") ;
-           console.log(fieldClassList);
-           console.log(fieldClassList2);
-           console.log(fieldClassList3);
-           console.log(fieldClassList.item(0));
-        criteriaList= {
-          "FieldName": fieldClassList.item(0).innerHTML,
-          "Criteria":fieldClassList2.item(0).value,
-          "Value": fieldClassList3.item(0).value
-        };
-        criteriaListArray.push(criteriaList);
-      } */
-        //}
-        //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
-        //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
-        //console.log("criteriaListArray   : " + criteriaListArray); 
-
-      }
-
-      function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById(elmnt.id + "header")) {
-          /* if present, the header is where you move the DIV from:*/
-          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-        } else {
-          /* otherwise, move the DIV from anywhere inside the DIV:*/
-          elmnt.onmousedown = dragMouseDown;
-        }
-
-        function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          // get the mouse cursor position at startup:
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          // call a function whenever the cursor moves:
-          document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          // calculate the new cursor position:
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          // set the element's new position:
-          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-          /* stop moving when mouse button is released:*/
-          document.onmouseup = null;
-          document.onmousemove = null;
+      document.getElementById("RelationshipDiv").innerHTML += relationDivString;
+      if (document.getElementsByClassName("mydiv")) {
+        for (var classEle in document.getElementsByClassName("mydiv")) {
+          dragElement(document.getElementsByClassName("mydiv")[classEle]);
         }
       }
-
-      var currentClickedDEGlobal;
-      var joinImage;
-      function joinTwoDiv(currentClickedDE) {
-        currentClickedDEGlobal = currentClickedDE;
-        var joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
-          '<div class="slds-modal__container">' +
-          '<header class="slds-modal__header">' +
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
-          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
-          '</svg>' +
-          '<span class="slds-assistive-text">Close</span>' +
-          '</button>' +
-          '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
-          '</header>' +
-          '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
-
-          '<div >' +
-          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;>' +
-          '</div>' +
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-          '<div class="slds-form-element__control">' +
-          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
-          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-          '<option value="Left Outer Join">Left Outer Join</option>' +
-          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-          '<option value="Right Outer Join">Right Outer Join</option>' +
-          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-          '<option value="Inner Join">Inner Join</option>' +
-          '<option value="Full Outer Join">Full Outer Join</option>' +
-          '<option value="Outer Join">Outer Join</option>' +
-          '<option value="Self Join">Self Join</option>' +
-          '</select>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
-          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>';
-        for (var DEName in dataExtensionNameMapFinal) {
-          if (currentClickedDE != DEName) {
-            joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
-          }
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
-          '</div>' +
+      //code khatam
 
 
 
 
 
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
-          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-          '<option value="">Select…</option>';
-        
-        for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
-          joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '</option>';
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
-          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-          '<option value="">Select…</option>' +
-          '</select>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
-          '</div>' +
 
 
-          '</div>' +
-          '<footer class="slds-modal__footer">' +
-          '<button class="slds-button slds-button_neutral slds-float_left" onclick="">Previous</button>' +
-          '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
-          '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
-          '</footer>' +
-          '</div>' +
-          '</section>' +
-          '<div class="slds-backdrop slds-backdrop_open"></div>';
-        document.getElementById('ThirdModal').innerHTML = joinTwoDivString;
-        document.getElementById('ThirdModal').style.display = 'block';
-        //console.log('currentClickedDE : ' + currentClickedDE);
 
-      }
+      var criteriaValue = document.getElementById("RichTextEditor").innerHTML;
+      //console.log("criteriaValue : " + criteriaValue);
 
-      function selectJoinChange() {
-        document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
-      }
+      var question_num = ' ';
+      answer_form = criteriaValue.replace(/<div>/g, question_num);
+      answer_form1 = answer_form.replace(/<br>/g, question_num);
 
-      function SecondDEChange() {
-        if (document.getElementById('select-02').value in dataExtensionNameMapFinal) {
-          document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
-          for (var DEField in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
-            document.getElementById('SecondDEField').innerHTML += '<option value="' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '">' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '</option>';
-          }
+      answer_form2 = answer_form1.replace(/<\/div>/g, question_num);
+      answer_form4 = answer_form2.replace(/&nbsp;/g, question_num);
+
+      answer_form3 = answer_form4.trim();
+
+      //console.log("criteriaValue after : " + answer_form2);
+
+      words = 'SELECT'
+      //console.log("criteriaListArrayHai  :  " + criteriaListArray);
+      for (var i = 0; i < criteriaListArray.length; i++) {
+        //console.log("checkboxes x --- > " + i);
+        //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
+
+
+        if (words == 'SELECT') {
+          //console.log("main part me aaya");
+          words += ' ' + criteriaListArray[i];
         }
         else {
-          document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+
+          //console.log("Else part me aagya ");
+          words += ', ' + criteriaListArray[i];
+
         }
       }
+      //console.log("dataExtensionName" + dataExtensionName);
+      words += ' ' + 'FROM ' + dataExtensionName;
 
-      function CancelThirdModal() {
-        document.getElementById('ThirdModal').style.display = 'none';
+      words += ' WHERE ' + answer_form3;
+      //console.log("Words Query : " + words);
+
+      validateQuery(words);
+      /*
+  
+      
+  
+    //  for( i=0;i<parsedDragData2Array.length;i++)
+    //  {
+  
+      
+      // console.log("Checkbox Array : "  + checkboxArray);
+      // console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
+  
+    //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
+    //  var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
+  
+      //  console.log( "fieldClassList :  " + fieldClassList);
+          
+      //  console.log(fieldClassList.item(0).innerHTML );
+      
+    //  console.log(fieldClassList.item(0).innerHTML + "OK");
+    //  var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
+    //  console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
+    //  var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
+    //  console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
+      /*  if( fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null )
+          {
+          console.log("loop me toh aarha h ") ;
+          console.log(fieldClassList);
+          console.log(fieldClassList2);
+          console.log(fieldClassList3);
+          console.log(fieldClassList.item(0));
+      criteriaList= {
+        "FieldName": fieldClassList.item(0).innerHTML,
+        "Criteria":fieldClassList2.item(0).value,
+        "Value": fieldClassList3.item(0).value
+      };
+      criteriaListArray.push(criteriaList);
+    } */
+      //}
+      //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
+      //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
+      //console.log("criteriaListArray   : " + criteriaListArray); 
+
+    }
+
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
       }
 
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+
+      function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+
+    var currentClickedDEGlobal;
+    var joinImage;
+    function joinTwoDiv(currentClickedDE) {
+      currentClickedDEGlobal = currentClickedDE;
+      var joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
+        '<div class="slds-modal__container">' +
+        '<header class="slds-modal__header">' +
+        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
+        '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
+        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
+        '</svg>' +
+        '<span class="slds-assistive-text">Close</span>' +
+        '</button>' +
+        '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
+        '</header>' +
+        '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
+
+        '<div >' +
+        '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;>' +
+        '</div>' +
+
+        '<div class="slds-grid slds-wrap">' +
+
+        '<div class="slds-col slds-size_1-of-3">' +
+        '<div class="slds-form-element">' +
+        '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+        '<div class="slds-form-element__control">' +
+        '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="slds-col slds-size_1-of-3">' +
+        '<div class="slds-form-element">' +
+        '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+        '<div class="slds-form-element__control">' +
+        '<div class="slds-select_container">' +
+        '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+        '<option value="Left Outer Join">Left Outer Join</option>' +
+        '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+        '<option value="Right Outer Join">Right Outer Join</option>' +
+        '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+        '<option value="Inner Join">Inner Join</option>' +
+        '<option value="Full Outer Join">Full Outer Join</option>' +
+        '<option value="Outer Join">Outer Join</option>' +
+        '<option value="Self Join">Self Join</option>' +
+        '</select>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="slds-col slds-size_1-of-3">' +
+        '<div class="slds-form-element">' +
+        '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+        '<div class="slds-form-element__control">' +
+        '<div class="slds-select_container">' +
+        '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+        '<option value="">Select…</option>';
+      for (var DEName in dataExtensionNameMapFinal) {
+        if (currentClickedDE != DEName) {
+          joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
+        }
+      }
+      joinTwoDivString += '</select>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>' +
 
 
-      var JoinQueryDetails;
-      var strQuery = '';
-      function SaveJoinQuery() {
-        if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
-          if(document.getElementById('select-02').value) {
-            if(dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
-              if(document.getElementById('FirstDEField').value) {
-                if(document.getElementById('SecondDEField').value) {
-                  if(strQuery == '') {
 
-                    JoinQueryDetails = [{
-                      "FirstDE" : {
-                        "DEName" : currentClickedDEGlobal,
-                        "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                        "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
-                        "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-                        "JoinField" : document.getElementById('FirstDEField').value
-                      },
-                      "JoinType" : document.getElementById('select-01').value,
-                      "SecondDE" : {
-                        "DEName" : document.getElementById('select-02').value,
-                        "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                        "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
-                        "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
-                        "JoinField" : document.getElementById('SecondDEField').value
-                      }
-                    }];
-                    
-                    strQuery = 'SELECT';
-                    for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
-                      strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key] + '],';
+
+
+        '<div class="slds-grid slds-wrap">' +
+
+        '<div class="slds-col slds-size_1-of-3">' +
+        '<div class="slds-form-element">' +
+        '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+        '<div class="slds-form-element__control">' +
+        '<div class="slds-select_container">' +
+        '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+        '<option value="">Select…</option>';
+      
+      for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
+        joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField] + '</option>';
+      }
+      joinTwoDivString += '</select>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="slds-col slds-size_1-of-3">' +
+        '<div class="slds-form-element">' +
+        '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+        '<div class="slds-form-element__control">' +
+        '<div class="slds-select_container">' +
+        '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+        '<option value="">Select…</option>' +
+        '</select>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>' +
+
+
+        '</div>' +
+        '<footer class="slds-modal__footer">' +
+        '<button class="slds-button slds-button_neutral slds-float_left" onclick="">Previous</button>' +
+        '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
+        '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
+        '</footer>' +
+        '</div>' +
+        '</section>' +
+        '<div class="slds-backdrop slds-backdrop_open"></div>';
+      document.getElementById('ThirdModal').innerHTML = joinTwoDivString;
+      document.getElementById('ThirdModal').style.display = 'block';
+      //console.log('currentClickedDE : ' + currentClickedDE);
+
+    }
+
+    function selectJoinChange() {
+      document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
+    }
+
+    function SecondDEChange() {
+      if (document.getElementById('select-02').value in dataExtensionNameMapFinal) {
+        document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        for (var DEField in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+          document.getElementById('SecondDEField').innerHTML += '<option value="' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '">' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[DEField] + '</option>';
+        }
+      }
+      else {
+        document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+      }
+    }
+
+    function CancelThirdModal() {
+      document.getElementById('ThirdModal').style.display = 'none';
+    }
+
+    var JoinQueryDetails;
+    var strQuery = '';
+    function SaveJoinQuery() {
+      if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
+        if(document.getElementById('select-02').value) {
+          if(dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
+            if(document.getElementById('FirstDEField').value) {
+              if(document.getElementById('SecondDEField').value) {
+                if(strQuery == '') {
+
+                  JoinQueryDetails = [{
+                    "FirstDE" : {
+                      "DEName" : currentClickedDEGlobal,
+                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
+                      "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
+                      "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
+                      "JoinField" : document.getElementById('FirstDEField').value
+                    },
+                    "JoinType" : document.getElementById('select-01').value,
+                    "SecondDE" : {
+                      "DEName" : document.getElementById('select-02').value,
+                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
+                      "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
+                      "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
+                      "JoinField" : document.getElementById('SecondDEField').value
                     }
-                    for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                      strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                  }];
+                  
+                  strQuery = 'SELECT';
+                  for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
+                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key] + '],';
+                  }
+                  for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                  }
+                  strQuery = strQuery.slice(0, -1);
+                  strQuery += ' FROM [' + currentClickedDEGlobal + ']';
+                  strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
+                  
+                  console.log('strQuery : ' + strQuery);
+                }
+                else {
+
+                  JoinQueryDetails.push({
+                    "FirstDE" : {
+                      "DEName" : currentClickedDEGlobal,
+                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
+                      "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
+                      "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
+                      "JoinField" : document.getElementById('FirstDEField').value
+                    },
+                    "JoinType" : document.getElementById('select-01').value,
+                    "SecondDE" : {
+                      "DEName" : document.getElementById('select-02').value,
+                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
+                      "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
+                      "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
+                      "JoinField" : document.getElementById('SecondDEField').value
                     }
-                    strQuery = strQuery.slice(0, -1);
-                    strQuery += ' FROM [' + currentClickedDEGlobal + ']';
-                    strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
-                    
-                    console.log('strQuery : ' + strQuery);
+                  });
+
+                  var tempQueryList = strQuery.split("] FROM [");
+                  //console.log(tempQueryList);
+                  for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                    tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                  }
+                  tempQueryList[0] = tempQueryList[0].slice(0, -1);
+                  strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
+                  if(strQuery.includes('] WHERE [')) {
+                    tempQueryList = strQuery.split("] WHERE [");
+                    tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']' , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
+                    strQuery = tempQueryList[0] + 'WHERE [' + tempQueryList[1];
                   }
                   else {
-
-                    JoinQueryDetails.push({
-                      "FirstDE" : {
-                        "DEName" : currentClickedDEGlobal,
-                        "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                        "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
-                        "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-                        "JoinField" : document.getElementById('FirstDEField').value
-                      },
-                      "JoinType" : document.getElementById('select-01').value,
-                      "SecondDE" : {
-                        "DEName" : document.getElementById('select-02').value,
-                        "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                        "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
-                        "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
-                        "JoinField" : document.getElementById('SecondDEField').value
-                      }
-                    });
-
-                    var tempQueryList = strQuery.split("] FROM [");
-                    //console.log(tempQueryList);
-                    for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                      tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
-                    }
-                    tempQueryList[0] = tempQueryList[0].slice(0, -1);
-                    strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
-                    if(strQuery.includes('] WHERE [')) {
-                      tempQueryList = strQuery.split("] WHERE [");
-                      tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']' , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
-                      strQuery = tempQueryList[0] + 'WHERE [' + tempQueryList[1];
-                    }
-                    else {
-                      strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
-                    }
-                    console.log('strQuery : ' + strQuery);
+                    strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
                   }
+                  console.log('strQuery : ' + strQuery);
                 }
               }
             }
           }
         }
-        else {
-          console.log('Some Fields are Missing');
-        }
-        function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
-          if (JoinType == 'Left Outer Join') {
-            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Left Outer Join with Exclusion') {
-            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
-          }
-          else if (JoinType == 'Right Outer Join') {
-            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Right Outer Join with Exclusion') {
-            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
-          }
-          else if (JoinType == 'Inner Join') {
-            queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Full Outer Join') {
-            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Outer Join') {
-            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
-          }
-          return queryStr;
-        }
       }
+      else {
+        console.log('Some Fields are Missing');
+      }
+      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+        if (JoinType == 'Left Outer Join') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Left Outer Join with Exclusion') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Right Outer Join') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Right Outer Join with Exclusion') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Inner Join') {
+          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Full Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        }
+        return queryStr;
+      }
+    }
 
-      function deleteCriteria(event, target) {
-        console.log("event.target.name  :  " + event.target.name);
-        var buttoninnerhtml = document.getElementsByClassName(event.target.name);
-        //console.log(buttoninnerhtml);
-        document.getElementById(event.target.name).innerHTML = '';
+    function deleteCriteria(event, target) {
+      console.log("event.target.name  :  " + event.target.name);
+      var buttoninnerhtml = document.getElementsByClassName(event.target.name);
+      //console.log(buttoninnerhtml);
+      document.getElementById(event.target.name).innerHTML = '';
 
-        /*  for (var i = 0; i < buttoninnerhtml.length; i++) {
-            var sidebarAd = buttoninnerhtml[i];
-              sidebarAd.parentNode.removeChild(sidebarAd);
-          }
-         
-          var buttoninnerhtml1 = document.getElementsByClassName(event.target.id + "criteria") ;
-          for (var i = 0; i < buttoninnerhtml1.length; i++) {
-            var sidebarAd1 = buttoninnerhtml1[i];
-              sidebarAd1.parentNode.removeChild(sidebarAd1);
-          }
+      /*  for (var i = 0; i < buttoninnerhtml.length; i++) {
+          var sidebarAd = buttoninnerhtml[i];
+            sidebarAd.parentNode.removeChild(sidebarAd);
+        }
         
-          console.log(buttoninnerhtml1);
-          var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + 'input') ;
-          for (var i = 0; i < buttoninnerhtml2.length; i++) {
-            var sidebarAd2 = buttoninnerhtml2[i];
-              sidebarAd2.parentNode.removeChild(sidebarAd2);
-          }
-          
-          console.log(buttoninnerhtml2);
-         */
-      }
-    </script>
+        var buttoninnerhtml1 = document.getElementsByClassName(event.target.id + "criteria") ;
+        for (var i = 0; i < buttoninnerhtml1.length; i++) {
+          var sidebarAd1 = buttoninnerhtml1[i];
+            sidebarAd1.parentNode.removeChild(sidebarAd1);
+        }
+      
+        console.log(buttoninnerhtml1);
+        var buttoninnerhtml2 = document.getElementsByClassName(event.target.id + 'input') ;
+        for (var i = 0; i < buttoninnerhtml2.length; i++) {
+          var sidebarAd2 = buttoninnerhtml2[i];
+            sidebarAd2.parentNode.removeChild(sidebarAd2);
+        }
+        
+        console.log(buttoninnerhtml2);
+        */
+    }
+  </script>
 </body>
 
 </html>
