@@ -4323,8 +4323,12 @@ else
                                 tempRec2.push([DERecordJSON[key2][key4]]);
                               }
                             }
-                            tempRec2.push(tempRec1);
-                            joinedRec.push(tempRec2)
+                            if(Object.keys(tempRec1).length === 0 && tempRec1.constructor === Object) {
+                              tempRec2.push(tempRec1);
+                            }
+                            if(tempRec2.length != 0) {
+                              joinedRec.push(tempRec2)
+                            }
                           }
 
                         }
