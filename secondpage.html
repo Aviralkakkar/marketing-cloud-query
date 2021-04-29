@@ -4336,13 +4336,14 @@ else
                             }
                           }
                           key1key2List.push(key1key2str);
-
                         }
                       }
                       //break;
                     }
                     console.log("final DERecordJSON : " + JSON.stringify(DERecordJSON))
                     console.log("final joinedRec : " + JSON.stringify(joinedRec))
+                    DERecordJSON = {};
+                    joinedRec = [];
                 }
             })
     }
