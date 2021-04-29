@@ -1752,6 +1752,7 @@
     var dataExtensionNameMap = {};
     var dataExtensionNameMapFinal = {};
     var JoinQueryDetails = {};
+    var JoinQueryDESelectedFields = {};
 
     function onloadofBody() {
       fetch('/fields', {  //provide URL of the processing page
@@ -4268,20 +4269,83 @@ else
 
   <script>
 
+    var DERecordJSON = {};
     function RunQuery() {
-      console.log("Join Query Details ----> " + JoinQueryDetails) ;
-      console.log("Join Query Details ----> " + console.log(JoinQueryDetails.PrimaryDE)) ;
-      fetch("/RunQuery", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json" 
-        },
-        body: JoinQueryDetails
-      })
-      .then(response => response.text())
-      .then(data => {
-        console.log('data : ' + JSON.stringify(data))
-      });
+      console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDetails));
+
+      $.ajax
+            ({
+                url: '/RunQuery',
+                data: {
+                  'RunQueryDetails': JoinQueryDetails,
+                  'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
+                },
+                type: "POST",
+                headers: {
+                    'Content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (data) {
+                    //console.log(data);
+                    var tempRec = {};
+                    var tempRecList = [];
+                    if(data) {
+                      for(var key1 in data) {
+                        console.log('key1 : ---------------------- ' + key1);
+                        if(data[key1].length != 0) {
+                          for(var key2 in data[key1]) {
+                            for(var key3 in data[key1][key2]["Property"]) {
+                              tempRec[data[key1][key2]["Property"][key3]["Name"][0]] = data[key1][key2]["Property"][key3]["Value"][0];
+
+                              //console.log('Field : ' + data[key1][key2]["Property"][key3]["Name"][0] + ' , Value : ' + data[key1][key2]["Property"][key3]["Value"][0]);
+                            }
+                            tempRecList.push(tempRec);
+                            tempRec = {};
+                          }
+                          DERecordJSON[key1] = tempRecList;
+                          tempRecList = [];
+                          tempRec = {};
+                        }
+                      }
+                    }
+                    var joinedRec = [];
+                    var tempRec1 = {};
+                    var temoRec2 = [];
+                    //var key1key2List = [];
+                    //var key1key2str = '';
+                    for(var key1 in DERecordJSON) {
+                      for(var key2 in DERecordJSON) {
+                        if(key1 != key2) {
+                          //key1key2str = key1 + '-' + key2;
+                          //if(!key1key2List.includes(key1key2str)) {
+                            for(var key3 in DERecordJSON[key1]) { 
+                              tempRec1 = {};
+                              tempRec2 = [];
+                              for(var key4 in DERecordJSON[key2]) {
+                                if(DERecordJSON[key1][key3][JoinQueryDESelectedFields[key1]["JoinField"]] == DERecordJSON[key2][key4][JoinQueryDESelectedFields[key2]["JoinField"]]) {
+                                  tempRec1 = DERecordJSON[key1][key3];
+                                  tempRec2.push(DERecordJSON[key2][key4]);
+                                }
+                              }
+                              //Object.keys(tempRec1).length === 0 && tempRec1.constructor === Object
+                              if(JSON.stringify(tempRec1) != '{}') {
+                                tempRec2.push(tempRec1);
+                              }
+                              if(tempRec2.length != 0) {
+                                joinedRec.push(tempRec2);
+                              }
+                            }
+                          }
+                          //key1key2List.push(key1key2str);
+                        //}
+                      }
+                      break;
+                    }
+                    console.log("final DERecordJSON : " + JSON.stringify(DERecordJSON))
+                    console.log("final joinedRec : " + JSON.stringify(joinedRec))
+                    DERecordJSON = {};
+                    joinedRec = [];
+                }
+            })
     }
 
     function CancelPopup() {
@@ -4446,7 +4510,7 @@ else
       words += ' WHERE ' + answer_form3;
       //console.log("Words Query : " + words);
 
- //     validateQuery(words);
+      //validateQuery(words);
       /*
   
       
@@ -4712,6 +4776,21 @@ else
                     "DEForJoin" : {}
                   }
 
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = {
+                    "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
+                    "JoinField" : document.getElementById('FirstDEField').value
+                  };
+                  if(!JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey].DESelectedFields.includes(document.getElementById('FirstDEField').value)) {
+                    JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey].DESelectedFields.push(document.getElementById('FirstDEField').value);
+                  }
+
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey] = {
+                    "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
+                    "JoinField" : document.getElementById('SecondDEField').value
+                  };
+                  if(!JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey].DESelectedFields.includes(document.getElementById('SecondDEField').value)) {
+                    JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey].DESelectedFields.push(document.getElementById('SecondDEField').value);
+                  }
 
                   JoinQueryDetails["PrimaryDE"][dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = {
                     "DEName" : currentClickedDEGlobal,
@@ -4732,7 +4811,7 @@ else
                     "SecondDESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
                     "SecondDEJoinField" : document.getElementById('SecondDEField').value
                   };
-      //            console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+                  //console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
                   
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
@@ -4768,6 +4847,10 @@ else
                   });*/
 
 
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields;
+                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey] = dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields;
+
+
 
                   JoinQueryDetails["DEForJoin"][dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey] = {
                     "FirstDEName" : currentClickedDEGlobal,
@@ -4783,12 +4866,9 @@ else
                     "SecondDEJoinField" : document.getElementById('SecondDEField').value
                   };
 
-
-
-                  console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+                  //console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
 
                   var tempQueryList = strQuery.split("] FROM [");
-                  //console.log(tempQueryList);
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
                     tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
                   }

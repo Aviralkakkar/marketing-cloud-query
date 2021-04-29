@@ -17,6 +17,7 @@ const { stringify } = require("querystring");
 var xml2jsParser = new xml2js.Parser();
 var DEListMap={};
 var favorites = [];
+var DERecordMap={};
 
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
@@ -181,61 +182,91 @@ app.post("/secondpage", async function (req, res) {
 
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
-  console.log("Yeh hai Join Query Details --> " + JSON.stringify(reqCall)); 
-  var JoinQueryDetails = reqCall.body;
-  console.log('JoinQueryDetails : ' + JSON.stringify(reqCall));
-  console.log('JoinQueryDetails : ' + reqCall);
-  function DERecordFetch() {
-    var DEDataBody = '';
-      DEDataBody =  '<?xml version="1.0" encoding="UTF-8"?>' +
-                    '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">' +
-                      '<s:Header>' +
-                        '<a:Action s:mustUnderstand="1">Retrieve</a:Action>' +
-                        '<a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>' +
-                        '<a:ReplyTo>' +
-                          '<a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>' +
-                        '</a:ReplyTo>' +
-                        '<a:To s:mustUnderstand="1">' + SourceSoapURL + 'Service.asmx' + '</a:To>' +
-                        '<fueloauth xmlns="http://exacttarget.com">' + SourceAccessToken + '</fueloauth>' +
-                      '</s:Header>' +
-                      '<s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">' +
-                        '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
-                          '<RetrieveRequest>' +
-                            '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
-      for (var OneDEJSON of JoinQueryDetails) {
-        DEDataBody = DEDataBody + '<Properties>' + DEListMap[key].DEFieldMap[key1]["FieldName"] + '</Properties>';
-      }
-      DEDataBody = DEDataBody + '<Options>' +
-                                  '<BatchSize>2500</BatchSize>' +
-                                '</Options>' +
-                                '</RetrieveRequest>' +
-                              '</RetrieveRequestMsg>' +
-                            '</s:Body>' +
-                          '</s:Envelope>';
+  var JoinQueryDetails = reqCall.body.RunQueryDetails;
+  var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields
 
-      var DEDataOptions = {
-        'method': 'POST',
-        'url': SourceSoapURL + 'Service.asmx',
-        'headers': {
-          'Content-Type': 'text/xml',
-          'SoapAction': 'Retrieve',
-          'Authorization': 'Bearer ' + SourceAccessToken
-        },
-        body: DEDataBody
-      };
+  var DESet = new Set();
+  for (var key in JoinQueryDESelectedFields) {
+    DESet.add(key);
+  }
+  for (var key of Array.from(DESet)) {
+    console.log('key : ' + key)
+    await DERecordFetch(key);
+  }
+  console.log('--------------------------------------------');
+  console.log('DERecordMap : ' + JSON.stringify(DERecordMap));
 
-      request(DEDataOptions, async function (error, response) {
-        if (error) throw new Error(error);
 
-        var DEDataRequestId;
-        SourceDEDataResult = response.body;
-        xml2jsParser.parseString(SourceDEDataResult, function (err, result) {
-          SourceDEDataResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-          DEDataRequestId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['RequestID'][0]
+
+  resCall.send(DERecordMap);
+  function DERecordFetch(key) {
+    return new Promise(async function (resolve, reject) {
+      var DEDataBody = '<?xml version="1.0" encoding="UTF-8"?>' +
+                      '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">' +
+                        '<s:Header>' +
+                          '<a:Action s:mustUnderstand="1">Retrieve</a:Action>' +
+                          '<a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>' +
+                          '<a:ReplyTo>' +
+                            '<a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>' +
+                          '</a:ReplyTo>' +
+                          '<a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>' +
+                          '<fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>' +
+                        '</s:Header>' +
+                        '<s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">' +
+                          '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
+                            '<RetrieveRequest>' +
+                              '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
+        for (var FieldName in JoinQueryDESelectedFields[key]["DESelectedFields"]) {
+          DEDataBody = DEDataBody + '<Properties>' + JoinQueryDESelectedFields[key]["DESelectedFields"][FieldName] + '</Properties>';
+        }
+        DEDataBody = DEDataBody + '<Options>' +
+                                    '<BatchSize>2500</BatchSize>' +
+                                  '</Options>' +
+                                  '</RetrieveRequest>' +
+                                '</RetrieveRequestMsg>' +
+                              '</s:Body>' +
+                            '</s:Envelope>';
+        
+
+        var DEDataOptions = {
+          'method': 'POST',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Retrieve',
+            'Authorization': 'Bearer ' + access_token
+          },
+          body: DEDataBody
+        };
+
+        request(DEDataOptions, async function (error, response) {
+          if (error) throw new Error(error);
+
+          //var DEDataRequestId;
+          var SourceDEDataResult = response.body;
+          console.log('response.body : ' + response.body);
+          xml2jsParser.parseString(SourceDEDataResult, function (err, result) {
+            SourceDEDataResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+            //DEDataRequestId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['RequestID'][0]
+          });
+          console.log('SourceDEDataResult : ' + SourceDEDataResult);
+
+          if(SourceDEDataResult) {
+            for (var key1 in SourceDEDataResult) {
+              if(DERecordMap[key]) {
+                DERecordMap[key].push(SourceDEDataResult[key1].Properties[0]);
+              }
+              else {
+                DERecordMap[key] = [SourceDEDataResult[key1].Properties[0]];
+              }
+            }
+          }
+          else {
+            DERecordMap[key] = [];
+          }
+          resolve(DERecordMap);
         });
-
-        resolve(DEListMap[key].DEDataMap);
-      });
+    })
   }
 })
 
