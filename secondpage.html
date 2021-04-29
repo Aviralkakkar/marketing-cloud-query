@@ -4308,13 +4308,15 @@ else
                       }
                     }
                     var joinedRec = [];
+                    var tempRec1 = {};
+                    var temoRec2 = [];
                     for(var key1 in DERecordJSON) {
                       for(var key2 in DERecordJSON) {
                         if(key1 != key2) {
 
                           for(var key3 in DERecordJSON[key1]) { 
-                            var tempRec1 = {};
-                            var temoRec2 = [];
+                            tempRec1 = {};
+                            temoRec2 = [];
                             for(var key4 in DERecordJSON[key2]) {
                               if(DERecordJSON[key1][key3][JoinQueryDESelectedFields[key1]["JoinField"]] == DERecordJSON[key2][key4][JoinQueryDESelectedFields[key2]["JoinField"]]) {
                                 tempRec1 = [DERecordJSON[key1][key3]];
