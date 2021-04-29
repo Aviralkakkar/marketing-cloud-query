@@ -4270,7 +4270,7 @@ else
 
     function RunQuery() {
       console.log("Join Query Details ----> " + JoinQueryDetails) ;
-      console.log("Join Query Details ----> " + JoinQueryDetails.PrimaryDE) ;
+      console.log("Join Query Details ----> " + console.log(JoinQueryDetails.PrimaryDE)) ;
       fetch("/RunQuery", {
         method: "POST",
         headers: {
@@ -4446,7 +4446,7 @@ else
       words += ' WHERE ' + answer_form3;
       //console.log("Words Query : " + words);
 
-      validateQuery(words);
+ //     validateQuery(words);
       /*
   
       
