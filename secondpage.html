@@ -4310,6 +4310,7 @@ else
                     var joinedRec = [];
                     var tempRec1 = {};
                     var temoRec2 = [];
+                    var tempDEExtKeyList = [];
                     for(var key1 in DERecordJSON) {
                       for(var key2 in DERecordJSON) {
                         if(key1 != key2) {
@@ -4334,6 +4335,7 @@ else
 
                         }
                       }
+                      break;
                     }
                     console.log("final DERecordJSON : " + JSON.stringify(DERecordJSON))
                     console.log("final joinedRec : " + JSON.stringify(joinedRec))
