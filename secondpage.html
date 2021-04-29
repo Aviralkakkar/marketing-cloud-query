@@ -4323,7 +4323,8 @@ else
                                 tempRec2.push([DERecordJSON[key2][key4]]);
                               }
                             }
-                            if(Object.keys(tempRec1).length === 0 && tempRec1.constructor === Object) {
+                            //Object.keys(tempRec1).length === 0 && tempRec1.constructor === Object
+                            if(JSON.stringify(tempRec1) != '{}') {
                               tempRec2.push(tempRec1);
                             }
                             if(tempRec2.length != 0) {
