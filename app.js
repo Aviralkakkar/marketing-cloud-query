@@ -216,8 +216,8 @@ app.post("/RunQuery", async (reqCall,resCall)=>
                           '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
                             '<RetrieveRequest>' +
                               '<ObjectType>DataExtensionObject[' + key + ']</ObjectType>';
-        for (var FieldName in JoinQueryDESelectedFields[key]) {
-          DEDataBody = DEDataBody + '<Properties>' + JoinQueryDESelectedFields[key][FieldName] + '</Properties>';
+        for (var FieldName in JoinQueryDESelectedFields[key]["DESelectedFields"]) {
+          DEDataBody = DEDataBody + '<Properties>' + JoinQueryDESelectedFields[key]["DESelectedFields"][FieldName] + '</Properties>';
         }
         DEDataBody = DEDataBody + '<Options>' +
                                     '<BatchSize>2500</BatchSize>' +
@@ -264,8 +264,6 @@ app.post("/RunQuery", async (reqCall,resCall)=>
           else {
             DERecordMap[key] = [];
           }
-
-
           resolve(DERecordMap);
         });
     })
