@@ -4311,12 +4311,12 @@ else
                     var tempRec1 = {};
                     var temoRec2 = [];
                     var key1key2List = [];
-                    var key1key2str = '';
+                    //var key1key2str = '';
                     for(var key1 in DERecordJSON) {
                       for(var key2 in DERecordJSON) {
                         if(key1 != key2) {
-                          key1key2str = key1 + '-' + key2;
-                          if(!key1key2List.includes(key1key2str)) {
+                          //key1key2str = key1 + '-' + key2;
+                          //if(!key1key2List.includes(key1key2str)) {
                             for(var key3 in DERecordJSON[key1]) { 
                               tempRec1 = {};
                               tempRec2 = [];
@@ -4336,9 +4336,9 @@ else
                             }
                           }
                           key1key2List.push(key1key2str);
-                        }
+                        //}
                       }
-                      //break;
+                      break;
                     }
                     console.log("final DERecordJSON : " + JSON.stringify(DERecordJSON))
                     console.log("final joinedRec : " + JSON.stringify(joinedRec))
