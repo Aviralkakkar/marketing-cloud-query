@@ -2120,7 +2120,7 @@ else
           // console.log("----------------Id-     ",cb.id);
           //console.log("Data extension field name " + defieldsArray[i].FieldName);
           //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-          var html = '<input type="checkbox" name = "' + defieldsArray[i].CustomerKey + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '">';
+          var html = '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '">';
           var node = '<li>' + html + ' ' + defieldsArray[i].FieldName + '</li>';
 
           document.getElementById('grid-1-de').innerHTML += node;
@@ -4745,7 +4745,7 @@ else
                     });
                   }
 
-                  
+                  console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields))
 
                   JoinQueryDetails["PrimaryDE"][dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = {
                     "DEName" : currentClickedDEGlobal,
