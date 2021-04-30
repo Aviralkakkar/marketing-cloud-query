@@ -1751,7 +1751,6 @@
     var num = 0;
     var dataExtensionNameMap = {};
     var dataExtensionNameMapFinal = {};
-    var JoinQueryDetails = {};
     var JoinQueryDESelectedFields = [];
 
     function onloadofBody() {
@@ -4277,16 +4276,20 @@ else
 
 
   <script>
+    var FieldSet = new Set();
+
 
     var DERecordJSON = {};
     function RunQuery() {
+      for (var val of Array.from(FieldSet)) {
+        JoinQueryDESelectedFields.push(JSON.parse(val));
+      }
       console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
 
       $.ajax
             ({
                 url: '/RunQuery',
                 data: {
-                  'RunQueryDetails': JoinQueryDetails,
                   'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
                 },
                 type: "POST",
@@ -4708,45 +4711,24 @@ else
               if(document.getElementById('SecondDEField').value) {
                 if(strQuery == '') {
 
-                  /*JoinQueryDetails = [{
-                    "FirstDE" : {
-                      "DEName" : currentClickedDEGlobal,
-                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                      "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
-                      "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-                      "JoinField" : document.getElementById('FirstDEField').value
-                    },
-                    "JoinType" : document.getElementById('select-01').value,
-                    "SecondDE" : {
-                      "DEName" : document.getElementById('select-02').value,
-                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                      "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
-                      "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
-                      "JoinField" : document.getElementById('SecondDEField').value
-                    }
-                  }];*/
+                  for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
+                    FieldSet.add(JSON.stringify({
+                      "FieldName" : currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
+                      "FieldType" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
+                    }));
+                  }
+                  for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                    FieldSet.add(JSON.stringify({
+                      "FieldName" : document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
+                      "FieldType" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
+                    }));
+                  }
 
 
-                  JoinQueryDetails = {
+                  /*JoinQueryDetails = {
                     "PrimaryDE" : {},
                     "DEForJoin" : {}
                   }
-
-                  for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
-                    JoinQueryDESelectedFields.push({
-                      "FieldName" : currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
-                      "FieldType" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
-                    });
-                  }
-                  for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                    JoinQueryDESelectedFields.push({
-                      "FieldName" : document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
-                      "FieldType" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
-                    });
-                  }
-
-                  console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields))
-
                   JoinQueryDetails["PrimaryDE"][dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = {
                     "DEName" : currentClickedDEGlobal,
                     "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
@@ -4767,7 +4749,8 @@ else
                     "SecondDEJoinField" : document.getElementById('SecondDEField').value
                   };
                   //console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
-                  
+                  */
+
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
                     strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + '],';
@@ -4782,46 +4765,18 @@ else
                   console.log('strQuery : ' + strQuery);
                 }
                 else {
-
-                  /*JoinQueryDetails.push({
-                    "FirstDE" : {
-                      "DEName" : currentClickedDEGlobal,
-                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                      "AllFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields,
-                      "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-                      "JoinField" : document.getElementById('FirstDEField').value
-                    },
-                    "JoinType" : document.getElementById('select-01').value,
-                    "SecondDE" : {
-                      "DEName" : document.getElementById('select-02').value,
-                      "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                      "AllFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields,
-                      "DESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
-                      "JoinField" : document.getElementById('SecondDEField').value
-                    }
-                  });*/
-
-
-                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey] = dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields;
-                  JoinQueryDESelectedFields[dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey] = dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields;
-
-
-
-                  JoinQueryDetails["DEForJoin"][dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey] = {
-                    "FirstDEName" : currentClickedDEGlobal,
-                    "FirstDEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                    "FirstDESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-                    "FirstDEJoinField" : document.getElementById('FirstDEField').value,
-
-                    "JoinType" : document.getElementById('select-01').value,
-                    
-                    "SecondDEName" : document.getElementById('select-02').value,
-                    "SecondDEExtKey" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DEExtKey,
-                    "SecondDESelectedFields" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields,
-                    "SecondDEJoinField" : document.getElementById('SecondDEField').value
-                  };
-
-                  //console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+                  for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
+                    FieldSet.add(JSON.stringify({
+                      "FieldName" : currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
+                      "FieldType" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
+                    }));
+                  }
+                  for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                    FieldSet.add(JSON.stringify({
+                      "FieldName" : document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
+                      "FieldType" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
+                    }));
+                  }
 
                   var tempQueryList = strQuery.split("] FROM [");
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
@@ -4844,9 +4799,7 @@ else
           }
         }
       }
-      else {
-        console.log('Some Fields are Missing');
-      }
+
       document.getElementById('ThirdModal').style.display = 'none';
       function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
