@@ -289,7 +289,6 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         '</soapenv:Body>' +
         '</soapenv:Envelope>';
 
-      console.log(DEListBody);
 
       var DEListOption = {
         'method': 'POST',
