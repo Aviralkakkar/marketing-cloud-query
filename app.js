@@ -183,7 +183,9 @@ app.post("/secondpage", async function (req, res) {
 
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
-  await DECreate(reqCall.body.JoinQueryDESelectedFields)
+  var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
+  console.log('JoinQueryDESelectedFields : ' + JoinQueryDESelectedFields);
+  await DECreate(JoinQueryDESelectedFields)
 
   resCall.send(DERecordMap);
 
@@ -303,7 +305,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         if (error) throw new Error(error);
         var DEInsertResult;
         xml2jsParser.parseString(response.body, function (err, result) {
-          tempDEInsertResult = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+          DEInsertResult = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
         });
         console.log('DEInsertResult : ' + DEInsertResult);
         resolve(DEInsertResult);
