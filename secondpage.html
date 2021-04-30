@@ -4734,13 +4734,13 @@ else
 
                   for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
                     JoinQueryDESelectedFields.push({
-                      "FieldName" : "[" + currentClickedDEGlobal + "]-[" + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + "]",
+                      "FieldName" : currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
                       "FieldType" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
                     });
                   }
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
                     JoinQueryDESelectedFields.push({
-                      "FieldName" : "[" + document.getElementById('select-02').value + "]-[" + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + "]",
+                      "FieldName" : document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
                       "FieldType" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
                     });
                   }
@@ -4770,10 +4770,10 @@ else
                   
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
-                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key] + '],';
+                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + '],';
                   }
                   for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
                   }
                   strQuery = strQuery.slice(0, -1);
                   strQuery += ' FROM [' + currentClickedDEGlobal + ']';
