@@ -184,7 +184,7 @@ app.post("/secondpage", async function (req, res) {
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
   var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
-  console.log('JoinQueryDESelectedFields : ' + JoinQueryDESelectedFields);
+  console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
   await DECreate(JoinQueryDESelectedFields)
 
   resCall.send(DERecordMap);
