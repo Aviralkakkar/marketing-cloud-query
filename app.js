@@ -307,7 +307,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         xml2jsParser.parseString(response.body, function (err, result) {
           DEInsertResult = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
         });
-        console.log('DEInsertResult : ' + DEInsertResult);
+        console.log('DEInsertResult : ' + JSON.stringify(DEInsertResult));
         resolve(DEInsertResult);
       });
       
