@@ -2313,7 +2313,7 @@ else
 
     }
 
-    function validateQuery(strQuery) {
+    function validateQuery(strQuery , actionType) {
 
       console.log("dynamic Query --> " + strQuery);
 
@@ -2322,7 +2322,7 @@ else
           url: '/validatequery',
           data: {
             'dynamicQuery': strQuery,
-            'actionType' : "validate"
+            'actionType' : actionType
           },
           type: "POST",
           headers: {
@@ -4133,8 +4133,8 @@ else
     <div id="main-div" class="slds-float_right" style="width: 70%;height:100%;margin-left: 17%;"
       ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
       <p id="demo"></p>
-      <button class="slds-float_right" onclick="validateQuery(strQuery)"> Validate Query </button>  
-      <button class="slds-float_right" onclick="RunQuery()"> RUN </button>
+      <button class="slds-float_right" onclick="validateQuery(strQuery,'Validate')"> Validate Query </button>  
+      <button class="slds-float_right" onclick="validateQuery(strQuery , 'run')"> RUN </button>
       <!-- Code Faizal -->
       <div id="RelationshipDiv"> </div>
       <!-- Code Khatam -->

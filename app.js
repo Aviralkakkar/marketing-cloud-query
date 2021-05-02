@@ -323,6 +323,7 @@ app.post("/validatequery", async (reqCall,resCall)=>
    {
     var dynamicQuery = reqCall.body.dynamicQuery;
     var actionType = reqCall.body.actionType
+    console.log(actionType);
   //   console.log(reqCall)
   //   console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data);
   //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
@@ -350,8 +351,9 @@ request(options, function (error, response) {
   
   resCall.json({validatequery : fal});
 
-    if (fal == true)
+    if (fal == true && actionType == "run")
       {
+        console.log("loop me aaya");
                 var request = require('request');
         var options = {
           'method': 'POST',
