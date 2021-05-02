@@ -289,7 +289,6 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         '</soapenv:Body>' +
         '</soapenv:Envelope>';
 
-      console.log(DEListBody);
 
       var DEListOption = {
         'method': 'POST',
@@ -322,9 +321,11 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
-     console.log(reqCall)
-     console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data);
-     console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
+    var dynamicQuery = reqCall.body.dynamicQuery;
+    var actionType = reqCall.body.actionType
+  //   console.log(reqCall)
+  //   console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data);
+  //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
   //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data.dynamicQuery));  
    //  console.log("reqCall.body validatequery2" + reqCall.data.dynamicQuery);    
   //  console.log("reqCall.body validatequery" + JSON.stringify(reqCall.body));

@@ -2313,57 +2313,29 @@ else
 
     }
 
-    function validateQuery(dynamicQuery) {
+    function validateQuery(strQuery) {
 
-      console.log("dynamic Query --> " + dynamicQuery);
-      /* 
-         $.ajax({
-          url: "/validatequery",
-          dataType: "JSONP",
-          type: "POST",
-          jsonpCallback: "callback",
-          data: {
-            dynamicQuery:dynamicQuery
-          },
-          success: function() 
-          { console.log("res", "Ajax ke response me aaya ") 
-        }
-      }); */
+      console.log("dynamic Query --> " + strQuery);
 
       $.ajax
-        ({
+      ({
           url: '/validatequery',
           data: {
-            'dynamicQuery': dynamicQuery
-
+            'dynamicQuery': strQuery,
+            'actionType' : "validate"
           },
           type: "POST",
           headers: {
-            'Content-type': 'application/x-www-form-urlencoded'
+              'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
             console.log('data : ' + JSON.stringify(data));
           }
-        })
-      /*  var url="/validatequery";
-      fetch(url, {  //provide URL of the processing page
-        method: "POST",
-         headers: {
-          // "Content-Type": "application/x-www-form-urlencoded"
-          "Content-Type": "application/x-www-form-urlencoded" 
-         },
+             
+      })    
       
-         body: {'dynamicQuery':dynamicQuery}
-        
-      })
-      .then(response => response.text())
-      .then(data => {
-       console.log("validate query ke response me agaya ") ;
-       var validatequery = JSON.parse(data).validatequery;
-       console.log(validatequery) ; 
-      
-      }); */
     }
+
 
     function Next() {
 
