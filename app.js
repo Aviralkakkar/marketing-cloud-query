@@ -436,11 +436,11 @@ request(options, async function (error, response) {
       {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
         
-        console.log("DECreateResult -- > " + DECreateResult)
+        console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
 
 
         console.log("loop me aaya");
-                var request = require('request');
+        var request = require('request');
         var options = {
           'method': 'POST',
           'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com//automation/v1/queries/',
@@ -449,10 +449,10 @@ request(options, async function (error, response) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "name": "REST_API Field testingnodejs mc",
-            "key": "REST_API testingnodejs mc",
+            "name": "REST_API Field testingnodejs mc1",
+            "key": "REST_API testingnodejs mc1",
             "description": "",
-            "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
+            "queryText": dynamicQuery,
             "targetName": "Contact_Sent Target DE",
             "targetKey": "1ADC76A8-8C76-42FB-8293-6819BC262C38",
             "targetId": "c53cd438-9e6a-eb11-a301-98f2b32bc563",
