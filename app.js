@@ -187,7 +187,8 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   var DERecords = [];
   var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
   console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
-  await DECreate(JoinQueryDESelectedFields)
+  await DECreate(JoinQueryDESelectedFields);
+  await getDERecords(currentDate);
 
 //  resCall.send(DERecordMap);
 
@@ -351,19 +352,19 @@ app.post("/RunQuery", async (reqCall,resCall)=>
           }
         }*/
 
-        resolve(DEListMap);
+        resolve(DERecords);
       });
     })
   }
 
-  async function getMoreDERecords(NextUrl, key) {
+  async function getMoreDERecords(NextUrl) {
     return new Promise(async function (resolve, reject) {
 
       var DEMoreDataOptions = {
         'method': 'GET',
-        'url': SourceRestURL + 'data' + NextUrl,
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/data' + NextUrl,
         'headers': {
-          'Authorization': 'Bearer ' + SourceAccessToken
+          'Authorization': 'Bearer ' + access_token
         }
       };
       request(DEMoreDataOptions, function (error, response) {
@@ -372,11 +373,11 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
         if(tempResult1.count != 0) {
           if(Object.keys(tempResult1.items[0].keys).length != 0) {
-            DEListMap[key].DEDataMap.push.apply(DEListMap[key].DEDataMap, tempResult1.items);
+            DERecords.push.apply(DERecords, tempResult1.items);
           }
           else {
             for(var i in tempResult1.items) {
-              DEListMap[key].DEDataMap.push(tempResult1.items[i].values);
+              DERecords.push(tempResult1.items[i].values);
             }
           }
         }
@@ -393,7 +394,15 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
+
+    var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
+    var DERecords = [];
+    var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
+    console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
+
+    
     var dynamicQuery = reqCall.body.dynamicQuery;
+    console.log("dynamicQuery  :  " + dynamicQuery) ; 
     var actionType = reqCall.body.actionType
     console.log(actionType);
   //   console.log(reqCall)
@@ -425,7 +434,11 @@ request(options, function (error, response) {
 
     if (fal == true && actionType == "run")
       {
+        var DECreateResult = await DECreate(JoinQueryDESelectedFields);
         
+        console.log("DECreateResult -- > " + DECreateResult)
+
+
         console.log("loop me aaya");
                 var request = require('request');
         var options = {
@@ -481,6 +494,133 @@ request(options, function (error, response) {
 });
 
  
+
+async function DECreate(JoinQueryDESelectedFields) {
+  return new Promise(function (resolve, reject) {
+    var DEListBody = '';
+    DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
+      '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
+      '<soapenv:Header>' +
+      '<fueloauth>' + access_token + '</fueloauth>' +
+      '</soapenv:Header>' +
+      '<soapenv:Body>' +
+      '<CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
+      '<Options/>' +
+      '<Objects xsi:type="ns2:DataExtension" xmlns:ns2="http://exacttarget.com/wsdl/partnerAPI">' +
+      '<CustomerKey>' + currentDate + '</CustomerKey>' +
+      '<Name>' + currentDate + '</Name>' +
+      '<Description>This Data Extension is created automatically by the Query AppExchange Application.</Description>' +
+      '<IsSendable>false</IsSendable>' +
+      '<IsTestable>false</IsTestable>' +
+      '<DataRetentionPeriodLength>1</DataRetentionPeriodLength>' +
+      '<DataRetentionPeriod>Days</DataRetentionPeriod>' +
+      '<RowBasedRetention>false</RowBasedRetention>' +
+      '<ResetRetentionPeriodOnImport>false</ResetRetentionPeriodOnImport>' +
+      '<DeleteAtEndOfRetentionPeriod>false</DeleteAtEndOfRetentionPeriod>' +
+      '<Fields>';
+
+    for (var key in JoinQueryDESelectedFields) {
+      if (JoinQueryDESelectedFields[key]["FieldType"] == 'Number' || JoinQueryDESelectedFields[key]["FieldType"] == 'Date' || JoinQueryDESelectedFields[key]["FieldType"] == 'Boolean') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>' + JoinQueryDESelectedFields[key]["FieldType"] + '</FieldType>' +
+          '</Field>';
+      }
+      else if (JoinQueryDESelectedFields[key]["FieldType"] == 'EmailAddress') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>EmailAddress</FieldType>' +
+          '<MaxLength>254</MaxLength>' +
+          '</Field>';
+      }
+      else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Phone') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>Phone</FieldType>' +
+          '<MaxLength>50</MaxLength>' +
+          '</Field>';
+      }
+      else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Decimal') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>Decimal</FieldType>' +
+          '<MaxLength>38</MaxLength>' +
+          '<Scale>38</Scale>' +
+          '</Field>';
+      }
+      else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Locale') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>Locale</FieldType>' +
+          '<MaxLength>5</MaxLength>' +
+          '</Field>';
+      }
+      else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Text') {
+        DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
+          '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
+          '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
+          '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+          '<IsRequired>false</IsRequired>' +
+          '<IsPrimaryKey>false</IsPrimaryKey>' +
+          '<FieldType>Text</FieldType>' +
+          '<MaxLength>4000</MaxLength>' +
+          '</Field>';
+      }
+    }
+
+    DEListBody = DEListBody + '</Fields>' +
+      '</Objects>' +
+      '</CreateRequest>' +
+      '</soapenv:Body>' +
+      '</soapenv:Envelope>';
+
+
+    var DEListOption = {
+      'method': 'POST',
+      'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+      'headers': {
+        'Content-Type': 'text/xml',
+        'SoapAction': 'Create',
+        'Authorization': 'Bearer ' + access_token
+      },
+      body: DEListBody
+    };
+    request(DEListOption, async function (error, response) {
+      if (error) throw new Error(error);
+      var DEInsertResult;
+      xml2jsParser.parseString(response.body, function (err, result) {
+        DEInsertResult = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+      });
+      console.log('DEInsertResult : ' + JSON.stringify(DEInsertResult));
+      resolve(DEInsertResult);
+    });
+    
+    
+  })
+}
+
+
+
 });
 
 

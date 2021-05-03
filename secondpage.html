@@ -2317,12 +2317,18 @@ else
 
       console.log("dynamic Query --> " + strQuery);
 
+      for (var val of Array.from(FieldSet)) {
+        JoinQueryDESelectedFields.push(JSON.parse(val));
+      }
+      console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
+
       $.ajax
       ({
           url: '/validatequery',
           data: {
             'dynamicQuery': strQuery,
-            'actionType' : actionType
+            'actionType' : actionType,
+            'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
           },
           type: "POST",
           headers: {
@@ -4129,6 +4135,7 @@ else
   <script>
     onloadofBody();
   </script>
+  
   <div>
     <div id="main-div" class="slds-float_right" style="width: 70%;height:100%;margin-left: 17%;"
       ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
