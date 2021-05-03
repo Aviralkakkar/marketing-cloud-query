@@ -437,8 +437,8 @@ request(options, function (error, response) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "name": "REST_API Field testingnodejs",
-            "key": "REST_API testingnodejs",
+            "name": "REST_API Field testingnodejs mc",
+            "key": "REST_API testingnodejs mc",
             "description": "",
             "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
             "targetName": "Contact_Sent Target DE",
@@ -451,10 +451,33 @@ request(options, function (error, response) {
           })
 
         };
-        request(options, function (error, response) {
+          request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log(response.body);
+     //     console.log( "response.body.queryDefinitionId" + response.body);
+     //     console.log("response.body.name" + response.body.name);
+          var responsee = JSON.parse(response.body);
+          var queryDefinitionId = responsee.queryDefinitionId ;
+          console.log("queryDefinitionId --- > " + queryDefinitionId); 
+          if( queryDefinitionId) 
+          {
+            console.log("query run me aagya -- > ")
+          var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+  'headers': {
+    'Authorization': 'Bearer ' + access_token,
+    'Content-Type': 'application/json'
+  } 
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log("Query run hogyi hai  " + response.body); 
+});
+
+          }
         });
+        
               }
 });
 
