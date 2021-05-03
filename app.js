@@ -495,7 +495,7 @@ request(options, async function (error, response) {
 
     console.log("getDERecordsResult" + getDERecordsResult) ; 
   }
-});
+}); 
 
           }
         });
