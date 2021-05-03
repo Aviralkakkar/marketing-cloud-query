@@ -485,9 +485,16 @@ var options = {
     'Content-Type': 'application/json'
   } 
 };
-request(options, function (error, response) {
+request(options, async function (error, response) {
   if (error) throw new Error(error);
   console.log("Query run hogyi hai  " + response.body); 
+
+  if( response.body == "OK" )
+  {
+    var getDERecordsResult = await getDERecords(Name);
+
+    console.log("getDERecordsResult" + getDERecordsResult) ; 
+  }
 });
 
           }
@@ -622,7 +629,45 @@ async function DECreate(JoinQueryDESelectedFields) {
   })
 }
 
+async function getDERecords(key) {
+    return new Promise(async function (resolve, reject) {
 
+      //var NextUrl;
+      var DEDataOptions = {
+        'method': 'GET',
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/data/v1/customobjectdata/key/' + key + '/rowset/',
+        'headers': {
+          'Authorization': 'Bearer ' + access_token
+        }
+      };
+      request(DEDataOptions, async function (error, response) {
+        if (error) throw new Error(error);
+        var tempResult = JSON.parse(response.body);
+
+        if(tempResult.count != 0) {
+          if(Object.keys(tempResult.items[0].keys).length != 0) {
+            DERecords.push.apply(DERecords, tempResult.items);
+          }
+          else {
+            for(var i in tempResult.items) {
+              DERecords.push(tempResult.items[i].values);
+            }
+          }
+        }
+        
+        /*
+        var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
+        if (looplength >= 2) {
+          NextUrl = tempResult.links.next;
+          for (var i = 2; i <= looplength; i++) {
+            NextUrl = await getMoreDERecords(NextUrl, key);
+          }
+        }*/
+
+        resolve(DERecords);
+      });
+    })
+  }
 
 });
 
