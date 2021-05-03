@@ -183,16 +183,18 @@ app.post("/secondpage", async function (req, res) {
 
 app.post("/RunQuery", async (reqCall,resCall)=>
 {
+  var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
+  var DERecords = [];
   var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
   console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
   await DECreate(JoinQueryDESelectedFields)
 
   resCall.send(DERecordMap);
 
+  
   async function DECreate(JoinQueryDESelectedFields) {
     return new Promise(function (resolve, reject) {
       var DEListBody = '';
-      var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
       DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
         '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
         '<soapenv:Header>' +
@@ -314,7 +316,77 @@ app.post("/RunQuery", async (reqCall,resCall)=>
     })
   }
 
+  async function getDERecords(key) {
+    return new Promise(async function (resolve, reject) {
 
+      //var NextUrl;
+      var DEDataOptions = {
+        'method': 'GET',
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/data/v1/customobjectdata/key/' + key + '/rowset/',
+        'headers': {
+          'Authorization': 'Bearer ' + access_token
+        }
+      };
+      request(DEDataOptions, async function (error, response) {
+        if (error) throw new Error(error);
+        var tempResult = JSON.parse(response.body);
+
+        if(tempResult.count != 0) {
+          if(Object.keys(tempResult.items[0].keys).length != 0) {
+            DERecords.push.apply(DERecords, tempResult.items);
+          }
+          else {
+            for(var i in tempResult.items) {
+              DERecords.push(tempResult.items[i].values);
+            }
+          }
+        }
+        
+        /*
+        var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
+        if (looplength >= 2) {
+          NextUrl = tempResult.links.next;
+          for (var i = 2; i <= looplength; i++) {
+            NextUrl = await getMoreDERecords(NextUrl, key);
+          }
+        }*/
+
+        resolve(DEListMap);
+      });
+    })
+  }
+
+  async function getMoreDERecords(NextUrl, key) {
+    return new Promise(async function (resolve, reject) {
+
+      var DEMoreDataOptions = {
+        'method': 'GET',
+        'url': SourceRestURL + 'data' + NextUrl,
+        'headers': {
+          'Authorization': 'Bearer ' + SourceAccessToken
+        }
+      };
+      request(DEMoreDataOptions, function (error, response) {
+        if (error) throw new Error(error);
+        var tempResult1 = JSON.parse(response.body);
+
+        if(tempResult1.count != 0) {
+          if(Object.keys(tempResult1.items[0].keys).length != 0) {
+            DEListMap[key].DEDataMap.push.apply(DEListMap[key].DEDataMap, tempResult1.items);
+          }
+          else {
+            for(var i in tempResult1.items) {
+              DEListMap[key].DEDataMap.push(tempResult1.items[i].values);
+            }
+          }
+        }
+
+        NextUrl = tempResult1.links.next;
+        resolve(NextUrl);
+      })
+
+    })
+  }
 
 })
 
