@@ -377,10 +377,29 @@ request(options, function (error, response) {
           })
 
         };
-        request(options, function (error, response) {
+          request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log(response.body);
+          console.log( "response.body.queryDefinitionId" + response.body.queryDefinitionId);
+          var queryDefinitionId = response.body.queryDefinitionId ;
+          if( queryDefinitionId ) 
+          {
+          var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+  'headers': {
+    'Authorization': 'Bearer ' + access_token,
+    'Content-Type': 'application/json'
+  } 
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log("Query run hogyi " + response.body); 
+});
+
+          }
         });
+        
               }
 });
 
