@@ -451,10 +451,11 @@ request(options, function (error, response) {
         };
           request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log( "response.body.queryDefinitionId" + response.body.queryDefinitionId);
+          console.log( "response.body.queryDefinitionId" + response.body);
           var queryDefinitionId = response.body.queryDefinitionId ;
           if( queryDefinitionId ) 
           {
+            console.log("query run me aagya -- > ")
           var request = require('request');
 var options = {
   'method': 'POST',
