@@ -452,9 +452,10 @@ request(options, function (error, response) {
           request(options, function (error, response) {
           if (error) throw new Error(error);
           console.log( "response.body.queryDefinitionId" + response.body);
+          console.log("response.body.name" + response.body.name);
           var responsee = response.body;
-          var queryDefinitionId = responsee.queryDefinitionId ;
-          console.log("queryDefinitionId --- > " + queryDefinitionId); 
+          var queryDefinitionIdd = responsee.queryDefinitionId ;
+          console.log("queryDefinitionId --- > " + queryDefinitionIdd); 
           if( queryDefinitionId != undefined) 
           {
             console.log("query run me aagya -- > ")
