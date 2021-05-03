@@ -2313,57 +2313,29 @@ else
 
     }
 
-    function validateQuery(dynamicQuery) {
+    function validateQuery(strQuery , actionType) {
 
-      console.log("dynamic Query --> " + dynamicQuery);
-      /* 
-         $.ajax({
-          url: "/validatequery",
-          dataType: "JSONP",
-          type: "POST",
-          jsonpCallback: "callback",
-          data: {
-            dynamicQuery:dynamicQuery
-          },
-          success: function() 
-          { console.log("res", "Ajax ke response me aaya ") 
-        }
-      }); */
+      console.log("dynamic Query --> " + strQuery);
 
       $.ajax
-        ({
+      ({
           url: '/validatequery',
           data: {
-            'dynamicQuery': dynamicQuery
-
+            'dynamicQuery': strQuery,
+            'actionType' : actionType
           },
           type: "POST",
           headers: {
-            'Content-type': 'application/x-www-form-urlencoded'
+              'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
             console.log('data : ' + JSON.stringify(data));
           }
-        })
-      /*  var url="/validatequery";
-      fetch(url, {  //provide URL of the processing page
-        method: "POST",
-         headers: {
-          // "Content-Type": "application/x-www-form-urlencoded"
-          "Content-Type": "application/x-www-form-urlencoded" 
-         },
+             
+      })    
       
-         body: {'dynamicQuery':dynamicQuery}
-        
-      })
-      .then(response => response.text())
-      .then(data => {
-       console.log("validate query ke response me agaya ") ;
-       var validatequery = JSON.parse(data).validatequery;
-       console.log(validatequery) ; 
-      
-      }); */
     }
+
 
     function Next() {
 
@@ -4161,8 +4133,8 @@ else
     <div id="main-div" class="slds-float_right" style="width: 70%;height:100%;margin-left: 17%;"
       ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
       <p id="demo"></p>
-      <!-- <button onclick="validateQuery()"> Validate Query </button>  -->
-      <button class="slds-float_right" onclick="RunQuery()"> RUN </button>
+      <button class="slds-float_right" onclick="validateQuery(strQuery,'Validate')"> Validate Query </button>  
+      <button class="slds-float_right" onclick="validateQuery(strQuery , 'run')"> RUN </button>
       <!-- Code Faizal -->
       <div id="RelationshipDiv"> </div>
       <!-- Code Khatam -->

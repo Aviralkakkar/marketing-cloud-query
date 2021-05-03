@@ -393,9 +393,12 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
 app.post("/validatequery", async (reqCall,resCall)=>
    {
-     console.log(reqCall)
-     console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data);
-     console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
+    var dynamicQuery = reqCall.body.dynamicQuery;
+    var actionType = reqCall.body.actionType
+    console.log(actionType);
+  //   console.log(reqCall)
+  //   console.log('reqCall.data.dynamicQuery  :  ' + reqCall.data);
+  //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data));  
   //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data.dynamicQuery));  
    //  console.log("reqCall.body validatequery2" + reqCall.data.dynamicQuery);    
   //  console.log("reqCall.body validatequery" + JSON.stringify(reqCall.body));
@@ -419,6 +422,38 @@ request(options, function (error, response) {
   console.log(fal) ;
   
   resCall.json({validatequery : fal});
+
+    if (fal == true && actionType == "run")
+      {
+        console.log("loop me aaya");
+                var request = require('request');
+        var options = {
+          'method': 'POST',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com//automation/v1/queries/',
+          'headers': {
+            'Authorization': 'Bearer '+ access_token,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            "name": "REST_API Field testingnodejs",
+            "key": "REST_API testingnodejs",
+            "description": "",
+            "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
+            "targetName": "Contact_Sent Target DE",
+            "targetKey": "1ADC76A8-8C76-42FB-8293-6819BC262C38",
+            "targetId": "c53cd438-9e6a-eb11-a301-98f2b32bc563",
+            "targetDescription": "Created via REST API",
+            "targetUpdateTypeId": 0,
+            "targetUpdateTypeName": "Overwrite",
+            "categoryId": 10844
+          })
+
+        };
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          console.log(response.body);
+        });
+              }
 });
 
  
