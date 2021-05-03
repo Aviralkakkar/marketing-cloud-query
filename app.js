@@ -455,7 +455,7 @@ request(options, function (error, response) {
      //     console.log("response.body.name" + response.body.name);
           var responsee = JSON.parse(response.body);
           var queryDefinitionId = responsee.queryDefinitionId ;
-          console.log("queryDefinitionId --- > " + queryDefinitionIdd); 
+          console.log("queryDefinitionId --- > " + queryDefinitionId); 
           if( queryDefinitionId) 
           {
             console.log("query run me aagya -- > ")
