@@ -189,7 +189,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
   await DECreate(JoinQueryDESelectedFields)
 
-  resCall.send(DERecordMap);
+//  resCall.send(DERecordMap);
 
   
   async function DECreate(JoinQueryDESelectedFields) {
@@ -425,6 +425,7 @@ request(options, function (error, response) {
 
     if (fal == true && actionType == "run")
       {
+        
         console.log("loop me aaya");
                 var request = require('request');
         var options = {
