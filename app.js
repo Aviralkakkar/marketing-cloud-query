@@ -423,7 +423,7 @@ var options = {
   body: JSON.stringify({"Text":"SELECT [EmailAddress],[FirstName] FROM Adventure"})
 
 };
-request(options, function (error, response) {
+request(options, async function (error, response) {
   if (error) throw new Error(error);
   console.log("yeh response body validate query ka --- > " + response.body);
   var responsee = JSON.parse(response.body) ;
