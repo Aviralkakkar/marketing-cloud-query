@@ -187,9 +187,11 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   var DERecords = [];
   var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
   console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
-  await DECreate(JoinQueryDESelectedFields)
+  await DECreate(JoinQueryDESelectedFields);
+  await getDERecords(currentDate);
 
-  resCall.send(DERecordMap);
+
+  resCall.send(DERecords);
 
   
   async function DECreate(JoinQueryDESelectedFields) {
@@ -351,19 +353,19 @@ app.post("/RunQuery", async (reqCall,resCall)=>
           }
         }*/
 
-        resolve(DEListMap);
+        resolve(DERecords);
       });
     })
   }
 
-  async function getMoreDERecords(NextUrl, key) {
+  async function getMoreDERecords(NextUrl) {
     return new Promise(async function (resolve, reject) {
 
       var DEMoreDataOptions = {
         'method': 'GET',
-        'url': SourceRestURL + 'data' + NextUrl,
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/data' + NextUrl,
         'headers': {
-          'Authorization': 'Bearer ' + SourceAccessToken
+          'Authorization': 'Bearer ' + access_token
         }
       };
       request(DEMoreDataOptions, function (error, response) {
@@ -372,11 +374,11 @@ app.post("/RunQuery", async (reqCall,resCall)=>
 
         if(tempResult1.count != 0) {
           if(Object.keys(tempResult1.items[0].keys).length != 0) {
-            DEListMap[key].DEDataMap.push.apply(DEListMap[key].DEDataMap, tempResult1.items);
+            DERecords.push.apply(DERecords, tempResult1.items);
           }
           else {
             for(var i in tempResult1.items) {
-              DEListMap[key].DEDataMap.push(tempResult1.items[i].values);
+              DERecords.push(tempResult1.items[i].values);
             }
           }
         }
