@@ -435,8 +435,8 @@ request(options, function (error, response) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "name": "REST_API Field testingnodejs mc",
-            "key": "REST_API testingnodejs mc",
+            "name": "REST_API Field testingnodejs mc2",
+            "key": "REST_API testingnodejs mc2",
             "description": "",
             "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
             "targetName": "Contact_Sent Target DE",
