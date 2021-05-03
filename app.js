@@ -435,8 +435,8 @@ request(options, function (error, response) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "name": "REST_API Field testingnodejs mc6",
-            "key": "REST_API testingnodejs mc6",
+            "name": "REST_API Field testingnodejs mc",
+            "key": "REST_API testingnodejs mc",
             "description": "",
             "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
             "targetName": "Contact_Sent Target DE",
@@ -451,12 +451,12 @@ request(options, function (error, response) {
         };
           request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log( "response.body.queryDefinitionId" + response.body);
-          console.log("response.body.name" + response.body.name);
-          var responsee = response.body;
-          var queryDefinitionIdd = responsee.queryDefinitionId ;
+     //     console.log( "response.body.queryDefinitionId" + response.body);
+     //     console.log("response.body.name" + response.body.name);
+          var responsee = JSON.parse(response.body);
+          var queryDefinitionId = responsee.queryDefinitionId ;
           console.log("queryDefinitionId --- > " + queryDefinitionIdd); 
-          if( queryDefinitionId != undefined) 
+          if( queryDefinitionId) 
           {
             console.log("query run me aagya -- > ")
           var request = require('request');
