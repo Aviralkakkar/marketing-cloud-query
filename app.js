@@ -435,8 +435,8 @@ request(options, function (error, response) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "name": "REST_API Field testingnodejs",
-            "key": "REST_API testingnodejs",
+            "name": "REST_API Field testingnodejs mc",
+            "key": "REST_API testingnodejs mc",
             "description": "",
             "queryText": "Select * from myNtoSubscribers where (myNTOLevel='Gold' or myNTOLevel='Platinum' or myNTOLevel='Silver' or myNTOLevel='Bronze' or myNTOLevel='Member' ) AND Country = 'India'  ",
             "targetName": "Contact_Sent Target DE",
@@ -466,7 +466,7 @@ var options = {
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
-  console.log("Query run hogyi " + response.body); 
+  console.log("Query run hogyi hai  " + response.body); 
 });
 
           }
