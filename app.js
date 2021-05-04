@@ -177,6 +177,8 @@ app.post("/secondpage", async function (req, res) {
     });
   });
 
+
+  var Name;
   app.post("/RunQuery", async (reqCall, resCall) => {
     var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
     var DERecords = [];
@@ -185,7 +187,7 @@ app.post("/secondpage", async function (req, res) {
     //await DECreate(JoinQueryDESelectedFields);
     //await getDERecords(currentDate);
 
-    DERecords = await getDERecords("2021-29-Mo:08:29:16");
+    DERecords = await getDERecords(Name);
 
     resCall.send(DERecords);
 
@@ -443,7 +445,7 @@ app.post("/secondpage", async function (req, res) {
         console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
-        var Name = DECreateResult[0].Object[0].Name[0];
+        Name = DECreateResult[0].Object[0].Name[0];
 
  
         console.log("loop me aaya");
@@ -494,9 +496,10 @@ app.post("/secondpage", async function (req, res) {
 
               if (response.body == '"OK"') {
                 console.log('OK me aa gya ---------------------');
-                var getDERecordsResult = await getDERecords(Name);
-                console.log("getDERecordsResult" + getDERecordsResult);
-                resCall.send(getDERecordsResult);
+                //var getDERecordsResult = await getDERecords(Name);
+                //console.log("getDERecordsResult" + getDERecordsResult);
+                //resCall.send(getDERecordsResult);
+                resCall.send('Query Run Successfully');
               }
             });
 

@@ -2335,13 +2335,13 @@ else
               'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
-            console.log('data : ' + JSON.stringify(data));
-            DEListShow(data);
+            console.log('data : ' + data);
+            //DEListShow(data);
           }
              
       })  
       
-      
+      /*
       function DEListShow(DERecords) {
         var DETableBody = ""
   
@@ -2374,7 +2374,7 @@ else
           document.getElementById('DETable').innerHTML = DETableBody;
         }  
       }
-  
+  */
       
     }
 
@@ -4311,20 +4311,20 @@ else
             ({
                 url: '/RunQuery',
                 data: {
-                  'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
+                  'JoinQueryDESelectedFields' : true
                 },
                 type: "POST",
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
                 success: function (data) {
-                    console.log(data);
-                    //DEListShow(data);
+                    console.log('hakshsah : ' + JSON.stringify(data));
+                    DEListShow(data);
                     
                 }
             })
 
-    /*  
+      
       function DEListShow(DERecords) {
         var DETableBody = ""
   
@@ -4357,7 +4357,7 @@ else
           document.getElementById('DETable').innerHTML = DETableBody;
         }  
       }
-  */
+  
     }
 
 
