@@ -499,7 +499,7 @@ app.post("/secondpage", async function (req, res) {
                 //var getDERecordsResult = await getDERecords(Name);
                 //console.log("getDERecordsResult" + getDERecordsResult);
                 //resCall.send(getDERecordsResult);
-                resCall.send('Query Run Successfully');
+                //resCall.send('Query Run Successfully');
               }
             });
 
