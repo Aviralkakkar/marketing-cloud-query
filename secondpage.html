@@ -4341,17 +4341,17 @@ else
           }
           DETableBody +=  '</tr>' +
                         '</thead>' +
-                        '<tbody>' +
-                          '<tr class="slds-hint-parent">';
+                        '<tbody>';
           
           for(var i in DERecords) {
+            DETableBody += '<tr class="slds-hint-parent">';
             for(var key in DERecords[i]) {
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
+            DETableBody +=  '</tr>';
           }
           
-          DETableBody +=  '</tr>' +
-                        '</tbody>' +
+          DETableBody += '</tbody>' +
                       '</table>';
           
           document.getElementById('DETable').innerHTML = DETableBody;
