@@ -185,9 +185,9 @@ app.post("/secondpage", async function (req, res) {
     //await DECreate(JoinQueryDESelectedFields);
     //await getDERecords(currentDate);
 
-    await getDERecords("2021-29-Mo:08:29:16");
+    DERecords = await getDERecords("2021-29-Mo:08:29:16");
 
-    //  resCall.send(DERecordMap);
+    resCall.send(DERecords);
 
 
     async function DECreate(JoinQueryDESelectedFields) {
@@ -338,7 +338,7 @@ app.post("/secondpage", async function (req, res) {
             }
           }
           console.log('DERecords : ' + JSON.stringify(DERecords));
-
+          resolve(DERecords);
 
           /*
           //If DE has primary key
@@ -363,7 +363,7 @@ app.post("/secondpage", async function (req, res) {
             }
           }*/
 
-          resolve(DERecords);
+          //resolve(DERecords);
         });
       })
     }
