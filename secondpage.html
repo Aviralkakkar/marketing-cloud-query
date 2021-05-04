@@ -4490,7 +4490,8 @@ else
       }
       else {
         if(openWhereDEName in dataExtensionNameMapFinal) {
-          ocument.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          document.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          openWhereDEName = '';
         }
       }
       
