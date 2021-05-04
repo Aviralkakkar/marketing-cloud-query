@@ -4142,6 +4142,7 @@ else
       <p id="demo"></p>
       <button class="slds-float_right" onclick="validateQuery(strQuery,'Validate')"> Validate Query </button>  
       <button class="slds-float_right" onclick="validateQuery(strQuery , 'run')"> RUN </button>
+      <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
       <!-- Code Faizal -->
       <div id="RelationshipDiv"> </div>
       <!-- Code Khatam -->
@@ -4284,46 +4285,46 @@ else
                 },
                 success: function (data) {
                     console.log(data);
-                    
+                    DEListShow(data);
                     
                 }
             })
-    }
 
-    function DEListShow(DERecords) {
-      var DETableBody = ""
 
-      if(DERecords.lemgth != 0) {
-
-        DETableBody = '<table class="slds-table slds-table--bordered">' +
-                        '<thead>' +
-                          '<tr class="slds-text-heading--label">';
-        
-        for(var key in DERecords[0]) {
-          DETableBody +=  '<th class="slds-cell-shrink" scope="col">' +
-                            '<span class="slds-truncate">' + key + '</span>' +
-                          '</th>';
-        }
-        DETableBody +=  '</tr>' +
-                      '</thead>' +
-                      '<tbody>' +
-                        '<tr class="slds-hint-parent">';
-        
-        for(var i in DERecords) {
-          for(var key in DERecords[i]) {
-            DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+      function DEListShow(DERecords) {
+        var DETableBody = ""
+  
+        if(DERecords.lemgth != 0) {
+  
+          DETableBody = '<table class="slds-table slds-table--bordered">' +
+                          '<thead>' +
+                            '<tr class="slds-text-heading--label">';
+          
+          for(var key in DERecords[0]) {
+            DETableBody +=  '<th class="slds-cell-shrink" scope="col">' +
+                              '<span class="slds-truncate">' + key + '</span>' +
+                            '</th>';
           }
-        }
-        
-        DETableBody +=  '</tr>' +
-                      '</tbody>' +
-                    '</table>';
-
-        document.getElementById('DETable').innerHTML = DETableBody;
-      }  
+          DETableBody +=  '</tr>' +
+                        '</thead>' +
+                        '<tbody>' +
+                          '<tr class="slds-hint-parent">';
+          
+          for(var i in DERecords) {
+            for(var key in DERecords[i]) {
+              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+            }
+          }
+          
+          DETableBody +=  '</tr>' +
+                        '</tbody>' +
+                      '</table>';
+  
+          document.getElementById('DETable').innerHTML = DETableBody;
+        }  
+      }
+  
     }
-
-
 
 
     function CancelPopup() {
