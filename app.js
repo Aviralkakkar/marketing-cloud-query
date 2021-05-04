@@ -187,8 +187,9 @@ app.post("/RunQuery", async (reqCall,resCall)=>
   var DERecords = [];
   var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
   console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
-  await DECreate(JoinQueryDESelectedFields);
-  await getDERecords(currentDate);
+  //await DECreate(JoinQueryDESelectedFields);
+  //await getDERecords(currentDate);
+  await getDERecords("2021-29-Mo:08:29:16");
 
 
   resCall.send(DERecords);
@@ -334,6 +335,15 @@ app.post("/RunQuery", async (reqCall,resCall)=>
         var tempResult = JSON.parse(response.body);
 
         if(tempResult.count != 0) {
+          for(var i in tempResult.items) {
+            DERecords.push(tempResult.items[i].values);
+          }
+        }
+
+
+        /*
+        //If DE has primary key
+        if(tempResult.count != 0) {
           if(Object.keys(tempResult.items[0].keys).length != 0) {
             DERecords.push.apply(DERecords, tempResult.items);
           }
@@ -343,6 +353,7 @@ app.post("/RunQuery", async (reqCall,resCall)=>
             }
           }
         }
+        */
         
         /*
         var looplength = Math.ceil(tempResult.count / tempResult.pageSize);

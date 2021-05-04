@@ -4243,7 +4243,14 @@ else
     <!-- Code Faizal -->
     <div style="display: none;width: 160px;" id="ThirdModal">
     </div>
+
+    <div class="slds-col slds-size_9-of-12" id="DETable">
+    </div>
+
+    
     <!-- Code Khatam -->
+
+
   </div>
 
 
@@ -4276,6 +4283,42 @@ else
                 }
             })
     }
+
+    function DEListShow(DERecords) {
+      var DETableBody = ""
+
+      if(DERecords.lemgth != 0) {
+
+        DETableBody = '<table class="slds-table slds-table--bordered">' +
+                        '<thead>' +
+                          '<tr class="slds-text-heading--label">';
+        
+        for(var key in DERecords[0]) {
+          DETableBody +=  '<th class="slds-cell-shrink" scope="col">' +
+                            '<span class="slds-truncate">' + key + '</span>' +
+                          '</th>';
+        }
+        DETableBody +=  '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr class="slds-hint-parent">';
+        
+        for(var i in DERecords) {
+          for(var key in DERecords[i]) {
+            DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+          }
+        }
+        
+        DETableBody +=  '</tr>' +
+                      '</tbody>' +
+                    '</table>';
+
+        document.getElementById('DETable').innerHTML = DETableBody;
+      }  
+    }
+
+
+
 
     function CancelPopup() {
       document.getElementById('grid-1-de').innerHTML = '';
