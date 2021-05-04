@@ -316,7 +316,6 @@ app.post("/secondpage", async function (req, res) {
 
     async function getDERecords(key) {
       return new Promise(async function (resolve, reject) {
-        console.log('getDERecords me aaya');
 
         //var NextUrl;
         var DEDataOptions = {
@@ -326,10 +325,8 @@ app.post("/secondpage", async function (req, res) {
             'Authorization': 'Bearer ' + access_token
           }
         };
-        console.log('DEDataOptions : ' + JSON.stringify(DEDataOptions));
         request(DEDataOptions, async function (error, response) {
           if (error) throw new Error(error);
-          console.log(response.body);
           var tempResult = JSON.parse(response.body);
 
           if (tempResult.count != 0) {
@@ -337,8 +334,6 @@ app.post("/secondpage", async function (req, res) {
               DERecords.push(tempResult.items[i].values);
             }
           }
-          console.log('DERecords : ' + JSON.stringify(DERecords));
-          resolve(DERecords);
 
           /*
           //If DE has primary key
@@ -363,7 +358,7 @@ app.post("/secondpage", async function (req, res) {
             }
           }*/
 
-          //resolve(DERecords);
+          resolve(DERecords);
         });
       })
     }

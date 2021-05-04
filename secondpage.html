@@ -4271,8 +4271,6 @@ else
       for (var val of Array.from(FieldSet)) {
         JoinQueryDESelectedFields.push(JSON.parse(val));
       }
-      console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
-
       $.ajax
             ({
                 url: '/RunQuery',
@@ -4320,7 +4318,6 @@ else
                         '</tbody>' +
                       '</table>';
           
-          console.log('DETableBody : ' + DETableBody);
           document.getElementById('DETable').innerHTML = DETableBody;
         }  
       }
