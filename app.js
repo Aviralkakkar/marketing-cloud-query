@@ -433,7 +433,7 @@ app.post("/secondpage", async function (req, res) {
       console.log("yeh response body validate query ka --- > " + response.body);
       var responsee = JSON.parse(response.body);
       var fal = responsee.queryValid;
-      console.log(fal);
+      console.log(fal); 
 
       resCall.json({ validatequery: fal });
 
@@ -445,7 +445,7 @@ app.post("/secondpage", async function (req, res) {
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         var Name = DECreateResult[0].Object[0].Name[0];
 
-
+ 
         console.log("loop me aaya");
         var request = require('request');
         var options = {
