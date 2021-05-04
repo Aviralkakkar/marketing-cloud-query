@@ -493,9 +493,10 @@ app.post("/secondpage", async function (req, res) {
               console.log("Query run hogyi hai  " + response.body);
 
               if (response.body == "OK") {
+                console.log('OK me aa gya ---------------------');
                 var getDERecordsResult = await getDERecords(Name);
-
                 console.log("getDERecordsResult" + getDERecordsResult);
+                resCall.send(getDERecordsResult);
               }
             });
 
