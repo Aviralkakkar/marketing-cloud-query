@@ -2317,12 +2317,18 @@ else
 
       console.log("dynamic Query --> " + strQuery);
 
+      for (var val of Array.from(FieldSet)) {
+        JoinQueryDESelectedFields.push(JSON.parse(val));
+      }
+      console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
+
       $.ajax
       ({
           url: '/validatequery',
           data: {
             'dynamicQuery': strQuery,
-            'actionType' : actionType
+            'actionType' : actionType,
+            'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
           },
           type: "POST",
           headers: {
