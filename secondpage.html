@@ -4370,6 +4370,9 @@ else
     }
 
     function OpenWhere(DEName) {
+      console.log('DEName : ' + DEName);
+      console.log('document.getElementById(DEName + WhereClause) : ' + document.getElementById(DEName + 'WhereClause'));
+      Next()
       document.getElementById('ulList').innerHTML = document.getElementById(DEName + 'WhereClause');
       document.getElementById('SecondModal').style.display = 'block';
     }
