@@ -2339,7 +2339,42 @@ else
             DEListShow(data);
           }
              
-      })    
+      })  
+      
+      
+      function DEListShow(DERecords) {
+        var DETableBody = ""
+  
+        if(DERecords.lemgth != 0) {
+  
+          DETableBody = '<table class="slds-table slds-table--bordered">' +
+                          '<thead>' +
+                            '<tr class="slds-text-heading--label">';
+          
+          for(var key in DERecords[0]) {
+            DETableBody +=  '<th class="slds-cell-shrink" scope="col">' +
+                              '<span class="slds-truncate">' + key + '</span>' +
+                            '</th>';
+          }
+          DETableBody +=  '</tr>' +
+                        '</thead>' +
+                        '<tbody>' +
+                          '<tr class="slds-hint-parent">';
+          
+          for(var i in DERecords) {
+            for(var key in DERecords[i]) {
+              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+            }
+          }
+          
+          DETableBody +=  '</tr>' +
+                        '</tbody>' +
+                      '</table>';
+          
+          document.getElementById('DETable').innerHTML = DETableBody;
+        }  
+      }
+  
       
     }
 
