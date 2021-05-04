@@ -4774,10 +4774,10 @@ else
 
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
-                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + '],';
+                    strQuery += ' [' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + '] as [' + currentClickedDEGlobal + ' ' + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"] + '],';
                   }
                   for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
+                    strQuery += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '] as [' + document.getElementById('select-02').value + ' ' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
                   }
                   strQuery = strQuery.slice(0, -1);
                   strQuery += ' FROM [' + currentClickedDEGlobal + ']';
@@ -4801,7 +4801,7 @@ else
 
                   var tempQueryList = strQuery.split("] FROM [");
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                    tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
+                    tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '] as [' + document.getElementById('select-02').value + ' ' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key] + '],';
                   }
                   tempQueryList[0] = tempQueryList[0].slice(0, -1);
                   strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
