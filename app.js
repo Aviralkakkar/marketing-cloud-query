@@ -433,7 +433,7 @@ app.post("/secondpage", async function (req, res) {
       console.log("yeh response body validate query ka --- > " + response.body);
       var responsee = JSON.parse(response.body);
       var fal = responsee.queryValid;
-      console.log(fal);
+      console.log(fal); 
 
       resCall.json({ validatequery: fal });
 
