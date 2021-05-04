@@ -184,6 +184,7 @@ app.post("/secondpage", async function (req, res) {
     console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
     //await DECreate(JoinQueryDESelectedFields);
     //await getDERecords(currentDate);
+
     await getDERecords("2021-29-Mo:08:29:16");
 
     //  resCall.send(DERecordMap);
@@ -315,6 +316,7 @@ app.post("/secondpage", async function (req, res) {
 
     async function getDERecords(key) {
       return new Promise(async function (resolve, reject) {
+        console.log('getDERecords me aaya');
 
         //var NextUrl;
         var DEDataOptions = {
@@ -324,8 +326,10 @@ app.post("/secondpage", async function (req, res) {
             'Authorization': 'Bearer ' + access_token
           }
         };
+        console.log('DEDataOptions : ' + JSON.stringify(DEDataOptions));
         request(DEDataOptions, async function (error, response) {
           if (error) throw new Error(error);
+          console.log(response.body);
           var tempResult = JSON.parse(response.body);
 
           if (tempResult.count != 0) {
@@ -333,6 +337,7 @@ app.post("/secondpage", async function (req, res) {
               DERecords.push(tempResult.items[i].values);
             }
           }
+          console.log('DERecords : ' + JSON.stringify(DERecords));
 
 
           /*
