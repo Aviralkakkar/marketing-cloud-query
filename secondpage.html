@@ -4372,9 +4372,11 @@ else
     function OpenWhere(DEName) {
       DEName = DEName.split("OpenWhere");
       DEName = DEName[0];
-      console.log('DEName : ' + DEName);
-      console.log('document.getElementById(DEName + WhereClause) : ' + document.getElementById(DEName + 'WhereClause'));
-      Next()
+      var ulListStr = '';
+      for(var key in dataExtensionNameMap[DEName].AllFields) {
+        ulListStr += '<li><input type="button" value="' + dataExtensionNameMap[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMap[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMap[DEName].AllFields[key]["FieldType"] + '"></li>';
+      }
+      document.getElementById('ulList').innerHTML = ulListStr;
       document.getElementById("RichTextEditor").innerHTML = document.getElementById(DEName + 'WhereClause').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
     }
