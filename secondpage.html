@@ -4800,8 +4800,9 @@ else
                   }
 
                   var tempQueryList = strQuery.split("] FROM [");
+                  tempQueryList[0] += '],'
                   for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
-                    tempQueryList[0] += '] [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '] as [' + document.getElementById('select-02').value + ' ' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
+                    tempQueryList[0] += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '] as [' + document.getElementById('select-02').value + ' ' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
                   }
                   tempQueryList[0] = tempQueryList[0].slice(0, -1);
                   strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
