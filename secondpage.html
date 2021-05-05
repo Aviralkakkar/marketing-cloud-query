@@ -4383,6 +4383,13 @@ else
       document.getElementById('SecondModal').style.display = 'block';
     }
 
+    function OpenSelectField(DEName) {
+      DEName = DEName.split("OpenSelectField");
+      DEName = DEName[0];
+      document.getElementById('RelationPopup').style.display = 'block';
+
+    }
+
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
@@ -4463,7 +4470,7 @@ else
         '</ul>' +
         '</div>' +
         '</div>' +
-        '<div class="graph-object-body">' +
+        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + dataExtensionName + 'OpenSelectField">' +
         '<ul class="attributes scrollableClass">';
       relationDivString += fieldsListForRelationDiv;
       relationDivString += '</ul>' +
