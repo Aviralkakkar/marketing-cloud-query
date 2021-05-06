@@ -4386,10 +4386,10 @@ else
     //var openOpenSelectField = '';
     function OpenSelectField(DEName) {
       document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('RelationPopup').style.display = 'block';
       DEName = DEName.split("OpenSelectField");
       DEName = DEName[0];
       openOpenSelectField = DEName;
-      document.getElementById('RelationPopup').style.display = 'block';
 
       var html = '';
       var bool;
@@ -4411,6 +4411,7 @@ else
         }
       }
       document.getElementById('grid-1-de').innerHTML = html;
+      
     }
 
     function DetailsSave() {
