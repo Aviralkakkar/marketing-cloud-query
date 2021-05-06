@@ -4389,20 +4389,18 @@ else
       DEName = DEName[0];
       document.getElementById('RelationPopup').style.display = 'block';
 
+      var html = '';
       for(var key in dataExtensionNameMapFinal[DEName].AllFields) {
         for(var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
-          if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key1]["FieldName"]) {
-            var html = '<input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>';
-            var node = '<li>' + html + ' ' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
-            document.getElementById('grid-1-de').innerHTML += node;
+          if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
+            html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
           }
           else {
-            var html = '<input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">';
-            var node = '<li>' + html + ' ' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
-            document.getElementById('grid-1-de').innerHTML += node;
+            html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
           }
         }
       }
+      document.getElementById('grid-1-de').innerHTML = html;
       
       
 
