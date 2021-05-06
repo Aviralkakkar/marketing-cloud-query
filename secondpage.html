@@ -2086,6 +2086,7 @@ else
     };
     //document.ondrop = function(event,target) {
     function drop(event, target) {
+
       document.getElementById('grid-1-de').innerHTML = '';
 
       deFieldListarray = [];
@@ -4515,6 +4516,13 @@ else
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
+            if(document.getElementsByClassName("mydiv").length > 1) {
+              words = '';
+              strQuery = '';
+            }
+            else {
+              strQuery = words;
+            }
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
           }
         }
@@ -4583,7 +4591,10 @@ else
       //console.log("dataExtensionName" + dataExtensionName);
       words += ' ' + 'FROM ' + dataExtensionName;
 
-      words += ' WHERE ' + answer_form3;
+      if(answer_form3 != '') {
+        words += ' WHERE ' + answer_form3;
+      }
+      
       console.log("Words Query : " + words);
 
       //validateQuery(words);
