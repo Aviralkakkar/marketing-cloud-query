@@ -4525,6 +4525,10 @@ else
           openWhereDEName = '';
         }
       }
+      if(openOpenSelectField != '') {
+        document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
+      }
+      
       
       //code khatam
 
