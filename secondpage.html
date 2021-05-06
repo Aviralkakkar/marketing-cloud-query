@@ -4522,12 +4522,14 @@ else
       else {
         if(openWhereDEName in dataExtensionNameMapFinal) {
           document.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
           openWhereDEName = '';
         }
       }
       if(openOpenSelectField != '') {
         document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
-        openWhereDEName = '';
+        //openWhereDEName = '';
+        openOpenSelectField = '';
       }
       
       
