@@ -4381,7 +4381,6 @@ else
       document.getElementById('ulList').innerHTML = ulListStr;
       document.getElementById("RichTextEditor").innerHTML = document.getElementById(DEName + 'WhereClause').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
-      openOpenSelectField = '';
     }
 
     //var openOpenSelectField = '';
@@ -4527,6 +4526,7 @@ else
       }
       if(openOpenSelectField != '') {
         document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
+        openWhereDEName = '';
       }
       
       
