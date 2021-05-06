@@ -2380,7 +2380,6 @@ else
 
     var openOpenSelectField = '';
     function Next() {
-
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'block';
       document.getElementById('ulList').innerHTML = '';
@@ -2415,12 +2414,8 @@ else
       }
       else {
         OpenWhere(openOpenSelectField + 'OpenWhere');
+        openOpenSelectField = '';
       }
-
-
-      
-
-
     }
   </script>
 
@@ -4386,6 +4381,7 @@ else
       document.getElementById('ulList').innerHTML = ulListStr;
       document.getElementById("RichTextEditor").innerHTML = document.getElementById(DEName + 'WhereClause').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
+      openOpenSelectField = '';
     }
 
     //var openOpenSelectField = '';
