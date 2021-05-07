@@ -331,6 +331,7 @@ app.post("/secondpage", async function (req, res) {
         };
         request(DEDataOptions, async function (error, response) {
           if (error) throw new Error(error);
+          console.log('respo : ' + response.body);
           var tempResult = JSON.parse(response.body);
 
           if (tempResult.count != 0) {
