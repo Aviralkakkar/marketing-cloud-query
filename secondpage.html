@@ -4579,17 +4579,17 @@ else
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' ' + criteriaListArray[i];
+          words += ' [' + criteriaListArray[i] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', ' + criteriaListArray[i];
+          words += ', [' + criteriaListArray[i] + ']';
 
         }
       }
       //console.log("dataExtensionName" + dataExtensionName);
-      words += ' ' + 'FROM ' + dataExtensionName;
+      words += ' ' + 'FROM [' + dataExtensionName + ']';
 
       if(answer_form3 != '') {
         words += ' WHERE ' + answer_form3;
