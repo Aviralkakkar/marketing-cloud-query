@@ -331,7 +331,7 @@ app.post("/secondpage", async function (req, res) {
         };
         request(DEDataOptions, async function (error, response) {
           if (error) throw new Error(error);
-          console.log('respo : ' + response.body);
+          //console.log('respo : ' + response.body);
           var tempResult = JSON.parse(response.body);
 
           if (tempResult.count != 0) {
@@ -430,7 +430,7 @@ app.post("/secondpage", async function (req, res) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + access_token
       },
-      body: JSON.stringify({ "Text": "SELECT [EmailAddress],[FirstName] FROM Adventure" })
+      body: JSON.stringify({ "Text": dynamicQuery })
 
     };
     request(options, async function (error, response) {
