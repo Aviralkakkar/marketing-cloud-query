@@ -4635,10 +4635,16 @@ else
       if(document.getElementsByClassName("mydiv").length > 1) {
         words = '';
         strQuery = '';
+        //FieldSet.clear();
       }
       else {
         strQuery = words;
-        console.log('else wali strQuery : ' + strQuery);
+        for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
+          FieldSet.add(JSON.stringify({
+            "FieldName" : dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
+            "FieldType" : dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldType"]
+          }));
+        }
       }
       document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('grid-1-de').innerHTML = '';
