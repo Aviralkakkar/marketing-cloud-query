@@ -4391,6 +4391,7 @@ else
       DEName = DEName.split("OpenSelectField");
       DEName = DEName[0];
       openOpenSelectField = DEName;
+      console.log('openOpenSelectField : ' + openOpenSelectField);
 
       var html = '';
       var bool;
@@ -4527,7 +4528,6 @@ else
           openWhereDEName = '';
         }
         if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal) {
-          console.log('Aa gya openField Me');
           fieldsListForRelationDiv = ''
           for(var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
             fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
