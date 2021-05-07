@@ -2085,6 +2085,7 @@ else
     };
     //document.ondrop = function(event,target) {
     function drop(event, target) {
+
       document.getElementById('grid-1-de').innerHTML = '';
 
       deFieldListarray = [];
@@ -2315,7 +2316,7 @@ else
     function validateQuery(strQuery , actionType) {
 
       console.log("dynamic Query --> " + strQuery);
-
+      JoinQueryDESelectedFields = [];
       for (var val of Array.from(FieldSet)) {
         JoinQueryDESelectedFields.push(JSON.parse(val));
       }
@@ -2334,7 +2335,7 @@ else
               'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
-            console.log('data : ' + data);
+            console.log('data : ' + JSON.stringify(data));
             //DEListShow(data);
           }
              
@@ -2377,44 +2378,44 @@ else
       
     }
 
-
+    var openOpenSelectField = '';
     function Next() {
-
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'block';
       document.getElementById('ulList').innerHTML = '';
+      if(openOpenSelectField == '') {
+        /*  var constList = document.getElementById('ulList'); 
+          console.log("Value of the ulList --- > " + constList)
+          var ul = document.createElement('ul');
+          ul.setAttribute('style', 'padding: 0; margin: 0;');
+          ul.setAttribute('id', 'theList');
+          */
+        //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
+        //console.log("deFieldListarray   :    " + deFieldListarray);
+        for (var i = 0; i < deFieldListarray.length; i++) {
+          //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
+          //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
+          //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
+          var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
+          var node = '<li >' + html + '</li>';
 
 
 
-      /*  var constList = document.getElementById('ulList'); 
-        console.log("Value of the ulList --- > " + constList)
-        var ul = document.createElement('ul');
-        ul.setAttribute('style', 'padding: 0; margin: 0;');
-        ul.setAttribute('id', 'theList');
-        */
-      //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
-      //console.log("deFieldListarray   :    " + deFieldListarray);
-      for (var i = 0; i < deFieldListarray.length; i++) {
-        //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
-        //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-        //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
-        var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
-        var node = '<li >' + html + '</li>';
+          //  var li = document.createElement('li');     // create li element.
+          //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
+          //  li.setAttribute('style', 'display: block;');    // remove the bullets.
+          //  li.setAttribute('draggable', 'true'); 
+          //  ul.appendChild(li);     // append li to ul.
+          document.getElementById('ulList').innerHTML += node;
 
+        }
 
-
-        //  var li = document.createElement('li');     // create li element.
-        //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
-        //  li.setAttribute('style', 'display: block;');    // remove the bullets.
-        //  li.setAttribute('draggable', 'true'); 
-        //  ul.appendChild(li);     // append li to ul.
-        document.getElementById('ulList').innerHTML += node;
-
+        //  constList.appendChild(ul);
       }
-
-      //  constList.appendChild(ul);
-
-
+      else {
+        OpenWhere(openOpenSelectField + 'OpenWhere');
+        //openOpenSelectField = '';
+      }
     }
   </script>
 
@@ -4379,8 +4380,8 @@ else
 
 
     function CancelPopup() {
-      document.getElementById('grid-1-de').innerHTML = '';
-      document.getElementById('ulList').innerHTML = '';
+      //document.getElementById('grid-1-de').innerHTML = '';
+      //document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
 
       document.getElementById('SecondModal').style.display = 'none';
@@ -4401,6 +4402,38 @@ else
       document.getElementById('ulList').innerHTML = ulListStr;
       document.getElementById("RichTextEditor").innerHTML = document.getElementById(DEName + 'WhereClause').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
+    }
+
+    //var openOpenSelectField = '';
+    function OpenSelectField(DEName) {
+      document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('RelationPopup').style.display = 'block';
+      DEName = DEName.split("OpenSelectField");
+      DEName = DEName[0];
+      openOpenSelectField = DEName;
+      console.log('openOpenSelectField : ' + openOpenSelectField);
+
+      var html = '';
+      var bool;
+      for(var key in dataExtensionNameMapFinal[DEName].AllFields) {
+        for(var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
+          if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
+            bool = true;
+            break;
+          }
+          else {
+            bool = false;
+          }
+        }
+        if(bool == true) {
+          html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
+        }
+        else {
+          html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
+        }
+      }
+      document.getElementById('grid-1-de').innerHTML = html;
+      
     }
 
     function DetailsSave() {
@@ -4483,7 +4516,7 @@ else
         '</ul>' +
         '</div>' +
         '</div>' +
-        '<div class="graph-object-body">' +
+        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + dataExtensionName + 'OpenSelectField">' +
         '<ul class="attributes scrollableClass">';
       relationDivString += fieldsListForRelationDiv;
       relationDivString += '</ul>' +
@@ -4511,9 +4544,21 @@ else
       else {
         if(openWhereDEName in dataExtensionNameMapFinal) {
           document.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          //document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
           openWhereDEName = '';
         }
+        if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal) {
+          fieldsListForRelationDiv = ''
+          for(var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
+            fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
+          }
+          document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
+          //openWhereDEName = '';
+          openOpenSelectField = '';
+        }
       }
+      
+      
       
       //code khatam
 
@@ -4547,19 +4592,22 @@ else
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' ' + criteriaListArray[i];
+          words += ' [' + criteriaListArray[i] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', ' + criteriaListArray[i];
+          words += ', [' + criteriaListArray[i] + ']';
 
         }
       }
       //console.log("dataExtensionName" + dataExtensionName);
-      words += ' ' + 'FROM ' + dataExtensionName;
+      words += ' ' + 'FROM [' + dataExtensionName + ']';
 
-      words += ' WHERE ' + answer_form3;
+      if(answer_form3 != '') {
+        words += ' WHERE ' + answer_form3;
+      }
+      
       //console.log("Words Query : " + words);
 
       //validateQuery(words);
@@ -4604,7 +4652,22 @@ else
       //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
       //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
       //console.log("criteriaListArray   : " + criteriaListArray);
+      if(document.getElementsByClassName("mydiv").length > 1) {
+        words = '';
+        strQuery = '';
+        //FieldSet.clear();
+      }
+      else {
+        strQuery = words;
+        for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
+          FieldSet.add(JSON.stringify({
+            "FieldName" : dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
+            "FieldType" : dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldType"]
+          }));
+        }
+      }
       document.getElementById('RichTextEditor').innerHTML = '';
+      document.getElementById('grid-1-de').innerHTML = '';
 
     }
 
