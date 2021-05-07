@@ -4595,12 +4595,12 @@ else
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' [' + criteriaListArray[i] + ']';
+          words += ' [' + criteriaListArray[i] + '] as [' + dataExtensionName + ' ' + criteriaListArray[i] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', [' + criteriaListArray[i] + ']';
+          words += ', [' + criteriaListArray[i] + '] as [' + dataExtensionName + ' ' + criteriaListArray[i] + ']';
 
         }
       }
