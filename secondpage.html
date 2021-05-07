@@ -2396,8 +2396,11 @@ else
           //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
           //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
           //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
-          var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
-          var node = '<li >' + html + '</li>';
+      //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
+      //    var node = '<li >' + html + '</li>';
+
+          var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
+          var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
 
 
 
