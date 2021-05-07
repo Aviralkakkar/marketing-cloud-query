@@ -4516,13 +4516,6 @@ else
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
-            if(document.getElementsByClassName("mydiv").length > 1) {
-              words = '';
-              strQuery = '';
-            }
-            else {
-              strQuery = words;
-            }
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
           }
         }
@@ -4595,7 +4588,7 @@ else
         words += ' WHERE ' + answer_form3;
       }
       
-      console.log("Words Query : " + words);
+      //console.log("Words Query : " + words);
 
       //validateQuery(words);
       /*
@@ -4639,6 +4632,14 @@ else
       //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
       //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
       //console.log("criteriaListArray   : " + criteriaListArray);
+      if(document.getElementsByClassName("mydiv").length > 1) {
+        words = '';
+        strQuery = '';
+      }
+      else {
+        strQuery = words;
+        console.log('else wali strQuery : ' + strQuery);
+      }
       document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('grid-1-de').innerHTML = '';
 
