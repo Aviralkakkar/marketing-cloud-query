@@ -187,7 +187,9 @@ app.post("/secondpage", async function (req, res) {
     //await DECreate(JoinQueryDESelectedFields);
     //await getDERecords(currentDate);
 
+    console.log('Name : ' + Name);
     DERecords = await getDERecords(Name);
+    console.log('DERecords : ' + DERecords);
 
     resCall.send(DERecords);
 
