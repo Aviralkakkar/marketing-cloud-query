@@ -4718,123 +4718,247 @@ else
     var currentClickedDEGlobal;
     var joinImage;
     function joinTwoDiv(currentClickedDE) {
-      currentClickedDEGlobal = currentClickedDE;
-      var joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
-        '<div class="slds-modal__container">' +
-        '<header class="slds-modal__header">' +
-        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
-        '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
-        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
-        '</svg>' +
-        '<span class="slds-assistive-text">Close</span>' +
-        '</button>' +
-        '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
-        '</header>' +
-        '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
 
-        '<div >' +
-        '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;>' +
-        '</div>' +
+      var joinTwoDivString = '';
+      if(JSON.stringify(joinedDiv) == '{}') {
+        currentClickedDEGlobal = currentClickedDE;
+        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
+          '<div class="slds-modal__container">' +
+          '<header class="slds-modal__header">' +
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
+          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
+          '</svg>' +
+          '<span class="slds-assistive-text">Close</span>' +
+          '</button>' +
+          '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
+          '</header>' +
+          '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
 
-        '<div class="slds-grid slds-wrap">' +
+          '<div >' +
+          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;>' +
+          '</div>' +
 
-        '<div class="slds-col slds-size_1-of-3">' +
-        '<div class="slds-form-element">' +
-        '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-        '<div class="slds-form-element__control">' +
-        '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
+          '<div class="slds-grid slds-wrap">' +
 
-        '<div class="slds-col slds-size_1-of-3">' +
-        '<div class="slds-form-element">' +
-        '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-        '<div class="slds-form-element__control">' +
-        '<div class="slds-select_container">' +
-        '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-        '<option value="Left Outer Join">Left Outer Join</option>' +
-        '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-        '<option value="Right Outer Join">Right Outer Join</option>' +
-        '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-        '<option value="Inner Join">Inner Join</option>' +
-        '<option value="Full Outer Join">Full Outer Join</option>' +
-        '<option value="Outer Join">Outer Join</option>' +
-        '<option value="Self Join">Self Join</option>' +
-        '</select>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+          '<div class="slds-form-element__control">' +
+          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
 
-        '<div class="slds-col slds-size_1-of-3">' +
-        '<div class="slds-form-element">' +
-        '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-        '<div class="slds-form-element__control">' +
-        '<div class="slds-select_container">' +
-        '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-        '<option value="">Select…</option>';
-      for (var DEName in dataExtensionNameMapFinal) {
-        if (currentClickedDE != DEName) {
-          joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+          '<option value="Left Outer Join">Left Outer Join</option>' +
+          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+          '<option value="Right Outer Join">Right Outer Join</option>' +
+          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+          '<option value="Inner Join">Inner Join</option>' +
+          '<option value="Full Outer Join">Full Outer Join</option>' +
+          '<option value="Outer Join">Outer Join</option>' +
+          '<option value="Self Join">Self Join</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+          '<option value="">Select…</option>';
+        for (var DEName in dataExtensionNameMapFinal) {
+          if (currentClickedDE != DEName) {
+            joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
+          }
         }
+        joinTwoDivString += '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '</div>' +
+
+
+
+
+
+          '<div class="slds-grid slds-wrap">' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+          '<option value="">Select…</option>';
+        
+        for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
+          joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '</option>';
+        }
+        joinTwoDivString += '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+          '<option value="">Select…</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '</div>' +
+
+
+          '</div>' +
+          '<footer class="slds-modal__footer">' +
+          '<button class="slds-button slds-button_neutral slds-float_left" onclick="">Previous</button>' +
+          '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
+          '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
+          '</footer>' +
+          '</div>' +
+          '</section>' +
+          '<div class="slds-backdrop slds-backdrop_open"></div>';
       }
-      joinTwoDivString += '</select>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
+      else if(currentClickedDE in joinedDiv) {
+        currentClickedDEGlobal = currentClickedDE;
+        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
+          '<div class="slds-modal__container">' +
+          '<header class="slds-modal__header">' +
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
+          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
+          '</svg>' +
+          '<span class="slds-assistive-text">Close</span>' +
+          '</button>' +
+          '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
+          '</header>' +
+          '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
 
-        '</div>' +
+          '<div >' +
+          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;>' +
+          '</div>' +
+
+          '<div class="slds-grid slds-wrap">' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+          '<div class="slds-form-element__control">' +
+          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+          '<option value="Left Outer Join">Left Outer Join</option>' +
+          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+          '<option value="Right Outer Join">Right Outer Join</option>' +
+          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+          '<option value="Inner Join">Inner Join</option>' +
+          '<option value="Full Outer Join">Full Outer Join</option>' +
+          '<option value="Outer Join">Outer Join</option>' +
+          '<option value="Self Join">Self Join</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+          '<option value="">Select…</option>';
+        for (var DEName in dataExtensionNameMapFinal) {
+          if (currentClickedDE != DEName) {
+            joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
+          }
+        }
+        joinTwoDivString += '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '</div>' +
 
 
 
 
 
-        '<div class="slds-grid slds-wrap">' +
+          '<div class="slds-grid slds-wrap">' +
 
-        '<div class="slds-col slds-size_1-of-3">' +
-        '<div class="slds-form-element">' +
-        '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-        '<div class="slds-form-element__control">' +
-        '<div class="slds-select_container">' +
-        '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-        '<option value="">Select…</option>';
-      
-      for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
-        joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '</option>';
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+          '<option value="">Select…</option>';
+        
+        for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
+          joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '</option>';
+        }
+        joinTwoDivString += '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+          '<option value="">Select…</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+          '</div>' +
+
+
+          '</div>' +
+          '<footer class="slds-modal__footer">' +
+          '<button class="slds-button slds-button_neutral slds-float_left" onclick="">Previous</button>' +
+          '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
+          '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
+          '</footer>' +
+          '</div>' +
+          '</section>' +
+          '<div class="slds-backdrop slds-backdrop_open"></div>';
       }
-      joinTwoDivString += '</select>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
 
-        '<div class="slds-col slds-size_1-of-3">' +
-        '<div class="slds-form-element">' +
-        '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-        '<div class="slds-form-element__control">' +
-        '<div class="slds-select_container">' +
-        '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-        '<option value="">Select…</option>' +
-        '</select>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-
-        '</div>' +
-
-
-        '</div>' +
-        '<footer class="slds-modal__footer">' +
-        '<button class="slds-button slds-button_neutral slds-float_left" onclick="">Previous</button>' +
-        '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
-        '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
-        '</footer>' +
-        '</div>' +
-        '</section>' +
-        '<div class="slds-backdrop slds-backdrop_open"></div>';
       document.getElementById('ThirdModal').innerHTML = joinTwoDivString;
       document.getElementById('ThirdModal').style.display = 'block';
       //console.log('currentClickedDE : ' + currentClickedDE);
@@ -4863,12 +4987,17 @@ else
 
     
     var strQuery = '';
+    var joinedDiv = {};
     function SaveJoinQuery() {
       if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
         if(document.getElementById('select-02').value) {
           if(dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
             if(document.getElementById('FirstDEField').value) {
               if(document.getElementById('SecondDEField').value) {
+                
+                joinedDiv[currentClickedDEGlobal] = currentClickedDEGlobal;
+                joinedDiv[document.getElementById('select-02').value] = document.getElementById('select-02').value;
+
                 if(strQuery == '') {
 
                   for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
