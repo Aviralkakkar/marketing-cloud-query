@@ -4447,6 +4447,7 @@ else
           html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
         }
       }
+      document.getElementById("modal-heading-01").innerHTML = DEName + " Data Extension Fields";
       document.getElementById('grid-1-de').innerHTML = html;
       
     }
