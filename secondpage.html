@@ -4483,12 +4483,6 @@ else
           });
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
-        if(dataExtensionName == '' && openOpenSelectField in dataExtensionNameMap && openOpenSelectField != '') {
-          dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
-            "FieldName" : checkbox.value,
-            "FieldType" : checkbox.name
-          });
-        }
         //code khatam
 
         
@@ -4565,6 +4559,17 @@ else
       if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal) {
         fieldsListForRelationDiv = '';
         relationDivString = '';
+        
+        dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields = [];
+        for (var checkbox of checkboxes) {
+          if(dataExtensionName == '' && openOpenSelectField in dataExtensionNameMap && openOpenSelectField != '') {
+            dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
+              "FieldName" : checkbox.value,
+              "FieldType" : checkbox.name
+            });
+          }
+        }
+
         for(var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
