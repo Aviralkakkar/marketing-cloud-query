@@ -1753,6 +1753,7 @@
     var dataExtensionNameMapFinal = {};
     var JoinQueryDESelectedFields = [];
 
+    
     function onloadofBody() {
       fetch('/fields', {  //provide URL of the processing page
         method: "POST",
@@ -1998,6 +1999,8 @@ else
       iframe.contentWindow.document.close();
     }
 
+/*
+//Can Delete
     function handleClick(cb) {
       //console.log("Clicked, new name = " + cb.name);
       //console.log("Clicked, new value = " + cb.value);
@@ -2025,8 +2028,7 @@ else
       }
 
     }
-
-
+//Can Delete
     function handlecheckboxclick(cbb) {
       //console.log("Hey");
       //console.log("Clicked, new name = " + cbb.name);
@@ -2041,13 +2043,11 @@ else
 
 
     }
+*/
+
+
 
     function allowDrop(ev, event) {
-      //console.log("Inside allowdrop");
-      /*  console.log("------------Event--------------");
-      console.log(event.id);
-      console.log("----------------ev--------------");
-      console.log(ev); */
       ev.preventDefault();
     }
 
@@ -2083,15 +2083,15 @@ else
        console.log(ev); */
       event.preventDefault();
     };
-    //document.ondrop = function(event,target) {
-    function drop(event, target) {
 
-      document.getElementById('grid-1-de').innerHTML = '';
+    function drop(event, target) {
+      event.preventDefault();
 
       deFieldListarray = [];
 
-      event.preventDefault();
+      document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
+
       //console.log("Dropppp");
       //console.log(event.target.id);
       //console.log("yeh de ki value -----> " + event.target.value);
@@ -4430,6 +4430,7 @@ else
 
       var html = '';
       var bool;
+      console.log('dataExtensionNameMapFinal[DEName] : ' + JSON.stringify(dataExtensionNameMapFinal[DEName]));
       for(var key in dataExtensionNameMapFinal[DEName].AllFields) {
         for(var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
           if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
@@ -4690,7 +4691,8 @@ else
         }
       }
       document.getElementById('RichTextEditor').innerHTML = '';
-      //document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('grid-1-de').innerHTML = '';
+      console.log('dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
 
     }
 
