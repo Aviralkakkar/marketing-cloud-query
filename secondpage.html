@@ -4465,16 +4465,18 @@ else
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
       //code faizal
-      dataExtensionNameMapFinal[dataExtensionName] = {
-        "DESelectedFields" : [],
-        "DEExtKey" : dataExtensionNameMap[dataExtensionName].DEExtKey,
-        "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
+      if(dataExtensionName != '') {
+        dataExtensionNameMapFinal[dataExtensionName] = {
+          "DESelectedFields" : [],
+          "DEExtKey" : dataExtensionNameMap[dataExtensionName].DEExtKey,
+          "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
+        }
       }
       //code khatam
 
       for (var checkbox of checkboxes) {
         //code faizal
-        if(dataExtensionName in dataExtensionNameMap) {
+        if(dataExtensionName != '' && dataExtensionName in dataExtensionNameMap) {
           dataExtensionNameMapFinal[dataExtensionName].DESelectedFields.push({
             "FieldName" : checkbox.value,
             "FieldType" : checkbox.name
@@ -4565,7 +4567,7 @@ else
         openOpenSelectField = '';
       }
 
-      if(openWhereDEName == '') {
+      if(openWhereDEName == '' && dataExtensionName != '') {
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
