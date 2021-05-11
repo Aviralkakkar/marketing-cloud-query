@@ -4556,18 +4556,16 @@ else
 
 
 
-      if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal) {
+      if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && dataExtensionName == '') {
         fieldsListForRelationDiv = '';
         relationDivString = '';
         
         dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields = [];
         for (var checkbox of checkboxes) {
-          if(dataExtensionName == '' && openOpenSelectField in dataExtensionNameMap && openOpenSelectField != '') {
-            dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
-              "FieldName" : checkbox.value,
-              "FieldType" : checkbox.name
-            });
-          }
+          dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
+            "FieldName" : checkbox.value,
+            "FieldType" : checkbox.name
+          });
         }
 
         for(var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
