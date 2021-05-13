@@ -2305,12 +2305,19 @@ else
     }
 
     function Previous() {
-
       document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RelationPopup').style.display = 'block';
       document.getElementById('ulList').innerHTML = '';
-
-
+      
+      if(openOpenSelectField != '') {
+        var DEName = openOpenSelectField.split("OpenSelectField");
+        DEName = DEName[0];
+        OpenSelectField(DEName);
+      }
+      if(dataExtensionName != '') {
+        OpenSelectField(dataExtensionName);
+      }
+      
     }
 
     function validateQuery(strQuery , actionType) {
