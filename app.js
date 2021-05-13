@@ -472,7 +472,7 @@ app.post("/secondpage", async function (req, res) {
               resCall.json({ "getDERecordsResult": getDERecordsResult });
               clearInterval(b);
             }
-            if (count == 5) {
+            if (count == 13) {
               console.log("It is taking longer time then expected, Please try clicking on RunQuery button after some time");
               clearInterval(b);
             }
