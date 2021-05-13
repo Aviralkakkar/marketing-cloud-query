@@ -438,6 +438,7 @@ app.post("/secondpage", async function (req, res) {
       console.log("yeh response body validate query ka --- > " + response.body);
       var responsee = JSON.parse(response.body);
       var fal = responsee.queryValid;
+      console.log('responsee Valid : ' + responsee);
       console.log(fal); 
 
       resCall.json({ validatequery: fal });
@@ -449,65 +450,20 @@ app.post("/secondpage", async function (req, res) {
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
+        
+        var QueryRunBool = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
 
- 
-        console.log("loop me aaya");
-        var request = require('request');
-        var options = {
-          'method': 'POST',
-          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com//automation/v1/queries/',
-          'headers': {
-            'Authorization': 'Bearer ' + access_token,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "name": "QueryDE " + Name,
-            "key": "QueryDE " + Name,
-            "description": "",
-            "queryText": dynamicQuery,
-            "targetName": Name,
-            "targetKey": CustomerKey,
-            "targetId": ObjectID,
-            "targetDescription": "Created via REST API",
-            "targetUpdateTypeId": 0,
-            "targetUpdateTypeName": "Overwrite",
-            "categoryId": 10844
-          })
-
-        };
-        request(options, function (error, response) {
-          if (error) throw new Error(error);
-          //     console.log( "response.body.queryDefinitionId" + response.body);
-          //     console.log("response.body.name" + response.body.name);
-          var responsee = JSON.parse(response.body);
-          var queryDefinitionId = responsee.queryDefinitionId;
-          console.log("queryDefinitionId --- > " + queryDefinitionId);
-          if (queryDefinitionId) {
-            console.log("query run me aagya -- > ")
-            var request = require('request');
-            var options = {
-              'method': 'POST',
-              'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
-              'headers': {
-                'Authorization': 'Bearer ' + access_token,
-                'Content-Type': 'application/json'
-              }
-            };
-            request(options, async function (error, response) {
-              if (error) throw new Error(error);
-              console.log("Query run hogyi hai  " + response.body);
-
-              if (response.body == '"OK"') {
-                console.log('OK me aa gya ---------------------');
-                //var getDERecordsResult = await getDERecords(Name);
-                //console.log("getDERecordsResult" + getDERecordsResult);
-                //resCall.send(getDERecordsResult);
-                //resCall.send('Query Run Successfully');
-              }
-            });
-
-          }
-        });
+        if(QueryRunBool == 'true') {
+          console.log('Query Run K baad true ---------------------');
+          var getDERecordsResult = await getDERecords(CustomerKey);
+          console.log('Record Get k Baad ---------------------');
+          console.log("getDERecordsResult" + getDERecordsResult);
+          resCall.send(getDERecordsResult);
+          //resCall.send('Query Run Successfully');
+        }
+        
+        
+        
 
       }
     });
@@ -638,6 +594,67 @@ app.post("/secondpage", async function (req, res) {
       })
     }
 
+    async function CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name) {
+      return new Promise(function (resolve, reject) {
+        var options = {
+          'method': 'POST',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com//automation/v1/queries/',
+          'headers': {
+            'Authorization': 'Bearer ' + access_token,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            "name": "QueryDE " + Name,
+            "key": "QueryDE " + Name,
+            "description": "",
+            "queryText": dynamicQuery,
+            "targetName": Name,
+            "targetKey": CustomerKey,
+            "targetId": ObjectID,
+            "targetDescription": "Created via REST API",
+            "targetUpdateTypeId": 0,
+            "targetUpdateTypeName": "Overwrite",
+            "categoryId": 10844
+          })
+
+        };
+        request(options, async function (error, response) {
+          if (error) throw new Error(error);
+          //     console.log( "response.body.queryDefinitionId" + response.body);
+          //     console.log("response.body.name" + response.body.name);
+          var responsee = JSON.parse(response.body);
+          var queryDefinitionId = responsee.queryDefinitionId;
+          console.log("queryDefinitionId --- > " + queryDefinitionId);
+          if (queryDefinitionId) {
+            console.log("query run me aagya -- > ")
+            var request = require('request');
+            var options = {
+              'method': 'POST',
+              'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+              'headers': {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json'
+              }
+            };
+            request(options, async function (error, response) {
+              if (error) throw new Error(error);
+              console.log("Query run hogyi hai  " + JSON.stringify(response));
+
+              if (response.body == '"OK"') {
+                console.log('OK me aa gya ---------------------');
+                resolve('true');
+              }
+              else {
+                console.log('OK ka else me aa gya ---------------------');
+                resolve('false');
+              }
+            });
+
+          }
+        });
+      });
+    }
+
     async function getDERecords(key) {
       return new Promise(async function (resolve, reject) {
 
@@ -663,6 +680,7 @@ app.post("/secondpage", async function (req, res) {
               }
             }
           }
+          console.log('DERecords : ' + DERecords);
 
           /*
           var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
