@@ -461,12 +461,13 @@ app.post("/secondpage", async function (req, res) {
           DERecords = [];
 
           var count = 0;
+          var getDERecordsResult = [];
           var b = setInterval(async function () {
-            var getDERecordsResult = await getDERecords(CustomerKey);
+            getDERecordsResult = await getDERecords(CustomerKey);
             console.log("getDERecordsResult" + getDERecordsResult);
             console.log('count : ' + count);
             count += 1;
-            if (getDERecordsResult) {
+            if (getDERecordsResult.length != 0) {
               console.log('aa gae');
               resCall.json({ "getDERecordsResult": getDERecordsResult });
               clearInterval(b);
