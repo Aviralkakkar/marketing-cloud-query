@@ -438,7 +438,7 @@ app.post("/secondpage", async function (req, res) {
       console.log("yeh response body validate query ka --- > " + response.body);
       var responsee = JSON.parse(response.body);
       var fal = responsee.queryValid;
-      console.log('responsee Valid : ' + responsee);
+      console.log('responsee Valid : ' + JSON.parse(response.body));
       console.log(fal); 
 
       resCall.json({ validatequery: fal });
@@ -454,9 +454,7 @@ app.post("/secondpage", async function (req, res) {
         var QueryRunBool = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
 
         if(QueryRunBool == 'true') {
-          console.log('Query Run K baad true ---------------------');
           var getDERecordsResult = await getDERecords(CustomerKey);
-          console.log('Record Get k Baad ---------------------');
           console.log("getDERecordsResult" + getDERecordsResult);
           resCall.send(getDERecordsResult);
           //resCall.send('Query Run Successfully');
@@ -586,7 +584,7 @@ app.post("/secondpage", async function (req, res) {
           xml2jsParser.parseString(response.body, function (err, result) {
             DEInsertResult = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
           });
-          console.log('DEInsertResult : ' + JSON.stringify(DEInsertResult));
+          //console.log('DEInsertResult : ' + JSON.stringify(DEInsertResult));
           resolve(DEInsertResult);
         });
 
