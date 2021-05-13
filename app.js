@@ -441,7 +441,7 @@ app.post("/secondpage", async function (req, res) {
       console.log('responsee Valid : ' + JSON.parse(response.body));
       console.log(fal); 
 
-      resCall.json({ validatequery: fal });
+      //resCall.json({ validatequery: fal });
 
       if (fal == true && actionType == "run") {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
