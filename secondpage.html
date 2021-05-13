@@ -2310,13 +2310,15 @@ else
       document.getElementById('ulList').innerHTML = '';
       
       if(openOpenSelectField != '') {
-        var DEName = openOpenSelectField.split("OpenSelectField");
-        DEName = DEName[0];
         OpenSelectField(DEName);
       }
-      if(dataExtensionName != '') {
+      if(dataExtensionName) {
         OpenSelectField(dataExtensionName);
       }
+      if(openWhereDEName != '') {
+        OpenSelectField(openWhereDEName);
+      }
+      
       
     }
 
