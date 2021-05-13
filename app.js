@@ -441,7 +441,10 @@ app.post("/secondpage", async function (req, res) {
       console.log('responsee Valid : ' + JSON.parse(response.body));
       console.log(fal); 
 
-      //resCall.json({ validatequery: fal });
+      if(actionType != "run") {
+        resCall.json({ validatequery: fal });
+      }
+      
 
       if (fal == true && actionType == "run") {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
@@ -454,9 +457,30 @@ app.post("/secondpage", async function (req, res) {
         var QueryRunBool = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
 
         if(QueryRunBool == 'true') {
-          var getDERecordsResult = await getDERecords(CustomerKey);
-          console.log("getDERecordsResult" + getDERecordsResult);
-          resCall.json({ "getDERecordsResult": getDERecordsResult });
+
+          DERecords = [];
+
+          var count = 0;
+          var b = setInterval(async function () {
+            var getDERecordsResult = await getDERecords(CustomerKey);
+            console.log("getDERecordsResult" + getDERecordsResult);
+            console.log('count : ' + count);
+            count += 1;
+            if (getDERecordsResult) {
+              console.log('aa gae');
+              resCall.json({ "getDERecordsResult": getDERecordsResult });
+              clearInterval(b);
+            }
+            if (count == 5) {
+              console.log("It is taking longer time then expected, Please try clicking on RunQuery button after some time");
+              clearInterval(b);
+            }
+          }, 5000);
+
+
+          //var getDERecordsResult = await getDERecords(CustomerKey);
+          //console.log("getDERecordsResult" + getDERecordsResult);
+          //resCall.json({ "getDERecordsResult": getDERecordsResult });
           //resCall.send(getDERecordsResult);
           //resCall.send('Query Run Successfully');
         }
