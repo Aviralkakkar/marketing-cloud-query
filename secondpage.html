@@ -4529,11 +4529,30 @@ else
         'height: 150px;' +
         'overflow: auto;' +
         '}' +
+        '.DeleteDivBoxClass {' +
+          'position: absolute;' +
+          'left: -30px;' +
+          'z-index: 1;' +
+          'width: 34px;' +
+          'height: 34px;' +
+          'background-color: #daecff;' +
+          'border: 1px solid #daecff;' +
+          'border-top-left-radius: 5px;' +
+          'border-bottom-left-radius: 5px;' +
+          'border-color: #82bbd6;' +
+          'margin-top: 7px;' +
+          'margin-left: 8px' +
+        '}' +
         '</style>' +
         '<div class="graph-object-figure attribute-set-figure expanded active mydiv" style="left: 140px; top: 36px;">' +
         '<div class="graph-object-menu as-actions" id="' + dataExtensionName + '" onclick="joinTwoDiv(this.id)">' +
         '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
         '</div>' +
+
+        '<div class="DeleteDivBoxClass" id="' + dataExtensionName + '" onclick="deleteDiv(this.id)">' +
+          '<div class="as-action as-add" title="Delete Box">Delete Box</div>' +
+        '</div>' +
+
         '<div class="graph-object-primary attribute-set">' +
         '<div class="graph-object-header as-actions">' +
         '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
@@ -5168,6 +5187,10 @@ else
         }
         return queryStr;
       }
+    }
+
+    function deleteDiv(DEName) {
+      console.log('DEName : ' + DEName);
     }
 
     function deleteCriteria(event, target) {
