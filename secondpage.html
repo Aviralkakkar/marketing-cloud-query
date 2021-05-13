@@ -2305,21 +2305,17 @@ else
     }
 
     function Previous() {
-      document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RelationPopup').style.display = 'block';
-      document.getElementById('ulList').innerHTML = '';
-      
+      if(dataExtensionName) {
+        document.getElementById('SecondModal').style.display = 'none';
+        document.getElementById('RelationPopup').style.display = 'block';
+        document.getElementById('ulList').innerHTML = '';
+      }
       if(openOpenSelectField != '') {
         OpenSelectField(openOpenSelectField);
-      }
-      if(dataExtensionName) {
-        OpenSelectField(dataExtensionName);
       }
       if(openWhereDEName != '') {
         OpenSelectField(openWhereDEName);
       }
-      
-      
     }
 
     function validateQuery(strQuery , actionType) {
