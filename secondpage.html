@@ -2314,13 +2314,15 @@ else
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        OpenSelectField(openOpenSelectField);
+        document.getElementById('grid-1-de').innerHTML = '';
+        OpenSelectField(openOpenSelectField + "OpenSelectField");
       }
       if(openWhereDEName != '') {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        OpenSelectField(openWhereDEName);
+        document.getElementById('grid-1-de').innerHTML = '';
+        OpenSelectField(openWhereDEName + "OpenWhere");
       }
     }
 
