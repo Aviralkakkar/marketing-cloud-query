@@ -456,7 +456,8 @@ app.post("/secondpage", async function (req, res) {
         if(QueryRunBool == 'true') {
           var getDERecordsResult = await getDERecords(CustomerKey);
           console.log("getDERecordsResult" + getDERecordsResult);
-          resCall.send(getDERecordsResult);
+          resCall.json({ "getDERecordsResult": getDERecordsResult });
+          //resCall.send(getDERecordsResult);
           //resCall.send('Query Run Successfully');
         }
         
