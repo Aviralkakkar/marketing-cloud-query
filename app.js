@@ -464,19 +464,20 @@ app.post("/secondpage", async function (req, res) {
           var getDERecordsResult = [];
           var b = setInterval(async function () {
             getDERecordsResult = await getDERecords(CustomerKey);
-            console.log("getDERecordsResult" + getDERecordsResult);
-            console.log('count : ' + count);
+            console.log('getDERecordsResult : ' + JSON.stringify(getDERecordsResult));
             count += 1;
+            console.log('count : ' + count);
             if (getDERecordsResult.length != 0) {
               console.log('aa gae');
+              console.log('you can see target DE resultant records by clicking on RunQuery button.')
               resCall.json({ "getDERecordsResult": getDERecordsResult });
               clearInterval(b);
             }
-            if (count == 13) {
+            if (count == 7) {
               console.log("It is taking longer time then expected, Please try clicking on RunQuery button after some time");
               clearInterval(b);
             }
-          }, 5000);
+          }, 10000);
 
 
           //var getDERecordsResult = await getDERecords(CustomerKey);
@@ -704,7 +705,7 @@ app.post("/secondpage", async function (req, res) {
               }
             }
           }
-          console.log('DERecords : ' + DERecords);
+          //console.log('DERecords : ' + DERecords);
 
           /*
           var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
