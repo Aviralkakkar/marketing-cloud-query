@@ -2212,7 +2212,8 @@ else
 
       //var html1 = '<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
 
-      insertTextAtCaret('[' + dataExtensionName + '].[' + fieldwithspace + ']');
+      //'[' + dataExtensionName + '].[' + fieldwithspace + ']'  
+      insertTextAtCaret(fieldwithspace);
       // var html = fieldwithspace;
       //document.getElementById('RichTextEditor').innerHTML+=html;
 
@@ -4628,7 +4629,16 @@ else
       //code khatam
 
 
-
+      var TempDEName = '';
+      if(dataExtensionName != '') {
+        TempDEName = dataExtensionName;
+      }
+      else if(openWhereDEName != '') {
+        TempDEName = openWhereDEName;
+      }
+      else if(openOpenSelectField != '') {
+        TempDEName = openOpenSelectField;
+      }
 
 
 
@@ -4657,23 +4667,36 @@ else
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' [' + criteriaListArray[i] + '] as [' + dataExtensionName + ' ' + criteriaListArray[i] + ']';
+          words += ' [' + criteriaListArray[i] + '] as [' + TempDEName + ' ' + criteriaListArray[i] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', [' + criteriaListArray[i] + '] as [' + dataExtensionName + ' ' + criteriaListArray[i] + ']';
+          words += ', [' + criteriaListArray[i] + '] as [' + TempDEName + ' ' + criteriaListArray[i] + ']';
 
         }
       }
-      //console.log("dataExtensionName" + dataExtensionName);
-      words += ' ' + 'FROM [' + dataExtensionName + ']';
+      //console.log("TempDEName" + TempDEName);
+      words += ' ' + 'FROM [' + TempDEName + ']';
+
+      
+
+      
+
+
 
       if(answer_form3 != '') {
+
+        for(var key in dataExtensionNameMapFinal[TempDEName].AllFields) {
+          var regex = new RegExp(dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"], "g")
+          answer_form3 = answer_form3.replace(regex , '[' + TempDEName + '].[' + dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
+        }
+
         words += ' WHERE ' + answer_form3;
       }
       
-      //console.log("Words Query : " + words);
+
+      console.log("Words Query : " + words);
 
       //validateQuery(words);
       /*
