@@ -4733,6 +4733,13 @@ else
         console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
         console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
         
+        if(openWhereDEName != '') {
+          dataExtensionName = openWhereDEName;
+        }
+        else if(openOpenSelectField != '') {
+          dataExtensionName = openOpenSelectField;
+        }
+         
         for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
             "FieldName" : dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
