@@ -4727,17 +4727,18 @@ else
       else {
         strQuery = words;
 
-        console.log('Else wali testing me h : ----------------------------');
-        console.log('dataExtensionName : ' + dataExtensionName);
-        console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
-        console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
-        
         if(openWhereDEName != '') {
           dataExtensionName = openWhereDEName;
         }
         else if(openOpenSelectField != '') {
           dataExtensionName = openOpenSelectField;
         }
+        console.log('Else wali testing me h : ----------------------------');
+        console.log('dataExtensionName : ' + dataExtensionName);
+        console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
+        console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
+        
+        
          
         for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
