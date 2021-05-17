@@ -4727,6 +4727,12 @@ else
       }
       else {
         strQuery = words;
+
+        console.log('Else wali testing me h : ----------------------------');
+        console.log('dataExtensionName : ' + dataExtensionName);
+        console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
+        console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
+        
         for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
             "FieldName" : dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
@@ -5189,6 +5195,7 @@ else
 
     function deleteDiv(DEName) {
       console.log('DEName : ' + DEName);
+      dataExtensionNameMapFinal
     }
 
     function deleteCriteria(event, target) {
