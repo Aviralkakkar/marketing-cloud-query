@@ -4443,11 +4443,11 @@ else
       DEName = DEName.split("OpenSelectField");
       DEName = DEName[0];
       openOpenSelectField = DEName;
-      console.log('openOpenSelectField : ' + openOpenSelectField);
+      //console.log('openOpenSelectField : ' + openOpenSelectField);
 
       var html = '';
       var bool;
-      console.log('dataExtensionNameMapFinal[DEName] : ' + JSON.stringify(dataExtensionNameMapFinal[DEName]));
+      //console.log('dataExtensionNameMapFinal[DEName] : ' + JSON.stringify(dataExtensionNameMapFinal[DEName]));
       for(var key in dataExtensionNameMapFinal[DEName].AllFields) {
         for(var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
           if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
@@ -4476,7 +4476,7 @@ else
       var checkboxArray = {};
       var criteriaList = {}
       var checkboxList = [];
-      var criteriaListArray = [];
+      //var criteriaListArray = [];
       var fieldsListForRelationDiv = '';
       //console.log(" save me aaya ");
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -4506,7 +4506,7 @@ else
 
         //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
         // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
-        criteriaListArray.push(checkbox.value);
+        //criteriaListArray.push(checkbox.value);
         //  checkboxList.push(checkboxArray);  
       }
       
@@ -4660,19 +4660,19 @@ else
 
       words = 'SELECT'
       //console.log("criteriaListArrayHai  :  " + criteriaListArray);
-      for (var i = 0; i < criteriaListArray.length; i++) {
+      for (var i in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
         //console.log("checkboxes x --- > " + i);
         //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
 
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' [' + criteriaListArray[i] + '] as [' + TempDEName + ' ' + criteriaListArray[i] + ']';
+          words += ' [' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', [' + criteriaListArray[i] + '] as [' + TempDEName + ' ' + criteriaListArray[i] + ']';
+          words += ', [' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + ']';
 
         }
       }
@@ -4754,10 +4754,11 @@ else
         else if(openOpenSelectField != '') {
           dataExtensionName = openOpenSelectField;
         }
-        console.log('Else wali testing me h : ----------------------------');
-        console.log('dataExtensionName : ' + dataExtensionName);
-        console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
-        console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
+
+        //console.log('Else wali testing me h : ----------------------------');
+        //console.log('dataExtensionName : ' + dataExtensionName);
+        //console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
+        //console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
         
         
          
@@ -4770,7 +4771,7 @@ else
       }
       document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('grid-1-de').innerHTML = '';
-      console.log('dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
+      //console.log('dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
       dataExtensionName = '';
       openWhereDEName = '';
       openOpenSelectField = '';
@@ -4929,6 +4930,22 @@ else
           '</div>' +
           '</div>' +
 
+
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Conditional operator for both DE Where Clause</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+          '<option value="AND">AND</option>' +
+          '<option value="OR">OR</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
+
           '</div>' +
 
 
@@ -5048,6 +5065,20 @@ else
           '</div>' +
           '</div>' +
 
+          '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-form-element">' +
+          '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Conditional operator for both DE Where Clause</label>' +
+          '<div class="slds-form-element__control">' +
+          '<div class="slds-select_container">' +
+          '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+          '<option value="AND">AND</option>' +
+          '<option value="OR">OR</option>' +
+          '</select>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+
           '</div>' +
 
 
@@ -5157,6 +5188,34 @@ else
                   strQuery += ' FROM [' + currentClickedDEGlobal + ']';
                   strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
                   
+                  var FirstDEWhereClause = '';
+                  var SecondDEWhereClause = '';
+                  FirstDEWhereClause = document.getElementById(currentClickedDEGlobal + 'WhereClause').innerHTML;
+                  SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
+
+                  if(FirstDEWhereClause != '') {
+                    for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields) {
+                      var regex = new RegExp(dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"], "g")
+                      FirstDEWhereClause = FirstDEWhereClause.replace(regex , '[' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"] + ']');
+                    }
+                  }
+                  if(SecondDEWhereClause != '') {
+                    for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                      var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
+                      SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                    }
+                  }
+
+                  if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+                    strQuery += ' ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+                  }
+                  else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
+                    strQuery += ' ' + FirstDEWhereClause;
+                  }
+                  else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
+                    strQuery += ' ' + SecondDEWhereClause;
+                  }
+
                   console.log('strQuery : ' + strQuery);
                 }
                 else {
@@ -5184,9 +5243,52 @@ else
                     tempQueryList = strQuery.split("] WHERE [");
                     tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']' , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
                     strQuery = tempQueryList[0] + 'WHERE [' + tempQueryList[1];
+
+
+
+                    var SecondDEWhereClause = '';
+                    SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
+
+                    if(SecondDEWhereClause != '') {
+                      for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                        var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
+                        SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                      }
+                      strQuery += ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+                    }
+
                   }
                   else {
                     strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
+                  
+                    var FirstDEWhereClause = '';
+                    var SecondDEWhereClause = '';
+                    FirstDEWhereClause = document.getElementById(currentClickedDEGlobal + 'WhereClause').innerHTML;
+                    SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
+
+                    if(FirstDEWhereClause != '') {
+                      for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields) {
+                        var regex = new RegExp(dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"], "g")
+                        FirstDEWhereClause = FirstDEWhereClause.replace(regex , '[' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"] + ']');
+                      }
+                    }
+                    if(SecondDEWhereClause != '') {
+                      for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                        var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
+                        SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                      }
+                    }
+
+                    if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+                      strQuery += ' ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+                    }
+                    else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
+                      strQuery += ' ' + FirstDEWhereClause;
+                    }
+                    else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
+                      strQuery += ' ' + SecondDEWhereClause;
+                    }
+
                   }
                   console.log('strQuery : ' + strQuery);
                 }
