@@ -5263,6 +5263,7 @@ else
                   }
                   tempQueryList[0] = tempQueryList[0].slice(0, -1);
                   strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
+
                   if(strQuery.includes('] WHERE [')) {
                     tempQueryList = strQuery.split("] WHERE [");
                     tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']' , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
@@ -5272,7 +5273,6 @@ else
 
                     var SecondDEWhereClause = '';
                     SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
-
                     if(SecondDEWhereClause != '') {
                       for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
                         var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
@@ -5281,39 +5281,32 @@ else
                       strQuery += ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                     }
 
+
+
+
+
                   }
                   else {
                     strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
                   
-                    var FirstDEWhereClause = '';
-                    var SecondDEWhereClause = '';
-                    FirstDEWhereClause = document.getElementById(currentClickedDEGlobal + 'WhereClause').innerHTML;
-                    SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
 
-                    if(FirstDEWhereClause != '') {
-                      for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields) {
-                        var regex = new RegExp(dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"], "g")
-                        FirstDEWhereClause = FirstDEWhereClause.replace(regex , '[' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"] + ']');
-                      }
-                    }
+
+
+                    var SecondDEWhereClause = '';
+                    SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
                     if(SecondDEWhereClause != '') {
                       for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
                         var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
                         SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
                       }
+                      strQuery += ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                     }
 
-                    if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-                      strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
-                    }
-                    else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-                      strQuery += ' WHERE ' + FirstDEWhereClause;
-                    }
-                    else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-                      strQuery += ' WHERE ' + SecondDEWhereClause;
-                    }
+
+                    
 
                   }
+                  
                   console.log('strQuery : ' + strQuery);
                 }
               }
