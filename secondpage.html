@@ -5231,13 +5231,13 @@ else
                   }
 
                   if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-                    strQuery += ' ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+                    strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                   }
                   else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-                    strQuery += ' ' + FirstDEWhereClause;
+                    strQuery += ' WHERE ' + FirstDEWhereClause;
                   }
                   else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-                    strQuery += ' ' + SecondDEWhereClause;
+                    strQuery += ' WHERE ' + SecondDEWhereClause;
                   }
 
                   console.log('strQuery : ' + strQuery);
@@ -5304,13 +5304,13 @@ else
                     }
 
                     if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-                      strQuery += ' ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+                      strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                     }
                     else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-                      strQuery += ' ' + FirstDEWhereClause;
+                      strQuery += ' WHERE ' + FirstDEWhereClause;
                     }
                     else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-                      strQuery += ' ' + SecondDEWhereClause;
+                      strQuery += ' WHERE ' + SecondDEWhereClause;
                     }
 
                   }
