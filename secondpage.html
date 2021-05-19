@@ -4684,19 +4684,19 @@ else
 
       words = 'SELECT'
       //console.log("criteriaListArrayHai  :  " + criteriaListArray);
-      for (var i in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
+      for (var i in dataExtensionNameMapFinal[TempDEName].DESelectedFields) {
         //console.log("checkboxes x --- > " + i);
         //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
 
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' [' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + ']';
+          words += ' [' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', [' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[i]["FieldName"] + ']';
+          words += ', [' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
 
         }
       }
