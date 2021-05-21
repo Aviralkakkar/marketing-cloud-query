@@ -2379,7 +2379,7 @@ else
       for(var key in dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields) {
         strQuery += ' [' + JoinQueryDetails.PrimaryDE.DEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.PrimaryDE.DEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields[key]["FieldName"] + '],';
       }
-      tempFieldSet.add(JoinQueryDetails.PrimaryDE.DEName);
+      tempDESet.add(JoinQueryDetails.PrimaryDE.DEName);
       for (var key in JoinQueryDetails.DEForJoin) {
         if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
           for(var key in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
