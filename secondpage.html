@@ -2375,23 +2375,23 @@ else
       
       strQuery = 'SELECT';
 
-      var tempFieldList = [];
+      var tempDESet = new Set();
       for(var key in dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields) {
         strQuery += ' [' + JoinQueryDetails.PrimaryDE.DEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.PrimaryDE.DEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.PrimaryDE.DEName].DESelectedFields[key]["FieldName"] + '],';
       }
-      tempFieldList.push(JoinQueryDetails.PrimaryDE.DEName);
+      tempFieldSet.add(JoinQueryDetails.PrimaryDE.DEName);
       for (var key in JoinQueryDetails.DEForJoin) {
-        if(!tempFieldList.includes(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+        if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
           for(var key in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key]["FieldName"] + '],';
           }
-          tempFieldList.push(JoinQueryDetails.DEForJoin[key].FirstDEName);
+          tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
         }
-        if(!tempFieldList.includes(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+        if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
           for(var key in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key]["FieldName"] + '],';
           }
-          tempFieldList.push(JoinQueryDetails.DEForJoin[key].SecondDEName)
+          tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
         }
       }
       strQuery = strQuery.slice(0, -1);
@@ -2401,16 +2401,10 @@ else
       }
       console.log('last wali query : ' + strQuery)
       
-      
-      var DENameSet = new Set();
-      DENameSet.add(JoinQueryDetails.PrimaryDE.DEName);
-      for (var key in JoinQueryDetails.DEForJoin) {
-        DENameSet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-        DENameSet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
-      }
+      /*
       var FirstDEWhereClause = '';
       var SecondDEWhereClause = '';
-      for (var val of Array.from(DENameSet)) {
+      for (var val of Array.from(tempDESet)) {
 
       }
       
@@ -2441,7 +2435,7 @@ else
       }
 
       console.log('strQuery : ' + strQuery);
-
+      */
 
 
 
