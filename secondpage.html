@@ -5301,13 +5301,12 @@ else
                   }));
                 }
 
-                if(JSON.stringify(JoinQueryDetails["PrimaryDE"] == '{}')) {
+                if(!JoinQueryDetails["PrimaryDE"]) {
                   JoinQueryDetails["PrimaryDE"] = {
                     "DEName" : currentClickedDEGlobal,
-                    "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-                    "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
                     "JoinField" : document.getElementById('FirstDEField').value
                   }
+                  console.log('currentClickedDEGlobal PrimaryDE : ' + JoinQueryDetails["PrimaryDE"]);
                 }
                 JoinQueryDetails["DEForJoin"].push({
                   "FirstDEName" : currentClickedDEGlobal,
