@@ -5301,7 +5301,7 @@ else
                   }));
                 }
 
-                if(!JoinQueryDetails["PrimaryDE"]) {
+                if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
                   JoinQueryDetails["PrimaryDE"] = {
                     "DEName" : currentClickedDEGlobal,
                     "JoinField" : document.getElementById('FirstDEField').value
