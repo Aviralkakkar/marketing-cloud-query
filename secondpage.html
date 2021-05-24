@@ -2388,9 +2388,10 @@ else
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key]["FieldName"] + '],';
           }
           tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+          console.log('1 strQuery : ' + strQuery);
         }
         else {
-          conole.log('1 else : ' + JoinQueryDetails.DEForJoin[key].FirstDEName);
+          console.log('1 else : ' + JoinQueryDetails.DEForJoin[key].FirstDEName);
         }
         if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
           console.log('2 if : ' + JoinQueryDetails.DEForJoin[key].SecondDEName);
@@ -2398,6 +2399,7 @@ else
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key]["FieldName"] + '],';
           }
           tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+          console.log('2 strQuery : ' + strQuery);
         }
         else {
           conole.log('2 else : ' + JoinQueryDetails.DEForJoin[key].SecondDEName);
