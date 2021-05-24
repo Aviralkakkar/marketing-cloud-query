@@ -5306,7 +5306,7 @@ else
                     "DEName" : currentClickedDEGlobal,
                     "JoinField" : document.getElementById('FirstDEField').value
                   }
-                  console.log('currentClickedDEGlobal PrimaryDE : ' + JoinQueryDetails["PrimaryDE"]);
+                  console.log('currentClickedDEGlobal PrimaryDE : ' + JSON.stringify(JoinQueryDetails["PrimaryDE"]));
                 }
                 JoinQueryDetails["DEForJoin"].push({
                   "FirstDEName" : currentClickedDEGlobal,
@@ -5318,6 +5318,7 @@ else
                   "SecondDEJoinField" : document.getElementById('SecondDEField').value
                 });
 
+                console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
 
                 if(strQuery == '') {
 
