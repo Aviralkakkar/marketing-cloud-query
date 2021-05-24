@@ -459,7 +459,7 @@ app.post("/secondpage", async function (req, res) {
         if(QueryRunBool == 'true') {
 
           DERecords = [];
-
+          
           var count = 0;
           var getDERecordsResult = [];
           var b = setInterval(async function () {
@@ -652,33 +652,72 @@ app.post("/secondpage", async function (req, res) {
           console.log("queryDefinitionId --- > " + queryDefinitionId);
           if (queryDefinitionId) {
             console.log("query run me aagya -- > ")
+            // var request = require('request');
+            // var options = {
+            //   'method': 'POST',
+            //   'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+            //   'headers': {
+            //     'Authorization': 'Bearer ' + access_token,
+            //     'Content-Type': 'application/json'
+            //   }
+            // };
+            // request(options, async function (error, response) {
+            //   if (error) throw new Error(error);
+            //   console.log("Query run hogyi hai  " + JSON.stringify(response));
+
+            //   if (response.body == '"OK"') {
+            //     console.log('OK me aa gya ---------------------');
+            //     resolve('true');
+            //   }
+            //   else {
+            //     console.log('OK ka else me aa gya ---------------------');
+            //     resolve('false');
+            //   }
+            // });
+
             var request = require('request');
             var options = {
               'method': 'POST',
-              'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+              'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
               'headers': {
-                'Authorization': 'Bearer ' + access_token,
-                'Content-Type': 'application/json'
-              }
+                'Content-Type': 'text/xml;charset=UTF-8',
+                'SOAPAction': 'Perform',
+                'Authorization': 'Bearer '+ access_token
+              },
+              body: '<?xml version="1.0" encoding="utf-8"?>\r\n<soapenv:Envelope\r\n    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    <soapenv:Header>\r\n   <fueloauth xmlns="http://exacttarget.com">' +access_token + '</fueloauth>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <PerformRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <Action>start</Action>\r\n            <Definitions>\r\n                <Definition xsi:type="QueryDefinition">\r\n                    <ObjectID>a1a78144-1fcd-4386-bd2c-342edde60cc9</ObjectID>\r\n                </Definition>\r\n            </Definitions>\r\n        </PerformRequestMsg>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>'
+      
             };
-            request(options, async function (error, response) {
+            request(options, function (error, response) {
               if (error) throw new Error(error);
-              console.log("Query run hogyi hai  " + JSON.stringify(response));
-
-              if (response.body == '"OK"') {
-                console.log('OK me aa gya ---------------------');
-                resolve('true');
-              }
-              else {
-                console.log('OK ka else me aa gya ---------------------');
-                resolve('false');
-              }
+              console.log( "yeh hai run soap query ka response" + response.body);
             });
 
           }
         });
       });
     }
+
+    // async function runSoapQuery() {
+
+    //         var request = require('request');
+    //   var options = {
+    //     'method': 'POST',
+    //     'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+    //     'headers': {
+    //       'Content-Type': 'text/xml;charset=UTF-8',
+    //       'SOAPAction': 'Perform',
+    //       'Authorization': 'Bearer '+ access_token
+    //     },
+    //     body: '<?xml version="1.0" encoding="utf-8"?>\r\n<soapenv:Envelope\r\n    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    <soapenv:Header>\r\n   <fueloauth xmlns="http://exacttarget.com">' +access_token + '</fueloauth>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <PerformRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <Action>start</Action>\r\n            <Definitions>\r\n                <Definition xsi:type="QueryDefinition">\r\n                    <ObjectID>a1a78144-1fcd-4386-bd2c-342edde60cc9</ObjectID>\r\n                </Definition>\r\n            </Definitions>\r\n        </PerformRequestMsg>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>'
+
+    //   };
+    //   request(options, function (error, response) {
+    //     if (error) throw new Error(error);
+    //     console.log( "yeh hai run soap query ka response" + response.body);
+    //   });
+
+    // }
+
 
     async function getDERecords(key) {
       return new Promise(async function (resolve, reject) {
