@@ -2561,7 +2561,7 @@ else
                 '  </svg>'+
              ' </button>'+
              ' <span class="slds-size_1-of-1">'+
-                  '<span class="slds-tree__item-label slds-truncate"  >' + deFieldListarray[i].FieldName +  ' </span>'+
+                  '<span class="slds-tree__item-label slds-truncate" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName +  ' </span>'+
              ' </span>'+
         '  </div>'+
         '</li>'
@@ -4463,7 +4463,7 @@ else
             </div>
 
             <div id="RichTextEditor" class="editor slds-float_right  "
-              style="overflow:scroll;width:65%;height:330px;border: 5px solid black;font-size: 15px;"
+              style="overflow:scroll;width:65%;height:360px;border: 2px solid lightgray;font-size: 15px;"
               contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
             </div>
 
