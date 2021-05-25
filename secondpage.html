@@ -2560,7 +2560,7 @@ else
           //  li.setAttribute('style', 'display: block;');    // remove the bullets.
           //  li.setAttribute('draggable', 'true'); 
           //  ul.appendChild(li);     // append li to ul.
-          document.getElementById('ulList').innerHTML += node;
+          document.getElementById('ulList').innerHTML += deFieldListarray[i].FieldName;
 
         }
 
@@ -4439,7 +4439,27 @@ else
 
             <div>
 
-               <div div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
+            <div id="component-selector-container" class="slds-tree_container"> 
+              <h4 class="slds-text-title_caps" id="component-selector-container__heading">Component Fields</h4>
+
+              <ul aria-labelledby="component-selector-container__heading" class="slds-tree" role="tree">
+                <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                    <div class="slds-tree__item slds-is-selected">
+                        <button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">
+                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+                            </svg>
+                        </button>
+                        <span class="slds-size_1-of-1">
+                            <span class="slds-tree__item-label slds-truncate" id = "ulList" > </span>
+                        </span>
+                    </div>
+                </li>
+              </ul>
+
+            </div>
+
+               <!-- <div  class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
          <div class="slds-panel__header">
             <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
@@ -4451,7 +4471,7 @@ else
                  <ul aria-describedby="entity-header" id="ulList">
                 </ul>
               </div>
-              </div> 
+              </div>  -->
 
       <!-- <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
