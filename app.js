@@ -692,7 +692,7 @@ app.post("/secondpage", async function (req, res) {
               console.log( "yeh hai run soap query ka response" + response.body);
               var SourceListQueryResult ;
               xml2jsParser.parseString(response.body, function (err, result) {
-                SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'];
+                SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'][0]['Result'][0]['Task'][0]['ID'];
                   console.log("Result tak xml result" + JSON.stringify(SourceListQueryResult) );
               });
             });
