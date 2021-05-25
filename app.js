@@ -693,7 +693,7 @@ app.post("/secondpage", async function (req, res) {
               var SourceListQueryResult ;
               xml2jsParser.parseString(response.body, function (err, result) {
                 SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'];
-                  console.log("Result tak xml result" + SourceListQueryResult);
+                  console.log("Result tak xml result" + JSON.stringify(SourceListQueryResult) );
               });
             });
 
