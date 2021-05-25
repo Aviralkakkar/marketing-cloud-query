@@ -455,9 +455,14 @@ app.post("/secondpage", async function (req, res) {
         Name = DECreateResult[0].Object[0].Name[0];
         
         var QueryRunBool = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
+        // Yahan aajaigi task id aur query run hui ki nhi 
 
         if(QueryRunBool == 'true') {
+        var taskId ;
+        var queryStatus = await queryStatusMethod( taskId ) ;
 
+        console.log("Yaha query status aajaiga"); 
+         
           DERecords = [];
           
           var count = 0;
@@ -701,6 +706,26 @@ app.post("/secondpage", async function (req, res) {
         });
       });
     }
+
+    async function queryStatusMethod(TaskId) {
+
+      var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+  'headers': {
+    'Content-Type': 'text/xml;charset=UTF-8',
+    'SOAPAction': 'Retrieve'
+  },
+  body: '<?xml version="1.0" encoding="utf-8"?>\r\n<soapenv:Envelope\r\n    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    <soapenv:Header>\r\n   <fueloauth xmlns="http://exacttarget.com">' +access_token + '</fueloauth>\r\n    </soapenv:Header>\r\n   <soapenv:Body>\r\n      <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n         <RetrieveRequest>\r\n            <ObjectType>AsyncActivityStatus</ObjectType>\r\n            <Properties>Status</Properties>\r\n            <Properties>StartTime</Properties>\r\n            <Properties>EndTime</Properties>\r\n            <Properties>TaskID</Properties>\r\n            <Properties>ParentInteractionObjectID</Properties>\r\n            <Properties>InteractionID</Properties>\r\n            <Properties>Program</Properties>\r\n            <Properties>StepName</Properties>\r\n            <Properties>ActionType</Properties>\r\n            <Properties>Type</Properties>\r\n            <Properties>Status</Properties>\r\n            <Properties>CustomerKey</Properties>\r\n            <Properties>ErrorMsg</Properties>\r\n            <Properties>CompletedDate</Properties>\r\n            <Properties>StatusMessage</Properties>\r\n            <Filter xsi:type="SimpleFilterPart">\r\n               <Property>TaskID</Property>\r\n               <SimpleOperator>equals</SimpleOperator>\r\n               <Value>' + TaskId + '</Value>\r\n            </Filter>\r\n         </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>'
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+    }
+
 
     // async function runSoapQuery() {
 
