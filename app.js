@@ -690,6 +690,11 @@ app.post("/secondpage", async function (req, res) {
             request(options, function (error, response) {
               if (error) throw new Error(error);
               console.log( "yeh hai run soap query ka response" + response.body);
+              var SourceListQueryResult ;
+              xml2jsParser.parseString(SourceListQueryResult, function (err, result) {
+                SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'];
+                  console.log("Result tak xml result" + SourceListQueryResult);
+              });
             });
 
           }
