@@ -2550,17 +2550,31 @@ else
       //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
       //    var node = '<li >' + html + '</li>';
 
-          var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
-          var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
+         // var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
+         // var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
 
+         var node ='<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">'+
+          '<div class="slds-tree__item slds-is-selected">'
+              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">'
+                  '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">'
+                    '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'
+                '  </svg>'
+             ' </button>'
+             ' <span class="slds-size_1-of-1">'
+                  '<span class="slds-tree__item-label slds-truncate"  >' + deFieldListarray[i].FieldName +  ' </span>'
+             ' </span>'
+        '  </div>'
+        '</li>'
 
+  
 
+          
           //  var li = document.createElement('li');     // create li element.
           //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
           //  li.setAttribute('style', 'display: block;');    // remove the bullets.
           //  li.setAttribute('draggable', 'true'); 
           //  ul.appendChild(li);     // append li to ul.
-          document.getElementById('ulList').innerHTML += deFieldListarray[i].FieldName;
+          document.getElementById('ulList').innerHTML += node;
 
         }
 
@@ -4442,19 +4456,8 @@ else
             <div id="component-selector-container" class="slds-tree_container"> 
               <h4 class="slds-text-title_caps" id="component-selector-container__heading">Component Fields</h4>
 
-              <ul aria-labelledby="component-selector-container__heading" class="slds-tree" role="tree">
-                <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                    <div class="slds-tree__item slds-is-selected">
-                        <button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">
-                            <svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-                            </svg>
-                        </button>
-                        <span class="slds-size_1-of-1">
-                            <span class="slds-tree__item-label slds-truncate" id = "ulList" > </span>
-                        </span>
-                    </div>
-                </li>
+              <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree">
+               
               </ul>
 
             </div>
