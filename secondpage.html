@@ -4371,7 +4371,7 @@ else
         <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
         <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
         <div id="RelationshipDiv"> </div>
-        <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div>
+        <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
       </div>
     </div>
      <!-- <p id="demo"></p>--> 
@@ -5029,17 +5029,17 @@ else
           '</div>' +
 
           '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-3">' +
+    ' <div style=" float: left;"> ' +
+        //  '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
           '<div class="slds-form-element__control">' +
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + currentClickedDE + '" disabled="" class="slds-input" />' +
           '</div>' +
           '</div>' +
-          '</div>' +
+        //  '</div>' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
+        //  '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
           '<div class="slds-form-element__control">' +
@@ -5057,15 +5057,16 @@ else
           '</div>' +
           '</div>' +
           '</div>' +
-          '</div>' +
+        // '</div>' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
+        //  '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
           '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           '<option value="">Select…</option>';
+        
         for (var DEName in dataExtensionNameMapFinal) {
           if (currentClickedDE != DEName) {
             joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
@@ -5077,8 +5078,8 @@ else
           '</div>' +
           '</div>' +
 
-          '</div>' +
-
+        //  '</div>' +
+    ' <div> ' +
 
 
 

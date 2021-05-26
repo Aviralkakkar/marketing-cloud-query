@@ -454,11 +454,11 @@ app.post("/secondpage", async function (req, res) {
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
         
-        var QueryRunBool = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
+        var taskId = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
         // Yahan aajaigi task id aur query run hui ki nhi 
-
-        if(QueryRunBool == 'true') {
-        var taskId ;
+        console.log("Yes Task Id Hai ---> " + taskId); 
+        if(taskId) {
+        
         var queryStatus = await queryStatusMethod( taskId ) ;
 
         console.log("Yaha query status aajaiga"); 
@@ -697,8 +697,9 @@ app.post("/secondpage", async function (req, res) {
               console.log( "yeh hai run soap query ka response" + response.body);
               var SourceListQueryResult ;
               xml2jsParser.parseString(response.body, function (err, result) {
-                SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'][0]['Result'][0]['Task'][0]['ID'];
+                SourceListQueryResult = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'][0]['Result'][0]['Task'][0]['ID'][0];
                   console.log("Result tak xml result" + JSON.stringify(SourceListQueryResult) );
+                  resolve(SourceListQueryResult);
               });
             });
 
