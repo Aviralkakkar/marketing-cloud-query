@@ -2196,7 +2196,7 @@ else
       var datafromDrag2 = event.dataTransfer.getData("text/plain");
       //event.target.appendChild(document.getElementById(data1));
       parsedDragData2 = JSON.parse(datafromDrag2);
-      console.log("parsedDragData2--> " + parsedDragData2) ;
+      console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2) ) ;
       //console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
       var datatypevalue = parsedDragData2.name.trim();
       //console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa');
