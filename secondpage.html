@@ -2543,11 +2543,25 @@ else
       //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
       //    var node = '<li >' + html + '</li>';
 
-          var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
-          var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
+         // var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
+         // var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
 
+         var node ='<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">'+
+          '<div class="slds-tree__item slds-is-selected">'+
+              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">'+
+                  '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">'+
+                    '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'+
+                '  </svg>'+
+             ' </button>'+
+             ' <span class="slds-size_1-of-1">'+
+                  '<span class="slds-tree__item-label slds-truncate" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName +  ' </span>'+
+             ' </span>'+
+        '  </div>'+
+        '</li>'
 
+  
 
+          
           //  var li = document.createElement('li');     // create li element.
           //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
           //  li.setAttribute('style', 'display: block;');    // remove the bullets.
@@ -4430,9 +4444,24 @@ else
           </header>
           <div class="slds-modal__content slds-p-around_medium" id="grid-2-de">
 
-            <div>
+            
+          <div>
+            <div id="component-selector-container" class="slds-tree_container slds-float_left" style="overflow:scroll;width:35%;" > 
+              <h4 class="slds-text-title_caps" id="component-selector-container__heading">Data Extension Fields</h4>
 
-               <div div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
+              <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree" style="padding-left:0rem;">
+               
+              </ul>
+
+            </div>
+
+            <div id="RichTextEditor" class="editor slds-float_right  "
+              style="overflow:scroll;width:65%;height:360px;border: 2px solid lightgray;font-size: 15px;"
+              contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+            </div>
+
+          </div>
+               <!-- <div  class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
          <div class="slds-panel__header">
             <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
@@ -4444,7 +4473,7 @@ else
                  <ul aria-describedby="entity-header" id="ulList">
                 </ul>
               </div>
-              </div> 
+              </div>  -->
 
       <!-- <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
@@ -4467,13 +4496,8 @@ else
 
 
               <!-- <div class="slds-float_right" id = "filter-div" style="width:65%;height:346px;background-color: cadetblue;" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">   -->
-              <div id="RichTextEditor" class="editor slds-float_right  "
-                style="overflow:scroll;width:65%;height:330px;border: 5px solid black;font-size: 15px;"
-                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
-
-
-              </div>
-            </div>
+             
+            
 
 
           </div>
