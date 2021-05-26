@@ -2550,13 +2550,13 @@ else
 
          var node ='<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">'+
           '<div class="slds-tree__item slds-is-selected">'+
-              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">'+
+              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" > disabled="" tabindex="-1" type="button">'+
                   '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">'+
                     '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'+
                 '  </svg>'+
              ' </button>'+
              ' <span class="slds-size_1-of-1">'+
-                  '<span class="slds-tree__item-label slds-truncate"> <button value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName + '</button>  </span>'+
+                  '<span class="slds-tree__item-label slds-truncate" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName +  ' </span>'+
              ' </span>'+
         '  </div>'+
         '</li>'
