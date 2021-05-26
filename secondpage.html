@@ -2419,17 +2419,20 @@ else
           }
         }
 
+
+
         if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
           if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
             if(strQuery.includes(' WHERE ')) {
-
+              
             }
             else {
-              strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
+              strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
         }
+
         else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
           strQuery += ' WHERE ' + FirstDEWhereClause;
         }
@@ -2437,9 +2440,9 @@ else
           strQuery += ' WHERE ' + SecondDEWhereClause;
         }
       }
-
-
 */
+
+
 
       
 
@@ -5335,13 +5338,13 @@ else
                     "DEName" : currentClickedDEGlobal,
                     "JoinField" : document.getElementById('FirstDEField').value
                   }
-                  console.log('currentClickedDEGlobal PrimaryDE : ' + JSON.stringify(JoinQueryDetails["PrimaryDE"]));
                 }
                 JoinQueryDetails["DEForJoin"].push({
                   "FirstDEName" : currentClickedDEGlobal,
                   "FirstDEJoinField" : document.getElementById('FirstDEField').value,
 
                   "JoinType" : document.getElementById('select-01').value,
+                  "WhereClauseANDOR" : document.getElementById('selectWhereClauseANDOR').value,
                   
                   "SecondDEName" : document.getElementById('select-02').value,
                   "SecondDEJoinField" : document.getElementById('SecondDEField').value
