@@ -2436,7 +2436,7 @@ else
           }
           else if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
             if(strQuery.includes(' WHERE ')) {
-              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + FirstDEWhereClause;
+              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
             }
             else {
               strQuery += ' WHERE ' + FirstDEWhereClause;
@@ -2445,7 +2445,7 @@ else
           }
           else if(tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
             if(strQuery.includes(' WHERE ')) {
-              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + SecondDEWhereClause;
+              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             else {
               strQuery += ' WHERE ' + SecondDEWhereClause;
@@ -2455,7 +2455,7 @@ else
         }
         else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
           if(strQuery.includes(' WHERE ')) {
-            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + FirstDEWhereClause;
+            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
           }
           else {
             strQuery += ' WHERE ' + FirstDEWhereClause;
@@ -2464,7 +2464,7 @@ else
         }
         else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
           if(strQuery.includes(' WHERE ')) {
-            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + SecondDEWhereClause;
+            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
           }
           else {
             strQuery += ' WHERE ' + SecondDEWhereClause;
