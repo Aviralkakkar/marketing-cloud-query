@@ -421,7 +421,7 @@ app.post("/secondpage", async function (req, res) {
     //   console.log("reqCall.body validatequery" + JSON.stringify(reqCall.data.dynamicQuery));  
     //  console.log("reqCall.body validatequery2" + reqCall.data.dynamicQuery);    
     //  console.log("reqCall.body validatequery" + JSON.stringify(reqCall.body));
-    //console.log("validate query access token" + access_token);
+    console.log("validate query access token" + access_token);
     var options = {
       'method': 'POST',
       'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/actions/validate/',
@@ -448,7 +448,8 @@ app.post("/secondpage", async function (req, res) {
       if (fal == true && actionType == "run") {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
 
-        console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
+        console.log("DECreateResult object Id -- > " + DECreateResult)
+        //console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
