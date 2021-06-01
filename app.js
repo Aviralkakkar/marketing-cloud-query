@@ -730,7 +730,7 @@ app.post("/secondpage", async function (req, res) {
 
           var queryStatusTemp;
           xml2jsParser.parseString(response.body, function (err, result) {
-            queryStatusTemp = result;
+            queryStatusTemp = result["soap:Envelope"]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"][0]["Properties"][0]["Property"][7]["Value"][0];
             console.log("Result tak xml result" + JSON.stringify(queryStatusTemp));
             resolve(queryStatusTemp);
           });
