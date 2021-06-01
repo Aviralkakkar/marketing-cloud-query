@@ -627,7 +627,7 @@ app.post("/secondpage", async function (req, res) {
 
     async function CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name) {
       return new Promise(function (resolve, reject) {
-        console.log("ObjectID --- > " + ObjectID);
+        console.log("ObjectID --- > " + JSON.stringify(ObjectID));
         console.log("CustomerKey --- > " + CustomerKey);
         console.log("dynamicQuery --- > " + dynamicQuery);
         console.log("Name --- > " + Name);
