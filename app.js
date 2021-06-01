@@ -459,14 +459,23 @@ app.post("/secondpage", async function (req, res) {
         // Yahan aajaigi task id aur query run hui ki nhi 
         console.log("Yes Task Id Hai ---> " + taskId);
         if (taskId) {
+          
+          var getDERecordsResult = [];
+          var b = setInterval(async function () {
+            var queryStatus = await queryStatusMethod(taskId);
+            console.log("queryStatus : " + queryStatus);
+            if (queryStatus == "Compeleted") {
+              getDERecordsResult = await getDERecords(CustomerKey);
+              console.log('getDERecordsResult : ' + JSON.stringify(getDERecordsResult));
+              clearInterval(b);
+            }
+          }, 10000);
 
-          var queryStatus = await queryStatusMethod(taskId);
 
-          console.log("Yaha query status aajaiga : " + queryStatus);
 
-          DERecords = [];
 
-          /*
+
+          /*DERecords = [];
           var count = 0;
           var getDERecordsResult = [];
           var b = setInterval(async function () {
@@ -727,11 +736,9 @@ app.post("/secondpage", async function (req, res) {
         };
         request(options, function (error, response) {
           if (error) throw new Error(error);
-
           var queryStatusTemp;
           xml2jsParser.parseString(response.body, function (err, result) {
             queryStatusTemp = result["soap:Envelope"]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"][0]["Properties"][0]["Property"][7]["Value"][0];
-            console.log("Result tak xml result" + JSON.stringify(queryStatusTemp));
             resolve(queryStatusTemp);
           });
         });
