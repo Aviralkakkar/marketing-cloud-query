@@ -448,7 +448,7 @@ app.post("/secondpage", async function (req, res) {
       if (fal == true && actionType == "run") {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
 
-        console.log("DECreateResult object Id -- > " + DECreateResult)
+        console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
         //console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
