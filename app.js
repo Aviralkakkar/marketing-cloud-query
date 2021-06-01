@@ -448,7 +448,7 @@ app.post("/secondpage", async function (req, res) {
       if (fal == true && actionType == "run") {
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
 
-        console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
+        //console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
         //console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
@@ -627,6 +627,11 @@ app.post("/secondpage", async function (req, res) {
 
     async function CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name) {
       return new Promise(function (resolve, reject) {
+        console.log("ObjectID --- > " + ObjectID);
+        console.log("CustomerKey --- > " + CustomerKey);
+        console.log("dynamicQuery --- > " + dynamicQuery);
+        console.log("Name --- > " + Name);
+
         var options = {
           'method': 'POST',
           'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/',
@@ -653,6 +658,7 @@ app.post("/secondpage", async function (req, res) {
           if (error) throw new Error(error);
           //     console.log( "response.body.queryDefinitionId" + response.body);
           //     console.log("response.body.name" + response.body.name);
+          console.log("queryDefinitionId body --- > " + response.body);
           var responsee = JSON.parse(response.body);
           var queryDefinitionId = responsee.queryDefinitionId;
           console.log("queryDefinitionId --- > " + queryDefinitionId);
