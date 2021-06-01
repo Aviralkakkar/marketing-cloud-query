@@ -459,12 +459,12 @@ app.post("/secondpage", async function (req, res) {
         // Yahan aajaigi task id aur query run hui ki nhi 
         console.log("Yes Task Id Hai ---> " + taskId);
         if (taskId) {
-          
+
           var getDERecordsResult = [];
           var b = setInterval(async function () {
             var queryStatus = await queryStatusMethod(taskId);
             console.log("queryStatus : " + queryStatus);
-            if (queryStatus == "Compeleted") {
+            if (queryStatus == "Complete") {
               getDERecordsResult = await getDERecords(CustomerKey);
               console.log('getDERecordsResult : ' + JSON.stringify(getDERecordsResult));
               clearInterval(b);
