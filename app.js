@@ -450,6 +450,7 @@ app.post("/secondpage", async function (req, res) {
 
         //console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
         //console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
+        console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
         var ObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
@@ -726,8 +727,13 @@ app.post("/secondpage", async function (req, res) {
         };
         request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log("Query Status Result : " + response.body);
-          resolve(response.body);
+
+          var queryStatusTemp;
+          xml2jsParser.parseString(response.body, function (err, result) {
+            queryStatusTemp = result['soap:Envelope']['soap:Body'][0]['PerformResponseMsg'][0]['Results'];
+            console.log("Result tak xml result" + JSON.stringify(queryStatusTemp));
+            resolve(queryStatusTemp);
+          });
         });
       })
     }
