@@ -2329,7 +2329,7 @@ else
       }
     }
 
-    function validateQuery(JoinQueryDetails , actionType) {
+    async function validateQuery(JoinQueryDetails , actionType) {
 
       var strQuery = '';
 
@@ -2350,7 +2350,7 @@ else
         "SecondDEJoinField" : document.getElementById('SecondDEField').value
       });*/
 
-      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+      async function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
@@ -2503,6 +2503,37 @@ else
              
       })  
       
+
+
+      var b = setInterval(async function () {
+        var data = await DERecordGetClient();
+        console.log("queryStatus : " + data);
+        if (data) {
+          clearInterval(b);
+        }
+      }, 10000);
+
+      async function DERecordGetClient() {
+        return new Promise(async function (resolve, reject) {
+          $.ajax
+          ({
+              url: '/DERecordGet',
+              data: {
+                'DERecordGet': True
+              },
+              type: "POST",
+              headers: {
+                  'Content-type': 'application/x-www-form-urlencoded'
+              },
+              success: async function (data) {
+                console.log('data resCall1 : ' + JSON.stringify(data));
+                resolve(data);
+              } 
+          })  
+        })
+      }
+
+
       /*
       function DEListShow(DERecords) {
         var DETableBody = ""

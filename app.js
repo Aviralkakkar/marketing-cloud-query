@@ -460,6 +460,8 @@ app.post("/secondpage", async function (req, res) {
         console.log("Yes Task Id Hai ---> " + taskId);
         if (taskId) {
 
+
+
           var getDERecordsResult = [];
           var b = setInterval(async function () {
             var queryStatus = await queryStatusMethod(taskId);
@@ -470,6 +472,11 @@ app.post("/secondpage", async function (req, res) {
               clearInterval(b);
             }
           }, 10000);
+
+          app.post("/DERecordGet", async (reqCall1, resCall1) => {
+            console.log("reqCall1 : " + reqCall1);
+            resCall1.send(getDERecordsResult);
+          })
 
 
 
