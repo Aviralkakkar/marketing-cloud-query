@@ -473,14 +473,14 @@ app.post("/secondpage", async function (req, res) {
             }
           }, 10000);
 
-
-
-
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
             console.log("reqCall1 : " + JSON.stringify(reqCall1.body));
             console.log("getDERecordsResult : " + JSON.stringify(getDERecordsResult));
             resCall1.send(getDERecordsResult);
           })
+
+
+          
 
 
 

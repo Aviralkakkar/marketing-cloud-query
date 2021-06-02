@@ -2534,7 +2534,10 @@ else
               success: async function (data) {
                 console.log('data resCall1 : ' + JSON.stringify(data));
                 resolve(data);
-              } 
+              },
+              error : async function (error) {
+                console.log('error resCall1 : ' + JSON.stringify(error));
+              }
           })  
         })
       }
