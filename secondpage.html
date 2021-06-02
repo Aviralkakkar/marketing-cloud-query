@@ -2507,13 +2507,16 @@ else
       
 
 
-      var b = setInterval(async function () {
-        var data = await DERecordGetClient();
-        console.log("queryStatus : " + data);
-        if (data) {
-          clearInterval(b);
-        }
-      }, 10000);
+      if(actionType == "run") {
+        var b = setInterval(async function () {
+          var data = await DERecordGetClient();
+          console.log("queryStatus : " + data);
+          if (data) {
+            clearInterval(b);
+          }
+        }, 10000);
+      }
+      
 
       async function DERecordGetClient() {
         return new Promise(async function (resolve, reject) {
