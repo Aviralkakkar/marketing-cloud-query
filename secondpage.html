@@ -2510,7 +2510,7 @@ else
       if(actionType == "run") {
         var b = setInterval(async function () {
           var data = await DERecordGetClient();
-          console.log("queryStatus : " + data);
+          console.log("queryStatus : " + JSON.stringify(data));
           if (data) {
             clearInterval(b);
           }
@@ -2519,6 +2519,7 @@ else
       
 
       async function DERecordGetClient() {
+        console.log('DERecordGetClient resCall1 : chala');
         return new Promise(async function (resolve, reject) {
           $.ajax
           ({
