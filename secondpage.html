@@ -2506,40 +2506,36 @@ else
       })  
       
 
+      var tempData;
 
       if(actionType == "run") {
-        var b = setInterval(async function () {
-          var data = await DERecordGetClient();
-          console.log("queryStatus : " + JSON.stringify(data));
-          if (data) {
+        var b = setInterval(function () {
+          DERecordGetClient();
+          console.log("tempData setInterval : " + JSON.stringify(tempData));
+          if (tempData) {
             clearInterval(b);
           }
         }, 10000);
       }
       
-
-      async function DERecordGetClient() {
-        console.log('DERecordGetClient resCall1 : chala');
-        return new Promise(async function (resolve, reject) {
-          $.ajax
-          ({
-              url: '/DERecordGet',
-              data: {
-                'DERecordGet': "True"
-              },
-              type: "POST",
-              headers: {
-                  'Content-type': 'application/x-www-form-urlencoded'
-              },
-              success: async function (data) {
-                console.log('data resCall1 : ' + JSON.stringify(data));
-                resolve(data);
-              },
-              error : async function (error) {
-                console.log('error resCall1 : ' + JSON.stringify(error));
-              }
-          })  
-        })
+      
+      function DERecordGetClient() {
+        console.log('data resCall1 : chala');
+        $.ajax
+        ({
+            url: '/DERecordGet',
+            data: {
+              'DERecordGet': "True"
+            },
+            type: "POST",
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (data) {
+              tempData = data;
+              console.log('data resCall1 : ' + JSON.stringify(data));
+            }
+        })  
       }
 
 
