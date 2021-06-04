@@ -2329,7 +2329,7 @@ else
       }
     }
 
-    function validateQuery(JoinQueryDetails , actionType) {
+    async function validateQuery(JoinQueryDetails , actionType) {
 
       var strQuery = '';
 
@@ -2350,7 +2350,7 @@ else
         "SecondDEJoinField" : document.getElementById('SecondDEField').value
       });*/
 
-      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+      async function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
@@ -2401,7 +2401,7 @@ else
       }
       
 
-      /*
+      
       var FirstDEWhereClause = '';
       var SecondDEWhereClause = '';
       tempDESet = new Set();
@@ -2422,49 +2422,64 @@ else
         }
 
 
-
+/*
         if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
           if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
             if(strQuery.includes(' WHERE ')) {
-              
+              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             else {
               strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+          }
+          else if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            if(strQuery.includes(' WHERE ')) {
+              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
+            }
+            else {
+              strQuery += ' WHERE ' + FirstDEWhereClause;
+            }
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+          }
+          else if(tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            if(strQuery.includes(' WHERE ')) {
+              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+            }
+            else {
+              strQuery += ' WHERE ' + SecondDEWhereClause;
+            }
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
           }
         }
-
         else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-          strQuery += ' WHERE ' + FirstDEWhereClause;
+          if(strQuery.includes(' WHERE ')) {
+            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
+          }
+          else {
+            strQuery += ' WHERE ' + FirstDEWhereClause;
+          }
+          tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
         }
         else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-          strQuery += ' WHERE ' + SecondDEWhereClause;
+          if(strQuery.includes(' WHERE ')) {
+            strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+          }
+          else {
+            strQuery += ' WHERE ' + SecondDEWhereClause;
+          }
+          tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
         }
+      */
       }
-*/
 
 
 
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
       console.log("dynamic Query --> " + strQuery);
+
       JoinQueryDESelectedFields = [];
       for (var val of Array.from(FieldSet)) {
         JoinQueryDESelectedFields.push(JSON.parse(val));
@@ -2490,6 +2505,40 @@ else
              
       })  
       
+
+      var tempData;
+
+      if(actionType == "run") {
+        var b = setInterval(function () {
+          DERecordGetClient();
+          console.log("tempData setInterval : " + JSON.stringify(tempData));
+          if (tempData) {
+            clearInterval(b);
+          }
+        }, 10000);
+      }
+      
+      
+      function DERecordGetClient() {
+        console.log('data resCall1 : chala');
+        $.ajax
+        ({
+            url: '/DERecordGet',
+            data: {
+              'DERecordGet': "True"
+            },
+            type: "POST",
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (data) {
+              tempData = data;
+              console.log('data resCall1 : ' + JSON.stringify(data));
+            }
+        })  
+      }
+
+
       /*
       function DEListShow(DERecords) {
         var DETableBody = ""
