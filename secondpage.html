@@ -2406,6 +2406,7 @@ else
       var FirstDEWhereClause = '';
       var SecondDEWhereClause = '';
       tempDESet = new Set();
+      /*
       if(JoinQueryDetails.DEForJoin.length != 0) {
         for (var key in JoinQueryDetails.DEForJoin) {
           FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
@@ -2479,10 +2480,10 @@ else
       else {
         strQuery = lastQuery;
       }
-      
+      */
 
       
-      //strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
+      strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
       console.log("dynamic Query --> " + strQuery);
 
       JoinQueryDESelectedFields = [];
