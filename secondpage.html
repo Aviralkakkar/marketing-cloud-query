@@ -2407,7 +2407,7 @@ else
       var SecondDEWhereClause = '';
       tempDESet = new Set();
       lastQuery
-      if(JoinQueryDetails.DEForJoin) {
+      if(JoinQueryDetails.DEForJoin.length != 0) {
         for (var key in JoinQueryDetails.DEForJoin) {
           FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
           SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
