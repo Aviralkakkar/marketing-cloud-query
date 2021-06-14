@@ -2428,7 +2428,7 @@ else
 
           if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
             if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.includes(' WHERE ')) {
+              if(strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
               }
               else {
@@ -2438,7 +2438,7 @@ else
               tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
             }
             else if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.includes(' WHERE ')) {
+              if(strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
               }
               else {
@@ -2447,7 +2447,7 @@ else
               tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
             }
             else if(tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.includes(' WHERE ')) {
+              if(strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
               }
               else {
@@ -2457,7 +2457,7 @@ else
             }
           }
           else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-            if(strQuery.includes(' WHERE ')) {
+            if(strQuery.indexOf(' WHERE ') !== -1) {
               strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
             }
             else {
@@ -2466,7 +2466,7 @@ else
             tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
           else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-            if(strQuery.includes(' WHERE ')) {
+            if(strQuery.indexOf(' WHERE ') !== -1) {
               strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             else {
@@ -2516,7 +2516,7 @@ else
 
       if(actionType == "run") {
         var b = setInterval(function () {
-          //DERecordGetClient();
+          DERecordGetClient();
           console.log("tempData setInterval : " + JSON.stringify(tempData));
           if (tempData) {
             clearInterval(b);
