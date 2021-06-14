@@ -2330,7 +2330,7 @@ else
     }
 
     var lastQuery = '';
-    async function validateQuery(JoinQueryDetails , actionType) {
+    function validateQuery(JoinQueryDetails , actionType) {
 
       var strQuery = '';
 
@@ -2351,7 +2351,7 @@ else
         "SecondDEJoinField" : document.getElementById('SecondDEField').value
       });*/
 
-      async function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
