@@ -463,8 +463,9 @@ app.post("/secondpage", async function (req, res) {
 
 
           var getDERecordsResult = [];
+          var queryStatus;
           var b = setInterval(async function () {
-            var queryStatus = await queryStatusMethod(taskId);
+            queryStatus = await queryStatusMethod(taskId);
             console.log("queryStatus : " + queryStatus);
             if (queryStatus == "Complete") {
               getDERecordsResult = await getDERecords(CustomerKey);
@@ -476,7 +477,14 @@ app.post("/secondpage", async function (req, res) {
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
             console.log("reqCall1 : " + JSON.stringify(reqCall1.body));
             console.log("getDERecordsResult : " + JSON.stringify(getDERecordsResult));
-            resCall1.send(getDERecordsResult);
+            
+            if (queryStatus != "Complete") {
+              resCall1.send("false");
+            }
+            else {
+              resCall1.send(getDERecordsResult);
+            }
+            
           })
 
 

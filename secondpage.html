@@ -2518,7 +2518,7 @@ else
         var b = setInterval(function () {
           DERecordGetClient();
           console.log("tempData setInterval : " + JSON.stringify(tempData));
-          if (tempData) {
+          if (tempData != "false" ) {
             clearInterval(b);
           }
         }, 10000);
