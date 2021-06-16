@@ -2512,15 +2512,15 @@ else
       })  
       
 
-      var tempData;
+      var tempData = "false";
 
       if(actionType == "run") {
         var b = setInterval(function () {
           DERecordGetClient();
-          console.log("tempData setInterval : " + JSON.stringify(tempData));
-          if (tempData != "false" ) {
-            clearInterval(b);
-          }
+          //console.log("tempData setInterval : " + JSON.stringify(tempData));
+          //if (tempData != "false" ) {
+          //  clearInterval(b);
+          //}
         }, 10000);
       }
       
@@ -2539,7 +2539,11 @@ else
             },
             success: function (data) {
               tempData = data;
-              console.log('data resCall1 : ' + JSON.stringify(data));
+              //console.log('data resCall1 : ' + JSON.stringify(data));
+              console.log("tempData setInterval : " + JSON.stringify(tempData));
+              if (tempData != "false" ) {
+                clearInterval(b);
+              }
             }
         })  
       }
