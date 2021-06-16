@@ -463,7 +463,7 @@ app.post("/secondpage", async function (req, res) {
 
 
           var getDERecordsResult = [];
-          var queryStatus;
+          var queryStatus = "false";
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log("queryStatus : " + queryStatus);
