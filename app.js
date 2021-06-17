@@ -694,28 +694,38 @@ app.post("/secondpage", async function (req, res) {
           if (queryDefinitionId) {
             console.log("query run me aagya -- > ")
 
-            
-            var options = {
-              'method': 'POST',
-              'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
-              'headers': {
-                'Authorization': 'Bearer ' + access_token,
-                'Content-Type': 'application/json'
-              }
-            };
-            request(options, async function (error, response) {
-              if (error) throw new Error(error);
-              console.log("Query run hogyi hai  " + JSON.stringify(response));
 
-              if (response.body == '"OK"') {
-                console.log('OK me aa gya ---------------------');
-                resolve('true');
-              }
-              else {
-                console.log('OK ka else me aa gya ---------------------');
-                resolve('false');
-              }
-            });
+
+
+            
+            
+            // var options = {
+            //   'method': 'POST',
+            //   'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId + '/actions/start/',
+            //   'headers': {
+            //     'Authorization': 'Bearer ' + access_token,
+            //     'Content-Type': 'application/json'
+            //   }
+            // };
+            // request(options, async function (error, response) {
+            //   if (error) throw new Error(error);
+            //   console.log("Query run hogyi hai  " + JSON.stringify(response));
+
+            //   if (response.body == '"OK"') {
+            //     console.log('OK me aa gya ---------------------');
+            //     resolve('true');
+            //   }
+            //   else {
+            //     console.log('OK ka else me aa gya ---------------------');
+            //     resolve('false');
+            //   }
+            // });
+
+
+
+
+
+
 
             var options = {
               'method': 'POST',
