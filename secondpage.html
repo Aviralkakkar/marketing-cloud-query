@@ -1753,7 +1753,7 @@
     var dataExtensionNameMapFinal = {};
     var JoinQueryDESelectedFields = [];
 
-    
+
     function onloadofBody() {
       fetch('/fields', {  //provide URL of the processing page
         method: "POST",
@@ -1792,7 +1792,7 @@
           //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
           //console.log("parsed data  Before Sort : " + JSON.stringify(parsedData));
-          
+
 
           /*var dataextensionArray = []; 
           for (const [keyimage, value] of Object.entries(parsedData)) 
@@ -1999,51 +1999,51 @@ else
       iframe.contentWindow.document.close();
     }
 
-/*
-//Can Delete
-    function handleClick(cb) {
-      //console.log("Clicked, new name = " + cb.name);
-      //console.log("Clicked, new value = " + cb.value);
-      //console.log("Clicked, new id = " + cb.id);
-      //console.log("Clicked, new value = " + cb.checked);
-      //console.log("------------Handle Click", defieldsArray);
-
-      if (cb.checked == true) {
-        // result[cb.id]= cb.name;
-        //checkedEmailArray.push(cb.id);
-        // getFields(cb.id,cb.value,"CheckboxClick")
-        var divid = cb.value + 'div';
-        var divHtml = '<div id="' + divid + '" title="' + cb.id + '">' + cb.value + '</div>';
-        document.getElementById("Fields").innerHTML += divHtml;
-        for (var i = 0; i < defieldsArray.length; i++) {
-          if (cb.id == defieldsArray[i].CustomerKey) {
-            //console.log("----------------Id-     ", cb.id);
-            //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-            var buttonHtml = '<li><input type="button" value="' + defieldsArray[i].FieldName + '" name="' + defieldsArray[i].CustomerKey + '" id="drag' + i + '" draggable=true></li>';
-            document.getElementById(divid).innerHTML += buttonHtml;
-
+    /*
+    //Can Delete
+        function handleClick(cb) {
+          //console.log("Clicked, new name = " + cb.name);
+          //console.log("Clicked, new value = " + cb.value);
+          //console.log("Clicked, new id = " + cb.id);
+          //console.log("Clicked, new value = " + cb.checked);
+          //console.log("------------Handle Click", defieldsArray);
+    
+          if (cb.checked == true) {
+            // result[cb.id]= cb.name;
+            //checkedEmailArray.push(cb.id);
+            // getFields(cb.id,cb.value,"CheckboxClick")
+            var divid = cb.value + 'div';
+            var divHtml = '<div id="' + divid + '" title="' + cb.id + '">' + cb.value + '</div>';
+            document.getElementById("Fields").innerHTML += divHtml;
+            for (var i = 0; i < defieldsArray.length; i++) {
+              if (cb.id == defieldsArray[i].CustomerKey) {
+                //console.log("----------------Id-     ", cb.id);
+                //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
+                var buttonHtml = '<li><input type="button" value="' + defieldsArray[i].FieldName + '" name="' + defieldsArray[i].CustomerKey + '" id="drag' + i + '" draggable=true></li>';
+                document.getElementById(divid).innerHTML += buttonHtml;
+    
+              }
+    
+            }
           }
-
+    
         }
-      }
-
-    }
-//Can Delete
-    function handlecheckboxclick(cbb) {
-      //console.log("Hey");
-      //console.log("Clicked, new name = " + cbb.name);
-      //console.log("Clicked, new value = " + cbb.value);
-      //console.log("Clicked, new id = " + cbb.id);
-      //console.log("Clicked, new value = " + cbb.checked);
-      //  console.log("------------Handle Click",defieldsArray);
-      if (cbb.checked == true) {
-        document.getElementById("grid-2-de").innerHTML += cbb.value;
-
-      }
-
-
-    }
-*/
+    //Can Delete
+        function handlecheckboxclick(cbb) {
+          //console.log("Hey");
+          //console.log("Clicked, new name = " + cbb.name);
+          //console.log("Clicked, new value = " + cbb.value);
+          //console.log("Clicked, new id = " + cbb.id);
+          //console.log("Clicked, new value = " + cbb.checked);
+          //  console.log("------------Handle Click",defieldsArray);
+          if (cbb.checked == true) {
+            document.getElementById("grid-2-de").innerHTML += cbb.value;
+    
+          }
+    
+    
+        }
+    */
 
 
 
@@ -2138,27 +2138,27 @@ else
             if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
               dataExtensionNameMap[dataExtensionName] = {
                 "AllFields": [{
-                  "FieldName" : defieldsArray[i].FieldName,
-                  "FieldType" : defieldsArray[i].FieldType
+                  "FieldName": defieldsArray[i].FieldName,
+                  "FieldType": defieldsArray[i].FieldType
                 }],
-                "DEExtKey" : dataExtensionId,
+                "DEExtKey": dataExtensionId,
                 "DESelectedFields": []
               }
             }
             else {
               dataExtensionNameMap[dataExtensionName].AllFields.push({
-                "FieldName" : defieldsArray[i].FieldName,
-                "FieldType" : defieldsArray[i].FieldType
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
               });
             }
           }
           else {
             dataExtensionNameMap[dataExtensionName] = {
               "AllFields": [{
-                "FieldName" : defieldsArray[i].FieldName,
-                "FieldType" : defieldsArray[i].FieldType
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
               }],
-              "DEExtKey" : dataExtensionId,
+              "DEExtKey": dataExtensionId,
               "DESelectedFields": []
             }
           }
@@ -2196,7 +2196,7 @@ else
       var datafromDrag2 = event.dataTransfer.getData("text/plain");
       //event.target.appendChild(document.getElementById(data1));
       parsedDragData2 = JSON.parse(datafromDrag2);
-      console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2) ) ;
+      console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2));
       //console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
       var datatypevalue = parsedDragData2.name.trim();
       //console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa');
@@ -2308,19 +2308,19 @@ else
     }
 
     function Previous() {
-      if(dataExtensionName) {
+      if (dataExtensionName) {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
       }
-      if(openOpenSelectField != '') {
+      if (openOpenSelectField != '') {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
         document.getElementById('grid-1-de').innerHTML = '';
         OpenSelectField(openOpenSelectField + "OpenSelectField");
       }
-      if(openWhereDEName != '') {
+      if (openWhereDEName != '') {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
@@ -2330,7 +2330,7 @@ else
     }
 
     var lastQuery = '';
-    function validateQuery(JoinQueryDetails , actionType) {
+    function validateQuery(JoinQueryDetails, actionType) {
 
       var strQuery = '';
 
@@ -2351,7 +2351,7 @@ else
         "SecondDEJoinField" : document.getElementById('SecondDEField').value
       });*/
 
-      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
@@ -2376,20 +2376,20 @@ else
         return queryStr;
       }
 
-      
+
       strQuery = 'SELECT';
 
       var tempDESet = new Set();
       for (var key in JoinQueryDetails.DEForJoin) {
-        if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-          for(var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
+        if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+          for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
           }
           tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
         }
 
-        if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-          for(var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
+        if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+          for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
             strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
           }
           tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
@@ -2398,37 +2398,37 @@ else
       strQuery = strQuery.slice(0, -1);
       strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
       for (var key in JoinQueryDetails.DEForJoin) {
-        strQuery = JoinTypeQueryStringAdd(strQuery , JoinQueryDetails.DEForJoin[key].JoinType , JoinQueryDetails.DEForJoin[key].FirstDEName , JoinQueryDetails.DEForJoin[key].FirstDEJoinField , JoinQueryDetails.DEForJoin[key].SecondDEName , JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
       }
-      
 
-      
+
+
       var FirstDEWhereClause = '';
       var SecondDEWhereClause = '';
       tempDESet = new Set();
-      
-      if(JoinQueryDetails.DEForJoin.length != 0) {
+
+      if (JoinQueryDetails.DEForJoin.length != 0) {
         for (var key in JoinQueryDetails.DEForJoin) {
           FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
           SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
-          if(FirstDEWhereClause != '') {
-            for(var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields) {
+          if (FirstDEWhereClause != '') {
+            for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields) {
               var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"], "g")
-              FirstDEWhereClause = FirstDEWhereClause.replace(regex , '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"] + ']');
+              FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"] + ']');
             }
           }
-          if(SecondDEWhereClause != '') {
-            for(var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields) {
+          if (SecondDEWhereClause != '') {
+            for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields) {
               var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"], "g")
-              SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"] + ']');
+              SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"] + ']');
             }
           }
 
 
 
-          if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-            if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.indexOf(' WHERE ') !== -1) {
+          if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+              if (strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
               }
               else {
@@ -2437,8 +2437,8 @@ else
               tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
               tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
             }
-            else if(!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.indexOf(' WHERE ') !== -1) {
+            else if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+              if (strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
               }
               else {
@@ -2446,8 +2446,8 @@ else
               }
               tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
             }
-            else if(tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if(strQuery.indexOf(' WHERE ') !== -1) {
+            else if (tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+              if (strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
               }
               else {
@@ -2456,8 +2456,8 @@ else
               tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
             }
           }
-          else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-            if(strQuery.indexOf(' WHERE ') !== -1) {
+          else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
+            if (strQuery.indexOf(' WHERE ') !== -1) {
               strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
             }
             else {
@@ -2465,8 +2465,8 @@ else
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
-          else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-            if(strQuery.indexOf(' WHERE ') !== -1) {
+          else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
+            if (strQuery.indexOf(' WHERE ') !== -1) {
               strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
             }
             else {
@@ -2474,15 +2474,15 @@ else
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
           }
-        
+
         }
       }
       else {
         strQuery = lastQuery;
       }
-      
 
-      
+
+
       //strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
       console.log("dynamic Query --> " + strQuery);
 
@@ -2493,28 +2493,28 @@ else
       console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
 
       $.ajax
-      ({
+        ({
           url: '/validatequery',
           data: {
             'dynamicQuery': strQuery,
-            'actionType' : actionType,
-            'JoinQueryDESelectedFields' : JoinQueryDESelectedFields
+            'actionType': actionType,
+            'JoinQueryDESelectedFields': JoinQueryDESelectedFields
           },
           type: "POST",
           headers: {
-              'Content-type': 'application/x-www-form-urlencoded'
+            'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
             console.log('data : ' + JSON.stringify(data));
             //DEListShow(data);
           }
-             
-      })  
-      
+
+        })
+
 
       var tempData = "false";
 
-      if(actionType == "run") {
+      if (actionType == "run") {
         var b = setInterval(function () {
           DERecordGetClient();
           //console.log("tempData setInterval : " + JSON.stringify(tempData));
@@ -2523,29 +2523,29 @@ else
           //}
         }, 10000);
       }
-      
-      
+
+
       function DERecordGetClient() {
         console.log('data resCall1 : chala');
         $.ajax
-        ({
+          ({
             url: '/DERecordGet',
             data: {
               'DERecordGet': "True"
             },
             type: "POST",
             headers: {
-                'Content-type': 'application/x-www-form-urlencoded'
+              'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
               tempData = data;
               //console.log('data resCall1 : ' + JSON.stringify(data));
               console.log("tempData setInterval : " + JSON.stringify(tempData));
-              if (tempData != "false" ) {
+              if (tempData != "false") {
                 clearInterval(b);
               }
             }
-        })  
+          })
       }
 
 
@@ -2583,64 +2583,72 @@ else
         }  
       }
   */
-      
+
     }
 
     var openOpenSelectField = '';
     function Next() {
-      document.getElementById('RelationPopup').style.display = 'none';
-      document.getElementById('SecondModal').style.display = 'block';
-      document.getElementById('ulList').innerHTML = '';
-      if(openOpenSelectField == '') {
-        /*  var constList = document.getElementById('ulList'); 
-          console.log("Value of the ulList --- > " + constList)
-          var ul = document.createElement('ul');
-          ul.setAttribute('style', 'padding: 0; margin: 0;');
-          ul.setAttribute('id', 'theList');
-          */
-        //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
-        //console.log("deFieldListarray   :    " + deFieldListarray);
-        for (var i = 0; i < deFieldListarray.length; i++) {
-          //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
-          //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-          //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
-      //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
-      //    var node = '<li >' + html + '</li>';
+      var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
+      console.log('checkboxesCheck.length : ' + checkboxesCheck.length);
+      if (checkboxesCheck.length > 0) {
+        document.getElementById('RelationPopup').style.display = 'none';
+        document.getElementById('SecondModal').style.display = 'block';
+        document.getElementById('ulList').innerHTML = '';
+        if (openOpenSelectField == '') {
+          /*  var constList = document.getElementById('ulList'); 
+            console.log("Value of the ulList --- > " + constList)
+            var ul = document.createElement('ul');
+            ul.setAttribute('style', 'padding: 0; margin: 0;');
+            ul.setAttribute('id', 'theList');
+            */
+          //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
+          //console.log("deFieldListarray   :    " + deFieldListarray);
+          for (var i = 0; i < deFieldListarray.length; i++) {
+            //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
+            //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
+            //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
+            //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
+            //    var node = '<li >' + html + '</li>';
 
-         // var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
-         // var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
+            // var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
+            // var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
 
-         var node ='<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">'+
-          '<div class="slds-tree__item slds-is-selected">'+
-              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">'+
-                  '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">'+
-                    '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'+
-                '  </svg>'+
-             ' </button>'+
-             ' <span class="slds-size_1-of-1">'+
-                  '<span class="slds-tree__item-label slds-truncate"> <button value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName +  ' </button> </span>'+
-             ' </span>'+
-        '  </div>'+
-        '</li>'
+            var node = '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+              '<div class="slds-tree__item slds-is-selected">' +
+              '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button">' +
+              '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
+              '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
+              '  </svg>' +
+              ' </button>' +
+              ' <span class="slds-size_1-of-1">' +
+              '<span class="slds-tree__item-label slds-truncate"> <button value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName + ' </button> </span>' +
+              ' </span>' +
+              '  </div>' +
+              '</li>'
 
-  
 
-          
-          //  var li = document.createElement('li');     // create li element.
-          //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
-          //  li.setAttribute('style', 'display: block;');    // remove the bullets.
-          //  li.setAttribute('draggable', 'true'); 
-          //  ul.appendChild(li);     // append li to ul.
-          document.getElementById('ulList').innerHTML += node;
 
+
+            //  var li = document.createElement('li');     // create li element.
+            //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
+            //  li.setAttribute('style', 'display: block;');    // remove the bullets.
+            //  li.setAttribute('draggable', 'true'); 
+            //  ul.appendChild(li);     // append li to ul.
+            document.getElementById('ulList').innerHTML += node;
+
+          }
+
+          //  constList.appendChild(ul);
         }
-
-        //  constList.appendChild(ul);
+        else {
+          OpenWhere(openOpenSelectField + 'OpenWhere');
+          //openOpenSelectField = '';
+        }
       }
       else {
-        OpenWhere(openOpenSelectField + 'OpenWhere');
-        //openOpenSelectField = '';
+        console.log('Please select at least one field');
       }
+
     }
   </script>
 
@@ -2668,7 +2676,7 @@ else
       position: absolute;
       top: 0;
       bottom: 0;
-    /*  left: 15px; */
+      /*  left: 15px; */
       right: 0;
 
       margin: auto;
@@ -4396,45 +4404,45 @@ else
   <script>
     onloadofBody();
   </script>
-  
-  <div>
-    <div style="width: 100%;height:100%;"
-      ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
-      <div class ="main-division-div">
 
-      <div class="slds-float_left" style="width:20%;height:100%;">
-        <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed"
-          aria-hidden="false">
-          <div class="slds-panel__header">
-            <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
-              Extensions</h2>
-          </div>
-          <div class="slds-panel__body">
-            <div class="demo-only" style="width:320px">
-              <nav class="slds-nav-vertical" aria-label="Sub page">
-                <div class="slds-nav-vertical__section">
-                  <h2 id="entity-header" class="slds-nav-vertical__title"> </h2>
-                  <ul aria-describedby="entity-header" id="Data Extensions">
-                  </ul>
-                </div>
-              </nav>
+  <div>
+    <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
+      <div class="main-division-div">
+
+        <div class="slds-float_left" style="width:20%;height:100%;">
+          <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed"
+            aria-hidden="false">
+            <div class="slds-panel__header">
+              <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
+                Extensions</h2>
+            </div>
+            <div class="slds-panel__body">
+              <div class="demo-only" style="width:320px">
+                <nav class="slds-nav-vertical" aria-label="Sub page">
+                  <div class="slds-nav-vertical__section">
+                    <h2 id="entity-header" class="slds-nav-vertical__title"> </h2>
+                    <ul aria-describedby="entity-header" id="Data Extensions">
+                    </ul>
+                  </div>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="main-div" class="slds-float_right" style="width:80%;height:100%;"> 
-        <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query </button>  
-        <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
-        <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
-        <div id="RelationshipDiv"> </div>
-        <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
+        <div id="main-div" class="slds-float_right" style="width:80%;height:100%;">
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
+          </button>
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
+          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
+          <div id="RelationshipDiv"> </div>
+          <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
+        </div>
       </div>
-    </div>
-     <!-- <p id="demo"></p>--> 
-      
+      <!-- <p id="demo"></p>-->
+
       <!-- Code Faizal -->
-      
+
       <!-- Code Khatam -->
 
 
@@ -4459,7 +4467,7 @@ else
           </div>
           <footer class="slds-modal__footer">
             <button class="slds-button slds-button_neutral">Cancel</button>
-            <button class="slds-button slds-button_brand" >Next</button>
+            <button class="slds-button slds-button_brand">Next</button>
           </footer>
         </div>
       </section>
@@ -4508,24 +4516,26 @@ else
           </header>
           <div class="slds-modal__content slds-p-around_medium" id="grid-2-de">
 
-            
-          <div>
-            <div id="component-selector-container" class="slds-tree_container slds-float_left" style="overflow:scroll;width:35%;" > 
-              <h4 class="slds-text-title_caps" id="component-selector-container__heading">Data Extension Fields</h4>
 
-              <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree" style="padding-left:0rem;">
-               
-              </ul>
+            <div>
+              <div id="component-selector-container" class="slds-tree_container slds-float_left"
+                style="overflow:scroll;width:35%;">
+                <h4 class="slds-text-title_caps" id="component-selector-container__heading">Data Extension Fields</h4>
+
+                <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
+                  style="padding-left:0rem;">
+
+                </ul>
+
+              </div>
+
+              <div id="RichTextEditor" class="editor slds-float_right  "
+                style="overflow:scroll;width:65%;height:360px;border: 2px solid lightgray;font-size: 15px;"
+                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+              </div>
 
             </div>
-
-            <div id="RichTextEditor" class="editor slds-float_right  "
-              style="overflow:scroll;width:65%;height:360px;border: 2px solid lightgray;font-size: 15px;"
-              contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
-            </div>
-
-          </div>
-               <!-- <div  class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
+            <!-- <div  class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
          <div class="slds-panel__header">
             <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
@@ -4539,7 +4549,7 @@ else
               </div>
               </div>  -->
 
-      <!-- <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
+            <!-- <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-left slds-is-open slds-is-fixed lds-float_left" style="width:35%;height:100%;"
         aria-hidden="false">
           <div class="slds-panel__header">
             <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Panel Header">Data
@@ -4559,9 +4569,9 @@ else
       </div> -->
 
 
-              <!-- <div class="slds-float_right" id = "filter-div" style="width:65%;height:346px;background-color: cadetblue;" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">   -->
-             
-            
+            <!-- <div class="slds-float_right" id = "filter-div" style="width:65%;height:346px;background-color: cadetblue;" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">   -->
+
+
 
 
           </div>
@@ -4597,56 +4607,56 @@ else
         JoinQueryDESelectedFields.push(JSON.parse(val));
       }
       $.ajax
-            ({
-                url: '/RunQuery',
-                data: {
-                  'JoinQueryDESelectedFields' : true
-                },
-                type: "POST",
-                headers: {
-                    'Content-type': 'application/x-www-form-urlencoded'
-                },
-                success: function (data) {
-                    console.log('hakshsah : ' + JSON.stringify(data));
-                    DEListShow(data);
-                    
-                }
-            })
+        ({
+          url: '/RunQuery',
+          data: {
+            'JoinQueryDESelectedFields': true
+          },
+          type: "POST",
+          headers: {
+            'Content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (data) {
+            console.log('hakshsah : ' + JSON.stringify(data));
+            DEListShow(data);
 
-      
+          }
+        })
+
+
       function DEListShow(DERecords) {
         var DETableBody = ""
-  
-        if(DERecords.lemgth != 0) {
-  
+
+        if (DERecords.lemgth != 0) {
+
           DETableBody = '<table class="slds-table slds-table--bordered">' +
-                          '<thead>' +
-                            '<tr class="slds-text-heading--label">';
-          
-          for(var key in DERecords[0]) {
-            DETableBody +=  '<th class="slds-cell-shrink" scope="col">' +
-                              '<span class="slds-truncate">' + key + '</span>' +
-                            '</th>';
+            '<thead>' +
+            '<tr class="slds-text-heading--label">';
+
+          for (var key in DERecords[0]) {
+            DETableBody += '<th class="slds-cell-shrink" scope="col">' +
+              '<span class="slds-truncate">' + key + '</span>' +
+              '</th>';
           }
-          DETableBody +=  '</tr>' +
-                        '</thead>' +
-                        '<tbody>';
-          
-          for(var i in DERecords) {
+          DETableBody += '</tr>' +
+            '</thead>' +
+            '<tbody>';
+
+          for (var i in DERecords) {
             DETableBody += '<tr class="slds-hint-parent">';
-            for(var key in DERecords[i]) {
+            for (var key in DERecords[i]) {
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
-            DETableBody +=  '</tr>';
+            DETableBody += '</tr>';
           }
-          
+
           DETableBody += '</tbody>' +
-                      '</table>';
-          document.getElementById('recordResultModal').style.display = 'block' ; 
+            '</table>';
+          document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
-        }  
+        }
       }
-  
+
     }
 
 
@@ -4670,7 +4680,7 @@ else
       DEName = DEName[0];
       openWhereDEName = DEName;
       var ulListStr = '';
-      for(var key in dataExtensionNameMap[DEName].AllFields) {
+      for (var key in dataExtensionNameMap[DEName].AllFields) {
         ulListStr += '<li><input type="button" value="' + dataExtensionNameMap[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMap[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMap[DEName].AllFields[key]["FieldType"] + '"></li>';
       }
       document.getElementById('ulList').innerHTML = ulListStr;
@@ -4690,9 +4700,9 @@ else
       var html = '';
       var bool;
       //console.log('dataExtensionNameMapFinal[DEName] : ' + JSON.stringify(dataExtensionNameMapFinal[DEName]));
-      for(var key in dataExtensionNameMapFinal[DEName].AllFields) {
-        for(var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
-          if(dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
+      for (var key in dataExtensionNameMapFinal[DEName].AllFields) {
+        for (var key1 in dataExtensionNameMapFinal[DEName].DESelectedFields) {
+          if (dataExtensionNameMapFinal[DEName].DESelectedFields[key1]["FieldName"] == dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"]) {
             bool = true;
             break;
           }
@@ -4700,7 +4710,7 @@ else
             bool = false;
           }
         }
-        if(bool == true) {
+        if (bool == true) {
           html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
         }
         else {
@@ -4709,7 +4719,7 @@ else
       }
       document.getElementById("modal-heading-01").innerHTML = DEName + " Data Extension Fields";
       document.getElementById('grid-1-de').innerHTML = html;
-      
+
     }
 
     function DetailsSave() {
@@ -4724,34 +4734,34 @@ else
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
       //code faizal
-      if(dataExtensionName != '') {
+      if (dataExtensionName != '') {
         dataExtensionNameMapFinal[dataExtensionName] = {
-          "DESelectedFields" : [],
-          "DEExtKey" : dataExtensionNameMap[dataExtensionName].DEExtKey,
-          "AllFields" : dataExtensionNameMap[dataExtensionName].AllFields
+          "DESelectedFields": [],
+          "DEExtKey": dataExtensionNameMap[dataExtensionName].DEExtKey,
+          "AllFields": dataExtensionNameMap[dataExtensionName].AllFields
         }
       }
       //code khatam
 
       for (var checkbox of checkboxes) {
         //code faizal
-        if(dataExtensionName != '' && dataExtensionName in dataExtensionNameMap) {
+        if (dataExtensionName != '' && dataExtensionName in dataExtensionNameMap) {
           dataExtensionNameMapFinal[dataExtensionName].DESelectedFields.push({
-            "FieldName" : checkbox.value,
-            "FieldType" : checkbox.name
+            "FieldName": checkbox.value,
+            "FieldType": checkbox.name
           });
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
         //code khatam
 
-        
+
 
         //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
         // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
         //criteriaListArray.push(checkbox.value);
         //  checkboxList.push(checkboxArray);  
       }
-      
+
 
       //code faizal
       var relationDivString = '<style>' +
@@ -4773,16 +4783,16 @@ else
         'overflow: auto;' +
         '}' +
         '.DeleteDivBoxClass {' +
-          'position: absolute;' +
-          'left: -30px;' +
-          'z-index: 1;' +
-          'width: 34px;' +
-          'height: 34px;' +
-          'background-color: #daecff;' +
-          'border: 1px solid #daecff;' +
-          'border-top-left-radius: 5px;' +
-          'border-bottom-left-radius: 5px;' +
-          'border-color: #82bbd6;' +
+        'position: absolute;' +
+        'left: -30px;' +
+        'z-index: 1;' +
+        'width: 34px;' +
+        'height: 34px;' +
+        'background-color: #daecff;' +
+        'border: 1px solid #daecff;' +
+        'border-top-left-radius: 5px;' +
+        'border-bottom-left-radius: 5px;' +
+        'border-color: #82bbd6;' +
         '}' +
         '</style>' +
         '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + dataExtensionName + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
@@ -4791,7 +4801,7 @@ else
         '</div>' +
 
         '<div class="DeleteDivBoxClass" id="' + dataExtensionName + '" onclick="deleteDiv(this.id)">' +
-          '<div class="as-action as-add" title="Delete Box"></div>' +
+        '<div class="as-action as-add" title="Delete Box"></div>' +
         '</div>' +
 
         '<div class="graph-object-primary attribute-set">' +
@@ -4830,26 +4840,26 @@ else
 
 
 
-      if(openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && dataExtensionName == '') {
+      if (openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && dataExtensionName == '') {
         fieldsListForRelationDiv = '';
         relationDivString = '';
-        
+
         dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields = [];
         for (var checkbox of checkboxes) {
           dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
-            "FieldName" : checkbox.value,
-            "FieldType" : checkbox.name
+            "FieldName": checkbox.value,
+            "FieldType": checkbox.name
           });
         }
 
-        for(var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
+        for (var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
         document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
         //
       }
 
-      if(openWhereDEName == '' && dataExtensionName != '') {
+      if (openWhereDEName == '' && dataExtensionName != '') {
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4859,26 +4869,26 @@ else
       }
       else {
         relationDivString = '';
-        if(openWhereDEName in dataExtensionNameMapFinal) {
+        if (openWhereDEName in dataExtensionNameMapFinal) {
           document.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
           //document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
           //
         }
       }
-      
-      
-      
+
+
+
       //code khatam
 
 
       var TempDEName = '';
-      if(dataExtensionName != '') {
+      if (dataExtensionName != '') {
         TempDEName = dataExtensionName;
       }
-      else if(openWhereDEName != '') {
+      else if (openWhereDEName != '') {
         TempDEName = openWhereDEName;
       }
-      else if(openOpenSelectField != '') {
+      else if (openOpenSelectField != '') {
         TempDEName = openOpenSelectField;
       }
 
@@ -4921,22 +4931,22 @@ else
       //console.log("TempDEName" + TempDEName);
       words += ' ' + 'FROM [' + TempDEName + ']';
 
-      
-
-      
 
 
 
-      if(answer_form3 != '') {
 
-        for(var key in dataExtensionNameMapFinal[TempDEName].AllFields) {
+
+
+      if (answer_form3 != '') {
+
+        for (var key in dataExtensionNameMapFinal[TempDEName].AllFields) {
           var regex = new RegExp(dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"], "g")
-          answer_form3 = answer_form3.replace(regex , '[' + TempDEName + '].[' + dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
+          answer_form3 = answer_form3.replace(regex, '[' + TempDEName + '].[' + dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
         }
 
         words += ' WHERE ' + answer_form3;
       }
-      
+
 
       console.log("Words Query : " + words);
 
@@ -4982,7 +4992,7 @@ else
       //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
       //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
       //console.log("criteriaListArray   : " + criteriaListArray);
-      if(document.getElementsByClassName("mydiv").length > 1) {
+      if (document.getElementsByClassName("mydiv").length > 1) {
         words = '';
         strQuery = '';
         lastQuery = '';
@@ -4992,10 +5002,10 @@ else
         strQuery = words;
         lastQuery = words;
 
-        if(openWhereDEName != '') {
+        if (openWhereDEName != '') {
           dataExtensionName = openWhereDEName;
         }
-        else if(openOpenSelectField != '') {
+        else if (openOpenSelectField != '') {
           dataExtensionName = openOpenSelectField;
         }
 
@@ -5003,13 +5013,13 @@ else
         //console.log('dataExtensionName : ' + dataExtensionName);
         //console.log('dataExtensionNameMapFinal[dataExtensionName] : ' + dataExtensionNameMapFinal[dataExtensionName]);
         //console.log('dataExtensionNameMapFinal[dataExtensionName].DESelectedFields : ' + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields);
-        
-        
-         
-        for(var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
+
+
+
+        for (var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
-            "FieldName" : dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
-            "FieldType" : dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldType"]
+            "FieldName": dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
+            "FieldType": dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldType"]
           }));
         }
       }
@@ -5064,11 +5074,11 @@ else
     }
 
     var currentClickedDEGlobal;
-    var joinImage; 
+    var joinImage;
     function joinTwoDiv(currentClickedDE) {
 
       var joinTwoDivString = '';
-      if(JSON.stringify(joinedDiv) == '{}') {
+      if (JSON.stringify(joinedDiv) == '{}') {
         currentClickedDEGlobal = currentClickedDE;
         joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
@@ -5088,7 +5098,7 @@ else
           '</div>' +
 
           '<div class="slds-grid slds-wrap">' +
-    
+
           '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
@@ -5098,7 +5108,7 @@ else
           '</div>' +
           '</div>' +
 
-         '<div class="slds-col slds-size_1-of-3">' +
+          '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
           '<div class="slds-form-element__control">' +
@@ -5116,7 +5126,7 @@ else
           '</div>' +
           '</div>' +
           '</div>' +
-         '</div>' +
+          '</div>' +
 
           '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
@@ -5125,7 +5135,7 @@ else
           '<div class="slds-select_container">' +
           '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           '<option value="">Select…</option>';
-        
+
         for (var DEName in dataExtensionNameMapFinal) {
           if (currentClickedDE != DEName) {
             joinTwoDivString += '<option value="' + DEName + '">' + DEName + '</option>';
@@ -5138,7 +5148,7 @@ else
           '</div>' +
 
           '</div>' +
-    
+
 
 
 
@@ -5152,7 +5162,7 @@ else
           '<div class="slds-select_container">' +
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
-        
+
         for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
           joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '</option>';
         }
@@ -5204,7 +5214,7 @@ else
           '</section>' +
           '<div class="slds-backdrop slds-backdrop_open"></div>';
       }
-      else if(currentClickedDE in joinedDiv) {
+      else if (currentClickedDE in joinedDiv) {
         currentClickedDEGlobal = currentClickedDE;
         joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
@@ -5287,7 +5297,7 @@ else
           '<div class="slds-select_container">' +
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
-        
+
         for (var DEField in dataExtensionNameMapFinal[currentClickedDE].AllFields) {
           joinTwoDivString += '<option value="' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '">' + dataExtensionNameMapFinal[currentClickedDE].AllFields[DEField]["FieldName"] + '</option>';
         }
@@ -5367,56 +5377,56 @@ else
       document.getElementById('ThirdModal').style.display = 'none';
     }
 
-    
+
     var strQuery = '';
     var joinedDiv = {};
     var JoinQueryDetails = {
-      "PrimaryDE" : {},
-      "DEForJoin" : []
+      "PrimaryDE": {},
+      "DEForJoin": []
     }
     function SaveJoinQuery() {
-      if(dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
-        if(document.getElementById('select-02').value) {
-          if(dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
-            if(document.getElementById('FirstDEField').value) {
-              if(document.getElementById('SecondDEField').value) {
-                
+      if (dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields.length != 0) {
+        if (document.getElementById('select-02').value) {
+          if (dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields.length != 0) {
+            if (document.getElementById('FirstDEField').value) {
+              if (document.getElementById('SecondDEField').value) {
+
                 joinedDiv[currentClickedDEGlobal] = currentClickedDEGlobal;
                 joinedDiv[document.getElementById('select-02').value] = document.getElementById('select-02').value;
 
-                for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
+                for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
                   FieldSet.add(JSON.stringify({
-                    "FieldName" : currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
-                    "FieldType" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
+                    "FieldName": currentClickedDEGlobal + " " + dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldName"],
+                    "FieldType": dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields[key]["FieldType"]
                   }));
                 }
-                for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
                   FieldSet.add(JSON.stringify({
-                    "FieldName" : document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
-                    "FieldType" : dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
+                    "FieldName": document.getElementById('select-02').value + " " + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
+                    "FieldType": dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
                   }));
                 }
 
-                if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+                if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
                   JoinQueryDetails["PrimaryDE"] = {
-                    "DEName" : currentClickedDEGlobal,
-                    "JoinField" : document.getElementById('FirstDEField').value
+                    "DEName": currentClickedDEGlobal,
+                    "JoinField": document.getElementById('FirstDEField').value
                   }
                 }
                 JoinQueryDetails["DEForJoin"].push({
-                  "FirstDEName" : currentClickedDEGlobal,
-                  "FirstDEJoinField" : document.getElementById('FirstDEField').value,
+                  "FirstDEName": currentClickedDEGlobal,
+                  "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
-                  "JoinType" : document.getElementById('select-01').value,
-                  "WhereClauseANDOR" : document.getElementById('selectWhereClauseANDOR').value,
-                  
-                  "SecondDEName" : document.getElementById('select-02').value,
-                  "SecondDEJoinField" : document.getElementById('SecondDEField').value
+                  "JoinType": document.getElementById('select-01').value,
+                  "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                  "SecondDEName": document.getElementById('select-02').value,
+                  "SecondDEJoinField": document.getElementById('SecondDEField').value
                 });
 
                 console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
 
-                if(strQuery == '') {
+                if (strQuery == '') {
 
                   strQuery = 'SELECT';
                   for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields) {
@@ -5427,33 +5437,33 @@ else
                   }
                   strQuery = strQuery.slice(0, -1);
                   strQuery += ' FROM [' + currentClickedDEGlobal + ']';
-                  strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
-                  
+                  strQuery = JoinTypeQueryStringAdd(strQuery, document.getElementById('select-01').value, currentClickedDEGlobal, document.getElementById('FirstDEField').value, document.getElementById('select-02').value, document.getElementById('SecondDEField').value);
+
                   var FirstDEWhereClause = '';
                   var SecondDEWhereClause = '';
                   FirstDEWhereClause = document.getElementById(currentClickedDEGlobal + 'WhereClause').innerHTML;
                   SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
 
-                  if(FirstDEWhereClause != '') {
-                    for(var key in dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields) {
+                  if (FirstDEWhereClause != '') {
+                    for (var key in dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields) {
                       var regex = new RegExp(dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"], "g")
-                      FirstDEWhereClause = FirstDEWhereClause.replace(regex , '[' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"] + ']');
+                      FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + currentClickedDEGlobal + '].[' + dataExtensionNameMapFinal[currentClickedDEGlobal].AllFields[key]["FieldName"] + ']');
                     }
                   }
-                  if(SecondDEWhereClause != '') {
-                    for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                  if (SecondDEWhereClause != '') {
+                    for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
                       var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
-                      SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                      SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
                     }
                   }
 
-                  if(FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+                  if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
                     strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                   }
-                  else if(FirstDEWhereClause != '' && SecondDEWhereClause == '') {
+                  else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
                     strQuery += ' WHERE ' + FirstDEWhereClause;
                   }
-                  else if(FirstDEWhereClause == '' && SecondDEWhereClause != '') {
+                  else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
                     strQuery += ' WHERE ' + SecondDEWhereClause;
                   }
 
@@ -5462,25 +5472,25 @@ else
                 else {
                   var tempQueryList = strQuery.split("] FROM [");
                   tempQueryList[0] += '],'
-                  for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
+                  for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields) {
                     tempQueryList[0] += ' [' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '] as [' + document.getElementById('select-02').value + ' ' + dataExtensionNameMapFinal[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"] + '],';
                   }
                   tempQueryList[0] = tempQueryList[0].slice(0, -1);
-                  strQuery = tempQueryList[0] + ' FROM [' +  tempQueryList[1];
+                  strQuery = tempQueryList[0] + ' FROM [' + tempQueryList[1];
 
-                  if(strQuery.includes('] WHERE [')) {
+                  if (strQuery.includes('] WHERE [')) {
                     tempQueryList = strQuery.split("] WHERE [");
-                    tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']' , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
+                    tempQueryList[0] = JoinTypeQueryStringAdd(tempQueryList[0] + ']', document.getElementById('select-01').value, currentClickedDEGlobal, document.getElementById('FirstDEField').value, document.getElementById('select-02').value, document.getElementById('SecondDEField').value);
                     strQuery = tempQueryList[0] + ' WHERE [' + tempQueryList[1];
 
 
 
                     var SecondDEWhereClause = '';
                     SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
-                    if(SecondDEWhereClause != '') {
-                      for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                    if (SecondDEWhereClause != '') {
+                      for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
                         var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
-                        SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                        SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
                       }
                       strQuery += ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                     }
@@ -5491,17 +5501,17 @@ else
 
                   }
                   else {
-                    strQuery = JoinTypeQueryStringAdd(strQuery , document.getElementById('select-01').value , currentClickedDEGlobal , document.getElementById('FirstDEField').value , document.getElementById('select-02').value , document.getElementById('SecondDEField').value);
-                  
+                    strQuery = JoinTypeQueryStringAdd(strQuery, document.getElementById('select-01').value, currentClickedDEGlobal, document.getElementById('FirstDEField').value, document.getElementById('select-02').value, document.getElementById('SecondDEField').value);
+
 
 
 
                     var SecondDEWhereClause = '';
                     SecondDEWhereClause = document.getElementById(document.getElementById('select-02').value + 'WhereClause').innerHTML;
-                    if(SecondDEWhereClause != '') {
-                      for(var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
+                    if (SecondDEWhereClause != '') {
+                      for (var key in dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields) {
                         var regex = new RegExp(dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"], "g")
-                        SecondDEWhereClause = SecondDEWhereClause.replace(regex , '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
+                        SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + document.getElementById('select-02').value + '].[' + dataExtensionNameMapFinal[document.getElementById('select-02').value].AllFields[key]["FieldName"] + ']');
                       }
                       strQuery += ' ' + document.getElementById("selectWhereClauseANDOR").value + ' ' + SecondDEWhereClause;
                     }
@@ -5510,7 +5520,7 @@ else
 
 
                   }
-                  
+
                   console.log('strQuery : ' + strQuery);
                 }
               }
@@ -5520,7 +5530,7 @@ else
       }
 
       document.getElementById('ThirdModal').style.display = 'none';
-      function JoinTypeQueryStringAdd(queryStr , JoinType , FirstDE , FirstDEJoinField , SecondDE , SecondDEJoinField) {
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
@@ -5549,16 +5559,16 @@ else
     function deleteDiv(DEName) {
       console.log('DEName : ' + DEName);
       var SetValStr = '';
-      if(DEName in joinedDiv) {
+      if (DEName in joinedDiv) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
       }
       else {
-        for(var key in dataExtensionNameMapFinal[DEName].DESelectedFields) {
+        for (var key in dataExtensionNameMapFinal[DEName].DESelectedFields) {
           SetValStr = JSON.stringify({
-            "FieldName" : DEName + " " + dataExtensionNameMapFinal[DEName].DESelectedFields[key]["FieldName"],
-            "FieldType" : dataExtensionNameMapFinal[DEName].DESelectedFields[key]["FieldType"]
+            "FieldName": DEName + " " + dataExtensionNameMapFinal[DEName].DESelectedFields[key]["FieldName"],
+            "FieldType": dataExtensionNameMapFinal[DEName].DESelectedFields[key]["FieldType"]
           });
-          if(FieldSet.has(SetValStr)) {
+          if (FieldSet.has(SetValStr)) {
             FieldSet.delete(SetValStr);
           }
         }
