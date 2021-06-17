@@ -4711,10 +4711,10 @@ else
           }
         }
         if (bool == true) {
-          html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
+          html += '<input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" checked>' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '<br>';
         }
         else {
-          html += '<li><input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '</li>';
+          html += '<input type="checkbox" name = "' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldType"] + '"  value="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" id="' + dataExtensionNameMapFinal[DEName].DEExtKey + '" draggable=true name="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '" label="' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '">' + dataExtensionNameMapFinal[DEName].AllFields[key]["FieldName"] + '<br>';
         }
       }
       document.getElementById("modal-heading-01").innerHTML = DEName + " Data Extension Fields";
