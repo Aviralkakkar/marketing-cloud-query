@@ -2585,6 +2585,10 @@ else
 
     }
 
+    function CancelDERecordModal() {
+      document.getElementById('recordResultModal').style.display = 'none';
+    }
+
     var openOpenSelectField = '';
     function Next() {
       var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -4472,8 +4476,7 @@ else
 
           </div>
           <footer class="slds-modal__footer">
-            <button class="slds-button slds-button_neutral">Cancel</button>
-            <button class="slds-button slds-button_brand">Next</button>
+            <button class="slds-button slds-button_neutral" onclick="CancelDERecordModal()">Cancel</button>
           </footer>
         </div>
       </section>
