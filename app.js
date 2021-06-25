@@ -843,6 +843,7 @@ app.post("/secondpage", async function (req, res) {
 
     async function QueryDelete(queryDefinitionId) {
       return new Promise(async function (resolve, reject) {
+        console.log('query Delete : ' + queryDefinitionId);
         var options = {
           'method': 'DELETE',
           'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId,
@@ -851,7 +852,7 @@ app.post("/secondpage", async function (req, res) {
             'Authorization': 'Bearer ' + access_token
           }
         };
-        request(options, function (error, response) {
+        request(options, async function (error, response) {
           if (error) throw new Error(error);
           resolve(response.body)
           console.log('Query Delete Resonse : ' + response.body);
