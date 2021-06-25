@@ -409,7 +409,7 @@ app.post("/secondpage", async function (req, res) {
     var DERecords = [];
     var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
     console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
-
+    var queryDefinitionId = '';
 
     var dynamicQuery = reqCall.body.dynamicQuery;
     console.log("dynamicQuery  :  " + dynamicQuery);
@@ -455,7 +455,7 @@ app.post("/secondpage", async function (req, res) {
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
 
-        var queryDefinitionId = '';
+        
         var taskId = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
         // Yahan aajaigi task id aur query run hui ki nhi 
         console.log("Yes Task Id Hai ---> " + taskId);
@@ -859,6 +859,7 @@ app.post("/secondpage", async function (req, res) {
         });
       })
     }
+
 
   });
 
