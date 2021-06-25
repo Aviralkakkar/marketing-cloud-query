@@ -469,6 +469,7 @@ app.post("/secondpage", async function (req, res) {
             console.log("queryStatus : " + queryStatus);
             if (queryStatus == "Complete") {
               getDERecordsResult = await getDERecords(CustomerKey);
+              await QueryDelete(queryDefinitionId);
               console.log('getDERecordsResult : ' + JSON.stringify(getDERecordsResult));
               clearInterval(b);
             }
@@ -835,6 +836,24 @@ app.post("/secondpage", async function (req, res) {
           }*/
 
           resolve(DERecords);
+        });
+      })
+    }
+
+    async function QueryDelete(queryDefinitionId) {
+      return new Promise(async function (resolve, reject) {
+        var options = {
+          'method': 'DELETE',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.rest.marketingcloudapis.com/automation/v1/queries/' + queryDefinitionId,
+          'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+          }
+        };
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          resolve(response.body)
+          console.log('Query Delete Resonse : ' + response.body);
         });
       })
     }
