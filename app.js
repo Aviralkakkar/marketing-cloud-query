@@ -455,6 +455,7 @@ app.post("/secondpage", async function (req, res) {
         var CustomerKey = DECreateResult[0].Object[0].CustomerKey[0];
         Name = DECreateResult[0].Object[0].Name[0];
 
+        var queryDefinitionId = '';
         var taskId = await CreateRunQuery(ObjectID, CustomerKey, dynamicQuery, Name);
         // Yahan aajaigi task id aur query run hui ki nhi 
         console.log("Yes Task Id Hai ---> " + taskId);
@@ -690,7 +691,7 @@ app.post("/secondpage", async function (req, res) {
           //     console.log("response.body.name" + response.body.name);
           console.log("queryDefinitionId body --- > " + response.body);
           var responsee = JSON.parse(response.body);
-          var queryDefinitionId = responsee.queryDefinitionId;
+          queryDefinitionId = responsee.queryDefinitionId;
           console.log("queryDefinitionId --- > " + queryDefinitionId);
           if (queryDefinitionId) {
             console.log("query run me aagya -- > ")
