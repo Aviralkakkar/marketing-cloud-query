@@ -725,7 +725,7 @@ app.post("/secondpage", async function (req, res) {
 
 
 
-
+            console.log('queryDefinitionId : ' + queryDefinitionId);
 
             var options = {
               'method': 'POST',
