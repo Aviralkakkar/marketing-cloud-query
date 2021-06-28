@@ -553,7 +553,7 @@ app.post("/secondpage", async function (req, res) {
           if (error) throw new Error(error);
           console.log(response.body);
           xml2jsParser.parseString(response.body, function (err, result) {
-            FolderCatagotyId = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+            FolderCatagotyId = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'];
           });
           resolve(FolderCatagotyId);
         });
