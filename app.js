@@ -462,12 +462,12 @@ app.post("/secondpage", async function (req, res) {
           }
         }
         if(ChildFolderCatagoryID != '') {
-          var DECreateResult = await DECreate(JoinQueryDESelectedFields);
+          var DECreateResult = await DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID);
         }
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           console.log('ChildFolderCatagoryID : ' + JSON.stringify(ChildFolderCatagoryID))
-          var DECreateResult = await DECreate(JoinQueryDESelectedFields);
+          var DECreateResult = await DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID);
         }
         
 
@@ -601,7 +601,7 @@ app.post("/secondpage", async function (req, res) {
       })
     }
 
-    async function DECreate(JoinQueryDESelectedFields) {
+    async function DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID) {
       return new Promise(function (resolve, reject) {
         var DEListBody = '';
         DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -616,7 +616,7 @@ app.post("/secondpage", async function (req, res) {
           '<CustomerKey>' + currentDate + '</CustomerKey>' +
           '<Name>' + currentDate + '</Name>' +
           '<Description>This Data Extension is created automatically by the Query AppExchange Application.</Description>' +
-          '<CategoryID>' + ParentFolderCatagoryID + '</CategoryID>' +
+          '<CategoryID>' + ChildFolderCatagoryID + '</CategoryID>' +
           '<IsSendable>false</IsSendable>' +
           '<IsTestable>false</IsTestable>' +
           '<DataRetentionPeriodLength>1</DataRetentionPeriodLength>' +
