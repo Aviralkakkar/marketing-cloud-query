@@ -449,7 +449,7 @@ app.post("/secondpage", async function (req, res) {
       if (fal == true && actionType == "run") {
 
         var FolderCatagotyId = await FolderCheck();
-        console.log('FolderCatagotyId : ' + FolderCatagotyId)
+        console.log('FolderCatagotyId : ' + JSON.stringify(FolderCatagotyId))
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
 
         //console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
