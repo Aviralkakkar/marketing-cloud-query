@@ -448,9 +448,27 @@ app.post("/secondpage", async function (req, res) {
       
       if (fal == true && actionType == "run") {
 
-        var FolderCatagotyId = await FolderCheck();
-        console.log('FolderCatagotyId : ' + JSON.stringify(FolderCatagotyId))
-        var DECreateResult = await DECreate(JoinQueryDESelectedFields);
+        var FolderCheckResult = await FolderCheck();
+        console.log('FolderCheckResult : ' + JSON.stringify(FolderCheckResult))
+
+        var ParentFolderCatagoryID = '';
+        var ChildFolderCatagoryID = '';
+        for(key in FolderCheckResult) {
+          if(FolderCheckResult[key]["Name"][0] == "Data Extensions" && FolderCheckResult[key]["CustomerKey"][0] == "dataextension_default") {
+            ParentFolderCatagoryID = FolderCheckResult[key]["ID"][0];
+          }
+          if(FolderCheckResult[key]["Name"][0] == "Query App") {
+            ChildFolderCatagoryID = FolderCheckResult[key]["ID"][0];
+          }
+        }
+        if(ChildFolderCatagoryID != '') {
+          var DECreateResult = await DECreate(JoinQueryDESelectedFields);
+        }
+        else {
+          ChildFolderCatagoryID = await FolderCreate();
+          console.log('ChildFolderCatagoryID : ' + JSON.stringify(ChildFolderCatagoryID))
+        }
+        
 
         //console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
         //console.log("DECreateResult object Id -- > " + DECreateResult[0].NewObjectID[0])
@@ -551,10 +569,32 @@ app.post("/secondpage", async function (req, res) {
         };
         request(options, function (error, response) {
           if (error) throw new Error(error);
-          console.log(response.body);
           xml2jsParser.parseString(response.body, async function (err, result) {
-            FolderCatagotyId = result["soap:Envelope"]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"];
-            resolve(FolderCatagotyId);
+            FolderCheckResult = result["soap:Envelope"]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"];
+            resolve(FolderCheckResult);
+          });
+        });
+      })
+    }
+
+    async function FolderCreate() {
+      return new Promise(function (resolve, reject) {
+        var options = {
+          'method': 'POST',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Create',
+            'Authorization': 'Bearer ' + access_token
+          },
+          body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<SOAP-ENV:Envelope\r\n    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    \r\n    <SOAP-ENV:Header>\r\n        <fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>\r\n    </SOAP-ENV:Header>\r\n    \r\n    <SOAP-ENV:Body>\r\n        <CreateRequest\r\n            xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <Options/>\r\n            <ns1:Objects\r\n                xmlns:ns1="http://exacttarget.com/wsdl/partnerAPI"\r\n                xsi:type="ns1:DataFolder">\r\n                <ns1:ModifiedDate\r\n                 xsi:nil="true"/>\r\n                <ns1:ObjectID\r\n                 xsi:nil="true"/>\r\n                <ns1:CustomerKey>Query App</ns1:CustomerKey>\r\n                <ns1:ParentFolder>\r\n                    <ns1:ModifiedDate\r\n                     xsi:nil="true"/>\r\n                    <ns1:ID>' + ParentFolderCatagoryID + '</ns1:ID>\r\n                    <ns1:ObjectID\r\n                     xsi:nil="true"/>\r\n                </ns1:ParentFolder>\r\n                <ns1:Name>Query App</ns1:Name>\r\n                <ns1:Description>Query App</ns1:Description>\r\n                <ns1:ContentType>dataextension</ns1:ContentType>\r\n                <ns1:IsActive>true</ns1:IsActive>\r\n                <ns1:IsEditable>true</ns1:IsEditable>\r\n                <ns1:AllowChildren>true</ns1:AllowChildren>\r\n            </ns1:Objects>\r\n        </CreateRequest>\r\n    </SOAP-ENV:Body>\r\n</SOAP-ENV:Envelope>'
+        };
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          console.log(response.body);
+          xml2jsParser.parseString(response.body, function (err, result) {
+            ChildFolderCatagoryID = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+            resolve(ChildFolderCatagoryID);
           });
         });
       })
@@ -575,6 +615,7 @@ app.post("/secondpage", async function (req, res) {
           '<CustomerKey>' + currentDate + '</CustomerKey>' +
           '<Name>' + currentDate + '</Name>' +
           '<Description>This Data Extension is created automatically by the Query AppExchange Application.</Description>' +
+          '<CategoryID>' + ParentFolderCatagoryID + '</CategoryID>' +
           '<IsSendable>false</IsSendable>' +
           '<IsTestable>false</IsTestable>' +
           '<DataRetentionPeriodLength>1</DataRetentionPeriodLength>' +
