@@ -445,7 +445,11 @@ app.post("/secondpage", async function (req, res) {
       }
 
 
+      
       if (fal == true && actionType == "run") {
+
+        var FolderCatagotyId = await FolderCheck();
+        console.log('FolderCatagotyId : ' + FolderCatagotyId)
         var DECreateResult = await DECreate(JoinQueryDESelectedFields);
 
         //console.log("DECreateResult object Id -- > " + JSON.stringify(DECreateResult))
@@ -531,6 +535,30 @@ app.post("/secondpage", async function (req, res) {
     });
 
 
+    
+    async function FolderCheck() {
+      return new Promise(function (resolve, reject) {
+        var options = {
+          'method': 'POST',
+          'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Retrieve',
+            'Authorization': 'Bearer ' + access_token
+          },
+          body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataFolder</ObjectType>\r\n                <Properties>ID</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ContentType</Properties>\r\n                <Properties>ParentFolder.Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>ParentFolder.ObjectID</Properties>\r\n\r\n                <Filter xsi:type="par:ComplexFilterPart" xmlns:par="http://exacttarget.com/wsdl/partnerAPI">\r\n                    <LeftOperand xsi:type="par:SimpleFilterPart">\r\n                        <Property>ContentType</Property>\r\n                        <SimpleOperator>equals</SimpleOperator>\r\n                        <Value>dataextension</Value>\r\n                    </LeftOperand>\r\n                    <LogicalOperator>AND</LogicalOperator>\r\n                    <RightOperand xsi:type="par:SimpleFilterPart">\r\n                        <Property>Name</Property>\r\n                        <SimpleOperator>equals</SimpleOperator>\r\n                        <Value>Query App</Value>\r\n                    </RightOperand>\r\n                </Filter>\r\n\r\n                <QueryAllAccounts>true</QueryAllAccounts>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
+        
+        };
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          console.log(response.body);
+          xml2jsParser.parseString(response.body, function (err, result) {
+            FolderCatagotyId = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+          });
+          resolve(FolderCatagotyId);
+        });
+      })
+    }
 
     async function DECreate(JoinQueryDESelectedFields) {
       return new Promise(function (resolve, reject) {
