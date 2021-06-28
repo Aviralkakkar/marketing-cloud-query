@@ -465,7 +465,7 @@ app.post("/secondpage", async function (req, res) {
           var DECreateResult = await DECreate(JoinQueryDESelectedFields);
         }
         else {
-          ChildFolderCatagoryID = await FolderCreate();
+          ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           console.log('ChildFolderCatagoryID : ' + JSON.stringify(ChildFolderCatagoryID))
         }
         
@@ -577,7 +577,7 @@ app.post("/secondpage", async function (req, res) {
       })
     }
 
-    async function FolderCreate() {
+    async function FolderCreate(ParentFolderCatagoryID) {
       return new Promise(function (resolve, reject) {
         var options = {
           'method': 'POST',
