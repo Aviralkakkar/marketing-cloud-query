@@ -467,6 +467,7 @@ app.post("/secondpage", async function (req, res) {
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           console.log('ChildFolderCatagoryID : ' + JSON.stringify(ChildFolderCatagoryID))
+          var DECreateResult = await DECreate(JoinQueryDESelectedFields);
         }
         
 
@@ -593,7 +594,7 @@ app.post("/secondpage", async function (req, res) {
           if (error) throw new Error(error);
           console.log(response.body);
           xml2jsParser.parseString(response.body, function (err, result) {
-            ChildFolderCatagoryID = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'];
+            ChildFolderCatagoryID = result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results'][0]['NewID'][0];
             resolve(ChildFolderCatagoryID);
           });
         });
