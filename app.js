@@ -519,7 +519,9 @@ app.post("/secondpage", async function (req, res) {
 
 
 
-          /*DERecords = [];
+          /*
+
+          DERecords = [];
           var count = 0;
           var getDERecordsResult = [];
           var b = setInterval(async function () {
@@ -538,7 +540,8 @@ app.post("/secondpage", async function (req, res) {
               clearInterval(b);
             }
           }, 10000);
-*/
+        
+          */
 
           //var getDERecordsResult = await getDERecords(CustomerKey);
           //console.log("getDERecordsResult" + getDERecordsResult);
