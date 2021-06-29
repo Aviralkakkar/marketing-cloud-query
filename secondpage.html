@@ -2333,7 +2333,7 @@ else
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
 
-      if (JoinQueryDetails.PrimaryDE != {} && JoinQueryDetails.DEForJoin != []) {
+      if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}' && JoinQueryDetails.DEForJoin.length != 0) {
         document.getElementById('MainDivAlert').style.display = 'none';
         var strQuery = '';
 
