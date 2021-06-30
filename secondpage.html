@@ -5649,7 +5649,7 @@ else
         delete dataExtensionNameMapFinal[DEName];
         document.getElementById(DEName + 'DeleteQueryBox').remove();
 
-        if (document.getElementsByClassName("mydiv").length > 1) {
+        if (document.getElementsByClassName("mydiv").length == 0) {
           strQuery = '';
           lastQuery = '';
         }
