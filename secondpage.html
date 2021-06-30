@@ -2663,6 +2663,15 @@ else
       }
 
     }
+  
+    function CancelQueryBoxAlert() {
+      document.getElementById('MainDivAlert').style.display = 'none';
+    }
+
+    function CancelFieldSelectNextAlert() {
+      document.getElementById('FieldSelectNextAlert').style.display = 'none';
+    }
+
   </script>
 
   <style>
@@ -4461,7 +4470,7 @@ else
                   <svg class="slds-button__icon" aria-hidden="true">
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                   </svg>
-                  <span class="slds-assistive-text">Close</span>
+                  <span class="slds-assistive-text" onclick="CancelQueryBoxAlert()">Close</span>
                 </button>
               </div>
             </div>
@@ -4540,7 +4549,7 @@ else
                   <svg class="slds-button__icon" aria-hidden="true">
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                   </svg>
-                  <span class="slds-assistive-text">Close</span>
+                  <span class="slds-assistive-text" onclick="CancelFieldSelectNextAlert()">Close</span>
                 </button>
               </div>
             </div>
@@ -4723,6 +4732,7 @@ else
 
 
     function CancelPopup() {
+      document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
