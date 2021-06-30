@@ -5648,6 +5648,11 @@ else
         }
         delete dataExtensionNameMapFinal[DEName];
         document.getElementById(DEName + 'DeleteQueryBox').remove();
+
+        if (document.getElementsByClassName("mydiv").length > 1) {
+          strQuery = '';
+          lastQuery = '';
+        }
       }
     }
 
