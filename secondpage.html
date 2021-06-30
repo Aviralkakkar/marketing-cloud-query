@@ -2335,6 +2335,7 @@ else
 
       console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
       console.log('lastQuery : ' + lastQuery);
+      console.log('mydiv validate: ' + document.getElementsByClassName("mydiv").length);
       if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') {
         document.getElementById('MainDivAlert').style.display = 'none';
         var strQuery = '';
@@ -5649,6 +5650,7 @@ else
         delete dataExtensionNameMapFinal[DEName];
         document.getElementById(DEName + 'DeleteQueryBox').remove();
 
+        console.log('mydiv Delete: ' + document.getElementsByClassName("mydiv").length);
         if (document.getElementsByClassName("mydiv").length == 0) {
           strQuery = '';
           lastQuery = '';
