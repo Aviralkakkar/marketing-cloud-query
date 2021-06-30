@@ -2333,6 +2333,7 @@ else
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
 
+      console.log(JSON.stringify(JoinQueryDetails));
       if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}') {
         document.getElementById('MainDivAlert').style.display = 'none';
         var strQuery = '';
