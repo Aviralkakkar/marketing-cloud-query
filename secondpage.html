@@ -2333,7 +2333,7 @@ else
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
 
-      if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}' && JoinQueryDetails.DEForJoin.length != 0) {
+      if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}') {
         document.getElementById('MainDivAlert').style.display = 'none';
         var strQuery = '';
 
@@ -4476,7 +4476,7 @@ else
             </div>
           </div>
 
-          
+
 
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
