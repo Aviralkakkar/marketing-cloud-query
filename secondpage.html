@@ -2688,6 +2688,7 @@ else
           },
           success: function (data) {
             console.log('hakshsah : ' + JSON.stringify(data));
+            document.getElementById('WebAppAPI').innerHTML = data;
           }
         })
     }
@@ -4501,6 +4502,9 @@ else
 
           <!-- delete -->
           <button class="slds-float_right" onclick="WebAppAPI()">WebAppAPI</button>
+          <div id="WebAppAPI">
+
+          </div>>
           <!-- delete -->
 
 
