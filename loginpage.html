@@ -45,14 +45,6 @@ input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:borde
 							<div id="header-logo"></div>
 						</div>
 					</div>
-
-
-<form id="LoginForm" class="mainForm" action="/secondpage" method="post" autocomplete="off" >
-
-	<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
-
-	<div class="slds-form-element">
-
 		<!-- delete -->
 		<button class="slds-float_right" onclick="WebAppAPI()">WebAppAPI</button>
 		<div id="WebAppAPI">
@@ -60,6 +52,12 @@ input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:borde
 		</div>>
 		<!-- delete -->
 
+
+<form id="LoginForm" class="mainForm" action="/secondpage" method="post" autocomplete="off" >
+
+	<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
+
+	<div class="slds-form-element">
 
 		<div class="slds-form-element__label"><label for="clientid">Client Id</label></div>
 		<div class="slds-form-element__control">
@@ -101,25 +99,28 @@ input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:borde
 		</div>
 		<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
 		<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
+
+
+
+		<script>
+			function WebAppAPI() {
+				$.ajax
+				  ({
+					url: '/WebAppAPI',
+					data: {
+					  'WebAppAPI': true
+					},
+					type: "POST",
+					headers: {
+					  'Content-type': 'application/x-www-form-urlencoded'
+					},
+					success: function (data) {
+					  console.log('hakshsah : ' + JSON.stringify(data));
+					  document.getElementById('WebAppAPI').innerHTML = data;
+					}
+				  })
+			  }
+		</script>
 	
 </body>
 </html>
-<script>
-	function WebAppAPI() {
-		$.ajax
-		  ({
-			url: '/WebAppAPI',
-			data: {
-			  'WebAppAPI': true
-			},
-			type: "POST",
-			headers: {
-			  'Content-type': 'application/x-www-form-urlencoded'
-			},
-			success: function (data) {
-			  console.log('hakshsah : ' + JSON.stringify(data));
-			  document.getElementById('WebAppAPI').innerHTML = data;
-			}
-		  })
-	  }
-</script>
