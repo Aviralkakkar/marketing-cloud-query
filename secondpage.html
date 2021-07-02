@@ -2090,7 +2090,6 @@ else
       event.preventDefault();
 
       deFieldListarray = [];
-      defieldsArray = [];
 
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
@@ -2171,7 +2170,7 @@ else
         }
       }
 
-      console.log('drop DE Fields : ' + dataExtensionNameMap[dataExtensionName].AllFields);
+      //console.log('drop DE Fields : ' + dataExtensionNameMap[dataExtensionName].AllFields);
       document.getElementById('RelationPopup').style.display = 'block';
 
 
@@ -2675,6 +2674,18 @@ else
     function CancelFieldSelectNextAlert() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
     }
+
+    function WebAppAPI() {
+      var options = {
+        'method': 'GET',
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=owvl4axdrghyuap2f04bhjz2&redirect_uri=https://127.0.0.1:80/'
+      };
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        console.log(response.body);
+      });
+    }
+
 
   </script>
 
@@ -4480,6 +4491,11 @@ else
             </div>
           </div>
 
+
+
+          <!-- delete -->
+          <button class="slds-float_right" onclick="WebAppAPI()">WebAppAPI</button>
+          <!-- delete -->
 
 
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
