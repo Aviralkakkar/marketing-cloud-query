@@ -1830,7 +1830,7 @@
             //console.log("keyimage--->" + keyimage);
 
             //console.log("Initial Value ---> " + value);
-            var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "' + keyimage + '" value="" draggable=true name="' + value + '">' + value + '</button>';
+            var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + keyimage + '" value="" draggable=true name="' + value + '">' + value + '</button>';
             var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
             document.getElementById("Data Extensions").innerHTML += node;
             //console.log("data extensions printed ");
@@ -2336,7 +2336,7 @@ else
       console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
       console.log('lastQuery : ' + lastQuery);
       console.log('mydiv validate: ' + document.getElementsByClassName("mydiv").length);
-      if (JSON.stringify(JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') {
+      if (JSON.stringify((JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') && document.getElementsByClassName("mydiv").length != 0) {
         document.getElementById('MainDivAlert').style.display = 'none';
         var strQuery = '';
 
@@ -4436,7 +4436,7 @@ else
       <div class="main-division-div">
 
         <div class="sidebar slds-scrollable" style="width:25%;">
-          <ul aria-describedby="entity-header" id="Data Extensions" style="height:650px; width:25%;">
+          <ul aria-describedby="entity-header" id="Data Extensions" style="height:650px; width:100%;">
           </ul>
 
         </div>
