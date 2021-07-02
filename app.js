@@ -185,7 +185,7 @@ app.post("/secondpage", async function (req, res) {
     console.log('WebAppAPI : ' + WebAppAPI);
     var options = {
       'method': 'GET',
-      'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=owvl4axdrghyuap2f04bhjz2&redirect_uri=https://127.0.0.1:80/'
+      'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=owvl4axdrghyuap2f04bhjz2&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/'
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
