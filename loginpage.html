@@ -52,6 +52,15 @@ input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:borde
 	<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
 
 	<div class="slds-form-element">
+
+		<!-- delete -->
+		<button class="slds-float_right" onclick="WebAppAPI()">WebAppAPI</button>
+		<div id="WebAppAPI">
+
+		</div>>
+		<!-- delete -->
+
+
 		<div class="slds-form-element__label"><label for="clientid">Client Id</label></div>
 		<div class="slds-form-element__control">
 			<input id="clientid"  style="padding:5px;" name="clientid" class="slds-input username mt8 mb8" aria-describedby="username-errors" autofocus="autofocus" type="text" value="">
@@ -95,3 +104,22 @@ input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:borde
 	
 </body>
 </html>
+<script>
+	function WebAppAPI() {
+		$.ajax
+		  ({
+			url: '/WebAppAPI',
+			data: {
+			  'WebAppAPI': true
+			},
+			type: "POST",
+			headers: {
+			  'Content-type': 'application/x-www-form-urlencoded'
+			},
+			success: function (data) {
+			  console.log('hakshsah : ' + JSON.stringify(data));
+			  document.getElementById('WebAppAPI').innerHTML = data;
+			}
+		  })
+	  }
+</script>
