@@ -2117,6 +2117,11 @@ else
       var tempDEFieldSet = new Set();
       var tempDEFieldStr = '';
       var html = '';
+
+      if (dataExtensionNameMap[dataExtensionName]) {
+        dataExtensionNameMap[dataExtensionName].AllFields = [];
+      }
+
       for (var i = 0; i < defieldsArray.length; i++) {
         if (dataExtensionId == defieldsArray[i].CustomerKey) {
           tempDEFieldStr = JSON.stringify({
@@ -2154,7 +2159,9 @@ else
                 "DESelectedFields": []
               }
             }
-            console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
+            
+            //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
+            
             html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
             fieldList = {
               "FieldName": defieldsArray[i].FieldName,
