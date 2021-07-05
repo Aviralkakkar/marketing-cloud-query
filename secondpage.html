@@ -2088,11 +2088,13 @@ else
 
     function drop(event, target) {
       event.preventDefault();
-      if (dataExtensionName in dataExtensionNameMap) {
+      if (dataExtensionNameMap[dataExtensionName]) {
+        console.log('if');
         //dataExtensionNameMap[dataExtensionName].AllFields = [];
         document.getElementById('DEListDivAlert').style.display = 'block';
       }
       else {
+        console.log('else');
         document.getElementById('DEListDivAlert').style.display = 'none';
         deFieldListarray = [];
         document.getElementById('grid-1-de').innerHTML = '';
