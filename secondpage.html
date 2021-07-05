@@ -2089,7 +2089,7 @@ else
     function drop(event, target) {
       event.preventDefault();
       console.log('dataExtensionNameMap : ' + JSON.stringify(dataExtensionNameMap));
-      if (dataExtensionNameMap[dataExtensionName]) {
+      if (dataExtensionName in dataExtensionNameMap) {
         console.log('if');
         //dataExtensionNameMap[dataExtensionName].AllFields = [];
         document.getElementById('DEListDivAlert').style.display = 'block';
