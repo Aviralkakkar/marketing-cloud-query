@@ -2123,7 +2123,7 @@ else
           //console.log("Data Extension Id : " + dataExtensionId);
           //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
           if (dataExtensionId == defieldsArray[i].CustomerKey) {
-            
+
             if (dataExtensionNameMap[dataExtensionName]) {
               if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
                 dataExtensionNameMap[dataExtensionName] = {
@@ -4426,27 +4426,7 @@ else
 
         <div class="sidebar slds-scrollable" style="width:25%;">
 
-          <div id="DEListDivAlert" style="display:none">
-            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-              <span class="slds-assistive-text">error</span>
-              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                title="Description of icon when needed">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-              </span>
-              <P>You have already selected this Data Extension.</P>
-              <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
-                  title="Close" onclick="CancelDEListDivAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          
 
           <ul aria-describedby="entity-header" id="Data Extensions" style="height:650px; width:100%;">
           </ul>
