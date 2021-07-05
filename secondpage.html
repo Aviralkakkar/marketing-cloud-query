@@ -1715,6 +1715,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css"
     integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw=="
     crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -1828,7 +1830,7 @@
             //console.log("keyimage--->" + keyimage);
 
             //console.log("Initial Value ---> " + value);
-            var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" id = "' + keyimage + '" value="" draggable=true name="' + value + '">' + value + '</button>';
+            var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + keyimage + '" value="" draggable=true name="' + value + '">' + value + '</button>';
             var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
             document.getElementById("Data Extensions").innerHTML += node;
             //console.log("data extensions printed ");
@@ -2086,55 +2088,61 @@ else
 
     function drop(event, target) {
       event.preventDefault();
+      if (dataExtensionNameMap[dataExtensionName]) {
+        console.log('if');
+        //dataExtensionNameMap[dataExtensionName].AllFields = [];
+        document.getElementById('DEListDivAlert').style.display = 'block';
+      }
+      else {
+        console.log('else');
+        document.getElementById('DEListDivAlert').style.display = 'none';
+        deFieldListarray = [];
+        document.getElementById('grid-1-de').innerHTML = '';
+        document.getElementById('ulList').innerHTML = '';
 
-      deFieldListarray = [];
+        //console.log("Dropppp");
+        //console.log(event.target.id);
+        //console.log("yeh de ki value -----> " + event.target.value);
+        var datafromDrag = event.dataTransfer.getData("text/plain");
+        //event.target.appendChild(document.getElementById(data1));
+        var parsedDragData = JSON.parse(datafromDrag);
+        //console.log("yeh parsedDragData--------> " + parsedDragData.name);
+        dataExtensionName = parsedDragData.name;
+        //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
+        var dataExtensionId = parsedDragData.id;
+        document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
+        //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
+        var fieldList = {};
 
-      document.getElementById('grid-1-de').innerHTML = '';
-      document.getElementById('ulList').innerHTML = '';
+        //Code Faizal
+        defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
+        //Code Khatam
 
-      //console.log("Dropppp");
-      //console.log(event.target.id);
-      //console.log("yeh de ki value -----> " + event.target.value);
-      var datafromDrag = event.dataTransfer.getData("text/plain");
-      //event.target.appendChild(document.getElementById(data1));
-      var parsedDragData = JSON.parse(datafromDrag);
-      //console.log("yeh parsedDragData--------> " + parsedDragData.name);
-      dataExtensionName = parsedDragData.name;
-
-      //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
-      var dataExtensionId = parsedDragData.id;
-      document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
-      //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
-      var fieldList = {};
-
-
-      //Code Faizal
-      defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
-      //Code Khatam
-
-      for (var i = 0; i < defieldsArray.length; i++) {
-        //console.log("Data Extension Id : " + dataExtensionId);
-        //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
-        if (dataExtensionId == defieldsArray[i].CustomerKey) {
-          // console.log("----------------Id-     ",cb.id);
-          //console.log("Data extension field name " + defieldsArray[i].FieldName);
-          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-          var html = '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
-
-          document.getElementById('grid-1-de').innerHTML += html;
-
-          fieldList = {
-            "FieldName": defieldsArray[i].FieldName,
-            "CustomerKey": defieldsArray[i].CustomerKey,
-            "FieldType": defieldsArray[i].FieldType
-          };
-          //console.log("FieldType  " + defieldsArray[i].FieldType);
-          deFieldListarray.push(fieldList);
-
-
-          //faizal code
-          if (dataExtensionNameMap[dataExtensionName]) {
-            if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
+        var html = '';
+        for (var i = 0; i < defieldsArray.length; i++) {
+          //console.log("Data Extension Id : " + dataExtensionId);
+          //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
+          if (dataExtensionId == defieldsArray[i].CustomerKey) {
+            
+            if (dataExtensionNameMap[dataExtensionName]) {
+              if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
+                dataExtensionNameMap[dataExtensionName] = {
+                  "AllFields": [{
+                    "FieldName": defieldsArray[i].FieldName,
+                    "FieldType": defieldsArray[i].FieldType
+                  }],
+                  "DEExtKey": dataExtensionId,
+                  "DESelectedFields": []
+                }
+              }
+              else {
+                dataExtensionNameMap[dataExtensionName].AllFields.push({
+                  "FieldName": defieldsArray[i].FieldName,
+                  "FieldType": defieldsArray[i].FieldType
+                });
+              }
+            }
+            else {
               dataExtensionNameMap[dataExtensionName] = {
                 "AllFields": [{
                   "FieldName": defieldsArray[i].FieldName,
@@ -2144,43 +2152,21 @@ else
                 "DESelectedFields": []
               }
             }
-            else {
-              dataExtensionNameMap[dataExtensionName].AllFields.push({
-                "FieldName": defieldsArray[i].FieldName,
-                "FieldType": defieldsArray[i].FieldType
-              });
-            }
+            
+            //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
+            html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
+            fieldList = {
+              "FieldName": defieldsArray[i].FieldName,
+              "CustomerKey": defieldsArray[i].CustomerKey,
+              "FieldType": defieldsArray[i].FieldType
+            };
+            deFieldListarray.push(fieldList);
           }
-          else {
-            dataExtensionNameMap[dataExtensionName] = {
-              "AllFields": [{
-                "FieldName": defieldsArray[i].FieldName,
-                "FieldType": defieldsArray[i].FieldType
-              }],
-              "DEExtKey": dataExtensionId,
-              "DESelectedFields": []
-            }
-          }
-          //code  khatam
-
-
-
         }
+
+        document.getElementById('grid-1-de').innerHTML = html;
+        document.getElementById('RelationPopup').style.display = 'block';
       }
-
-
-      document.getElementById('RelationPopup').style.display = 'block';
-
-
-      /*  if(document.getElementById("demo").innerHTML.length == 0){ 
-                 words= 'SELECT '+parsedDragData.value;
-                 document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
-                }
-                 else{ 
-                  words += ' , '+parsedDragData.value; 
-                  document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
-                  } 
-      */
     };
 
 
@@ -2331,112 +2317,136 @@ else
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
 
-      var strQuery = '';
+      console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
+      console.log('lastQuery : ' + lastQuery);
+      console.log('mydiv validate: ' + document.getElementsByClassName("mydiv").length);
+      if (JSON.stringify((JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') && document.getElementsByClassName("mydiv").length != 0) {
+        document.getElementById('MainDivAlert').style.display = 'none';
+        var strQuery = '';
 
-      /*
-      JoinQueryDetails["PrimaryDE"] = {
-        "DEName" : currentClickedDEGlobal,
-        "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
-        "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
-        "JoinField" : document.getElementById('FirstDEField').value
-      }
-      JoinQueryDetails["DEForJoin"].push({
-        "FirstDEName" : currentClickedDEGlobal,
-        "FirstDEJoinField" : document.getElementById('FirstDEField').value,
+        /*
+        JoinQueryDetails["PrimaryDE"] = {
+          "DEName" : currentClickedDEGlobal,
+          "DEExtKey" : dataExtensionNameMapFinal[currentClickedDEGlobal].DEExtKey,
+          "DESelectedFields" : dataExtensionNameMapFinal[currentClickedDEGlobal].DESelectedFields,
+          "JoinField" : document.getElementById('FirstDEField').value
+        }
+        JoinQueryDetails["DEForJoin"].push({
+          "FirstDEName" : currentClickedDEGlobal,
+          "FirstDEJoinField" : document.getElementById('FirstDEField').value,
+  
+          "JoinType" : document.getElementById('select-01').value,
+          
+          "SecondDEName" : document.getElementById('select-02').value,
+          "SecondDEJoinField" : document.getElementById('SecondDEField').value
+        });*/
 
-        "JoinType" : document.getElementById('select-01').value,
-        
-        "SecondDEName" : document.getElementById('select-02').value,
-        "SecondDEJoinField" : document.getElementById('SecondDEField').value
-      });*/
-
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
-        if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
-        }
-        return queryStr;
-      }
-
-
-      strQuery = 'SELECT';
-
-      var tempDESet = new Set();
-      for (var key in JoinQueryDetails.DEForJoin) {
-        if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-          for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
-            strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
+        function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
+          if (JoinType == 'Left Outer Join') {
+            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
           }
-          tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-        }
-
-        if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-          for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
-            strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
+          else if (JoinType == 'Left Outer Join with Exclusion') {
+            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
           }
-          tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+          else if (JoinType == 'Right Outer Join') {
+            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          }
+          else if (JoinType == 'Right Outer Join with Exclusion') {
+            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          }
+          else if (JoinType == 'Inner Join') {
+            queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          }
+          else if (JoinType == 'Full Outer Join') {
+            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          }
+          else if (JoinType == 'Outer Join') {
+            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+          }
+          return queryStr;
         }
-      }
-      strQuery = strQuery.slice(0, -1);
-      strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
-      for (var key in JoinQueryDetails.DEForJoin) {
-        strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
-      }
 
 
+        strQuery = 'SELECT';
 
-      var FirstDEWhereClause = '';
-      var SecondDEWhereClause = '';
-      tempDESet = new Set();
-
-      if (JoinQueryDetails.DEForJoin.length != 0) {
+        var tempDESet = new Set();
         for (var key in JoinQueryDetails.DEForJoin) {
-          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
-          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
-          if (FirstDEWhereClause != '') {
-            for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields) {
-              var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"], "g")
-              FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"] + ']');
+          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+            for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
+              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
             }
-          }
-          if (SecondDEWhereClause != '') {
-            for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields) {
-              var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"], "g")
-              SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"] + ']');
-            }
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
 
-
-
-          if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              if (strQuery.indexOf(' WHERE ') !== -1) {
-                strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-              }
-              else {
-                strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
+              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
             }
-            else if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+          }
+        }
+        strQuery = strQuery.slice(0, -1);
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+
+
+
+        var FirstDEWhereClause = '';
+        var SecondDEWhereClause = '';
+        tempDESet = new Set();
+
+        if (JoinQueryDetails.DEForJoin.length != 0) {
+          for (var key in JoinQueryDetails.DEForJoin) {
+            FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
+            SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
+            if (FirstDEWhereClause != '') {
+              for (var key1 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields) {
+                var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"], "g")
+                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].AllFields[key1]["FieldName"] + ']');
+              }
+            }
+            if (SecondDEWhereClause != '') {
+              for (var key2 in dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields) {
+                var regex = new RegExp(dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"], "g")
+                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + dataExtensionNameMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].AllFields[key2]["FieldName"] + ']');
+              }
+            }
+
+
+
+            if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+              if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+              }
+              else if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + FirstDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+              }
+              else if (tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + SecondDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+              }
+            }
+            else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
               if (strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
               }
@@ -2445,7 +2455,7 @@ else
               }
               tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
             }
-            else if (tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
               if (strQuery.indexOf(' WHERE ') !== -1) {
                 strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
               }
@@ -2454,74 +2464,60 @@ else
               }
               tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
             }
-          }
-          else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-            if (strQuery.indexOf(' WHERE ') !== -1) {
-              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
-            }
-            else {
-              strQuery += ' WHERE ' + FirstDEWhereClause;
-            }
-            tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-          }
-          else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-            if (strQuery.indexOf(' WHERE ') !== -1) {
-              strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-            }
-            else {
-              strQuery += ' WHERE ' + SecondDEWhereClause;
-            }
-            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
-          }
 
+          }
         }
+        else {
+          strQuery = lastQuery;
+        }
+
+
+
+        //strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
+        console.log("dynamic Query --> " + strQuery);
+
+        JoinQueryDESelectedFields = [];
+        for (var val of Array.from(FieldSet)) {
+          JoinQueryDESelectedFields.push(JSON.parse(val));
+        }
+        console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
+
+        $.ajax
+          ({
+            url: '/validatequery',
+            data: {
+              'dynamicQuery': strQuery,
+              'actionType': actionType,
+              'JoinQueryDESelectedFields': JoinQueryDESelectedFields
+            },
+            type: "POST",
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (data) {
+              console.log('data : ' + JSON.stringify(data));
+              //DEListShow(data);
+            }
+
+          })
+
+
+        var tempData = "false";
+
+        if (actionType == "run") {
+          var b = setInterval(function () {
+            DERecordGetClient();
+            //console.log("tempData setInterval : " + JSON.stringify(tempData));
+            //if (tempData != "false" ) {
+            //  DEListShow(tempData);
+            //  clearInterval(b);
+            //}
+          }, 3000);
+        }
+
       }
       else {
-        strQuery = lastQuery;
-      }
-
-
-
-      //strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
-      console.log("dynamic Query --> " + strQuery);
-
-      JoinQueryDESelectedFields = [];
-      for (var val of Array.from(FieldSet)) {
-        JoinQueryDESelectedFields.push(JSON.parse(val));
-      }
-      console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
-
-      $.ajax
-        ({
-          url: '/validatequery',
-          data: {
-            'dynamicQuery': strQuery,
-            'actionType': actionType,
-            'JoinQueryDESelectedFields': JoinQueryDESelectedFields
-          },
-          type: "POST",
-          headers: {
-            'Content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (data) {
-            console.log('data : ' + JSON.stringify(data));
-            //DEListShow(data);
-          }
-
-        })
-
-
-      var tempData = "false";
-
-      if (actionType == "run") {
-        var b = setInterval(function () {
-          DERecordGetClient();
-          //console.log("tempData setInterval : " + JSON.stringify(tempData));
-          //if (tempData != "false" ) {
-          //  DEListShow(tempData);
-          //  clearInterval(b);
-          //}
-        }, 3000);
+        document.getElementById('MainDivAlert').style.display = 'Block';
       }
 
 
@@ -2595,6 +2591,7 @@ else
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
+        document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openOpenSelectField == '') {
           /*  var constList = document.getElementById('ulList'); 
@@ -2649,9 +2646,24 @@ else
       }
       else {
         console.log('Please select at least one field');
+        document.getElementById('FieldSelectNextAlert').style.display = 'Block';
       }
 
     }
+  
+    function CancelQueryBoxAlert() {
+      document.getElementById('MainDivAlert').style.display = 'none';
+    }
+
+    function CancelFieldSelectNextAlert() {
+      document.getElementById('FieldSelectNextAlert').style.display = 'none';
+    }
+
+    function CancelDEListDivAlert() {
+
+    }
+
+
   </script>
 
   <style>
@@ -4412,6 +4424,7 @@ else
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
       <div class="main-division-div">
 
+<<<<<<< HEAD
        
          
            
@@ -4420,8 +4433,37 @@ else
               <ul aria-describedby="entity-header" id="Data Extensions">
               </ul>
   
+=======
+        <div class="sidebar slds-scrollable" style="width:25%;">
+
+          <div id="DEListDivAlert" style="display:none">
+            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+              <span class="slds-assistive-text">error</span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+              </span>
+              <P>You have already selected this Data Extension.</P>
+              <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
+                  title="Close" onclick="CancelDEListDivAlert()">
+                  <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                </button>
+              </div>
+>>>>>>> d79273128598478fbc232f543ce6ab69630b6992
             </div>
-            <!-- <div class="slds-panel__body">
+          </div>
+
+          <ul aria-describedby="entity-header" id="Data Extensions" style="height:650px; width:100%;">
+          </ul>
+
+        </div>
+        <!-- <div class="slds-panel__body">
               <div class="demo-only" style="width:320px">
                 <nav class="slds-nav-vertical" aria-label="Sub page">
                   <div class="slds-nav-vertical__section">
@@ -4432,10 +4474,39 @@ else
                 </nav>
               </div>
             </div> -->
-          
-       
 
-        <div id="main-div" class="slds-float_right" style="width:80%;height:100%;">
+
+
+        <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
+
+
+          <div id="MainDivAlert" style="display:none">
+            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+              <span class="slds-assistive-text">error</span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+              </span>
+              <P>Please create at least one Query Box</P>
+              <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
+                  title="Close" onclick="CancelQueryBoxAlert()">
+                  <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+          
+
+
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
@@ -4445,10 +4516,6 @@ else
         </div>
       </div>
       <!-- <p id="demo"></p>-->
-
-      <!-- Code Faizal -->
-
-      <!-- Code Khatam -->
 
 
     </div>
@@ -4492,6 +4559,36 @@ else
             <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h2>
 
           </header>
+
+
+
+
+          <div id="FieldSelectNextAlert" style="display:none">
+            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+              <span class="slds-assistive-text">error</span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+              </span>
+              <P>Please select atleast one field</P>
+              <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
+                  title="Close" onclick="CancelFieldSelectNextAlert()">
+                  <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
           <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
 
           </div>
@@ -4665,6 +4762,7 @@ else
 
 
     function CancelPopup() {
+      document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
@@ -5336,7 +5434,7 @@ else
           '</div>' +
           '</div>' +
 
-          
+
 
           '</div>' +
 
@@ -5577,6 +5675,12 @@ else
         }
         delete dataExtensionNameMapFinal[DEName];
         document.getElementById(DEName + 'DeleteQueryBox').remove();
+
+        console.log('mydiv Delete: ' + document.getElementsByClassName("mydiv").length);
+        if (document.getElementsByClassName("mydiv").length == 0) {
+          strQuery = '';
+          lastQuery = '';
+        }
       }
     }
 

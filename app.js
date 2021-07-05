@@ -178,6 +178,25 @@ app.post("/secondpage", async function (req, res) {
   });
 
 
+
+
+  app.post("/WebAppAPI", async (reqCall, resCall) => {
+    var WebAppAPI = reqCall.body.WebAppAPI;
+    console.log('WebAppAPI : ' + WebAppAPI);
+    var options = {
+      'method': 'GET',
+      'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=owvl4axdrghyuap2f04bhjz2&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/'
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      console.log(response.body);
+      resCall.send(response.body);
+    });
+  })
+
+
+
+
   var Name;
   app.post("/RunQuery", async (reqCall, resCall) => {
     var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
@@ -519,7 +538,9 @@ app.post("/secondpage", async function (req, res) {
 
 
 
-          /*DERecords = [];
+          /*
+
+          DERecords = [];
           var count = 0;
           var getDERecordsResult = [];
           var b = setInterval(async function () {
@@ -538,7 +559,8 @@ app.post("/secondpage", async function (req, res) {
               clearInterval(b);
             }
           }, 10000);
-*/
+        
+          */
 
           //var getDERecordsResult = await getDERecords(CustomerKey);
           //console.log("getDERecordsResult" + getDERecordsResult);
