@@ -2102,14 +2102,11 @@ else
       //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
       var dataExtensionId = parsedDragData.id;
 
-      console.log('dataExtensionName : ' + dataExtensionName + 'dataExtensionNameMap : ' + JSON.stringify(dataExtensionNameMap));
+      //console.log('dataExtensionName : ' + dataExtensionName + 'dataExtensionNameMap : ' + JSON.stringify(dataExtensionNameMap));
       if (dataExtensionName in dataExtensionNameMap) {
-        console.log('if');
-        //dataExtensionNameMap[dataExtensionName].AllFields = [];
         document.getElementById('DEListDivAlert').style.display = 'block';
       }
       else {
-        console.log('else');
         document.getElementById('DEListDivAlert').style.display = 'none';
         document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
         //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
@@ -2661,7 +2658,7 @@ else
     }
 
     function CancelDEListDivAlert() {
-
+      document.getElementById('DEListDivAlert').style.display = 'none';
     }
 
 
