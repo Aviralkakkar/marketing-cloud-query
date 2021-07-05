@@ -2108,30 +2108,22 @@ else
         var parsedDragData = JSON.parse(datafromDrag);
         //console.log("yeh parsedDragData--------> " + parsedDragData.name);
         dataExtensionName = parsedDragData.name;
-
         //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
         var dataExtensionId = parsedDragData.id;
         document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
         //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
         var fieldList = {};
 
-
         //Code Faizal
         defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
         //Code Khatam
-
-        
-        
 
         var html = '';
         for (var i = 0; i < defieldsArray.length; i++) {
           //console.log("Data Extension Id : " + dataExtensionId);
           //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
           if (dataExtensionId == defieldsArray[i].CustomerKey) {
-            // console.log("----------------Id-     ",cb.id);
-            //console.log("Data extension field name " + defieldsArray[i].FieldName);
-            //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-
+            
             if (dataExtensionNameMap[dataExtensionName]) {
               if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
                 dataExtensionNameMap[dataExtensionName] = {
@@ -2162,32 +2154,18 @@ else
             }
             
             //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
-            
             html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
             fieldList = {
               "FieldName": defieldsArray[i].FieldName,
               "CustomerKey": defieldsArray[i].CustomerKey,
               "FieldType": defieldsArray[i].FieldType
             };
-            //console.log("FieldType  " + defieldsArray[i].FieldType);
             deFieldListarray.push(fieldList);
           }
         }
+
         document.getElementById('grid-1-de').innerHTML = html;
-
-        //console.log('drop DE Fields : ' + dataExtensionNameMap[dataExtensionName].AllFields);
         document.getElementById('RelationPopup').style.display = 'block';
-
-
-        /*  if(document.getElementById("demo").innerHTML.length == 0){ 
-                  words= 'SELECT '+parsedDragData.value;
-                  document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
-                  }
-                  else{ 
-                    words += ' , '+parsedDragData.value; 
-                    document.getElementById("demo").innerHTML = words+' FROM '+ parsedDragData.name;
-                    } 
-        */
       }
     };
 
