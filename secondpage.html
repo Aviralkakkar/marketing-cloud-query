@@ -2115,17 +2115,16 @@ else
       //Code Khatam
 
       var tempDEFieldSet = new Set();
+      var tempDEFieldStr = '';
+      var html = '';
       for (var i = 0; i < defieldsArray.length; i++) {
         if (dataExtensionId == defieldsArray[i].CustomerKey) {
-
-          if (!tempDEFieldSet.has(JSON.stringify({
+          tempDEFieldStr = JSON.stringify({
             "FieldName": defieldsArray[i].FieldName,
             "FieldType": defieldsArray[i].FieldType
-          }))) {
-            tempDEFieldSet.add(JSON.stringify({
-              "FieldName": defieldsArray[i].FieldName,
-              "FieldType": defieldsArray[i].FieldType
-            }));
+            });
+          if (!tempDEFieldSet.has(tempDEFieldStr)) {
+            tempDEFieldSet.add(tempDEFieldStr);
 
             if (dataExtensionNameMap[dataExtensionName]) {
               if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
@@ -2156,8 +2155,7 @@ else
               }
             }
           
-            var html = '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
-            document.getElementById('grid-1-de').innerHTML += html;
+            html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
             fieldList = {
               "FieldName": defieldsArray[i].FieldName,
               "CustomerKey": defieldsArray[i].CustomerKey,
@@ -2168,10 +2166,9 @@ else
           
           }
 
-          
-
         }
       }
+      document.getElementById('grid-1-de').innerHTML = html;
 
       /*
       for (var i = 0; i < defieldsArray.length; i++) {
