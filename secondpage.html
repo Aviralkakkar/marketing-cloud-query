@@ -2114,42 +2114,21 @@ else
       defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
       //Code Khatam
 
-      var tempDEFieldSet = new Set();
-      var tempDEFieldStr = '';
       var html = '';
-
       if (dataExtensionNameMap[dataExtensionName]) {
         dataExtensionNameMap[dataExtensionName].AllFields = [];
       }
 
       for (var i = 0; i < defieldsArray.length; i++) {
+        //console.log("Data Extension Id : " + dataExtensionId);
+        //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
         if (dataExtensionId == defieldsArray[i].CustomerKey) {
-          tempDEFieldStr = JSON.stringify({
-            "FieldName": defieldsArray[i].FieldName,
-            "FieldType": defieldsArray[i].FieldType
-            });
-          if (!tempDEFieldSet.has(tempDEFieldStr)) {
-            tempDEFieldSet.add(tempDEFieldStr);
+          // console.log("----------------Id-     ",cb.id);
+          //console.log("Data extension field name " + defieldsArray[i].FieldName);
+          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
 
-            if (dataExtensionNameMap[dataExtensionName]) {
-              if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
-                dataExtensionNameMap[dataExtensionName] = {
-                  "AllFields": [{
-                    "FieldName": defieldsArray[i].FieldName,
-                    "FieldType": defieldsArray[i].FieldType
-                  }],
-                  "DEExtKey": dataExtensionId,
-                  "DESelectedFields": []
-                }
-              }
-              else {
-                dataExtensionNameMap[dataExtensionName].AllFields.push({
-                  "FieldName": defieldsArray[i].FieldName,
-                  "FieldType": defieldsArray[i].FieldType
-                });
-              }
-            }
-            else {
+          if (dataExtensionNameMap[dataExtensionName]) {
+            if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
               dataExtensionNameMap[dataExtensionName] = {
                 "AllFields": [{
                   "FieldName": defieldsArray[i].FieldName,
@@ -2159,36 +2138,27 @@ else
                 "DESelectedFields": []
               }
             }
-            
-            //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
-            
-            html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
-            fieldList = {
-              "FieldName": defieldsArray[i].FieldName,
-              "CustomerKey": defieldsArray[i].CustomerKey,
-              "FieldType": defieldsArray[i].FieldType
-            };
-            //console.log("FieldType  " + defieldsArray[i].FieldType);
-            deFieldListarray.push(fieldList);
-          
+            else {
+              dataExtensionNameMap[dataExtensionName].AllFields.push({
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
+              });
+            }
           }
-
-        }
-      }
-      document.getElementById('grid-1-de').innerHTML = html;
-
-      /*
-      for (var i = 0; i < defieldsArray.length; i++) {
-        //console.log("Data Extension Id : " + dataExtensionId);
-        //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
-        if (dataExtensionId == defieldsArray[i].CustomerKey) {
-          // console.log("----------------Id-     ",cb.id);
-          //console.log("Data extension field name " + defieldsArray[i].FieldName);
-          //console.log("-------Array Id----     ", defieldsArray[i].CustomerKey);
-          var html = '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
-
-          document.getElementById('grid-1-de').innerHTML += html;
-
+          else {
+            dataExtensionNameMap[dataExtensionName] = {
+              "AllFields": [{
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
+              }],
+              "DEExtKey": dataExtensionId,
+              "DESelectedFields": []
+            }
+          }
+          
+          //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
+          
+          html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
           fieldList = {
             "FieldName": defieldsArray[i].FieldName,
             "CustomerKey": defieldsArray[i].CustomerKey,
@@ -2198,7 +2168,7 @@ else
           deFieldListarray.push(fieldList);
         }
       }
-      */
+      document.getElementById('grid-1-de').innerHTML = html;
 
       //console.log('drop DE Fields : ' + dataExtensionNameMap[dataExtensionName].AllFields);
       document.getElementById('RelationPopup').style.display = 'block';
