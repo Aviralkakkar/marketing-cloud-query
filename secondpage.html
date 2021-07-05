@@ -2102,8 +2102,9 @@ else
       //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
       var dataExtensionId = parsedDragData.id;
 
-      //console.log('dataExtensionName : ' + dataExtensionName + 'dataExtensionNameMap : ' + JSON.stringify(dataExtensionNameMap));
-      if (dataExtensionName in dataExtensionNameMap) {
+      //console.log('dataExtensionName : ' + dataExtensionName + 'dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
+      if (dataExtensionName in dataExtensionNameMapFinal) {
+        document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this' + dataExtensionName + 'Data Extension.'
         document.getElementById('DEListDivAlert').style.display = 'block';
       }
       else {
@@ -4433,7 +4434,7 @@ else
                   <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                 </svg>
               </span>
-              <P>You have already selected this Data Extension.</P>
+              <P id="DEListDivAlertPera"></P>
               <div class="slds-notify__close">
                 <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
                   title="Close" onclick="CancelDEListDivAlert()">
