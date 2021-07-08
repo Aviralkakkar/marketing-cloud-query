@@ -2315,14 +2315,13 @@ else
 
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
-
       console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
       console.log('lastQuery : ' + lastQuery);
       console.log('mydiv validate: ' + document.getElementsByClassName("mydiv").length);
       if (JSON.stringify((JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') && document.getElementsByClassName("mydiv").length != 0) {
         document.getElementById('MainDivAlert').style.display = 'none';
+        document.getElementById('FullPageSpinner').style.display = 'block';
+        document.getElementById('DEListSidebar').style.marginTop = '-650px';
         var strQuery = '';
 
         /*
