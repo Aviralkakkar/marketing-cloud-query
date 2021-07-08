@@ -2316,6 +2316,7 @@ else
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
       document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.margintop = '-650px';
 
       console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
       console.log('lastQuery : ' + lastQuery);
@@ -2498,6 +2499,7 @@ else
               console.log('data : ' + JSON.stringify(data));
               if (actionType != "run") {
                 document.getElementById('FullPageSpinner').style.display = 'none';
+                document.getElementById('DEListSidebar').style.margintop = '0px';
               }
               if (data.validatequery == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
@@ -2550,7 +2552,7 @@ else
               if (tempData != "false") {
                 DEListShow(tempData);
                 document.getElementById('FullPageSpinner').style.display = 'none';
-                //document.getElementById('DEListSidebar').style.marginleft = 'none';
+                document.getElementById('DEListSidebar').style.margintop = '0px';
                 clearInterval(b);
               }
             }
