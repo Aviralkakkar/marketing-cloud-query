@@ -1,0 +1,65 @@
+.slds-input {
+  @include form-states;
+  display: inline-block;
+  padding: 0 $spacing-medium 0 $spacing-small;
+  line-height: $line-height-button;
+  min-height: calc(#{$line-height-button} + 2px); /* For IE */
+}
+
+.slds-input--small {
+  @include placeholder($weight: $font-weight-regular);
+  line-height: $line-height-button-small;
+  min-height: calc(#{$line-height-button-small} + 2px); /* For IE */
+  padding: {
+    left: $spacing-x-small;
+    right: $spacing-x-small;
+  }
+}
+
+.slds-input--bare {
+  background-color: transparent;
+  border: none;
+  color: $color-text-default;
+
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+}
+
+.slds-input-has-icon {
+  position: relative;
+
+  .slds-input__icon {
+    @include square($square-icon-medium-content);
+    position: absolute;
+    top: 50%;
+    margin-top: (($square-icon-medium-content / 2) * -1);
+
+    @include deprecate("0.20.0") {
+      fill: $color-text-icon-default;
+    }
+  }
+
+  &--left {
+    .slds-input__icon {
+      left: $spacing-small;
+    }
+
+    .slds-input,
+    .slds-input--bare {
+      padding-left: $spacing-x-large;
+    }
+  }
+
+  &--right {
+    .slds-input__icon {
+      right: $spacing-small;
+    }
+
+    .slds-input,
+    .slds-input--bare {
+      padding-right: $spacing-x-large;
+    }
+  }
+}
