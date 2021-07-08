@@ -2497,9 +2497,11 @@ else
               console.log('data : ' + JSON.stringify(data));
               if (data.validatequery == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
+                document.getElementById('QueryValidateFalseAlert').style.display = 'none';
               }
               else {
-
+                document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+                document.getElementById('QueryValidateFalseAlert').style.display = 'block';
               }
             }
 
@@ -2665,6 +2667,10 @@ else
 
     function CancelQueryValidateTrueAlert() {
       document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+    }
+
+    function CancelQueryValidateFalseAlert() {
+      document.getElementById('QueryValidateFalseAlert').style.display = 'none';
     }
 
   </script>
@@ -4523,7 +4529,31 @@ else
             </div>
           </div>
 
-
+          <div id="QueryValidateFalseAlert" style="display:none">
+            <div class="demo-only" style="height:4rem">
+              <div class="slds-notify_container slds-is-relative">
+              <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+              <span class="slds-assistive-text">error</span>
+              <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+              </svg>
+              </span>
+              <div class="slds-notify__content">
+              <h2 class="slds-text-heading_small ">Invalid Query.</h2>
+              </div>
+              <div class="slds-notify__close">
+              <button onclick="CancelQueryValidateFalseAlert()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+              <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Close</span>
+              </button>
+              </div>
+              </div>
+              </div>
+              </div>
+          </div>
 
 
 
