@@ -2315,6 +2315,7 @@ else
 
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
+      document.getElementById('FullPageSpinner').style.display = 'block';
 
       console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
       console.log('lastQuery : ' + lastQuery);
@@ -2495,6 +2496,9 @@ else
             },
             success: function (data) {
               console.log('data : ' + JSON.stringify(data));
+              if (actionType != "run") {
+                document.getElementById('FullPageSpinner').style.display = 'none';
+              }
               if (data.validatequery == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
                 document.getElementById('QueryValidateFalseAlert').style.display = 'none';
@@ -2516,6 +2520,7 @@ else
             //console.log("tempData setInterval : " + JSON.stringify(tempData));
             //if (tempData != "false" ) {
             //  DEListShow(tempData);
+            //  document.getElementById('FullPageSpinner').style.display = 'none';
             //  clearInterval(b);
             //}
           }, 3000);
@@ -2544,6 +2549,7 @@ else
               console.log("tempData setInterval : " + JSON.stringify(tempData));
               if (tempData != "false") {
                 DEListShow(tempData);
+                document.getElementById('FullPageSpinner').style.display = 'none';
                 clearInterval(b);
               }
             }
@@ -4430,6 +4436,19 @@ else
 
   <div>
 
+
+    <div id="FullPageSpinner" class="demo-only" style="height:6rem;position:relative;display:none">
+      <div class="slds-spinner_container">
+        <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+          <span class="slds-assistive-text">Loading</span>
+          <div class="slds-spinner__dot-a"></div>
+          <div class="slds-spinner__dot-b"></div>
+        </div>
+      </div>
+    </div>
+
+
+
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
       <div class="main-division-div">
 
@@ -4562,7 +4581,7 @@ else
               </div>
           </div>
 
-          
+
           
           <div id="RelationshipDiv"> </div>
           <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
