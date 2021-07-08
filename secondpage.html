@@ -4501,6 +4501,13 @@ else
             </div>
           </div>
 
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
+          </button>
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
+          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
+          
+
+
           <div id="QueryValidateTrueAlert" style="display:none">
             <div class="demo-only" style="height:4rem">
               <div class="slds-notify_container slds-is-relative">
@@ -4555,13 +4562,8 @@ else
               </div>
           </div>
 
-
-
-
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-          </button>
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
-          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
+          
+          
           <div id="RelationshipDiv"> </div>
           <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
         </div>
