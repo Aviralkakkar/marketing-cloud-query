@@ -1756,6 +1756,9 @@
 
 
     function onloadofBody() {
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('DEListSidebar').style.marginTop = '0px';
+
       fetch('/fields', {  //provide URL of the processing page
         method: "POST",
         headers: {
@@ -1792,7 +1795,8 @@
         .then(data => {
           //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
-          console.log('asset : ' + data);
+          document.getElementById('FullPageSpinner').style.display = 'none';
+          //console.log('asset : ' + data);
           //console.log("parsed data  Before Sort : " + JSON.stringify(parsedData));
 
 
