@@ -1769,7 +1769,7 @@
         .then(response => response.text())
         .then(data => {
           defieldsArray = JSON.parse(data).favorites;
-          console.log('fields : ' + JSON.stringify(data));
+          console.log('fields : ' + data);
           //for ( i in parsedData1 ) 
           //{
           //  console.log(parsedData1[i]);
@@ -1792,7 +1792,7 @@
         .then(data => {
           //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
-          console.log('asset : ' + JSON.stringify(data));
+          console.log('asset : ' + data);
           //console.log("parsed data  Before Sort : " + JSON.stringify(parsedData));
 
 
