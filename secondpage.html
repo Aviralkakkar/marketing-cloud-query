@@ -1754,11 +1754,10 @@
     var dataExtensionNameMapFinal = {};
     var JoinQueryDESelectedFields = [];
 
-
+    
     function onloadofBody() {
       document.getElementById('FullPageSpinner').style.display = 'block';
-      //document.getElementById('DEListSidebar').style.marginTop = '0px';
-
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
       fetch('/fields', {  //provide URL of the processing page
         method: "POST",
         headers: {
@@ -1773,6 +1772,8 @@
         .then(data => {
           defieldsArray = JSON.parse(data).favorites;
           console.log('fields : ' + data);
+          document.getElementById('FullPageSpinner').style.display = 'none';
+          document.getElementById('DEListSidebar').style.marginTop = '0px';
           //for ( i in parsedData1 ) 
           //{
           //  console.log(parsedData1[i]);
@@ -1795,8 +1796,7 @@
         .then(data => {
           //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
-          document.getElementById('FullPageSpinner').style.display = 'none';
-          //console.log('asset : ' + data);
+          console.log('asset : ' + data);
           //console.log("parsed data  Before Sort : " + JSON.stringify(parsedData));
 
 
@@ -4437,9 +4437,7 @@ else
 <body>
 
 
-  <script>
-    onloadofBody();
-  </script>
+  
 
   <div>
 
@@ -4760,6 +4758,9 @@ else
   </div>
   <!-- Code Khatam -->
 
+  <script>
+    onloadofBody();
+  </script>
 
   <script>
     var FieldSet = new Set();
