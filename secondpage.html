@@ -1738,7 +1738,6 @@
     //console.log("on load calll");
     var fieldList = [];
     var result = {};
-    var url = "/asset";
     var button;
     var words;
     var parsedData;
@@ -1770,6 +1769,7 @@
         .then(response => response.text())
         .then(data => {
           defieldsArray = JSON.parse(data).favorites;
+          console.log('fields : ' + JSON.stringify(data));
           //for ( i in parsedData1 ) 
           //{
           //  console.log(parsedData1[i]);
@@ -1777,7 +1777,7 @@
           //}
         });
       // document.getElementById('relationPopup').style.display='none';
-      fetch(url, {  //provide URL of the processing page
+      fetch("/asset", {  //provide URL of the processing page
         method: "POST",
 
         headers: {
@@ -1785,7 +1785,6 @@
         },
         body: {
           "assetType": "image",
-
         },
         dataType: "json"
       })
@@ -1793,6 +1792,7 @@
         .then(data => {
           //console.log(data);
           parsedData = JSON.parse(data).targetDEArray;
+          console.log('asset : ' + JSON.stringify(data));
           //console.log("parsed data  Before Sort : " + JSON.stringify(parsedData));
 
 
@@ -2530,6 +2530,7 @@ else
       }
       else {
         document.getElementById('MainDivAlert').style.display = 'Block';
+        document.getElementById('FullPageSpinner').style.display = 'none';
       }
 
 
