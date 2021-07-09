@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, './images')));
 // use the express-static middleware
 app.use(express.static("marketing-cloud-query-app"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, './assets')));
 
 // define the first route
 app.get("/", function (req, res) {
