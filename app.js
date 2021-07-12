@@ -98,6 +98,7 @@ app.post("/secondpage", async function (req, res) {
           "DEFields" : []
         }
       }
+      console.log('DEListMap : ' + JSON.stringify(DEListMap));
 
       var options = {
         'method': 'POST',
@@ -124,7 +125,6 @@ app.post("/secondpage", async function (req, res) {
         }
         var temp
         for (var val of Array.from(FieldSet)) {
-          console.log("temp Field : " + val);
           temp = JSON.parse(val);
           DEListMap[temp.CustomerKey].DEFields.push({
             "FieldName": temp.FieldName,
