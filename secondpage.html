@@ -1753,6 +1753,7 @@
     var dataExtensionNameMap = {};
     var dataExtensionNameMapFinal = {};
     var JoinQueryDESelectedFields = [];
+    var DEListMap = {};
 
     
     function onloadofBody() {
@@ -1769,7 +1770,7 @@
           'Content-type': "application/json"
         },
         success: function (data) {
-          console.log(data);
+          DEListMap = data;
           for (var key in data) {
             document.getElementById("Data Extensions").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
           };
@@ -1785,7 +1786,6 @@
 
     document.ondragstart = function (event) {
       var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-      console.log('obj : ' + JSON.stringify(obj));
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
     document.ondragover = function (event, ev) {
@@ -1797,18 +1797,12 @@
       deFieldListarray = [];
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
-      //console.log("Dropppp");
-      //console.log(event.target.id);
-      //console.log("yeh de ki value -----> " + event.target.value);
-      var datafromDrag = event.dataTransfer.getData("text/plain");
-      //event.target.appendChild(document.getElementById(data1));
-      var parsedDragData = JSON.parse(datafromDrag);
-      //console.log("yeh parsedDragData--------> " + parsedDragData.name);
-      dataExtensionName = parsedDragData.name;
-      //console.log("YEH HAI DRAGGED DATA ---> " + dataExtensionName);
-      var dataExtensionId = parsedDragData.id;
 
-      //console.log('dataExtensionName : ' + dataExtensionName + 'dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
+      var datafromDrag = event.dataTransfer.getData("text/plain");
+      datafromDrag = JSON.parse(datafromDrag);
+      dataExtensionName = datafromDrag.name;
+      var dataExtensionId = datafromDrag.id;
+
       if (dataExtensionName in dataExtensionNameMapFinal) {
         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + dataExtensionName + ' Data Extension.'
         document.getElementById('DEListDivAlert').style.display = 'block';
@@ -1816,38 +1810,10 @@
       else {
         document.getElementById('DEListDivAlert').style.display = 'none';
         document.getElementById("modal-heading-01").innerHTML = dataExtensionName + " Data Extension Fields";
-        //console.log("yeh parsedDragData stringify --------> " + JSON.stringify(parsedDragData));
-        var fieldList = {};
-
-        //Code Faizal
-        defieldsArray.sort((a, b) => a.FieldName.localeCompare(b.FieldName))
-        //Code Khatam
-
-        var html = '';
-        for (var i = 0; i < defieldsArray.length; i++) {
-          //console.log("Data Extension Id : " + dataExtensionId);
-          //console.log("defieldsArray[i].CustomerKey : " + defieldsArray[i].CustomerKey);
-          if (dataExtensionId == defieldsArray[i].CustomerKey) {
-
-            if (dataExtensionNameMap[dataExtensionName]) {
-              if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
-                dataExtensionNameMap[dataExtensionName] = {
-                  "AllFields": [{
-                    "FieldName": defieldsArray[i].FieldName,
-                    "FieldType": defieldsArray[i].FieldType
-                  }],
-                  "DEExtKey": dataExtensionId,
-                  "DESelectedFields": []
-                }
-              }
-              else {
-                dataExtensionNameMap[dataExtensionName].AllFields.push({
-                  "FieldName": defieldsArray[i].FieldName,
-                  "FieldType": defieldsArray[i].FieldType
-                });
-              }
-            }
-            else {
+        
+        /*
+          if (dataExtensionNameMap[dataExtensionName]) {
+            if (!dataExtensionNameMap[dataExtensionName].AllFields.length) {
               dataExtensionNameMap[dataExtensionName] = {
                 "AllFields": [{
                   "FieldName": defieldsArray[i].FieldName,
@@ -1857,19 +1823,30 @@
                 "DESelectedFields": []
               }
             }
-
-            //console.log('FieldName : ' + defieldsArray[i].FieldName + ' FieldType : ' + defieldsArray[i].FieldType)
-            html += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
-            fieldList = {
-              "FieldName": defieldsArray[i].FieldName,
-              "CustomerKey": defieldsArray[i].CustomerKey,
-              "FieldType": defieldsArray[i].FieldType
-            };
-            deFieldListarray.push(fieldList);
+            else {
+              dataExtensionNameMap[dataExtensionName].AllFields.push({
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
+              });
+            }
           }
+          else {
+            dataExtensionNameMap[dataExtensionName] = {
+              "AllFields": [{
+                "FieldName": defieldsArray[i].FieldName,
+                "FieldType": defieldsArray[i].FieldType
+              }],
+              "DEExtKey": dataExtensionId,
+              "DESelectedFields": []
+            }
+          }
+        */
+        
+        
+        DEListMap[dataExtensionId].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+        for (var i = 0; i < DEListMap[dataExtensionId].DEFields.length; i++) {
+          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
         }
-
-        document.getElementById('grid-1-de').innerHTML = html;
         document.getElementById('RelationPopup').style.display = 'block';
       }
     };
