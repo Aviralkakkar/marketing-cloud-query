@@ -117,9 +117,9 @@ app.post("/secondpage", async function (req, res) {
         var FieldSet = new Set();
         for (var key in TempDEFieldsResult) {
           FieldSet.add(JSON.stringify({
-            "CustomerKey": SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-            "FieldName": SourceDEFieldsResult[key].Name[0],
-            "FieldType": SourceDEFieldsResult[key].FieldType[0]
+            "CustomerKey": TempDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+            "FieldName": TempDEFieldsResult[key].Name[0],
+            "FieldType": TempDEFieldsResult[key].FieldType[0]
           }));
         }
         var temp
