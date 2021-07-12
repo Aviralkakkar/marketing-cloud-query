@@ -133,7 +133,7 @@ app.post("/secondpage", async function (req, res) {
             });
           }
         }
-        console.log('DEListMap : ' + JSON.stringify(DEListMap))
+        console.log('DEListMap : ' + JSON.stringify(DEListMap));
         resCall.send(DEListMap);
       });
     });
