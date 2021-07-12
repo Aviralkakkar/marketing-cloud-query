@@ -1850,117 +1850,31 @@
 
     function drop2(event, target) {
       event.preventDefault();
+      var DEWhereClauseDragData = {
+        "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
+        "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
+      }
+      insertTextAtCaret(DEWhereClauseDragData.FieldName);
 
-      parsedDragData2 = {};
-      var datafromDrag2 = event.dataTransfer.getData("text/plain");
-      parsedDragData2 = JSON.parse(datafromDrag2);
-      console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2));
-      var datatypevalue = parsedDragData2.name.trim();
-      
-      parsedDragData2Array.push(parsedDragData2.value);
-      //console.log(parsedDragData2.id);
-      //console.log("parsedDragData2.value : " +parsedDragData2.value);
-      //console.log(parsedDragData2Array);
-      var fieldwithspace = parsedDragData2.value;
-      console.log("fieldwithspace :-------  " + fieldwithspace);
-
-      var fieldNameValue = fieldwithspace.split(" ").join("");
-      //console.log("fieldNameValue : " + fieldNameValue);
-
-      //var html1 = '<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
-
-      //'[' + dataExtensionName + '].[' + fieldwithspace + ']'  
-      insertTextAtCaret(fieldwithspace);
-      // var html = fieldwithspace;
-      //document.getElementById('RichTextEditor').innerHTML+=html;
-
-      //This code is for dropping criteria in 2nd modal
-      /*
-      if(datatypevalue=='Text' || datatypevalue=='EmailAddress' || datatypevalue=='Locale' || datatypevalue=='Phone')
-        {
-          console.log("Email type me aaya 1 ") ;
-          
-          var optionforTextType ="<option value=  Equals  >is equal to </option><option  value=  NotEquals  >'is not equal to </option><option  value=  GreaterThan  >is greater than </option><option  value=  GreaterThanOrEquals  >is greater than or equal to </option><option  value=  LessThan  >is less than </option><option  value=  LessThanOrEquals  >is less than or equal to </option><option  value=  ExistsIn  >exists in </option><option  value=  ExistsInWholeWord  >exists in whole word </option><option  value=  NotExistsIn  >does not exist in </option><option  value=  Begins  >begins with </option><option  value=  Ends  >ends with </option><option  value=  Contains  >contains </option><option  value=  NotContains  >does not contain </option><option  value=  IsEmpty  > is empty </option><option  value=  IsNotEmpty  > is not empty </option>";
-          var html='<div id = '+fieldNameValue+ num +'><button class="slds-button slds-button_neutral  ' + fieldNameValue  + '  ">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria   ">'+optionforTextType+'</select><input class= " '+ fieldNameValue  +'input"   type="text"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
-            num=num+1;
-            console.log(parsedDragData2.value+ num )
+      function insertTextAtCaret(FieldName) {
+        var sel, range;
+        if (window.getSelection) {
+          sel = window.getSelection();
+          var parentID = window.getSelection().anchorNode.parentNode.id;
+          var anchorID = window.getSelection().anchorNode.id;
+          var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+          if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
+            if (sel.getRangeAt && sel.rangeCount) {
+              range = sel.getRangeAt(0);
+              range.deleteContents();
+              range.insertNode(document.createTextNode(FieldName));
+            }
           }
-      else if(datatypevalue.name=='Number' || datatypevalue.name=='Decimal')
-      {
-        console.log("Email type me aaya 2") ;
-        var optionforNumberType='<option value="Equals"> is equal to  </option><option value="NotEquals"> is not equal to  </option><option value="GreaterThan"> is greater than  </option><option value="GreaterThanOrEquals"> is greater than or equal to  </option><option value="LessThan"> is less than  </option><option value="LessThanOrEquals"> is less than or equal to  </option><option value="IsEmpty"> is empty  </option><option value="IsNotEmpty"> is not empty  </option><option value="In"> in  </option><option value="NotIn"> not in  </option>';
-        var html='<div id = '+fieldNameValue+ num +'>< button class="slds-button slds-button_neutral '+ fieldNameValue  +'">'+parsedDragData2.value+'</button> <select class=" '+fieldNameValue+'criteria">'+optionforNumberType+'</select><input class= " ' + fieldNameValue  + 'input" type="number"> <span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
-          num=num+1;
-      }
-      else if(datatypevalue.name=='Boolean')
-      {
-        console.log("Email type me aaya 3") ;
-        var html=' <div id = '+fieldNameValue+ num +'> <button class="slds-button slds-button_neutral '+ fieldNameValue  +'">'+parsedDragData2.value+'</button> <select class="'+ fieldNameValue  +'criteria"><option>is</option></select><select class= " '+ fieldNameValue  +'input   "><option>True</option><option>False</option></select><span><button class="delete" name= '+ fieldNameValue  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br> </div>';
-        num=num+1;
-      }
-      else if(datatypevalue.name=='Date')
-      {
-        console.log("Email type me aaya 4") ;
-        var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option> </div>';
-        var html='<div id = '+fieldNameValue+ num +'> <button class="slds-button slds-button_neutral '+ fieldNameValue +'">'+parsedDragData2.value+'</button> <select class="'+ fieldNameValue +'criteria">'+optionforDateType+'</select><input class= " '+ fieldNameValue  +'input   " type="date"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br> </div>';
-        num=num+1;
-      }
-      else{
-        console.log("Email type else me aaya") ;
-        var optionforDateType=' <option value="Equals"> is equal to   </option> <option value="NotEquals"> is not equal to   </option> <option value="AnniversaryOf"> is anniversary of   </option> <option value="NotAnniversaryOf"> is not anniversary of   </option> <option value="GreaterThan"> is after   </option> <option value="GreaterThanAnniversaryOf"> is after anniversary of   </option> <option value="LessThan"> is before   </option> <option value="LessThanAnniversaryOf"> is before anniversary of   </option> <option value="IsEmpty"> is empty   </option> <option value="IsNotEmpty"> is not empty   </option> </div>';
-        var html='<div id = '+fieldNameValue+ num +'> <button class="slds-button slds-button_neutral '+ fieldNameValue  +'">'+parsedDragData2.value+'</button> <select class="'+ fieldNameValue  +'criteria">'+optionforDateType+'</select><input class= "'+ fieldNameValue  +'input   " type="date"><span><button class="delete" name= '+ fieldNameValue+num  +' onclick ="deleteCriteria(event, this)">Delete</button></span> <br>';
-          num=num+1;
         }
-      document.getElementById('filter-div').innerHTML+=html;
-      */
+      }
     };
 
-    function insertTextAtCaret(fieldwithspace) {
-      var sel, range;
-      //console.log(' window.getSelection' + window.getSelection);
-      if (window.getSelection) {
-
-        sel = window.getSelection();
-        //	var conceptName = $('#aioConceptName').find(":selected").val();
-        //console.log("selection----------------->" + sel);
-        //console.log("window.getSelection().anchorNode.parentNode.id----->" + window.getSelection().anchorNode.parentNode.id);
-        //console.log("window.getSelection().anchorNode.parentNode.parentNode.id ----->" + window.getSelection().anchorNode.parentNode.parentNode.id);
-
-        //console.log("window.getSelection().anchorNode.id---------------->" + window.getSelection().anchorNode.id);
-        //console.log("window.getSelection().id--------------------------->" + window.getSelection().id);
-        var parentID = window.getSelection().anchorNode.parentNode.id;
-        var anchorID = window.getSelection().anchorNode.id;
-        var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-
-        //console.log("yeh hai parent Id" + parentID) ;
-        //console.log("yeh hai anchor Id" + anchorID) ;
-
-        if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
-          if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            //console.log("yeh range hai --- >  " + range);
-            range.deleteContents();
-            range.insertNode(document.createTextNode(fieldwithspace));
-
-          }
-        }
-
-
-
-        /*  else if (document.selection && document.selection.createRange) 
-      {
-                if ( window.getSelection().anchorNode.parentNode.id ==  "RichTextEditor" )
-                {
-          console.log("I don't know what this is" + document.selection.createRange().text);
-          document.selection.createRange().text = text;
-          console.log("Text-------->" + text);
-        	
-              }
-        } */
-        //	document.getElementById('none').selected=true;
-
-      }
-    }
+    
 
     function Previous() {
       if (dataExtensionName) {
@@ -2300,6 +2214,8 @@
       }
     }
 
+
+    
     function CancelQueryBoxAlert() {
       document.getElementById('MainDivAlert').style.display = 'none';
     }
@@ -4471,7 +4387,6 @@
       }
 
     }
-
 
     function CancelPopup() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
