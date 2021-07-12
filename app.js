@@ -127,10 +127,12 @@ app.post("/secondpage", async function (req, res) {
         for (var val of Array.from(FieldSet)) {
           temp = JSON.parse(val);
           console.log('key : ' + temp.CustomerKey)
-          DEListMap[temp.CustomerKey].DEFields.push({
-            "FieldName": temp.FieldName,
-            "FieldType": temp.FieldType
-          });
+          if(temp.CustomerKey in DEListMap) {
+            DEListMap[temp.CustomerKey].DEFields.push({
+              "FieldName": temp.FieldName,
+              "FieldType": temp.FieldType
+            });
+          }
         }
         resCall.send(DEListMap);
       });
