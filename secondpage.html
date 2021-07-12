@@ -1845,7 +1845,7 @@
         
         DEListMap[dataExtensionId].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap[dataExtensionId].DEFields.length; i++) {
-          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + defieldsArray[i].FieldType + '"  value="' + defieldsArray[i].FieldName + '" id="' + defieldsArray[i].CustomerKey + '" draggable=true name="' + defieldsArray[i].FieldName + '" label="' + defieldsArray[i].FieldName + '"> ' + defieldsArray[i].FieldName + '<br>';
+          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap[dataExtensionId].DEFields[i].FieldType + '"  value="' + DEListMap[dataExtensionId].DEFields[i].FieldName + '" id="' + dataExtensionId + '" draggable=true name="' + DEListMap[dataExtensionId].DEFields[i].FieldName + '" label="' + DEListMap[dataExtensionId].DEFields[i].FieldName + '"> ' + DEListMap[dataExtensionId].DEFields[i].FieldName + '<br>';
         }
         document.getElementById('RelationPopup').style.display = 'block';
       }
