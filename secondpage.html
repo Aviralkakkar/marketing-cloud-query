@@ -1758,7 +1758,6 @@
     function onloadofBody() {
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
-      
       $.ajax
       ({
         url: '/DEListFetch',
@@ -1778,24 +1777,6 @@
           document.getElementById('DEListSidebar').style.marginTop = '0px';
         }
       })
-      /*fetch("/DEListFetch", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: {
-          "assetType": "DEListFetch"
-        },
-        dataType: "json"
-      })
-      .then(data => {
-        console.log(data);
-        for (var key in data) {
-          document.getElementById("Data Extensions").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
-        };
-        document.getElementById('FullPageSpinner').style.display = 'none';
-        document.getElementById('DEListSidebar').style.marginTop = '0px';
-      });*/
     }
 
     function allowDrop(ev, event) {
@@ -1803,35 +1784,11 @@
     }
 
     document.ondragstart = function (event) {
-      //console.log(event.class);
-      //console.log(event.id);
-
-      //console.log("ev.target.id-----> " + event.target.id);
-      //console.log("ev.target.value-----> " + event.target.value);
-      //console.log("ev.target.name-----> " + event.target.name);
       var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      console.log('obj : ' + JSON.stringify(obj));
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
-
-      /* if(document.getElementById("demo").innerHTML.length == 0){ 
-           document.getElementById("demo").innerHTML += 'Select '+event.target.value; 
-       }
-       else{ 
-         document.getElementById("demo").innerHTML += ' , '+event.target.value ; 
-         }*/
-      /*
-      if(document.getElementById("demo").innerHTML.length == 0){ 
-       words= 'SELECT '+event.target.value;
-       document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
-      }
-       else{ 
-        words += ' , '+event.target.value; 
-        document.getElementById("demo").innerHTML = words+' FROM '+ event.target.name;
-        }*/
     };
     document.ondragover = function (event, ev) {
-      /* console.log("Inside ondragover");
-       console.log(event);
-       console.log(ev); */
       event.preventDefault();
     };
 
