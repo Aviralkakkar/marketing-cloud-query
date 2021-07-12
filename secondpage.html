@@ -1759,13 +1759,32 @@
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
       
-      fetch("/DEListFetch", {
+      $.ajax
+      ({
+        url: '/DEListFetch',
+        data: {
+          "assetType": "DEListFetch"
+        },
+        type: "POST",
+        headers: {
+          'Content-type': "application/json"
+        },
+        success: function (data) {
+          console.log(data);
+          for (var key in data) {
+            document.getElementById("Data Extensions").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
+          };
+          document.getElementById('FullPageSpinner').style.display = 'none';
+          document.getElementById('DEListSidebar').style.marginTop = '0px';
+        }
+      })
+      /*fetch("/DEListFetch", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: {
-          "assetType": "DEListFetch",
+          "assetType": "DEListFetch"
         },
         dataType: "json"
       })
@@ -1776,7 +1795,7 @@
         };
         document.getElementById('FullPageSpinner').style.display = 'none';
         document.getElementById('DEListSidebar').style.marginTop = '0px';
-      });
+      });*/
     }
 
     function allowDrop(ev, event) {
