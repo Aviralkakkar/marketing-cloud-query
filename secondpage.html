@@ -1745,7 +1745,10 @@
     var fieldsArray = [];
     var defieldsArray = [];
     var parsedData1;
-    var dataExtensionName;
+    var DEDragData = {
+      "DEName" : '',
+      "DEExtKey" : ''
+    };
     var parsedDragData2 = {};
     var parsedDragData2Array = [];
     var deFieldListarray = [];
@@ -1794,14 +1797,13 @@
 
     function drop(event, target) {
       event.preventDefault();
-      deFieldListarray = [];
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
 
-      var datafromDrag = event.dataTransfer.getData("text/plain");
-      datafromDrag = JSON.parse(datafromDrag);
-      dataExtensionName = datafromDrag.name;
-      var dataExtensionId = datafromDrag.id;
+      //var datafromDrag = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+      //datafromDrag = JSON.parse(datafromDrag);
+      DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+      DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
 
       if (dataExtensionName in dataExtensionNameMapFinal) {
         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + dataExtensionName + ' Data Extension.'
