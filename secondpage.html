@@ -1855,11 +1855,8 @@
       var datafromDrag2 = event.dataTransfer.getData("text/plain");
       parsedDragData2 = JSON.parse(datafromDrag2);
       console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2));
-      //console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
       var datatypevalue = parsedDragData2.name.trim();
-      //console.log("yeh parsedDragData2-------->" + datatypevalue + 'haaaa');
-      //console.log("yeh parsedDragData2 stringify --------> " + JSON.stringify(parsedDragData2));
-
+      
       parsedDragData2Array.push(parsedDragData2.value);
       //console.log(parsedDragData2.id);
       //console.log("parsedDragData2.value : " +parsedDragData2.value);
@@ -2276,7 +2273,6 @@
     var openOpenSelectField = '';
     function Next() {
       var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
-      console.log('checkboxesCheck.length : ' + checkboxesCheck.length);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
