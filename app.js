@@ -10,8 +10,6 @@ const xmlParser = require('xml2json');
 var Set = require("collections/set");
 var moment = require('moment');
 
-var jsonRes;
-var SourceListDEResult;
 var xml2js = require('xml2js');
 const { stringify } = require("querystring");
 var xml2jsParser = new xml2js.Parser();
@@ -94,25 +92,47 @@ app.post("/secondpage", async function (req, res) {
       xml2jsParser.parseString(response.body, function (err, result) {
         TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
       });
-      console.log("TempDEListFetchResult : " + JSON.stringify(TempDEListFetchResult));
-      var targetDEArray = {};
-
-      for (var key in ResultList) {
-        console.log("Data Extension " + ResultList[key].Name)
-        console.log("Data Extension key " + ResultList[key].CustomerKey)
-        targetDEArray[ResultList[key].CustomerKey] = ResultList[key].Name;
-        //   targetDEArray.push(ResultList[key].Name);
-        //   ResultListMap[ResultList[key].Name] = ResultList[key] ; 
+      for(var i in TempDEListFetchResult) {
+        DEListMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
+          "DEName" : TempDEListFetchResult[i]["Name"][0],
+          "DEFields" : []
+        }
       }
-      for (var i in targetDEArray) {
-        console.log(i);
-        console.log(targetDEArray[i]);
-      }
-      console.log("targetDEArray    :   " + targetDEArray);
 
-      resCall.json({ targetDEArray: targetDEArray });
+      var options = {
+        'method': 'POST',
+        'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx',
+        'headers': {
+          'Content-Type': 'text/xml',
+          'SoapAction': 'Retrieve'
+        },
+        body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">https://mc6vgk-sxj9p08pqwxqz9hw9-4my.soap.marketingcloudapis.com/Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + access_token + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtensionField</ObjectType>\r\n                <Properties>Client.ID</Properties>\r\n                <Properties>CreatedDate</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>DataExtension.CustomerKey</Properties>\r\n                <Properties>DefaultValue</Properties>\r\n                <Properties>FieldType</Properties>\r\n                <Properties>IsPrimaryKey</Properties>\r\n                <Properties>IsRequired</Properties>\r\n                <Properties>MaxLength</Properties>\r\n                <Properties>ModifiedDate</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>Ordinal</Properties>\r\n                <Properties>Scale</Properties>\r\n\r\n                               <QueryAllAccounts>true</QueryAllAccounts>\r\n                <Retrieves />\r\n                <Options>\r\n                    <SaveOptions />\r\n                    <IncludeObjects>true</IncludeObjects>\r\n                </Options>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
+      };
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        var TempDEFieldsResult;
+        xml2jsParser.parseString(response.body, function (err, result) {
+          TempDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+        });
+        var FieldSet = new Set();
+        for (var key in TempDEFieldsResult) {
+          FieldSet.add(JSON.stringify({
+            "CustomerKey": SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+            "FieldName": SourceDEFieldsResult[key].Name[0],
+            "FieldType": SourceDEFieldsResult[key].FieldType[0]
+          }));
+        }
+        var temp
+        for (var val of Array.from(FieldSet)) {
+          temp = JSON.parse(val);
+          DEListMap[temp.CustomerKey].DEFields.push({
+            "FieldName": temp.FieldName,
+            "FieldType": temp.FieldType
+          });
+        }
+        resCall.send(DEListMap);
+      });
     });
-
   });
 
 
@@ -152,18 +172,6 @@ app.post("/secondpage", async function (req, res) {
         favorites.push(JSON.parse(val));
       }
       //code khatm
-
-
-      /*
-      for (var key in SourceDEFieldsResult) {
-        DEListMap= {
-          "FieldName": SourceDEFieldsResult[key].Name[0],
-          "CustomerKey":SourceDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-          "FieldType":SourceDEFieldsResult[key].FieldType[0]
-        };
-        favorites.push(DEListMap);
-      }
-      */
 
       resCall.json({ favorites: favorites });
     });
