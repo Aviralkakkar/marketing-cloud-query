@@ -1735,7 +1735,6 @@
 
 
   <script type="text/javascript">
-    //console.log("on load calll");
     var fieldList = [];
     var result = {};
     var button;
@@ -1799,12 +1798,8 @@
       event.preventDefault();
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
-
-      //var datafromDrag = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-      //datafromDrag = JSON.parse(datafromDrag);
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
-
       if (DEDragData.DEName in dataExtensionNameMapFinal) {
         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
         document.getElementById('DEListDivAlert').style.display = 'block';
@@ -1853,17 +1848,11 @@
       }
     };
 
-
     function drop2(event, target) {
-
       event.preventDefault();
 
       parsedDragData2 = {};
-      //console.log("Dropppp 2222");
-      //console.log(event.target.id);
-      //console.log("yeh de ki value -----> " + event.target.value);
       var datafromDrag2 = event.dataTransfer.getData("text/plain");
-      //event.target.appendChild(document.getElementById(data1));
       parsedDragData2 = JSON.parse(datafromDrag2);
       console.log("parsedDragData2--> " + JSON.stringify(parsedDragData2));
       //console.log("yeh parsedDragData2-------->" + parsedDragData2.name + 'haaaa');
@@ -2294,46 +2283,15 @@
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openOpenSelectField == '') {
-          /*  var constList = document.getElementById('ulList'); 
-            console.log("Value of the ulList --- > " + constList)
-            var ul = document.createElement('ul');
-            ul.setAttribute('style', 'padding: 0; margin: 0;');
-            ul.setAttribute('id', 'theList');
-            */
-          //console.log("Length of deFieldListarray --- >  " + deFieldListarray.length);
-          //console.log("deFieldListarray   :    " + deFieldListarray);
-          for (var i = 0; i < deFieldListarray.length; i++) {
-            //  var  fieldHtml = '<li class="slds-nav-vertical__item slds-is-active"> "' + 'id = "'+deFieldListarray[i].FieldName+i  +' <a href="#" class="slds-nav-vertical__action" aria-current="true"> "' + deFieldListarray[i].FieldName + '</a> </li> '
-            //  document.getElementById('verticalul').innerHTML +=  fieldHtml  ;
-            //console.log("deFieldListarray[i].FieldType---> " + deFieldListarray[i].FieldType)
-            //    var html = '<input type="button" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">';
-            //    var node = '<li >' + html + '</li>';
-
-            // var html = '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;" value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '">' + deFieldListarray[i].FieldName + '</button>';
-            // var node = '<li class="slds-nav-vertical__item">' + html + '</li>';
-
-            var node = '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+          for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
+            document.getElementById('ulList').innerHTML = '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
               '<div class="slds-tree__item slds-is-selected">' +
-
               ' <span class="slds-size_1-of-1">' +
-              '<span > <button value="' + deFieldListarray[i].FieldName + '" id="' + deFieldListarray[i].CustomerKey + '" draggable=true name="' + deFieldListarray[i].FieldType + '" >' + deFieldListarray[i].FieldName + ' </button> </span>' +
+              '<span > <button value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
               ' </span>' +
               '  </div>' +
-              '</li>'
-
-
-
-
-            //  var li = document.createElement('li');     // create li element.
-            //  li.innerHTML = deFieldListarray[i].FieldName;      // assigning text to li using array value.
-            //  li.setAttribute('style', 'display: block;');    // remove the bullets.
-            //  li.setAttribute('draggable', 'true'); 
-            //  ul.appendChild(li);     // append li to ul.
-            document.getElementById('ulList').innerHTML += node;
-
+              '</li>';
           }
-
-          //  constList.appendChild(ul);
         }
         else {
           OpenWhere(openOpenSelectField + 'OpenWhere');
@@ -2344,7 +2302,6 @@
         console.log('Please select at least one field');
         document.getElementById('FieldSelectNextAlert').style.display = 'Block';
       }
-
     }
 
     function CancelQueryBoxAlert() {
