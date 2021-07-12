@@ -98,7 +98,6 @@ app.post("/secondpage", async function (req, res) {
           "DEFields" : []
         }
       }
-      console.log('DEListMap : ' + JSON.stringify(DEListMap));
 
       var options = {
         'method': 'POST',
@@ -123,9 +122,11 @@ app.post("/secondpage", async function (req, res) {
             "FieldType": TempDEFieldsResult[key].FieldType[0]
           }));
         }
+        console.log('DEListMap : ' + JSON.stringify(DEListMap))
         var temp
         for (var val of Array.from(FieldSet)) {
           temp = JSON.parse(val);
+          console.log('key : ' + temp.CustomerKey)
           DEListMap[temp.CustomerKey].DEFields.push({
             "FieldName": temp.FieldName,
             "FieldType": temp.FieldType
