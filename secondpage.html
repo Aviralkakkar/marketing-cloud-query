@@ -2151,6 +2151,7 @@
 
     var openSelectFieldsDEExtKey = '';
     function Next() {
+      document.getElementById("RichTextEditor").innerHTML = '';
       var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
