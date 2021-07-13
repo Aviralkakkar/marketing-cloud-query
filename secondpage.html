@@ -4428,14 +4428,7 @@
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      var checkboxArray = {}
-      var criteriaList = {}
-      var checkboxList = []
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-      
-      
-
 
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
@@ -4494,7 +4487,7 @@
           '<div class="graph-object-primary attribute-set">' +
           '<div class="graph-object-header as-actions">' +
           '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
-          '<span title="' + DEDragData.DEExtKey + '">' + DEDragData.DEExtKey + '</span>' +
+          '<span title="' + DEDragData.DEName + '">' + DEDragData.DEName + '</span>' +
           '</div>' +
           '<div class="as-action as-edit" title="Edit Properties">' +
           '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
@@ -4554,11 +4547,6 @@
           document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
-
-
-
-      //code khatam
-
 
       var TempDEName = '';
       if (DEDragData.DEExtKey != '') {
