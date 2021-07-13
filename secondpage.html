@@ -2215,7 +2215,7 @@
     }
 
 
-    
+
     function CancelQueryBoxAlert() {
       document.getElementById('MainDivAlert').style.display = 'none';
     }
@@ -4468,38 +4468,27 @@
       var checkboxArray = {};
       var criteriaList = {}
       var checkboxList = [];
-      //var criteriaListArray = [];
       var fieldsListForRelationDiv = '';
-      //console.log(" save me aaya ");
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
       //code faizal
-      if (dataExtensionName != '') {
-        dataExtensionNameMapFinal[dataExtensionName] = {
+      if (DEDragData.DEName != '') {
+        dataExtensionNameMapFinal[DEDragData.DEName] = {
           "DESelectedFields": [],
-          "DEExtKey": dataExtensionNameMap[dataExtensionName].DEExtKey,
-          "AllFields": dataExtensionNameMap[dataExtensionName].AllFields
+          "DEExtKey": dataExtensionNameMap[DEDragData.DEName].DEExtKey,
+          "AllFields": dataExtensionNameMap[DEDragData.DEName].AllFields
         }
       }
       //code khatam
 
       for (var checkbox of checkboxes) {
-        //code faizal
-        if (dataExtensionName != '' && dataExtensionName in dataExtensionNameMap) {
-          dataExtensionNameMapFinal[dataExtensionName].DESelectedFields.push({
+        if (DEDragData.DEName != '' && DEDragData.DEName in dataExtensionNameMap) {
+          dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
           });
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
-        //code khatam
-
-
-
-        //console.log(" Yeh Checked checkboxes ki value -- > " + checkbox.value + ' ');
-        // checkboxArray[defieldsArray[i].CustomerKey] = checkbox.value;
-        //criteriaListArray.push(checkbox.value);
-        //  checkboxList.push(checkboxArray);  
       }
 
 
@@ -4538,19 +4527,19 @@
         'top: 10%;'+
         '}' +
         '</style>' +
-        '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + dataExtensionName + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
-        '<div class="graph-object-menu as-actions" id="' + dataExtensionName + '" onclick="joinTwoDiv(this.id)">' +
+        '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + DEDragData.DEName + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
+        '<div class="graph-object-menu as-actions" id="' + DEDragData.DEName + '" onclick="joinTwoDiv(this.id)">' +
         '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
         '</div>' +
 
-        '<div class="DeleteDivBoxClass" id="' + dataExtensionName + '" onclick="deleteDiv(this.id)">' +
+        '<div class="DeleteDivBoxClass" id="' + DEDragData.DEName + '" onclick="deleteDiv(this.id)">' +
         '<div class="as-action as-add" title="Delete Box"></div>' +
         '</div>' +
 
         '<div class="graph-object-primary attribute-set">' +
         '<div class="graph-object-header as-actions">' +
         '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
-        '<span title="' + dataExtensionName + '">' + dataExtensionName + '</span>' +
+        '<span title="' + DEDragData.DEName + '">' + DEDragData.DEName + '</span>' +
         '</div>' +
         '<div class="as-action as-edit" title="Edit Properties">' +
         '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
@@ -4564,17 +4553,17 @@
         '</ul>' +
         '</div>' +
         '</div>' +
-        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + dataExtensionName + 'OpenSelectField">' +
+        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEName + 'OpenSelectField">' +
         '<ul class="attributes scrollableClass">';
       relationDivString += fieldsListForRelationDiv;
       relationDivString += '</ul>' +
         '</div>' +
         '<div class="graph-object-footer">' +
         '<!--Add footer-->' +
-        '<div onclick="OpenWhere(this.id)" id="' + dataExtensionName + 'OpenWhere" class="graph-object-title" data-original-title="" title="">' +
-        '<span title="' + dataExtensionName + '" style="color:#2168a7;">WHERE </span>' +
+        '<div onclick="OpenWhere(this.id)" id="' + DEDragData.DEName + 'OpenWhere" class="graph-object-title" data-original-title="" title="">' +
+        '<span title="' + DEDragData.DEName + '" style="color:#2168a7;">WHERE </span>' +
         '<ul class="attributes_second">' +
-        '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + dataExtensionName + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
+        '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEName + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
         '</ul>' +
         '</div>' +
         '</div>' +
@@ -4583,7 +4572,7 @@
 
 
 
-      if (openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && dataExtensionName == '') {
+      if (openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && DEDragData.DEName == '') {
         fieldsListForRelationDiv = '';
         relationDivString = '';
 
@@ -4602,7 +4591,7 @@
         //
       }
 
-      if (openWhereDEName == '' && dataExtensionName != '') {
+      if (openWhereDEName == '' && DEDragData.DEName != '') {
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4625,8 +4614,8 @@
 
 
       var TempDEName = '';
-      if (dataExtensionName != '') {
-        TempDEName = dataExtensionName;
+      if (DEDragData.DEName != '') {
+        TempDEName = DEDragData.DEName;
       }
       else if (openWhereDEName != '') {
         TempDEName = openWhereDEName;
@@ -4681,7 +4670,6 @@
 
 
       if (answer_form3 != '') {
-
         for (var key in dataExtensionNameMapFinal[TempDEName].AllFields) {
           var regex = new RegExp(dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"], "g")
           answer_form3 = answer_form3.replace(regex, '[' + TempDEName + '].[' + dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
@@ -4689,52 +4677,10 @@
 
         words += ' WHERE ' + answer_form3;
       }
-
-
       console.log("Words Query : " + words);
 
-      //validateQuery(words);
-      /*
-  
-      
-  
-    //  for( i=0;i<parsedDragData2Array.length;i++)
-    //  {
-  
-      
-      // console.log("Checkbox Array : "  + checkboxArray);
-      // console.log("Checkbox Array : "  + JSON.stringify(checkboxArray));
-  
-    //  console.log("parsedDragData2.value in save" + parsedDragData2Array[i])
-    //  var fieldClassList = document.getElementsByClassName(parsedDragData2Array[i]);
-  
-      //  console.log( "fieldClassList :  " + fieldClassList);
-          
-      //  console.log(fieldClassList.item(0).innerHTML );
-      
-    //  console.log(fieldClassList.item(0).innerHTML + "OK");
-    //  var fieldClassList2 = document.getElementsByClassName(parsedDragData2Array[i]+ "criteria");
-    //  console.log( "fieldClassList2 :  " + fieldClassList2.item(0).value);
-    //  var fieldClassList3 = document.getElementsByClassName(parsedDragData2Array[i]+ "input");
-    //  console.log( "fieldClassList3 :  " + fieldClassList3.item(0).value);
-      /*  if( fieldClassList != null ||  fieldClassList2 != null || fieldClassList3 != null )
-          {
-          console.log("loop me toh aarha h ") ;
-          console.log(fieldClassList);
-          console.log(fieldClassList2);
-          console.log(fieldClassList3);
-          console.log(fieldClassList.item(0));
-      criteriaList= {
-        "FieldName": fieldClassList.item(0).innerHTML,
-        "Criteria":fieldClassList2.item(0).value,
-        "Value": fieldClassList3.item(0).value
-      };
-      criteriaListArray.push(criteriaList);
-    } */
-      //}
-      //console.log("criteriaList  : " + JSON.stringify(criteriaList)); 
-      //console.log("criteriaListArray stringify : " + JSON.stringify(criteriaListArray)); 
-      //console.log("criteriaListArray   : " + criteriaListArray);
+
+
       if (document.getElementsByClassName("mydiv").length > 1) {
         words = '';
         strQuery = '';
@@ -4746,10 +4692,10 @@
         lastQuery = words;
 
         if (openWhereDEName != '') {
-          dataExtensionName = openWhereDEName;
+          DEDragData.DEName = openWhereDEName;
         }
         else if (openOpenSelectField != '') {
-          dataExtensionName = openOpenSelectField;
+          DEDragData.DEName = openOpenSelectField;
         }
 
         //console.log('Else wali testing me h : ----------------------------');
@@ -4759,17 +4705,17 @@
 
 
 
-        for (var key in dataExtensionNameMapFinal[dataExtensionName].DESelectedFields) {
+        for (var key in dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
-            "FieldName": dataExtensionName + " " + dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldName"],
-            "FieldType": dataExtensionNameMapFinal[dataExtensionName].DESelectedFields[key]["FieldType"]
+            "FieldName": DEDragData.DEName + " " + dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldName"],
+            "FieldType": dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldType"]
           }));
         }
       }
       document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('grid-1-de').innerHTML = '';
       //console.log('dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
-      dataExtensionName = '';
+      DEDragData.DEName = '';
       openWhereDEName = '';
       openOpenSelectField = '';
 
