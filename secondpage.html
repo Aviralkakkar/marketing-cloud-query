@@ -1752,8 +1752,6 @@
     var parsedDragData2Array = [];
     var deFieldListarray = [];
     var num = 0;
-    var dataExtensionNameMap = {};
-    var dataExtensionNameMapFinal = {};
     var JoinQueryDESelectedFields = [];
     var DEListMap = {};
     var DEListMapFinal = {};
@@ -4523,19 +4521,19 @@
         'top: 10%;'+
         '}' +
         '</style>' +
-        '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + DEDragData.DEName + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
-        '<div class="graph-object-menu as-actions" id="' + DEDragData.DEName + '" onclick="joinTwoDiv(this.id)">' +
+        '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + DEDragData.DEExtKey + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
+        '<div class="graph-object-menu as-actions" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
         '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
         '</div>' +
 
-        '<div class="DeleteDivBoxClass" id="' + DEDragData.DEName + '" onclick="deleteDiv(this.id)">' +
+        '<div class="DeleteDivBoxClass" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)">' +
         '<div class="as-action as-add" title="Delete Box"></div>' +
         '</div>' +
 
         '<div class="graph-object-primary attribute-set">' +
         '<div class="graph-object-header as-actions">' +
         '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
-        '<span title="' + DEDragData.DEName + '">' + DEDragData.DEName + '</span>' +
+        '<span title="' + DEDragData.DEExtKey + '">' + DEDragData.DEExtKey + '</span>' +
         '</div>' +
         '<div class="as-action as-edit" title="Edit Properties">' +
         '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
@@ -4549,17 +4547,17 @@
         '</ul>' +
         '</div>' +
         '</div>' +
-        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEName + 'OpenSelectField">' +
+        '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
         '<ul class="attributes scrollableClass">';
       relationDivString += fieldsListForRelationDiv;
       relationDivString += '</ul>' +
         '</div>' +
         '<div class="graph-object-footer">' +
         '<!--Add footer-->' +
-        '<div onclick="OpenWhere(this.id)" id="' + DEDragData.DEName + 'OpenWhere" class="graph-object-title" data-original-title="" title="">' +
-        '<span title="' + DEDragData.DEName + '" style="color:#2168a7;">WHERE </span>' +
+        '<div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="graph-object-title" data-original-title="" title="">' +
+        '<span title="' + DEDragData.DEExtKey + '" style="color:#2168a7;">WHERE </span>' +
         '<ul class="attributes_second">' +
-        '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEName + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
+        '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
         '</ul>' +
         '</div>' +
         '</div>' +
@@ -4568,7 +4566,7 @@
 
 
 
-      if (openOpenSelectField != '' && openOpenSelectField in DEListMapFinal && DEDragData.DEName == '') {
+      if (openOpenSelectField != '' && openOpenSelectField in DEListMapFinal && DEDragData.DEExtKey == '') {
         fieldsListForRelationDiv = '';
         relationDivString = '';
 
@@ -4587,7 +4585,7 @@
         //
       }
 
-      if (openWhereDEName == '' && DEDragData.DEName != '') {
+      if (openWhereDEName == '' && DEDragData.DEExtKey != '') {
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4610,8 +4608,8 @@
 
 
       var TempDEName = '';
-      if (DEDragData.DEName != '') {
-        TempDEName = DEDragData.DEName;
+      if (DEDragData.DEExtKey != '') {
+        TempDEName = DEDragData.DEExtKey;
       }
       else if (openWhereDEName != '') {
         TempDEName = openWhereDEName;
@@ -4688,10 +4686,10 @@
         lastQuery = words;
 
         if (openWhereDEName != '') {
-          DEDragData.DEName = openWhereDEName;
+          DEDragData.DEExtKey = openWhereDEName;
         }
         else if (openOpenSelectField != '') {
-          DEDragData.DEName = openOpenSelectField;
+          DEDragData.DEExtKey = openOpenSelectField;
         }
 
         //console.log('Else wali testing me h : ----------------------------');
@@ -4701,10 +4699,10 @@
 
 
 
-        for (var key in DEListMapFinal[DEDragData.DEName].DESelectedFields) {
+        for (var key in DEListMapFinal[DEDragData.DEExtKey].DESelectedFields) {
           FieldSet.add(JSON.stringify({
-            "FieldName": DEDragData.DEName + " " + DEListMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldType"]
+            "FieldName": DEDragData.DEExtKey + " " + DEListMapFinal[DEDragData.DEExtKey].DESelectedFields[key]["FieldName"],
+            "FieldType": DEListMapFinal[DEDragData.DEExtKey].DESelectedFields[key]["FieldType"]
           }));
         }
       }
@@ -4712,6 +4710,7 @@
       document.getElementById('grid-1-de').innerHTML = '';
       //console.log('dataExtensionNameMapFinal : ' + JSON.stringify(dataExtensionNameMapFinal));
       DEDragData.DEName = '';
+      DEDragData.DEExtKey = '';
       openWhereDEName = '';
       openOpenSelectField = '';
 
