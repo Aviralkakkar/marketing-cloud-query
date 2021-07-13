@@ -1888,8 +1888,8 @@
           "SecondDEJoinField" : document.getElementById('SecondDEField').value
         });*/
 
+        var strQuery = 'SELECT';
         if (JoinQueryDetails.DEForJoin.length != 0) {
-          var strQuery = 'SELECT';
           var tempDESet = new Set();
           for (var key in JoinQueryDetails.DEForJoin) {
             if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
