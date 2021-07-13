@@ -4373,6 +4373,8 @@
 
     var openWhereDEExtKey = '';
     function OpenWhere(EleDEExtKey) {
+      DEDragData.DEName = '';
+      DEDragData.DEExtKey = '';
       EleDEExtKey = EleDEExtKey.split("OpenWhere");
       EleDEExtKey = EleDEExtKey[0];
       openWhereDEExtKey = EleDEExtKey;
@@ -4397,6 +4399,8 @@
     }
 
     function OpenSelectField(EleDEExtKey) {
+      DEDragData.DEName = '';
+      DEDragData.DEExtKey = '';
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'block';
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
