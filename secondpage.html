@@ -4421,6 +4421,7 @@
           html += '<input type="checkbox" name = "' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldType"] + '"  value="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" id="' + openSelectFieldsDEExtKey + '" draggable=true name="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" label="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '">' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
         }
       }
+      console.log('html : ' + html);
       document.getElementById("modal-heading-01").innerHTML = DEListMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('grid-1-de').innerHTML = html;
     }
