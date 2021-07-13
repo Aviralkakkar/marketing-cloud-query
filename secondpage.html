@@ -4404,7 +4404,6 @@
       openSelectFieldsDEExtKey = EleDEExtKey;
       var html = '';
       var bool;
-      
       for (var key in DEListMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4432,10 +4431,6 @@
       document.getElementById('SecondModal').style.display = 'none';
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
-      console.log('DEDragData.DEExtKey : ' + DEDragData.DEExtKey);
-      console.log('DEDragData.DEName : ' + DEDragData.DEName);
-      console.log('openSelectFieldsDEExtKey : ' + openSelectFieldsDEExtKey);
-      console.log('openWhereDEExtKey : ' + openWhereDEExtKey);
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4523,9 +4518,7 @@
           '</div>' +
           '</div>' +
           '</div>';
-
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
-        relationDivString = '';
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
