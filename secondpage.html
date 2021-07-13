@@ -1865,14 +1865,11 @@
 
     var lastQuery = '';
     function validateQuery(JoinQueryDetails, actionType) {
-      console.log('JoinQueryDetails : ' + JSON.stringify(JoinQueryDetails));
-      console.log('lastQuery : ' + lastQuery);
-      console.log('mydiv validate: ' + document.getElementsByClassName("mydiv").length);
-      if (JSON.stringify((JoinQueryDetails.PrimaryDE) != '{}' || lastQuery != '') && document.getElementsByClassName("mydiv").length != 0) {
+      if (DESetQueryBox.size != 0) {
         document.getElementById('MainDivAlert').style.display = 'none';
         document.getElementById('FullPageSpinner').style.display = 'block';
         document.getElementById('DEListSidebar').style.marginTop = '-650px';
-        var strQuery = '';
+        
 
         /*
         JoinQueryDetails["PrimaryDE"] = {
@@ -1891,63 +1888,33 @@
           "SecondDEJoinField" : document.getElementById('SecondDEField').value
         });*/
 
-        function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
-          if (JoinType == 'Left Outer Join') {
-            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Left Outer Join with Exclusion') {
-            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
-          }
-          else if (JoinType == 'Right Outer Join') {
-            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Right Outer Join with Exclusion') {
-            queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
-          }
-          else if (JoinType == 'Inner Join') {
-            queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Full Outer Join') {
-            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-          }
-          else if (JoinType == 'Outer Join') {
-            queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
-          }
-          return queryStr;
-        }
-
-
-        strQuery = 'SELECT';
-
-        var tempDESet = new Set();
-        for (var key in JoinQueryDetails.DEForJoin) {
-          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-            for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
-              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
-            }
-            tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-          }
-
-          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-            for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
-              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
-            }
-            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
-          }
-        }
-        strQuery = strQuery.slice(0, -1);
-        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
-        for (var key in JoinQueryDetails.DEForJoin) {
-          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
-        }
-
-
-
-        var FirstDEWhereClause = '';
-        var SecondDEWhereClause = '';
-        tempDESet = new Set();
-
         if (JoinQueryDetails.DEForJoin.length != 0) {
+          var strQuery = 'SELECT';
+          var tempDESet = new Set();
+          for (var key in JoinQueryDetails.DEForJoin) {
+            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+            }
+
+            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+            }
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+          for (var key in JoinQueryDetails.DEForJoin) {
+            strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+          }
+
+          var FirstDEWhereClause = '';
+          var SecondDEWhereClause = '';
+          tempDESet = new Set();
           for (var key in JoinQueryDetails.DEForJoin) {
             FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
             SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
@@ -2017,13 +1984,31 @@
 
           }
         }
-        else {
-          strQuery = lastQuery;
+        else if(DESetQueryBox.size == 1) {
+          for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          if (whereClauseValue != '') {
+            for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
+            strQuery += ' WHERE ' + whereClauseValue;
+          }
+
+          for (var key in DEListMap[DEDragData.DEExtKey].DESelectedFields) {
+            FieldSet.add(JSON.stringify({
+              "FieldName": DEDragData.DEName + " " + DEListMap[DEDragData.DEExtKey].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap[DEDragData.DEExtKey].DESelectedFields[key]["FieldType"]
+            }));
+          }
         }
 
 
 
-        //strQuery = "SELECT [First Send].[Birthday] as [First Send Birthday], [FootwearCustomer].[Country] as [FootwearCustomer Country] FROM [First Send] LEFT JOIN [FootwearCustomer] ON [First Send].[SubscriberKey] = [FootwearCustomer].[SubscriberKey]";
         console.log("dynamic Query --> " + strQuery);
 
         JoinQueryDESelectedFields = [];
@@ -2083,7 +2068,30 @@
         document.getElementById('FullPageSpinner').style.display = 'none';
       }
 
-
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
+        if (JoinType == 'Left Outer Join') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Left Outer Join with Exclusion') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Right Outer Join') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Right Outer Join with Exclusion') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Inner Join') {
+          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Full Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        }
+        return queryStr;
+      }
       function DERecordGetClient() {
         $.ajax
           ({
@@ -2108,8 +2116,6 @@
             }
           })
       }
-
-
       function DEListShow(DERecords) {
         var DETableBody = ""
 
@@ -2142,7 +2148,6 @@
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-
     }
 
     function CancelDERecordModal() {
@@ -2171,7 +2176,6 @@
         }
         else {
           OpenWhere(openSelectFieldsDEExtKey + 'OpenWhere');
-          //openSelectFieldsDEExtKey = '';
         }
       }
       else {
@@ -4362,7 +4366,6 @@
 
       document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RichTextEditor').innerHTML = '';
-      //document.getElementById('filter-div').innerHTML='';
 
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
@@ -4430,13 +4433,11 @@
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
         DEListMap[DEDragData.DEExtKey].DESelectedFields = [];
-        for (var checkbox of checkboxes) {
+        for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
           DEListMap[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
@@ -4526,10 +4527,9 @@
           }
         }
       }
-
       if (openSelectFieldsDEExtKey != '') {
         DEListMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-        for (var checkbox of checkboxes) {
+        for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
           DEListMap[openSelectFieldsDEExtKey].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
@@ -4541,127 +4541,25 @@
         }
         document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
       }
-
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
           document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
-
-
-
-
-      /*
-      var TempDEName = '';
-      if (DEDragData.DEExtKey != '') {
-        TempDEName = DEDragData.DEExtKey;
-      }
-      else if (openWhereDEExtKey != '') {
-        TempDEName = openWhereDEExtKey;
-      }
-      else if (openSelectFieldsDEExtKey != '') {
-        TempDEName = openSelectFieldsDEExtKey;
-      }
-
-
-
-
-
-      var criteriaValue = document.getElementById("RichTextEditor").innerHTML;
-      //console.log("criteriaValue : " + criteriaValue);
-
-      var question_num = ' ';
-      answer_form = criteriaValue.replace(/<div>/g, question_num);
-      answer_form1 = answer_form.replace(/<br>/g, question_num);
-
-      answer_form2 = answer_form1.replace(/<\/div>/g, question_num);
-      answer_form4 = answer_form2.replace(/&nbsp;/g, question_num);
-
-      answer_form3 = answer_form4.trim();
-
-      //console.log("criteriaValue after : " + answer_form2);
-
-      words = 'SELECT'
-      //console.log("criteriaListArrayHai  :  " + criteriaListArray);
-      for (var i in DEListMapFinal[TempDEName].DESelectedFields) {
-        //console.log("checkboxes x --- > " + i);
-        //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
-
-
-        if (words == 'SELECT') {
-          //console.log("main part me aaya");
-          words += ' [' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
-        }
-        else {
-
-          //console.log("Else part me aagya ");
-          words += ', [' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
-
-        }
-      }
-      //console.log("TempDEName" + TempDEName);
-      words += ' ' + 'FROM [' + TempDEName + ']';
-
-
-
-
-
-
-
-      if (answer_form3 != '') {
-        for (var key in DEListMapFinal[TempDEName].DEFields) {
-          var regex = new RegExp(DEListMapFinal[TempDEName].DEFields[key]["FieldName"], "g")
-          answer_form3 = answer_form3.replace(regex, '[' + TempDEName + '].[' + DEListMapFinal[TempDEName].DEFields[key]["FieldName"] + ']');
-        }
-
-        words += ' WHERE ' + answer_form3;
-      }
-      console.log("Words Query : " + words);
-
-
-
-      if (document.getElementsByClassName("mydiv").length > 1) {
-        words = '';
-        strQuery = '';
-        lastQuery = '';
-        //FieldSet.clear();
-      }
-      else {
-        strQuery = words;
-        lastQuery = words;
-
-        if (openWhereDEExtKey != '') {
-          DEDragData.DEExtKey = openWhereDEExtKey;
-        }
-        else if (openSelectFieldsDEExtKey != '') {
-          DEDragData.DEExtKey = openSelectFieldsDEExtKey;
-        }
-
-        //console.log('Else wali testing me h : ----------------------------');
-        //console.log('dataExtensionName : ' + dataExtensionName);
-        //console.log('DEListMapFinal[dataExtensionName] : ' + DEListMapFinal[dataExtensionName]);
-        //console.log('DEListMapFinal[dataExtensionName].DESelectedFields : ' + DEListMapFinal[dataExtensionName].DESelectedFields);
-
-
-
-        for (var key in DEListMapFinal[DEDragData.DEExtKey].DESelectedFields) {
-          FieldSet.add(JSON.stringify({
-            "FieldName": DEDragData.DEExtKey + " " + DEListMapFinal[DEDragData.DEExtKey].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMapFinal[DEDragData.DEExtKey].DESelectedFields[key]["FieldType"]
-          }));
-        }
-      }
-      document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('grid-1-de').innerHTML = '';
-      //console.log('DEListMapFinal : ' + JSON.stringify(DEListMapFinal));
-      */
       DEDragData = {
         "DEName" : '',
         "DEExtKey" : ''
       }
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
-
+      /*
+      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+      whereClauseValue = whereClauseValue.replace(/<div>/g, ' ');
+      whereClauseValue = whereClauseValue.replace(/<br>/g, ' ');
+      whereClauseValue = whereClauseValue.replace(/<\/div>/g, ' ');
+      whereClauseValue = whereClauseValue.replace(/&nbsp;/g, ' ');
+      whereClauseValue = whereClauseValue.trim();
+      */
     }
 
     function dragElement(elmnt) {
