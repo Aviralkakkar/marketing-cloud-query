@@ -4471,25 +4471,21 @@
       var fieldsListForRelationDiv = '';
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
-      //code faizal
-      if (DEDragData.DEName != '') {
-        dataExtensionNameMapFinal[DEDragData.DEName] = {
+      if (DEDragData.DEExtKey != '') {
+        DEListMapFinal[DEDragData.DEExtKey] = {
           "DESelectedFields": [],
-          "DEExtKey": dataExtensionNameMap[DEDragData.DEName].DEExtKey,
-          "AllFields": dataExtensionNameMap[DEDragData.DEName].AllFields
+          "DEName": DEDragData.DEName,
+          "DEFields": DEListMap[DEDragData.DEExtKey].DEFields
         }
-      }
-      //code khatam
-
-      for (var checkbox of checkboxes) {
-        if (DEDragData.DEName != '' && DEDragData.DEName in dataExtensionNameMap) {
-          dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields.push({
+        for (var checkbox of checkboxes) {
+          DEListMapFinal[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
           });
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
       }
+      
 
 
       //code faizal
@@ -4572,20 +4568,20 @@
 
 
 
-      if (openOpenSelectField != '' && openOpenSelectField in dataExtensionNameMapFinal && DEDragData.DEName == '') {
+      if (openOpenSelectField != '' && openOpenSelectField in DEListMapFinal && DEDragData.DEName == '') {
         fieldsListForRelationDiv = '';
         relationDivString = '';
 
-        dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields = [];
+        DEListMapFinal[openOpenSelectField].DESelectedFields = [];
         for (var checkbox of checkboxes) {
-          dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields.push({
+          DEListMapFinal[openOpenSelectField].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
           });
         }
 
-        for (var key in dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields) {
-          fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + dataExtensionNameMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
+        for (var key in DEListMapFinal[openOpenSelectField].DESelectedFields) {
+          fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + DEListMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + DEListMapFinal[openOpenSelectField].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
         document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
         //
@@ -4601,7 +4597,7 @@
       }
       else {
         relationDivString = '';
-        if (openWhereDEName in dataExtensionNameMapFinal) {
+        if (openWhereDEName in DEListMapFinal) {
           document.getElementById(openWhereDEName + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
           //document.getElementById(openOpenSelectField + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
           //
@@ -4644,19 +4640,19 @@
 
       words = 'SELECT'
       //console.log("criteriaListArrayHai  :  " + criteriaListArray);
-      for (var i in dataExtensionNameMapFinal[TempDEName].DESelectedFields) {
+      for (var i in DEListMapFinal[TempDEName].DESelectedFields) {
         //console.log("checkboxes x --- > " + i);
         //console.log("checkboxes[x] --- > " + criteriaListArray[i]);
 
 
         if (words == 'SELECT') {
           //console.log("main part me aaya");
-          words += ' [' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
+          words += ' [' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
         }
         else {
 
           //console.log("Else part me aagya ");
-          words += ', [' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + dataExtensionNameMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
+          words += ', [' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + '] as [' + TempDEName + ' ' + DEListMapFinal[TempDEName].DESelectedFields[i]["FieldName"] + ']';
 
         }
       }
@@ -4670,9 +4666,9 @@
 
 
       if (answer_form3 != '') {
-        for (var key in dataExtensionNameMapFinal[TempDEName].AllFields) {
-          var regex = new RegExp(dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"], "g")
-          answer_form3 = answer_form3.replace(regex, '[' + TempDEName + '].[' + dataExtensionNameMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
+        for (var key in DEListMapFinal[TempDEName].AllFields) {
+          var regex = new RegExp(DEListMapFinal[TempDEName].AllFields[key]["FieldName"], "g")
+          answer_form3 = answer_form3.replace(regex, '[' + TempDEName + '].[' + DEListMapFinal[TempDEName].AllFields[key]["FieldName"] + ']');
         }
 
         words += ' WHERE ' + answer_form3;
@@ -4705,10 +4701,10 @@
 
 
 
-        for (var key in dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields) {
+        for (var key in DEListMapFinal[DEDragData.DEName].DESelectedFields) {
           FieldSet.add(JSON.stringify({
-            "FieldName": DEDragData.DEName + " " + dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldName"],
-            "FieldType": dataExtensionNameMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldType"]
+            "FieldName": DEDragData.DEName + " " + DEListMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldName"],
+            "FieldType": DEListMapFinal[DEDragData.DEName].DESelectedFields[key]["FieldType"]
           }));
         }
       }
