@@ -4404,6 +4404,8 @@
       openSelectFieldsDEExtKey = EleDEExtKey;
       var html = '';
       var bool;
+      
+      console.log('openSelectFieldsDEExtKey : ' + openSelectFieldsDEExtKey);
       for (var key in DEListMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4420,8 +4422,8 @@
         else {
           html += '<input type="checkbox" name = "' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldType"] + '"  value="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" id="' + openSelectFieldsDEExtKey + '" draggable=true name="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" label="' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '">' + DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
         }
+
       }
-      console.log('html : ' + html);
       document.getElementById("modal-heading-01").innerHTML = DEListMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('grid-1-de').innerHTML = html;
     }
@@ -4542,7 +4544,6 @@
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
         document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
-        //
       }
 
       if (openWhereDEExtKey != '') {
