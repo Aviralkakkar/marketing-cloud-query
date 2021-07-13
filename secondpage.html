@@ -1999,10 +1999,10 @@
             strQuery += ' WHERE ' + whereClauseValue;
           }
 
-          for (var key in DEListMap[DEDragData.DEExtKey].DESelectedFields) {
+          for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
             FieldSet.add(JSON.stringify({
-              "FieldName": DEDragData.DEName + " " + DEListMap[DEDragData.DEExtKey].DESelectedFields[key]["FieldName"],
-              "FieldType": DEListMap[DEDragData.DEExtKey].DESelectedFields[key]["FieldType"]
+              "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
             }));
           }
         }
