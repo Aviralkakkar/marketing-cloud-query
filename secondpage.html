@@ -4405,7 +4405,6 @@
       var html = '';
       var bool;
       
-      console.log('openSelectFieldsDEExtKey : ' + openSelectFieldsDEExtKey);
       for (var key in DEListMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4434,6 +4433,9 @@
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
       console.log('DEDragData.DEExtKey : ' + DEDragData.DEExtKey);
+      console.log('DEDragData.DEName : ' + DEDragData.DEName);
+      console.log('openSelectFieldsDEExtKey : ' + openSelectFieldsDEExtKey);
+      console.log('openWhereDEExtKey : ' + openWhereDEExtKey);
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4543,7 +4545,7 @@
         for (var key in DEListMap[openSelectFieldsDEExtKey].DESelectedFields) {
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
-        document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">hii' + fieldsListForRelationDiv + '</ul>';
+        document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
       }
 
       if (openWhereDEExtKey != '') {
