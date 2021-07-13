@@ -4430,6 +4430,7 @@
       document.getElementById('SecondModal').style.display = 'none';
       var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
+      console.log('DEDragData.DEExtKey : ' + DEDragData.DEExtKey);
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4519,6 +4520,7 @@
           '</div>';
 
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
+        relationDivString = '';
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
