@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, './slds icons')));
 app.use(express.static("marketing-cloud-query-app"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './assets')));
+app.use(express.static(path.join(__dirname, './marketing-cloud-query')));
 
 // define the first route
 app.get("/", function (req, res) {
