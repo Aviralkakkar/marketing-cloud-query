@@ -14,8 +14,6 @@ var xml2js = require('xml2js');
 const { stringify } = require("querystring");
 var xml2jsParser = new xml2js.Parser();
 var DEListMap = {};
-var favorites = [];
-var DERecordMap = {};
 
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
@@ -33,6 +31,12 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/loginpage.html'));
 })
 app.set('view engine', 'html');
+
+
+
+
+
+
 app.post("/secondpage", async function (req, res) {
   // var clientidSource = req.body.clientid;
   var clientidSource = "sr7id7zht854bwdco8t9qdym";
