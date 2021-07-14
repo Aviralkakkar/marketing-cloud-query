@@ -125,10 +125,18 @@ app.post("/secondpage", async function (req, res) {
     request(options, async function (error, response) {
       if (error) throw new Error(error);
       if (actionType == "Validate") {
-        resCall.send({
-          'IsQueryValid' : JSON.parse(response.body).queryValid,
-          'ErrorMsg' : JSON.parse(response.body).errors[0].message
-        });
+        if(JSON.parse(response.body).queryValid == true) {
+          resCall.send({
+            'IsQueryValid' : JSON.parse(response.body).queryValid,
+            'ErrorMsg' : ''
+          });
+        }
+        else {
+          resCall.send({
+            'IsQueryValid' : JSON.parse(response.body).queryValid,
+            'ErrorMsg' : JSON.parse(response.body).errors[0].message
+          });
+        }
       }
       if (JSON.parse(response.body).queryValid == true && actionType == "Run") {
         var FolderCheckResult = await FolderCheck();
