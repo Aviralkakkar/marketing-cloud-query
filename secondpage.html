@@ -2128,13 +2128,13 @@
       "PrimaryDE": {},
       "DEForJoin": []
     }
-    var JoinQueryDESelectedFields = [];
+    var NewDEFieldsList = [];
     var DEListMap = {};
     var openSelectFieldsDEExtKey = '';
     var openWhereDEExtKey = '';
     var FirstDEExtKeyForJoinGlobal;
     var DESetQueryBox = new Set();
-    var FieldSet = new Set();
+    var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
 
 
@@ -2245,15 +2245,11 @@
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
+      document.getElementById('MainDivAlert').style.display = 'none';
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      
       var strQuery = 'SELECT';
-      function eqSet(as, bs) {
-        if (as.size !== bs.size) return false;
-        for (var a of as) if (!bs.has(a)) return false;
-        return true;
-      }
-      console.log('eqSet(DESetQueryBox , joinedDivSet) : ' + eqSet(DESetQueryBox , joinedDivSet))
-
-
       if(DESetQueryBox.size == 1) {
         for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
           strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
@@ -2268,21 +2264,8 @@
           }
           strQuery += ' WHERE ' + whereClauseValue;
         }
-
-        for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-          FieldSet.add(JSON.stringify({
-            "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
-          }));
-        }
       }
-      else if (DESetQueryBox.size > 1 && eqSet(DESetQueryBox , joinedDivSet)) {
-        
-        document.getElementById('MainDivAlert').style.display = 'none';
-        document.getElementById('FullPageSpinner').style.display = 'block';
-        document.getElementById('DEListSidebar').style.marginTop = '-650px';
-        
-
+      else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox , joinedDivSet)) {
         /*
         JoinQueryDetails["PrimaryDE"] = {
           "DEName" : FirstDEExtKeyForJoinGlobal,
@@ -2301,33 +2284,32 @@
         });*/
 
         
-        if (JoinQueryDetails.DEForJoin.length != 0) {
-          var tempDESet = new Set();
-          for (var key in JoinQueryDetails.DEForJoin) {
-            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
-                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+        var tempDESet = new Set();
+        for (var key in JoinQueryDetails.DEForJoin) {
+          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+            for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
+              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
             }
-
-            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
-                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
-            }
-          }
-          strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
-          for (var key in JoinQueryDetails.DEForJoin) {
-            strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
 
-          var FirstDEWhereClause = '';
-          var SecondDEWhereClause = '';
-          tempDESet = new Set();
-          for (var key in JoinQueryDetails.DEForJoin) {
+          if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+            for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
+              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
+            }
+            tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+          }
+        }
+        strQuery = strQuery.slice(0, -1);
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+
+        var FirstDEWhereClause = '';
+        var SecondDEWhereClause = '';
+        tempDESet = new Set();
+        for (var key in JoinQueryDetails.DEForJoin) {
             FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
             SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
             if (FirstDEWhereClause != '') {
@@ -2395,36 +2377,43 @@
             }
 
           }
+      }
+      else {
+        document.getElementById('MainDivAlert').style.display = 'Block';
+        document.getElementById('FullPageSpinner').style.display = 'none';
+      }
+      console.log("dynamic Query --> " + strQuery);
+      
+      if(strQuery != 'SELECT' && DESetQueryBox.size > 0) {
+        for(var DEExtKeyForNewDEFieldsSet of Array.from(DESetQueryBox)) {
+          for (var Field of DEListMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
+            NewDEFieldsSet.add(JSON.stringify({
+              "FieldName": DEListMap[DEExtKeyForNewDEFieldsSet].DEName + " " + Field.FieldName,
+              "FieldType": Field.FieldType
+            }));
+          }
         }
-        
-
-
-        console.log("dynamic Query --> " + strQuery);
-
-        JoinQueryDESelectedFields = [];
-        for (var val of Array.from(FieldSet)) {
-          JoinQueryDESelectedFields.push(JSON.parse(val));
+        NewDEFieldsList = [];
+        for (var val of Array.from(NewDEFieldsSet)) {
+          NewDEFieldsList.push(JSON.parse(val));
         }
-        console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
-
+        console.log("Join Query Details ----> " + JSON.stringify(NewDEFieldsList));
         $.ajax
-          ({
-            url: '/validatequery',
-            data: {
-              'dynamicQuery': strQuery,
-              'actionType': actionType,
-              'JoinQueryDESelectedFields': JoinQueryDESelectedFields
-            },
-            type: "POST",
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (data) {
-              console.log('data : ' + JSON.stringify(data));
-              if (actionType == "Validate") {
-                document.getElementById('FullPageSpinner').style.display = 'none';
-                document.getElementById('DEListSidebar').style.marginTop = '0px';
-              }
+        ({
+          url: '/validatequery',
+          data: {
+            'dynamicQuery': strQuery,
+            'actionType': actionType,
+            'NewDEFieldsList': NewDEFieldsList
+          },
+          type: "POST",
+          headers: {
+            'Content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (data) {
+            if (actionType == "Validate") {
+              document.getElementById('FullPageSpinner').style.display = 'none';
+              document.getElementById('DEListSidebar').style.marginTop = '0px';
               if (data.validatequery == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
                 document.getElementById('QueryValidateFalseAlert').style.display = 'none';
@@ -2434,30 +2423,21 @@
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
               }
             }
-
-          })
-
-
-        var tempData = "false";
-
-        if (actionType == "Run") {
-          var b = setInterval(function () {
-            DERecordGetClient();
-            //console.log("tempData setInterval : " + JSON.stringify(tempData));
-            //if (tempData != "false" ) {
-            //  DEListShow(tempData);
-            //  document.getElementById('FullPageSpinner').style.display = 'none';
-            //  clearInterval(b);
-            //}
-          }, 3000);
-        }
-
+            else if (actionType == "Run") {
+              var b = setInterval(function () {
+                DERecordGetClient();
+                //console.log("tempData setInterval : " + JSON.stringify(tempData));
+                //if (tempData != "false" ) {
+                //  DEListShow(tempData);
+                //  document.getElementById('FullPageSpinner').style.display = 'none';
+                //  clearInterval(b);
+                //}
+              }, 3000);
+            }
+          }
+        })
       }
-      else {
-        document.getElementById('MainDivAlert').style.display = 'Block';
-        document.getElementById('FullPageSpinner').style.display = 'none';
-      }
-
+      
       function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
@@ -2483,6 +2463,7 @@
         return queryStr;
       }
       function DERecordGetClient() {
+        var tempData = "false";
         $.ajax
           ({
             url: '/DERecordGet',
@@ -2495,8 +2476,6 @@
             },
             success: function (data) {
               tempData = data;
-              //console.log('data resCall1 : ' + JSON.stringify(data));
-              console.log("tempData setInterval : " + JSON.stringify(tempData));
               if (tempData != "false") {
                 DEListShow(tempData);
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -2537,6 +2516,11 @@
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
+      }
+      function isSetEqual(as, bs) {
+        if (as.size !== bs.size) return false;
+        for (var a of as) if (!bs.has(a)) return false;
+        return true;
       }
     }
 
@@ -2593,8 +2577,8 @@
     }
 
     function RunQuery() {
-      for (var val of Array.from(FieldSet)) {
-        JoinQueryDESelectedFields.push(JSON.parse(val));
+      for (var val of Array.from(NewDEFieldsSet)) {
+        NewDEFieldsList.push(JSON.parse(val));
       }
       $.ajax
         ({
@@ -2612,8 +2596,6 @@
 
           }
         })
-
-
       function DEListShow(DERecords) {
         var DETableBody = ""
 
@@ -2646,7 +2628,6 @@
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-
     }
 
     function CancelPopup() {
@@ -3061,22 +3042,8 @@
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
-
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
-            for (var key in DEListMap[FirstDEExtKeyForJoinGlobal].DESelectedFields) {
-              FieldSet.add(JSON.stringify({
-                "FieldName": DEListMap[FirstDEExtKeyForJoinGlobal].DEName + " " + DEListMap[FirstDEExtKeyForJoinGlobal].DESelectedFields[key]["FieldName"],
-                "FieldType": DEListMap[FirstDEExtKeyForJoinGlobal].DESelectedFields[key]["FieldType"]
-              }));
-            }
-            for (var key in DEListMap[document.getElementById('select-02').value].DESelectedFields) {
-              FieldSet.add(JSON.stringify({
-                "FieldName": DEListMap[document.getElementById('select-02').value].DEName + " " + DEListMap[document.getElementById('select-02').value].DESelectedFields[key]["FieldName"],
-                "FieldType": DEListMap[document.getElementById('select-02').value].DESelectedFields[key]["FieldType"]
-              }));
-            }
-
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
               JoinQueryDetails["PrimaryDE"] = {
                 "DEName": DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
@@ -3093,7 +3060,6 @@
               "SecondDEName": DEListMap[document.getElementById('select-02').value].DEName,
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
-
           }
         }
       }
@@ -3111,8 +3077,8 @@
             "FieldName": DEListMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
             "FieldType": DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
           });
-          if (FieldSet.has(SetValStr)) {
-            FieldSet.delete(SetValStr);
+          if (NewDEFieldsSet.has(SetValStr)) {
+            NewDEFieldsSet.delete(SetValStr);
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);

@@ -144,9 +144,9 @@ app.post("/secondpage", async function (req, res) {
   app.post("/RunQuery", async (reqCall, resCall) => {
     var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
     var DERecords = [];
-    var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
-    console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
-    //await DECreate(JoinQueryDESelectedFields);
+    var NewDEFieldsList = reqCall.body.NewDEFieldsList;
+    console.log('NewDEFieldsList : ' + JSON.stringify(NewDEFieldsList));
+    //await DECreate(NewDEFieldsList);
     //await getDERecords(currentDate);
 
     console.log('Name : ' + Name);
@@ -156,7 +156,7 @@ app.post("/secondpage", async function (req, res) {
     resCall.send(DERecords);
 
 
-    async function DECreate(JoinQueryDESelectedFields) {
+    async function DECreate(NewDEFieldsList) {
       return new Promise(function (resolve, reject) {
         var DEListBody = '';
         DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -180,44 +180,44 @@ app.post("/secondpage", async function (req, res) {
           '<DeleteAtEndOfRetentionPeriod>false</DeleteAtEndOfRetentionPeriod>' +
           '<Fields>';
 
-        for (var key in JoinQueryDESelectedFields) {
-          if (JoinQueryDESelectedFields[key]["FieldType"] == 'Number' || JoinQueryDESelectedFields[key]["FieldType"] == 'Date' || JoinQueryDESelectedFields[key]["FieldType"] == 'Boolean') {
+        for (var key in NewDEFieldsList) {
+          if (NewDEFieldsList[key]["FieldType"] == 'Number' || NewDEFieldsList[key]["FieldType"] == 'Date' || NewDEFieldsList[key]["FieldType"] == 'Boolean') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
-              '<FieldType>' + JoinQueryDESelectedFields[key]["FieldType"] + '</FieldType>' +
+              '<FieldType>' + NewDEFieldsList[key]["FieldType"] + '</FieldType>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'EmailAddress') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'EmailAddress') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>EmailAddress</FieldType>' +
               '<MaxLength>254</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Phone') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Phone') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Phone</FieldType>' +
               '<MaxLength>50</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Decimal') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Decimal') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Decimal</FieldType>' +
@@ -225,22 +225,22 @@ app.post("/secondpage", async function (req, res) {
               '<Scale>38</Scale>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Locale') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Locale') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Locale</FieldType>' +
               '<MaxLength>5</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Text') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Text') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Text</FieldType>' +
@@ -369,8 +369,8 @@ app.post("/secondpage", async function (req, res) {
 
     var currentDate = moment().format('yyyy-mm-dd:hh:mm:ss');
     var DERecords = [];
-    var JoinQueryDESelectedFields = reqCall.body.JoinQueryDESelectedFields;
-    console.log('JoinQueryDESelectedFields : ' + JSON.stringify(JoinQueryDESelectedFields));
+    var NewDEFieldsList = reqCall.body.NewDEFieldsList;
+    console.log('NewDEFieldsList : ' + JSON.stringify(NewDEFieldsList));
     var queryDefinitionId = '';
 
     var dynamicQuery = reqCall.body.dynamicQuery;
@@ -424,12 +424,12 @@ app.post("/secondpage", async function (req, res) {
           }
         }
         if(ChildFolderCatagoryID != '') {
-          var DECreateResult = await DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID);
+          var DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           console.log('ChildFolderCatagoryID : ' + JSON.stringify(ChildFolderCatagoryID))
-          var DECreateResult = await DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID);
+          var DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         
 
@@ -566,7 +566,7 @@ app.post("/secondpage", async function (req, res) {
       })
     }
 
-    async function DECreate(JoinQueryDESelectedFields , ChildFolderCatagoryID) {
+    async function DECreate(NewDEFieldsList , ChildFolderCatagoryID) {
       return new Promise(function (resolve, reject) {
         var DEListBody = '';
         DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -591,44 +591,44 @@ app.post("/secondpage", async function (req, res) {
           '<DeleteAtEndOfRetentionPeriod>false</DeleteAtEndOfRetentionPeriod>' +
           '<Fields>';
 
-        for (var key in JoinQueryDESelectedFields) {
-          if (JoinQueryDESelectedFields[key]["FieldType"] == 'Number' || JoinQueryDESelectedFields[key]["FieldType"] == 'Date' || JoinQueryDESelectedFields[key]["FieldType"] == 'Boolean') {
+        for (var key in NewDEFieldsList) {
+          if (NewDEFieldsList[key]["FieldType"] == 'Number' || NewDEFieldsList[key]["FieldType"] == 'Date' || NewDEFieldsList[key]["FieldType"] == 'Boolean') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
-              '<FieldType>' + JoinQueryDESelectedFields[key]["FieldType"] + '</FieldType>' +
+              '<FieldType>' + NewDEFieldsList[key]["FieldType"] + '</FieldType>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'EmailAddress') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'EmailAddress') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>EmailAddress</FieldType>' +
               '<MaxLength>254</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Phone') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Phone') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Phone</FieldType>' +
               '<MaxLength>50</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Decimal') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Decimal') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Decimal</FieldType>' +
@@ -636,22 +636,22 @@ app.post("/secondpage", async function (req, res) {
               '<Scale>38</Scale>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Locale') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Locale') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Locale</FieldType>' +
               '<MaxLength>5</MaxLength>' +
               '</Field>';
           }
-          else if (JoinQueryDESelectedFields[key]["FieldType"] == 'Text') {
+          else if (NewDEFieldsList[key]["FieldType"] == 'Text') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
-              '<CustomerKey>' + JoinQueryDESelectedFields[key]["FieldName"] + '</CustomerKey>' +
-              '<Name>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Name>' +
-              '<Label>' + JoinQueryDESelectedFields[key]["FieldName"] + '</Label>' +
+              '<CustomerKey>' + NewDEFieldsList[key]["FieldName"] + '</CustomerKey>' +
+              '<Name>' + NewDEFieldsList[key]["FieldName"] + '</Name>' +
+              '<Label>' + NewDEFieldsList[key]["FieldName"] + '</Label>' +
               '<IsRequired>false</IsRequired>' +
               '<IsPrimaryKey>false</IsPrimaryKey>' +
               '<FieldType>Text</FieldType>' +
