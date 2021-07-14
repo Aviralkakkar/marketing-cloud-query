@@ -2281,8 +2281,8 @@
         }
         tempDESet = new Set();
         for (var key in JoinQueryDetails.DEForJoin) {
-          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
-          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
+          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClause').innerHTML;
+          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClause').innerHTML;
           if (FirstDEWhereClause != '') {
             for (var Field1 of DEListMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
               var regex = new RegExp(Field1.FieldName, "g")
@@ -2379,17 +2379,13 @@
             'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
-            if (actionType == "Validate") {
-              document.getElementById('FullPageSpinner').style.display = 'none';
-              document.getElementById('DEListSidebar').style.marginTop = '0px';
-              if (data.validatequery == true) {
-                document.getElementById('QueryValidateTrueAlert').style.display = 'block';
-                document.getElementById('QueryValidateFalseAlert').style.display = 'none';
-              }
-              else {
-                document.getElementById('QueryValidateTrueAlert').style.display = 'none';
-                document.getElementById('QueryValidateFalseAlert').style.display = 'block';
-              }
+            if (actionType == "Validate" && data.validatequery == true) {
+              document.getElementById('QueryValidateTrueAlert').style.display = 'block';
+              document.getElementById('QueryValidateFalseAlert').style.display = 'none';
+            }
+            else if (actionType == "Validate" && data.validatequery == false){
+              document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+              document.getElementById('QueryValidateFalseAlert').style.display = 'block';
             }
             else if (actionType == "Run") {
               var b = setInterval(function () {
@@ -2405,6 +2401,9 @@
           }
         })
       }
+      
+      document.getElementById('FullPageSpinner').style.display = 'none';
+      document.getElementById('DEListSidebar').style.marginTop = '0px';
       
       function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
