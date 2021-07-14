@@ -2350,8 +2350,7 @@
         document.getElementById('MainDivAlert').style.display = 'Block';
         document.getElementById('FullPageSpinner').style.display = 'none';
       }
-      console.log("dynamic Query --> " + strQuery);
-      
+     
       if(strQuery != 'SELECT' && DESetQueryBox.size > 0) {
         for(var DEExtKeyForNewDEFieldsSet of Array.from(DESetQueryBox)) {
           for (var Field of DEListMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
@@ -2365,7 +2364,6 @@
         for (var val of Array.from(NewDEFieldsSet)) {
           NewDEFieldsList.push(JSON.parse(val));
         }
-        console.log("Join Query Details ----> " + JSON.stringify(NewDEFieldsList));
         $.ajax
         ({
           url: '/validatequery',
@@ -3043,7 +3041,7 @@
 
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
-      if (DEExtKeyFordeleteDiv in joinedDivSet) {
+      if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
       }
       else {
