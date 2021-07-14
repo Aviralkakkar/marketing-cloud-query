@@ -923,7 +923,7 @@ app.post("/secondpage", async function (req, res) {
         })
         .then((response) => {
           var tempResult = response.data;
-          console.log('auth res : ' + JSON.stringify(tempResult))
+          console.log('auth res : ' + response.data.access_token)
           resolve(tempResult.access_token);
         },
         (error) => {
