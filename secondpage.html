@@ -2382,10 +2382,14 @@
             if (actionType == "Validate" && data.validatequery == true) {
               document.getElementById('QueryValidateTrueAlert').style.display = 'block';
               document.getElementById('QueryValidateFalseAlert').style.display = 'none';
+              document.getElementById('FullPageSpinner').style.display = 'none';
+              document.getElementById('DEListSidebar').style.marginTop = '0px';
             }
             else if (actionType == "Validate" && data.validatequery == false){
               document.getElementById('QueryValidateTrueAlert').style.display = 'none';
               document.getElementById('QueryValidateFalseAlert').style.display = 'block';
+              document.getElementById('FullPageSpinner').style.display = 'none';
+              document.getElementById('DEListSidebar').style.marginTop = '0px';
             }
             else if (actionType == "Run") {
               var b = setInterval(function () {
@@ -2394,6 +2398,7 @@
                 //if (tempData != "false" ) {
                 //  DEListShow(tempData);
                 //  document.getElementById('FullPageSpinner').style.display = 'none';
+                //  document.getElementById('DEListSidebar').style.marginTop = '0px';
                 //  clearInterval(b);
                 //}
               }, 3000);
@@ -2401,9 +2406,10 @@
           }
         })
       }
-      
-      document.getElementById('FullPageSpinner').style.display = 'none';
-      document.getElementById('DEListSidebar').style.marginTop = '0px';
+      else {
+        document.getElementById('FullPageSpinner').style.display = 'none';
+        document.getElementById('DEListSidebar').style.marginTop = '0px';
+      }
       
       function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
