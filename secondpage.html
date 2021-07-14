@@ -4753,13 +4753,17 @@
     }
 
     function SecondDEChange() {
+      Console.log('SecondDEExtKey : ' + document.getElementById('select-02').value + ' , SecondDEName : ' + DEListMap[document.getElementById('select-02').value].DEName)
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
+        console.log('IF');
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        console.log('Fields : ' + DEListMap[document.getElementById('select-02').value].DEFields);
         for (var i in DEListMap[document.getElementById('select-02').value].DEFields) {
           document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
         }
       }
       else {
+        console.log('ELSE');
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
       }
     }
