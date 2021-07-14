@@ -4753,7 +4753,7 @@
     }
 
     function SecondDEChange() {
-      Console.log('SecondDEExtKey : ' + document.getElementById('select-02').value + ' , SecondDEName : ' + DEListMap[document.getElementById('select-02').value].DEName)
+      console.log('SecondDEExtKey : ' + document.getElementById('select-02').value + ' , SecondDEName : ' + DEListMap[document.getElementById('select-02').value].DEName)
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         console.log('IF');
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
