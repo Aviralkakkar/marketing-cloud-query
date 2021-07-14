@@ -2,1707 +2,6 @@
 <html>
 
 <head>
-  <style>
-    .set-definition-edit-dialog .setdef-left .set-title {
-      height: 79px;
-      margin: 10px 0 0 10px;
-      font-size: 22px
-    }
-
-    .set-definition-edit-dialog .setdef-left .set-title .tooltip-inner {
-      white-space: nowrap
-    }
-
-    .set-definition-edit-dialog .setdef-left .data-one {
-      float: left;
-      padding-left: 11px;
-      clear: both
-    }
-
-    .set-definition-edit-dialog .setdef-left .data-two {
-      float: left;
-      padding-left: 40px
-    }
-
-    .set-definition-edit-dialog .setdef-left .data-three {
-      float: left;
-      padding-left: 158px
-    }
-
-    .set-definition-edit-dialog .setdef-left .data-title {
-      margin-bottom: 4px;
-      font-weight: bold;
-      color: #a2a2a2;
-      text-transform: uppercase
-    }
-
-    .set-definition-edit-dialog .setdef-left .navigate {
-      text-decoration: none;
-      cursor: pointer
-    }
-
-    .set-definition-edit-dialog .setdef-left .input-md {
-      display: none;
-      height: 30px
-    }
-
-    .set-definition-edit-dialog .setdef-left .placard-popup {
-      bottom: -28px
-    }
-
-    .set-definition-edit-dialog .setdef-left .edit-button {
-      float: left;
-      margin: 15px 0 0 10px
-    }
-
-    .set-definition-edit-dialog .setdef-right {
-      float: right;
-      width: 165px
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data {
-      margin-right: 30px;
-      clear: both;
-      text-align: right
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-count {
-      font-size: 32px;
-      line-height: 21px
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-title {
-      margin-top: 3px;
-      font-size: 14px
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .refresh {
-      font-size: 10px;
-      color: #a2a2a2
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-view {
-      margin-top: 6px;
-      font-size: 10px;
-      color: #77a4ca
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-view,
-    .set-definition-edit-dialog .setdef-right .right-data a:hover,
-    .set-definition-edit-dialog .setdef-right .right-data a:visited,
-    .set-definition-edit-dialog .setdef-right .right-data a:link,
-    .set-definition-edit-dialog .setdef-right .right-data a:active {
-      text-decoration: none
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-view a:hover,
-    .set-definition-edit-dialog .setdef-right .right-data a:visited,
-    .set-definition-edit-dialog .setdef-right .right-data a:link,
-    .set-definition-edit-dialog .setdef-right .right-data a:active {
-      text-decoration: none
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .rec-view>a:hover,
-    .set-definition-edit-dialog .setdef-right .right-data a:visited,
-    .set-definition-edit-dialog .setdef-right .right-data a:link,
-    .set-definition-edit-dialog .setdef-right .right-data a:active {
-      text-decoration: none
-    }
-
-    .set-definition-edit-dialog .setdef-right .right-data .viewcontacts {
-      cursor: pointer
-    }
-
-    .set-definition-edit-dialog .clear {
-      clear: both
-    }
-
-    .as-actions {
-      padding: 0;
-      margin: 0;
-      list-style-type: none
-    }
-
-    .as-actions .as-action {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      margin-left: 6px;
-      overflow: hidden;
-      font-size: 0;
-      text-indent: 100%;
-      white-space: nowrap;
-      cursor: pointer;
-      background-repeat: no-repeat
-    }
-
-    .as-actions .as-action.as-add {
-      background-image: url('../images/icon-sprites.png');
-      background-position: 0 -901px
-    }
-
-    .as-actions .as-action.as-add:hover {
-      background-image: url('../images/icon-sprites.png');
-      background-position: 0 -881px
-    }
-
-    .graph-object-figure {
-      position: absolute;
-      width: 200px;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-      -less-property: property
-    }
-
-    .graph-object-figure .graph-object-menu {
-      position: absolute;
-      right: -30px;
-      z-index: 1;
-      width: 34px;
-      height: 34px;
-      background-color: #daecff;
-      border: 1px solid #daecff;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px
-    }
-
-    .graph-object-figure .graph-object-menu .as-add {
-      margin-top: 7px;
-      margin-left: 8px
-    }
-
-    .graph-object-figure .graph-object-primary {
-      position: relative;
-      z-index: 2
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-header {
-      width: auto;
-      padding: 11px;
-      cursor: pointer;
-      background-color: #e9eef1;
-      border: 1px solid #CCC;
-      border-bottom: 0;
-      border-top-right-radius: 5px;
-      border-top-left-radius: 5px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-header .graph-object-title {
-      width: 150px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      cursor: auto;
-      border: 1px solid #e9eef1;
-      border-radius: 5px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-header:hover .graph-object-title {
-      border: 1px solid #FFF
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-header .as-edit {
-      position: absolute;
-      top: 12px;
-      right: 10px;
-      width: 14px;
-      height: 14px;
-      margin-top: -3px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body {
-      padding: 0 5px;
-      background: #FFF;
-      border: 1px solid #CCC;
-      border-top: 0;
-      border-bottom: 0
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .as-attribute-count {
-      font-size: 11px;
-      text-align: center
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes {
-      padding: 5px;
-      margin: 0;
-      list-style-type: none
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute-title {
-      padding: 8px 2px 3px;
-      font-size: 10px;
-      line-height: 18px;
-      color: #999;
-      text-transform: uppercase
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute {
-      padding: 5px;
-      margin-bottom: 5px;
-      background: url('../images/set-attribute-gradient.png') top left repeat-x #f1f9fd;
-      border: 1px solid #CCC;
-      border-radius: 5px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute span {
-      display: block;
-      padding-left: 22px;
-      overflow: hidden;
-      color: #2168a7;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-array span {
-      background: url('../images/icon-sprites.png') 0 -622px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-locale span {
-      background: url('../images/icon-sprites.png') 0 -1081px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-emailaddress span,
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-base16encryptedemail span {
-      background: url('../images/icon-sprites.png') 0 -1001px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-phone span {
-      background: url('../images/icon-sprites.png') 0 -1186px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-base16encrypted span,
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-text span {
-      background: url('../images/icon-sprites.png') 0 -40px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-date span {
-      background: url('../images/icon-sprites.png') 0 -61px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-decimal span {
-      background: url('../images/icon-sprites.png') 0 -1040px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-boolean span {
-      background: url('../images/icon-sprites.png') 0 -1121px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-byte span,
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-longnumber span,
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-shortnumber span,
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.as-number span {
-      background: url('../images/icon-sprites.png') 0 -21px no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.last {
-      margin-bottom: 0
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.editable {
-      cursor: pointer
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .attribute.editable:hover {
-      border-color: #82bbd6
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .create-attribute-item {
-      padding: 10px 0 0 10px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-body .attributes .create-attribute-item .create-attribute-link {
-      position: relative;
-      top: -4px;
-      left: 5px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources {
-      padding: 9px 10px 0 10px;
-      line-height: 18px;
-      color: #989898;
-      text-transform: uppercase;
-      white-space: nowrap;
-      background: #FFF;
-      border-right: 1px solid #CCC;
-      border-left: 1px solid #CCC
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources .icons {
-      float: right
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources .icons .no-data-source-image {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-color: lightgray
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources .ds-label {
-      float: left;
-      padding-right: 2px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources .ds-description {
-      overflow: hidden;
-      clear: left;
-      font-size: 11px;
-      line-height: 1.4;
-      color: #222;
-      text-overflow: ellipsis;
-      text-transform: capitalize
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources .ds-description a {
-      cursor: pointer
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list {
-      padding: 0;
-      margin-top: 0;
-      list-style: none
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li {
-      display: inline;
-      padding: 1px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .glyphicon,
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li img {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      margin-bottom: 8px;
-      font-size: 20px;
-      line-height: 16px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .sf-cloud {
-      width: 22px;
-      background: url('../images/data-sources/sf-cloud.svg') no-repeat;
-      background-size: 22px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .glyphicon-phone {
-      color: #79b800
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .glyphicon-envelope {
-      color: #ffa000
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .no-icon {
-      background: url('../images/data-sources/data-source-no-icon.png') no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer {
-      padding: 2px;
-      text-align: center;
-      cursor: pointer;
-      background-color: #e9eef1;
-      border: 1px solid #CCC;
-      border-top: 0;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer .action {
-      text-decoration: none
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer .action .icon {
-      width: auto;
-      height: auto;
-      padding-left: 20px;
-      color: #2168a7;
-      background-image: url('../images/icon-sprites.png');
-      background-repeat: no-repeat
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer .action.object-expand,
-    .graph-object-figure .graph-object-primary .graph-object-footer .action.object-collapse {
-      display: none
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer .action.object-expand .icon {
-      background-position: 0 -222px
-    }
-
-    .graph-object-figure .graph-object-primary .graph-object-footer .action.object-collapse .icon {
-      background-position: 0 -242px
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-header {
-      background-color: transparent
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-header .graph-object-title {
-      border: 0;
-      border-radius: 0
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-header:hover .graph-object-title {
-      border: 0
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-header .event-icon {
-      position: relative;
-      width: 24px;
-      height: 24px
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-header .event-icon div {
-      position: absolute;
-      top: 5px;
-      width: 150px;
-      padding-left: 30px;
-      overflow: hidden;
-      text-overflow: ellipsis
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-body .attribute span {
-      padding-left: 0
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-body .view-event {
-      margin: 6px
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-footer.event-status .action span {
-      color: #FFF
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-footer.event-status.Draft {
-      background: #acacac;
-      background: -moz-linear-gradient(top, #c6c6c6 0, #acacac 100%);
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #acacac));
-      background: -webkit-linear-gradient(top, #c6c6c6 0, #acacac 100%);
-      background: -o-linear-gradient(top, #c6c6c6 0, #acacac 100%);
-      background: -ms-linear-gradient(top, #c6c6c6 0, #acacac 100%);
-      background: linear-gradient(to bottom, #c6c6c6 0, #acacac 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@colorTop', endColorstr='@colorBottom', GradientType=0)
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-footer.event-status.Error {
-      background: #c94949;
-      background: -moz-linear-gradient(top, #e48383 0, #c94949 100%);
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e48383), color-stop(100%, #c94949));
-      background: -webkit-linear-gradient(top, #e48383 0, #c94949 100%);
-      background: -o-linear-gradient(top, #e48383 0, #c94949 100%);
-      background: -ms-linear-gradient(top, #e48383 0, #c94949 100%);
-      background: linear-gradient(to bottom, #e48383 0, #c94949 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@colorTop', endColorstr='@colorBottom', GradientType=0)
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-footer.event-status.Active {
-      background: #77aa41;
-      background: -moz-linear-gradient(top, #a1cf73 0, #77aa41 100%);
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a1cf73), color-stop(100%, #77aa41));
-      background: -webkit-linear-gradient(top, #a1cf73 0, #77aa41 100%);
-      background: -o-linear-gradient(top, #a1cf73 0, #77aa41 100%);
-      background: -ms-linear-gradient(top, #a1cf73 0, #77aa41 100%);
-      background: linear-gradient(to bottom, #a1cf73 0, #77aa41 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@colorTop', endColorstr='@colorBottom', GradientType=0)
-    }
-
-    .graph-object-figure .graph-object-primary.event .graph-object-footer.event-status.Paused {
-      background: #dc9141;
-      background: -moz-linear-gradient(top, #ecb568 0, #dc9141 100%);
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ecb568), color-stop(100%, #dc9141));
-      background: -webkit-linear-gradient(top, #ecb568 0, #dc9141 100%);
-      background: -o-linear-gradient(top, #ecb568 0, #dc9141 100%);
-      background: -ms-linear-gradient(top, #ecb568 0, #dc9141 100%);
-      background: linear-gradient(to bottom, #ecb568 0, #dc9141 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@colorTop', endColorstr='@colorBottom', GradientType=0)
-    }
-
-    .graph-object-figure.expanded .graph-object-primary .graph-object-footer .action.object-expand {
-      display: none
-    }
-
-    .graph-object-figure.expanded .graph-object-primary .graph-object-footer .action.object-collapse {
-      display: block
-    }
-
-    .graph-object-figure.collapsed .graph-object-primary .graph-object-footer .action.object-expand {
-      display: block
-    }
-
-    .graph-object-figure.collapsed .graph-object-primary .graph-object-footer .action.object-collapse {
-      display: none
-    }
-
-    .graph-object-figure.active .graph-object-menu,
-    .graph-object-figure.active .graph-object-header,
-    .graph-object-figure.active .graph-object-body,
-    .graph-object-figure.active .graph-object-data-sources,
-    .graph-object-figure.active .graph-object-footer {
-      border-color: #82bbd6
-    }
-
-    .as-title-hover-de-title {
-      display: block;
-      font-size: 10px;
-      color: #666;
-      text-transform: uppercase
-    }
-
-    .as-title-hover-de-title,
-    .as-title-hover-de-body {
-      white-space: nowrap
-    }
-
-    .source-list-names {
-      padding: 0;
-      font-size: 10px;
-      list-style-type: none
-    }
-
-    .modal.event-info-dialog .modal-dialog {
-      width: 900px;
-      height: 500px
-    }
-
-    .modal.event-info-dialog .as-edit,
-    .modal.event-info-dialog .graph-object-figure.expanded a.action.object-collapse {
-      display: none
-    }
-
-    .modal.event-info-dialog .graph-object-footer {
-      height: 20px
-    }
-
-    .modal.event-info-dialog .modal-header .control-group {
-      display: inline-block;
-      width: 188px;
-      max-width: 188px
-    }
-
-    .modal.event-info-dialog .modal-header .control-group .title {
-      font-size: 10px;
-      color: #a0a0a0;
-      text-transform: uppercase
-    }
-
-    .modal.event-info-dialog .modal-header .control-group .value {
-      width: 170px;
-      height: 30px;
-      overflow: hidden;
-      font-size: 12px;
-      text-overflow: ellipsis
-    }
-
-    .modal.event-info-dialog .modal-header div.icon {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      margin: 3px 10px;
-      font-size: 28px;
-      color: #448bbe;
-      vertical-align: top
-    }
-
-    .modal.event-info-dialog .modal-body .schema-view {
-      min-height: 398px;
-      padding: 0
-    }
-
-    .modal.event-info-dialog .modal-body .schema-view .primary {
-      height: 398px;
-      pointer-events: none
-    }
-
-    .modal.event-info-dialog .modal-body .schema-view .primary .populated .graph {
-      height: 398px
-    }
-
-    .warning .content .future-warning-check {
-      position: absolute;
-      bottom: 10px
-    }
-
-    .warning .title {
-      margin-bottom: 1.5em
-    }
-
-    .warning .title .fuel-notification-close {
-      display: none
-    }
-
-    .attribute-group-templates-dialog.fuel-simpleDialog {
-      top: 23px;
-      bottom: 10px
-    }
-
-    .attribute-group-templates-dialog .ui-dialog-titlebar {
-      padding-bottom: 50px !important;
-      background: #fff !important
-    }
-
-    .attribute-group-templates-dialog .ui-dialog-titlebar .ui-dialog-title {
-      font-size: 18pt;
-      font-weight: bold;
-      color: #a0a0a0
-    }
-
-    #attribute-group-templates {
-      background: #f5f5f5
-    }
-
-    #attribute-group-templates .group-template-container,
-    #attribute-group-templates .template-setup-wrapper {
-      height: 100%
-    }
-
-    #attribute-group-templates .fuel-dialog-innercontent {
-      height: 95%
-    }
-
-    #attribute-group-templates .templates-container {
-      width: 100%;
-      height: 97%;
-      max-width: 1200px;
-      margin-right: auto;
-      margin-left: auto
-    }
-
-    #attribute-group-templates .templates-container .templates-wrapper {
-      width: 100%;
-      height: 80%
-    }
-
-    #attribute-group-templates .templates-container .templates-wrapper .side-scroll-wrapper {
-      width: 1200px;
-      height: 100%
-    }
-
-    #attribute-group-templates .templates-container .templates-wrapper .page {
-      float: left;
-      width: 1200px;
-      height: 100%
-    }
-
-    #attribute-group-templates .templates-container .page-indicators {
-      position: absolute;
-      left: 50%;
-      height: 20px;
-      font-size: 20pt;
-      color: #a0a0a0
-    }
-
-    #attribute-group-templates .templates-container .page-indicators li {
-      float: left;
-      padding: 2px;
-      list-style: circle
-    }
-
-    #attribute-group-templates .templates-container .page-indicators li.active {
-      list-style: disc
-    }
-
-    #attribute-group-templates .templates-container .template-box {
-      display: inline-block;
-      width: 28%;
-      height: 250px;
-      min-width: 28%;
-      margin-top: 2%;
-      margin-right: 3%;
-      margin-left: 2%;
-      background: #FFF;
-      border-radius: 5px;
-      box-shadow: 0 0 14px #b3b3b3
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content {
-      height: 100%
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-title-wrapper {
-      width: 100%;
-      height: 110px
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-title-wrapper img,
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-title-wrapper .template-title {
-      padding-top: 40px;
-      padding-left: 20px
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-title-wrapper img {
-      width: 60px;
-      height: 60px
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-title-wrapper .template-title h3 {
-      font-size: 22px
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .template-description {
-      width: 95%;
-      padding: 15px;
-      overflow: hidden;
-      font-size: 11pt;
-      color: #999
-    }
-
-    #attribute-group-templates .templates-container .template-box .template-box-content .controls {
-      width: 100%;
-      text-align: center
-    }
-
-    .template-sprite {
-      width: 20px;
-      height: 20px;
-      margin-right: 4px;
-      background: url('../images/template-sprites.png');
-      background-repeat: no-repeat
-    }
-
-    .sprites-icon {
-      background: url('../images/icon-sprites.png');
-      background-repeat: no-repeat
-    }
-
-    #attribute-group-templates .templates-container .next-nav {
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      width: 25px;
-      height: 34px;
-      background-position: -185px -19px
-    }
-
-    #attribute-group-templates .templates-container .prev-nav {
-      position: absolute;
-      top: 50%;
-      left: 10px;
-      width: 25px;
-      height: 34px;
-      background-position: -151px -19px
-    }
-
-    #attribute-group-templates .templates-container .next-nav:hover {
-      background-position: -113px -19px
-    }
-
-    #attribute-group-templates .templates-container .prev-nav:hover {
-      background-position: -79px -19px
-    }
-
-    .attribute-group-template-info-dialog.fuel-simpleDialog {
-      bottom: 50px
-    }
-
-    .attribute-group-template-info-dialog.fuel-simpleDialog .fuel-simpleDialog-footer {
-      height: 86px
-    }
-
-    .attribute-group-template-info-dialog.fuel-simpleDialog .fuel-simpleDialog-footer .fuel-button-primary.fuel-simpleDialog-footer-button {
-      position: relative;
-      top: 26%;
-      padding: 5px 9px 6px 9px;
-      font-size: 12px
-    }
-
-    #attribute-group-template-info {
-      height: 89% !important
-    }
-
-    #attribute-group-template-info .templates-container .back_to {
-      margin-bottom: 0
-    }
-
-    #attribute-group-template-info .templates-container a.view-all-templates {
-      margin-left: 20px
-    }
-
-    #attribute-group-template-info .template-info-header .icon-title-wrapper img {
-      width: 60px;
-      height: 60px
-    }
-
-    #attribute-group-template-info .template-info-header .icon-title-wrapper h3 {
-      margin-left: 20px;
-      font-size: 14pt
-    }
-
-    #attribute-group-template-info .template-info-body {
-      height: 577px;
-      padding-top: 68px;
-      padding-left: 83px
-    }
-
-    #attribute-group-template-info .template-info-body .template-info {
-      width: 70%;
-      padding-right: 50px
-    }
-
-    #attribute-group-template-info .template-info-body .template-info .detail {
-      font-size: 13pt
-    }
-
-    #attribute-group-template-info .template-info-body .template-info .hint {
-      padding-top: 10px;
-      font-size: 10pt;
-      color: #a0a0a0
-    }
-
-    #attribute-group-template-info .template-info-body .custom-objects-list h3 {
-      margin-left: -16px;
-      font-size: 11pt
-    }
-
-    #attribute-group-template-info .template-info-body .custom-objects-list ul {
-      padding-top: 10px
-    }
-
-    #attribute-group-template-info .template-info-body .custom-objects-list ul li {
-      padding-top: 5px;
-      font-size: 10pt;
-      color: #a0a0a0;
-      list-style: disc
-    }
-
-    #attribute-group-template-info .template-wizard-steps {
-      position: absolute;
-      bottom: 30%;
-      left: 2%;
-      width: 98%
-    }
-
-    .wizard-wrapper {
-      width: 100%;
-      height: 159px
-    }
-
-    .wizard-wrapper,
-    .template-step,
-    .template-step .step {
-      float: left
-    }
-
-    .template-step .steps-wrapper {
-      height: 150px
-    }
-
-    .template-step .step-difficulty {
-      width: 94%;
-      margin-top: 20px;
-      font-size: 9pt;
-      font-style: italic;
-      text-align: center;
-      border-top: 1px solid #659bc9
-    }
-
-    .template-step .detail {
-      width: 75%;
-      margin-top: 12px;
-      font-size: 10pt;
-      color: #a0a0a0
-    }
-
-    .template-step .step .icon {
-      margin: 10px
-    }
-
-    .template-step h3 {
-      margin-bottom: 10px;
-      font-size: 12pt
-    }
-
-    .template-step .arrow_box {
-      position: relative;
-      width: 100%;
-      height: 60px;
-      padding: 10px;
-      background: #fff;
-      border: 3px solid #ddd
-    }
-
-    .template-step .arrow_box.selected {
-      background: #f6fafd;
-      border: 3px solid #659bc9
-    }
-
-    .template-step .arrow_box.completed {
-      background: #f7fbf6;
-      border: 3px solid #62ae45
-    }
-
-    .template-step .arrow_box * {
-      float: left
-    }
-
-    .template-step .arrow_box:after,
-    .template-step .arrow_box:before {
-      position: absolute;
-      left: 100%;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-      border: solid transparent;
-      content: " "
-    }
-
-    .template-step .arrow_box:after {
-      top: 50%;
-      margin-top: -40px;
-      border-color: rgba(136, 183, 213, 0);
-      border-left-color: #fff;
-      border-width: 40px
-    }
-
-    .template-step .arrow_box:before {
-      top: 50%;
-      margin-top: -42px;
-      margin-left: 2px;
-      border-color: rgba(222, 222, 222, 0);
-      border-left-color: #ddd;
-      border-width: 42px
-    }
-
-    .template-step .arrow_box.selected:after {
-      border-left-color: #f6fafd
-    }
-
-    .template-step .arrow_box.selected:before {
-      border-left-color: #659bc9
-    }
-
-    .template-step .arrow_box.completed:after {
-      border-left-color: #f7fbf6
-    }
-
-    .template-step .arrow_box.completed:before {
-      border-left-color: #62ae45
-    }
-
-    .quick-setup .step-1 .arrow_box .icon {
-      width: 50px;
-      height: 49px;
-      margin-top: 5px;
-      background-position: -300px -13px
-    }
-
-    .quick-setup .step-1 .arrow_box.completed .icon {
-      background-position: -372px -13px
-    }
-
-    .template-step .steps-wrapper .end-of-step {
-      position: absolute;
-      top: 27%;
-      left: 117%;
-      width: 40px;
-      height: 40px;
-      background-repeat: no-repeat
-    }
-
-    .template-step.quick-setup {
-      width: 40%
-    }
-
-    .template-step.quick-setup .step-1 {
-      width: 67%
-    }
-
-    .template-step .steps-wrapper .quick-setup-end-of-step {
-      width: 50px;
-      height: 43px;
-      background-position: -228px -18px
-    }
-
-    .template-step .steps-wrapper .completed .quick-setup-end-of-step {
-      height: 49px;
-      background-position: -372px -13px
-    }
-
-    .template-step.advanced-settings {
-      width: 60%
-    }
-
-    .template-step .steps-wrapper .advanced-settings-end-of-step {
-      width: 50px;
-      height: 48px;
-      background-position: -79px -84px
-    }
-
-    .template-step.advanced-settings .step-1 {
-      width: 40%
-    }
-
-    .template-step.advanced-settings .step-2 {
-      width: 40%
-    }
-
-    .advanced-settings .step-1 .arrow_box .icon {
-      width: 50px;
-      height: 48px;
-      margin-top: 5px;
-      background-position: -154px -84px
-    }
-
-    .advanced-settings .step-2 .arrow_box .icon {
-      width: 50px;
-      height: 48px;
-      margin-top: 5px;
-      background-position: -13px -84px
-    }
-
-    #attribute-group-templates .group-template-container .template-wizard-steps {
-      height: 180px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body {
-      height: 80%
-    }
-
-    #attribute-group-templates .group-template-container .template-wizard-body .custom-object-templates {
-      height: 100%
-    }
-
-    #attribute-group-templates .group-template-container .template-wizard-body .custom-object-templates .custom-object-templates-wrapper {
-      position: absolute;
-      left: 0;
-      height: 68%;
-      overflow: auto
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: none;
-      width: 100%;
-      height: 75px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-simpleDialog-footer-link,
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-button-primary,
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-button-secondary {
-      position: relative;
-      top: 17px;
-      font-size: 11pt
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-simpleDialog-footer-link {
-      left: 20px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-button-primary {
-      top: 27px;
-      right: 20px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .fuel-simpleDialog-footer .fuel-button-secondary {
-      top: 16px;
-      margin-right: 30px
-    }
-
-    #attribute-group-templates .group-template-container .custom-object-templates .custom-object-templates-header {
-      padding: 22px
-    }
-
-    #attribute-group-templates .group-template-container .custom-object-templates .custom-object-templates-header h3 {
-      font-size: 14pt
-    }
-
-    #attribute-group-templates .group-template-container .custom-object-templates .custom-object-templates-header p {
-      margin-top: 5px;
-      font-size: 9pt;
-      color: #a0a0a0
-    }
-
-    #attribute-group-templates .group-template-container .custom-object-templates .custom-object-templates-list {
-      height: 100%
-    }
-
-    #attribute-group-templates .custom-object-template-box {
-      float: left;
-      width: 21%;
-      max-width: 350px;
-      min-width: 200px;
-      min-height: 200px;
-      margin-right: 2%;
-      margin-bottom: 2%;
-      margin-left: 2%
-    }
-
-    #attribute-group-templates .custom-object-template-box .custom-object-template-box-header {
-      height: 23px;
-      margin-bottom: 12px
-    }
-
-    #attribute-group-templates .custom-object-template-box .custom-object-template-box-header .custom-object-title-wrapper {
-      width: 100%
-    }
-
-    #attribute-group-templates .custom-object-template-box .custom-object-template-box-header .custom-object-title-wrapper .db-icon {
-      width: 22px;
-      height: 22px;
-      margin-top: 2px;
-      background-position: 0 -340px
-    }
-
-    #attribute-group-templates .custom-object-template-box .custom-object-template-box-content {
-      max-width: 400px;
-      min-height: 300px;
-      padding: 20px;
-      background: #efefef;
-      border: solid 1px #e5ddd3;
-      border-radius: .45em;
-      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2)
-    }
-
-    #attribute-group-templates .custom-object-template-box .custom-object-template-box-content .custom-object-template-attributes {
-      height: 260px;
-      min-height: 260px;
-      margin: 0;
-      overflow-y: auto;
-      background: #FFF;
-      border: 2px solid #dedede;
-      border-radius: 10px
-    }
-
-    .template-attribute-container {
-      margin: 0 10px;
-      line-height: 17px
-    }
-
-    .template-attribute-container .attribute-name {
-      display: inline-block;
-      width: 143px;
-      overflow: hidden;
-      line-height: 20px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      vertical-align: top
-    }
-
-    .template-attribute-container .attribute-type-icon {
-      right: 5px;
-      float: right;
-      width: 20px;
-      height: 20px;
-      margin-top: -1px;
-      background: url('../images/icon-sprites.png');
-      background-repeat: no-repeat
-    }
-
-    .template-attribute-container .attribute-type-icon.typeEmailAddress,
-    .template-attribute-container .attribute-type-icon.typeBase16EncryptedEmail {
-      background-position: 0 -1022px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeText,
-    #attribute-group-templates .attribute-container .attribute .attribute-type-icon.typeBase16Encrypted {
-      background-position: 0 -120px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeLongNumber,
-    .template-attribute-container .attribute-type-icon.typeShortNumber,
-    .template-attribute-container .attribute-type-icon.typeNumber,
-    .template-attribute-container .attribute-type-icon.typeByte,
-    .template-attribute-container .attribute-type-icon.typePhone {
-      background-position: 0 -100px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeDate,
-    .template-attribute-container .attribute-type-icon.typeDateTime {
-      background-position: 0 -140px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeDecimal {
-      background-position: 0 -80px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeArray {
-      background-position: 0 -660px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeBoolean {
-      background-position: 0 -540px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeGeoLatitude {
-      background-position: 0 -620px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeGeoLongitude {
-      background-position: 0 -580px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeLocale {
-      background-position: 0 -1101px
-    }
-
-    .template-attribute-container .attribute-type-icon.typeDecimal {
-      background-position: 0 -1061px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view,
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view .schema-graph .primary,
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .expressioneer .rounded-container .expressioneer-filter {
-      height: 100%
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view .schema-graph .primary {
-      max-height: 510px !important;
-      min-height: 100%;
-      overflow: auto;
-      background: #fff
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view .header-wrapper {
-      height: 33px;
-      margin-bottom: 10px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view .header-wrapper h3 {
-      display: inline-block
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .schema-view .header-wrapper .preview-in-eb {
-      position: absolute;
-      right: 20px
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .expressioneer {
-      width: 100%;
-      height: 87%
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .expressioneer .expressioneer-attributes {
-      width: 25%;
-      height: 90%
-    }
-
-    #attribute-group-templates .group-template-container .template-setup-wrapper .template-wizard-body .expressioneer .rounded-container {
-      width: 72%;
-      height: 90%
-    }
-
-    .attribute-group-template-success-wrapper .success-message {
-      height: 55px;
-      margin-bottom: 12px
-    }
-
-    .attribute-group-template-success-wrapper .success-message .icon,
-    .attribute-group-template-success-wrapper .success-message p,
-    .attribute-group-template-success-wrapper .sample-files-wrapper .download-sample-files-headliner .title h3 {
-      display: inline-block
-    }
-
-    .attribute-group-template-success-wrapper .success-message .icon {
-      width: 25px;
-      height: 22px;
-      background-position: -294px -80px
-    }
-
-    .attribute-group-template-success-wrapper .success-message p {
-      position: relative;
-      top: 3px;
-      width: 90%;
-      font-size: 11pt
-    }
-
-    .attribute-group-template-success-wrapper .dotted-line {
-      width: 100%;
-      height: 10px;
-      border-top: 1px dotted #a0a0a0
-    }
-
-    .attribute-group-template-success-wrapper .sample-files-wrapper .sample-files-container {
-      padding: 10px
-    }
-
-    .attribute-group-template-success-wrapper .sample-files-wrapper .sample-files-container-expand {
-      padding-left: 15px;
-      background: url('../images/attribute-category.png');
-      background-position: 0 -44px;
-      background-repeat: no-repeat
-    }
-
-    .attribute-group-template-success-wrapper .sample-files-wrapper .sample-files-container-expand.collapsed {
-      background-position: 0 0
-    }
-
-    .attribute-group-template-success-wrapper .sample-files-wrapper .sample-files-container p {
-      color: #a0a0a0
-    }
-
-    .group-template-next-steps-dialog-widget {
-      width: 900px;
-      max-width: 900px;
-      min-width: 900px
-    }
-
-    .group-template-next-steps-dialog-widget .fuel-simpleDialog-footer .fuel-button-primary {
-      display: none
-    }
-
-    .group-template-next-steps-dialog {
-      width: 900px;
-      max-width: 900px;
-      min-width: 900px
-    }
-
-    .group-template-next-steps-dialog .next-steps-wizard-steps {
-      width: 900px;
-      max-width: 900px;
-      min-width: 900px;
-      margin-top: -20px;
-      margin-left: -21px;
-      border-radius: 0
-    }
-
-    .group-template-next-steps-dialog .next-steps-wizard-body {
-      min-height: 445px
-    }
-
-    .group-template-next-steps-dialog .next-steps-wizard-body .wizard-step {
-      display: none
-    }
-
-    .group-template-next-steps-dialog .next-steps-wizard-steps .fuel-nav-actions {
-      position: absolute;
-      right: 0;
-      bottom: -38px;
-      z-index: 99
-    }
-
-    .group-template-next-steps-dialog-widget .group-template-next-steps-dialog-title h4 {
-      font-size: 9pt
-    }
-
-    .group-template-next-steps-dialog-widget .group-template-next-steps-dialog-title h3 {
-      margin-top: 5px;
-      font-size: 16pt
-    }
-
-    .group-template-next-steps-dialog-widget .db-icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 4px;
-      background-position: 0 -340px
-    }
-
-    .group-template-next-steps-dialog-widget .file-icon {
-      background-position: -329px -117px
-    }
-
-    .group-template-next-steps-dialog-widget .arrow-icon {
-      background-position: -335px -81px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .title-wrapper {
-      display: inline-block;
-      width: 23%
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .title-wrapper p {
-      margin-top: -10px;
-      color: #a0a0a0
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .mapping-box,
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li.mapping-item .show-mapping-link {
-      width: 360px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-box {
-      width: 77%;
-      min-width: 200px;
-      min-height: 200px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-box .box-header {
-      height: 35px;
-      border-bottom: 1px solid #efefef
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-box .box-header .title {
-      width: 50%
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-box .box-header .title.one {
-      width: 46%;
-      margin-left: 4%
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .box-content {
-      height: 435px;
-      min-height: 260px;
-      margin: 0;
-      background: #FFF;
-      border: 2px solid #dedede;
-      border-radius: 4px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list {
-      width: 100%;
-      height: 92%;
-      margin: 0 !important;
-      overflow-y: auto;
-      background: #f5f5f5
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li {
-      width: 94%;
-      list-style: none;
-      background: #FFF
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li.mapping-item {
-      height: 50px;
-      padding: 10px;
-      margin: 2%;
-      margin-bottom: 3%;
-      border: 1px solid #f5f5f5;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.07)
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .name-wrapper * {
-      position: relative;
-      display: inline-block
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .name-wrapper .icon {
-      top: 3px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .name-wrapper .name {
-      top: -3px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .mapping-item-box {
-      width: 100%
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .mapping-item-box i {
-      margin-top: 5px;
-      margin-right: 10px;
-      margin-left: 10px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li .mapping-item-box .name-wrapper {
-      width: 45%;
-      padding: 2px;
-      border: 1px solid #DDD;
-      border-radius: 5px
-    }
-
-    .group-template-next-steps-dialog-widget .data-mapping-wrapper .mapping-container .mapping-list li.mapping-item .show-mapping-link {
-      width: 95%;
-      margin: 10px;
-      text-align: center
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .title-column {
-      width: 18%
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper {
-      height: 365px;
-      border: 1px solid #DDD;
-      border-radius: 5px
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box {
-      width: 168px;
-      height: 100%;
-      border: 1px solid #DDD;
-      border-bottom: 0;
-      border-radius: 5px
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-box-header {
-      padding: 5px;
-      background: #f0f2f3;
-      border: 1px solid #DDD;
-      border-top: 0;
-      border-left: none;
-      border-radius: 3px
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-box-header span {
-      font-size: 10pt
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .import-definition-properties {
-      position: relative;
-      top: 10px
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list {
-      height: 100%;
-      margin-left: 0 !important;
-      overflow: auto
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list-wrapper {
-      height: 338px
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list li {
-      max-width: 168px;
-      padding: 5px;
-      overflow: hidden;
-      font-size: 10pt;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      cursor: pointer
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list li:hover {
-      background-color: #d9eaf5
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list li.selected {
-      background-color: #b9dff1
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list li .db-icon {
-      display: inline-block
-    }
-
-    .group-template-next-steps-dialog-widget .import-properties-wrapper .import-definition-wrapper .data-sets-box .data-sets-list li span {
-      position: relative;
-      top: -4px
-    }
-
-    .schedule-updates-wrapper .start-date-wrapper .fixed-date-form,
-    .schedule-updates-wrapper form .frequency-date-picker,
-    .schedule-updates-wrapper .fixed-date-form .start-date-picker {
-      display: inline-block
-    }
-
-    .schedule-updates-wrapper .update-frequency-form .frequency-date-picker .fuel-datepicker {
-      display: none
-    }
-
-    .schedule-updates-wrapper .start-date-picker .fuel-datepicker .fuel-datepicker-input {
-      width: 159px;
-      margin-top: -1px
-    }
-
-    .schedule-updates-wrapper .fuel-datepicker-time .fuel-inputDropContainer {
-      width: 116px !important
-    }
-
-    .schedule-updates-wrapper .fuel-datepicker-time .fuel-inputDropContainer input.fuel-combobox-input {
-      border: 0
-    }
-
-    .schedule-updates-wrapper .fuel-datepicker-time .fuel-inputDropContainer .fuel-combobox-droplist ul {
-      margin: 0
-    }
-
-    .schedule-updates-wrapper form .frequency-date-picker,
-    .schedule-updates-wrapper .fixed-date-form .start-date-picker {
-      position: relative;
-      top: -3px
-    }
-
-    .schedule-updates-wrapper .dropdown-toggle {
-      min-width: 110px
-    }
-
-    .schedule-updates-wrapper .dropdown-toggle.timezone-toggle {
-      width: 150px
-    }
-
-    .schedule-updates-wrapper .dropdown-toggle .selected-value {
-      width: 85px;
-      overflow: hidden;
-      text-align: left;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
-
-    .schedule-updates-wrapper .dropdown-toggle.timezone-toggle .selected-value {
-      width: 135px
-    }
-
-    #contactsMatchingRules {
-      margin-top: 10px
-    }
-
-    #contactsMatchingRules .panel {
-      position: relative
-    }
-
-    #contactsMatchingRules .panel.selected {
-      border: 1px solid #3184ef
-    }
-
-    #contactsMatchingRules .panel-heading {
-      position: relative
-    }
-
-    #contactsMatchingRules .panel-heading button {
-      position: absolute;
-      top: 7px;
-      right: 10px
-    }
-
-    #contactsMatchingRules .panel-body {
-      padding: 0
-    }
-
-    #contactsMatchingRules .row-margin-bottom {
-      margin-bottom: 20px
-    }
-
-    #contactsMatchingRules .addresses-container {
-      height: 300px;
-      overflow-y: auto;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none
-    }
-
-    #contactsMatchingRules .address-group-box:nth-of-type(2),
-    #contactsMatchingRules .address-group-box:nth-of-type(3),
-    #contactsMatchingRules .address-group-box:nth-of-type(4) {
-      display: none !important
-    }
-
-    #contactsMatchingRules .table {
-      margin: 0;
-      border-bottom: 1px dotted #DDD
-    }
-
-    #contactsMatchingRules .table>thead>tr>th:first-child {
-      width: 44px;
-      max-width: 44px
-    }
-
-    #contactsMatchingRules .table td {
-      position: relative;
-      padding: 0;
-      line-height: 1em;
-      text-align: left;
-      vertical-align: middle
-    }
-
-    .attributes_second {
-      padding: 5px;
-      margin: 0;
-      list-style-type: none;
-    }
-  </style>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -1734,477 +33,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
-  <script type="text/javascript">
-    var fieldList = [];
-    var result = {};
-    var button;
-    var words;
-    var parsedData;
-    var checkedEmailArray = [];
-    var fieldsArray = [];
-    var defieldsArray = [];
-    var parsedData1;
-    var DEDragData = {
-      "DEName" : '',
-      "DEExtKey" : ''
-    };
-    var parsedDragData2 = {};
-    var parsedDragData2Array = [];
-    var deFieldListarray = [];
-    var num = 0;
-    var JoinQueryDESelectedFields = [];
-    var DEListMap = {};
-    var DESetQueryBox = new Set();
-    
-    function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
-      $.ajax
-      ({
-        url: '/DEListFetch',
-        data: {
-          "assetType": "DEListFetch"
-        },
-        type: "POST",
-        headers: {
-          'Content-type': "application/json"
-        },
-        success: function (data) {
-          DEListMap = data;
-          for (var key in data) {
-            document.getElementById("Data Extensions").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
-          };
-          document.getElementById('FullPageSpinner').style.display = 'none';
-          document.getElementById('DEListSidebar').style.marginTop = '0px';
-        }
-      })
-    }
-
-    function allowDrop(ev, event) {
-      ev.preventDefault();
-    }
-
-    document.ondragstart = function (event) {
-      var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-      event.dataTransfer.setData("text/plain", JSON.stringify(obj));
-    };
-    document.ondragover = function (event, ev) {
-      event.preventDefault();
-    };
-
-    function drop(event, target) {
-      event.preventDefault();
-      document.getElementById('grid-1-de').innerHTML = '';
-      document.getElementById('ulList').innerHTML = '';
-      DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-      DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
-      if (DESetQueryBox.has(DEDragData.DEExtKey)) {
-        document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
-        document.getElementById('DEListDivAlert').style.display = 'block';
-      }
-      else {
-        document.getElementById('DEListDivAlert').style.display = 'none';
-        document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
-        DEListMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-        for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
-        }
-        document.getElementById('RelationPopup').style.display = 'block';
-      }
-    };
-
-    function drop2(event, target) {
-      event.preventDefault();
-      var DEWhereClauseDragData = {
-        "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
-        "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
-      }
-      insertTextAtCaret(DEWhereClauseDragData.FieldName);
-      function insertTextAtCaret(FieldName) {
-        var sel, range;
-        if (window.getSelection) {
-          sel = window.getSelection();
-          var parentID = window.getSelection().anchorNode.parentNode.id;
-          var anchorID = window.getSelection().anchorNode.id;
-          var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-          if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
-            if (sel.getRangeAt && sel.rangeCount) {
-              range = sel.getRangeAt(0);
-              range.deleteContents();
-              range.insertNode(document.createTextNode(FieldName));
-            }
-          }
-        }
-      }
-    };
-
-    function Previous() {
-      if (DEDragData.DEExtKey != '') {
-        document.getElementById('SecondModal').style.display = 'none';
-        document.getElementById('RelationPopup').style.display = 'block';
-        document.getElementById('ulList').innerHTML = '';
-      }
-      if (openSelectFieldsDEExtKey != '') {
-        document.getElementById('SecondModal').style.display = 'none';
-        document.getElementById('RelationPopup').style.display = 'block';
-        document.getElementById('ulList').innerHTML = '';
-        document.getElementById('grid-1-de').innerHTML = '';
-        OpenSelectField(openSelectFieldsDEExtKey + "OpenSelectField");
-      }
-      if (openWhereDEExtKey != '') {
-        document.getElementById('SecondModal').style.display = 'none';
-        document.getElementById('RelationPopup').style.display = 'block';
-        document.getElementById('ulList').innerHTML = '';
-        document.getElementById('grid-1-de').innerHTML = '';
-        OpenSelectField(openWhereDEExtKey + "OpenSelectField");
-      }
-    }
-
-
-
-    var lastQuery = '';
-    function validateQuery(JoinQueryDetails, actionType) {
-      if (DESetQueryBox.size != 0) {
-        document.getElementById('MainDivAlert').style.display = 'none';
-        document.getElementById('FullPageSpinner').style.display = 'block';
-        document.getElementById('DEListSidebar').style.marginTop = '-650px';
-        
-
-        /*
-        JoinQueryDetails["PrimaryDE"] = {
-          "DEName" : FirstDEExtKeyForJoinGlobal,
-          "DEExtKey" : DEListMapFinal[FirstDEExtKeyForJoinGlobal].DEExtKey,
-          "DESelectedFields" : DEListMapFinal[FirstDEExtKeyForJoinGlobal].DESelectedFields,
-          "JoinField" : document.getElementById('FirstDEField').value
-        }
-        JoinQueryDetails["DEForJoin"].push({
-          "FirstDEName" : FirstDEExtKeyForJoinGlobal,
-          "FirstDEJoinField" : document.getElementById('FirstDEField').value,
-  
-          "JoinType" : document.getElementById('select-01').value,
-          
-          "SecondDEName" : document.getElementById('select-02').value,
-          "SecondDEJoinField" : document.getElementById('SecondDEField').value
-        });*/
-
-        var strQuery = 'SELECT';
-        if (JoinQueryDetails.DEForJoin.length != 0) {
-          var tempDESet = new Set();
-          for (var key in JoinQueryDetails.DEForJoin) {
-            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
-                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-            }
-
-            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
-                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
-            }
-          }
-          strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
-          for (var key in JoinQueryDetails.DEForJoin) {
-            strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
-          }
-
-          var FirstDEWhereClause = '';
-          var SecondDEWhereClause = '';
-          tempDESet = new Set();
-          for (var key in JoinQueryDetails.DEForJoin) {
-            FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
-            SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
-            if (FirstDEWhereClause != '') {
-              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields) {
-                var regex = new RegExp(DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields[key1]["FieldName"], "g")
-                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields[key1]["FieldName"] + ']');
-              }
-            }
-            if (SecondDEWhereClause != '') {
-              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields) {
-                var regex = new RegExp(DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields[key2]["FieldName"], "g")
-                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields[key2]["FieldName"] + ']');
-              }
-            }
-
-
-
-            if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
-              if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-                if (strQuery.indexOf(' WHERE ') !== -1) {
-                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-                }
-                else {
-                  strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-                }
-                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
-              }
-              else if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-                if (strQuery.indexOf(' WHERE ') !== -1) {
-                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
-                }
-                else {
-                  strQuery += ' WHERE ' + FirstDEWhereClause;
-                }
-                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-              }
-              else if (tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-                if (strQuery.indexOf(' WHERE ') !== -1) {
-                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-                }
-                else {
-                  strQuery += ' WHERE ' + SecondDEWhereClause;
-                }
-                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
-              }
-            }
-            else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
-              if (strQuery.indexOf(' WHERE ') !== -1) {
-                strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
-              }
-              else {
-                strQuery += ' WHERE ' + FirstDEWhereClause;
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
-            }
-            else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
-              if (strQuery.indexOf(' WHERE ') !== -1) {
-                strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
-              }
-              else {
-                strQuery += ' WHERE ' + SecondDEWhereClause;
-              }
-              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
-            }
-
-          }
-        }
-        else if(DESetQueryBox.size == 1) {
-          for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
-          }
-          strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
-          if (whereClauseValue != '') {
-            for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DEFields) {
-              var regex = new RegExp(DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
-            }
-            strQuery += ' WHERE ' + whereClauseValue;
-          }
-
-          for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            FieldSet.add(JSON.stringify({
-              "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
-              "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
-            }));
-          }
-        }
-
-
-
-        console.log("dynamic Query --> " + strQuery);
-
-        JoinQueryDESelectedFields = [];
-        for (var val of Array.from(FieldSet)) {
-          JoinQueryDESelectedFields.push(JSON.parse(val));
-        }
-        console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
-
-        $.ajax
-          ({
-            url: '/validatequery',
-            data: {
-              'dynamicQuery': strQuery,
-              'actionType': actionType,
-              'JoinQueryDESelectedFields': JoinQueryDESelectedFields
-            },
-            type: "POST",
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (data) {
-              console.log('data : ' + JSON.stringify(data));
-              if (actionType != "run") {
-                document.getElementById('FullPageSpinner').style.display = 'none';
-                document.getElementById('DEListSidebar').style.marginTop = '0px';
-              }
-              if (data.validatequery == true) {
-                document.getElementById('QueryValidateTrueAlert').style.display = 'block';
-                document.getElementById('QueryValidateFalseAlert').style.display = 'none';
-              }
-              else {
-                document.getElementById('QueryValidateTrueAlert').style.display = 'none';
-                document.getElementById('QueryValidateFalseAlert').style.display = 'block';
-              }
-            }
-
-          })
-
-
-        var tempData = "false";
-
-        if (actionType == "run") {
-          var b = setInterval(function () {
-            DERecordGetClient();
-            //console.log("tempData setInterval : " + JSON.stringify(tempData));
-            //if (tempData != "false" ) {
-            //  DEListShow(tempData);
-            //  document.getElementById('FullPageSpinner').style.display = 'none';
-            //  clearInterval(b);
-            //}
-          }, 3000);
-        }
-
-      }
-      else {
-        document.getElementById('MainDivAlert').style.display = 'Block';
-        document.getElementById('FullPageSpinner').style.display = 'none';
-      }
-
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
-        if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
-        }
-        return queryStr;
-      }
-      function DERecordGetClient() {
-        $.ajax
-          ({
-            url: '/DERecordGet',
-            data: {
-              'DERecordGet': "True"
-            },
-            type: "POST",
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (data) {
-              tempData = data;
-              //console.log('data resCall1 : ' + JSON.stringify(data));
-              console.log("tempData setInterval : " + JSON.stringify(tempData));
-              if (tempData != "false") {
-                DEListShow(tempData);
-                document.getElementById('FullPageSpinner').style.display = 'none';
-                document.getElementById('DEListSidebar').style.marginTop = '0px';
-                clearInterval(b);
-              }
-            }
-          })
-      }
-      function DEListShow(DERecords) {
-        var DETableBody = ""
-
-        if (DERecords.lemgth != 0) {
-
-          DETableBody = '<table class="slds-table slds-table--bordered">' +
-            '<thead>' +
-            '<tr class="slds-text-heading--label">';
-
-          for (var key in DERecords[0]) {
-            DETableBody += '<th class="slds-cell-shrink" scope="col">' +
-              '<span class="slds-truncate">' + key + '</span>' +
-              '</th>';
-          }
-          DETableBody += '</tr>' +
-            '</thead>' +
-            '<tbody>';
-
-          for (var i in DERecords) {
-            DETableBody += '<tr class="slds-hint-parent">';
-            for (var key in DERecords[i]) {
-              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
-            }
-            DETableBody += '</tr>';
-          }
-
-          DETableBody += '</tbody>' +
-            '</table>';
-          document.getElementById('recordResultModal').style.display = 'block';
-          document.getElementById('grid-record-result').innerHTML = DETableBody;
-        }
-      }
-    }
-
-    function CancelDERecordModal() {
-      document.getElementById('recordResultModal').style.display = 'none';
-    }
-
-    var openSelectFieldsDEExtKey = '';
-    function Next() {
-      document.getElementById("RichTextEditor").innerHTML = '';
-      var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
-      if (checkboxesCheck.length > 0) {
-        document.getElementById('RelationPopup').style.display = 'none';
-        document.getElementById('SecondModal').style.display = 'block';
-        document.getElementById('FieldSelectNextAlert').style.display = 'none';
-        document.getElementById('ulList').innerHTML = '';
-        if (openSelectFieldsDEExtKey == '') {
-          for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-              '<div class="slds-tree__item slds-is-selected">' +
-              ' <span class="slds-size_1-of-1">' +
-              '<span > <button value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
-              ' </span>' +
-              '  </div>' +
-              '</li>';
-          }
-        }
-        else {
-          OpenWhere(openSelectFieldsDEExtKey + 'OpenWhere');
-        }
-      }
-      else {
-        document.getElementById('FieldSelectNextAlert').style.display = 'Block';
-      }
-    }
-
-
-
-    function CancelQueryBoxAlert() {
-      document.getElementById('MainDivAlert').style.display = 'none';
-    }
-
-    function CancelFieldSelectNextAlert() {
-      document.getElementById('FieldSelectNextAlert').style.display = 'none';
-    }
-
-    function CancelDEListDivAlert() {
-      document.getElementById('DEListDivAlert').style.display = 'none';
-    }
-
-    function CancelQueryValidateTrueAlert() {
-      document.getElementById('QueryValidateTrueAlert').style.display = 'none';
-    }
-
-    function CancelQueryValidateFalseAlert() {
-      document.getElementById('QueryValidateFalseAlert').style.display = 'none';
-    }
-
-  </script>
 
   <style>
     #marketing-asideLeft {
@@ -4291,14 +2119,469 @@
 
     
 
-  <script>
+  <script type="text/javascript">
     onloadofBody();
 
-
-
+    var DEDragData = {
+      "DEName" : '',
+      "DEExtKey" : ''
+    };
+    var JoinQueryDetails = {
+      "PrimaryDE": {},
+      "DEForJoin": []
+    }
+    var JoinQueryDESelectedFields = [];
+    var DEListMap = {};
+    var openSelectFieldsDEExtKey = '';
+    var openWhereDEExtKey = '';
+    var FirstDEExtKeyForJoinGlobal;
+    var DESetQueryBox = new Set();
     var FieldSet = new Set();
+    var joinedDivSet = new Set();
     
-    var DERecordJSON = {};
+    function onloadofBody() {
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      $.ajax
+      ({
+        url: '/DEListFetch',
+        data: {
+          "assetType": "DEListFetch"
+        },
+        type: "POST",
+        headers: {
+          'Content-type': "application/json"
+        },
+        success: function (data) {
+          DEListMap = data;
+          for (var key in data) {
+            document.getElementById("Data Extensions").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
+          };
+          document.getElementById('FullPageSpinner').style.display = 'none';
+          document.getElementById('DEListSidebar').style.marginTop = '0px';
+        }
+      })
+    }
+
+    function allowDrop(ev, event) {
+      ev.preventDefault();
+    }
+
+    document.ondragstart = function (event) {
+      var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+    };
+
+    document.ondragover = function (event, ev) {
+      event.preventDefault();
+    };
+
+    function drop(event, target) {
+      event.preventDefault();
+      document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('ulList').innerHTML = '';
+      DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+      DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+      if (DESetQueryBox.has(DEDragData.DEExtKey)) {
+        document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
+        document.getElementById('DEListDivAlert').style.display = 'block';
+      }
+      else {
+        document.getElementById('DEListDivAlert').style.display = 'none';
+        document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
+        DEListMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+        for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
+          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+        }
+        document.getElementById('RelationPopup').style.display = 'block';
+      }
+    };
+
+    function drop2(event, target) {
+      event.preventDefault();
+      var DEWhereClauseDragData = {
+        "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
+        "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
+      }
+      insertTextAtCaret(DEWhereClauseDragData.FieldName);
+      function insertTextAtCaret(FieldName) {
+        var sel, range;
+        if (window.getSelection) {
+          sel = window.getSelection();
+          var parentID = window.getSelection().anchorNode.parentNode.id;
+          var anchorID = window.getSelection().anchorNode.id;
+          var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+          if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
+            if (sel.getRangeAt && sel.rangeCount) {
+              range = sel.getRangeAt(0);
+              range.deleteContents();
+              range.insertNode(document.createTextNode(FieldName));
+            }
+          }
+        }
+      }
+    };
+
+    function Previous() {
+      if (DEDragData.DEExtKey != '') {
+        document.getElementById('SecondModal').style.display = 'none';
+        document.getElementById('RelationPopup').style.display = 'block';
+        document.getElementById('ulList').innerHTML = '';
+      }
+      if (openSelectFieldsDEExtKey != '') {
+        document.getElementById('SecondModal').style.display = 'none';
+        document.getElementById('RelationPopup').style.display = 'block';
+        document.getElementById('ulList').innerHTML = '';
+        document.getElementById('grid-1-de').innerHTML = '';
+        OpenSelectField(openSelectFieldsDEExtKey + "OpenSelectField");
+      }
+      if (openWhereDEExtKey != '') {
+        document.getElementById('SecondModal').style.display = 'none';
+        document.getElementById('RelationPopup').style.display = 'block';
+        document.getElementById('ulList').innerHTML = '';
+        document.getElementById('grid-1-de').innerHTML = '';
+        OpenSelectField(openWhereDEExtKey + "OpenSelectField");
+      }
+    }
+
+    function validateQuery(JoinQueryDetails, actionType) {
+      if (DESetQueryBox.size != 0) {
+        document.getElementById('MainDivAlert').style.display = 'none';
+        document.getElementById('FullPageSpinner').style.display = 'block';
+        document.getElementById('DEListSidebar').style.marginTop = '-650px';
+        
+
+        /*
+        JoinQueryDetails["PrimaryDE"] = {
+          "DEName" : FirstDEExtKeyForJoinGlobal,
+          "DEExtKey" : DEListMapFinal[FirstDEExtKeyForJoinGlobal].DEExtKey,
+          "DESelectedFields" : DEListMapFinal[FirstDEExtKeyForJoinGlobal].DESelectedFields,
+          "JoinField" : document.getElementById('FirstDEField').value
+        }
+        JoinQueryDetails["DEForJoin"].push({
+          "FirstDEName" : FirstDEExtKeyForJoinGlobal,
+          "FirstDEJoinField" : document.getElementById('FirstDEField').value,
+  
+          "JoinType" : document.getElementById('select-01').value,
+          
+          "SecondDEName" : document.getElementById('select-02').value,
+          "SecondDEJoinField" : document.getElementById('SecondDEField').value
+        });*/
+
+        var strQuery = 'SELECT';
+        if (JoinQueryDetails.DEForJoin.length != 0) {
+          var tempDESet = new Set();
+          for (var key in JoinQueryDetails.DEForJoin) {
+            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
+              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DESelectedFields[key1]["FieldName"] + '],';
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+            }
+
+            if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DESelectedFields[key2]["FieldName"] + '],';
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
+            }
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+          for (var key in JoinQueryDetails.DEForJoin) {
+            strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+          }
+
+          var FirstDEWhereClause = '';
+          var SecondDEWhereClause = '';
+          tempDESet = new Set();
+          for (var key in JoinQueryDetails.DEForJoin) {
+            FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEName + 'WhereClause').innerHTML;
+            SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEName + 'WhereClause').innerHTML;
+            if (FirstDEWhereClause != '') {
+              for (var key1 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields) {
+                var regex = new RegExp(DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields[key1]["FieldName"], "g")
+                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].FirstDEName].DEFields[key1]["FieldName"] + ']');
+              }
+            }
+            if (SecondDEWhereClause != '') {
+              for (var key2 in DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields) {
+                var regex = new RegExp(DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields[key2]["FieldName"], "g")
+                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + DEListMapFinal[JoinQueryDetails.DEForJoin[key].SecondDEName].DEFields[key2]["FieldName"] + ']');
+              }
+            }
+
+
+
+            if (FirstDEWhereClause != '' && SecondDEWhereClause != '') {
+              if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + FirstDEWhereClause + ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+              }
+              else if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + FirstDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+              }
+              else if (tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName) && !tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
+                if (strQuery.indexOf(' WHERE ') !== -1) {
+                  strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+                }
+                else {
+                  strQuery += ' WHERE ' + SecondDEWhereClause;
+                }
+                tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+              }
+            }
+            else if (FirstDEWhereClause != '' && SecondDEWhereClause == '') {
+              if (strQuery.indexOf(' WHERE ') !== -1) {
+                strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + FirstDEWhereClause;
+              }
+              else {
+                strQuery += ' WHERE ' + FirstDEWhereClause;
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
+            }
+            else if (FirstDEWhereClause == '' && SecondDEWhereClause != '') {
+              if (strQuery.indexOf(' WHERE ') !== -1) {
+                strQuery += ' ' + JoinQueryDetails.DEForJoin[key].WhereClauseANDOR + ' ' + SecondDEWhereClause;
+              }
+              else {
+                strQuery += ' WHERE ' + SecondDEWhereClause;
+              }
+              tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
+            }
+
+          }
+        }
+        else if(DESetQueryBox.size == 1) {
+          for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          if (whereClauseValue != '') {
+            for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
+            strQuery += ' WHERE ' + whereClauseValue;
+          }
+
+          for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            FieldSet.add(JSON.stringify({
+              "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
+            }));
+          }
+        }
+
+
+
+        console.log("dynamic Query --> " + strQuery);
+
+        JoinQueryDESelectedFields = [];
+        for (var val of Array.from(FieldSet)) {
+          JoinQueryDESelectedFields.push(JSON.parse(val));
+        }
+        console.log("Join Query Details ----> " + JSON.stringify(JoinQueryDESelectedFields));
+
+        $.ajax
+          ({
+            url: '/validatequery',
+            data: {
+              'dynamicQuery': strQuery,
+              'actionType': actionType,
+              'JoinQueryDESelectedFields': JoinQueryDESelectedFields
+            },
+            type: "POST",
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (data) {
+              console.log('data : ' + JSON.stringify(data));
+              if (actionType != "run") {
+                document.getElementById('FullPageSpinner').style.display = 'none';
+                document.getElementById('DEListSidebar').style.marginTop = '0px';
+              }
+              if (data.validatequery == true) {
+                document.getElementById('QueryValidateTrueAlert').style.display = 'block';
+                document.getElementById('QueryValidateFalseAlert').style.display = 'none';
+              }
+              else {
+                document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+                document.getElementById('QueryValidateFalseAlert').style.display = 'block';
+              }
+            }
+
+          })
+
+
+        var tempData = "false";
+
+        if (actionType == "run") {
+          var b = setInterval(function () {
+            DERecordGetClient();
+            //console.log("tempData setInterval : " + JSON.stringify(tempData));
+            //if (tempData != "false" ) {
+            //  DEListShow(tempData);
+            //  document.getElementById('FullPageSpinner').style.display = 'none';
+            //  clearInterval(b);
+            //}
+          }, 3000);
+        }
+
+      }
+      else {
+        document.getElementById('MainDivAlert').style.display = 'Block';
+        document.getElementById('FullPageSpinner').style.display = 'none';
+      }
+
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
+        if (JoinType == 'Left Outer Join') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Left Outer Join with Exclusion') {
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Right Outer Join') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Right Outer Join with Exclusion') {
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+        }
+        else if (JoinType == 'Inner Join') {
+          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Full Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+        }
+        else if (JoinType == 'Outer Join') {
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        }
+        return queryStr;
+      }
+      function DERecordGetClient() {
+        $.ajax
+          ({
+            url: '/DERecordGet',
+            data: {
+              'DERecordGet': "True"
+            },
+            type: "POST",
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (data) {
+              tempData = data;
+              //console.log('data resCall1 : ' + JSON.stringify(data));
+              console.log("tempData setInterval : " + JSON.stringify(tempData));
+              if (tempData != "false") {
+                DEListShow(tempData);
+                document.getElementById('FullPageSpinner').style.display = 'none';
+                document.getElementById('DEListSidebar').style.marginTop = '0px';
+                clearInterval(b);
+              }
+            }
+          })
+      }
+      function DEListShow(DERecords) {
+        var DETableBody = ""
+
+        if (DERecords.lemgth != 0) {
+
+          DETableBody = '<table class="slds-table slds-table--bordered">' +
+            '<thead>' +
+            '<tr class="slds-text-heading--label">';
+
+          for (var key in DERecords[0]) {
+            DETableBody += '<th class="slds-cell-shrink" scope="col">' +
+              '<span class="slds-truncate">' + key + '</span>' +
+              '</th>';
+          }
+          DETableBody += '</tr>' +
+            '</thead>' +
+            '<tbody>';
+
+          for (var i in DERecords) {
+            DETableBody += '<tr class="slds-hint-parent">';
+            for (var key in DERecords[i]) {
+              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+            }
+            DETableBody += '</tr>';
+          }
+
+          DETableBody += '</tbody>' +
+            '</table>';
+          document.getElementById('recordResultModal').style.display = 'block';
+          document.getElementById('grid-record-result').innerHTML = DETableBody;
+        }
+      }
+    }
+
+    function CancelDERecordModal() {
+      document.getElementById('recordResultModal').style.display = 'none';
+    }
+
+    function Next() {
+      document.getElementById("RichTextEditor").innerHTML = '';
+      var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
+      if (checkboxesCheck.length > 0) {
+        document.getElementById('RelationPopup').style.display = 'none';
+        document.getElementById('SecondModal').style.display = 'block';
+        document.getElementById('FieldSelectNextAlert').style.display = 'none';
+        document.getElementById('ulList').innerHTML = '';
+        if (openSelectFieldsDEExtKey == '') {
+          for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
+            document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+              '<div class="slds-tree__item slds-is-selected">' +
+              ' <span class="slds-size_1-of-1">' +
+              '<span > <button value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+              ' </span>' +
+              '  </div>' +
+              '</li>';
+          }
+        }
+        else {
+          OpenWhere(openSelectFieldsDEExtKey + 'OpenWhere');
+        }
+      }
+      else {
+        document.getElementById('FieldSelectNextAlert').style.display = 'Block';
+      }
+    }
+
+    function CancelQueryBoxAlert() {
+      document.getElementById('MainDivAlert').style.display = 'none';
+    }
+
+    function CancelFieldSelectNextAlert() {
+      document.getElementById('FieldSelectNextAlert').style.display = 'none';
+    }
+
+    function CancelDEListDivAlert() {
+      document.getElementById('DEListDivAlert').style.display = 'none';
+    }
+
+    function CancelQueryValidateTrueAlert() {
+      document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+    }
+
+    function CancelQueryValidateFalseAlert() {
+      document.getElementById('QueryValidateFalseAlert').style.display = 'none';
+    }
+
     function RunQuery() {
       for (var val of Array.from(FieldSet)) {
         JoinQueryDESelectedFields.push(JSON.parse(val));
@@ -4372,8 +2655,7 @@
         "DEExtKey" : ''
       }
     }
-
-    var openWhereDEExtKey = '';
+ 
     function OpenWhere(EleDEExtKey) {
       EleDEExtKey = EleDEExtKey.split("OpenWhere");
       EleDEExtKey = EleDEExtKey[0];
@@ -4600,9 +2882,6 @@
       */
     }
 
-
-    var FirstDEExtKeyForJoinGlobal;
-    var joinImage;
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -4753,17 +3032,13 @@
     }
 
     function SecondDEChange() {
-      console.log('SecondDEExtKey : ' + document.getElementById('select-02').value + ' , SecondDEName : ' + DEListMap[document.getElementById('select-02').value].DEName)
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
-        console.log('IF');
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
-        console.log('Fields : ' + DEListMap[document.getElementById('select-02').value].DEFields);
         for (var i in DEListMap[document.getElementById('select-02').value].DEFields) {
           document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
         }
       }
       else {
-        console.log('ELSE');
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
       }
     }
@@ -4772,12 +3047,6 @@
       document.getElementById('ThirdModal').style.display = 'none';
     }
 
-
-    var joinedDivSet = new Set();
-    var JoinQueryDetails = {
-      "PrimaryDE": {},
-      "DEForJoin": []
-    }
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
@@ -4818,33 +3087,7 @@
           }
         }
       }
-    
-
       document.getElementById('ThirdModal').style.display = 'none';
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
-        if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
-        }
-        else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
-        }
-        else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
-        }
-        return queryStr;
-      }
     }
 
     function deleteDiv(DEExtKeyFordeleteDiv) {
