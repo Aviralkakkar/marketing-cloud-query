@@ -4664,7 +4664,7 @@
           
         for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
           if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-            joinTwoDivString += '<option value="' + DEListMap[DEExtKeyLoop].DEName + '">' + DEListMap[DEExtKeyLoop].DEName + '</option>';
+            joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap[DEExtKeyLoop].DEName + '</option>';
           }
         }
         joinTwoDivString += '</select>' +
