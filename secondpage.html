@@ -1872,7 +1872,7 @@
 
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
           
 
@@ -2120,8 +2120,6 @@
     
 
   <script type="text/javascript">
-    onloadofBody();
-
     var DEDragData = {
       "DEName" : '',
       "DEExtKey" : ''
@@ -2138,7 +2136,9 @@
     var DESetQueryBox = new Set();
     var FieldSet = new Set();
     var joinedDivSet = new Set();
-    
+
+
+    onloadofBody();
     function onloadofBody() {
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
@@ -2245,7 +2245,39 @@
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-      if (DESetQueryBox.size != 0) {
+      var strQuery = 'SELECT';
+      function eqSet(as, bs) {
+        if (as.size !== bs.size) return false;
+        for (var a of as) if (!bs.has(a)) return false;
+        return true;
+      }
+      console.log('eqSet(DESetQueryBox , joinedDivSet) : ' + eqSet(DESetQueryBox , joinedDivSet))
+
+
+      if(DESetQueryBox.size == 1) {
+        for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+          strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
+        }
+        strQuery = strQuery.slice(0, -1);
+        strQuery += ' FROM [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+        var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+        if (whereClauseValue != '') {
+          for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DEFields) {
+            var regex = new RegExp(DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+            whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+          }
+          strQuery += ' WHERE ' + whereClauseValue;
+        }
+
+        for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+          FieldSet.add(JSON.stringify({
+            "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
+            "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
+          }));
+        }
+      }
+      else if (DESetQueryBox.size > 1 && eqSet(DESetQueryBox , joinedDivSet)) {
+        
         document.getElementById('MainDivAlert').style.display = 'none';
         document.getElementById('FullPageSpinner').style.display = 'block';
         document.getElementById('DEListSidebar').style.marginTop = '-650px';
@@ -2268,7 +2300,7 @@
           "SecondDEJoinField" : document.getElementById('SecondDEField').value
         });*/
 
-        var strQuery = 'SELECT';
+        
         if (JoinQueryDetails.DEForJoin.length != 0) {
           var tempDESet = new Set();
           for (var key in JoinQueryDetails.DEForJoin) {
@@ -2364,29 +2396,7 @@
 
           }
         }
-        else if(DESetQueryBox.size == 1) {
-          for (var i in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            strQuery += ' [' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
-          }
-          strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
-          if (whereClauseValue != '') {
-            for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DEFields) {
-              var regex = new RegExp(DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
-            }
-            strQuery += ' WHERE ' + whereClauseValue;
-          }
-
-          for (var key in DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            FieldSet.add(JSON.stringify({
-              "FieldName": DEDragData.DEName + " " + DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldName"],
-              "FieldType": DEListMap[Array.from(DESetQueryBox)[0]].DESelectedFields[key]["FieldType"]
-            }));
-          }
-        }
-
+        
 
 
         console.log("dynamic Query --> " + strQuery);
@@ -2411,7 +2421,7 @@
             },
             success: function (data) {
               console.log('data : ' + JSON.stringify(data));
-              if (actionType != "run") {
+              if (actionType == "Validate") {
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
               }
@@ -2430,7 +2440,7 @@
 
         var tempData = "false";
 
-        if (actionType == "run") {
+        if (actionType == "Run") {
           var b = setInterval(function () {
             DERecordGetClient();
             //console.log("tempData setInterval : " + JSON.stringify(tempData));
