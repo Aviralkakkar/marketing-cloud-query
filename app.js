@@ -38,49 +38,15 @@ app.set('view engine', 'html');
 
 
 app.post("/secondpage", async function (req, res) {
-  // var clientidSource = req.body.clientid;
-  var clientidSource = "sr7id7zht854bwdco8t9qdym";
-  // var clientsecretSource = req.body.clientsecret;
+  // var clientid = req.body.clientid;
+  // var clientsecret = req.body.clientsecret;
   // var clinentauthurl= req.body.authurl;
-  var clientsecretSource = "vhmEsBaxDl3LVeqYbLUxsg6p";
+  var clientid = "sr7id7zht854bwdco8t9qdym";
+  var clientsecret = "vhmEsBaxDl3LVeqYbLUxsg6p";
   var clinentauthurl = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/";
-  var granttypeSource = "client_credentials";
-  //  console.log('Avi '+ clientidSource,'Avi1 '+ clientsecretSource,'Avi2 '+ clinentauthurl);
-  //alert('Avi'+ clientidSource,'Avi1'+ clientsecretSource,'Avi2'+ clinentauthurl);
 
-  var access_token = await getacesstoken(clientidSource, clientsecretSource, granttypeSource);
-
+  var access_token = await getacesstoken(clientid, clientsecret, clinentauthurl);
   res.sendFile(path.join(__dirname + '/secondpage.html'));
-
-  var FormData = require('form-data');
-  var data = new FormData();
-  data.append('grant_type', 'client_credentials');
-  data.append('client_id', clientidSource);
-  data.append('client_secret', clientsecretSource);
-  // data.append('account_id', '514011820');
-
-  var config = {
-    method: 'post',
-    url: clinentauthurl,
-    headers: {
-      'Content-Type': 'application/json',
-      ...data.getHeaders()
-    },
-    data: data
-  };
-
-  axios(config)
-    .then(function (response) {
-
-      // console.log(JSON.stringify(response.data));
-      token = response.data.access_token;
-      console.log("token" + token);
-    })
-    .catch(function (error) {
-      //   console.log(error);
-    });
-
-
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     var DEListFetchOptions = {
@@ -946,33 +912,27 @@ app.post("/secondpage", async function (req, res) {
   });
 
 
-  async function getacesstoken(ClientIdDestination, ClientSecretDestination, GrantTypeDestination) {
+  async function getacesstoken(ClientId, ClientSecret, clinentauthurl) {
     try {
       return new Promise(function (resolve, reject) {
-        axios.post('https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/token',
-          {
-            'client_id': ClientIdDestination,
-            'client_secret': ClientSecretDestination,
-            'grant_type': GrantTypeDestination,
-            //  'account_id':  AccountIdDestination
-          })
-          .then((response) => {
-            var result = response.data;
-            //console.log("Result"+result.access_token);
-            //console.log('Processing acess token'); 
-            resolve(result.access_token);
-          },
-            (error) => {
-              reject(error);
-            })
+        axios.post( clinentauthurl + 'v2/token',
+        {
+          'client_id': ClientId,
+          'client_secret': ClientSecret,
+          'grant_type': 'client_credentials'
+        })
+        .then((response) => {
+          console.log('auth res : ' + response.data)
+          resolve(JSON.parse(response.data).access_token);
+        },
+        (error) => {
+          reject(error);
+        })
 
       });
     }
     catch (err) { }
   }
-
-
-
 
 });
 
