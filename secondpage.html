@@ -2376,24 +2376,25 @@
             'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
-            if (actionType == "Validate" && data.validatequery == true) {
+            if (actionType == "Validate" && data.IsQueryValid == true) {
               document.getElementById('QueryValidateTrueAlert').style.display = 'block';
               document.getElementById('QueryValidateFalseAlert').style.display = 'none';
               document.getElementById('FullPageSpinner').style.display = 'none';
               document.getElementById('DEListSidebar').style.marginTop = '0px';
             }
-            else if (actionType == "Validate" && data.validatequery == false){
+            else if (actionType == "Validate" && data.IsQueryValid == false){
               document.getElementById('QueryValidateTrueAlert').style.display = 'none';
               document.getElementById('QueryValidateFalseAlert').style.display = 'block';
               document.getElementById('FullPageSpinner').style.display = 'none';
               document.getElementById('DEListSidebar').style.marginTop = '0px';
+              
+              console.log('Query Validate ErrorMsg : ' + data.ErrorMsg);
             }
             else if (actionType == "Run") {
               var b = setInterval(function () {
                 DERecordGetClient();
-                //console.log("tempData setInterval : " + JSON.stringify(tempData));
-                //if (tempData != "false" ) {
-                //  DEListShow(tempData);
+                //if (Data != "false" ) {
+                //  DEListShow(Data);
                 //  document.getElementById('FullPageSpinner').style.display = 'none';
                 //  document.getElementById('DEListSidebar').style.marginTop = '0px';
                 //  clearInterval(b);
@@ -2433,7 +2434,6 @@
         return queryStr;
       }
       function DERecordGetClient() {
-        var tempData = "false";
         $.ajax
           ({
             url: '/DERecordGet',
@@ -2445,9 +2445,8 @@
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
-              tempData = data;
-              if (tempData != "false") {
-                DEListShow(tempData);
+              if (data != "false") {
+                DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 clearInterval(b);
@@ -2551,7 +2550,7 @@
         ({
           url: '/RunQuery',
           data: {
-            'JoinQueryDESelectedFields': true
+            'DERecordGet': true
           },
           type: "POST",
           headers: {
