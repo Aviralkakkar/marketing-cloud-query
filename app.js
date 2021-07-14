@@ -922,8 +922,9 @@ app.post("/secondpage", async function (req, res) {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          console.log('auth res : ' + response.data)
-          resolve(JSON.parse(response.data).access_token);
+          var tempResult = response.data;
+          console.log('auth res : ' + tempResult)
+          resolve(tempResult.access_token);
         },
         (error) => {
           reject(error);
