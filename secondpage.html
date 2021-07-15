@@ -2387,8 +2387,9 @@
               
               console.log('Query Validate ErrorMsg : ' + data.ErrorMsg);
             }
-            else if (actionType == "Run") {
+            else if (actionType == "Run" && data.IsQueryValid == true) {
               var b = setInterval(function () {
+                console.log('setInterval running');
                 DERecordGetClient();
                 //if (Data != "false" ) {
                 //  DEListShow(Data);
@@ -2397,6 +2398,14 @@
                 //  clearInterval(b);
                 //}
               }, 3000);
+            }
+            else if (actionType == "Run" && data.IsQueryValid == false) {
+              document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+              document.getElementById('QueryValidateFalseAlert').style.display = 'block';
+              document.getElementById('FullPageSpinner').style.display = 'none';
+              document.getElementById('DEListSidebar').style.marginTop = '0px';
+              
+              console.log('Query Validate ErrorMsg in Query Run : ' + data.ErrorMsg);
             }
           }
         })

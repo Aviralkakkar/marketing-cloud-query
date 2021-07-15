@@ -149,45 +149,40 @@ app.post("/secondpage", async function (req, res) {
             ChildFolderCatagoryID = FolderCheckResult[key]["ID"][0];
           }
         }
-        console.log('ParentFolderCatagoryID : ' + ParentFolderCatagoryID + ' , ChildFolderCatagoryID : ' + ChildFolderCatagoryID);
         if(ChildFolderCatagoryID != '') {
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
-          console.log('Else ChildFolderCatagoryID : ' + ChildFolderCatagoryID)
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
-        console.log('DECreateResult : ' + DECreateResult + ' , DECreateResultObjectID : ' + DECreateResult[0].Object[0].ObjectID[0])
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
-        console.log('taskId : ' + taskId);
         if (taskId) {
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
-            console.log('queryStatus : ' + queryStatus)
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
-              console.log('DERecords Inerval: ' + DERecords)
               await QueryDelete(queryDefinitionId);
               clearInterval(b);
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
             if (queryStatus != "Complete") {
-              console.log('QueryRecordGet : false');
               resCall1.send("false");
             }
             else {
-              console.log('QueryRecordGet app.post : ' + DERecords);
               resCall1.send(DERecords);
             }
           })
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
-
+        resCall.send({
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : JSON.parse(response.body).errors[0].message
+        });
       }
     });
 
