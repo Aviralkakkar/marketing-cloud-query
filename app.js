@@ -124,24 +124,23 @@ app.post("/secondpage", async function (req, res) {
     };
     request(options, async function (error, response) {
       if (error) throw new Error(error);
-      if (actionType == "Validate") {
-        if(JSON.parse(response.body).queryValid == true) {
-          resCall.send({
-            'IsQueryValid' : JSON.parse(response.body).queryValid,
-            'ErrorMsg' : ''
-          });
-        }
-        else {
-          resCall.send({
-            'IsQueryValid' : JSON.parse(response.body).queryValid,
-            'ErrorMsg' : JSON.parse(response.body).errors[0].message
-          });
-        }
+      if (actionType == "Validate" && JSON.parse(response.body).queryValid == true) {
+        resCall.send({
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : ''
+        });
       }
-      if (JSON.parse(response.body).queryValid == true && actionType == "Run") {
+      else if (actionType == "Validate" && JSON.parse(response.body).queryValid == false) {
+        resCall.send({
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : JSON.parse(response.body).errors[0].message
+        });
+      }
+      else if (actionType == "Run" && JSON.parse(response.body).queryValid == true) {
         var FolderCheckResult = await FolderCheck();
         var ParentFolderCatagoryID = '';
         var ChildFolderCatagoryID = '';
+        var DECreateResult;
         for(var key in FolderCheckResult) {
           if(FolderCheckResult[key]["Name"][0] == "Data Extensions" && FolderCheckResult[key]["CustomerKey"][0] == "dataextension_default") {
             ParentFolderCatagoryID = FolderCheckResult[key]["ID"][0];
@@ -150,21 +149,27 @@ app.post("/secondpage", async function (req, res) {
             ChildFolderCatagoryID = FolderCheckResult[key]["ID"][0];
           }
         }
+        console.log('ParentFolderCatagoryID : ' + ParentFolderCatagoryID + ' , ChildFolderCatagoryID : ' + ChildFolderCatagoryID);
         if(ChildFolderCatagoryID != '') {
-          var DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
+          DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
-          var DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
+          console.log('Else ChildFolderCatagoryID : ' + ChildFolderCatagoryID)
+          DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
+        console.log('DECreateResult : ' + DECreateResult + ' , DECreateResultObjectID : ' + DECreateResult[0].Object[0].ObjectID[0])
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
+        console.log('taskId : ' + taskId);
         if (taskId) {
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
+            console.log('queryStatus : ' + queryStatus)
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
+              console.log('DERecords : ' + DERecords)
               await QueryDelete(queryDefinitionId);
               clearInterval(b);
             }
@@ -178,6 +183,9 @@ app.post("/secondpage", async function (req, res) {
             }
           })
         }
+      }
+      else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
+
       }
     });
 
@@ -363,7 +371,8 @@ app.post("/secondpage", async function (req, res) {
         };
         request(options, async function (error, response) {
           if (error) throw new Error(error);
-          if (JSON.parse(response.body).queryDefinitionId) {
+          queryDefinitionId = JSON.parse(response.body).queryDefinitionId;
+          if (queryDefinitionId) {
             var options = {
               'method': 'POST',
               'url': AuthResponse.SoapURL + 'Service.asmx',
@@ -372,7 +381,7 @@ app.post("/secondpage", async function (req, res) {
                 'SOAPAction': 'Perform',
                 'Authorization': 'Bearer ' + AuthResponse.AccessToken
               },
-              body: '<?xml version="1.0" encoding="utf-8"?>\r\n<soapenv:Envelope\r\n    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    <soapenv:Header>\r\n   <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <PerformRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <Action>start</Action>\r\n            <Definitions>\r\n                <Definition xsi:type="QueryDefinition">\r\n                    <ObjectID>' + JSON.parse(response.body).queryDefinitionId + '</ObjectID>\r\n                </Definition>\r\n            </Definitions>\r\n        </PerformRequestMsg>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>'
+              body: '<?xml version="1.0" encoding="utf-8"?>\r\n<soapenv:Envelope\r\n    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"\r\n    xmlns:xsd="http://www.w3.org/2001/XMLSchema"\r\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\r\n    <soapenv:Header>\r\n   <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <PerformRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <Action>start</Action>\r\n            <Definitions>\r\n                <Definition xsi:type="QueryDefinition">\r\n                    <ObjectID>' + queryDefinitionId + '</ObjectID>\r\n                </Definition>\r\n            </Definitions>\r\n        </PerformRequestMsg>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>'
             };
             request(options, function (error, response) {
               if (error) throw new Error(error);
