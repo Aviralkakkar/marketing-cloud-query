@@ -1864,7 +1864,7 @@
 
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
           
 
@@ -2373,6 +2373,7 @@
             'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
+            console.log('actionType : ' + actionType + ' , data.IsQueryValid : ' + data.IsQueryValid);
             if (actionType == "Validate" && data.IsQueryValid == true) {
               document.getElementById('QueryValidateTrueAlert').style.display = 'block';
               document.getElementById('QueryValidateFalseAlert').style.display = 'none';
@@ -2388,6 +2389,7 @@
               console.log('Query Validate ErrorMsg : ' + data.ErrorMsg);
             }
             else if (actionType == "Run" && data.IsQueryValid == true) {
+              console.log('actionType == "Run" && data.IsQueryValid == true');
               var b = setInterval(function () {
                 console.log('setInterval running');
                 DERecordGetClient();
