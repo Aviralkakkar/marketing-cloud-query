@@ -162,6 +162,7 @@ app.post("/secondpage", async function (req, res) {
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
+            console.log('queryStatus : ' + queryStatus);
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
               await QueryDelete(queryDefinitionId);
