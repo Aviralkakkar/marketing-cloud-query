@@ -169,16 +169,18 @@ app.post("/secondpage", async function (req, res) {
             console.log('queryStatus : ' + queryStatus)
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
-              console.log('DERecords : ' + DERecords)
+              console.log('DERecords Inerval: ' + DERecords)
               await QueryDelete(queryDefinitionId);
               clearInterval(b);
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
             if (queryStatus != "Complete") {
+              console.log('QueryRecordGet : false');
               resCall1.send("false");
             }
             else {
+              console.log('QueryRecordGet app.post : ' + DERecords);
               resCall1.send(DERecords);
             }
           })

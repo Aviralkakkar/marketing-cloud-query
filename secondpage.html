@@ -2442,6 +2442,7 @@
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
+              console.log('data : ' + JSON.stringify(data));
               if (data != "false") {
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
