@@ -31,14 +31,18 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 app.post("/secondpage", async function (req, res) {
-  // var clientid = req.body.clientid;
-  // var clientsecret = req.body.clientsecret;
-  // var clinentauthurl= req.body.authurl;
-  var clientid = "sr7id7zht854bwdco8t9qdym";
-  var clientsecret = "vhmEsBaxDl3LVeqYbLUxsg6p";
-  var clinentauthurl = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/";
+  // var AuthRequest = {
+  //   "ClientId" : req.body.clientid,
+  //   "ClientSecret" : req.body.clientsecret,
+  //   "ClinentAuthURL" : req.body.authurl
+  // }
+  var AuthRequest = {
+    "ClientId" : "sr7id7zht854bwdco8t9qdym",
+    "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
+    "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
+  }
   var NewDEName;
-  var AuthResponse = await getacesstoken(clientid, clientsecret, clinentauthurl);
+  var AuthResponse = await getacesstoken(AuthRequest);
 
   res.sendFile(path.join(__dirname + '/secondpage.html'));
 
@@ -524,13 +528,13 @@ app.post("/secondpage", async function (req, res) {
     }
   })
 
-  async function getacesstoken(ClientId, ClientSecret, clinentauthurl) {
+  async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
-        axios.post( clinentauthurl + 'v2/token',
+        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
         {
-          'client_id': ClientId,
-          'client_secret': ClientSecret,
+          'client_id': AuthRequest.ClientId,
+          'client_secret': AuthRequest.ClientSecret,
           'grant_type': 'client_credentials'
         })
         .then((response) => {
