@@ -2392,7 +2392,7 @@
               console.log('actionType == "Run" && data.IsQueryValid == true');
               var b = setInterval(function () {
                 console.log('setInterval running');
-                DERecordGetClient();
+                DERecordGetClient(b);
                 //if (Data != "false" ) {
                 //  DEListShow(Data);
                 //  document.getElementById('FullPageSpinner').style.display = 'none';
@@ -2441,7 +2441,7 @@
         }
         return queryStr;
       }
-      function DERecordGetClient() {
+      function DERecordGetClient(b) {
         console.log('DERecordGetClient chala');
         $.ajax
           ({
