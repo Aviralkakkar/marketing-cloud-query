@@ -168,7 +168,7 @@ app.post("/secondpage", async function (req, res) {
             if (error) throw new Error(error);
             xml2jsParser.parseString(response.body, async function (err, result) {
               var TempSharedDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-              for(var i in TempDEListFetchResult) {
+              for(var i in TempSharedDEListFetchResult) {
                 DEListMap.SharedDEMap[TempSharedDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempSharedDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
