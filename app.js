@@ -54,7 +54,7 @@ app.post("/secondpage", async function (req, res) {
     DEListMap = await getDEMap();
     DEListMap = await getSharedDEMap();
     DEListMap = await getAllDEFields();
-    console.log("DEListMap : " + DEListMap);
+    console.log("DEListMap : " + JSON.stringify(DEListMap));
     resCall.send(DEListMap);
 
 
