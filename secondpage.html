@@ -2574,10 +2574,11 @@
           <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
 
           </div>
-          <footer class="slds-modal__footer">
-            <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
-            <button class="slds-button slds-button_brand" onclick="Next()">Next</button>
-          </footer>
+       
+          <footer class="slds-modal__footer slds-modal__footer_directional" style=" width:65rem;background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+            <button class="slds-button slds-button_neutral" onclick="CancelPopup()" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;">cancel</button>
+            <button class="slds-button slds-button_brand" onclick="Next()" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;">Next</button>
+            </footer>
         </div>
       </section>
       <div class="slds-backdrop slds-backdrop_open"></div>
