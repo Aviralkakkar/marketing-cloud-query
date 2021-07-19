@@ -3414,6 +3414,7 @@ totalPages.innerHTML = " "+numPages()+" ";
           document.getElementById('DEListSidebar').style.marginTop = '0px';
         }
       })
+      
       function nextPage() {
         if (current_page < numPages()) {
           current_page++;
@@ -3492,6 +3493,8 @@ totalPages.innerHTML = " "+numPages()+" ";
       var NewDEFieldsSet = new Set();
       var joinedDivSet = new Set();
 
+
+      /*
       onloadofBody();
       function onloadofBody() {
         // document.getElementById('FullPageSpinner').style.display = 'block';
@@ -3516,6 +3519,7 @@ totalPages.innerHTML = " "+numPages()+" ";
             }
           })
       }
+      */
 
       function allowDrop(ev, event) {
         ev.preventDefault();
