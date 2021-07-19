@@ -2670,63 +2670,62 @@ color: white;
     <div style="display: none; width: 160px;" id="SecondModal">
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container">
-          <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4;" >
-
-            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; width:65rem; height:6rem;" >
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelDERecordModal()">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
             <span class="slds-assistive-text">Close</span>
             </button>
 
-          
-            <!--jndjdkmdkmkdmksddddddddddddddddddm-->
-            <div class="slds-path" style=" pointer-events: none; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
-              <div class="slds-grid slds-path__track">
-              <div class="slds-grid slds-path__scroller-container">
-              <div class="slds-path__scroller">
-              <div class="slds-path__scroller_inner">
-              <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" style="width:100%; padding:0; margin:0; background-color:#f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee); ">
-                <li class="slds-path__item slds-is-current2 slds-is-active2" role="presentation" style=" background-color: #ecebea; color:#999; border-bottom-left-radius: 0; border-top-left-radius: 0;">
-                <a aria-selected="true" class="slds-path__link" href="#" id="path-1" role="option" tabindex="0">
-                <span class="slds-path__stage">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                </svg>
-                <span class="slds-assistive-text">Current Stage:</span>
-              </span>
-              <span class="slds-path__title" style="color: #999; font-size: 16px; "><span class="badge badge-info" style="background-color:  #999; border-radius: 50%;">1</span> Modal 1</span>
-              </a>
-              </li>
-              <li class="slds-path__item slds-is-incomplete2" role="presentation" style="background-image:linear-gradient(to bottom,#fafafa,#eee);">
-              <a aria-selected="false" class="slds-path__link" href="#" id="path-2" role="option" tabindex="-1">
-              <span class="slds-path__stage">
-              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-              </svg>
-              </span>
-              <span class="slds-path__title" style="color:#4e8abe; font-size: 16px;"><span class="badge badge-info" style="background-color:#4e8abe ; border-radius: 50%;">2</span> Modal 2</span>
-              </a>
-              </li>
-              <li class="slds-path__item slds-is-current1" role="presentation" style="width: 1%; background-color: #ecebea; color:#999; border-bottom-left-radius: 0; border-top-left-radius: 0; background-image:linear-gradient(to bottom,#fafafa,#eee);">
-                <a aria-selected="true" class="slds-path__link" href="#" id="path-1" role="option" tabindex="0">
+            <div class="slds-path" style="height: 4rem; pointer-events: none; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
+                <div class="slds-grid slds-path__track">
+                <div class="slds-grid slds-path__scroller-container">
+                <div class="slds-path__scroller">
+                <div class="slds-path__scroller_inner">
+                <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" style="width:100%; height: 4rem; padding:0; margin:0; background-color:#f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);  ">
+               
+                <li class="slds-path__item slds-is-incomplete" role="presentation">
+                <a aria-selected="false" class="slds-path__link" href="#" id="path-2" role="option" tabindex="-1">
                 <span class="slds-path__stage">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
                 </svg>
                 </span>
-                 
+                <span class="slds-path__title" style="color:#999; font-size: 16px; padding-top: 22px; "><span class="badge badge-info" style="background-color: #999; border-radius: 50%; ">2</span> Modal 2</span>
                 </a>
                 </li>
-          
-             
-              </ul>
-              </div>
-              </div>
-              </div>
+
+                <li class="slds-path__item slds-is-current slds-is-active" role="presentation" style=" height:4rem; color:#4e8abe; border-bottom-left-radius: 0; border-top-left-radius: 0;">
+                  <a aria-selected="true" class="slds-path__link" href="#" id="path-1" role="option" tabindex="0">
+                  <span class="slds-path__stage" >
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Current Stage:</span>
+                  </span>
+                  <span class="slds-path__title" style="color:#4e8abe ; font-size: 16px; padding-top: 22px;"><span class="badge badge-info" style="background-color: #4e8abe; border-radius: 50%; align-content: center; ">1</span> Modal 1</span>
+                  </a>
+                  </li>
+                <li class="slds-path__item slds-is-current1" role="presentation" style="width: 1%; height:3rem; background-color: #ecebea; color:#999; border-bottom-left-radius: 0; border-top-left-radius: 0; background-image:linear-gradient(to bottom,#fafafa,#eee);">
+                    <a aria-selected="true" class="slds-path__link" href="#" id="path-1" role="option" tabindex="0">
+                    <span class="slds-path__stage">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg>
+                    </span>
+                     
+                    </a>
+                    </li>
+                </ul>
+                </div>
+                </div>
+                </div>
               
             </header>
 
+
+         
           <div class="slds-modal__content slds-p-around_medium" id="grid-2-de">
 
 
@@ -2781,12 +2780,8 @@ color: white;
 
 
           </div>
-         <!--<footer class="slds-modal__footer">
-            <button class="slds-button slds-button_neutral slds-float_left" onclick="Previous()">Previous</button>
-            <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
-            <button class="slds-button slds-button_brand" onclick="DetailsSave()">Save</button>
-          </footer>--> 
-          <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+        
+          <footer class="slds-modal__footer slds-modal__footer_directional" style=" width:65rem;background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
             <button class="slds-button slds-button_neutral slds-float_left" onclick="Previous()" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="Previous()">Previous</button>
             <button class="slds-button slds-button_neutral" onclick="CancelPopup()" style="font-size:11px; line-height:20px; color:#4e8abe;" onclick="CancelPopup()">Cancel</button>
             <button class="slds-button slds-button_brand" onclick="DetailsSave()" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="DetailsSave()">Save</button>
