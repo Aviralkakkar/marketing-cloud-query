@@ -54,7 +54,6 @@ app.post("/secondpage", async function (req, res) {
     DEListMap = await getDEMap();
     DEListMap = await getSharedDEMap();
     DEListMap = await getAllDEFields();
-    console.log("DEListMap : " + JSON.stringify(DEListMap));
     resCall.send(DEListMap);
 
 
@@ -154,6 +153,7 @@ app.post("/secondpage", async function (req, res) {
             '</RetrieveRequestMsg>' +
             '</s:Body>' +
             '</s:Envelope>';
+          console.log("ListShareDEBody : " + ListShareDEBody);
           var ListSharedDEOption = {
             'method': 'POST',
             'url': AuthResponse.SoapURL + 'Service.asmx',
@@ -174,8 +174,9 @@ app.post("/secondpage", async function (req, res) {
                   "DEFields" : []
                 }
               }
+              console.log("DEListMap : " + JSON.stringify(DEListMap));
+              resolve(DEListMap);
             });
-            resolve(DEListMap);
           });
         });
       })
