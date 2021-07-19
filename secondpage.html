@@ -3819,22 +3819,29 @@ totalPages.innerHTML = " "+numPages()+" ";
           '            float: right;'+
           '            border:none;'+
           '        }'+
-          ''+
+          '       .dataExtensionNameStyle{'+
+          '            display: inline-block;'+
+          '            width: 180px;'+
+          '            white-space: nowrap;'+
+          '            overflow: hidden !important;'+
+          '            text-overflow: ellipsis;'+
+          '        }'+
+          '' +
           '    </style>'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">'+
           '    <div class="headerOfQuaryBox" data-original-title="" title="">'+
           '        <table>'+
           '            <tbody>'+
           '                <th>'+
-          '                    <td><span title="">' + DEDragData.DEName + '</span></td>'+ 
-          '                    <td>'+
+          '                    <td style="width:8em;" class="dataExtensionNameStyle" ><span title="">' + DEDragData.DEName + '</span></td>'+ 
+          '                    <td td width="20%">'+
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >'+
           '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">'+
           '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>'+
           '                              </svg>    '+
           '                        </button>'+
           '                    </td>'+
-          '                    <td>'+
+          '                    <td td width="20%">'+
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">'+
           '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">'+
           '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>'+
