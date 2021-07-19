@@ -95,7 +95,6 @@ app.post("/secondpage", async function (req, res) {
 
     async function getSharedDEMap() {
       return new Promise(function (resolve, reject) {
-        var SharedDEFolder;
         var SharedDEFolderOption = {
           'method': 'POST',
           'url': AuthResponse.SoapURL + 'Service.asmx',
@@ -139,12 +138,12 @@ app.post("/secondpage", async function (req, res) {
             '<Property>CategoryID</Property>';
           xml2jsParser.parseString(response.body, function (err, result) {
             if (result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'].length == 1) {
-              ListShareDEBody = ListShareDEBody + '<SimpleOperator>equals</SimpleOperator> <Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][0] + '</Value>';
+              ListShareDEBody = ListShareDEBody + '<SimpleOperator>equals</SimpleOperator> <Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][0].ID[0] + '</Value>';
             }
             else {
               ListShareDEBody = ListShareDEBody + '<SimpleOperator>IN</SimpleOperator>';
               for (var i = 0; i < result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'].length; i++) {
-                ListShareDEBody = ListShareDEBody + '<Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][i] + '</Value>';
+                ListShareDEBody = ListShareDEBody + '<Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][i].ID[0] + '</Value>';
               }
             }
           });
