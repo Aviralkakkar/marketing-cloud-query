@@ -2159,109 +2159,188 @@
 
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-          
-          <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use xlink:href="slds icons/utility-sprite/svg/symbols.svg#announcement"></use>
-            </svg>
-            <span class="slds-assistive-text">Description of icon when needed</span>
-            </span>
-
-            <div>
-
-              <div class=""><div><span class="slds-icon_container"><svg aria-hidden="true" class="slds-icon slds-icon_small" style="background:yellow"><use xlink:href="/assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg#add"></use></svg></span><span> heyy</span></div></div>
+          <!--   <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
+               <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+               <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#announcement"></use>
+               </svg>
+               <span class="slds-assistive-text">Description of icon when needed</span>
+               </span>
+   
+               <div>
+   
+                 <div class=""><div><span class="slds-icon_container"><svg aria-hidden="true" class="slds-icon slds-icon_small" style="background:yellow"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg#add"></use></svg></span><span> heyy</span></div></div>
+                
+             </div> -->
+             <div class="slds-grid slds-grid_vertical" style="height:100%">
+               <div class="slds-col" id="queryDiv" style="height:51%;margin-bottom:1%;">
+                 <div id="MainDivAlert" style="display:none">
+                   <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                     <span class="slds-assistive-text">error</span>
+                     <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+                       <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                         <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                       </svg>
+                     </span>
+                     <p>Please create at least one Query Box</p>
+                     <div class="slds-notify__close">
+                       <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close" onclick="CancelQueryBoxAlert()">
+                         <svg class="slds-button__icon" aria-hidden="true">
+                           <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                         </svg>
+                         <span class="slds-assistive-text">Close</span>
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+   
+                    <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="validateQuery(JoinQueryDetails,'Validate')" style="background-color: #4e8abe !important;">Validate Query</button>
+                    <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
+                   <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+   
+   
+                   <div id="QueryValidateTrueAlert" style="display:none">
+               <div class="demo-only" style="height:4rem">
+                 <div class="slds-notify_container slds-is-relative">
+                   <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                     <span class="slds-assistive-text">success</span>
+                     <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                       <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                       </svg>
+                     </span>
+                     <div class="slds-notify__content">
+                       <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
+                     </div>
+                     <div class="slds-notify__close">
+                       <button onclick="CancelQueryValidateTrueAlert()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                         <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                           <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                         </svg>
+                         <span class="slds-assistive-text">Close</span>
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+   
+             <div id="QueryValidateFalseAlert" style="display:none">
+               <div class="demo-only" style="height:4rem">
+                 <div class="slds-notify_container slds-is-relative">
+                 <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                 <span class="slds-assistive-text">error</span>
+                 <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                 <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                 </svg>
+                 </span>
+                 <div class="slds-notify__content">
+                 <h2 class="slds-text-heading_small ">Invalid Query.</h2>
+                 </div>
+                 <div class="slds-notify__close">
+                 <button onclick="CancelQueryValidateFalseAlert()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                 <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                 </svg>
+                 <span class="slds-assistive-text">Close</span>
+                 </button>
+                 </div>
+                 </div>
+                 </div>
+                 </div>
+             </div>
+             <div id="RelationshipDiv"> </div>
+             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
+               </div>
+   
+   
+   
+               <div class="slds-col slds-table--header-fixed_container " id="right_panel" style="height: 49%;padding-top:0%;">
+                 <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+                 
+                 
+                 
+                 <div class="slds-scrollable  " id="tableDiv" style="height:79%;margin-top:1%;">
+                   <table class=" slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">
+                     <thead>
+                      
+                       <tr class="slds-line-height_reset">
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">Opportunity Name</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Account Name</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Close Date</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Stage</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Confidence</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Amount</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Contact</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Mail</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Personal Mail</div>
+                         </th>
+                         <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="lastname">Company Mail</div>
+                         </th>
+                       </tr>
+                     </thead>
+                   
+                   
+                   
+                    
+                 <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;"><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr><tr class="slds-hint-parent slds-border_bottom"><td data-label="Account Name"><div class="slds-truncate" title="NewHub">NewHub</div></td><td data-label="Account Name"><div class="slds-truncate" title="Cloudhub">Cloudhub</div></td><td data-label="Close Date"><div class="slds-truncate" title="4/14/2015">4/14/2015</div></td><td data-label="Prospecting"><div class="slds-truncate" title="Prospecting">Prospecting</div></td><td data-label="Confidence"><div class="slds-truncate" title="20%">20%</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">$25k</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td><td data-label="Amount"><div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div></td></tr></tbody>
+                   </table>
+                 </div>
+                 <div style="height:5%;">
+                   <div class="slds-grid">
+                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()" data-page="1" style="visibility: hidden;">
+                         <span class="slds-icon_container slds-icon-utility-chevronleft" title="Description of icon when needed">
+                           <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small" aria-hidden="true">
+                             <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+                           
+                           </svg>
+                           <span class="slds-assistive-text">Description of icon when needed</span>
+                       </span></button>
+                     </div>
+                     <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                       <span class="page-counter "> <span id="page"> 1 </span> of <span id="totalPages"> 3 </span><span id="totalRecords">( 42 rows )</span> </span>
+                     </div>
+                     <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                     <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()" data-page="3" style="visibility: visible;">
+                       <span class="slds-icon_container slds-icon-utility-chevronright" title="Description of icon when needed">
+                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small" aria-hidden="true">
+                           <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+                         
+                         </svg>
+                         <span class="slds-assistive-text">Description of icon when needed</span>
+                       </span>
+                           </button>
+                     </div>
+                   </div>
+                 </div>
+   
+   
+   
+   
+   
+   
+   
+               </div>
+             </div>
+   
+   
+            
+   
+           
+   
+   
              
-          </div>
-
-
-          <div id="MainDivAlert" style="display:none">
-            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-              <span class="slds-assistive-text">error</span>
-              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                title="Description of icon when needed">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-              </span>
-              <P>Please create at least one Query Box</P>
-              <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
-                  title="Close" onclick="CancelQueryBoxAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-          </button>
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Run')"> RUN </button>
-          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>
-          
-
-
-          <div id="QueryValidateTrueAlert" style="display:none">
-            <div class="demo-only" style="height:4rem">
-              <div class="slds-notify_container slds-is-relative">
-                <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
-                  <span class="slds-assistive-text">success</span>
-                  <span
-                    class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                    </svg>
-                  </span>
-                  <div class="slds-notify__content">
-                    <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
-                  </div>
-                  <div class="slds-notify__close">
-                    <button onclick="CancelQueryValidateTrueAlert()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="QueryValidateFalseAlert" style="display:none">
-            <div class="demo-only" style="height:4rem">
-              <div class="slds-notify_container slds-is-relative">
-              <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
-              <span class="slds-assistive-text">error</span>
-              <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
-              <svg class="slds-icon slds-icon_small" aria-hidden="true">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-              </svg>
-              </span>
-              <div class="slds-notify__content">
-              <h2 class="slds-text-heading_small ">Invalid Query.</h2>
-              </div>
-              <div class="slds-notify__close">
-              <button onclick="CancelQueryValidateFalseAlert()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-              <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-              </svg>
-              <span class="slds-assistive-text">Close</span>
-              </button>
-              </div>
-              </div>
-              </div>
-              </div>
-          </div>
-
-
-          
-          <div id="RelationshipDiv"> </div>
-          <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
-        </div>
+            
+           </div>
 
       </div>
 
@@ -2461,8 +2540,8 @@
 
     onloadofBody();
     function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+     // document.getElementById('FullPageSpinner').style.display = 'block';
+     // document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
       ({
         url: '/DEListFetch',
