@@ -3531,108 +3531,7 @@
                   </div>
 
 
-                  <div class="slds-tree_container">
-                    <div class="tree-branch-header ">
-                      <button class="button-padding slds-nav-vertical__action slds-button"
-                        onclick="showSharedSalesforceDataExtensions()" id="sharedSalesforceDataExtensionButton">
-                        <span class="slds-icon_container slds-icon-utility-chevronright"
-                          title="Description of icon when needed">
-                          <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                            aria-hidden="true">
-                            <use
-                              xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
-                            </use>
-
-                          </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
-                        </span>
-                        <span class="tree-label" id="31244-label">
-                          <h6 style="color:#425769 ;font-size:larger;">Shared Salesforce Data Extensions</h6>
-                        </span>
-                      </button>
-                      <div class="slds-p-left_small">
-                        <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="sharedSalesforceDataExtension"
-                          role="tree">
-                          <li aria-level="1" role="treeitem" tabindex="0" value="" draggable="true">
-                            <button class="slds-tree__item slds-button my-button" style="color: #425769;">
-                              <span class="slds-icon_container slds-icon-utility-database"
-                                title="Description of icon when needed">
-                                <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                                  aria-hidden="true">
-                                  <use
-                                    xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#database">
-                                  </use>
-
-                                </svg>
-                                <span class="slds-assistive-text">Description of icon when needed</span>
-                              </span>
-                              <span class="slds-has-flexi-truncate">
-                                <span class="slds-tree__item-label " title="TreItemsssssssss">TreeItemssssssssssssss
-                                </span>
-                              </span>
-                            </button>
-                          </li>
-                          <li aria-level="1" role="treeitem" tabindex="0" value="" draggable="true">
-                            <button class="slds-tree__item slds-button my-button" style="color: #425769;">
-                              <span class="slds-icon_container slds-icon-utility-database"
-                                title="Description of icon when needed">
-                                <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                                  aria-hidden="true">
-                                  <use
-                                    xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#database">
-                                  </use>
-
-                                </svg>
-                                <span class="slds-assistive-text">Description of icon when needed</span>
-                              </span>
-                              <span class="slds-has-flexi-truncate">
-                                <span class="slds-tree__item-label " title="Random_DE">Random_DE </span>
-                              </span>
-                            </button>
-                          </li>
-                          <li aria-level="1" role="treeitem" tabindex="0" value="" draggable="true">
-                            <button class="slds-tree__item slds-button my-button" style="color: #425769;">
-                              <span class="slds-icon_container slds-icon-utility-database"
-                                title="Description of icon when needed">
-                                <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                                  aria-hidden="true">
-                                  <use
-                                    xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#database">
-                                  </use>
-
-                                </svg>
-                                <span class="slds-assistive-text">Description of icon when needed</span>
-                              </span>
-                              <span class="slds-has-flexi-truncate">
-                                <span class="slds-tree__item-label " title="Faltu_Data_Extension">Faltu_Data_Extension
-                                </span>
-                              </span>
-                            </button>
-                          </li>
-                          <li aria-level="1" role="treeitem" tabindex="0" value="" draggable="true">
-                            <button class="slds-tree__item slds-button my-button" style="color: #425769;">
-                              <span class="slds-icon_container slds-icon-utility-database"
-                                title="Description of icon when needed">
-                                <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                                  aria-hidden="true">
-                                  <use
-                                    xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#database">
-                                  </use>
-
-                                </svg>
-                                <span class="slds-assistive-text">Description of icon when needed</span>
-                              </span>
-                              <span class="slds-has-flexi-truncate">
-                                <span class="slds-tree__item-label " title="AbondonedCartDE">AbondonedCartDE </span>
-                              </span>
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-
-                  </div>
+                 
 
 
 
@@ -5537,8 +5436,8 @@
 
                         onloadofBody();
                         function onloadofBody() {
-                          // document.getElementById('FullPageSpinner').style.display = 'block';
-                          // document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                           document.getElementById('FullPageSpinner').style.display = 'block';
+                           document.getElementById('DEListSidebar').style.marginTop = '-650px';
                           $.ajax
                             ({
                               url: '/DEListFetch',
