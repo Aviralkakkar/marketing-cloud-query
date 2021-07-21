@@ -3651,10 +3651,74 @@
 
 
 
-
-                            <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
-
-                            </div>
+                     <!--inner body of modal 1-->
+                    <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" width: 65rem; overflow:hidden; margin:0; padding:0; ">
+                        <div class="container" style="padding:0%; margin:0%; width: -webkit-fill-available;">
+                                  <br />
+                            <div class="row" style="width: 60rem;  margin: 0; margin-left: 5%;">
+                              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; width: 25rem; ">
+                                <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
+                                    <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;" >
+                                       <h4 class="slds-text-title_caps" id=" component-selector-container__heading" style="margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; "><b>Data Extension Fields</b></h4>
+                                    </div>
+                                     <ul class="list-group left-side" id="ulList" style="border: none; background-color:white; padding:0%; margin:0%; width:25rem; height: 35rem; overflow-y:scroll;">
+                                              <!--  <li class="list-group-item" value="Attribute_1">Attribute_1</li> 
+                                                  <li class="list-group-item" value="Attribute_2">Attribute_2</li>
+                                                  <li class="list-group-item" value="Attribute_3">Attribute_3</li> 
+                                                  <li class="list-group-item" value="Attribute_4 ">Attribute_4</li>
+                                                  <li class="list-group-item" value="Attribute_5">Attribute_5</li>
+                                                  <li class="list-group-item" value="City">City</li>
+                                                  <li class="list-group-item" value="Country">Country</li>
+                                                  <li class="list-group-item" value="EmailID">EmailID</li>
+                                                  <li class="list-group-item" value="Region">Region</li>
+                                                  <li class="list-group-item" value="User_ID">User_ID</li>
+                                                  <li class="list-group-item" value="Value_1">Value_1</li>
+                                                  <li class="list-group-item" value="Value_2">Value_2</li>-->  
+                                      </ul>
+                                </div>
+                             </div>
+                              
+                                      <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+                                         <button class="btn btn-default btn-sm move-right">
+                                              <span class="glyphicon glyphicon-chevron-right"></span>
+                                          </button>
+                                          <button class="btn btn-default btn-sm move-left" style="margin-top: 25%;">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </button>
+                                      </div>
+                              
+                                      <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%; width: 24rem; height: 38rem; " >
+                                          <div class="well" style="width: 24rem; padding:0%;  background-color: white; height: 38rem; ">
+                                            <div class="row" style="padding:0%; margin:0%;  " >
+                                                  
+                                                <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; "><b>Available Fields</b></h4>
+                            
+                                              </div>
+                                              <div style="overflow-y: scroll; overflow-x: hidden; width:24rem; height: 35rem;">
+                                              <ul class="list-group right-side" aria-activedescendant="cb1-opt6" style=" border: none; padding:0%; margin:0%; width:24rem;  ">
+                                                <li class="list-group-item" aria-selected="true" value="Value_3">Value_3</li>
+                                                <li class="list-group-item" aria-selected="true" value="Value_4">Value_4</li>
+                                                <li class="list-group-item" aria-selected="true" value="Value_5">Value_5</li>
+                                              </ul>
+                                            </div>
+                                             
+                                          </div>
+                                          
+                                
+                                      </div>
+                                      <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
+                                      <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;">
+                                        <span class="glyphicon glyphicon-chevron-up"></span>
+                                     </button>
+                                     <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;">
+                                      <span class="glyphicon glyphicon-chevron-down"></span>
+                                   </button>
+                                   </div>
+                                      
+                              
+                                </div>
+                              </div>
+                             </div>
 
                             <footer class="slds-modal__footer slds-modal__footer_directional"
                               style=" width:65rem;background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
@@ -4400,7 +4464,14 @@
                             document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
                             DEListMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
                             for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                              document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+                             // document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+                             document.getElementById('ulList').innerHTML += ' <li class="list-group-item" name= "' +
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
+                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+                              + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';
+                         
                             }
                           
                             document.getElementById('RelationPopup').style.display = 'block';
