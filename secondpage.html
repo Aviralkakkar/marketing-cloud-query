@@ -4353,7 +4353,7 @@
                                 'Content-type': "application/json"
                               },
                               success: function (data) {
-                                
+                                console.log('Data '+JSON.stringify(data));
                                 DEListMap = data;
                                 for (var key in data) {
                                   console.log('Data '+data[key].DEName);
