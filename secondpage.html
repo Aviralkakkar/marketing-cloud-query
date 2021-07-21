@@ -4356,7 +4356,7 @@
                                 console.log('Data '+JSON.stringify(data));
                                 DEListMap = data;
                                 for (var key in data) {
-                                  console.log('Data '+data[key].DEName);
+                                  console.log('Data '+data[key]);
                                   console.log('Key '+key);
                                   document.getElementById("dataExtension").innerHTML += '<li class="slds-nav-vertical__item">' + '<button class="slds-nav-vertical__action slds-button" style="padding-top:0px;padding-bottom:0px;padding-left:4px;width:100%" id = "' + key + '" value="" draggable=true name="' + data[key].DEName + '">' + data[key].DEName + '</button>' + '</li>';
                                 };
