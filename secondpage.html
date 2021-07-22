@@ -28,7 +28,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--priyanka added script-->
 
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   
   <style>
     #marketing-asideLeft {
@@ -2253,7 +2257,7 @@
                         aria-hidden="true">
                         <use
                           xlink:href="/assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
-                        </use><svg></svg>
+                        </use>
                       </svg><span class="slds-assistive-text">Description of icon when needed</span></span><span
                       class="tree-label" id="31244-label">
                       <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
@@ -3164,14 +3168,17 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
+          /*document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' +
+          DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+           + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + 
+           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';*/
        //line added by priyanka to create list in dueking picklist
-      /* document.getElementById('ulList').innerHTML += ' <li class="list-group-item" name= "' +
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
-                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
-                              + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
+       document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
+                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+                              + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';
 
                               }
         document.getElementById('RelationPopup').style.display = 'block';
