@@ -3126,13 +3126,13 @@
             DEListMap = data;
             for(var key in DEListMap.DEMap) {
              
-              document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.DEMap[key].DEName + '">' +  DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
+              document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.DEMap[key].DEName + '">' +  DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
             }
             for(var key in DEListMap.SharedDEMap) {
-              document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.SharedDEMap[key].DEName + '">' +  DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
+              document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.SharedDEMap[key].DEName + '">' +  DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
             }
             for(var key in DEListMap.DataViewMap) {
-              document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.DataViewMap[key].DEName + '">' +  DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
+              document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value="DataViewMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' +  DEListMap.DataViewMap[key].DEName + '">' +  DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
             }
             document.getElementById('FullPageSpinner').style.display = 'none';
             document.getElementById('DEListSidebar').style.marginTop = '0px';
@@ -3145,7 +3145,7 @@
     }
 
     document.ondragstart = function (event) {
-      var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      var obj = { id: event.target.id, value: event.target.value, name: event.target.name,category:event.target.value };
       console.log('Object '+JSON.stringify(obj));
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
@@ -4086,9 +4086,15 @@ $rows.show().filter(function () {
 
 
           '</div>' +
+<<<<<<< HEAD
+          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); height:8%;">' +
+          '<button class="slds-button slds-button_neutral" style="font-size:11px; line-height:20px; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+=======
           '<footer class="slds-modal__footer">' +
           '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
           '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
+>>>>>>> 00fd68d66b83b10daa939c04bc90962b40fa8f15
           '</footer>' +
           '</div>' +
           '</section>' +
