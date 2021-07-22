@@ -2518,8 +2518,8 @@
     function drop(event, target) {
       event.preventDefault();
       console.log('drop start');
-      document.getElementById('grid-1-de').innerHTML = '';
-      document.getElementById('ulList').innerHTML = '';
+      document.getElementById('leftsideList').innerHTML = '';
+      document.getElementById('leftsideList').innerHTML = '';
       console.log('Start '+JSON.stringify(DEListMap.DEMap));
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
