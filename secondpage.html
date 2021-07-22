@@ -28,12 +28,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!--priyanka added script-->
 
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  
   <style>
     #marketing-asideLeft {
 
@@ -2210,6 +2205,13 @@
         background-color: #fafaf9;
         font-size: 12px;
       }
+
+      .list-group-item{
+    text-align: left;
+}
+.right-side .list-group-item,.left-side .list-group-item{
+    border:none;
+}
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -3168,10 +3170,10 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          /*document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' +
+          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' +
           DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
            + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + 
-           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';*/
+           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
        //line added by priyanka to create list in dueking picklist
        document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
                               DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
@@ -3185,7 +3187,71 @@
       }
       console.log('Finished');
     };
-    
+     
+    function modal1button(){
+      $(function () {
+
+$('body').on('click', '.list-group .list-group-item', function () {
+$(this).toggleClass('active');
+});
+$('.list-arrows button').click(function () {
+var $button = $(this), actives = '';
+if ($button.hasClass('move-left')) {
+    actives = $('.list-right ul li.active');
+    actives.clone().appendTo('.list-left ul');
+    actives.remove();
+} else if ($button.hasClass('move-right')) {
+    actives = $('.list-left ul li.active');
+    actives.clone().appendTo('.list-right ul');
+    actives.remove();
+}
+else if ($button.hasClass('move-up')) {
+    actives  = $('.list-right ul li.active');
+    if(!actives.is(':first-child')){
+    prev=actives.prev();
+    actives.clone().insertBefore(prev);
+    actives.remove();
+    }
+    else{
+        
+    }
+}
+else if ($button.hasClass('move-down')) {
+    actives  = $('.list-right ul li.active');
+    if(!actives.is(':last-child')){
+    nxt=actives.next();
+    actives.clone().insertAfter(nxt);
+    actives.remove();
+    }
+    else{
+        
+    }
+}
+});
+$('.dual-list .selector').click(function () {
+var $checkBox = $(this);
+if (!$checkBox.hasClass('selected')) {
+    $checkBox.addClass('selected').closest('.well').find('ul li:not(.active)').addClass('active');
+    $checkBox.children('i').removeClass('glyphicon-unchecked').addClass('glyphicon-check');
+} else {
+    $checkBox.removeClass('selected').closest('.well').find('ul li.active').removeClass('active');
+    $checkBox.children('i').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
+}
+});
+$('[name="SearchDualList"]').keyup(function (e) {
+var code = e.keyCode || e.which;
+if (code == '9') return;
+if (code == '27') $(this).val(null);
+var $rows = $(this).closest('.dual-list').find('.list-group li');
+var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+$rows.show().filter(function () {
+    var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+    return !~text.indexOf(val);
+}).hide();
+});
+
+});
+    }
     
     function drop2(event, target) {
       event.preventDefault();
