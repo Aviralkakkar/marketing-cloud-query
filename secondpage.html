@@ -2202,11 +2202,11 @@
 
 
 
-          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; height: 27rem; padding-top: 3%; ">
+          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; height: 27rem;  ">
 
             <div class="container" style="padding:0%; margin:0%; ">
              
-        <div class="row" style="width: 35rem;  margin: 0; margin-left: 6%; border:1px solid black;">
+        <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%;">
           <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; ">
             <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                 <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;" >
@@ -2229,16 +2229,16 @@
             </div>
          </div>
           
-                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%; border:1px solid black;">
-                     <button class="btn btn-default btn-sm move-right" style="color:white; background-color: #222;">
-                          <span class="glyphicon glyphicon-chevron-right" >R</span>
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+                     <button class="btn btn-default btn-sm move-right">
+                          <span class="glyphicon glyphicon-chevron-right">R</span>
                       </button>
-                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%; color:white; background-color: #222;">
+                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%;">
                         <span class="glyphicon glyphicon-chevron-left">L</span>
                     </button>
                   </div>
           
-                  <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%; border:1px solid black; " >
+                  <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%;  " >
                       <div class="well" style=" padding:0%;  background-color: white;  ">
                         <div class="row" style="padding:0%; margin:0%;  " >
                               
@@ -2255,11 +2255,11 @@
                       
             
                   </div>
-                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%; border:1px solid black;">
-                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;  color:white; background-color: #222;">
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
+                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;">
                     <span class="glyphicon glyphicon-chevron-up">U</span>
                  </button>
-                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;  color:white; background-color: #222;">
+                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
                </button>
                </div>
@@ -3164,10 +3164,7 @@
         '            </div>' +
           '         </div>' +
           '   </div>' +
-          '</div>'+
-          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox">'+
-          '</div>'
-          ;
+          '</div>';
         /*************************************************Edited By ANIL KUMAR******************************************/    
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -3281,10 +3278,10 @@
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
           '</div>' +
-          '</div>' +
+        
 
           '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-         
+          
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
@@ -3300,15 +3297,15 @@
           '</div>' +
           '</div>' +
           '</div>' +
-          '</div>' +
+          
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          
           '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
           '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>';
+          '<option value="">Select…</option>'+
           
         for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
           if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
@@ -3319,7 +3316,7 @@
           '</div>' +
           '</div>' +
           '</div>' +
-          '</div>' +
+       
 
           '</div>' +
 
@@ -3490,7 +3487,7 @@
         var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
         // make hr
 
-        var element=document.getElementById(d1).style.cssText=`
+        var element=document.getElementById('lineDiv').style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
