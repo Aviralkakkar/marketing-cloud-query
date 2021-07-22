@@ -3087,7 +3087,7 @@
 
                     </script>
 
- <!-- Khushboo code Ending -->                   
+        <!-- Khushboo code Ending -->                   
 
   <script type="text/javascript">
     var DEDragData = {
@@ -3146,6 +3146,7 @@
 
     document.ondragstart = function (event) {
       var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      console.log('Object '+obj);
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
 
