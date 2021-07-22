@@ -1773,6 +1773,7 @@
       list-style-type: none;
     }
   </style>
+  <!-- Khushboo code started -->
   <style>
     .button-padding {
       padding-left: 1% !important;
@@ -2066,6 +2067,7 @@
 
     }
   </style>
+  <!-- Khushboo code ending  -->
 </head>
 <body>
 
@@ -2084,8 +2086,9 @@
       </div>
 
       <div class="main-division-div">
+        <!--   Khushboo code started   -->
 
-        <div class="sidebar" id="DEListSidebar" style="width:25%;">
+        <div class="sidebar" id="DEListSidebar" style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
           <div class="demo-only-element" style="height: 100%;">
             <div aria-hidden="false" id="example-unique-id-8">
               <div class="slds-panel__header">
@@ -2197,7 +2200,7 @@
 
           </div>
         </div>
-
+<!--Khushboo code ended -->
           <div id="DEListDivAlert" style="display:none">
             <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
               <span class="slds-assistive-text">error</span>
@@ -2220,9 +2223,7 @@
             </div>
           </div>
 
-          <ul aria-describedby="entity-header" id="Data Extensions" style="height:650px; width:100%;"
-            class="slds-scrollable">
-          </ul>
+          
 
         </div>
 
@@ -2510,7 +2511,7 @@
   <div class="slds-col slds-size_9-of-12" id="DETable">
   </div>
 
-
+<!-- Khushboo  code starting   -->
 
                     <!--  Script for folder hierarchy -->
                     <script>
@@ -2558,17 +2559,17 @@
 
                       function showDataViews() {
                         var de = document.getElementById("dataViewsButton");
-                        if (sharedSalesforceDataExtBool) {
+                        if (dataViewsBool) {
                           console.log('show');
                           document.getElementById("dataViews").className = "button-padding slds-show slds-tree";
 
-                          de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Salesforce Shared Data Extensions</h6></span>';
+                          de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
                             dataViewsBool = false;
                         }
                         else {
                           console.log('hide');
                           document.getElementById("dataViews").className = "slds-hide";
-                          de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;"> Salesforce Shared Data Extensions</h6></span>';
+                          de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
                             dataViewsBool = true;
                         }
 
@@ -2809,6 +2810,8 @@
                       };
 
                     </script>
+
+ <!-- Khushboo code Ending -->                   
 
   <script type="text/javascript">
     var DEDragData = {
