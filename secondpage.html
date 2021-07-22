@@ -4047,6 +4047,8 @@
 
                       function drop(event, target) {
                         event.preventDefault();
+                        console.log('hello');
+                        console.log('data '+JSON.stringify(DEListMap.DEMap));
                         document.getElementById('grid-1-de').innerHTML = '';
                         document.getElementById('ulList').innerHTML = '';
                        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -4072,6 +4074,7 @@
                         
                           document.getElementById('RelationPopup').style.display = 'block';
                         }
+                        console.log('Finished');
                       };
 
                     </script>
