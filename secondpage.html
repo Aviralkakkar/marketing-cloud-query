@@ -29,7 +29,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-  
   <style>
     #marketing-asideLeft {
 
@@ -2206,6 +2205,13 @@
         background-color: #fafaf9;
         font-size: 12px;
       }
+
+      .list-group-item{
+    text-align: left;
+}
+.right-side .list-group-item,.left-side .list-group-item{
+    border:none;
+}
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -2253,7 +2259,7 @@
                         aria-hidden="true">
                         <use
                           xlink:href="/assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
-                        </use><svg></svg>
+                        </use>
                       </svg><span class="slds-assistive-text">Description of icon when needed</span></span><span
                       class="tree-label" id="31244-label">
                       <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
@@ -2633,11 +2639,11 @@
             </div>
          </div>
           
-                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+                  <div class="list-arrows col-md-1 text-center" onlick=" modal1button()" style="padding:0%; margin:0%; margin-top: 25%;">
                      <button class="btn btn-default btn-sm move-right">
                           <span class="glyphicon glyphicon-chevron-right">R</span>
                       </button>
-                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%;">
+                      <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
                         <span class="glyphicon glyphicon-chevron-left">L</span>
                     </button>
                   </div>
@@ -2660,10 +2666,10 @@
             
                   </div>
                   <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
-                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;">
+                  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                     <span class="glyphicon glyphicon-chevron-up">U</span>
                  </button>
-                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;">
+                 <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
                </button>
                </div>
@@ -3081,7 +3087,7 @@
 
                     </script>
 
- <!-- Khushboo code Ending -->                   
+        <!-- Khushboo code Ending -->                   
 
   <script type="text/javascript">
     var DEDragData = {
@@ -3103,8 +3109,8 @@
 
     onloadofBody();
     function onloadofBody() {
-     // document.getElementById('FullPageSpinner').style.display = 'block';
-       //document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      document.getElementById('FullPageSpinner').style.display = 'block';
+       document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -3140,6 +3146,7 @@
 
     document.ondragstart = function (event) {
       var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      console.log('Object '+JSON.stringify(obj));
       event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
 
@@ -3163,21 +3170,88 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
+          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+          DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+           + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + 
+           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
        //line added by priyanka to create list in dueking picklist
-      /* document.getElementById('ulList').innerHTML += ' <li class="list-group-item" name= "' +
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
-                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
-                              + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
+      /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
+                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+                              + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
+                              DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
 
                               }
         document.getElementById('RelationPopup').style.display = 'block';
       }
       console.log('Finished');
     };
-    
+     
+    function modal1button(){
+      $(function () {
+
+$('body').on('click', '.list-group .list-group-item', function () {
+$(this).toggleClass('active');
+});
+$('.list-arrows button').click(function () {
+var $button = $(this), actives = '';
+if ($button.hasClass('move-left')) {
+    actives = $('.list-right ul li.active');
+    actives.clone().appendTo('.list-left ul');
+    actives.remove();
+} else if ($button.hasClass('move-right')) {
+    actives = $('.list-left ul li.active');
+    actives.clone().appendTo('.list-right ul');
+    actives.remove();
+}
+else if ($button.hasClass('move-up')) {
+    actives  = $('.list-right ul li.active');
+    if(!actives.is(':first-child')){
+    prev=actives.prev();
+    actives.clone().insertBefore(prev);
+    actives.remove();
+    }
+    else{
+        
+    }
+}
+else if ($button.hasClass('move-down')) {
+    actives  = $('.list-right ul li.active');
+    if(!actives.is(':last-child')){
+    nxt=actives.next();
+    actives.clone().insertAfter(nxt);
+    actives.remove();
+    }
+    else{
+        
+    }
+}
+});
+$('.dual-list .selector').click(function () {
+var $checkBox = $(this);
+if (!$checkBox.hasClass('selected')) {
+    $checkBox.addClass('selected').closest('.well').find('ul li:not(.active)').addClass('active');
+    $checkBox.children('i').removeClass('glyphicon-unchecked').addClass('glyphicon-check');
+} else {
+    $checkBox.removeClass('selected').closest('.well').find('ul li.active').removeClass('active');
+    $checkBox.children('i').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
+}
+});
+$('[name="SearchDualList"]').keyup(function (e) {
+var code = e.keyCode || e.which;
+if (code == '9') return;
+if (code == '27') $(this).val(null);
+var $rows = $(this).closest('.dual-list').find('.list-group li');
+var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+$rows.show().filter(function () {
+    var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+    return !~text.indexOf(val);
+}).hide();
+});
+
+});
+    }
     
     function drop2(event, target) {
       event.preventDefault();
