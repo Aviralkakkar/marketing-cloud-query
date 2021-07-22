@@ -28,7 +28,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+<!---nitik bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!---->
   <style>
     #marketing-asideLeft {
 
@@ -2084,7 +2087,7 @@
             <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Records</h2>
 
           </header>
-          <div class="slds-modal__content slds-p-around_medium" id="grid-record-result">
+          <div class="slds-modal__content slds-p-around_medium" id="grid-record-result" >
 
           </div>
           <footer class="slds-modal__footer">
@@ -2097,7 +2100,7 @@
 
     <div style="display: none; width: 160px;" id="RelationPopup">
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" style=" margin-right: 20%;">
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
         <div class="slds-modal__container" id="slds-modal__container">
           <header class="slds-modal__header"  style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
                             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
@@ -2199,11 +2202,11 @@
 
 
 
-          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0;  ">
+          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; height: 27rem; padding-top: 3%; ">
 
             <div class="container" style="padding:0%; margin:0%; ">
              
-        <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%;">
+        <div class="row" style="width: 35rem;  margin: 0; margin-left: 6%; border:1px solid black;">
           <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; ">
             <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                 <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;" >
@@ -2226,17 +2229,17 @@
             </div>
          </div>
           
-                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
-                     <button class="btn btn-default btn-sm move-right">
-                          <span class="glyphicon glyphicon-chevron-right">R</span>
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%; border:1px solid black;">
+                     <button class="btn btn-default btn-sm move-right" style="color:white; background-color: #222;">
+                          <span class="glyphicon glyphicon-chevron-right" >R</span>
                       </button>
-                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%;">
+                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%; color:white; background-color: #222;">
                         <span class="glyphicon glyphicon-chevron-left">L</span>
                     </button>
                   </div>
           
-                  <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%;  " >
-                      <div class="well" style="width: 24rem; padding:0%;  background-color: white; height: 38rem; ">
+                  <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%; border:1px solid black; " >
+                      <div class="well" style=" padding:0%;  background-color: white;  ">
                         <div class="row" style="padding:0%; margin:0%;  " >
                               
                             <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="width: 100%; margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; "><b>Available Fields</b></h4>
@@ -2252,11 +2255,11 @@
                       
             
                   </div>
-                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
-                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;">
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%; border:1px solid black;">
+                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;  color:white; background-color: #222;">
                     <span class="glyphicon glyphicon-chevron-up">U</span>
                  </button>
-                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;">
+                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;  color:white; background-color: #222;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
                </button>
                </div>
@@ -3263,25 +3266,25 @@
           '</button>' +
           
           '</header>' +
-          '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
+          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
 
-          '<div >' +
+          '<div>' +
           '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
           '</div>' +
 
           '<div class="slds-grid slds-wrap">' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          
+          '<label class="slds-form-element__label" for="select-01">First DE</label>' +
           '<div class="slds-form-element__control">' +
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
           '</div>' +
           '</div>' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+         
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
@@ -3377,9 +3380,9 @@
 
 
           '</div>' +
-          '<footer class="slds-modal__footer">' +
-          '<button class="slds-button slds-button_neutral" onclick="CancelThirdModal()">Cancel</button>' +
-          '<button class="slds-button slds-button_brand" onclick="SaveJoinQuery()">Save</button>' +
+          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); height:8%;">' +
+          '<button class="slds-button slds-button_neutral" style="font-size:11px; line-height:20px; float:left!important;">Cancel</button>' +
+          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; float:right!important;">Save</button>' +
           '</footer>' +
           '</div>' +
           '</section>' +
