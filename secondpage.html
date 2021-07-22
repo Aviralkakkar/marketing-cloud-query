@@ -2927,7 +2927,7 @@
                       }, false);
 
 
- //------- Mobile View ----------------//
+      //------- Mobile View ----------------//
 
 
                       /*  function resizeMobile(e){
@@ -2935,24 +2935,24 @@
                     var hp = parseInt(panel.style.height);
                     var hu = parseInt(upper.style.height);
                     console.log('hp '+hp+' hu '+hu);
-                   if(e.touches[0].clientY<=m_pos_mob )
-                   {
-                     if(hp<=75 && hu>=25)
-                     {
-                     hp=hp+1;
-                     panel.style.height = hp+"%";
-                     hu = hu-1;
-                     upper.style.height = hu+"%";
-                     console.log('hp '+hp+' hu '+hu);
-                     }
-                   }
-                 }, false);
+                    if(e.touches[0].clientY<=m_pos_mob )
+                    {
+                      if(hp<=75 && hu>=25)
+                      {
+                      hp=hp+1;
+                      panel.style.height = hp+"%";
+                      hu = hu-1;
+                      upper.style.height = hu+"%";
+                      console.log('hp '+hp+' hu '+hu);
+                      }
+                    }
+                  }, false);
                 
                 
-                 document.addEventListener("touchend ", function(){
-                   console.log('mobile mouse up');
-                     document.removeEventListener("touchmove", resizeMobile, false);
-                 }, false);*/
+                  document.addEventListener("touchend ", function(){
+                    console.log('mobile mouse up');
+                      document.removeEventListener("touchmove", resizeMobile, false);
+                  }, false);*/
 
 
                     </script>
@@ -3097,32 +3097,44 @@
     function onloadofBody() {
      // document.getElementById('FullPageSpinner').style.display = 'block';
        //document.getElementById('DEListSidebar').style.marginTop = '-650px';
-                          $.ajax
-                            ({
-                              url: '/DEListFetch',
-                              data: {
-                                "assetType": "DEListFetch"
-                              },
-                              type: "POST",
-                              headers: {
-                                'Content-type': "application/json"
-                              },
-                              success: function (data) {
-                                console.log('Data '+JSON.stringify(data));
-                                DEListMap.DEMap = data;
-                                for (var key in data) {
-                                  console.log('Key '+key);
-                                  console.log('Data '+JSON.stringify(data[key]));
-                                  var de = data[key];
-                                  for(var key2 in de)
-                                  {
-                                    document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key2 + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + de[key2].DEName + '">' + de[key2].DEName + ' </span></span></button></li>';
-                                  }
-                                };
-                                document.getElementById('FullPageSpinner').style.display = 'none';
-                                document.getElementById('DEListSidebar').style.marginTop = '0px';
-                              }
-                            });
+      $.ajax
+        ({
+          url: '/DEListFetch',
+          data: {
+            "assetType": "DEListFetch"
+          },
+          type: "POST",
+          headers: {
+            'Content-type': "application/json"
+          },
+          success: function (data) {
+            console.log('Data '+JSON.stringify(data));
+            DEListMap = data;
+            for(var key in DEListMap.DEMap) {
+              DEListMap.DEMap[key].DEName
+            }
+            for(var key in DEListMap.SharedDEMap) {
+              
+            }
+            for(var key in DEListMap.DataViewMap) {
+              
+            }
+
+            /*
+            for (var key in data) {
+              console.log('Key '+key);
+              console.log('Data '+JSON.stringify(data[key]));
+              var de = data[key];
+              for(var key2 in de)
+              {
+                document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key2 + '"draggable=true><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + de[key2].DEName + '">' + de[key2].DEName + ' </span></span></button></li>';
+              }
+            };
+            */
+            document.getElementById('FullPageSpinner').style.display = 'none';
+            document.getElementById('DEListSidebar').style.marginTop = '0px';
+          }
+        });
     }
 
     function allowDrop(ev, event) {
