@@ -3165,7 +3165,10 @@
         '            </div>' +
           '         </div>' +
           '   </div>' +
-          '</div>';
+          '</div>'+
+          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox">'+
+          '</div>'
+          ;
         /*************************************************Edited By ANIL KUMAR******************************************/    
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -3279,10 +3282,10 @@
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
           '</div>' +
-          '</div>' +
+       
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+         
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
@@ -3298,7 +3301,7 @@
           '</div>' +
           '</div>' +
           '</div>' +
-          '</div>' +
+          
 
           '<div class="slds-col slds-size_1-of-3">' +
           '<div class="slds-form-element">' +
@@ -3488,7 +3491,7 @@
         var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
         // make hr
 
-        var element=document.getElementById('lineDiv').style.cssText=`
+        var element=document.getElementById(d1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
