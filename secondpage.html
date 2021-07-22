@@ -3154,7 +3154,7 @@
       event.preventDefault();
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
-      console.log('Start '+JSON.stringify(DEListMap.DEMap.DEMap));
+      console.log('Start '+JSON.stringify(DEListMap.DEMap));
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       if (DESetQueryBox.has(DEDragData.DEExtKey)) {
