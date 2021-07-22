@@ -3170,10 +3170,10 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' +
+         /* document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' +
           DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
            + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + 
-           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
+           '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';*/
        //line added by priyanka to create list in dueking picklist
        document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
                               DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
