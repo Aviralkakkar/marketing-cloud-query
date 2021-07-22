@@ -3446,7 +3446,7 @@
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
       }
       else {
-        for (var key in DEListMap[DEExtKeyFordeleteDiv].DESelectedFields) {
+       /* for (var key in DEListMap[DEExtKeyFordeleteDiv].DESelectedFields) {
           SetValStr = JSON.stringify({
             "FieldName": DEListMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
             "FieldType": DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
@@ -3454,7 +3454,7 @@
           if (NewDEFieldsSet.has(SetValStr)) {
             NewDEFieldsSet.delete(SetValStr);
           }
-        }
+        }*/
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
         document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
       }
