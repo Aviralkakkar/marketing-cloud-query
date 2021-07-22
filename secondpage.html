@@ -2097,7 +2097,7 @@
 
     <div style="display: none; width: 160px;" id="RelationPopup">
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" style=" margin-right: 20%;">
         <div class="slds-modal__container" id="slds-modal__container">
           <header class="slds-modal__header"  style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
                             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
@@ -2199,7 +2199,7 @@
 
 
 
-          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; height: 27rem; ">
+          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; ">
 
             <div class="container" style="padding:0%; margin:0%; width: -webkit-fill-available;">
              
@@ -2532,9 +2532,9 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-        document.getElementById('leftsideList').innerHTML += '<input type="checkbox" class="list-group-item" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+        document.getElementById('leftsideList').innerHTML += '<input type="checkbox" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
        //line added by priyanka to create list in dueking picklist
-      /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+      /* document.getElementById('ulList').innerHTML += ' <li class="list-group-item" name= "' +
                               DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
                               DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
                               DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
@@ -2873,7 +2873,7 @@
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openSelectFieldsDEExtKey == '') {
-          for (var i = 0; i < DEListMap[DEDragData.DEExtKey].DEFields.length; i++) {
+          for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
             document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
               '<div class="slds-tree__item slds-is-selected">' +
               ' <span class="slds-size_1-of-1">' +
