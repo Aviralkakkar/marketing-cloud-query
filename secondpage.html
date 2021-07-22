@@ -3331,8 +3331,8 @@
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
 
-        for (var i in DEListMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-          joinTwoDivString += '<option value="' + DEListMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+        for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+          joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
         }
         joinTwoDivString += '</select>' +
           '</div>' +
