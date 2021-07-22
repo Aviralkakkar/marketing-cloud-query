@@ -2890,7 +2890,7 @@
       event.preventDefault();
       document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
-      console.log('Start '+JSON.stringify(DEListMap.DEMap.DEMap));
+      console.log('Start '+JSON.stringify(DEListMap.DEMap));
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       if (DESetQueryBox.has(DEDragData.DEExtKey)) {
@@ -2900,9 +2900,9 @@
       else {
         document.getElementById('DEListDivAlert').style.display = 'none';
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
-        DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-        for (var i = 0; i < DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+        DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+        for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
         }
         document.getElementById('RelationPopup').style.display = 'block';
       }
