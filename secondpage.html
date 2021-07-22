@@ -29,6 +29,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+  
   <style>
     #marketing-asideLeft {
 
@@ -1772,6 +1773,143 @@
       margin: 0;
       list-style-type: none;
     }
+
+    /*-------Modal 1 and 2 CSS -Priyanka------------*/
+    #modal-content-id-1 {
+        font-size: 12px !important;
+        line-height: 20px !important;
+        color: #4e8abe !important;
+        flex-direction: row !important;
+  
+      }
+  
+      .slds-modal__container {
+        font-size: 12px !important;
+        height: 100% !important;
+  
+  
+  
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:after,
+      .slds-path__nav .slds-is-active:first-child:before {
+        background: #edf5fa !important;
+  
+      }
+  
+      .slds-path__nav .slds-is-incomplete:after,
+      .slds-path__nav .slds-is-incomplete:before {
+        background: #ecebea;
+        height: 1.6rem;
+        bottom: 0px;
+      }
+  
+      .slds-path__item:after {
+        bottom: -20px;
+        height: 1.6rem;
+        -webkit-transform: skew(-30deg) translate3d(0, 0, 0);
+        transform: skew(-30deg) translate3d(0, 0, 0);
+      }
+  
+      .slds-path__nav .slds-is-current {
+        background-color: #edf5fa;
+      }
+  
+      .slds-path__item a:hover {
+        text-decoration: none;
+        color: white;
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:before {
+        top: 1px;
+        height: 1.6rem;
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:after {
+        bottom: 0;
+        height: 1.6rem;
+      }
+  
+      .list-group-item {
+        text-align: left;
+      }
+  
+      .right-side .list-group-item,
+      .left-side .list-group-item {
+        border: none;
+      }
+  
+      .slds-path__nav .slds-is-active:after,
+      .slds-path__nav .slds-is-active:before {
+        background: #edf5fa !important;
+        bottom: 2px;
+      }
+  
+      .slds-path__nav .slds-is-current:before {
+  
+        top: 1px;
+        height: 1.6rem;
+      }
+  
+      .slds-path__nav .slds-is-current:after {
+        background-position: top right, top left, bottom left;
+        bottom: 2px;
+        height: 1.6rem;
+      }
+  
+  
+  
+      #modal-content-id-2 {
+        font-size: 12px;
+        line-height: 20px;
+        color: #4e8abe;
+        flex-direction: row;
+      }
+  
+      .slds-modal__container {
+        font-size: 12px;
+        height: 100%;
+        width: 79%;
+  
+      }
+  
+  
+      .btn {
+  
+        background-color: white;
+        border: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: #0a5597;
+        width: 100%;
+        margin: 0px 0px 0px 2px;
+        padding: 0px 0px 0px 7px;
+        height: 2rem;
+        ;
+        text-align: left;
+      }
+  
+      .btn:hover {
+        background-color: #c4def5;
+      }
+  
+      #listbtn {
+        padding: 0;
+        margin: 0;
+      }
+  
+      .component-selector-container-attribute groups {
+        background-color: blanchedalmond;
+  
+      }
+  
+      .slds-tree [role=treeitem][aria-selected=true]>.slds-tree__item {
+        box-shadow: #fafaf9 4px 0 0 inset;
+        border: cadetblue;
+        background-color: #fafaf9;
+        font-size: 12px;
+      }
+    /*-------End Here------------*/
   </style>
   <!-- Khushboo code started -->
   <style>
@@ -1933,139 +2071,142 @@
       cursor: default;
     }
 
+    /*-------Modal 1 and 2 CSS -Priyanka------------*/
     #modal-content-id-1 {
-      font-size: 12px !important;
-      line-height: 20px !important;
-      color: #4e8abe !important;
-      flex-direction: row !important;
-
-    }
-
-    .slds-modal__container {
-      font-size: 12px !important;
-      height: 100% !important;
-
-
-
-    }
-
-    .slds-path__nav .slds-is-active:first-child:after,
-    .slds-path__nav .slds-is-active:first-child:before {
-      background: #edf5fa !important;
-
-    }
-
-    .slds-path__nav .slds-is-incomplete:after,
-    .slds-path__nav .slds-is-incomplete:before {
-      background: #ecebea;
-      height: 2rem;
-    }
-
-    .slds-path__item:after {
-      bottom: -20px;
-      height: 2rem;
-      -webkit-transform: skew(-30deg) translate3d(0, 0, 0);
-      transform: skew(-30deg) translate3d(0, 0, 0);
-    }
-
-    .slds-path__nav .slds-is-current {
-      background-color: #edf5fa;
-    }
-
-    .slds-path__item a:hover {
-      text-decoration: none;
-      color: white;
-    }
-
-    .slds-path__nav .slds-is-active:first-child:before {
-      top: 1px;
-      height: 2rem;
-    }
-
-    .slds-path__nav .slds-is-active:first-child:after {
-      bottom: 0;
-      height: 2rem;
-    }
-
-    .list-group-item {
-      text-align: left;
-    }
-
-    .right-side .list-group-item,
-    .left-side .list-group-item {
-      border: none;
-    }
-
-    .slds-path__nav .slds-is-active:after,
-    .slds-path__nav .slds-is-active:before {
-      background: #edf5fa !important;
-      bottom: 2px;
-    }
-
-    .slds-path__nav .slds-is-current:before {
-
-      top: 1px;
-      height: 2rem;
-    }
-
-    .slds-path__nav .slds-is-current:after {
-      background-position: top right, top left, bottom left;
-      bottom: 2px;
-    }
-
-
-
-    #modal-content-id-2 {
-      font-size: 12px;
-      line-height: 20px;
-      color: #4e8abe;
-      flex-direction: row;
-    }
-
-    .slds-modal__container {
-      font-size: 12px;
-      height: 100%;
-      width: 79%;
-
-    }
-
-
-    .btn {
-
-      background-color: white;
-      border: none;
-      font-size: 12px;
-      line-height: 20px;
-      color: #0a5597;
-      width: 100%;
-      margin: 0px 0px 0px 2px;
-      padding: 0px 0px 0px 7px;
-      height: 2rem;
-      ;
-      text-align: left;
-    }
-
-    .btn:hover {
-      background-color: #c4def5;
-    }
-
-    #listbtn {
-      padding: 0;
-      margin: 0;
-    }
-
-    .component-selector-container-attribute groups {
-      background-color: blanchedalmond;
-
-    }
-
-    .slds-tree [role=treeitem][aria-selected=true]>.slds-tree__item {
-      box-shadow: #fafaf9 4px 0 0 inset;
-      border: cadetblue;
-      background-color: #fafaf9;
-      font-size: 12px;
-
-    }
+        font-size: 12px !important;
+        line-height: 20px !important;
+        color: #4e8abe !important;
+        flex-direction: row !important;
+  
+      }
+  
+      .slds-modal__container {
+        font-size: 12px !important;
+        height: 100% !important;
+  
+  
+  
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:after,
+      .slds-path__nav .slds-is-active:first-child:before {
+        background: #edf5fa !important;
+  
+      }
+  
+      .slds-path__nav .slds-is-incomplete:after,
+      .slds-path__nav .slds-is-incomplete:before {
+        background: #ecebea;
+        height: 1.6rem;
+        bottom: 0px;
+      }
+  
+      .slds-path__item:after {
+        bottom: -20px;
+        height: 1.6rem;
+        -webkit-transform: skew(-30deg) translate3d(0, 0, 0);
+        transform: skew(-30deg) translate3d(0, 0, 0);
+      }
+  
+      .slds-path__nav .slds-is-current {
+        background-color: #edf5fa;
+      }
+  
+      .slds-path__item a:hover {
+        text-decoration: none;
+        color: white;
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:before {
+        top: 1px;
+        height: 1.6rem;
+      }
+  
+      .slds-path__nav .slds-is-active:first-child:after {
+        bottom: 0;
+        height: 1.6rem;
+      }
+  
+      .list-group-item {
+        text-align: left;
+      }
+  
+      .right-side .list-group-item,
+      .left-side .list-group-item {
+        border: none;
+      }
+  
+      .slds-path__nav .slds-is-active:after,
+      .slds-path__nav .slds-is-active:before {
+        background: #edf5fa !important;
+        bottom: 2px;
+      }
+  
+      .slds-path__nav .slds-is-current:before {
+  
+        top: 1px;
+        height: 1.6rem;
+      }
+  
+      .slds-path__nav .slds-is-current:after {
+        background-position: top right, top left, bottom left;
+        bottom: 2px;
+        height: 1.6rem;
+      }
+  
+  
+  
+      #modal-content-id-2 {
+        font-size: 12px;
+        line-height: 20px;
+        color: #4e8abe;
+        flex-direction: row;
+      }
+  
+      .slds-modal__container {
+        font-size: 12px;
+        height: 100%;
+        width: 79%;
+  
+      }
+  
+  
+      .btn {
+  
+        background-color: white;
+        border: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: #0a5597;
+        width: 100%;
+        margin: 0px 0px 0px 2px;
+        padding: 0px 0px 0px 7px;
+        height: 2rem;
+        ;
+        text-align: left;
+      }
+  
+      .btn:hover {
+        background-color: #c4def5;
+      }
+  
+      #listbtn {
+        padding: 0;
+        margin: 0;
+      }
+  
+      .component-selector-container-attribute groups {
+        background-color: blanchedalmond;
+  
+      }
+  
+      .slds-tree [role=treeitem][aria-selected=true]>.slds-tree__item {
+        box-shadow: #fafaf9 4px 0 0 inset;
+        border: cadetblue;
+        background-color: #fafaf9;
+        font-size: 12px;
+      }
+    /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
 </head>
@@ -2372,16 +2513,79 @@
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container">
-          <header class="slds-modal__header">
-            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <header class="slds-modal__header"  style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+              title="Close" onclick="CancelDERecordModal()">
               <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
               </svg>
               <span class="slds-assistive-text">Close</span>
             </button>
-            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h2>
+
+            <div class="slds-path"
+              style="height: 3rem; pointer-events: none; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
+              <div class="slds-grid slds-path__track">
+                <div class="slds-grid slds-path__scroller-container">
+                  <div class="slds-path__scroller">
+                    <div class="slds-path__scroller_inner">
+                      <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal"
+                        style="width:100%; height: 3rem; padding:0; margin:0; background-color:#f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);  ">
+                        <li class="slds-path__item slds-is-current slds-is-active" role="presentation"
+                          style=" height:3rem; color:#4e8abe; border-bottom-left-radius: 0; border-top-left-radius: 0;">
+                          <a aria-selected="true" class="slds-path__link" href="#" id="path-1"
+                            role="option" tabindex="0">
+                            <span class="slds-path__stage">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check">
+                                </use>
+                              </svg>
+                              <span class="slds-assistive-text">Current Stage:</span>
+                            </span>
+                            <span class="slds-path__title"
+                              style="color:#4e8abe ; font-size: 16px; padding-top: 22px;"><span
+                                class="badge badge-info"
+                                style="background-color: #4e8abe; border-radius: 50%; align-content: center; ">1</span>
+                              Modal 1</span>
+                          </a>
+                        </li>
+                        <li class="slds-path__item slds-is-incomplete" role="presentation" style="height: 3rem;">
+                          <a aria-selected="false" class="slds-path__link" href="#" id="path-2"
+                            role="option" tabindex="-1">
+                            <span class="slds-path__stage">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check">
+                                </use>
+                              </svg>
+                            </span>
+                            <span class="slds-path__title"
+                              style="color:#999; font-size: 16px; padding-top: 22px; "><span
+                                class="badge badge-info"
+                                style="background-color: #999; border-radius: 50%; ">2</span> Modal
+                              2</span>
+                          </a>
+                        </li>
+                        <li class="slds-path__item slds-is-current1" role="presentation"
+                          style="width: 1%; height:3rem; background-color: #ecebea; color:#999; border-bottom-left-radius: 0; border-top-left-radius: 0; background-image:linear-gradient(to bottom,#fafafa,#eee);">
+                          <a aria-selected="true" class="slds-path__link" href="#" id="path-1"
+                            role="option" tabindex="0">
+                            <span class="slds-path__stage">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check">
+                                </use>
+                              </svg>
+                            </span>
+
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
           </header>
+
+
+
 
 
 
@@ -2412,12 +2616,72 @@
 
 
 
-          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de">
+          <div class="slds-modal__content slds-p-around_medium" id="grid-1-de" style=" overflow:hidden; margin:0; padding:0; height: 27rem;  ">
+
+            <div class="container" style="padding:0%; margin:0%; ">
+             
+        <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%;">
+          <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; ">
+            <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
+                <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;" >
+                   <h4 class="slds-text-title_caps" id=" component-selector-container__heading" style="width: 100%; margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; "><b>Data Extension Fields</b></h4>
+                </div>
+                 <ul class="list-group left-side" id="leftsideList" style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
+                             <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
+                          -->
+                  </ul>
+            </div>
+         </div>
+          
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+                     <button class="btn btn-default btn-sm move-right">
+                          <span class="glyphicon glyphicon-chevron-right">R</span>
+                      </button>
+                      <button class="btn btn-default btn-sm move-left" style="margin-top: 25%;">
+                        <span class="glyphicon glyphicon-chevron-left">L</span>
+                    </button>
+                  </div>
+          
+                  <div class="dual-list list-right col-md-5"  style="padding:0%; margin:0%;  " >
+                      <div class="well" style=" padding:0%;  background-color: white;  ">
+                        <div class="row" style="padding:0%; margin:0%;  " >
+                              
+                            <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="width: 100%; margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; "><b>Available Fields</b></h4>
+        
+                          </div>
+                          <div style="overflow-y: scroll; overflow-x: hidden;  height: 23rem;">
+                          <ul class="list-group right-side" id="rightsideList" aria-activedescendant="cb1-opt6" style=" border: none; padding:0%; margin:0%;   ">
+                           
+                          </ul>
+                        </div>
+                         
+                      </div>
+                      
+            
+                  </div>
+                  <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
+                  <button class="btn btn-default btn-sm move-up" style="margin-top: 15%;">
+                    <span class="glyphicon glyphicon-chevron-up">U</span>
+                 </button>
+                 <button class="btn btn-default btn-sm move-down" style="margin-top: 20%;">
+                  <span class="glyphicon glyphicon-chevron-down">D</span>
+               </button>
+               </div>
+                  
+          
+            </div>
+          </div>
+
+
 
           </div>
-          <footer class="slds-modal__footer">
+        <!--  <footer class="slds-modal__footer">
             <button class="slds-button slds-button_neutral" onclick="CancelPopup()">Cancel</button>
             <button class="slds-button slds-button_brand" onclick="Next()">Next</button>
+          </footer>-->
+          <footer class="slds-modal__footer slds-modal__footer_directional" style=" background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+            <button class="slds-button slds-button_neutral" onclick="CancelPopup()" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;">cancel</button>
+            <button class="slds-button slds-button_brand" onclick="Next()" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;">Next</button>
           </footer>
         </div>
       </section>
@@ -2885,8 +3149,8 @@
 
     function drop(event, target) {
       event.preventDefault();
-      document.getElementById('grid-1-de').innerHTML = '';
-      document.getElementById('ulList').innerHTML = '';
+      document.getElementById('leftsideList').innerHTML = '';
+      document.getElementById('leftsideList').innerHTML = '';
       console.log('Start '+JSON.stringify(DEListMap.DEMap));
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
@@ -2899,13 +3163,22 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-          document.getElementById('grid-1-de').innerHTML += '<input type="checkbox" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
-        }
+          document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="text" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" readonly> <br>';
+       //line added by priyanka to create list in dueking picklist
+      /* document.getElementById('ulList').innerHTML += ' <li class="list-group-item" name= "' +
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
+                              DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
+                              + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
+
+                              }
         document.getElementById('RelationPopup').style.display = 'block';
       }
       console.log('Finished');
     };
-
+    
+    
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
@@ -2930,7 +3203,8 @@
         }
       }
     };
-
+   
+   
     function Previous() {
       if (DEDragData.DEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
@@ -3406,82 +3680,127 @@
           });
           fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
+
+        //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
-          '.mydiv {' +
-          'position: absolute;' +
-          'z-index: 9;' +
-          'background-color: #f1f1f1;' +
-          'text-align: center;' +
-          'border: 1px solid #d3d3d3;' +
-          '}' +
-          '.mydivheader {' +
-          'padding: 10px;' +
-          'cursor: move;' +
-          'z-index: 10;' +
-          '}' +
-          '.scrollableClass {' +
-          'background-color: #808080a1;' +
-          'height: 150px;' +
-          'overflow: auto;' +
-          '}' +
-          '.DeleteDivBoxClass {' +
-          'position: absolute;' +
-          'right: -30px;' +
-          'z-index: 1;' +
-          'width: 34px;' +
-          'height: 34px;' +
-          'background-color: #daecff;' +
-          'border: 1px solid #daecff;' +
-          'border-top-left-radius: 5px;' +
-          'border-bottom-left-radius: 5px;' +
-          'border-color: #82bbd6;' +
-          'border-bottom-right-radius: 5px;' +
-          'border-top-right-radius: 5px;' +
-          'top: 10%;'+
-          '}' +
-          '</style>' +
-          '<div class="graph-object-figure attribute-set-figure expanded active mydiv" id="' + DEDragData.DEExtKey + 'DeleteQueryBox" style="left: 140px; top: 36px;">' +
-          '<div class="graph-object-menu as-actions" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-          '<div class="as-action as-add" title="Add Relationship">Add Relationship</div>' +
-          '</div>' +
-  
-          '<div class="DeleteDivBoxClass" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)">' +
-          '<div class="as-action as-add" title="Delete Box"></div>' +
-          '</div>' +
-  
-          '<div class="graph-object-primary attribute-set">' +
-          '<div class="graph-object-header as-actions">' +
-          '<div class="graph-object-title mydivheader" data-original-title="" title="" >' +
-          '<span title="' + DEDragData.DEName + '">' + DEDragData.DEName + '</span>' +
-          '</div>' +
-          '<div class="as-action as-edit" title="Edit Properties">' +
-          '<svg class="slds-icon slds-icon-text-default test-class" aria-hidden="true">' +
-          '<use  xlink:href="C:\\Users\\HP\\Downloads\\salesforce-lightning-design-system-2.13.7\\assets\\icons\\utility-sprite\\svg\\symbols.svg#edit"></use>' +
-          '</svg>' +
-          '</div>' +
-          '</div>' +
-          '<div class="graph-object-data-sources">   ' +
-          '<div class="icons">' +
-          '<ul class="horizontal-list">' +
-          '</ul>' +
-          '</div>' +
-          '</div>' +
-          '<div class="graph-object-body" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
-          '<ul class="attributes scrollableClass">';
+          '        ' +
+          '        .mainQuaryBoxStyle{' +
+          '            width:10em;' +
+          '            background-color: #387F9D;' +
+          '            border-color:#387F9D;' +
+          '            position: absolute;' +
+          '            -webkit-user-select: none;' +
+          '            -khtml-user-select: none;' +
+          '            -moz-user-select: none;' +
+          '            -ms-user-select: none;' +
+          '            -o-user-select: none;' +
+          '            user-select: none;' +
+          '            user-select: none;' +
+          '            -webkit-touch-callout: none;' +
+          '            opacity:0.9;' +
+          '            ' +
+          '        }' +
+          '' +
+          '        .headerOfQuaryBox' +
+          '        {' +
+          '            text-align: left;' +
+          '            font-size:75%;' +
+          '            background-color: #387F9D;' +
+          '            border: 1px solid #387F9D;' +
+          '            border-bottom: 0;' +
+          '            margin:auto;' +
+          '            color:white;' +
+          '            font-weight:bold;' +
+          '            font-family: Calibr;' +
+          '            padding:2%;' +
+          '        }' +
+          '        .data-query-Box-style{' +
+          '            margin:1px;' +
+          '            background-color: #F1F1F1;' +
+          '            padding:0;' +
+          '            font-size: 70%;' +
+          '            max-height:250px;' +
+          '        }' +
+          '        .data-box-style{' +
+          '            color:#686363;' +
+          '            font-size: 80%;' +
+          '            cursor: pointer;' +
+          '            border-bottom: 1px solid #ddc5c5;' +
+          '            font-family: Calibr;' +
+          '            padding:2%;' +
+          '        }' +
+          '' +
+          '        .quaryBox{' +
+          '          color:#686363!important;  ' +
+          '          text-align:center;' +
+          '          max-height:150px;' +
+          '          margin:1px;' +
+          '          background-color: #F1F1F1;' +
+          '          padding:0;' +
+          '          font-size: 70%;' +
+          '          ' +
+          '        }' +
+          '' +
+          '        .dataFields-area-set{' +
+          '            padding-left: 0;' +
+          '            ' +
+          '        }    ' +
+          '' +
+          '        .buttonStyle{' +
+          '            background-color: #387F9D;' +
+          '            height:24px;' +
+          '            width:24px;' +
+          '            float: right;' +
+          '            border:none;' +  
+          '        }' +
+          '' +
+          '    </style>' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
+          '        <table>' +
+          '            <tbody>' +
+          '                <th>' +
+          '                    <td style="width:6em;" style="display: inline-block;width: 180px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" ><span title="">' + DEDragData.DEName + '</span></td>' +
+          '                    <td width="20%">' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
+          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
+          '                              </svg>    ' +
+          '                        </button>' +
+          '                    </td>' +
+          '                    <td width="20%">' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
+          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
+          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
+          '                              </svg>' +
+          '                              ' +
+          '                        </button>' +
+          '                    </td>' +
+          '                </th>' +
+          '            </tbody>' +
+          '        </table>' +
+          '    </div>' +
+          '   <div class="slds-card__body" style="margin-top: 0px;margin-bottom: 0px;">' +
+
+          '   <div class="data-query-Box-style slds-box slds-scrollable" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
+          '  <ul style="padding-left: 0;">';
         relationDivString += fieldsListForRelationDiv;
         relationDivString += '</ul>' +
-          '</div>' +
-          '<div class="graph-object-footer">' +
-          '<!--Add footer-->' +
-          '<div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="graph-object-title" data-original-title="" title="">' +
-          '<span title="' + DEDragData.DEName + '" style="color:#2168a7;">WHERE </span>' +
-          '<ul class="attributes_second">' +
-          '<li class="attribute as-date editable scrollableClass" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</li>' +
-          '</ul>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
+          '    </div>' +
+          '    <div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+          '        <div style="text-align:center;">' +
+          '            <span title="">Where</span>    ' +
+          '        </div>' +
+          '        <div class="slds-scrollable slds-box quaryBox">' +
+          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'
+        '            </div>' +
+          '         </div>' +
+          '   </div>' +
+          '</div>'
+          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox" >'+
           '</div>';
+
+      //************************************************END(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -3753,12 +4072,77 @@
               "SecondDEExtKey": document.getElementById('select-02').value,
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
+            //Edited By ANIL KUMAR
+            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    //****************************************Edited By ANIL KUMAR******************************************
+    function joinQueryBoxLine(de1,de2)
+    {
+        console.log("Line drawed");
 
+        var val1=de1+"DeleteQueryBox";
+        var val2=de2+"DeleteQueryBox";
+
+        var div1=document.getElementById(val1);
+
+        var div2=document.getElementById(val2);
+
+        var div1_pos = div1.getBoundingClientRect();
+
+        var div2_pos = div2.getBoundingClientRect();
+        console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
+        if(div1_pos.left<div2_pos.left)
+        {
+            var x1 = div1_pos.left + (div1_pos.width-2);
+            var y1 = div1_pos.top+10;
+            var x2 = (div2_pos.left-div2_pos.width) + (div2_pos.width+2);
+            var y2 = div2_pos.top+div2_pos.height/2;
+        }
+        else
+        {
+            var x1 = (div1_pos.left-div1_pos.width) + (div1_pos.width+1);
+            var y1 = div1_pos.top+div1_pos.height/2;
+            var x2 = div2_pos.left + (div2_pos.width-2);
+            var y2 = div2_pos.top+10;
+        }
+        console.log(" div2 left="+div2_pos.left);
+        console.log(" div1 left="+div1_pos.left);
+
+        //console.log("right="+y2);
+
+        // distance
+        var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
+        // center
+        var cx = ((x1 + x2) / 2)- (length / 2);
+        var cy = ((y1 + y2) / 2);
+        // angle
+        var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
+        // make hr
+
+        var element=document.getElementById(val1).style.cssText=`
+                        opacity: 0.9;
+                        margin: 0px;
+                        height:  2px;
+                        background-color:#387F9D;
+                        line-height: 1px;
+                        position: absolute;
+                        left: ${cx}px;
+                        top: ${cy}px;
+                        width:${length}px;
+                        -moz-transform: rotate(${angle}deg);
+                        -webkit-transform: rotate(${angle}deg);
+                        -o-transform: rotate(${angle}deg);
+                        -ms-transform: rotate(${angle}deg);
+                        transform: rotate(${angle}deg);
+                        `
+                ;
+        }
+
+    //****************************************END(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
