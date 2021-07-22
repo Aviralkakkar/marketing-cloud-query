@@ -2532,14 +2532,14 @@
         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
         DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
         for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-       // document.getElementById('leftsideList').innerHTML += '<input type="checkbox" name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+        document.getElementById('leftsideList').innerHTML += '<input type="text " class="list-group-item"  name = "' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
        //line added by priyanka to create list in dueking picklist
-      document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+      /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
                               DEListMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
                               DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
                               DEDragData.DEExtKey + '" draggable=true name="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName 
                               + '" label="' + DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
-                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';
+                              DEListMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
         }
         document.getElementById('RelationPopup').style.display = 'block';
       }
@@ -3446,7 +3446,7 @@
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
       }
       else {
-       /* for (var key in DEListMap[DEExtKeyFordeleteDiv].DESelectedFields) {
+        for (var key in DEListMap[DEExtKeyFordeleteDiv].DESelectedFields) {
           SetValStr = JSON.stringify({
             "FieldName": DEListMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
             "FieldType": DEListMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
@@ -3454,7 +3454,7 @@
           if (NewDEFieldsSet.has(SetValStr)) {
             NewDEFieldsSet.delete(SetValStr);
           }
-        }*/
+        }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
         document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
       }
