@@ -3305,7 +3305,7 @@
           '<div class="slds-form-element__control">' +
           '<div class="slds-select_container">' +
           '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>'+
+          '<option value="">Select…</option>';
           
         for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
           if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
@@ -3378,8 +3378,8 @@
 
           '</div>' +
           '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); height:8%;">' +
-          '<button class="slds-button slds-button_neutral" style="font-size:11px; line-height:20px; float:left!important;">Cancel</button>' +
-          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; float:right!important;">Save</button>' +
+          '<button class="slds-button slds-button_neutral" style="font-size:11px; line-height:20px; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
           '</footer>' +
           '</div>' +
           '</section>' +
