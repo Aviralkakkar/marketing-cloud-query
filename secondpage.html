@@ -3116,7 +3116,7 @@
           '            height:24px;' +
           '            width:24px;' +
           '            float: right;' +
-          '            border:none;' +
+          '            border:none;' +  
           '        }' +
           '' +
           '    </style>' +
@@ -3127,14 +3127,14 @@
           '                <th>' +
           '                    <td style="width:6em;" style="display: inline-block;width: 180px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" ><span title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
           '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
           '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
           '                              </svg>    ' +
           '                        </button>' +
           '                    </td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)">' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
           '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
           '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
           '                              </svg>' +
@@ -3249,16 +3249,16 @@
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
       if (joinedDivSet.size == 0  || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
-        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
+        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
-          '<header class="slds-modal__header">' +
+          '<header class="slds-modal__header" style="background-color:#e7edf0; height:5%; padding:  5px 4px;">' +'<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;  margin-top: 0%; padding: 0px 4px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
           '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
           '</svg>' +
           '<span class="slds-assistive-text">Close</span>' +
           '</button>' +
-          '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
+          
           '</header>' +
           '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
 
@@ -3272,7 +3272,7 @@
           '<div class="slds-form-element">' +
           '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
           '<div class="slds-form-element__control">' +
-          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
           '</div>' +
           '</div>' +
@@ -3423,23 +3423,87 @@
               }
             }
             JoinQueryDetails["DEForJoin"].push({
-              "FirstDEName": DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
               "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
               "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
-              "SecondDEName": DEListMap[document.getElementById('select-02').value].DEName,
+              "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
+            onAddQuaryBlocks(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName , DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    
+    //******************************************************Edited by ANIL KUMAR adding block using Line*********/
+    function onAddQuaryBlocks(de1,de2)
+    {
+        console.log("Line drawed");
+        
+        var d1=de1+'DeleteQueryBox';
+        var d2=de2+'DeleteQueryBox';
+        var div1=document.getElementById(d1);
 
+        var div2=document.getElementById(d2);
+
+        var div1_pos = div1.getBoundingClientRect();
+
+        var div2_pos = div2.getBoundingClientRect();
+        console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
+        if(div1_pos.left<div2_pos.left)
+        {
+            var x1 = div1_pos.left + (div1_pos.width-2);
+            var y1 = div1_pos.top+10;
+            var x2 = (div2_pos.left-div2_pos.width) + (div2_pos.width+2);
+            var y2 = div2_pos.top+div2_pos.height/2;
+        }
+        else
+        {
+            var x1 = (div1_pos.left-div1_pos.width) + (div1_pos.width+1);
+            var y1 = div1_pos.top+div1_pos.height/2;
+            var x2 = div2_pos.left + (div2_pos.width-2);
+            var y2 = div2_pos.top+10;
+        }
+        console.log(" div2 left="+div2_pos.left);
+        console.log(" div1 left="+div1_pos.left);
+
+        //console.log("right="+y2);
+
+        // distance
+        var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
+        // center
+        var cx = ((x1 + x2) / 2)- (length / 2);
+        var cy = ((y1 + y2) / 2);
+        // angle
+        var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
+        // make hr
+
+        var element=document.getElementById('lineDiv').style.cssText=`
+                        opacity: 0.9;
+                        margin: 0px;
+                        height:  2px;
+                        background-color:#387F9D;
+                        line-height: 1px;
+                        position: absolute;
+                        left: ${cx}px;
+                        top: ${cy}px;
+                        width:${length}px;
+                        -moz-transform: rotate(${angle}deg);
+                        -webkit-transform: rotate(${angle}deg);
+                        -o-transform: rotate(${angle}deg);
+                        -ms-transform: rotate(${angle}deg);
+                        transform: rotate(${angle}deg);
+                        `
+                ;
+        }
+
+    //******************************************************Edited by ANIL KUMAR adding block using Line*********/
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
