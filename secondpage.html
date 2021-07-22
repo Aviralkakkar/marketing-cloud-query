@@ -2685,9 +2685,9 @@
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
-        DEListMap[DEDragData.DEExtKey].DESelectedFields = [];
+        DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
         for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
-          DEListMap[DEDragData.DEExtKey].DESelectedFields.push({
+          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
           });
