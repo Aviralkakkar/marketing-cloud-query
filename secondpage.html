@@ -4002,7 +4002,7 @@ document.addEventListener("touchend ", function(){
             "FieldName": checkbox.value,
             "FieldType": checkbox.name
           });
-          fieldsListForRelationDiv += '<li class="first attribute as-text editable" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
+          fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
 
         //************************************************Edited By ANIL KUMAR**********************************//
@@ -4124,7 +4124,7 @@ document.addEventListener("touchend ", function(){
         '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox" >' +
           '</div>';
 
-        //************************************************END(ANIL KUMAR)**********************************//
+        //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4444,7 +4444,7 @@ document.addEventListener("touchend ", function(){
                         `
         ;
     }
-    //****************************************END(ANIL KUMAR)******************************************    
+    //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
