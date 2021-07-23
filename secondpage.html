@@ -2418,20 +2418,105 @@
           
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick="validateQuery(JoinQueryDetails,'Validate')"
-                style="background-color: #4e8abe !important;">Validate Query</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small"
-                onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
-                onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+                 <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="validateQuery(JoinQueryDetails,'Validate')" style="background-color: #4e8abe !important;">Validate Query</button>
+                 <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" data-bs-toggle="modal" data-bs-target="#exampleModal" >Run</button>
+                <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+                
+                <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
+                    Launch demo modal
+                  </button-->
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered ">
+                      <div class="modal-content">
+                        <div class="modal-header" style="margin:0; padding:0; background-color: #e9f0f4;">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                                </button>
+                            
+                        </div>
+                        <div class="modal-body">
+                            <div  id="component-selector-container" class=" slds-float_left " style="height: 570px; width:30%; background-color:white; border: 2px solid lightgray;">
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="text-align: center; border-bottom: 2px solid #ddd; ">Data Extension Fields</h4>
+                                <div class="slds-scrollable" style="width:auto; ">
+                                <ul aria-labelledby="component-selector-container__heading"  id="ulList12" class="slds-tree" role="tree" style=" padding-left:0rem; background-color:white; position: relative;">
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected" > 
+                                          <span class="slds-size_1-of-1"><span> 
+                                              <button class="btn" value="Value_1" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 1 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_2" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 2 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Attribute_3" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 3 </button> </span> </span>  </div></li>
+                                 <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span>
+                                          <button class="btn" value="Attribute_4" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 4 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Attribute_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 5</button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="city" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 6 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="country" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 7 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="email" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 8 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="region" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 9 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="user_id" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 10 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_1" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 11 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_2" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 12 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_3" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 13 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_4" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 14 </button> </span> </span>  </div></li>
+                                  <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                          <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 15</button> </span> </span>  </div></li>
+                                          <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                            <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                                <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 16</button> </span> </span>  </div></li>
+                                                <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
+                                                  <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
+                                                      <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 17</button> </span> </span>  </div></li>
+                                </ul>
+                              </div>
+                              </div>
+                           
+                             
+                              <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
+                
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                            <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>
+                    
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="DetailsSave()">Run</button>
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-
-              <div id="QueryValidateTrueAlert" style="display:none">
-                <div class="demo-only" style="height:4rem">
+                <div id="QueryValidateTrueAlert" style="display:none">
+                 <div class="demo-only" style="height:4rem">
                   <div class="slds-notify_container slds-is-relative">
                     <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
                       <span class="slds-assistive-text">success</span>
@@ -2775,7 +2860,7 @@
                         style="width: 100%; margin: 0; height:-webkit-fill-available; padding: 3%; font-size: 12px; background-image:linear-gradient(to bottom,#fafafa,#eee); color:#4e8abe;  text-align: center; border-bottom: 2px solid #ddd; ">
                         <b>Data Extension Fields</b></h4>
                     </div>
-                    <ul class="list-group left-side" id="leftsideList"
+                    <ul class="list-group left-side" id="leftsideListInSelectField"
                       style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
                       <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
@@ -3345,13 +3430,12 @@ document.addEventListener("touchend ", function(){
 
     function drop(event, target) {
       event.preventDefault();
-      document.getElementById('leftsideList').innerHTML = '';
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
       console.log('Start ' + JSON.stringify(DEListMap.DEMap));
 
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-
       if (DESetQueryBox.has(DEDragData.DEExtKey)) {
         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
         document.getElementById('DEListDivAlert').style.display = 'block';
@@ -3362,12 +3446,12 @@ document.addEventListener("touchend ", function(){
         if(DEDragData.DECategory == "DEMap") {
           DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
           for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+            document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
               '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
             //line added by priyanka to create list in dueking picklist
-            /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+            /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
                                     DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
                                     DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
@@ -3379,12 +3463,12 @@ document.addEventListener("touchend ", function(){
         else if(DEDragData.DECategory == "SharedDEMap") {
           DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
           for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+            document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
               '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
             //line added by priyanka to create list in dueking picklist
-            /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+            /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
                                     DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
                                     DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
@@ -3396,12 +3480,12 @@ document.addEventListener("touchend ", function(){
         else if(DEDragData.DECategory == "DataViewMap") {
           DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
           for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            document.getElementById('leftsideList').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+            document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
               '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
             //line added by priyanka to create list in dueking picklist
-            /* document.getElementById('leftsideList').innerHTML += ' <li class="list-group-item" name= "' +
+            /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
                                     DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
                                     DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName 
@@ -3451,14 +3535,14 @@ document.addEventListener("touchend ", function(){
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        document.getElementById('leftsideList').innerHTML = '';
+        document.getElementById('leftsideListInSelectField').innerHTML = '';
         OpenSelectField(openSelectFieldsDEExtKey + "OpenSelectField");
       }
       if (openWhereDEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        document.getElementById('leftsideList').innerHTML = '';
+        document.getElementById('leftsideListInSelectField').innerHTML = '';
         OpenSelectField(openWhereDEExtKey + "OpenSelectField");
       }
     }
@@ -3837,7 +3921,7 @@ document.addEventListener("touchend ", function(){
 
     function CancelPopup() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
-      document.getElementById('leftsideList').innerHTML = '';
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
 
@@ -3877,7 +3961,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function OpenSelectField(EleDEExtKey) {
-      document.getElementById('grid-1-de').innerHTML = '';
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'block';
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
@@ -3903,7 +3987,7 @@ document.addEventListener("touchend ", function(){
 
       }
       document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
-      document.getElementById('grid-1-de').innerHTML = html;
+      document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
 
     function DetailsSave() {
