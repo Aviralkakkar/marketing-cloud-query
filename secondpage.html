@@ -2955,14 +2955,13 @@
                 </div>
               </div>
 
-              <div class="list-arrows col-md-1 text-center" onlick=" modal1button()"
-                style="padding:0%; margin:0%; margin-top: 25%;">
-                <button class="btn btn-default btn-sm move-right">
+              <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+               <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
                 <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
                   <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>
+                </button>-->
               </div>
 
               <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%;  ">
@@ -2987,12 +2986,12 @@
 
               </div>
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
-                <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
+               <!-- <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
                 </button>
                 <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
-                </button>
+                </button>-->
               </div>
 
 
@@ -3146,6 +3145,90 @@
 
   <div class="slds-col slds-size_9-of-12" id="DETable">
   </div>
+  <!--Priyanka Added Script for up-down right-left -->
+  <script language="javascript" > 
+    var currentSel = null; 
+    function move(){ 
+    if(arguments.length==1){ 
+    moveUp(arguments[0]); 
+    }else if(arguments.length==2){ 
+    moveRight(arguments[0],arguments[1]); 
+    } 
+    } 
+    function moveUp(direction){ 
+    if(currentSel == null) return; 
+    var index = currentSel.selectedIndex; 
+    if(direction){//up 
+    if(index==0) return; 
+     
+    var value = currentSel.options[index-1].value; 
+    var text = currentSel.options[index-1].text; 
+     
+    currentSel.options[index-1].value = currentSel.options[index].value; 
+    currentSel.options[index-1].text = currentSel.options[index].text; 
+     
+    currentSel.options[index].value = value; 
+    currentSel.options[index].text = text; 
+     
+    currentSel.options[index].selected = false; 
+    currentSel.options[index-1].selected = true; 
+    }else{//down 
+    if(index==(currentSel.length-1)) return; 
+     
+    var value = currentSel.options[index+1].value; 
+    var text = currentSel.options[index+1].text; 
+     
+    currentSel.options[index+1].value = currentSel.options[index].value; 
+    currentSel.options[index+1].text = currentSel.options[index].text; 
+     
+    currentSel.options[index].value = value; 
+    currentSel.options[index].text = text; 
+     
+    currentSel.options[index].selected = false; 
+    currentSel.options[index+1].selected = true; 
+    } 
+    } 
+    function moveRight(src,des){ 
+    if(src.selectedIndex==-1){ 
+    alert("Please select first!"); 
+    return; 
+    } 
+    for(var i=0;i<src.length;i++){ 
+    if(src[i].selected){ 
+    var op = document.createElement("option"); 
+    op.value = src.options[src.selectedIndex].value; 
+    op.text = src.options[src.selectedIndex].text; 
+    des.options.add(op); 
+    src.remove(i); 
+    i--; 
+    } 
+    } 
+    } 
+    function setButton(obj){ 
+    if(obj.length==0) return; 
+    currentSel = obj; 
+    if(obj.id=="leftSel"){ 
+    document.getElementById("btnLeft").disabled = true; 
+    document.getElementById("btnRight").disabled = false; 
+     
+    reSelect(document.getElementById("rightSel")); 
+    }else{ 
+    document.getElementById("btnLeft").disabled = false; 
+    document.getElementById("btnRight").disabled = true; 
+     
+    reSelect(document.getElementById("leftSel")); 
+    } 
+    } 
+     
+    function reSelect(obj){ 
+    for(var i=0; i<obj.length; i++){ 
+    if(obj[i].selected) obj[i].selected = false; 
+    } 
+    } 
+    
+    </script>
+
+  <!--End here-->
 
   <!-- Khushboo  code starting   -->
 
@@ -3552,30 +3635,22 @@ document.addEventListener("touchend ", function(){
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
               '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
             //line added by priyanka to create list in dueking picklist
-            /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
-                                    DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
-                                    DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
-                                    DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName 
-                                    + '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
-                                    DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
+            
 
-          }
+              }
         }
         else if (DEDragData.DECategory == "DataViewMap") {
           DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
           for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+           /* document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
+              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
             //line added by priyanka to create list in dueking picklist
-            /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
-                                    DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
-                                    DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + 
-                                    DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName 
-                                    + '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '"> ' + 
-                                    DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</li>'+'<br>';*/
-
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
+              + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+     
           }
         }
         document.getElementById('RelationPopup').style.display = 'block';
