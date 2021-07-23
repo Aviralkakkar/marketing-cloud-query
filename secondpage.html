@@ -2287,7 +2287,7 @@
                         <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
                       </span></button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2418,6 +2418,8 @@
           
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
+
+          
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
                 onclick="validateQuery(JoinQueryDetails,'Validate')"
@@ -2428,11 +2430,12 @@
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+          <!--********  Nitik code started *************-->       
 
               <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
                     Launch demo modal
                   </button-->
-
+        
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -2600,69 +2603,10 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div id="QueryValidateTrueAlert" style="display:none">
-              <div class="demo-only" style="height:4rem">
-                <div class="slds-notify_container slds-is-relative">
-                  <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
-                    <span class="slds-assistive-text">success</span>
-                    <span
-                      class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
-                      title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                      </svg>
-                    </span>
-                    <div class="slds-notify__content">
-                      <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
-                    </div>
-                    <div class="slds-notify__close">
-                      <button onclick="CancelQueryValidateTrueAlert()"
-                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+           <!--****** Nitik code ended *********-->   
             </div>
-
-            <div id="QueryValidateFalseAlert" style="display:none">
-              <div class="demo-only" style="height:4rem">
-                <div class="slds-notify_container slds-is-relative">
-                  <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
-                    <span class="slds-assistive-text">error</span>
-                    <span
-                      class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
-                      title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                      </svg>
-                    </span>
-                    <div class="slds-notify__content">
-                      <h2 class="slds-text-heading_small ">Invalid Query.</h2>
-                    </div>
-                    <div class="slds-notify__close">
-                      <button onclick="CancelQueryValidateFalseAlert()"
-                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="RelationshipDiv"> </div>
-            <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
-          </div>
-          <div class="slds-col slds-table--header-fixed_container " id="right_panel" style="height: 25%;padding-top:0%;"
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel" style="height: 25%;padding-top:0%;"
             style="overflow: scroll;">
             <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
 
@@ -2794,6 +2738,68 @@
 
 
           </div>
+          
+            <div id="QueryValidateTrueAlert" style="display:none">
+              <div class="demo-only" style="height:4rem">
+                <div class="slds-notify_container slds-is-relative">
+                  <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                    <span class="slds-assistive-text">success</span>
+                    <span
+                      class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
+                      title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                      </svg>
+                    </span>
+                    <div class="slds-notify__content">
+                      <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
+                    </div>
+                    <div class="slds-notify__close">
+                      <button onclick="CancelQueryValidateTrueAlert()"
+                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="QueryValidateFalseAlert" style="display:none">
+              <div class="demo-only" style="height:4rem">
+                <div class="slds-notify_container slds-is-relative">
+                  <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                    <span class="slds-assistive-text">error</span>
+                    <span
+                      class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
+                      title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                      </svg>
+                    </span>
+                    <div class="slds-notify__content">
+                      <h2 class="slds-text-heading_small ">Invalid Query.</h2>
+                    </div>
+                    <div class="slds-notify__close">
+                      <button onclick="CancelQueryValidateFalseAlert()"
+                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="RelationshipDiv"> </div>
+            <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
+          </div>
+          
         </div>
       </div>
 
@@ -3551,8 +3557,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-      // document.getElementById('FullPageSpinner').style.display = 'block';
-      // document.getElementById('DEListSidebar').style.marginTop = '-650px';
+       document.getElementById('FullPageSpinner').style.display = 'block';
+       document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -4280,7 +4286,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'
-        '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox" >' +
+        '<div id="' + DEDragData.DEExtKey+'" >' +
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4544,7 +4550,8 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
+            
+            //joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
