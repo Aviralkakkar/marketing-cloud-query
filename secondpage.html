@@ -3449,7 +3449,7 @@ document.addEventListener("touchend ", function(){
             document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
+              '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
             //line added by priyanka to create list in dueking picklist
             /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
@@ -3466,7 +3466,7 @@ document.addEventListener("touchend ", function(){
             document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
+              '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
             //line added by priyanka to create list in dueking picklist
             /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
@@ -3483,7 +3483,7 @@ document.addEventListener("touchend ", function(){
             document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > <br>';
+              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
             //line added by priyanka to create list in dueking picklist
             /* document.getElementById('leftsideListInSelectField').innerHTML += ' <li class="list-group-item" name= "' +
                                     DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + 
