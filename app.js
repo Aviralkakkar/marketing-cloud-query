@@ -11,7 +11,11 @@ var Set = require("collections/set");
 var moment = require('moment');
 var xml2js = require('xml2js');
 var xml2jsParser = new xml2js.Parser();
-var DEListMap = {};
+var DEListMap = {
+  "DEMap" : {},
+  "SharedDEMap" : {},
+  "DataViewMap" : {}
+};
 
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
@@ -31,76 +35,203 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 app.post("/secondpage", async function (req, res) {
-  // var clientid = req.body.clientid;
-  // var clientsecret = req.body.clientsecret;
-  // var clinentauthurl= req.body.authurl;
-  var clientid = "sr7id7zht854bwdco8t9qdym";
-  var clientsecret = "vhmEsBaxDl3LVeqYbLUxsg6p";
-  var clinentauthurl = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/";
+  // var AuthRequest = {
+  //   "ClientId" : req.body.clientid,
+  //   "ClientSecret" : req.body.clientsecret,
+  //   "ClinentAuthURL" : req.body.authurl
+  // }
+  var AuthRequest = {
+    "ClientId" : "sr7id7zht854bwdco8t9qdym",
+    "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
+    "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
+  }
   var NewDEName;
-  var AuthResponse = await getacesstoken(clientid, clientsecret, clinentauthurl);
+  var AuthResponse = await getacesstoken(AuthRequest);
 
   res.sendFile(path.join(__dirname + '/secondpage.html'));
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
-    var DEListFetchOptions = {
-      'method': 'POST',
-      'url': AuthResponse.SoapURL + 'Service.asmx',
-      'headers': {
-        'Content-Type': 'text/xml',
-        'SoapAction': 'Retrieve'
-      },
-      body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtension</ObjectType>\r\n       <QueryAllAccounts>true</QueryAllAccounts>\r\n         <Properties>ObjectID</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>IsSendable</Properties>\r\n                <Properties>SendableSubscriberField.Name</Properties>\r\n               \r\n            </RetrieveRequest>\r\n        </RetrieveRequestMsg>\r\n    </s:Body>\r\n</s:Envelope>'
-    };
-    request(DEListFetchOptions, function (error, response) {
-      if (error) throw new Error(error);
-      var TempDEListFetchResult;
-      xml2jsParser.parseString(response.body, function (err, result) {
-        TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-      });
-      for(var i in TempDEListFetchResult) {
-        DEListMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
-          "DEName" : TempDEListFetchResult[i]["Name"][0],
-          "DEFields" : []
-        }
-      }
+    DEListMap = await getDEMap();
+    DEListMap = await getSharedDEMap();
+    DEListMap = await getAllDEFields();
+    resCall.send(DEListMap);
 
-      var options = {
-        'method': 'POST',
-        'url': AuthResponse.SoapURL + 'Service.asmx',
-        'headers': {
-          'Content-Type': 'text/xml',
-          'SoapAction': 'Retrieve'
-        },
-        body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtensionField</ObjectType>\r\n                <Properties>Client.ID</Properties>\r\n                <Properties>CreatedDate</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>DataExtension.CustomerKey</Properties>\r\n                <Properties>DefaultValue</Properties>\r\n                <Properties>FieldType</Properties>\r\n                <Properties>IsPrimaryKey</Properties>\r\n                <Properties>IsRequired</Properties>\r\n                <Properties>MaxLength</Properties>\r\n                <Properties>ModifiedDate</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>Ordinal</Properties>\r\n                <Properties>Scale</Properties>\r\n\r\n                               <QueryAllAccounts>true</QueryAllAccounts>\r\n                <Retrieves />\r\n                <Options>\r\n                    <SaveOptions />\r\n                    <IncludeObjects>true</IncludeObjects>\r\n                </Options>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
-      };
-      request(options, function (error, response) {
-        if (error) throw new Error(error);
-        var TempDEFieldsResult;
-        var TempFieldSet = new Set();
-        var tempVal;
-        xml2jsParser.parseString(response.body, function (err, result) {
-          TempDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+
+    async function getDEMap() {
+      return new Promise(function (resolve, reject) {
+        var ListDEOption = {
+          'method': 'POST',
+          'url': AuthResponse.SoapURL + 'Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Retrieve',
+            'Authorization': 'Bearer ' + AuthResponse.AccessToken
+          },
+          body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtension</ObjectType>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>DataExtension.ObjectID</Properties>\r\n                <Properties>IsSendable</Properties>\r\n          <Properties>IsTestable</Properties>\r\n             <Properties>SendableSubscriberField.Name</Properties>\r\n        <Properties>SendableDataExtensionField.Name</Properties>\r\n          <Properties>Description</Properties>\r\n                  </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
+        };
+        request(ListDEOption, function (error, response) {
+          if (error) throw new Error(error);
+          xml2jsParser.parseString(response.body, async function (err, result) {
+            var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+            for(var i in TempDEListFetchResult) {
+              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" , "_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])) {
+                DEListMap.DEMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
+                  "DEName" : TempDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
+                }
+              }
+              else {
+                DEListMap.DataViewMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
+                  "DEName" : TempDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
+                }
+              }
+            }
+            resolve(DEListMap);
+          });
         });
-        for (var key in TempDEFieldsResult) {
-          TempFieldSet.add(JSON.stringify({
-            "CustomerKey": TempDEFieldsResult[key].DataExtension[0].CustomerKey[0],
-            "FieldName": TempDEFieldsResult[key].Name[0],
-            "FieldType": TempDEFieldsResult[key].FieldType[0]
-          }));
-        }
-        for (var val of Array.from(TempFieldSet)) {
-          tempVal = JSON.parse(val);
-          if(tempVal.CustomerKey in DEListMap) {
-            DEListMap[tempVal.CustomerKey].DEFields.push({
-              "FieldName": tempVal.FieldName,
-              "FieldType": tempVal.FieldType
+      })
+    }
+
+    async function getSharedDEMap() {
+      return new Promise(function (resolve, reject) {
+        var SharedDEFolderOption = {
+          'method': 'POST',
+          'url': AuthResponse.SoapURL + 'Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Retrieve',
+            'Authorization': 'Bearer ' + AuthResponse.AccessToken
+          },
+          body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataFolder</ObjectType>\r\n                <Properties>ID</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ContentType</Properties>\r\n                <Properties>ParentFolder.Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>ParentFolder.ObjectID</Properties>\r\n\r\n                <ns1:Filter\r\n                     xmlns:ns1="http://exacttarget.com/wsdl/partnerAPI" xsi:type="ns1:SimpleFilterPart">\r\n                     <ns1:Property>ContentType</ns1:Property>\r\n                     <ns1:SimpleOperator>equals</ns1:SimpleOperator>\r\n                     <ns1:Value>shared_dataextension</ns1:Value>\r\n                </ns1:Filter>\r\n\r\n                <QueryAllAccounts>true</QueryAllAccounts>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
+        };
+        request(SharedDEFolderOption, function (error, response) {
+          if (error) throw new Error(error);
+          var ListShareDEBody = '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">' +
+            '<s:Header>' +
+            '<a:Action s:mustUnderstand="1">Retrieve</a:Action>' +
+            '<a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>' +
+            '<a:ReplyTo>' +
+            '<a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>' +
+            '</a:ReplyTo>' +
+            '<a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>' +
+            '<fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>' +
+            '</s:Header>' +
+            '<s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">' +
+            '<RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">' +
+            '<RetrieveRequest>' +
+            '<ObjectType>DataExtension</ObjectType>' +
+            '<QueryAllAccounts>true</QueryAllAccounts>' +
+            '<QueryAllAccountsSpecified>true</QueryAllAccountsSpecified>' +
+            '<Properties>CustomerKey</Properties>' +
+            '<Properties>Name</Properties>' +
+            '<Properties>DataExtension.ObjectID</Properties>' +
+            '<Properties>IsSendable</Properties>' +
+            '<Properties>IsTestable</Properties>' +
+            '<Properties>SendableSubscriberField.Name</Properties>' +
+            '<Properties>SendableDataExtensionField.Name</Properties>' +
+            '<Properties>Description</Properties>' +
+            '<Properties>CategoryID</Properties>' +
+            '<Properties>Client.ID</Properties>' +
+            '<Filter xsi:type="SimpleFilterPart">' +
+            '<Property>CategoryID</Property>';
+          xml2jsParser.parseString(response.body, function (err, result) {
+            if (result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'].length == 1) {
+              ListShareDEBody = ListShareDEBody + '<SimpleOperator>equals</SimpleOperator> <Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][0].ID[0] + '</Value>';
+            }
+            else {
+              ListShareDEBody = ListShareDEBody + '<SimpleOperator>IN</SimpleOperator>';
+              for (var i = 0; i < result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'].length; i++) {
+                ListShareDEBody = ListShareDEBody + '<Value>' + result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'][i].ID[0] + '</Value>';
+              }
+            }
+          });
+          ListShareDEBody = ListShareDEBody + '</Filter>' +
+            '</RetrieveRequest>' +
+            '</RetrieveRequestMsg>' +
+            '</s:Body>' +
+            '</s:Envelope>';
+          console.log("ListShareDEBody : " + ListShareDEBody);
+          var ListSharedDEOption = {
+            'method': 'POST',
+            'url': AuthResponse.SoapURL + 'Service.asmx',
+            'headers': {
+              'Content-Type': 'text/xml',
+              'SoapAction': 'Retrieve',
+              'Authorization': 'Bearer ' + AuthResponse.AccessToken
+            },
+            body: ListShareDEBody
+          };
+          request(ListSharedDEOption, function (error, response) {
+            if (error) throw new Error(error);
+            xml2jsParser.parseString(response.body, async function (err, result) {
+              var TempSharedDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+              for(var i in TempSharedDEListFetchResult) {
+                DEListMap.SharedDEMap[TempSharedDEListFetchResult[i]["CustomerKey"][0]] = {
+                  "DEName" : TempSharedDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
+                }
+              }
+              console.log("DEListMap : " + JSON.stringify(DEListMap));
+              resolve(DEListMap);
             });
-          }
-        }
-        resCall.send(DEListMap);
-      });
-    });
+          });
+        });
+      })
+    }
+
+    async function getAllDEFields() {
+      return new Promise(function (resolve, reject) {
+        var options = {
+          'method': 'POST',
+          'url': AuthResponse.SoapURL + 'Service.asmx',
+          'headers': {
+            'Content-Type': 'text/xml',
+            'SoapAction': 'Retrieve'
+          },
+          body: '<?xml version="1.0" encoding="UTF-8"?>\r\n<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">\r\n    <s:Header>\r\n        <a:Action s:mustUnderstand="1">Retrieve</a:Action>\r\n        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>\r\n        <a:ReplyTo>\r\n            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>\r\n        </a:ReplyTo>\r\n        <a:To s:mustUnderstand="1">' + AuthResponse.SoapURL + 'Service.asmx</a:To>\r\n        <fueloauth xmlns="http://exacttarget.com">' + AuthResponse.AccessToken + '</fueloauth>\r\n    </s:Header>\r\n    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">\r\n        <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">\r\n            <RetrieveRequest>\r\n                <ObjectType>DataExtensionField</ObjectType>\r\n                <Properties>Client.ID</Properties>\r\n                <Properties>CreatedDate</Properties>\r\n                <Properties>CustomerKey</Properties>\r\n                <Properties>DataExtension.CustomerKey</Properties>\r\n                <Properties>DefaultValue</Properties>\r\n                <Properties>FieldType</Properties>\r\n                <Properties>IsPrimaryKey</Properties>\r\n                <Properties>IsRequired</Properties>\r\n                <Properties>MaxLength</Properties>\r\n                <Properties>ModifiedDate</Properties>\r\n                <Properties>Name</Properties>\r\n                <Properties>ObjectID</Properties>\r\n                <Properties>Ordinal</Properties>\r\n                <Properties>Scale</Properties>\r\n\r\n                               <QueryAllAccounts>true</QueryAllAccounts>\r\n                <Retrieves />\r\n                <Options>\r\n                    <SaveOptions />\r\n                    <IncludeObjects>true</IncludeObjects>\r\n                </Options>\r\n            </RetrieveRequest>\r\n      </RetrieveRequestMsg>\r\n   </s:Body>\r\n</s:Envelope>'
+        };
+        request(options, async function (error, response) {
+          if (error) throw new Error(error);
+          var TempFieldSet = new Set();
+          var tempVal;
+          xml2jsParser.parseString(response.body, function (err, result) {
+            var TempDEFieldsResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
+            for (var key in TempDEFieldsResult) {
+              TempFieldSet.add(JSON.stringify({
+                "CustomerKey": TempDEFieldsResult[key].DataExtension[0].CustomerKey[0],
+                "FieldName": TempDEFieldsResult[key].Name[0],
+                "FieldType": TempDEFieldsResult[key].FieldType[0]
+              }));
+            }
+            for (var val of Array.from(TempFieldSet)) {
+              tempVal = JSON.parse(val);
+              if(tempVal.CustomerKey in DEListMap.DEMap) {
+                DEListMap.DEMap[tempVal.CustomerKey].DEFields.push({
+                  "FieldName": tempVal.FieldName,
+                  "FieldType": tempVal.FieldType
+                });
+              }
+              else if(tempVal.CustomerKey in DEListMap.SharedDEMap) {
+                DEListMap.SharedDEMap[tempVal.CustomerKey].DEFields.push({
+                  "FieldName": tempVal.FieldName,
+                  "FieldType": tempVal.FieldType
+                });
+              }
+              else if(tempVal.CustomerKey in DEListMap.DataViewMap) {
+                DEListMap.DataViewMap[tempVal.CustomerKey].DEFields.push({
+                  "FieldName": tempVal.FieldName,
+                  "FieldType": tempVal.FieldType
+                });
+              }
+            }
+            resolve(DEListMap);
+          });
+        });
+      })
+    }
+
   });
 
   app.post("/validatequery", async (reqCall, resCall) => {
@@ -524,13 +655,13 @@ app.post("/secondpage", async function (req, res) {
     }
   })
 
-  async function getacesstoken(ClientId, ClientSecret, clinentauthurl) {
+  async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
-        axios.post( clinentauthurl + 'v2/token',
+        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
         {
-          'client_id': ClientId,
-          'client_secret': ClientSecret,
+          'client_id': AuthRequest.ClientId,
+          'client_secret': AuthRequest.ClientSecret,
           'grant_type': 'client_credentials'
         })
         .then((response) => {
