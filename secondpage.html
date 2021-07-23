@@ -2953,8 +2953,12 @@
                       <b>Data Extension Fields</b>
                     </h4>
                   </div>
-                  <ul class="list-group left-side" id="leftsideListInSelectField"
+                  <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
+
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:200px;width:100px;"> 
+                     
+                    </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -2962,6 +2966,12 @@
               </div>
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+
+                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="width:65" /> 
+ 
+ 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:65" /> 
+
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -2981,8 +2991,11 @@
 
                   </div>
                   <div style="overflow-y: scroll; overflow-x: hidden;  height: 23rem;">
-                    <ul class="list-group right-side" id="rightsideList" aria-activedescendant="cb1-opt6"
-                      style=" border: none; padding:0%; margin:0%;   ">
+                    <ul class="list-group right-side"   aria-activedescendant="cb1-opt6" style=" border: none; padding:0%; margin:0%;   ">
+                      <select multiple id="rightsideList"  onclick="setButton(this)" style="height:200px;width:100px;" > 
+                        
+                      </select>
+                    
 
                     </ul>
                   </div>
@@ -2992,6 +3005,9 @@
 
               </div>
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
+                <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width:65"/> 
+                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="width:65" />      
+              
                <!-- <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
                 </button>
@@ -3213,16 +3229,16 @@
     function setButton(obj){ 
     if(obj.length==0) return; 
     currentSel = obj; 
-    if(obj.id=="leftSel"){ 
+    if(obj.id=="leftsideListInSelectField"){ 
     document.getElementById("btnLeft").disabled = true; 
     document.getElementById("btnRight").disabled = false; 
      
-    reSelect(document.getElementById("rightSel")); 
+    reSelect(document.getElementById("rightsideList")); 
     }else{ 
     document.getElementById("btnLeft").disabled = false; 
     document.getElementById("btnRight").disabled = true; 
      
-    reSelect(document.getElementById("leftSel")); 
+    reSelect(document.getElementById("leftsideListInSelectField")); 
     } 
     } 
      
