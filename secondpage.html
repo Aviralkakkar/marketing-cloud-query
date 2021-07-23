@@ -3346,7 +3346,7 @@ document.addEventListener("touchend ", function(){
     function drop(event, target) {
       event.preventDefault();
       document.getElementById('leftsideList').innerHTML = '';
-      document.getElementById('leftsideList').innerHTML = '';
+      
       console.log('Start ' + JSON.stringify(DEListMap.DEMap));
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
@@ -3477,14 +3477,14 @@ document.addEventListener("touchend ", function(){
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        document.getElementById('grid-1-de').innerHTML = '';
+        document.getElementById('leftsideList').innerHTML = '';
         OpenSelectField(openSelectFieldsDEExtKey + "OpenSelectField");
       }
       if (openWhereDEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
         document.getElementById('RelationPopup').style.display = 'block';
         document.getElementById('ulList').innerHTML = '';
-        document.getElementById('grid-1-de').innerHTML = '';
+        document.getElementById('leftsideList').innerHTML = '';
         OpenSelectField(openWhereDEExtKey + "OpenSelectField");
       }
     }
