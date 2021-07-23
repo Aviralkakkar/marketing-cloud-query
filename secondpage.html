@@ -4083,23 +4083,24 @@ document.addEventListener("touchend ", function(){
       whereClauseValue = whereClauseValue.trim();
       */
     }
-
+//--code by nitik
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
       if (joinedDivSet.size == 0  || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
-        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">' +
+        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
-          '<header class="slds-modal__header">' +
+          '<header class="slds-modal__header" style="background-color:#e7edf0; height:5%; padding:  5px 4px;">' +
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;  margin-top: 0%; padding: 0px 4px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
           '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
+          ' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
           '</svg>' +
           '<span class="slds-assistive-text">Close</span>' +
           '</button>' +
-          '<h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">Data Extension Fields</h2>' +
+          
           '</header>' +
-          '<div class="slds-modal__content slds-p-around_medium" id="grid-3-de">' +
+          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
 
           '<div >' +
           '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
@@ -4107,21 +4108,19 @@ document.addEventListener("touchend ", function(){
 
           '<div class="slds-grid slds-wrap">' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          
           '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-          '<div class="slds-form-element__control">' +
+         
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
-          '</div>' +
-          '</div>' +
+         
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
-          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+      
+          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">'+
           '<option value="Left Outer Join">Left Outer Join</option>' +
           '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
           '<option value="Right Outer Join">Right Outer Join</option>' +
@@ -4131,15 +4130,12 @@ document.addEventListener("touchend ", function(){
           '<option value="Outer Join">Outer Join</option>' +
           '</select>' +
           '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
+          
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          
           '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
+         
           '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           '<option value="">Select…</option>';
           
@@ -4150,10 +4146,7 @@ document.addEventListener("touchend ", function(){
         }
         joinTwoDivString += '</select>' +
           '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
-
+       
           '</div>' +
 
 
@@ -4162,11 +4155,9 @@ document.addEventListener("touchend ", function(){
 
           '<div class="slds-grid slds-wrap">' +
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
-          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>'+
+          
           '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
 
@@ -4175,37 +4166,28 @@ document.addEventListener("touchend ", function(){
         }
         joinTwoDivString += '</select>' +
           '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
+         
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
           '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
+          
+         
           '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
           '<option value="AND">AND</option>' +
           '<option value="OR">OR</option>' +
           '</select>' +
           '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
+          
 
 
-          '<div class="slds-col slds-size_1-of-3">' +
-          '<div class="slds-form-element">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
           '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-          '<div class="slds-form-element__control">' +
-          '<div class="slds-select_container">' +
+          
           '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
           '<option value="">Select…</option>' +
           '</select>' +
           '</div>' +
-          '</div>' +
-          '</div>' +
-          '</div>' +
+          
 
 
 
@@ -4244,7 +4226,7 @@ document.addEventListener("touchend ", function(){
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
       }
     }
-
+//--end of code by nitik
     function CancelThirdModal() {
       document.getElementById('ThirdModal').style.display = 'none';
     }
