@@ -2953,12 +2953,12 @@
                       <b>Data Extension Fields</b>
                     </h4>
                   </div>
-                  <ul class="list-group left-side" 
+                  <ul class="list-group left-side" id="leftsideListInSelectField"
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:200px;width:100px;"> 
+                   <!-- <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:200px;width:100px;"> 
                      
-                    </select> 
+                    </select> -->
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -2967,17 +2967,17 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="width:65" /> 
+               <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="width:65" /> 
  
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:65" /> 
-
-               <!-- <button class="btn btn-default btn-sm move-right">
+-->
+                <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
                 <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
                   <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>-->
+                </button>
               </div>
 
               <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%;  ">
@@ -2991,10 +2991,10 @@
 
                   </div>
                   <div style="overflow-y: scroll; overflow-x: hidden;  height: 23rem;">
-                    <ul class="list-group right-side"   aria-activedescendant="cb1-opt6" style=" border: none; padding:0%; margin:0%;   ">
-                      <select multiple id="rightsideList"  onclick="setButton(this)" style="height:200px;width:100px;" > 
+                    <ul class="list-group right-side" id="rightsideList"   aria-activedescendant="cb1-opt6" style=" border: none; padding:0%; margin:0%;   ">
+                     <!-- <select multiple id="rightsideList"  onclick="setButton(this)" style="height:200px;width:100px;" > 
                         
-                      </select>
+                      </select>-->
                     
 
                     </ul>
@@ -3005,15 +3005,15 @@
 
               </div>
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
-                <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width:65"/> 
-                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="width:65" />      
+                <!-- <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width:65"/> 
+                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="width:65" /> -->     
               
-               <!-- <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
+               <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
                 </button>
                 <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
-                </button>-->
+                </button>
               </div>
 
 
@@ -3664,15 +3664,14 @@ document.addEventListener("touchend ", function(){
         else if (DEDragData.DECategory == "DataViewMap") {
           DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
           for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-           /* document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+            document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
               DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
+              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
             //line added by priyanka to create list in dueking picklist
-            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
+           /* document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
               + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
-     
+              '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';*/
           }
         }
         document.getElementById('RelationPopup').style.display = 'block';
