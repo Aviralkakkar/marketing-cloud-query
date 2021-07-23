@@ -2416,7 +2416,7 @@
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
           
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'run')"> RUN </button>
+          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
           
@@ -3620,8 +3620,6 @@ document.addEventListener("touchend ", function(){
     function drop(event, target) {
       event.preventDefault();
       document.getElementById('leftsideListInSelectField').innerHTML = '';
-      console.log('Start ' + JSON.stringify(DEListMap.DEMap));
-
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
@@ -3676,7 +3674,6 @@ document.addEventListener("touchend ", function(){
         }
         document.getElementById('RelationPopup').style.display = 'block';
       }
-      console.log('Finished');
     };
     //script added by priyanka for moving 
 
@@ -3686,6 +3683,7 @@ document.addEventListener("touchend ", function(){
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
         "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value
       }
+      console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       insertTextAtCaret(DEWhereClauseDragData.FieldName);
       function insertTextAtCaret(FieldName) {
         var sel, range;
@@ -3734,18 +3732,50 @@ document.addEventListener("touchend ", function(){
 
       var strQuery = 'SELECT';
       if (DESetQueryBox.size == 1) {
-        for (var i in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-          strQuery += ' [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
-        }
-        strQuery = strQuery.slice(0, -1);
-        strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-        var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
-        if (whereClauseValue != '') {
-          for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
-            var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-            whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+        if(Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
+          for (var i in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            strQuery += ' [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
-          strQuery += ' WHERE ' + whereClauseValue;
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          if (whereClauseValue != '') {
+            for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
+            strQuery += ' WHERE ' + whereClauseValue;
+          }
+        }
+        else if(Array.from(DESetQueryBox)[0] in DEListMap.SharedDEMap) {
+          for (var i in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            strQuery += ' [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          if (whereClauseValue != '') {
+            for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
+            strQuery += ' WHERE ' + whereClauseValue;
+          }
+        }
+        else if(Array.from(DESetQueryBox)[0] in DEListMap.DataViewMap) {
+          for (var i in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
+            strQuery += ' [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
+          }
+          strQuery = strQuery.slice(0, -1);
+          strQuery += ' FROM [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          if (whereClauseValue != '') {
+            for (var key in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
+            strQuery += ' WHERE ' + whereClauseValue;
+          }
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
@@ -3754,14 +3784,38 @@ document.addEventListener("touchend ", function(){
         var SecondDEWhereClause = '';
         for (var key in JoinQueryDetails.DEForJoin) {
           if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
-            for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DESelectedFields) {
-              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + Field1.FieldName + '],';
+            if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
+              for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
+            }
+            else if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.SharedDEMap) {
+              for (var Field1 of DEListMap.SharedDEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
+            }
+            else if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DataViewMap) {
+              for (var Field1 of DEListMap.DataViewMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].FirstDEName);
           }
           if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].SecondDEName)) {
-            for (var Field2 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DESelectedFields) {
-              strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + Field2.FieldName + '],';
+            if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.DEMap) {
+              for (var Field2 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + Field2.FieldName + '],';
+              }
+            }
+            else if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.SharedDEMap) {
+              for (var Field2 of DEListMap.SharedDEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + Field2.FieldName + '],';
+              }
+            }
+            else if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.DataViewMap) {
+              for (var Field2 of DEListMap.DataViewMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DESelectedFields) {
+                strQuery += ' [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + '] as [' + JoinQueryDetails.DEForJoin[key].SecondDEName + ' ' + Field2.FieldName + '],';
+              }
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
           }
@@ -3772,19 +3826,48 @@ document.addEventListener("touchend ", function(){
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
         tempDESet = new Set();
+
         for (var key in JoinQueryDetails.DEForJoin) {
           FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClause').innerHTML;
           SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClause').innerHTML;
           if (FirstDEWhereClause != '') {
-            for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
-              var regex = new RegExp(Field1.FieldName, "g")
-              FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + ']');
+            if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
+              for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
+                var regex = new RegExp(Field1.FieldName, "g")
+                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + ']');
+              }
+            }
+            else if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.SharedDEMap) {
+              for (var Field1 of DEListMap.SharedDEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
+                var regex = new RegExp(Field1.FieldName, "g")
+                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + ']');
+              }
+            }
+            else if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DataViewMap) {
+              for (var Field1 of DEListMap.DataViewMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
+                var regex = new RegExp(Field1.FieldName, "g")
+                FirstDEWhereClause = FirstDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + Field1.FieldName + ']');
+              }
             }
           }
           if (SecondDEWhereClause != '') {
-            for (var Field2 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DEFields) {
-              var regex = new RegExp(Field2.FieldName, "g")
-              SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + ']');
+            if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
+              for (var Field2 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DEFields) {
+                var regex = new RegExp(Field2.FieldName, "g")
+                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + ']');
+              }
+            }
+            else if (JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.SharedDEMap) {
+              for (var Field2 of DEListMap.SharedDEMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DEFields) {
+                var regex = new RegExp(Field2.FieldName, "g")
+                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + ']');
+              }
+            }
+            else if (JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.DataViewMap) {
+              for (var Field2 of DEListMap.DataViewMap[JoinQueryDetails.DEForJoin[key].SecondDEExtKey].DEFields) {
+                var regex = new RegExp(Field2.FieldName, "g")
+                SecondDEWhereClause = SecondDEWhereClause.replace(regex, '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + Field2.FieldName + ']');
+              }
             }
           }
 
@@ -3845,11 +3928,29 @@ document.addEventListener("touchend ", function(){
 
       if (strQuery != 'SELECT' && DESetQueryBox.size > 0) {
         for (var DEExtKeyForNewDEFieldsSet of Array.from(DESetQueryBox)) {
-          for (var Field of DEListMap.DEMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
-            NewDEFieldsSet.add(JSON.stringify({
-              "FieldName": DEListMap.DEMap[DEExtKeyForNewDEFieldsSet].DEName + " " + Field.FieldName,
-              "FieldType": Field.FieldType
-            }));
+          if(DEExtKeyForNewDEFieldsSet in DEListMap.DEMap) {
+            for (var Field of DEListMap.DEMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
+              NewDEFieldsSet.add(JSON.stringify({
+                "FieldName": DEListMap.DEMap[DEExtKeyForNewDEFieldsSet].DEName + " " + Field.FieldName,
+                "FieldType": Field.FieldType
+              }));
+            }
+          }
+          else if(DEExtKeyForNewDEFieldsSet in DEListMap.SharedDEMap) {
+            for (var Field of DEListMap.SharedDEMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
+              NewDEFieldsSet.add(JSON.stringify({
+                "FieldName": DEListMap.SharedDEMap[DEExtKeyForNewDEFieldsSet].DEName + " " + Field.FieldName,
+                "FieldType": Field.FieldType
+              }));
+            }
+          }
+          else if(DEExtKeyForNewDEFieldsSet in DEListMap.DataViewMap) {
+            for (var Field of DEListMap.DataViewMap[DEExtKeyForNewDEFieldsSet].DESelectedFields) {
+              NewDEFieldsSet.add(JSON.stringify({
+                "FieldName": DEListMap.DataViewMap[DEExtKeyForNewDEFieldsSet].DEName + " " + Field.FieldName,
+                "FieldType": Field.FieldType
+              }));
+            }
           }
         }
         NewDEFieldsList = [];
