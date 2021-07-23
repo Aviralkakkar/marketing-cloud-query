@@ -3345,6 +3345,7 @@ document.addEventListener("touchend ", function(){
 
     function drop(event, target) {
       event.preventDefault();
+      document.getElementById('grid-1-de').innerHTML = '';
       document.getElementById('leftsideList').innerHTML = '';
       console.log('Start ' + JSON.stringify(DEListMap.DEMap));
 
