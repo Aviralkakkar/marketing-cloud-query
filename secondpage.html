@@ -2269,7 +2269,7 @@
                       <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
                     </span></button>
                   <div class="slds-p-left_small">
-                    <ul aria-labelledby="treeheading" class="button-padding slds-show slds-tree" id="dataExtension"
+                    <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
                       role="tree">
 
 
@@ -2278,8 +2278,6 @@
                   </div>
                 </div>
               </div>  
-
-              
 
               <div class="slds-tree_container">
                 <div class="tree-branch-header">
@@ -3272,8 +3270,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-     // document.getElementById('FullPageSpinner').style.display = 'block';
-     // document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
