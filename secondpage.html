@@ -4205,7 +4205,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'
-        '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBox" >' +
+        '<div id="' + DEDragData.DEExtKey+'" >' +
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4469,7 +4469,8 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
+            
+            //joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
