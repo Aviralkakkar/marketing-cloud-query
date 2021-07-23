@@ -2402,6 +2402,7 @@
             </div>
           </div>
 
+          
           <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
                 onclick="validateQuery(JoinQueryDetails,'Validate')"
@@ -2476,7 +2477,7 @@
         </div>
 
         </div>
-
+        
       </div>
 
       <div style="display: none; width: 160px;" id="recordResultModal">
@@ -2851,8 +2852,9 @@
 
   <!-- Khushboo  code starting   -->
 
-  <!--  Script for folder hierarchy -->
   <script>
+
+    //******** folder hierarchy code *********//
     var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
@@ -2910,126 +2912,9 @@
       }
 
     }
-  </script>
 
-  <!-- Script for resizable div  -->
-  <script>
+    // *************** Pagination code ***************//
 
-    const panel = document.getElementById("right_panel");
-    const upper = document.getElementById("queryDiv");
-    const table = document.getElementById("tableDiv");
-    const newDiv = document.getElementById("newDiv");
-    var count = 26;
-
-    var dragging = false;
-    let m_pos;
-    let m_pos_mob;
-    function resize(e) {
-      if (dragging) {
-        var hp = parseInt(panel.style.height);
-        var hu = parseInt(upper.style.height);
-        console.log('hp ' + hp + ' hu ' + hu);
-        if (e.clientY <= m_pos) {
-          if (hp < 75 && hu > 25) {
-            hp = hp + 1;
-            panel.style.height = hp + "%";
-            hu = hu - 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count++;
-            console.log(count);
-            if (count >= 15 && count <= 35) {
-              var tb = parseInt(table.style.height);
-              tb = tb + 1;
-              table.style.height = tb + "%";
-            }
-
-
-          }
-        }
-        if (e.clientY > m_pos) {
-          if (hp > 25) {
-            console.log("Inside 2nd if");
-            hp = hp - 1;
-            panel.style.height = hp + "%";
-            hu = hu + 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count--;
-            console.log(count);
-            if (count >= 15 && count <= 35) {
-              var tb = parseInt(table.style.height);
-              tb = tb - 1;
-              table.style.height = tb + "%";
-            }
-
-          }
-
-        }
-      }
-    }
-
-    newDiv.addEventListener("mousedown", function (e) {
-      console.log('offset y ' + e.clientY);
-      dragging = true;
-      if (e.clientY) {
-        m_pos = e.clientY;
-        console.log('mouse down');
-        newDiv.addEventListener("mousemove", resize, false);
-      }
-    }, false);
-
-    newDiv.addEventListener("mouseup", function () {
-      dragging = false;
-      console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
-    }, false);
-
-    table.addEventListener("mouseover", function () {
-      dragging = false;
-      console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
-    }, false);
-
-    upper.addEventListener("mouseover", function () {
-      dragging = false;
-      console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
-    }, false);
-
-
-//------- Mobile View ----------------//
-
-
-    /*  function resizeMobile(e){
-  console.log('Touch moved ');
-  var hp = parseInt(panel.style.height);
-  var hu = parseInt(upper.style.height);
-  console.log('hp '+hp+' hu '+hu);
-  if(e.touches[0].clientY<=m_pos_mob )
-  {
-    if(hp<=75 && hu>=25)
-    {
-    hp=hp+1;
-    panel.style.height = hp+"%";
-    hu = hu-1;
-    upper.style.height = hu+"%";
-    console.log('hp '+hp+' hu '+hu);
-    }
-  }
-}, false);
-
-
-document.addEventListener("touchend ", function(){
-  console.log('mobile mouse up');
-    document.removeEventListener("touchmove", resizeMobile, false);
-}, false);*/
-
-
-  </script>
-
-  <!-- script for pagination -->
-  <script>
     var current_page = 1;
     var records_per_page = 20;
 
@@ -3146,6 +3031,120 @@ document.addEventListener("touchend ", function(){
       page.innerHTML = " " + 1 + " ";
       totalPages.innerHTML = " " + numPages() + " ";
     };
+
+
+//  *************** Resizeable code *****************//
+
+    const panel = document.getElementById("right_panel");
+    const upper = document.getElementById("queryDiv");
+    const table = document.getElementById("tableDiv");
+    const newDiv = document.getElementById("newDiv");
+    var count = 26;
+
+    var dragging = false;
+    let m_pos;
+    let m_pos_mob;
+    function resize(e) {
+      if (dragging) {
+        var hp = parseInt(panel.style.height);
+        var hu = parseInt(upper.style.height);
+        console.log('hp ' + hp + ' hu ' + hu);
+        if (e.clientY <= m_pos) {
+          if (hp < 75 && hu > 25) {
+            hp = hp + 1;
+            panel.style.height = hp + "%";
+            hu = hu - 1;
+            upper.style.height = hu + "%";
+            console.log('hp ' + hp + ' hu ' + hu);
+            count++;
+            console.log(count);
+            if (count >= 15 && count <= 35) {
+              var tb = parseInt(table.style.height);
+              tb = tb + 1;
+              table.style.height = tb + "%";
+            }
+
+
+          }
+        }
+        if (e.clientY > m_pos) {
+          if (hp > 25) {
+            console.log("Inside 2nd if");
+            hp = hp - 1;
+            panel.style.height = hp + "%";
+            hu = hu + 1;
+            upper.style.height = hu + "%";
+            console.log('hp ' + hp + ' hu ' + hu);
+            count--;
+            console.log(count);
+            if (count >= 15 && count <= 35) {
+              var tb = parseInt(table.style.height);
+              tb = tb - 1;
+              table.style.height = tb + "%";
+            }
+
+          }
+
+        }
+      }
+    }
+
+    newDiv.addEventListener("mousedown", function (e) {
+      console.log('offset y ' + e.clientY);
+      dragging = true;
+      if (e.clientY) {
+        m_pos = e.clientY;
+        console.log('mouse down');
+        newDiv.addEventListener("mousemove", resize, false);
+      }
+    }, false);
+
+    newDiv.addEventListener("mouseup", function () {
+      dragging = false;
+      console.log('mouse up');
+      newDiv.removeEventListener("mousemove", resize, false);
+    }, false);
+
+    table.addEventListener("mouseover", function () {
+      dragging = false;
+      console.log('mouse up');
+      newDiv.removeEventListener("mousemove", resize, false);
+    }, false);
+
+    upper.addEventListener("mouseover", function () {
+      dragging = false;
+      console.log('mouse up');
+      newDiv.removeEventListener("mousemove", resize, false);
+    }, false);
+
+
+//------- Mobile View ----------------//
+
+
+    /*  function resizeMobile(e){
+  console.log('Touch moved ');
+  var hp = parseInt(panel.style.height);
+  var hu = parseInt(upper.style.height);
+  console.log('hp '+hp+' hu '+hu);
+  if(e.touches[0].clientY<=m_pos_mob )
+  {
+    if(hp<=75 && hu>=25)
+    {
+    hp=hp+1;
+    panel.style.height = hp+"%";
+    hu = hu-1;
+    upper.style.height = hu+"%";
+    console.log('hp '+hp+' hu '+hu);
+    }
+  }
+}, false);
+
+
+document.addEventListener("touchend ", function(){
+  console.log('mobile mouse up');
+    document.removeEventListener("touchmove", resizeMobile, false);
+}, false);*/
+
 
   </script>
 
