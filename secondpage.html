@@ -4260,6 +4260,9 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
+
+          //For Creating line ANIL KUMAR
+          joinQueryBoxLine();
         }
 
         function elementDrag(e) {
@@ -4273,6 +4276,9 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+          //For Creating line ANIL KUMAR
+          joinQueryBoxLine();
         }
 
         function closeDragElement() {
