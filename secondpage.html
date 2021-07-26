@@ -2880,7 +2880,7 @@
           <div class="container" style="padding:0%; margin:0%; ">
 
             <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
-              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; order: 1px solid lightgray;">
+              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
                     <h4 class="slds-text-title_caps" id=" component-selector-container__heading"
@@ -3160,6 +3160,7 @@
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
           op.id ='rightselect';
+          op.style='margin:4%';
           des.options.add(op);
           src.remove(i);
           i--;
@@ -3610,7 +3611,7 @@ document.addEventListener("touchend ", function(){
               //line added by priyanka to create list in dueking picklist
                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="margin:4%;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
             }
           }
           document.getElementById('RelationPopup').style.display = 'block';
