@@ -56,6 +56,7 @@ app.post("/secondpage", async function (req, res) {
     DEListMap = await getAllDEFields();
     resCall.send(DEListMap);
 
+    console.log('DEListMap.DataViewMap : ' + JSON.stringify(DEListMap.DataViewMap));
 
     async function getDEMap() {
       return new Promise(function (resolve, reject) {
