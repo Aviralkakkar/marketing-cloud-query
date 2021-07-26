@@ -4059,7 +4059,7 @@ document.addEventListener("touchend ", function(){
             document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
               '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
               ' <span class="slds-size_1-of-1">' +
-              '<span > <button  class="btn" value="' + x.label[i] + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' +  x.label[i] + '" >' +  x.label[i]+ ' </button> </span>' +
+              '<span > <button  class="btn" value="' + x[i].value + '" id="' + x[i].value + '" draggable=true name="' +  x[i].name + '" >' +  x[i].label+ ' </button> </span>' +
               ' </span>' +
               '  </div>' +
               '</li>';
