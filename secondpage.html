@@ -4108,14 +4108,39 @@
 
     function Next() {
       document.getElementById("RichTextEditor").innerHTML = '';
-      var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
+     var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
+    
+     var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
+     //rightselect
+   
+      console.log(x);
+      console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openSelectFieldsDEExtKey == '') {
+
+
+
+
+
+
           
+          for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+            document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+              '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+              ' <span class="slds-size_1-of-1">' +
+              '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+              ' </span>' +
+              '  </div>' +
+              '</li>';
+
+
+
+
+          }
         }
         else {
           OpenWhere(openSelectFieldsDEExtKey + 'OpenWhere');
@@ -4317,6 +4342,15 @@
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
+        /*
+         for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
+          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
+            "FieldName": checkbox.value,
+            "FieldType": checkbox.name
+          });
+          fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
+        }
+         */
 
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +

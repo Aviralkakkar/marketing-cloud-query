@@ -51,6 +51,1225 @@ app.post("/secondpage", async function (req, res) {
   res.sendFile(path.join(__dirname + '/secondpage.html'));
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
+    DEListMap.DataViewMap = {
+      "_EnterpriseAttribute": {
+        "DEName": "_EnterpriseAttribute",
+        "DEFields": [
+          {
+            "FieldName": "_SubscriberID",
+            "FieldType": "Number"
+          }
+        ]
+      },
+      "_Subscribers": {
+        "DEName": "_Subscribers",
+        "DEFields": [
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "DateUndeliverable",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "DateJoined",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "DateUnsubscribed",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EmailAddress",
+            "FieldType": "Email"
+          },
+          {
+            "FieldName": "BounceCount",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SubscriberType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Status",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Locale",
+            "FieldType": "Locale"
+          }
+        ]
+      },
+      "_ListSubscribers": {
+        "DEName": "_ListSubscribers",
+        "DEFields": [
+          {
+            "FieldName": "AddedBy",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "AddMethod",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "DateUnsubscribed",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "EmailAddress",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ListType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Status",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SubscriberType",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_Sent": {
+        "DEName": "_Sent",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_Open": {
+        "DEName": "_Open",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_bounce": {
+        "DEName": "_bounce",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "BounceCategoryID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BounceCategory",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "BounceSubcategoryID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BounceSubcategory",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "BounceTypeID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BounceType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SMTPBounceReason",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SMTPMessage",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SMTPCode",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_Click": {
+        "DEName": "_Click",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "URL",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "LinkName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "LinkContent",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_FTAF": {
+        "DEName": "_FTAF",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TransactionTime",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_Unsubscribe": {
+        "DEName": "_Unsubscribe",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          }
+        ]
+      },
+      "_Complaint": {
+        "DEName": "_Complaint",
+        "DEFields": [
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OYBAccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EventDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          }
+        ]
+      },
+      "_BusinessUnitUnsubscribes": {
+        "DEName": "_BusinessUnitUnsubscribes",
+        "DEFields": [
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "BusinessUnitID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "UnsubReason",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "UnsubDateUTC",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_smsmessagetracking": {
+        "DEName": "_smsmessagetracking",
+        "DEFields": [
+          {
+            "FieldName": "MobileMessageTrackingID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "EID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "MID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "Mobile",
+            "FieldType": "Phone"
+          },
+          {
+            "FieldName": "MessageID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "KeywordID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CodeID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ConversationID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CampaignID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "Sent",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Delivered",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Undelivered",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Unsub",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OptIn",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "OptOut",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Outbound",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Inbound",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "CreateDateTime",
+            "FieldType": "Date and time"
+          },
+          {
+            "FieldName": "ModifiedDateTime",
+            "FieldType": "Date and time"
+          },
+          {
+            "FieldName": "ActionDateTime",
+            "FieldType": "Date and time"
+          },
+          {
+            "FieldName": "MessageText",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsTest",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "MobileMessageRecurrenceID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ResponseToMobileMessageTrackingID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "IsValid",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "InvalidationCode",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendSplitID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendSegmentID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendJobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendGroupID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendPersonID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SMSStandardStatusCodeId",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "Description",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Name",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ShortCode",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SharedKeyword",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "Ordinal",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "FromName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JBActivityID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JBDefinitionID",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_MobileLineAddressContactSubscriptionView": {
+        "DEName": "_MobileLineAddressContactSubscriptionView",
+        "DEFields": [
+          {
+            "FieldName": "ChannelID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ContactID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ContactKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "AddressID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsActive",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "ModifiedDate",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_MobileLineOrphanContactView": {
+        "DEName": "_MobileLineOrphanContactView",
+        "DEFields": [
+          {
+            "FieldName": "ContactID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ContactKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "AddressID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_SMSSubscriptionLog": {
+        "DEName": "_SMSSubscriptionLog",
+        "DEFields": [
+          {
+            "FieldName": "LogDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "MobileSubscriptionID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriptionDefinitionID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "MobileNumber",
+            "FieldType": "Phone"
+          },
+          {
+            "FieldName": "OptOutStatusID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OptOutMethodID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OptOutDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "OptInStatusID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OptInMethodID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "OptInDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "Source",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "ModifiedDate",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_UndeliverableSms": {
+        "DEName": "_UndeliverableSms",
+        "DEFields": [
+          {
+            "FieldName": "MobileNumber",
+            "FieldType": "Phone"
+          },
+          {
+            "FieldName": "Undeliverable",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "BounceCount",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "FirstBounceDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "HoldDate",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_Journey ": {
+        "DEName": "_Journey",
+        "DEFields": [
+          {
+            "FieldName": "VersionID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JourneyID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JourneyName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "VersionNumber",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "LastPublishedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "ModifiedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "JourneyStatus",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_JourneyActivity ": {
+        "DEName": "_JourneyActivity ",
+        "DEFields": [
+          {
+            "FieldName": "VersionID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ActivityID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ActivityName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ActivityExternalKey",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JourneyActivityObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ActivityType",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_Job": {
+        "DEName": "_Job",
+        "DEFields": [
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "EmailID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "AccountID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "AccountUserID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "FromName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "FromEmail",
+            "FieldType": "Email"
+          },
+          {
+            "FieldName": "SchedTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "PickupTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "DeliveredTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "EventID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsMultipart",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "JobType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "JobStatus",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ModifiedBy",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ModifiedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "EmailName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "EmailSubject",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IsWrapped",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "TestEmailAddr",
+            "FieldType": "Email"
+          },
+          {
+            "FieldName": "Category",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "BccEmail",
+            "FieldType": "Email"
+          },
+          {
+            "FieldName": "OriginalSchedTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "CreatedDate",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "CharacterSet",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IPAddress",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SalesForceTotalSubscriberCount",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SalesForceErrorSubscriberCount",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SendType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "DynamicEmailSubject",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SuppressTracking",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "SendClassificationType",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "SendClassification",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ResolveLinksWithCurrentData",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "EmailSendDefinition",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "DeduplicateByEmail",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "TriggererSendDefinitionObjectID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TriggeredSendCustomerKey",
+            "FieldType": "Text"
+          }
+        ]
+      },
+      "_SocialNetworkImpressions ": {
+        "DEName": "_SocialNetworkImpressions ",
+        "DEFields": [
+          {
+            "FieldName": "JobID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "RegionTitle",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "RegionDescription",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "RegionHTML",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ContentRegionID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SocialSharingSiteID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SiteName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CountryCode",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ReferringURL",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "IPAddress",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "TransactionTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "PublishedSocialContentStatusID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ShortCode",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "PublishTime",
+            "FieldType": "Date"
+          }
+        ]
+      },
+      "_SocialNetworkTracking": {
+        "DEName": "_SocialNetworkTracking ",
+        "DEFields": [
+          {
+            "FieldName": "SubscriberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SubscriberKey",
+            "FieldType": "Email"
+          },
+          {
+            "FieldName": "ListID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "BatchID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SocialSharingSiteID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "SiteName",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "CountryCode",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "PublishedSocialContentID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "RegionTitle",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "RegionDescription",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "RegionHTML",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ContentRegionID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "OYBMemberID",
+            "FieldType": "Number"
+          },
+          {
+            "FieldName": "TransactionTime",
+            "FieldType": "Date"
+          },
+          {
+            "FieldName": "IsUnique",
+            "FieldType": "Boolean"
+          },
+          {
+            "FieldName": "Domain",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "PublishedSocialContentStatusID",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "ShortCode",
+            "FieldType": "Text"
+          },
+          {
+            "FieldName": "PublishTime",
+            "FieldType": "Date"
+          }
+        ]
+      }
+    }
     DEListMap = await getDEMap();
     DEListMap = await getSharedDEMap();
     DEListMap = await getAllDEFields();
