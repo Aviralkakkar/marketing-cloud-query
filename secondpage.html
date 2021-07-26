@@ -3226,7 +3226,8 @@
       document.getElementById("btnRight").disabled = false;
 
       reSelect(document.getElementById("rightsideList"));
-    } else {
+    } 
+    else {
       document.getElementById("btnLeft").disabled = false;
       document.getElementById("btnRight").disabled = true;
 
@@ -3555,7 +3556,7 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-     // document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('FullPageSpinner').style.display = 'block';
       //document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
@@ -4089,7 +4090,7 @@ document.addEventListener("touchend ", function(){
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
       
-     //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
+      //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
@@ -4234,51 +4235,36 @@ document.addEventListener("touchend ", function(){
       openWhereDEExtKey = EleDEExtKey;
       var ulListStr = '';
       if(openWhereDEExtKey in DEListMap.DEMap) {
-        for (var key in DEListMap.DEMap[openWhereDEExtKey].DEFields) {
+        for (var i in DEListMap.DEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
       else if(openWhereDEExtKey in DEListMap.SharedDEMap) {
         for (var key in DEListMap.SharedDEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
       else if(openWhereDEExtKey in DEListMap.DataViewMap) {
         for (var key in DEListMap.DataViewMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
       
