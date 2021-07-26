@@ -1926,7 +1926,7 @@
 
 
     @media (min-width: 0px) and (max-width: 1500px) {
-      .ulList {
+      ul {
 
         padding-left: 0% !important;
         margin-left: 0% !important;
@@ -2229,9 +2229,6 @@
       padding-right: 0 !important;
       margin: 0;
     }
-    #leftsideListInSelectField:focus ,#rightsideList:focus{
-    background-color: none;
-  }
 
     /*-------End Here------------*/
   </style>
@@ -2290,7 +2287,7 @@
                         <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
                       </span></button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="ulList button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2322,7 +2319,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="ulList slds-hide slds-tree" id="sharedDataExtension"
+                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="sharedDataExtension"
                         role="tree">
 
                       </ul>
@@ -2350,7 +2347,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="ulList slds-hide slds-tree" id="dataViews" role="tree">
+                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="dataViews" role="tree">
 
                       </ul>
                     </div>
@@ -2441,7 +2438,7 @@
 
               <!-- Modal -->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-               
+                <div class="modal-dialog">
                   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
                     <div class="slds-modal__container" >
                         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4;" >
@@ -2539,11 +2536,142 @@
                     </div>
                     
                     </section>
-                
+                </div>
             
               <!--****** Nitik code ended *********-->
             </div>
-           
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+              style="height: 25%;padding-top:0%;" style="overflow: scroll;">
+              <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+
+
+
+              <div class="slds-scrollable  " id="tableDiv" style="height:68%;margin-top:1%;">
+                <table class=" slds-table slds-table_bordered slds-table--header-fixed"
+                  aria-labelledby="element-with-table-label other-element-with-table-label"
+                  style="border:1px solid rgb(177, 172, 172) !important;">
+                  <thead>
+
+                    <tr class="slds-line-height_reset">
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Account Name</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Close Date</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Stage</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Confidence</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Amount</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Contact</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Mail</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Personal Mail</div>
+                      </th>
+                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="lastname">Company Mail</div>
+                      </th>
+                    </tr>
+                  </thead>
+
+
+
+
+                  <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
+                    <tr class="slds-hint-parent slds-border_bottom">
+                      <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                      </td>
+                      <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                      </td>
+                      <td data-label="Close Date">
+                        <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                      </td>
+                      <td data-label="Prospecting">
+                        <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                      </td>
+                      <td data-label="Confidence">
+                        <div class="slds-truncate" title="20%">20%</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">$25k</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                      </td>
+                      <td data-label="Amount">
+                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                      </td>
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+              <div style="height:5%;">
+                <div class="slds-grid">
+                  <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                    <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                      data-page="1">
+                      <span class="slds-icon_container slds-icon-utility-chevronleft"
+                        title="Description of icon when needed">
+                        <svg
+                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                          aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+
+                        </svg>
+                        <span class="slds-assistive-text">Description of icon when needed</span>
+                    </button>
+                  </div>
+                  <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                    <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                        id="totalRecords"></span> </span>
+                  </div>
+                  <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                    <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
+                      data-page="3">
+                      <span class="slds-icon_container slds-icon-utility-chevronright"
+                        title="Description of icon when needed">
+                        <svg
+                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                          aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+
+                        </svg>
+                        <span class="slds-assistive-text">Description of icon when needed</span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+            </div>
 
             <div id="QueryValidateTrueAlert" style="display:none">
               <div class="demo-only" style="height:4rem">
@@ -2604,142 +2732,10 @@
             </div>
             <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
-            </div>
-            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-          style="height: 50%;padding-top:0%;" style="overflow: scroll;">
-          <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
-
-
-
-          <div class="slds-scrollable  " id="tableDiv" style="height:68%;margin-top:1%;">
-            <table class=" slds-table slds-table_bordered slds-table--header-fixed"
-              aria-labelledby="element-with-table-label other-element-with-table-label"
-              style="border:1px solid rgb(177, 172, 172) !important;">
-              <thead>
-
-                <tr class="slds-line-height_reset">
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="firstname">Opportunity Name</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Account Name</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Close Date</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Stage</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Confidence</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Amount</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Contact</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Mail</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Personal Mail</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Company Mail</div>
-                  </th>
-                </tr>
-              </thead>
-
-
-
-
-              <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                <tr class="slds-hint-parent slds-border_bottom">
-                  <td data-label="Account Name">
-                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                  </td>
-                  <td data-label="Account Name">
-                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                  </td>
-                  <td data-label="Close Date">
-                    <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                  </td>
-                  <td data-label="Prospecting">
-                    <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                  </td>
-                  <td data-label="Confidence">
-                    <div class="slds-truncate" title="20%">20%</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">$25k</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                </tr>
-
-
-              </tbody>
-            </table>
-          </div>
-          <div style="height:5%;">
-            <div class="slds-grid">
-              <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
-                <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
-                  data-page="1">
-                  <span class="slds-icon_container slds-icon-utility-chevronleft"
-                    title="Description of icon when needed">
-                    <svg
-                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                      aria-hidden="true">
-                      <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
-
-                    </svg>
-                    <span class="slds-assistive-text">Description of icon when needed</span>
-                </button>
-              </div>
-              <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
-                    id="totalRecords"></span> </span>
-              </div>
-              <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
-                  data-page="3">
-                  <span class="slds-icon_container slds-icon-utility-chevronright"
-                    title="Description of icon when needed">
-                    <svg
-                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                      aria-hidden="true">
-                      <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-
-                    </svg>
-                    <span class="slds-assistive-text">Description of icon when needed</span>
-                  </span>
-                </button>
-              </div>
-            </div>
           </div>
 
-
-
-
-
-
-
-            </div>
-
-          </div>
         </div>
+      </div>
 
       <!--**** Khushboo code ended ****-->
 
@@ -2882,8 +2878,8 @@
 
           <div class="container" style="padding:0%; margin:0%; ">
 
-            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
-              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
+            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%;">
+              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; ">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
                     <h4 class="slds-text-title_caps" id=" component-selector-container__heading"
@@ -2892,9 +2888,9 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:200px;width:100px;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -2905,10 +2901,10 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
+                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="width:65" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:65" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -2918,7 +2914,7 @@
                 </button>-->
               </div>
 
-              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; ">
+              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%;  ">
                 <div class="well" style=" padding:0%;  background-color: white;  ">
                   <div class="row" style="padding:0%; margin:0%;  ">
 
@@ -2928,10 +2924,10 @@
                     </h4>
 
                   </div>
-                  <div style="overflow: hidden;  height: 23rem;">
+                  <div style="overflow-y: scroll; overflow-x: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
                       style=" border: none; padding:0%; margin:0%;   ">
-                       <select multiple id="rightsideList"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                       <select multiple id="rightsideList"  onclick="setButton(this)" style="height:200px;width:100px;" > 
                         
                       </select>
                       
@@ -2943,12 +2939,9 @@
 
 
               </div>
-              <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
-                 <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
-                 height: 2rem;
-                 border: 1px solid lightgray;
-                 margin-bottom: 20%;"/> 
-                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
+              <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
+                 <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width:65"/> 
+                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="width:65" /> 
 
               <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
@@ -3163,8 +3156,6 @@
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
           op.id ='rightselect';
-          op.style='padding:4%; margin:0;';
-          
           des.options.add(op);
           src.remove(i);
           i--;
@@ -3202,7 +3193,7 @@
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
@@ -3615,7 +3606,7 @@ document.addEventListener("touchend ", function(){
               //line added by priyanka to create list in dueking picklist
                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
             }
           }
           document.getElementById('RelationPopup').style.display = 'block';
@@ -4047,12 +4038,9 @@ document.addEventListener("touchend ", function(){
 
     function Next() {
       document.getElementById("RichTextEditor").innerHTML = '';
-     var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
-    
-     var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
-     //rightselect
-   
-      console.log(x);
+     // var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
+     var checkboxesCheck = document.querySelectorAll('#rightsideList');
+    //  var rightsidevalues = document.querySelectorAll('#rightsideList');
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
@@ -4064,7 +4052,7 @@ document.addEventListener("touchend ", function(){
             document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
               '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
               ' <span class="slds-size_1-of-1">' +
-              '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+              '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + checkboxesCheck.value + ' </button> </span>' +
               ' </span>' +
               '  </div>' +
               '</li>';
@@ -4225,7 +4213,6 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
-      document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       if (DEDragData.DEExtKey != '') {
@@ -4239,15 +4226,6 @@ document.addEventListener("touchend ", function(){
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
-        /*
-         for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
-          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": checkbox.value,
-            "FieldType": checkbox.name
-          });
-          fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
-        }
-         */
 
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
@@ -4632,7 +4610,7 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
       }
