@@ -4590,7 +4590,7 @@ document.addEventListener("touchend ", function(){
             });
             //Edited By ANIL KUMAR
 
-            //joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
+            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
@@ -4637,7 +4637,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element = document.getElementById(val1).style.cssText = `
+      var element = document.getElementById(de1).style.cssText = `
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
