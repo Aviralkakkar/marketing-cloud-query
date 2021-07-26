@@ -2275,19 +2275,9 @@
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
-                      id="dataExtensionButton"><span class="slds-icon_container slds-icon-utility-opened_folder"
-                        title="Description of icon when needed"><svg
-                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
-                          aria-hidden="true">
-                          <use
-                            xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
-                          </use>
-                        </svg><span class="slds-assistive-text">Description of icon when needed</span></span><span
-                        class="tree-label" id="31244-label">
-                        <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
-                      </span></button>
+                      id="dataExtensionButton"><span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span></button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="button-padding slds-show slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2391,7 +2381,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col" id="queryDiv" style="height:75%;margin-bottom:1%;">
+            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
                   <span class="slds-assistive-text">error</span>
@@ -2426,7 +2416,7 @@
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small"
-                data-toggle="modal" data-target="#myModal">Run</button>
+                data-bs-toggle="modal" data-bs-target="#exampleModal">Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2453,91 +2443,151 @@
                           
                             <!--jndjdkmdkmkdmksddddddddddddddddddm-->
                             
-                              
-                            </header>
-            
-            
-                            <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
-              
-              
-                                
-                                  <div  id="component-selector-container" class=" slds-float_left " style="height: 570px; width:30%; background-color:white; border: 2px solid lightgray;">
-                                    <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="text-align: center; border-bottom: 2px solid #ddd; ">Data Extension Fields</h4>
-                                    <div class="slds-scrollable" style="width:auto; ">
-                                    <ul aria-labelledby="component-selector-container__heading"  id="ulList12" class="slds-tree" role="tree" style=" padding-left:0rem; background-color:white; position: relative;">
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected" > 
-                                              <span class="slds-size_1-of-1"><span> 
-                                                  <button class="btn" value="Value_1" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 1 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_2" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 2 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Attribute_3" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 3 </button> </span> </span>  </div></li>
-                                     <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span>
-                                              <button class="btn" value="Attribute_4" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 4 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Attribute_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 5</button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="city" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 6 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="country" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 7 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="email" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 8 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="region" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 9 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="user_id" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 10 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_1" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 11 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_2" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 12 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_3" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 13 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_4" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 14 </button> </span> </span>  </div></li>
-                                      <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                          <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                              <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 15</button> </span> </span>  </div></li>
-                                              <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                                <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                                    <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 16</button> </span> </span>  </div></li>
-                                                    <li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">
-                                                      <div id="listbtn" class="slds-tree__item slds-is-selected"> <span class="slds-size_1-of-1"><span> 
-                                                          <button class="btn" value="Value_5" id="IGO_PROFILES" draggable="true" name="Text">Data Extension 17</button> </span> </span>  </div></li>
-                                    </ul>
-                                  </div>
-                                  </div>
-                               
-                                 
-                                  <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
-                    
-                                </div>
-            
-                   
-                            <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
-                                <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="Previous()">Cancel</button>
-                                
-                                <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="DetailsSave()">Run</button>
-                              </footer>
-                    
+                          </ul>
+                        </div>
+                      </div>
+
+
+                      <div id="RichTextEditor" class="editor slds-float_right  "
+                        style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;"
+                        contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
+
                     </div>
                     
                     </section>
+            </div>
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
+                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+      
+      
+      
+                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+                  <table class=" slds-table slds-table_bordered slds-table--header-fixed"
+                    aria-labelledby="element-with-table-label other-element-with-table-label"
+                    style="border:1px solid rgb(177, 172, 172) !important;">
+                    <thead>
+      
+                      <tr class="slds-line-height_reset">
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Account Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Close Date</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Stage</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Confidence</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Amount</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Contact</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Personal Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Company Mail</div>
+                        </th>
+                      </tr>
+                    </thead>
+      
+      
+      
+      
+                    <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
+                      <tr class="slds-hint-parent slds-border_bottom">
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                        <td data-label="Prospecting">
+                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                        </td>
+                        <td data-label="Confidence">
+                          <div class="slds-truncate" title="20%">20%</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">$25k</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                      </tr>
+      
+      
+                    </tbody>
+                  </table>
                 </div>
-            
+                <div style="height:5%;">
+                  <div class="slds-grid">
+                    <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                        data-page="1">
+                        <span class="slds-icon_container slds-icon-utility-chevronleft"
+                          title="Description of icon when needed">
+                          <svg
+                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                            aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+      
+                          </svg>
+                          <span class="slds-assistive-text">Description of icon when needed</span>
+                      </button>
+                    </div>
+                    <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                      <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                          id="totalRecords"></span> </span>
+                    </div>
+                    <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
+                        data-page="3">
+                        <span class="slds-icon_container slds-icon-utility-chevronright"
+                          title="Description of icon when needed">
+                          <svg
+                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                            aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+      
+                          </svg>
+                          <span class="slds-assistive-text">Description of icon when needed</span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+      
+      
+      
+      
+      
+      
+      
+            </div>
               <!--****** Nitik code ended *********-->
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
@@ -2733,138 +2783,7 @@
             <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
-          <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-          style="height: 50%;padding-top:0%;" style="overflow: scroll;">
-          <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
-
-
-
-          <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
-            <table class=" slds-table slds-table_bordered slds-table--header-fixed"
-              aria-labelledby="element-with-table-label other-element-with-table-label"
-              style="border:1px solid rgb(177, 172, 172) !important;">
-              <thead>
-
-                <tr class="slds-line-height_reset">
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="firstname">Opportunity Name</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Account Name</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Close Date</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Stage</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Confidence</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Amount</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Contact</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Mail</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Personal Mail</div>
-                  </th>
-                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                    <div class="slds-truncate" title="lastname">Company Mail</div>
-                  </th>
-                </tr>
-              </thead>
-
-
-
-
-              <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                <tr class="slds-hint-parent slds-border_bottom">
-                  <td data-label="Account Name">
-                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                  </td>
-                  <td data-label="Account Name">
-                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                  </td>
-                  <td data-label="Close Date">
-                    <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                  </td>
-                  <td data-label="Prospecting">
-                    <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                  </td>
-                  <td data-label="Confidence">
-                    <div class="slds-truncate" title="20%">20%</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">$25k</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                  <td data-label="Amount">
-                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                  </td>
-                </tr>
-
-
-              </tbody>
-            </table>
-          </div>
-          <div style="height:5%;">
-            <div class="slds-grid">
-              <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
-                <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
-                  data-page="1">
-                  <span class="slds-icon_container slds-icon-utility-chevronleft"
-                    title="Description of icon when needed">
-                    <svg
-                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                      aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
-
-                    </svg>
-                    <span class="slds-assistive-text">Description of icon when needed</span>
-                </button>
-              </div>
-              <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
-                    id="totalRecords"></span> </span>
-              </div>
-              <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
-                  data-page="3">
-                  <span class="slds-icon_container slds-icon-utility-chevronright"
-                    title="Description of icon when needed">
-                    <svg
-                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                      aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-
-                    </svg>
-                    <span class="slds-assistive-text">Description of icon when needed</span>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-        </div>
+         
 
         </div>
       </div>
@@ -3570,27 +3489,17 @@
       if (e.clientY) {
         m_pos = e.clientY;
         console.log('mouse down');
-        newDiv.addEventListener("mousemove", resize, false);
+        document.addEventListener("mousemove", resize, false);
       }
     }, false);
 
-    newDiv.addEventListener("mouseup", function () {
+    document.addEventListener("mouseup", function () {
       dragging = false;
       console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
+      document.removeEventListener("mousemove", resize, false);
     }, false);
 
-    table.addEventListener("mouseover", function () {
-      dragging = false;
-      console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
-    }, false);
-
-    upper.addEventListener("mouseover", function () {
-      dragging = false;
-      console.log('mouse up');
-      newDiv.removeEventListener("mousemove", resize, false);
-    }, false);
+   
 
 
 //------- Mobile View ----------------//
@@ -3647,7 +3556,7 @@ document.addEventListener("touchend ", function(){
     onloadofBody();
     function onloadofBody() {
      // document.getElementById('FullPageSpinner').style.display = 'block';
-     // document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -3697,6 +3606,7 @@ document.addEventListener("touchend ", function(){
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
+        //document.getElementById('rightselect').innerHTML = '';
         if (DESetQueryBox.has(DEDragData.DEExtKey)) {
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
@@ -4178,6 +4088,8 @@ document.addEventListener("touchend ", function(){
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
+      
+     //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
@@ -4301,14 +4213,11 @@ document.addEventListener("touchend ", function(){
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
-<<<<<<< Updated upstream
-      document.getElementById('rightsideList').innerHTML = 'none';
-      document.getElementById('RichTextEditor').innerHTML = 'none';
-=======
->>>>>>> Stashed changes
+      document.getElementById('rightsideList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
+
       document.getElementById('SecondModal').style.display = 'none';
-     
+      document.getElementById('RichTextEditor').innerHTML = '';
 
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
@@ -4412,6 +4321,9 @@ document.addEventListener("touchend ", function(){
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
+      document.getElementById('RichTextEditor').style.display = '';
+      document.getElementById('rightsideList').style.display = '';
+      //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4424,6 +4336,7 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
 
+        console.log('DE1:'+DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
@@ -4598,7 +4511,7 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
 
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          //joinQueryBoxLine();
         }
 
         function elementDrag(e) {
@@ -4614,7 +4527,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          //joinQueryBoxLine();
         }
 
         function closeDragElement() {
@@ -4807,8 +4720,7 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
-
+            console.log('QueryJoin:'+JSON.stringify(JoinQueryDetails));
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
@@ -4816,11 +4728,13 @@ document.addEventListener("touchend ", function(){
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2) {
+    function joinQueryBoxLine(de1, de2) 
+    {
       console.log("Line drawed");
 
       var val1 = de1 + "DeleteQueryBox";
       var val2 = de2 + "DeleteQueryBox";
+      console.log('Val1:'+val1);
 
       var div1 = document.getElementById(val1);
 
@@ -4856,7 +4770,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element = document.getElementById(de1).style.cssText = `
+      var element=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4870,9 +4784,9 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
-                        transform: rotate(${angle}deg);
+                         position: relative;
                         `
-        ;
+                ;
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
