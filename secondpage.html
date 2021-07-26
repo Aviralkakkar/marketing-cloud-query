@@ -3260,7 +3260,7 @@
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
+    var dataExtBool = false;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
@@ -3566,8 +3566,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-     // document.getElementById('FullPageSpinner').style.display = 'block';
-      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
