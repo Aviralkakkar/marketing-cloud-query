@@ -3160,7 +3160,8 @@
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
           op.id ='rightselect';
-          op.style='margin:4%';
+          op.style='padding:4%; margin:0;';
+          
           des.options.add(op);
           src.remove(i);
           i--;
@@ -3611,7 +3612,7 @@ document.addEventListener("touchend ", function(){
               //line added by priyanka to create list in dueking picklist
                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="margin:4%;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
             }
           }
           document.getElementById('RelationPopup').style.display = 'block';
