@@ -4592,8 +4592,6 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            console.log('First:'+DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEExtKey);
-            console.log('Second:'+DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEExtKey);
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
@@ -4642,7 +4640,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element = document.getElementById(val1).style.cssText = `
+      var element = document.getElementById(de1).style.cssText = `
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
