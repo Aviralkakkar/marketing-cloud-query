@@ -4806,10 +4806,9 @@ document.addEventListener("touchend ", function(){
               "SecondDEExtKey": document.getElementById('select-02').value,
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
+            console.log('Join Query Detail:'+JSON.stringify(JoinQueryDetails));
             //Edited By ANIL KUMAR
             joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
-
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
       }
