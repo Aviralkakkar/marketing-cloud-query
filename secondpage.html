@@ -4341,6 +4341,9 @@ document.addEventListener("touchend ", function(){
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
+      document.getElementById('RichTextEditor').style.display = '';
+      document.getElementById('rightsideList').style.display = '';
+      //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
