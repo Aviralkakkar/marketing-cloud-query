@@ -1930,8 +1930,8 @@
 
         padding-left: 0% !important;
         margin-left: 0% !important;
-        padding-right: 0% !important;
-        margin-right: 0% !important;
+        padding-right: 10% !important;
+        margin-right: 10% !important;
       }
 
       span {
@@ -2270,14 +2270,24 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
-                      id="dataExtensionButton"><span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span></button>
+                      id="dataExtensionButton"><span class="slds-icon_container slds-icon-utility-opened_folder"
+                        title="Description of icon when needed"><svg
+                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
+                          aria-hidden="true">
+                          <use
+                            xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          </use>
+                        </svg><span class="slds-assistive-text">Description of icon when needed</span></span><span
+                        class="tree-label" id="31244-label">
+                        <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
+                      </span></button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2309,7 +2319,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="sharedDataExtension"
+                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="sharedDataExtension"
                         role="tree">
 
                       </ul>
@@ -2337,7 +2347,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="dataViews" role="tree">
+                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="dataViews" role="tree">
 
                       </ul>
                     </div>
@@ -2381,7 +2391,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div class="slds-col" id="queryDiv" style="height:75%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
                   <span class="slds-assistive-text">error</span>
@@ -2455,139 +2465,8 @@
                     </div>
                     
                     </section>
-            </div>
-            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
-                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
-      
-      
-      
-                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
-                  <table class=" slds-table slds-table_bordered slds-table--header-fixed"
-                    aria-labelledby="element-with-table-label other-element-with-table-label"
-                    style="border:1px solid rgb(177, 172, 172) !important;">
-                    <thead>
-      
-                      <tr class="slds-line-height_reset">
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Account Name</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Close Date</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Stage</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Confidence</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Amount</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Contact</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Mail</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Personal Mail</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Company Mail</div>
-                        </th>
-                      </tr>
-                    </thead>
-      
-      
-      
-      
-                    <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                      <tr class="slds-hint-parent slds-border_bottom">
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Close Date">
-                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                        </td>
-                        <td data-label="Prospecting">
-                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                        </td>
-                        <td data-label="Confidence">
-                          <div class="slds-truncate" title="20%">20%</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">$25k</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                      </tr>
-      
-      
-                    </tbody>
-                  </table>
                 </div>
-                <div style="height:5%;">
-                  <div class="slds-grid">
-                    <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
-                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
-                        data-page="1">
-                        <span class="slds-icon_container slds-icon-utility-chevronleft"
-                          title="Description of icon when needed">
-                          <svg
-                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                            aria-hidden="true">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
-      
-                          </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
-                      </button>
-                    </div>
-                    <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                      <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
-                          id="totalRecords"></span> </span>
-                    </div>
-                    <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
-                        data-page="3">
-                        <span class="slds-icon_container slds-icon-utility-chevronright"
-                          title="Description of icon when needed">
-                          <svg
-                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                            aria-hidden="true">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-      
-                          </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-      
-      
-      
-      
-      
-      
-      
-            </div>
+            
               <!--****** Nitik code ended *********-->
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
@@ -2783,7 +2662,138 @@
             <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
-         
+          <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+          style="height: 50%;padding-top:0%;" style="overflow: scroll;">
+          <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+
+
+
+          <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+            <table class=" slds-table slds-table_bordered slds-table--header-fixed"
+              aria-labelledby="element-with-table-label other-element-with-table-label"
+              style="border:1px solid rgb(177, 172, 172) !important;">
+              <thead>
+
+                <tr class="slds-line-height_reset">
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Account Name</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Close Date</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Stage</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Confidence</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Amount</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Contact</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Mail</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Personal Mail</div>
+                  </th>
+                  <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                    <div class="slds-truncate" title="lastname">Company Mail</div>
+                  </th>
+                </tr>
+              </thead>
+
+
+
+
+              <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
+                <tr class="slds-hint-parent slds-border_bottom">
+                  <td data-label="Account Name">
+                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                  </td>
+                  <td data-label="Account Name">
+                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                  </td>
+                  <td data-label="Close Date">
+                    <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                  </td>
+                  <td data-label="Prospecting">
+                    <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                  </td>
+                  <td data-label="Confidence">
+                    <div class="slds-truncate" title="20%">20%</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="$25k">$25k</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                  </td>
+                  <td data-label="Amount">
+                    <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+          <div style="height:5%;">
+            <div class="slds-grid">
+              <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                  data-page="1">
+                  <span class="slds-icon_container slds-icon-utility-chevronleft"
+                    title="Description of icon when needed">
+                    <svg
+                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                      aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                </button>
+              </div>
+              <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                    id="totalRecords"></span> </span>
+              </div>
+              <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
+                  data-page="3">
+                  <span class="slds-icon_container slds-icon-utility-chevronright"
+                    title="Description of icon when needed">
+                    <svg
+                      class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                      aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+
+                    </svg>
+                    <span class="slds-assistive-text">Description of icon when needed</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+        </div>
 
         </div>
       </div>
@@ -3138,9 +3148,9 @@
           <button class="slds-button slds-button_neutral slds-float_left" onclick="Previous()"
             style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;"
             onclick="Previous()">Previous</button>
-          <button class="slds-button slds-button_neutral" onclick="CancelPopup()"
+          <button class="slds-button slds-button_neutral" 
             style="font-size:11px; line-height:20px; color:#4e8abe;" onclick="CancelPopup()">Cancel</button>
-          <button class="slds-button slds-button_brand" onclick="DetailsSave()"
+          <button class="slds-button slds-button_brand" 
             style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;"
             onclick="DetailsSave()">Save</button>
         </footer>
@@ -3258,7 +3268,7 @@
       console.log(de);
       if (dataExtBool) {
         console.log('show');
-        document.getElementById("dataExtension").className = "myUlClass button-padding slds-show slds-tree";
+        document.getElementById("dataExtension").className = "button-padding slds-show slds-tree";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
 
         dataExtBool = false;
@@ -3276,7 +3286,7 @@
       var de = document.getElementById("sharedDataExtensionButton");
       if (sharedDataExtBool) {
         console.log('show');
-        document.getElementById("sharedDataExtension").className = "myUlClass button-padding slds-show slds-tree";
+        document.getElementById("sharedDataExtension").className = "button-padding slds-show slds-tree";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
         sharedDataExtBool = false;
       }
@@ -3293,7 +3303,7 @@
       var de = document.getElementById("dataViewsButton");
       if (dataViewsBool) {
         console.log('show');
-        document.getElementById("dataViews").className = "myUlClass button-padding slds-show slds-tree";
+        document.getElementById("dataViews").className = "button-padding slds-show slds-tree";
 
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
         dataViewsBool = false;
@@ -3489,17 +3499,27 @@
       if (e.clientY) {
         m_pos = e.clientY;
         console.log('mouse down');
-        document.addEventListener("mousemove", resize, false);
+        newDiv.addEventListener("mousemove", resize, false);
       }
     }, false);
 
-    document.addEventListener("mouseup", function () {
+    newDiv.addEventListener("mouseup", function () {
       dragging = false;
       console.log('mouse up');
-      document.removeEventListener("mousemove", resize, false);
+      newDiv.removeEventListener("mousemove", resize, false);
     }, false);
 
-   
+    table.addEventListener("mouseover", function () {
+      dragging = false;
+      console.log('mouse up');
+      newDiv.removeEventListener("mousemove", resize, false);
+    }, false);
+
+    upper.addEventListener("mouseover", function () {
+      dragging = false;
+      console.log('mouse up');
+      newDiv.removeEventListener("mousemove", resize, false);
+    }, false);
 
 
 //------- Mobile View ----------------//
@@ -3555,8 +3575,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-     // document.getElementById('FullPageSpinner').style.display = 'block';
-      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      document.getElementById('FullPageSpinner').style.display = 'block';
+      document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -4214,10 +4234,10 @@ document.addEventListener("touchend ", function(){
       document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('rightsideList').innerHTML = '';
-      document.getElementById('RelationPopup').style.display = 'none';
-
-      document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RichTextEditor').innerHTML = '';
+      document.getElementById('RelationPopup').style.display = 'none';
+      document.getElementById('SecondModal').style.display = 'none';
+     
 
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
@@ -4321,9 +4341,9 @@ document.addEventListener("touchend ", function(){
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').style.display = '';
-      document.getElementById('rightsideList').style.display = '';
-      //RichTextEditor
+      document.getElementById('RichTextEditor').innerHTML = '';
+      document.getElementById('rightsideList').innerHTML = '';
+      //RichTextEditor //rightsideList
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4728,8 +4748,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2) 
-    {
+    function joinQueryBoxLine(de1, de2) {
       console.log("Line drawed");
 
       var val1 = de1 + "DeleteQueryBox";
@@ -4770,7 +4789,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element=document.getElementById(de1).style.cssText=`
+      var element = document.getElementById(de1).style.cssText = `
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4784,9 +4803,9 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
-                         position: relative;
+                        transform: rotate(${angle}deg);
                         `
-                ;
+        ;
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
