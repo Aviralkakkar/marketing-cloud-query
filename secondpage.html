@@ -4353,6 +4353,7 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
 
+        console.log('DE1:'+DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
@@ -4749,6 +4750,7 @@ document.addEventListener("touchend ", function(){
 
       var val1 = de1 + "DeleteQueryBox";
       var val2 = de2 + "DeleteQueryBox";
+      console.log('Val1:'+val1);
 
       var div1 = document.getElementById(val1);
 
