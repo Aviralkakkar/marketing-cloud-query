@@ -3519,6 +3519,7 @@
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
+        document.getElementById('rightselect').innerHTML = '';
         if (DESetQueryBox.has(DEDragData.DEExtKey)) {
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
@@ -4000,6 +4001,8 @@
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
+      
+     //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
@@ -4123,6 +4126,7 @@
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
+      document.getElementById('rightsideList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
 
       document.getElementById('SecondModal').style.display = 'none';
