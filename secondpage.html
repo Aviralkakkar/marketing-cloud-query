@@ -2275,7 +2275,18 @@
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
-                      id="dataExtensionButton"><span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span></button>
+                      id="dataExtensionButton">
+                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
+                          <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          </use>
+                        </svg>
+                            <span class="slds-assistive-text">Description of icon when needed</span>
+                          </span>
+                          <span class="tree-label" id="31244-label">
+                            <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
+                          </span>
+                        </button>
                     <div class="slds-p-left_small">
                       <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
                         role="tree">
@@ -2790,9 +2801,9 @@
 
       <!--**** Khushboo code ended ****-->
 
-  </div>
+    </div>
 
- 
+  </div>
 
 
   <div style="display: none; width: 160px;" id="recordResultModal">
@@ -3555,8 +3566,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+     // document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -4553,16 +4564,20 @@ document.addEventListener("touchend ", function(){
       if (joinedDivSet.size == 0 || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
         joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
-          '<header class="slds-modal__header" style="background-color:#e7edf0; height:5%; padding:  5px 4px;">' +
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;  margin-top: 0%; padding: 0px 4px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>' +
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
-          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">' +
-          ' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
-          '</svg>' +
-          '<span class="slds-assistive-text">Close</span>' +
-          '</button>' +
+            '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+        '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
+        '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+        '</svg>'+
+        '<span class="slds-assistive-text">Close</span>'+
+        '</button>'+
 
-          '</header>' +
+      
+       
+        
+          
+        '</header>'+
           '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
 
           '<div >' +
