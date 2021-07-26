@@ -4213,11 +4213,12 @@ document.addEventListener("touchend ", function(){
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('leftsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
+      document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('rightsideList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
 
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').innerHTML = '';
+      
 
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
@@ -4321,8 +4322,8 @@ document.addEventListener("touchend ", function(){
     function DetailsSave() {
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').style.display = '';
-      document.getElementById('rightsideList').style.display = '';
+      document.getElementById('RichTextEditor').innerHTML = '';
+      document.getElementById('rightsideList').innerHTML = '';
       //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
