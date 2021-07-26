@@ -1926,7 +1926,7 @@
 
 
     @media (min-width: 0px) and (max-width: 1500px) {
-      ul {
+      .ulList {
 
         padding-left: 0% !important;
         margin-left: 0% !important;
@@ -2287,7 +2287,7 @@
                         <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
                       </span></button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="button-padding slds-hide slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="ulList button-padding slds-show slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2319,7 +2319,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="sharedDataExtension"
+                      <ul aria-labelledby="treeheading" class="ulList slds-hide slds-tree" id="sharedDataExtension"
                         role="tree">
 
                       </ul>
@@ -2347,7 +2347,7 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="slds-hide slds-tree" id="dataViews" role="tree">
+                      <ul aria-labelledby="treeheading" class="ulList slds-hide slds-tree" id="dataViews" role="tree">
 
                       </ul>
                     </div>
@@ -2601,9 +2601,9 @@
             </div>
             <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
-          </div>
-          <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-          style="height: 25%;padding-top:0%;" style="overflow: scroll;">
+            </div>
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+          style="height: 50%;padding-top:0%;" style="overflow: scroll;">
           <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
 
 
@@ -2699,7 +2699,7 @@
                     <svg
                       class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
                       aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+                      <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
 
                     </svg>
                     <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2717,7 +2717,7 @@
                     <svg
                       class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
                       aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+                      <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
 
                     </svg>
                     <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2733,10 +2733,10 @@
 
 
 
-        </div>
+            </div>
 
+          </div>
         </div>
-      </div>
 
       <!--**** Khushboo code ended ****-->
 
@@ -3197,7 +3197,7 @@
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
+    var dataExtBool = false;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
