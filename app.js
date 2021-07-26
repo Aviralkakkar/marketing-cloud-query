@@ -56,8 +56,6 @@ app.post("/secondpage", async function (req, res) {
     DEListMap = await getAllDEFields();
     resCall.send(DEListMap);
 
-    console.log('DEListMap.DataViewMap : ' + JSON.stringify(DEListMap.DataViewMap));
-
     async function getDEMap() {
       return new Promise(function (resolve, reject) {
         var ListDEOption = {
@@ -93,7 +91,6 @@ app.post("/secondpage", async function (req, res) {
         });
       })
     }
-
     async function getSharedDEMap() {
       return new Promise(function (resolve, reject) {
         var SharedDEFolderOption = {
@@ -181,7 +178,6 @@ app.post("/secondpage", async function (req, res) {
         });
       })
     }
-
     async function getAllDEFields() {
       return new Promise(function (resolve, reject) {
         var options = {
@@ -232,7 +228,6 @@ app.post("/secondpage", async function (req, res) {
         });
       })
     }
-
   });
 
   app.post("/validatequery", async (reqCall, resCall) => {
@@ -655,7 +650,7 @@ app.post("/secondpage", async function (req, res) {
       })
     }
   })
-
+  
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
