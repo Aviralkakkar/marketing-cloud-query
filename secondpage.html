@@ -4053,11 +4053,11 @@ document.addEventListener("touchend ", function(){
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openSelectFieldsDEExtKey == '') {
-          for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+          for (var i = 0; i < x.length; i++) {
             document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
               '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
               ' <span class="slds-size_1-of-1">' +
-              '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + checkboxesCheck.value + ' </button> </span>' +
+              '<span > <button  class="btn" value="' + x.label[i] + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' +  x.label[i] + '" >' +  x.label[i]+ ' </button> </span>' +
               ' </span>' +
               '  </div>' +
               '</li>';
