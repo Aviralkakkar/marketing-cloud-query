@@ -4617,7 +4617,7 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
+            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
           }
         }
       }
