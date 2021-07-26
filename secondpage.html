@@ -2427,7 +2427,7 @@
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small"
-                data-bs-toggle="modal" data-bs-target="#main">Run</button>
+                onclick="showDiv()">Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2437,7 +2437,7 @@
                     Launch demo modal
                   </button-->
                   <!-- Modal -->
-                  <div id="main" >
+                  <div id="main"  style="display:block;">
                     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
                       <div class="slds-modal__container" >
                           <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4;" >
@@ -3326,7 +3326,11 @@
 </script>
 
 <!--End here-->
-
+<script>
+  function showDiv() {
+   document.getElementById('main').style.display = "block";
+}
+</script>
   <!-- Khushboo  code starting   -->
 
   <script>
