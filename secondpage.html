@@ -4202,7 +4202,7 @@
         for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
-        document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul class="attributes scrollableClass">' + fieldsListForRelationDiv + '</ul>';
+        document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul style="padding-left: 0;" class="slds-scrollable">' + fieldsListForRelationDiv + '</ul>';
       }
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
