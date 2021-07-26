@@ -4280,7 +4280,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '    </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.Name + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4322,7 +4322,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'
-        '<div id="' + DEDragData.Name + '" >' +
+        '<div id="' + DEDragData.DEExtKey + '" >' +
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4598,7 +4598,6 @@ document.addEventListener("touchend ", function(){
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2) {
-
       var val1 = de1 + "DeleteQueryBox";
       var val2 = de2 + "DeleteQueryBox";
 
