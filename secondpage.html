@@ -4745,7 +4745,8 @@ document.addEventListener("touchend ", function(){
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2) {
+    function joinQueryBoxLine(de1, de2) 
+    {
       console.log("Line drawed");
 
       var val1 = de1 + "DeleteQueryBox";
@@ -4786,7 +4787,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element = document.getElementById(de1).style.cssText = `
+      var element=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4800,9 +4801,9 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
-                        transform: rotate(${angle}deg);
+                         position: relative;
                         `
-        ;
+                ;
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
