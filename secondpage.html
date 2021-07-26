@@ -4046,8 +4046,9 @@ document.addEventListener("touchend ", function(){
     //  var rightsidevalues = document.querySelectorAll('#rightsideList');
       console.log(x);
       console.log(x.length);
-      console.log(x.value);
-     
+      for (var i = 0; i < x.length; i++) {
+      console.log(x[i].value);
+      }
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
