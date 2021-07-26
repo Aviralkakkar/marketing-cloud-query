@@ -2427,7 +2427,7 @@
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small"
-                data-bs-toggle="modal" data-bs-target="#exampleModal">Run</button>
+                data-bs-toggle="modal" data-bs-target="#myModal">Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2436,6 +2436,23 @@
               <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
                     Launch demo modal
                   </button-->
+                  <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+                              </div>
+                              <div class="modal-body">...</div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
 
           
             </div>
