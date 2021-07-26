@@ -4220,6 +4220,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
+      document.getElementById('ulList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       if (DEDragData.DEExtKey != '') {
