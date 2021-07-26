@@ -4569,8 +4569,8 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-
-            joinQueryBoxLine(DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName, DEListMap.DEMap[document.getElementById('select-02').value].DEName);
+           console.log('First External Key:'+FirstDEExtKeyForJoinGlobal); 
+           joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
       }
@@ -4578,8 +4578,6 @@ document.addEventListener("touchend ", function(){
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2) {
-      console.log("Line drawed");
-
       var val1 = de1 + "DeleteQueryBox";
       var val2 = de2 + "DeleteQueryBox";
 
