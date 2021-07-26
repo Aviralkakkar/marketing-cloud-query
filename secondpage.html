@@ -2939,8 +2939,8 @@
 
           <div class="container" style="padding:0%; margin:0%; ">
 
-            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%;">
-              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; ">
+            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
+              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
                     <h4 class="slds-text-title_caps" id=" component-selector-container__heading"
@@ -2948,12 +2948,12 @@
                       <b>Data Extension Fields</b>
                     </h4>
                   </div>
-                  <ul class="list-group left-side" id="leftsideListInSelectField"
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%;  overflow-y:scroll;">
+                  <ul class="list-group left-side" 
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <!-- <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:200px;width:100px;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
-                    </select> -->
+                    </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -2962,20 +2962,20 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="width:65" /> 
+                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:65" /> 
--->
-                <button class="btn btn-default btn-sm move-right">
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+
+               <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
                 <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
                   <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>
+                </button>-->
               </div>
 
-              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%;  ">
+              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;  ">
                 <div class="well" style=" padding:0%;  background-color: white;  ">
                   <div class="row" style="padding:0%; margin:0%;  ">
 
@@ -2985,31 +2985,34 @@
                     </h4>
 
                   </div>
-                  <div style="overflow-y: scroll; overflow-x: hidden;  height: 23rem;">
-                    <ul class="list-group right-side" id="rightsideList" aria-activedescendant="cb1-opt6"
-                      style=" border: none; padding:0%; margin:0%;   ">
-                      <!-- <select multiple id="rightsideList"  onclick="setButton(this)" style="height:200px;width:100px;" > 
-                        
-                      </select>-->
+                  <div style="overflow: hidden;  height: 23rem;">
+                    <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
+                    style=" border: none; padding:0%; margin:0%;   ">
+                     <select multiple id="rightsideList"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                      
+                    </select>
+                    
 
-
-                    </ul>
+                  </ul>
                   </div>
 
                 </div>
 
 
               </div>
-              <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 24%;">
-                <!-- <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width:65"/> 
-                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="width:65" /> -->
+              <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
+                <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
+                 height: 2rem;
+                 border: 1px solid lightgray;
+                 margin-bottom: 20%;"/> 
+                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
 
-                <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
+              <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
                 </button>
                 <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
                   <span class="glyphicon glyphicon-chevron-down">D</span>
-                </button>
+                </button>-->
               </div>
 
 
@@ -3163,90 +3166,93 @@
 
   <div class="slds-col slds-size_9-of-12" id="DETable">
   </div>
-  <!--Priyanka Added Script for up-down right-left -->
-  <script language="javascript">
-    var currentSel = null;
-    function move() {
-      if (arguments.length == 1) {
-        moveUp(arguments[0]);
-      } else if (arguments.length == 2) {
-        moveRight(arguments[0], arguments[1]);
+ <!--Priyanka Added Script for up-down right-left -->
+ <script language="javascript">
+  var currentSel = null;
+  function move() {
+    if (arguments.length == 1) {
+      moveUp(arguments[0]);
+    } else if (arguments.length == 2) {
+      moveRight(arguments[0], arguments[1]);
+    }
+  }
+  function moveUp(direction) {
+    if (currentSel == null) return;
+    var index = currentSel.selectedIndex;
+    if (direction) {//up 
+      if (index == 0) return;
+
+      var value = currentSel.options[index - 1].value;
+      var text = currentSel.options[index - 1].text;
+
+      currentSel.options[index - 1].value = currentSel.options[index].value;
+      currentSel.options[index - 1].text = currentSel.options[index].text;
+
+      currentSel.options[index].value = value;
+      currentSel.options[index].text = text;
+
+      currentSel.options[index].selected = false;
+      currentSel.options[index - 1].selected = true;
+    } else {//down 
+      if (index == (currentSel.length - 1)) return;
+
+      var value = currentSel.options[index + 1].value;
+      var text = currentSel.options[index + 1].text;
+
+      currentSel.options[index + 1].value = currentSel.options[index].value;
+      currentSel.options[index + 1].text = currentSel.options[index].text;
+
+      currentSel.options[index].value = value;
+      currentSel.options[index].text = text;
+
+      currentSel.options[index].selected = false;
+      currentSel.options[index + 1].selected = true;
+    }
+  }
+  function moveRight(src, des) {
+    if (src.selectedIndex == -1) {
+      alert("Please select first!");
+      return;
+    }
+    for (var i = 0; i < src.length; i++) {
+      if (src[i].selected) {
+        var op = document.createElement("option");
+        op.value = src.options[src.selectedIndex].value;
+        op.text = src.options[src.selectedIndex].text;
+        op.id ='rightselect';
+        op.style='padding:4%; margin:0;';
+        
+        des.options.add(op);
+        src.remove(i);
+        i--;
       }
     }
-    function moveUp(direction) {
-      if (currentSel == null) return;
-      var index = currentSel.selectedIndex;
-      if (direction) {//up 
-        if (index == 0) return;
+  }
+  function setButton(obj) {
+    if (obj.length == 0) return;
+    currentSel = obj;
+    if (obj.id == "leftsideListInSelectField") {
+      document.getElementById("btnLeft").disabled = true;
+      document.getElementById("btnRight").disabled = false;
 
-        var value = currentSel.options[index - 1].value;
-        var text = currentSel.options[index - 1].text;
+      reSelect(document.getElementById("rightsideList"));
+    } else {
+      document.getElementById("btnLeft").disabled = false;
+      document.getElementById("btnRight").disabled = true;
 
-        currentSel.options[index - 1].value = currentSel.options[index].value;
-        currentSel.options[index - 1].text = currentSel.options[index].text;
-
-        currentSel.options[index].value = value;
-        currentSel.options[index].text = text;
-
-        currentSel.options[index].selected = false;
-        currentSel.options[index - 1].selected = true;
-      } else {//down 
-        if (index == (currentSel.length - 1)) return;
-
-        var value = currentSel.options[index + 1].value;
-        var text = currentSel.options[index + 1].text;
-
-        currentSel.options[index + 1].value = currentSel.options[index].value;
-        currentSel.options[index + 1].text = currentSel.options[index].text;
-
-        currentSel.options[index].value = value;
-        currentSel.options[index].text = text;
-
-        currentSel.options[index].selected = false;
-        currentSel.options[index + 1].selected = true;
-      }
+      reSelect(document.getElementById("leftsideListInSelectField"));
     }
-    function moveRight(src, des) {
-      if (src.selectedIndex == -1) {
-        alert("Please select first!");
-        return;
-      }
-      for (var i = 0; i < src.length; i++) {
-        if (src[i].selected) {
-          var op = document.createElement("option");
-          op.value = src.options[src.selectedIndex].value;
-          op.text = src.options[src.selectedIndex].text;
-          des.options.add(op);
-          src.remove(i);
-          i--;
-        }
-      }
+  }
+
+  function reSelect(obj) {
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].selected) obj[i].selected = false;
     }
-    function setButton(obj) {
-      if (obj.length == 0) return;
-      currentSel = obj;
-      if (obj.id == "leftsideListInSelectField") {
-        document.getElementById("btnLeft").disabled = true;
-        document.getElementById("btnRight").disabled = false;
+  }
 
-        reSelect(document.getElementById("rightsideList"));
-      } else {
-        document.getElementById("btnLeft").disabled = false;
-        document.getElementById("btnRight").disabled = true;
+</script>
 
-        reSelect(document.getElementById("leftsideListInSelectField"));
-      }
-    }
-
-    function reSelect(obj) {
-      for (var i = 0; i < obj.length; i++) {
-        if (obj[i].selected) obj[i].selected = false;
-      }
-    }
-
-  </script>
-
-  <!--End here-->
+<!--End here-->
 
   <!-- Khushboo  code starting   -->
 
@@ -3664,10 +3670,9 @@ document.addEventListener("touchend ", function(){
                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
               //line added by priyanka to create list in dueking picklist
-              /* document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
+              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';*/
-            }
+                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
           document.getElementById('RelationPopup').style.display = 'block';
         }
