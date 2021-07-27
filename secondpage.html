@@ -4309,6 +4309,14 @@ document.addEventListener("touchend ", function(){
       document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RichTextEditor').innerHTML = '';
       document.getElementById('rightsideList').innerHTML = '';
+      var f=[];
+      f = document.getElementById("rightsideList").querySelectorAll("option"); 
+      console.log(f);
+      for (var i = 0; i <f.length; i++) {
+         console.log('----'+f[i].value);
+         console.log('-----'+f[i].id);
+         console.log('-----'+f[i].label);
+      }
       //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
