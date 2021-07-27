@@ -2250,14 +2250,7 @@
           </div>
         </div>
       </div> 
-      <script>
-        onload();
-        function onload()
-        {
-           //document.getElementById('FullPageSpinner').style.display = 'block';
-           //document.getElementById('DEListSidebar').style.marginTop = '-650px';
-        }
-      </script>
+     
 
       <div class="main-division-div">
         <!--   Khushboo code started   -->
@@ -2265,6 +2258,14 @@
         <div class="sidebar" id="DEListSidebar"
           style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
           <div class="demo-only-element" style="height: 100%;">
+            <script>
+              onload();
+              function onload()
+              {
+                 document.getElementById('FullPageSpinner').style.display = 'block';
+                 document.getElementById('DEListSidebar').style.marginTop = '-650px';
+              }
+            </script>
             <div aria-hidden="false" id="example-unique-id-8">
               <div class="slds-panel__header">
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
@@ -3447,8 +3448,8 @@
 
     onloadofBody();
     function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      //document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
       
       $.ajax
         ({
