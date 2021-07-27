@@ -3117,13 +3117,13 @@
       }
       for (var i = 0; i < src.length; i++) {
         if (src[i].selected) {
-          console.log(src[i].selected);
+          console.log(src[i]);
           var op = document.createElement("option");
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
           op.id = 'rightselect';
           op.style = 'padding:4%; margin:0;';
-
+          
           console.log('value-->'+src.options[src.selectedIndex].value);
           console.log('text-->'+src.options[src.selectedIndex].text);
           console.log('name-->'+src.options[src.selectedIndex].type);
