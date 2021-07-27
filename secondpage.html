@@ -3946,7 +3946,8 @@
       checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
 
-     
+      let nodeList = Array.from(document.querySelectorAll('#rightsideList < select'));
+      console.log(nodeList);
       console.log(checkboxesCheck.length);
       for(var i in checkboxesCheck) {
         console.log('checkboxesCheck[i].value : ' + checkboxesCheck[i].value);
