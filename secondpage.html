@@ -4815,7 +4815,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var lineElement=document.getElementById(de1).style.cssText=`
+      /*var lineElement=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4833,8 +4833,27 @@ document.addEventListener("touchend ", function(){
                          display:block;
                         `
                 ;
-      console.log('Line:'+lineElement);      
-    }    
+      console.log('Line:'+lineElement);*/
+        var jsPlumb_instance = jsPlumb.getInstance();   
+        var endpointOptions = { 
+                        anchor:'BottomCenter',
+                        maxConnections:1,                      
+                        endpoint:['Rectangle',{width:'0px', height:'0px' }], 
+                        paintStyle:{fillStyle:'black'},
+                        connectorStyle : {  lineWidth: '1px' , strokeStyle: 'black' },
+                        connector : ['Straight'],                   
+                        setDragAllowedWhenFull:true,                    
+
+
+        };  
+        div1Endpoint = jsPlumb_instance.addEndpoint(val1, endpointOptions);
+        div2Endpoint = jsPlumb_instance.addEndpoint(val2, endpointOptions);      
+
+        jsPlumb_instance.connect({  
+            source:div1Endpoint,
+            target:div2Endpoint,
+        }); 
+      }    
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
