@@ -4301,7 +4301,7 @@
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div style="" id="' + DEDragData.DEExtKey + '" >' +
+          '<div style="z-index: 10;" id="' + DEDragData.DEExtKey + '" >' +
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4621,7 +4621,7 @@
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      /*var lineElement=document.getElementById(de1).style.cssText=`
+      var lineElement=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4638,22 +4638,8 @@
                          position: relative;
                          display:block;
                         `
-                ;*/
-                jsPlumb.bind("ready", function() {
-
-                  var e0 = jsPlumb.addEndpoint(val1),
-                      e1 = jsPlumb.addEndpoint(val2);
-            
-                  jsPlumb.importDefaults({
-                      Connector : [ "Bezier", { curviness: 150 } ],
-                      Anchors : [ "TopCenter", "BottomCenter" ]
-                  });
-            
-                  jsPlumb.connect({ source:e0, target:e1 });
-            
-                  jsPlumb.draggable($(".box"));
-            
-                });          
+                ;
+                
       
      }    
     //****************************************FINISH(ANIL KUMAR)******************************************    
