@@ -4449,7 +4449,7 @@ document.addEventListener("touchend ", function(){
           '   </div>' +
           '</div>'
         '<div id="' + DEDragData.DEExtKey + '" >' +
-          '</div>';
+        '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
@@ -4769,7 +4769,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var element=document.getElementById(de1).style.cssText=`
+      var lineElement=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4786,6 +4786,8 @@ document.addEventListener("touchend ", function(){
                          position: relative;
                         `
                 ;
+      console.log('Line:'+lineElement);          
+
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
