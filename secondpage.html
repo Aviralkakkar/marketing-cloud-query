@@ -3509,6 +3509,7 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
+
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -3526,6 +3527,8 @@ document.addEventListener("touchend ", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
+    var x=[];
+
 
     onloadofBody();
     function onloadofBody() {
@@ -4056,13 +4059,13 @@ document.addEventListener("touchend ", function(){
     function CancelDERecordModal() {
       document.getElementById('recordResultModal').style.display = 'none';
     }
-
+       
     function Next() {
       document.getElementById("RichTextEditor").innerHTML = '';
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
-      var x=[];
+      x=[];
       x = document.getElementById("rightsideList").querySelectorAll("option"); 
       console.log(x);
       console.log(x.length);
@@ -4301,6 +4304,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
+      console.log('list of rightside values---->'+x);
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RichTextEditor').innerHTML = '';
