@@ -3949,6 +3949,11 @@
       var x = document.getElementById("rightsideList").querySelectorAll("option"); 
       console.log(x.length);
       console.log(x);
+      for (var i = 0; i < x.length; i++) {
+      console.log(x[i].id);
+      console.log(x[i].value);
+      console.log(x[i].label);
+      }
       console.log(checkboxesCheck.length);
       for(var i in checkboxesCheck) {
         console.log('checkboxesCheck[i].value : ' + checkboxesCheck[i].value);
