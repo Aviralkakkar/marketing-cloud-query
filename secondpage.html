@@ -3945,21 +3945,17 @@
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
-
+      var x=[];
       var x = document.getElementById("rightsideList").querySelectorAll("option"); 
       console.log(x.length);
       console.log(x);
       for (var i = 0; i < x.length; i++) {
-      console.log(x[i].id);
-      console.log(x[i].value);
-      console.log(x[i].label);
+      console.log('id------>'+x[i].id);
+      console.log('type---->'+x[i].value);
+      console.log('label--->'+x[i].label);
       }
-      console.log(checkboxesCheck.length);
-      for(var i in checkboxesCheck) {
-        console.log('checkboxesCheck[i].value : ' + checkboxesCheck[i].value);
-        console.log('checkboxesCheck[i].name : ' + checkboxesCheck[i].label);
-        console.log('checkboxesCheck[i].text : ' + checkboxesCheck[i].text);
-      }
+      
+      
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
