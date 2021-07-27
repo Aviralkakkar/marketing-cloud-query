@@ -4122,11 +4122,11 @@ document.addEventListener("touchend ", function(){
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
 
-      //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
+      var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
       console.log(checkboxesCheck);
-      for(var i in checkboxesCheck) {
-        console.log('checkboxesCheck[i].value : ' + checkboxesCheck[i].value)
-        console.log('checkboxesCheck[i].name : ' + checkboxesCheck[i].name)
+      for(var i in x) {
+        console.log('checkboxesCheck[i].value : ' + x[i].value)
+        console.log('checkboxesCheck[i].name : ' + x[i].name)
       }
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
