@@ -4314,11 +4314,6 @@ document.addEventListener("touchend ", function(){
     function DetailsSave() {
       
       console.log('list of rightside values---->'+x);
-      console.log('------------>'+document.getElementById('RichTextEditor'));
-      document.getElementById('RelationPopup').style.display = 'none';
-      document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('rightsideList').innerHTML = '';
       var f=[];
       f = document.getElementById("rightsideList").querySelectorAll("option"); 
       console.log(f);
@@ -4327,6 +4322,11 @@ document.addEventListener("touchend ", function(){
          console.log('-----'+f[i].id);
          console.log('-----'+f[i].label);
       }
+      document.getElementById('RelationPopup').style.display = 'none';
+      document.getElementById('SecondModal').style.display = 'none';
+      document.getElementById('RichTextEditor').innerHTML = '';
+      document.getElementById('rightsideList').innerHTML = '';
+      
       //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
