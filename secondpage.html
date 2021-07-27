@@ -3117,6 +3117,7 @@
       }
       for (var i = 0; i < src.length; i++) {
         if (src[i].selected) {
+          console.log(src[i].selected);
           var op = document.createElement("option");
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
