@@ -3131,7 +3131,7 @@
         var op = document.createElement("option");
         op.value = src.options[src.selectedIndex].value;
         op.text = src.options[src.selectedIndex].text;
-        op.id ='rightselect';
+        op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
         
         des.options.add(op);
@@ -3566,7 +3566,7 @@ document.addEventListener("touchend ", function(){
                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
               //line added by priyanka to create list in dueking picklist
-              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
+              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
@@ -3582,7 +3582,7 @@ document.addEventListener("touchend ", function(){
                 '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
               //line added by priyanka to create list in dueking picklist
 
-              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName
+              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
@@ -3591,12 +3591,12 @@ document.addEventListener("touchend ", function(){
           else if (DEDragData.DECategory == "DataViewMap") {
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-              document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+             /* document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
                 DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
-              //line added by priyanka to create list in dueking picklist
-              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
+              *///line added by priyanka to create list in dueking picklist
+              document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
@@ -4032,8 +4032,15 @@ document.addEventListener("touchend ", function(){
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
-      
-     //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
+      var x=[];
+      x = document.getElementById("rightsideList").querySelectorAll("option"); 
+      console.log(x);
+      console.log(x.length);
+      for (var i = 0; i < x.length; i++) {
+         console.log('----'+x[i].value);
+         console.log('-----'+x[i].id);
+         console.log('-----'+x[i].label);
+      }
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
