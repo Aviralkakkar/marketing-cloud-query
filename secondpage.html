@@ -3266,27 +3266,6 @@
         currentSel.options[index + 1].selected = true;
       }
     }
-<<<<<<< HEAD
-  }
-  function moveRight(src, des) {
-    if (src.selectedIndex == -1) {
-      alert("Please select first!");
-      return;
-    }
-    for (var i = 0; i < src.length; i++) {
-      if (src[i].selected) {
-        var op = document.createElement("option");
-        op.value = src.options[src.selectedIndex].value;
-        op.text = src.options[src.selectedIndex].text;
-        op.name=src.options[src.selectedIndex].name;
-        op.class ='rightselectclass';
-        op.id=src.options[src.selectedIndex].text;
-        op.style='padding:4%; margin:0;';
-        
-        des.options.add(op);
-        src.remove(i);
-        i--;
-=======
     function moveRight(src, des) {
       if (src.selectedIndex == -1) {
         alert("Please select first!");
@@ -3304,7 +3283,6 @@
           src.remove(i);
           i--;
         }
->>>>>>> 6f273db3c3b7e3d008c8795abaabb1ba133da03b
       }
     }
     function setButton(obj) {
@@ -4877,7 +4855,7 @@ document.addEventListener("touchend ", function(){
         document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
       }
     }
-
+ 
   </script>
 </body>
 
