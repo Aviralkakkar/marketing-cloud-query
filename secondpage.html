@@ -3118,7 +3118,7 @@
       }
       for (var i = 0; i < src.length; i++) {
         if (src[i].selected) {
-          console.log(src[i]);
+          console.log(src[i].name);
           var op = document.createElement("option");
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
@@ -3129,10 +3129,13 @@
           console.log('text-->'+src.options[src.selectedIndex].text);
           console.log('name-->'+src.options[src.selectedIndex].name);
           console.log('id-->'+src.options[src.selectedIndex].id);
+          console.log('label-->'+src.options[src.selectedIndex].label);
+          
 
           des.options.add(op);
           src.remove(i);
           i--;
+
         }
       }
     }
