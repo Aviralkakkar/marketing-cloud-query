@@ -4312,8 +4312,9 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
-      console.log('list of rightside values---->'+x);
-      console.log('------------>'+document.getElementById('RichTextEditor'));
+      
+      console.log('list of rightside values---->'+stringfy(x));
+      console.log('------------>'+stringfy(document.getElementById('RichTextEditor')));
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       document.getElementById('RichTextEditor').innerHTML = '';
