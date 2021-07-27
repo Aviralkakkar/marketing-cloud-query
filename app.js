@@ -1369,7 +1369,6 @@ app.post("/secondpage", async function (req, res) {
             '</RetrieveRequestMsg>' +
             '</s:Body>' +
             '</s:Envelope>';
-          console.log("ListShareDEBody : " + ListShareDEBody);
           var ListSharedDEOption = {
             'method': 'POST',
             'url': AuthResponse.SoapURL + 'Service.asmx',
@@ -1390,7 +1389,6 @@ app.post("/secondpage", async function (req, res) {
                   "DEFields" : []
                 }
               }
-              console.log("DEListMap : " + JSON.stringify(DEListMap));
               resolve(DEListMap);
             });
           });

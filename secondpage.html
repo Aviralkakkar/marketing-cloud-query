@@ -2276,20 +2276,23 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
-                        <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                      <span class="slds-icon_container slds-icon-utility-opened_folder"
+                        title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
+                          aria-hidden="true">
+                          <use
+                            xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
-                            <span class="slds-assistive-text">Description of icon when needed</span>
-                          </span>
-                          <span class="tree-label" id="31244-label">
-                            <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
-                          </span>
-                        </button>
+                        <span class="slds-assistive-text">Description of icon when needed</span>
+                      </span>
+                      <span class="tree-label" id="31244-label">
+                        <h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6>
+                      </span>
+                    </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
-                        role="tree">
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree"
+                        id="dataExtension" role="tree">
 
 
 
@@ -2348,7 +2351,8 @@
                       </span>
                     </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="dataViews" role="tree">
+                      <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="dataViews"
+                        role="tree">
 
                       </ul>
                     </div>
@@ -2681,6 +2685,19 @@
                         </span>
                       </button>
                     </div>
+
+
+                    <footer class="slds-modal__footer"
+                      style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                      <button class="slds-button slds-button_neutral slds-float_left"
+                        style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;"
+                        onclick="Previous()">Cancel</button>
+
+                      <button class="slds-button slds-button_brand"
+                        style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;"
+                        onclick="DetailsSave()">Run</button>
+                    </footer>
+
                   </div>
                 </div>
       
@@ -2695,74 +2712,106 @@
             </div>
            
 
-            <div id="QueryValidateTrueAlert" style="display:none">
-              <div class="demo-only" style="height:4rem">
-                <div class="slds-notify_container slds-is-relative">
-                  <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
-                    <span class="slds-assistive-text">success</span>
-                    <span
-                      class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
-                      title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
                       </svg>
+                      <span class="slds-assistive-text">Description of icon when needed</span>
+                  </button>
+                </div>
+                <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                  <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                      id="totalRecords"></span> </span>
+                </div>
+                <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                  <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
+                    data-page="3">
+                    <span class="slds-icon_container slds-icon-utility-chevronright"
+                      title="Description of icon when needed">
+                      <svg
+                        class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                        aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+
+                      </svg>
+                      <span class="slds-assistive-text">Description of icon when needed</span>
                     </span>
-                    <div class="slds-notify__content">
-                      <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
-                    </div>
-                    <div class="slds-notify__close">
-                      <button onclick="CancelQueryValidateTrueAlert()"
-                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-                    </div>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div id="QueryValidateFalseAlert" style="display:none">
-              <div class="demo-only" style="height:4rem">
-                <div class="slds-notify_container slds-is-relative">
-                  <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
-                    <span class="slds-assistive-text">error</span>
-                    <span
-                      class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
-                      title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                      </svg>
-                    </span>
-                    <div class="slds-notify__content">
-                      <h2 class="slds-text-heading_small ">Invalid Query.</h2>
-                    </div>
-                    <div class="slds-notify__close">
-                      <button onclick="CancelQueryValidateFalseAlert()"
-                        class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="RelationshipDiv"> </div>
-            <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
+
+
+
+
+
+
           </div>
-         
 
+          <div id="QueryValidateTrueAlert" style="display:none">
+            <div class="demo-only" style="height:4rem">
+              <div class="slds-notify_container slds-is-relative">
+                <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                  <span class="slds-assistive-text">success</span>
+                  <span
+                    class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                    </svg>
+                  </span>
+                  <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">No Syntex Error in this Query.</h2>
+                  </div>
+                  <div class="slds-notify__close">
+                    <button onclick="CancelQueryValidateTrueAlert()"
+                      class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="QueryValidateFalseAlert" style="display:none">
+            <div class="demo-only" style="height:4rem">
+              <div class="slds-notify_container slds-is-relative">
+                <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                  <span class="slds-assistive-text">error</span>
+                  <span
+                    class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                  </span>
+                  <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">Invalid Query.</h2>
+                  </div>
+                  <div class="slds-notify__close">
+                    <button onclick="CancelQueryValidateFalseAlert()"
+                      class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="RelationshipDiv"> </div>
+          <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
         </div>
+
+
       </div>
-
-      <!--**** Khushboo code ended ****-->
-
     </div>
+
+    <!--**** Khushboo code ended ****-->
 
   </div>
 
@@ -2910,12 +2959,13 @@
                       <b>Data Extension Fields</b>
                     </h4>
                   </div>
-                  <ul class="list-group left-side" 
+                  <ul class="list-group left-side"
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
-                     
-                    </select> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)"
+                      style="height:100%;width:100%; border: none;">
+
+                    </select>
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -2924,12 +2974,16 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
- 
- 
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" >> " id="btnRight"
+                  onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));"
+                  style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" />
 
-               <!-- <button class="btn btn-default btn-sm move-right">
+
+                <input type="button" value=" << " id="btnLeft"
+                  onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));"
+                  style="width:2rem; padding-left: 3%; height: 2rem;" />
+
+                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
                 <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
@@ -2948,14 +3002,15 @@
 
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
-                    <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%;   ">
-                     <select multiple id="rightsideList"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
-                      
-                    </select>
-                    
+                    <ul class="list-group right-side" aria-activedescendant="cb1-opt6"
+                      style=" border: none; padding:0%; margin:0%;   ">
+                      <select multiple id="rightsideList" onclick="setButton(this)"
+                        style=" height: 23rem; width:100%; border: none;">
 
-                  </ul>
+                      </select>
+
+
+                    </ul>
                   </div>
 
                 </div>
@@ -2966,10 +3021,11 @@
                 <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
                  height: 2rem;
                  border: 1px solid lightgray;
-                 margin-bottom: 20%;"/> 
-                <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
+                 margin-bottom: 20%;" />
+                <input type="button" value="\/" id="btnDowm" onClick="move(false);"
+                  style="height: 2rem; width: 2rem; border: 1px solid lightgray;" />
 
-              <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
+                <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
                 </button>
                 <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
@@ -3128,91 +3184,92 @@
 
   <div class="slds-col slds-size_9-of-12" id="DETable">
   </div>
- <!--Priyanka Added Script for up-down right-left -->
- <script language="javascript">
-  var currentSel = null;
-  function move() {
-    if (arguments.length == 1) {
-      moveUp(arguments[0]);
-    } else if (arguments.length == 2) {
-      moveRight(arguments[0], arguments[1]);
-    }
-  }
-  function moveUp(direction) {
-    if (currentSel == null) return;
-    var index = currentSel.selectedIndex;
-    if (direction) {//up 
-      if (index == 0) return;
-
-      var value = currentSel.options[index - 1].value;
-      var text = currentSel.options[index - 1].text;
-
-      currentSel.options[index - 1].value = currentSel.options[index].value;
-      currentSel.options[index - 1].text = currentSel.options[index].text;
-
-      currentSel.options[index].value = value;
-      currentSel.options[index].text = text;
-
-      currentSel.options[index].selected = false;
-      currentSel.options[index - 1].selected = true;
-    } else {//down 
-      if (index == (currentSel.length - 1)) return;
-
-      var value = currentSel.options[index + 1].value;
-      var text = currentSel.options[index + 1].text;
-
-      currentSel.options[index + 1].value = currentSel.options[index].value;
-      currentSel.options[index + 1].text = currentSel.options[index].text;
-
-      currentSel.options[index].value = value;
-      currentSel.options[index].text = text;
-
-      currentSel.options[index].selected = false;
-      currentSel.options[index + 1].selected = true;
-    }
-  }
-  function moveRight(src, des) {
-    if (src.selectedIndex == -1) {
-      alert("Please select first!");
-      return;
-    }
-    for (var i = 0; i < src.length; i++) {
-      if (src[i].selected) {
-        var op = document.createElement("option");
-        op.value = src.options[src.selectedIndex].value;
-        op.text = src.options[src.selectedIndex].text;
-        op.id ='rightselect';
-        op.style='padding:4%; margin:0;';
-        
-        des.options.add(op);
-        src.remove(i);
-        i--;
+  <!--Priyanka Added Script for up-down right-left -->
+  <script language="javascript">
+    var currentSel = null;
+    function move() {
+      if (arguments.length == 1) {
+        moveUp(arguments[0]);
+      } else if (arguments.length == 2) {
+        moveRight(arguments[0], arguments[1]);
       }
     }
-  }
-  function setButton(obj) {
-    if (obj.length == 0) return;
-    currentSel = obj;
-    if (obj.id == "leftsideListInSelectField") {
-      document.getElementById("btnLeft").disabled = true;
-      document.getElementById("btnRight").disabled = false;
+    function moveUp(direction) {
+      if (currentSel == null) return;
+      var index = currentSel.selectedIndex;
+      if (direction) {//up 
+        if (index == 0) return;
 
-      reSelect(document.getElementById("rightsideList"));
-    } else {
-      document.getElementById("btnLeft").disabled = false;
-      document.getElementById("btnRight").disabled = true;
+        var value = currentSel.options[index - 1].value;
+        var text = currentSel.options[index - 1].text;
 
-      reSelect(document.getElementById("leftsideListInSelectField"));
+        currentSel.options[index - 1].value = currentSel.options[index].value;
+        currentSel.options[index - 1].text = currentSel.options[index].text;
+
+        currentSel.options[index].value = value;
+        currentSel.options[index].text = text;
+
+        currentSel.options[index].selected = false;
+        currentSel.options[index - 1].selected = true;
+      } else {//down 
+        if (index == (currentSel.length - 1)) return;
+
+        var value = currentSel.options[index + 1].value;
+        var text = currentSel.options[index + 1].text;
+
+        currentSel.options[index + 1].value = currentSel.options[index].value;
+        currentSel.options[index + 1].text = currentSel.options[index].text;
+
+        currentSel.options[index].value = value;
+        currentSel.options[index].text = text;
+
+        currentSel.options[index].selected = false;
+        currentSel.options[index + 1].selected = true;
+      }
     }
-  }
+    function moveRight(src, des) {
+      if (src.selectedIndex == -1) {
+        alert("Please select first!");
+        return;
+      }
+      for (var i = 0; i < src.length; i++) {
+        if (src[i].selected) {
+          var op = document.createElement("option");
+          op.value = src.options[src.selectedIndex].value;
+          op.text = src.options[src.selectedIndex].text;
+          op.id = 'rightselect';
+          op.style = 'padding:4%; margin:0;';
 
-  function reSelect(obj) {
-    for (var i = 0; i < obj.length; i++) {
-      if (obj[i].selected) obj[i].selected = false;
+          des.options.add(op);
+          src.remove(i);
+          i--;
+        }
+      }
     }
-  }
+    function setButton(obj) {
+      if (obj.length == 0) return;
+      currentSel = obj;
+      if (obj.id == "leftsideListInSelectField") {
+        document.getElementById("btnLeft").disabled = true;
+        document.getElementById("btnRight").disabled = false;
 
-</script>
+        reSelect(document.getElementById("rightsideList"));
+      }
+      else {
+        document.getElementById("btnLeft").disabled = false;
+        document.getElementById("btnRight").disabled = true;
+
+        reSelect(document.getElementById("leftsideListInSelectField"));
+      }
+    }
+
+    function reSelect(obj) {
+      for (var i = 0; i < obj.length; i++) {
+        if (obj[i].selected) obj[i].selected = false;
+      }
+    }
+
+  </script>
 
 <!--End here-->
 <!--nitik code started-->
@@ -3493,7 +3550,7 @@ window.onclick = function(event) {
       document.removeEventListener("mousemove", resize, false);
     }, false);
 
-   
+
 
 
 //------- Mobile View ----------------//
@@ -3611,44 +3668,26 @@ document.addEventListener("touchend ", function(){
           if (DEDragData.DECategory == "DEMap") {
             DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-              /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
-                DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
-              //line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
-      
-             
+                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
             }
           }
           else if (DEDragData.DECategory == "SharedDEMap") {
             DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-            /*  document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
-                DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
-              //line added by priyanka to create list in dueking picklist
-
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
-      
+                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-              document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
-                DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';
-              //line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
+                + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+            }
           }
           document.getElementById('RelationPopup').style.display = 'block';
         }
@@ -4082,16 +4121,20 @@ document.addEventListener("touchend ", function(){
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
       //var rightsidevalues = document.querySelectorAll('#rightsideList');
-      
-     //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
+
+      //var x = document.getElementById("rightsideList").querySelectorAll("#rightselect"); 
       console.log(checkboxesCheck);
+      for(var i in checkboxesCheck) {
+        console.log('checkboxesCheck[i].value : ' + checkboxesCheck[i].value)
+        console.log('checkboxesCheck[i].name : ' + checkboxesCheck[i].name)
+      }
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('ulList').innerHTML = '';
         if (openSelectFieldsDEExtKey == '') {
-          if(DEDragData.DEExtKey in DEListMap.DEMap) {
+          if (DEDragData.DEExtKey in DEListMap.DEMap) {
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -4102,7 +4145,7 @@ document.addEventListener("touchend ", function(){
                 '</li>';
             }
           }
-          else if(DEDragData.DEExtKey in DEListMap.SharedDEMap) {
+          else if (DEDragData.DEExtKey in DEListMap.SharedDEMap) {
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -4113,7 +4156,7 @@ document.addEventListener("touchend ", function(){
                 '</li>';
             }
           }
-          else if(DEDragData.DEExtKey in DEListMap.DataViewMap) {
+          else if (DEDragData.DEExtKey in DEListMap.DataViewMap) {
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -4212,7 +4255,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('RelationPopup').style.display = 'none';
 
       document.getElementById('SecondModal').style.display = 'none';
-      
+
 
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
@@ -4228,55 +4271,40 @@ document.addEventListener("touchend ", function(){
       EleDEExtKey = EleDEExtKey[0];
       openWhereDEExtKey = EleDEExtKey;
       var ulListStr = '';
-      if(openWhereDEExtKey in DEListMap.DEMap) {
-        for (var key in DEListMap.DEMap[openWhereDEExtKey].DEFields) {
+      if (openWhereDEExtKey in DEListMap.DEMap) {
+        for (var i in DEListMap.DEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
-      else if(openWhereDEExtKey in DEListMap.SharedDEMap) {
+      else if (openWhereDEExtKey in DEListMap.SharedDEMap) {
         for (var key in DEListMap.SharedDEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
-      else if(openWhereDEExtKey in DEListMap.DataViewMap) {
+      else if (openWhereDEExtKey in DEListMap.DataViewMap) {
         for (var key in DEListMap.DataViewMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-            '<div class="slds-tree__item slds-is-selected">' +
-            '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
-            '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
-            '  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>' +
-            '  </svg>' +
-            ' </button>' +
+            '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
             ' <span class="slds-size_1-of-1">' +
-            '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+            '<span > <button  class="btn" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldName + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[i].FieldName + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>';
         }
       }
-      
+
       document.getElementById('ulList').innerHTML = ulListStr;
       document.getElementById("RichTextEditor").innerHTML = document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
@@ -4290,7 +4318,7 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = EleDEExtKey;
       var html = '';
       var bool;
-      
+
       for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4331,7 +4359,7 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
 
-        console.log('DE1:'+DEDragData.DEExtKey);
+        console.log('DE1:' + DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
@@ -4547,20 +4575,20 @@ document.addEventListener("touchend ", function(){
       if (joinedDivSet.size == 0 || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
         joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
           '<div class="slds-modal__container">' +
-            '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-        '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-        '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
-        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-        '</svg>'+
-        '<span class="slds-assistive-text">Close</span>'+
-        '</button>'+
+          '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >' +
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>' +
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">' +
+          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">' +
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>' +
+          '</svg>' +
+          '<span class="slds-assistive-text">Close</span>' +
+          '</button>' +
 
-      
-       
-        
-          
-        '</header>'+
+
+
+
+
+          '</header>' +
           '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
 
           '<div >' +
@@ -4719,7 +4747,7 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            console.log('QueryJoin:'+JSON.stringify(JoinQueryDetails));
+            console.log('QueryJoin:' + JSON.stringify(JoinQueryDetails));
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
           }
         }
@@ -4727,13 +4755,12 @@ document.addEventListener("touchend ", function(){
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2) 
-    {
+    function joinQueryBoxLine(de1, de2) {
       console.log("Line drawed");
 
       var val1 = de1 + "DeleteQueryBox";
       var val2 = de2 + "DeleteQueryBox";
-      console.log('Val1:'+val1);
+      console.log('Val1:' + val1);
 
       var div1 = document.getElementById(val1);
 
