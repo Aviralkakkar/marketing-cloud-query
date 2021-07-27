@@ -2257,6 +2257,14 @@
         <div class="sidebar" id="DEListSidebar"
           style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
           <div class="demo-only-element" style="height: 100%;">
+            <script>
+              spinnerOnLoad();
+              function spinnerOnLoad()
+              {
+                document.getElementById('FullPageSpinner').style.display = 'block';
+                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+              }
+            </script>
             <div aria-hidden="false" id="example-unique-id-8">
               <div class="slds-panel__header">
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
@@ -2503,7 +2511,7 @@
                                   style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
                                 <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
                     
-                                  <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
                     
                                   </ul>
@@ -3532,8 +3540,8 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      //document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
       $.ajax
         ({
           url: '/DEListFetch',
@@ -4332,6 +4340,23 @@ document.addEventListener("touchend ", function(){
         for (const value of DESetQueryBox) {
   console.log("nitik value"+value); // logs 1, 2 and 3
 }
+if (DESetQueryBox.size > 0) {
+        //document.getElementById('RelationPopup').style.display = 'none';
+        document.getElementById('exampleModal').style.display = 'block';
+        //document.getElementById('FieldSelectNextAlert').style.display = 'none';
+        document.getElementById('uoList').innerHTML = '';
+        console.log("nitik value1");
+            for (const val of DESetQueryBox) {
+              document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                ' <span class="slds-size_1-of-1">' +
+                '<span > <button  class="btn" value="' + val + '" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                ' </span>' +
+                '  </div>' +
+                '</li>';
+            }
+            console.log("nitik value2");
+          }
 
         console.log('DE1:'+DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
