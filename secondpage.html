@@ -2235,13 +2235,13 @@
   <!-- Khushboo code ending  -->
 </head>
 
-<body>
+<body >
 
   <div>
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
+    <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2249,7 +2249,8 @@
             <div class="slds-spinner__dot-b"></div>
           </div>
         </div>
-      </div>
+      </div> 
+     
 
       <div class="main-division-div">
         <!--   Khushboo code started   -->
@@ -2257,6 +2258,14 @@
         <div class="sidebar" id="DEListSidebar"
           style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
           <div class="demo-only-element" style="height: 100%;">
+            <script>
+              onloadSpinner();
+              function onloadSpinner()
+              {
+                 document.getElementById('FullPageSpinner').style.display = 'block';
+                 document.getElementById('DEListSidebar').style.marginTop = '-650px';
+              }
+            </script>
             <div aria-hidden="false" id="example-unique-id-8">
               <div class="slds-panel__header">
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
@@ -2522,38 +2531,7 @@
       
       
                     <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                      <tr class="slds-hint-parent slds-border_bottom">
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Close Date">
-                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                        </td>
-                        <td data-label="Prospecting">
-                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                        </td>
-                        <td data-label="Confidence">
-                          <div class="slds-truncate" title="20%">20%</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">$25k</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                      </tr>
+                      
       
       
                     </tbody>
@@ -2596,7 +2574,7 @@
                     </div>
 
 
-                    <footer class="slds-modal__footer"
+                  <!-- <footer class="slds-modal__footer"
                       style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                       <button class="slds-button slds-button_neutral slds-float_left"
                         style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;"
@@ -2605,7 +2583,7 @@
                       <button class="slds-button slds-button_brand"
                         style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;"
                         onclick="DetailsSave()">Run</button>
-                    </footer>
+                    </footer>--> 
 
                   </div>
                 </div>
@@ -2618,172 +2596,6 @@
       
             </div>
               <!--****** Nitik code ended *********-->
-            </div>
-            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-              style="height: 25%;padding-top:0%;" style="overflow: scroll;">
-              <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
-
-
-
-              <div class="slds-scrollable  " id="tableDiv" style="height:68%;margin-top:1%;">
-                <table class=" slds-table slds-table_bordered slds-table--header-fixed"
-                  aria-labelledby="element-with-table-label other-element-with-table-label"
-                  style="border:1px solid rgb(177, 172, 172) !important;">
-                  <thead>
-
-                    <tr class="slds-line-height_reset">
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="firstname">Opportunity Name</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Account Name</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Close Date</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Stage</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Confidence</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Amount</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Contact</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Mail</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Personal Mail</div>
-                      </th>
-                      <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                        <div class="slds-truncate" title="lastname">Company Mail</div>
-                      </th>
-                    </tr>
-                  </thead>
-
-
-
-
-                  <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                    <tr class="slds-hint-parent slds-border_bottom">
-                      <td data-label="Account Name">
-                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                      </td>
-                      <td data-label="Account Name">
-                        <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                      </td>
-                      <td data-label="Close Date">
-                        <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                      </td>
-                      <td data-label="Prospecting">
-                        <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                      </td>
-                      <td data-label="Confidence">
-                        <div class="slds-truncate" title="20%">20%</div>
-                      </td>
-                      <td data-label="Amount">
-                        <div class="slds-truncate" title="$25k">$25k</div>
-                      </td>
-                      <td data-label="Amount">
-                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                      </td>
-                      <td data-label="Amount">
-                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                      </td>
-                      <td data-label="Amount">
-                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                      </td>
-                      <td data-label="Amount">
-                        <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                      </td>
-                    </tr>
-
-
-                  </tbody>
-                </table>
-              </div>
-              <div style="height:5%;">
-                <div class="slds-grid">
-                  <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
-                    <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
-                      data-page="1">
-                      <span class="slds-icon_container slds-icon-utility-chevronleft"
-                        title="Description of icon when needed">
-                        <svg
-                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                          aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
-
-                        </svg>
-                        <span class="slds-assistive-text">Description of icon when needed</span>
-                    </button>
-                  </div>
-                  <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                    <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
-                        id="totalRecords"></span> </span>
-                  </div>
-                  <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                    <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
-                      data-page="3">
-                      <span class="slds-icon_container slds-icon-utility-chevronright"
-                        title="Description of icon when needed">
-                        <svg
-                          class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                          aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-
-                        </svg>
-                        <span class="slds-assistive-text">Description of icon when needed</span>
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-            </div>
-
-                      </svg>
-                      <span class="slds-assistive-text">Description of icon when needed</span>
-                  </button>
-                </div>
-                <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                  <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
-                      id="totalRecords"></span> </span>
-                </div>
-                <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                  <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
-                    data-page="3">
-                    <span class="slds-icon_container slds-icon-utility-chevronright"
-                      title="Description of icon when needed">
-                      <svg
-                        class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                        aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-
-                      </svg>
-                      <span class="slds-assistive-text">Description of icon when needed</span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-
-
           </div>
 
           <div id="QueryValidateTrueAlert" style="display:none">
@@ -2854,6 +2666,8 @@
     <!--**** Khushboo code ended ****-->
 
   </div>
+
+  
 
 
   <div style="display: none; width: 160px;" id="recordResultModal">
@@ -3273,15 +3087,24 @@
       }
       for (var i = 0; i < src.length; i++) {
         if (src[i].selected) {
+          console.log(src[i]);
           var op = document.createElement("option");
           op.value = src.options[src.selectedIndex].value;
           op.text = src.options[src.selectedIndex].text;
           op.id = 'rightselect';
           op.style = 'padding:4%; margin:0;';
-
+          
+          console.log('value-->'+src.options[src.selectedIndex].value);
+          console.log('text-->'+src.options[src.selectedIndex].text);
+          console.log('name-->'+src.options[src.selectedIndex].name);
+          console.log('id-->'+src.options[src.selectedIndex].id);
+          console.log('label-->'+src.options[src.selectedIndex].label);
+          
+          console.log(des);
           des.options.add(op);
           src.remove(i);
           i--;
+
         }
       }
     }
@@ -3570,32 +3393,6 @@
 
 
 
-//------- Mobile View ----------------//
-
-
-    /*  function resizeMobile(e){
-  console.log('Touch moved ');
-  var hp = parseInt(panel.style.height);
-  var hu = parseInt(upper.style.height);
-  console.log('hp '+hp+' hu '+hu);
-  if(e.touches[0].clientY<=m_pos_mob )
-  {
-    if(hp<=75 && hu>=25)
-    {
-    hp=hp+1;
-    panel.style.height = hp+"%";
-    hu = hu-1;
-    upper.style.height = hu+"%";
-    console.log('hp '+hp+' hu '+hu);
-    }
-  }
-}, false);
-
-
-document.addEventListener("touchend ", function(){
-  console.log('mobile mouse up');
-    document.removeEventListener("touchmove", resizeMobile, false);
-}, false);*/
 
 
   </script>
@@ -3623,8 +3420,9 @@ document.addEventListener("touchend ", function(){
 
     onloadofBody();
     function onloadofBody() {
-      document.getElementById('FullPageSpinner').style.display = 'block';
-      document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      //document.getElementById('FullPageSpinner').style.display = 'block';
+      //document.getElementById('DEListSidebar').style.marginTop = '-650px';
+      
       $.ajax
         ({
           url: '/DEListFetch',
@@ -3649,6 +3447,7 @@ document.addEventListener("touchend ", function(){
             }
             document.getElementById('FullPageSpinner').style.display = 'none';
             document.getElementById('DEListSidebar').style.marginTop = '0px';
+            
           }
         });
     }
