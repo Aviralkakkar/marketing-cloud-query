@@ -4815,7 +4815,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
 
-      var lineElement=document.getElementById(de1).style.cssText=`
+      /*var lineElement=document.getElementById(de1).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4832,8 +4832,14 @@ document.addEventListener("touchend ", function(){
                          position: relative;
                          display:block;
                         `
-                ;
-      console.log('Line:'+lineElement);
+                ;*/
+      //JsPlump For adding line
+        var jsPlumb_instance = jsPlumb.getInstance();
+        jsPlumb_instance.connect({  
+          source:document.getElementById(val1),
+          target:document.getElementById(val2),
+          paintStyle:{ strokeStyle:"blue", lineWidth:10,dashstyle = '3 3' }
+      }); 
      }    
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
