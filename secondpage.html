@@ -4799,8 +4799,7 @@ if (DESetQueryBox.size > 0) {
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-      var lineName=de1+"stLine";
-      var element=document.getElementById(lineName).style.cssText=`
+      var lineElement=document.getElementById(de1+"stLine").style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
