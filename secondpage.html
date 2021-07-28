@@ -4813,6 +4813,7 @@ document.addEventListener("touchend ", function(){
 
       var div2_pos = div2.getBoundingClientRect();
       console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
+      
       if (div1_pos.left < div2_pos.left) {
         var x1 = div1_pos.left + (div1_pos.width - 2);
         var y1 = div1_pos.top + 10;
@@ -4839,9 +4840,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
-      console.log('Line:'+lineVar);
-      console.log('Line Div:'+document.getElementById(lineVar));
-
+      
       var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
@@ -4856,9 +4855,10 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
-                         position: relative;
                         `
                 ;
+    console.log('Line:'+lineElement);            
+
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
