@@ -2431,7 +2431,7 @@
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick="validateQuery(JoinQueryDetails,'Validate')"
+                onclick='openModal()'
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal()'>Run</button>
@@ -2508,7 +2508,7 @@
                               <div id="component-selector-container" class=" slds-float_left "
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
+                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions</h4>
                                 <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
@@ -4475,8 +4475,8 @@ if (DESetQueryBox.size > 0) {
         '            </div>' +
           '         </div>' +
           '   </div>' +
-          '</div>'
-        '<div id="' + DEDragData.DEExtKey + '" >' +
+          '</div>'+
+          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">'+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4796,8 +4796,7 @@ if (DESetQueryBox.size > 0) {
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-
-      var element=document.getElementById(de1).style.cssText=`
+     var lineElement=document.getElementById(de1+"DeleteQueryBoxLine").style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
