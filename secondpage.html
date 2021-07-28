@@ -4427,7 +4427,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '    </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4469,7 +4469,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
+          '<div style="display:none;" id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4792,7 +4792,8 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
-     var lineElement=document.getElementById(lineVar).style.cssText=`
+      console.log('Line:'+lineVar);
+      var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4807,7 +4808,6 @@ document.addEventListener("touchend ", function(){
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
                          position: relative;
-                         display:block;
                         `
                 ;
     }
