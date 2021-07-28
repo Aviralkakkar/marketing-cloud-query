@@ -4274,10 +4274,29 @@ document.addEventListener("touchend ", function(){
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
       openSelectFieldsDEExtKey = EleDEExtKey;
+
+      //priyanka added code 
+     for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+        for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
       
-      var html = '';
+          }
+          else {
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
+      
+          }
+        }
+   
+      }
+      //------------ends here-----------------
+      /*  var html = '';
       var bool;
-      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+    for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
             bool = true;
@@ -4293,9 +4312,9 @@ document.addEventListener("touchend ", function(){
         else {
           html += '<input type="checkbox" name = "' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldType"] + '"  value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" id="' + openSelectFieldsDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '">' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
         }
-
+   
       }
-      
+      */
       document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
@@ -4426,6 +4445,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '    </style>' +
+          '<div>'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4468,7 +4488,8 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div value="Hello" id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">This is line Div '+
+          '<div  id="Aviral"> '+
+          '</div>'+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4792,9 +4813,8 @@ document.addEventListener("touchend ", function(){
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
       console.log('Line:'+lineVar);
-      console.log('Line Div:'+document.getElementById(lineVar).value);
-      
-      var lineElement=document.getElementById(lineVar).style.cssText=`
+      //console.log('Line Div:'+document.getElementById(lineVar));
+      var lineElement=document.getElementById("Aviral").style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
