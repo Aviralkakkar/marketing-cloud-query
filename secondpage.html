@@ -4316,7 +4316,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       
-      document.getElementById('rightsideList').innerHTML = '';
+      
       var rightsidepicklistvalues=[];
       rightsidepicklistvalues = document.getElementById("rightsideList").querySelectorAll("option"); 
       console.log('-------'+rightsidepicklistvalues);
@@ -4329,8 +4329,7 @@ document.addEventListener("touchend ", function(){
       var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
       console.log('text editor value'+texteditor_string);
       document.getElementById("RichTextEditor").innerHTML = '';
-      
-      //RichTextEditor
+      document.getElementById('rightsideList').innerHTML = '';
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
