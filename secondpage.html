@@ -4312,19 +4312,24 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
-      console.log('list of rightside values---->'+x);
+      
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').innerHTML = '';
+      
       document.getElementById('rightsideList').innerHTML = '';
-      var f=[];
-      f = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log(f);
-      for (var i = 0; i <f.length; i++) {
-         console.log('----'+f[i].value);
-         console.log('-----'+f[i].id);
-         console.log('-----'+f[i].label);
+      var rightsidepicklistvalues=[];
+      rightsidepicklistvalues = document.getElementById("rightsideList").querySelectorAll("option"); 
+      console.log('-------'+rightsidepicklistvalues);
+      console.log(rightsidepicklistvalues.length);
+      for (var i = 0; i < rightsidepicklistvalues.length; i++) {
+         console.log('----'+rightsidepicklistvalues[i].value);
+         console.log('-----'+rightsidepicklistvalues[i].id);
+         console.log('-----'+rightsidepicklistvalues[i].label);
       }
+      var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
+      console.log('text editor value'+texteditor_string);
+      document.getElementById("RichTextEditor").innerHTML = '';
+      
       //RichTextEditor
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
@@ -4338,9 +4343,9 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
         for (const value of DESetQueryBox) {
-  console.log("nitik value"+value); // logs 1, 2 and 3
-}
-if (DESetQueryBox.size > 0) {
+         console.log("nitik value"+value); // logs 1, 2 and 3
+         }
+          if (DESetQueryBox.size > 0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
