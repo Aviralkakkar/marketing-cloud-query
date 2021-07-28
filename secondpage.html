@@ -3536,7 +3536,7 @@ document.addEventListener("touchend ", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-    var x;
+   
 
 
     onloadofBody();
@@ -4073,16 +4073,8 @@ document.addEventListener("touchend ", function(){
       document.getElementById("RichTextEditor").innerHTML = '';
       //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
       var checkboxesCheck = document.querySelectorAll('#rightsideList');
-      //var rightsidevalues = document.querySelectorAll('#rightsideList');
-      x=[];
-      x = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log(x);
-      console.log(x.length);
-      for (var i = 0; i < x.length; i++) {
-         console.log('----'+x[i].value);
-         console.log('-----'+x[i].id);
-         console.log('-----'+x[i].label);
-      }
+      
+      
       console.log(checkboxesCheck);
       if (checkboxesCheck.length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
@@ -4313,20 +4305,24 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
-      console.log('list of rightside values---->'+x);
+      
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('rightsideList').innerHTML = '';
-      var f=[];
-      f = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log(f);
-      for (var i = 0; i <f.length; i++) {
-         console.log('----'+f[i].value);
-         console.log('-----'+f[i].id);
-         console.log('-----'+f[i].label);
+      
+      
+      var rightsidepicklistvalues=[];
+      rightsidepicklistvalues = document.getElementById("rightsideList").querySelectorAll("option"); 
+      console.log('-------'+rightsidepicklistvalues);
+      console.log(rightsidepicklistvalues.length);
+      for (var i = 0; i < rightsidepicklistvalues.length; i++) {
+         console.log('----'+rightsidepicklistvalues[i].value);
+         console.log('-----'+rightsidepicklistvalues[i].id);
+         console.log('-----'+rightsidepicklistvalues[i].label);
       }
-      //RichTextEditor
+      var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
+      console.log('text editor value'+texteditor_string);
+      document.getElementById("RichTextEditor").innerHTML = '';
+      document.getElementById('rightsideList').innerHTML = '';
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
@@ -4339,9 +4335,9 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
         }
         for (const value of DESetQueryBox) {
-  console.log("nitik value"+value); // logs 1, 2 and 3
-}
-if (DESetQueryBox.size > 0) {
+         console.log("nitik value"+value); // logs 1, 2 and 3
+         }
+          if (DESetQueryBox.size > 0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -4476,7 +4472,7 @@ if (DESetQueryBox.size > 0) {
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">'+
+          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4796,7 +4792,8 @@ if (DESetQueryBox.size > 0) {
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-     var lineElement=document.getElementById(de1+"DeleteQueryBoxLine").style.cssText=`
+      var lineVar=de1+"DeleteQueryBoxLine";
+     var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4811,6 +4808,7 @@ if (DESetQueryBox.size > 0) {
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
                          position: relative;
+                         display:block;
                         `
                 ;
     }
