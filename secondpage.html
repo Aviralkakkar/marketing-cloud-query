@@ -3687,7 +3687,7 @@ document.addEventListener("touchend ", function(){
                     var parentID = window.getSelection().anchorNode.parentNode.id;
                     var anchorID = window.getSelection().anchorNode.id;
                     var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                    if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         range = sel.getRangeAt(0);
                         range.deleteContents();
