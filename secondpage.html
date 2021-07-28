@@ -4478,7 +4478,7 @@ if (DESetQueryBox.size > 0) {
         '            </div>' +
           '         </div>' +
           '   </div>' +
-          '</div>'
+          '</div>'+
         '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine" >' +
         '</div>';
 
@@ -4800,7 +4800,7 @@ if (DESetQueryBox.size > 0) {
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineAtt=de1+"DeleteQueryBoxLine";
-      
+
       var lineElement=document.getElementById(lineAtt).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
