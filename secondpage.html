@@ -4469,7 +4469,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div  id="Aviral"> '+
+          '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>'+
           '</div>';
 
@@ -4794,8 +4794,8 @@ document.addEventListener("touchend ", function(){
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
       console.log('Line:'+lineVar);
-      //console.log('Line Div:'+document.getElementById(lineVar));
-      var lineElement=document.getElementById("Aviral").style.cssText=`
+      console.log('Line Div:'+document.getElementById(lineVar));
+      var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
