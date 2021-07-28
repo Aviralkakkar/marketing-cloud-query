@@ -4382,9 +4382,7 @@ document.addEventListener("touchend ", function(){
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
         //nitik code started
-        for (const value of DESetQueryBox) {
-         console.log("nitik value"+value); // logs 1, 2 and 3
-         }
+        
           if (DESetQueryBox.size > 0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
@@ -4392,6 +4390,7 @@ document.addEventListener("touchend ", function(){
         document.getElementById('uoList').innerHTML = '';
         console.log("nitik value1");
             for (const val of DESetQueryBox) {
+              console.log('nitik key'+val);
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
