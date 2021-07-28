@@ -1918,12 +1918,15 @@
     body {
       overflow: hidden !important;
     }
+     
 
     .button-padding {
       padding-left: 1% !important;
     }
 
-
+     .myUlClass{
+       width:max-content;
+     }
 
     @media (min-width: 0px) and (max-width: 1500px) {
       ul {
@@ -3207,9 +3210,32 @@
 <!--nitik code started-->
 <script>
 function openModal() {
+  
+        
+   if (DESetQueryBox.size > 0) {
+        //document.getElementById('RelationPopup').style.display = 'none';
+        document.getElementById('exampleModal').style.display = 'block';
+        //document.getElementById('FieldSelectNextAlert').style.display = 'none';
+        document.getElementById('uoList').innerHTML = '';
+        console.log("nitik value1");
+            for (const val of DESetQueryBox) {
+              var temp=val+"WhereClauseValue";
+              console.log('nitik key'+temp);
+              document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                ' <span class="slds-size_1-of-1">' +
+                '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                ' </span>' +
+                '  </div>' +
+                '</li>';
+            }
+            console.log("nitik value2");
+          }
+          
     document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
+
 }
 function closeModal() {
     document.getElementById("backdrop").style.display = "none"
@@ -4308,16 +4334,16 @@ document.addEventListener("touchend ", function(){
         console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           console.log('---inside 2nd for loop------');
-          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] != DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
            console.log('-----inside if----');
-            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
           }
           else {
-            
-            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            console.log('------inside else-----');
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
@@ -4381,28 +4407,7 @@ document.addEventListener("touchend ", function(){
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
-        //nitik code started
-        for (const value of DESetQueryBox) {
-         console.log("nitik value"+value); // logs 1, 2 and 3
-         }
-          if (DESetQueryBox.size > 0) {
-        //document.getElementById('RelationPopup').style.display = 'none';
-        document.getElementById('exampleModal').style.display = 'block';
-        //document.getElementById('FieldSelectNextAlert').style.display = 'none';
-        document.getElementById('uoList').innerHTML = '';
-        console.log("nitik value1");
-            for (const val of DESetQueryBox) {
-              document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + document.getElementById(val+"OpenWhere").innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
-            }
-            console.log("nitik value2");
-          }
-          //nitik code ended
+       
         console.log('DE1:'+DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
