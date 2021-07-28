@@ -2908,10 +2908,10 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
+                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -2934,7 +2934,7 @@
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
                     style=" border: none; padding:0%; margin:0%;   ">
-                     <select multiple id="rightsideList"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                     </select>
                     
@@ -3186,7 +3186,7 @@
       document.getElementById("btnLeft").disabled = true;
       document.getElementById("btnRight").disabled = false;
 
-      reSelect(document.getElementById("rightsideList"));
+      reSelect(document.getElementById("rightsideListInSelectField"));
     } else {
       document.getElementById("btnLeft").disabled = false;
       document.getElementById("btnRight").disabled = true;
@@ -4071,9 +4071,9 @@ document.addEventListener("touchend ", function(){
        
     function Next() {
       document.getElementById("RichTextEditor").innerHTML = '';
-      document.getElementById("rightsideList").querySelectorAll("option");
-      console.log(document.getElementById("rightsideList").querySelectorAll("option").length);
-      if (document.getElementById("rightsideList").querySelectorAll("option").length > 0) {
+      document.getElementById("rightsideListInSelectField").querySelectorAll("option");
+      console.log(document.getElementById("rightsideListInSelectField").querySelectorAll("option").length);
+      if (document.getElementById("rightsideListInSelectField").querySelectorAll("option").length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -4194,14 +4194,11 @@ document.addEventListener("touchend ", function(){
     function CancelPopup() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('leftsideListInSelectField').innerHTML = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('rightsideList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
-
       document.getElementById('SecondModal').style.display = 'none';
-      
-
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
       DEDragData = {
@@ -4272,13 +4269,14 @@ document.addEventListener("touchend ", function(){
 
     function OpenSelectField(EleDEExtKey) {
       document.getElementById('leftsideListInSelectField').innerHTML = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'block';
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
       openSelectFieldsDEExtKey = EleDEExtKey;
+      
       var html = '';
       var bool;
-      
       for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4297,6 +4295,7 @@ document.addEventListener("touchend ", function(){
         }
 
       }
+      
       document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
@@ -4307,7 +4306,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('SecondModal').style.display = 'none';
       
       
-      var RightSidePickListValues = document.getElementById("rightsideList").querySelectorAll("option");
+      var RightSidePickListValues = document.getElementById("rightsideListInSelectField").querySelectorAll("option");
       for (var i = 0; i < RightSidePickListValues.length; i++) {
          console.log('FieldType----'+RightSidePickListValues[i].value);
          console.log('DEExtKey-----'+RightSidePickListValues[i].id);
@@ -4324,7 +4323,7 @@ document.addEventListener("touchend ", function(){
         DESetQueryBox.add(DEDragData.DEExtKey);
         DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
 
-        for (var SelectedField of document.getElementById("rightsideList").querySelectorAll("option")) {
+        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
@@ -4482,7 +4481,7 @@ document.addEventListener("touchend ", function(){
       }
       if (openSelectFieldsDEExtKey != '') {
         DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-        for (var SelectedField of document.getElementById("rightsideList").querySelectorAll("option")) {
+        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
@@ -4506,7 +4505,7 @@ document.addEventListener("touchend ", function(){
       }
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
-      document.getElementById('rightsideList').innerHTML = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
       function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
