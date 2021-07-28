@@ -4508,7 +4508,7 @@ document.addEventListener("touchend ", function(){
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
-          '        <div class="slds-scrollable slds-box quaryBox">' +
+          '        <div class="slds-scrollable_y slds-box quaryBox">' +
           '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
         '            </div>' +
           '         </div>' +
@@ -4840,7 +4840,7 @@ document.addEventListener("touchend ", function(){
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
       console.log('Line:'+lineVar);
-      console.log('Line Div:'+document.getElementById(lineVar).value);
+      console.log('Line Div:'+document.getElementById(lineVar));
 
       var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
