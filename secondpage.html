@@ -4584,6 +4584,7 @@ document.addEventListener("touchend ", function(){
         if (document.getElementById(elmnt.id + "header")) {
           /* if present, the header is where you move the DIV from:*/
           document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+          console.log('SchemaId:'+document.getElementById(elmnt.id + "header"));
         } else {
           /* otherwise, move the DIV from anywhere inside the DIV:*/
           elmnt.onmousedown = dragMouseDown;
@@ -4601,7 +4602,7 @@ document.addEventListener("touchend ", function(){
 
           console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
-          //joinQueryBoxLine();
+          
         }
 
         function elementDrag(e) {
@@ -4615,9 +4616,8 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          console.log('ID:'+e.target.id);
-          //For Creating line ANIL KUMAR
-          //joinQueryBoxLine();
+          
+          
         }
 
         function closeDragElement() {
