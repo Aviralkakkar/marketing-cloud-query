@@ -2666,13 +2666,14 @@
                     </div>
                   </div>
                 </div>
-      
-      
-      
-      
-      
-      
-      
+              </div>
+
+
+
+
+
+
+
             </div>
               
             </div>
@@ -2907,10 +2908,10 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideList'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
+                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideList'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -2933,7 +2934,7 @@
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
                     style=" border: none; padding:0%; margin:0%;   ">
-                     <select multiple id="rightsideList"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                     </select>
                     
@@ -3185,7 +3186,7 @@
       document.getElementById("btnLeft").disabled = true;
       document.getElementById("btnRight").disabled = false;
 
-      reSelect(document.getElementById("rightsideList"));
+      reSelect(document.getElementById("rightsideListInSelectField"));
     } else {
       document.getElementById("btnLeft").disabled = false;
       document.getElementById("btnRight").disabled = true;
@@ -3535,7 +3536,7 @@ document.addEventListener("touchend ", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-    var x;
+   
 
 
     onloadofBody();
@@ -4095,20 +4096,9 @@ document.addEventListener("touchend ", function(){
        
     function Next() {
       document.getElementById("RichTextEditor").innerHTML = '';
-      //var checkboxesCheck = document.querySelectorAll('input[type="checkbox"]:checked');
-      var checkboxesCheck = document.querySelectorAll('#rightsideList');
-      //var rightsidevalues = document.querySelectorAll('#rightsideList');
-      x=[];
-      x = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log(x);
-      console.log(x.length);
-      for (var i = 0; i < x.length; i++) {
-         console.log('----'+x[i].value);
-         console.log('-----'+x[i].id);
-         console.log('-----'+x[i].label);
-      }
-      console.log(checkboxesCheck);
-      if (checkboxesCheck.length > 0) {
+      document.getElementById("rightsideListInSelectField").querySelectorAll("option");
+      console.log(document.getElementById("rightsideListInSelectField").querySelectorAll("option").length);
+      if (document.getElementById("rightsideListInSelectField").querySelectorAll("option").length > 0) {
         document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('SecondModal').style.display = 'block';
         document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -4229,14 +4219,11 @@ document.addEventListener("touchend ", function(){
     function CancelPopup() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
       document.getElementById('leftsideListInSelectField').innerHTML = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById('ulList').innerHTML = '';
       document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('rightsideList').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'none';
-
       document.getElementById('SecondModal').style.display = 'none';
-      
-
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
       DEDragData = {
@@ -4307,13 +4294,14 @@ document.addEventListener("touchend ", function(){
 
     function OpenSelectField(EleDEExtKey) {
       document.getElementById('leftsideListInSelectField').innerHTML = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById('RelationPopup').style.display = 'block';
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
       openSelectFieldsDEExtKey = EleDEExtKey;
+      
       var html = '';
       var bool;
-      
       for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
@@ -4332,40 +4320,45 @@ document.addEventListener("touchend ", function(){
         }
 
       }
+      
       document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
 
     function DetailsSave() {
-      console.log('list of rightside values---->'+x);
+      
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      document.getElementById('RichTextEditor').innerHTML = '';
-      document.getElementById('rightsideList').innerHTML = '';
-      var f=[];
-      f = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log(f);
-      for (var i = 0; i <f.length; i++) {
-         console.log('----'+f[i].value);
-         console.log('-----'+f[i].id);
-         console.log('-----'+f[i].label);
+      
+      
+      var RightSidePickListValues = document.getElementById("rightsideListInSelectField").querySelectorAll("option");
+      for (var i = 0; i < RightSidePickListValues.length; i++) {
+         console.log('FieldType----'+RightSidePickListValues[i].value);
+         console.log('DEExtKey-----'+RightSidePickListValues[i].id);
+         console.log('FieldName-----'+RightSidePickListValues[i].label);
       }
-      //RichTextEditor
+      var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
+      console.log('text editor value'+texteditor_string);
+      
+      
+
+
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
         DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
-        for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
+
+        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": checkbox.value,
-            "FieldType": checkbox.name
+            "FieldName": SelectedField.label,
+            "FieldType": SelectedField.value
           });
-          fieldsListForRelationDiv += '<li class="data-box-style" title="' + checkbox.value + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + checkbox.value + '</span></li>';
+          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
         for (const value of DESetQueryBox) {
-  console.log("nitik value"+value); // logs 1, 2 and 3
-}
-if (DESetQueryBox.size > 0) {
+         console.log("nitik value"+value); // logs 1, 2 and 3
+         }
+          if (DESetQueryBox.size > 0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -4458,7 +4451,7 @@ if (DESetQueryBox.size > 0) {
           '        }' +
           '' +
           '    </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4499,8 +4492,8 @@ if (DESetQueryBox.size > 0) {
         '            </div>' +
           '         </div>' +
           '   </div>' +
-          '</div>'
-        '<div id="' + DEDragData.DEExtKey + '" >' +
+          '</div>'+
+          '<div value="Hello" id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">This is line Div '+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4513,10 +4506,10 @@ if (DESetQueryBox.size > 0) {
       }
       if (openSelectFieldsDEExtKey != '') {
         DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-        for (var checkbox of document.querySelectorAll('input[type="checkbox"]:checked')) {
+        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
-            "FieldName": checkbox.value,
-            "FieldType": checkbox.name
+            "FieldName": SelectedField.label,
+            "FieldType": SelectedField.value
           });
         }
         fieldsListForRelationDiv = '';
@@ -4537,6 +4530,8 @@ if (DESetQueryBox.size > 0) {
       }
       openWhereDEExtKey = '';
       openSelectFieldsDEExtKey = '';
+      document.getElementById('rightsideListInSelectField').innerHTML = '';
+      document.getElementById("RichTextEditor").innerHTML = '';
       function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         if (document.getElementById(elmnt.id + "header")) {
@@ -4708,12 +4703,12 @@ if (DESetQueryBox.size > 0) {
 
 
           '</div>' +
-    
-          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">'+
-                    '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>'+
-                    
-                    '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>'+
-                  '</footer>'+
+
+          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+          '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+
+          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+          '</footer>' +
           '</div>' +
           '</section>' +
           '<div class="slds-backdrop slds-backdrop_open"></div>';
@@ -4820,8 +4815,11 @@ if (DESetQueryBox.size > 0) {
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-
-      var element=document.getElementById(de1).style.cssText=`
+      var lineVar=de1+"DeleteQueryBoxLine";
+      console.log('Line:'+lineVar);
+      console.log('Line Div:'+document.getElementById(lineVar).value);
+      
+      var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
