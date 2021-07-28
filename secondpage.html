@@ -2519,9 +2519,9 @@
                                 </div>
                               </div>
                     
-                              <div id="RichTextEditor" class="editor slds-float_right  "
+                              <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
                               </div>
                     
                     
@@ -3671,7 +3671,32 @@ document.addEventListener("touchend ", function(){
         }
       }
     };
-
+    //code by nitik started
+    function drop3(event, target) {
+                event.preventDefault();
+                var DEWhereClauseDragData = {
+                  "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
+                  "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
+                }
+                insertTextAtCaret(DEWhereClauseDragData.FieldName);
+                function insertTextAtCaret(FieldName) {
+                  var sel, range;
+                  if (window.getSelection) {
+                    sel = window.getSelection();
+                    var parentID = window.getSelection().anchorNode.parentNode.id;
+                    var anchorID = window.getSelection().anchorNode.id;
+                    var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
+                  }
+                }
+              };
+    //code by nitik ended
     function Previous() {
       if (DEDragData.DEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
