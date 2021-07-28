@@ -4301,7 +4301,7 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = EleDEExtKey;
       console.log('----outside of loop----');
 
-      //priyanka added code 
+      //priyanka added code----------------
      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
@@ -4314,7 +4314,7 @@ document.addEventListener("touchend ", function(){
       
           }
           else {
-            console.log('-----inside if----');
+            
             document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '</option><br>';   
