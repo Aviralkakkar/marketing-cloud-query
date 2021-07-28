@@ -4473,7 +4473,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '        .quaryBox{' +
-          '          color:#686363!important;  ' +
+          '          color:#686363;  ' +
           '          text-align:center;' +
           '          max-height:150px;' +
           '          margin:1px;' +
@@ -4530,7 +4530,7 @@ document.addEventListener("touchend ", function(){
         relationDivString += fieldsListForRelationDiv;
         relationDivString += '</ul>' +
           '    </div>' +
-          '    <div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+          '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
@@ -4584,7 +4584,6 @@ document.addEventListener("touchend ", function(){
         if (document.getElementById(elmnt.id + "header")) {
           /* if present, the header is where you move the DIV from:*/
           document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-          console.log('SchemaId:'+document.getElementById(elmnt.id + "header"));
         } else {
           /* otherwise, move the DIV from anywhere inside the DIV:*/
           elmnt.onmousedown = dragMouseDown;
