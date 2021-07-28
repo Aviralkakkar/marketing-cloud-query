@@ -4477,7 +4477,7 @@ document.addEventListener("touchend ", function(){
           '' +
           '    </style>' +
           '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="addSchemaWithLine(this.id)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4579,7 +4579,7 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
 
           //For Creating line ANIL KUMAR
-          //joinQueryBoxLine();
+          joinQueryBoxLine();
         }
 
         function elementDrag(e) {
@@ -4595,7 +4595,8 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 
           //For Creating line ANIL KUMAR
-          //joinQueryBoxLine();
+          joinQueryBoxLine();
+          console.log('Joined With Line:'+JSON.stringify(JoinQueryDetails));  
         }
 
         function closeDragElement() {
@@ -4802,12 +4803,6 @@ document.addEventListener("touchend ", function(){
     /*
      Added by ANIL KUMAR for adding schema blocks dynamically with line
     */
-    function addSchemaWithLine(schemaBlockKey)
-    {
-      console.log('BlockID:'+schemaBlockKey);
-      console.log('Joined With Line:'+JSON.stringify(JoinQueryDetails));  
-    } 
-
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2) 
     {
