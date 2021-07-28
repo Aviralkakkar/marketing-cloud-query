@@ -2519,9 +2519,9 @@
                                 </div>
                               </div>
                     
-                              <div id="RichTextEditor" class="editor slds-float_right  "
+                              <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
                               </div>
                     
                     
@@ -3672,7 +3672,32 @@ document.addEventListener("touchend ", function(){
         }
       }
     };
-
+    //code by nitik started
+    function drop3(event, target) {
+                event.preventDefault();
+                var DEWhereClauseDragData = {
+                  "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
+                  "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
+                }
+                insertTextAtCaret(DEWhereClauseDragData.FieldName);
+                function insertTextAtCaret(FieldName) {
+                  var sel, range;
+                  if (window.getSelection) {
+                    sel = window.getSelection();
+                    var parentID = window.getSelection().anchorNode.parentNode.id;
+                    var anchorID = window.getSelection().anchorNode.id;
+                    var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
+                  }
+                }
+              };
+    //code by nitik ended
     function Previous() {
       if (DEDragData.DEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
@@ -4274,10 +4299,29 @@ document.addEventListener("touchend ", function(){
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
       openSelectFieldsDEExtKey = EleDEExtKey;
+
+      //priyanka added code 
+     for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+        for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
       
-      var html = '';
+          }
+          else {
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
+      
+          }
+        }
+   
+      }
+      //------------ends here-----------------
+      /*  var html = '';
       var bool;
-      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+    for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
             bool = true;
@@ -4293,9 +4337,9 @@ document.addEventListener("touchend ", function(){
         else {
           html += '<input type="checkbox" name = "' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldType"] + '"  value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" id="' + openSelectFieldsDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '">' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"] + '<br>';
         }
-
+   
       }
-      
+      */
       document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
@@ -4426,6 +4470,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '    </style>' +
+          '<div>'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4468,7 +4513,8 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div value="Hello" id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">This is line Div '+
+          '<div  id="Aviral"> '+
+          '</div>'+
           '</div>';
 
         console.log('SchemaBlock:'+relationDivString);  
