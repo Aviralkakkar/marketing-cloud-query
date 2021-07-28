@@ -1915,10 +1915,6 @@
   </style>
   <!-- Khushboo code started -->
   <style>
-    .myUlClass
-    {
-      width:max-content;
-    }
     body {
       overflow: hidden !important;
     }
@@ -2435,7 +2431,7 @@
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick="validateQuery(JoinQueryDetails,'Validate')"
+                onclick='openModal()'
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal()'>Run</button>
@@ -2512,7 +2508,7 @@
                               <div id="component-selector-container" class=" slds-float_left "
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
+                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions</h4>
                                 <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
@@ -4442,7 +4438,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '    </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="onAdd(event)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4484,7 +4480,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">' +
+          '<div id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">'+
           '</div>';
 
         //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4804,25 +4800,23 @@ document.addEventListener("touchend ", function(){
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-      var lineAtt=de1+"DeleteQueryBoxLine";
-
-      var lineElement=document.getElementById(lineAtt).style.cssText=`
-                          opacity: 0.9;
-                          margin: 0px;
-                          height:  2px;
-                          background-color:#387F9D;
-                          line-height: 1px;
-                          position: absolute;
-                          left: ${cx}px;
-                          top: ${cy}px;
-                          width:${length}px;
-                          -moz-transform: rotate(${angle}deg);
-                          -webkit-transform: rotate(${angle}deg);
-                          -o-transform: rotate(${angle}deg);
-                          -ms-transform: rotate(${angle}deg);
-                          position: relative;
-                          `
-                        ;
+     var lineElement=document.getElementById(de1+"DeleteQueryBoxLine").style.cssText=`
+                        opacity: 0.9;
+                        margin: 0px;
+                        height:  2px;
+                        background-color:#387F9D;
+                        line-height: 1px;
+                        position: absolute;
+                        left: ${cx}px;
+                        top: ${cy}px;
+                        width:${length}px;
+                        -moz-transform: rotate(${angle}deg);
+                        -webkit-transform: rotate(${angle}deg);
+                        -o-transform: rotate(${angle}deg);
+                        -ms-transform: rotate(${angle}deg);
+                         position: relative;
+                        `
+                ;
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
