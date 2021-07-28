@@ -4299,25 +4299,20 @@ document.addEventListener("touchend ", function(){
       EleDEExtKey = EleDEExtKey.split("OpenSelectField");
       EleDEExtKey = EleDEExtKey[0];
       openSelectFieldsDEExtKey = EleDEExtKey;
-      console.log('----outside of loop----');
 
       //priyanka added code 
      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
-        console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          console.log('---inside 2nd for loop------');
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-           console.log('-----inside if----');
-            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '</option><br>';   
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
       
           }
           else {
-            console.log('-----inside if----');
-            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key].FieldName + '</option><br>';   
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
       
           }
         }
@@ -4393,7 +4388,7 @@ document.addEventListener("touchend ", function(){
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + val + val+'" id="' + val + 'OpenWhere" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" value="' + val+'OpenWhere" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -4477,7 +4472,7 @@ document.addEventListener("touchend ", function(){
           '' +
           '    </style>' +
           '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4513,16 +4508,17 @@ document.addEventListener("touchend ", function(){
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
-          '        <div class="slds-scrollable_y slds-box quaryBox">' +
-          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
+          '        <div class="slds-scrollable slds-box quaryBox">' +
+          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'
         '            </div>' +
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
+          '<div  id="Aviral"> '+
           '</div>'+
           '</div>';
-      //************************************************FINISH(ANIL KUMAR)**********************************//
+
+        //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4578,9 +4574,8 @@ document.addEventListener("touchend ", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
 
-          console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          //joinQueryBoxLine();
         }
 
         function elementDrag(e) {
@@ -4594,9 +4589,9 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          console.log('ID:'+e.target.id);
+
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          //joinQueryBoxLine();
         }
 
         function closeDragElement() {
@@ -4800,9 +4795,6 @@ document.addEventListener("touchend ", function(){
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
-    /*
-     Added by ANIL KUMAR for adding schema blocks dynamically with line
-    */
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2) 
     {
@@ -4820,7 +4812,6 @@ document.addEventListener("touchend ", function(){
 
       var div2_pos = div2.getBoundingClientRect();
       console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
-
       if (div1_pos.left < div2_pos.left) {
         var x1 = div1_pos.left + (div1_pos.width - 2);
         var y1 = div1_pos.top + 10;
@@ -4847,8 +4838,9 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
-      
-      var lineElement=document.getElementById(lineVar).style.cssText=`
+      console.log('Line:'+lineVar);
+      //console.log('Line Div:'+document.getElementById(lineVar));
+      var lineElement=document.getElementById("Aviral").style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4862,10 +4854,9 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
+                         position: relative;
                         `
                 ;
-    console.log('Line:'+lineElement);            
-
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
