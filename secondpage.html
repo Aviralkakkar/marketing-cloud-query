@@ -1918,12 +1918,15 @@
     body {
       overflow: hidden !important;
     }
+     
 
     .button-padding {
       padding-left: 1% !important;
     }
 
-
+     .myUlClass{
+       width:max-content;
+     }
 
     @media (min-width: 0px) and (max-width: 1500px) {
       ul {
@@ -4308,16 +4311,16 @@ document.addEventListener("touchend ", function(){
         console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           console.log('---inside 2nd for loop------');
-          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] != DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
            console.log('-----inside if----');
-            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
           }
           else {
-            console.log('------inside else-----')
-            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            console.log('------inside else-----');
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
