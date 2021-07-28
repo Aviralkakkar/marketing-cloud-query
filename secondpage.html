@@ -4303,14 +4303,18 @@ document.addEventListener("touchend ", function(){
 
       //priyanka added code 
      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+       console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          console.log('---inside 2nd for loop------');
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+           console.log('-----inside if----');
             document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
                  '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
       
           }
           else {
+            console.log('-----inside else----');
             document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName +
                  '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[key1].FieldName + '</option><br>';   
