@@ -4792,7 +4792,8 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
-     var lineElement=document.getElementById(lineVar).style.cssText=`
+      console.log('Line:'+lineVar);
+      var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
