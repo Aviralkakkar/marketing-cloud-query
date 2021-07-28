@@ -2519,9 +2519,9 @@
                                 </div>
                               </div>
                     
-                              <div id="RichTextEditor" class="editor slds-float_right  "
+                              <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
                               </div>
                     
                     
@@ -3672,7 +3672,32 @@ document.addEventListener("touchend ", function(){
         }
       }
     };
-
+    //code by nitik started
+    function drop3(event, target) {
+                event.preventDefault();
+                var DEWhereClauseDragData = {
+                  "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
+                  "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
+                }
+                insertTextAtCaret(DEWhereClauseDragData.FieldName);
+                function insertTextAtCaret(FieldName) {
+                  var sel, range;
+                  if (window.getSelection) {
+                    sel = window.getSelection();
+                    var parentID = window.getSelection().anchorNode.parentNode.id;
+                    var anchorID = window.getSelection().anchorNode.id;
+                    var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
+                  }
+                }
+              };
+    //code by nitik ended
     function Previous() {
       if (DEDragData.DEExtKey != '') {
         document.getElementById('SecondModal').style.display = 'none';
@@ -4350,6 +4375,7 @@ document.addEventListener("touchend ", function(){
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
+        //nitik code started
         for (const value of DESetQueryBox) {
          console.log("nitik value"+value); // logs 1, 2 and 3
          }
@@ -4363,14 +4389,14 @@ document.addEventListener("touchend ", function(){
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + val + '" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" value="' + val + val+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
             }
             console.log("nitik value2");
           }
-
+          //nitik code ended
         console.log('DE1:'+DEDragData.DEExtKey);
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
@@ -4483,16 +4509,17 @@ document.addEventListener("touchend ", function(){
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
-          '        <div class="slds-scrollable slds-box quaryBox">' +
-          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'
+          '        <div class="slds-scrollable_y slds-box quaryBox">' +
+          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClause">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
         '            </div>' +
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div  id="Aviral"> '+
+          '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>'+
           '</div>';
 
+        console.log('SchemaBlock:'+relationDivString);  
         //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -4787,6 +4814,7 @@ document.addEventListener("touchend ", function(){
 
       var div2_pos = div2.getBoundingClientRect();
       console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
+      
       if (div1_pos.left < div2_pos.left) {
         var x1 = div1_pos.left + (div1_pos.width - 2);
         var y1 = div1_pos.top + 10;
@@ -4813,9 +4841,8 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine";
-      console.log('Line:'+lineVar);
-      //console.log('Line Div:'+document.getElementById(lineVar));
-      var lineElement=document.getElementById("Aviral").style.cssText=`
+      
+      var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
@@ -4829,9 +4856,10 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
-                         position: relative;
                         `
                 ;
+    console.log('Line:'+lineElement);            
+
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
