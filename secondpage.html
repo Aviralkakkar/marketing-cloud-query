@@ -4390,11 +4390,12 @@ document.addEventListener("touchend ", function(){
         document.getElementById('uoList').innerHTML = '';
         console.log("nitik value1");
             for (const val of DESetQueryBox) {
-              console.log('nitik key'+val);
+              var temp=val+"WhereClauseValue";
+              console.log('nitik key'+temp);
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + document.getElementById("RichTextEditor").innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
