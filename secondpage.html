@@ -4312,22 +4312,22 @@ document.addEventListener("touchend ", function(){
     }
 
     function DetailsSave() {
-      console.log('list of rightside values---->'+x);
+      
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
       
       document.getElementById('rightsideList').innerHTML = '';
-      var f=[];
-      f = document.getElementById("rightsideList").querySelectorAll("option"); 
-      console.log('-------'+f);
-      console.log(f.length);
-      for (var i = 0; i < f.length; i++) {
-         console.log('----'+f[i].value);
-         console.log('-----'+f[i].id);
-         console.log('-----'+f[i].label);
+      var rightsidepicklistvalues=[];
+      rightsidepicklistvalues = document.getElementById("rightsideList").querySelectorAll("option"); 
+      console.log('-------'+rightsidepicklistvalues);
+      console.log(rightsidepicklistvalues.length);
+      for (var i = 0; i < rightsidepicklistvalues.length; i++) {
+         console.log('----'+rightsidepicklistvalues[i].value);
+         console.log('-----'+rightsidepicklistvalues[i].id);
+         console.log('-----'+rightsidepicklistvalues[i].label);
       }
-      var str =document.getElementById("RichTextEditor").innerHTML;
-      console.log(str);
+      var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
+      console.log('text editor value'+texteditor_string);
       document.getElementById("RichTextEditor").innerHTML='';
       
       //RichTextEditor
