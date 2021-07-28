@@ -4477,7 +4477,7 @@ document.addEventListener("touchend ", function(){
           '' +
           '    </style>' +
           '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="addSchemaWithLine(this.id)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4522,9 +4522,7 @@ document.addEventListener("touchend ", function(){
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>'+
           '</div>';
-
-        console.log('SchemaBlock:'+relationDivString);  
-        //************************************************FINISH(ANIL KUMAR)**********************************//
+      //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -4801,6 +4799,15 @@ document.addEventListener("touchend ", function(){
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    /*
+     Added by ANIL KUMAR for adding schema blocks dynamically with line
+    */
+    function addSchemaWithLine(schemaBlockKey)
+    {
+      console.log('BlockID:'+schemaBlockKey);
+      console.log('Joined With Line:'+JSON.stringify(JoinQueryDetails));  
+    } 
+
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2) 
     {
@@ -4818,7 +4825,7 @@ document.addEventListener("touchend ", function(){
 
       var div2_pos = div2.getBoundingClientRect();
       console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
-      
+
       if (div1_pos.left < div2_pos.left) {
         var x1 = div1_pos.left + (div1_pos.width - 2);
         var y1 = div1_pos.top + 10;
