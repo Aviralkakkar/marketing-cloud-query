@@ -4578,6 +4578,7 @@ document.addEventListener("touchend ", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
 
+          console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
           joinQueryBoxLine();
         }
@@ -4593,10 +4594,9 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-
+          console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
           joinQueryBoxLine();
-          console.log('Joined With Line:'+JSON.stringify(JoinQueryDetails));  
         }
 
         function closeDragElement() {
