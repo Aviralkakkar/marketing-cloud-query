@@ -4471,6 +4471,7 @@ document.addEventListener("touchend ", function(){
           '<div value="Hello" id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine">This is line Div '+
           '</div>';
 
+        console.log('SchemaBlock:'+relationDivString);  
         //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -4793,7 +4794,7 @@ document.addEventListener("touchend ", function(){
       var lineVar=de1+"DeleteQueryBoxLine";
       console.log('Line:'+lineVar);
       console.log('Line Div:'+document.getElementById(lineVar).value);
-      
+
       var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
