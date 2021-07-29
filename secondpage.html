@@ -3596,7 +3596,7 @@ document.addEventListener("touchend ", function(){
         });
     }
 
-    function allowDrop(ev, event) {
+   function allowDrop(ev, event) {
       ev.preventDefault();
     }
 
@@ -3614,8 +3614,9 @@ document.addEventListener("touchend ", function(){
               }
           
               document.ondragstart = function (event) {
-                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+                var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
+                console.log('Object12 ' + JSON.stringify(obje));
+                event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
           
               document.ondragover = function (event, ev) {
@@ -3700,6 +3701,7 @@ document.addEventListener("touchend ", function(){
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
+              
               range = sel.getRangeAt(0);
               range.deleteContents();
               range.insertNode(document.createTextNode(FieldName));
@@ -3715,16 +3717,22 @@ document.addEventListener("touchend ", function(){
                   "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
                   "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
                 }
+                console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
                 insertTextAtCaret(DEWhereClauseDragData.FieldName);
                 function insertTextAtCaret(FieldName) {
                   var sel, range;
                   if (window.getSelection) {
+                    console.log("hello1");
                     sel = window.getSelection();
                     var parentID = window.getSelection().anchorNode.parentNode.id;
+                    console.log("parentID"+parentID);
                     var anchorID = window.getSelection().anchorNode.id;
+                    console.log("anchorID"+anchorID);
                     var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                    console.log("superparentID"+superparentID);
+                    if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
@@ -4542,6 +4550,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + 'schemaBox">'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4585,6 +4594,7 @@ document.addEventListener("touchend ", function(){
           '   </div>' +
           '</div>'+
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
+          '</div>'+
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4642,8 +4652,6 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          //For Creating line ANIL KUMAR
-          console.log('Schema1:'+e.target.parentNode.parentNode.id);
         }  
 
         function elementDrag(e) {
@@ -4657,9 +4665,6 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          //For Creating line ANIL KUMAR
-          console.log('Schema2:'+e.target.parentNode.parentNode.id);
-          
         }
 
         function closeDragElement() {
@@ -4679,12 +4684,12 @@ document.addEventListener("touchend ", function(){
     }
     //--code by nitik
 
-  //Anil kumar
-  function lineAction()
-  {
-    console.log('Mouse Down is working');
-    console.log('LineID:'+id);
-  }
+  //Anil kumar for creating Line
+   function schemaAction(id) 
+   {
+     console.log('Line schema getted');
+     console.log('ID:'+id);
+   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
