@@ -3255,6 +3255,9 @@ function openModal() {
               var value=document.getElementById(temp).innerHTML;
               console.log('value'+value);
               console.log('nitik key'+temp);
+              if(value==""){
+                console.log("nitik value12");
+              }
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
