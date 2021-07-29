@@ -4703,7 +4703,14 @@ document.addEventListener("touchend ", function(){
       console.log('Moving:'+str);
       console.log('Line schema getted');
      }
-     
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
+      }
+      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+      }
+    }
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
