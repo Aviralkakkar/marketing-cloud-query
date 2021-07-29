@@ -2524,7 +2524,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDroping(event,this)">
                               </div>
                     
                     
@@ -3610,7 +3610,18 @@ document.addEventListener("touchend ", function(){
     document.ondragover = function (event, ev) {
       event.preventDefault();
     };
-
+    function allowDroping(ev, event) {
+                ev.preventDefault();
+              }
+          
+              document.ondragstart = function (event) {
+                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+              };
+          
+              document.ondragover = function (event, ev) {
+                event.preventDefault();
+              };
     function drop(event, target) {
       event.preventDefault();
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -3759,7 +3770,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3774,7 +3785,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3789,7 +3800,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3849,8 +3860,8 @@ document.addEventListener("touchend ", function(){
         tempDESet = new Set();
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClause').innerHTML;
-          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClause').innerHTML;
+          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClauseValue').innerHTML;
+          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClauseValue').innerHTML;
           if (FirstDEWhereClause != '') {
             if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
               for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
@@ -4487,10 +4498,10 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '        .quaryBox{' +
-          '          color:#686363!important;  ' +
+          '          color:#686363;  ' +
           '          text-align:center;' +
           '          max-height:150px;' +
-          '          margin:1px;' +
+          '          margin:0px;' +
           '          background-color: #F1F1F1;' +
           '          padding:0;' +
           '          font-size: 70%;' +
@@ -4510,9 +4521,8 @@ document.addEventListener("touchend ", function(){
           '            border:none;' +
           '        }' +
           '' +
-          '    </style>' +
-          '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          ' </style>' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4544,7 +4554,7 @@ document.addEventListener("touchend ", function(){
         relationDivString += fieldsListForRelationDiv;
         relationDivString += '</ul>' +
           '    </div>' +
-          '    <div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+          '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
@@ -4555,8 +4565,8 @@ document.addEventListener("touchend ", function(){
           '   </div>' +
           '</div>'+
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
-          '</div>'+
-          '</div>';
+          '</div>'
+          ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -4581,7 +4591,7 @@ document.addEventListener("touchend ", function(){
       }
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
-          document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
       DEDragData = {
@@ -4598,7 +4608,6 @@ document.addEventListener("touchend ", function(){
         if (document.getElementById(elmnt.id + "header")) {
           /* if present, the header is where you move the DIV from:*/
           document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-          console.log('SchemaId:'+document.getElementById(elmnt.id + "header"));
         } else {
           /* otherwise, move the DIV from anywhere inside the DIV:*/
           elmnt.onmousedown = dragMouseDown;
@@ -4613,11 +4622,9 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-
-          console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
-          
-        }
+          console.log('Schema1:'+e.target.parentNode.parentNode.id);
+        }  
 
         function elementDrag(e) {
           e = e || window.event;
@@ -4630,7 +4637,8 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          
+          //For Creating line ANIL KUMAR
+          console.log('Schema2:'+e.target.parentNode.parentNode.id);
           
         }
 
@@ -4641,7 +4649,7 @@ document.addEventListener("touchend ", function(){
         }
       }
       /*
-      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
       whereClauseValue = whereClauseValue.replace(/<div>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<br>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<\/div>/g, ' ');
@@ -4650,6 +4658,14 @@ document.addEventListener("touchend ", function(){
       */
     }
     //--code by nitik
+
+  //Anil kumar
+  function lineAction()
+  {
+    console.log('Mouse Down is working');
+    console.log('LineID:'+id);
+  }
+
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -4802,6 +4818,7 @@ document.addEventListener("touchend ", function(){
     function CancelThirdModal() {
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    
 
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
