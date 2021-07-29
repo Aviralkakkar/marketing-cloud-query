@@ -4587,15 +4587,14 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          
           //For Creating line ANIL KUMAR
-          var oid=e;
-          while(!oid.id) {
-            oid = oid.parentNode;
+
+          var o=e;
+          while(!o.target.id)
+          {
+             o=o.target.parentNode; 
           }
-          console.log('Parnet1:'+oid.id);
-          
-          
+          console.log('Schema1:'+o.target.id);
         }
 
         function elementDrag(e) {
@@ -4609,13 +4608,13 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          
           //For Creating line ANIL KUMAR
-          var oid=e;
-          while(!oid.id) {
-            oid = oid.parentNode;
+          var o=e;
+          while(!o.target.id)
+          {
+             o=o.target.parentNode; 
           }
-          console.log('Parnet1:'+oid.id);
+          console.log('Schema2:'+o.target.id);
           
         }
 
