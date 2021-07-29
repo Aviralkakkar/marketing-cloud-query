@@ -4695,17 +4695,15 @@ document.addEventListener("touchend ", function(){
      if(id)
      {
       var str = id.substring(0, id.length - 2);
-      console.log('DE:'+str);
+      console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
-      console.log('ID:'+id);
       dragId=id;
      }
      else
      {
       var str = dragId.substring(0, dragId.length - 2);
-      console.log('DE:'+str);
+      console.log('Moving:'+str);
       console.log('Line schema getted');
-      console.log('ID:'+id);
      }
      
    }
