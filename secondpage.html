@@ -3770,7 +3770,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3785,7 +3785,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3800,7 +3800,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3860,8 +3860,8 @@ document.addEventListener("touchend ", function(){
         tempDESet = new Set();
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClause').innerHTML;
-          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClause').innerHTML;
+          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClauseValue').innerHTML;
+          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClauseValue').innerHTML;
           if (FirstDEWhereClause != '') {
             if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
               for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
@@ -4325,7 +4325,7 @@ document.addEventListener("touchend ", function(){
       }
       
       document.getElementById('ulList').innerHTML = ulListStr;
-      document.getElementById("RichTextEditor").innerHTML = document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML;
+      document.getElementById("RichTextEditor").innerHTML = document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML;
       document.getElementById('SecondModal').style.display = 'block';
     }
 
@@ -4339,22 +4339,25 @@ document.addEventListener("touchend ", function(){
 
       console.log('---openSelectFieldsDEExtKey----'+openSelectFieldsDEExtKey);
       console.log('----outside of loop----');
-
+       
+      
       //priyanka added code----------------
      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+         
+
         console.log('---inside for loop------');
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           console.log('---inside 2nd for loop------');
-          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] != DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
            console.log('-----inside if----');
-            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
           }
           else {
             console.log('------inside else-----');
-            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
                  '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
       
@@ -4470,10 +4473,10 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           '        .quaryBox{' +
-          '          color:#686363!important;  ' +
+          '          color:#686363;  ' +
           '          text-align:center;' +
           '          max-height:150px;' +
-          '          margin:1px;' +
+          '          margin:0px;' +
           '          background-color: #F1F1F1;' +
           '          padding:0;' +
           '          font-size: 70%;' +
@@ -4527,7 +4530,7 @@ document.addEventListener("touchend ", function(){
         relationDivString += fieldsListForRelationDiv;
         relationDivString += '</ul>' +
           '    </div>' +
-          '    <div onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+          '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <div style="text-align:center;">' +
           '            <span title="">Where</span>    ' +
           '        </div>' +
@@ -4564,7 +4567,7 @@ document.addEventListener("touchend ", function(){
       }
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
-          document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
       DEDragData = {
@@ -4595,10 +4598,15 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-
-          console.log('ID:'+e.target.id);
+          
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          var oid=e;
+          while(!oid.id) {
+            oid = oid.parentNode;
+          }
+          console.log('Parnet1:'+oid.id);
+          
+          
         }
 
         function elementDrag(e) {
@@ -4612,9 +4620,14 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          console.log('ID:'+e.target.id);
+          
           //For Creating line ANIL KUMAR
-          joinQueryBoxLine();
+          var oid=e;
+          while(!oid.id) {
+            oid = oid.parentNode;
+          }
+          console.log('Parnet1:'+oid.id);
+          
         }
 
         function closeDragElement() {
@@ -4624,7 +4637,7 @@ document.addEventListener("touchend ", function(){
         }
       }
       /*
-      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
       whereClauseValue = whereClauseValue.replace(/<div>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<br>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<\/div>/g, ' ');
