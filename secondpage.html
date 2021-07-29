@@ -2524,7 +2524,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDroping(event,this)">
                               </div>
                     
                     
@@ -3610,7 +3610,18 @@ document.addEventListener("touchend ", function(){
     document.ondragover = function (event, ev) {
       event.preventDefault();
     };
-
+    function allowDroping(ev, event) {
+                ev.preventDefault();
+              }
+          
+              document.ondragstart = function (event) {
+                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+              };
+          
+              document.ondragover = function (event, ev) {
+                event.preventDefault();
+              };
     function drop(event, target) {
       event.preventDefault();
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
