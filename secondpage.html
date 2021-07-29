@@ -3217,7 +3217,7 @@
 function openModal() {
   
         
-   if (DESetQueryBox.size > 0) {
+   if (DESetQueryBox.size >=1) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -3235,11 +3235,13 @@ function openModal() {
                 '</li>';
             }
             console.log("nitik value2");
-          }
-          
-    document.getElementById("backdrop").style.display = "block"
+            document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
+          }
+          
+          
+    
 
 }
 function closeModal() {
