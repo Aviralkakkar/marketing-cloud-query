@@ -2791,7 +2791,7 @@
             </svg>
             <span class="slds-assistive-text">Close</span>
           </button>
-          <h3 style="padding:0; margin:0;" id="heading-01">ka</h3>
+          <h3 style="padding:0; margin:0;" id="DEnamemodal1"></h3>
           <div class="slds-path"
             style="height: 3rem; pointer-events: none; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
             <div class="slds-grid slds-path__track">
@@ -3002,7 +3002,7 @@
             </svg>
             <span class="slds-assistive-text">Close</span>
           </button>
-
+          <h3 style="padding:0; margin:0;" id="DEnamemodal2"></h3>
           <div class="slds-path"
             style="height: 3rem; pointer-events: none; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
             <div class="slds-grid slds-path__track">
@@ -3638,6 +3638,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DEListDivAlert').style.display = 'none';
           document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
           if (DEDragData.DECategory == "DEMap") {
+            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
             DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
@@ -3653,6 +3654,7 @@ document.addEventListener("touchend ", function(){
             }
           }
           else if (DEDragData.DECategory == "SharedDEMap") {
+            document.getElementById('DEnamemodal1').innerHTML = DEDragData.SharedDEMap;
             DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
             /*  document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
@@ -3668,6 +3670,7 @@ document.addEventListener("touchend ", function(){
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
+            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
              /* document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
