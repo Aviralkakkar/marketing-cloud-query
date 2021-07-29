@@ -4497,6 +4497,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + 'schemaBox">'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4540,6 +4541,7 @@ document.addEventListener("touchend ", function(){
           '   </div>' +
           '</div>'+
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
+          '</div>'+
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4635,11 +4637,11 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar
-  function lineAction()
-  {
-    console.log('Mouse Down is working');
-    console.log('LineID:'+id);
-  }
+   function schemaAction(id) 
+   {
+     console.log('Line schema getted');
+     console.log('ID:'+id);
+   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
