@@ -2813,7 +2813,7 @@
                           <span class="slds-path__title"
                             style="color:#4e8abe ; font-size: 16px; padding-top: 22px;"><span class="badge badge-info"
                               style="background-color: #4e8abe; border-radius: 50%; align-content: center; ">1</span>
-                            Modal 1</span>
+                            Selected Fields</span>
                         </a>
                       </li>
                       <li class="slds-path__item slds-is-incomplete" role="presentation" style="height: 3rem;">
@@ -2827,8 +2827,7 @@
                           </span>
                           <span class="slds-path__title" style="color:#999; font-size: 16px; padding-top: 22px; "><span
                               class="badge badge-info" style="background-color: #999; border-radius: 50%; ">2</span>
-                            Modal
-                            2</span>
+                            Where Clause</span>
                         </a>
                       </li>
                       <li class="slds-path__item slds-is-current1" role="presentation"
@@ -3024,7 +3023,7 @@
                           </span>
                           <span class="slds-path__title" style="color:#999; font-size: 16px; padding-top: 22px; "><span
                               class="badge badge-info" style="background-color: #999; border-radius: 50%; ">1</span>
-                            Modal 1</span>
+                           Selected Fields</span>
                         </a>
                       </li>
                       <li class="slds-path__item slds-is-current slds-is-active" role="presentation"
@@ -3040,7 +3039,7 @@
                           <span class="slds-path__title"
                             style="color:#4e8abe ; font-size: 16px; padding-top: 22px;"><span class="badge badge-info"
                               style="background-color: #4e8abe; border-radius: 50%; align-content: center; ">2</span>
-                            Modal 2</span>
+                            Where Clause</span>
                         </a>
                       </li>
                       <li class="slds-path__item slds-is-current1" role="presentation"
@@ -3597,7 +3596,7 @@ document.addEventListener("touchend ", function(){
         });
     }
 
-    function allowDrop(ev, event) {
+   function allowDrop(ev, event) {
       ev.preventDefault();
     }
 
@@ -3702,6 +3701,7 @@ document.addEventListener("touchend ", function(){
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
+              
               range = sel.getRangeAt(0);
               range.deleteContents();
               range.insertNode(document.createTextNode(FieldName));
@@ -3717,16 +3717,22 @@ document.addEventListener("touchend ", function(){
                   "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
                   "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
                 }
+                console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
                 insertTextAtCaret(DEWhereClauseDragData.FieldName);
                 function insertTextAtCaret(FieldName) {
                   var sel, range;
                   if (window.getSelection) {
+                    console.log("hello1");
                     sel = window.getSelection();
                     var parentID = window.getSelection().anchorNode.parentNode.id;
+                    console.log("parentID"+parentID);
                     var anchorID = window.getSelection().anchorNode.id;
+                    console.log("anchorID"+anchorID);
                     var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-                    if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                    console.log("superparentID"+superparentID);
+                    if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
@@ -4279,6 +4285,13 @@ document.addEventListener("touchend ", function(){
       if(openWhereDEExtKey in DEListMap.DEMap) {
         for (var key in DEListMap.DEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                ' <span class="slds-size_1-of-1">' +
+                '<span > <button  class="btn" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                ' </span>' +
+                '  </div>' +
+                '</li>';
+       /*   '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
             '<div class="slds-tree__item slds-is-selected">' +
             '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
             '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
@@ -4289,12 +4302,19 @@ document.addEventListener("touchend ", function(){
             '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>'*/
         }
       }
       else if(openWhereDEExtKey in DEListMap.SharedDEMap) {
         for (var key in DEListMap.SharedDEMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                ' <span class="slds-size_1-of-1">' +
+                '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                ' </span>' +
+                '  </div>' +
+                '</li>';
+          /*'<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
             '<div class="slds-tree__item slds-is-selected">' +
             '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
             '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
@@ -4305,12 +4325,19 @@ document.addEventListener("touchend ", function(){
             '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>' */
         }
       }
       else if(openWhereDEExtKey in DEListMap.DataViewMap) {
         for (var key in DEListMap.DataViewMap[openWhereDEExtKey].DEFields) {
           ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                ' <span class="slds-size_1-of-1">' +
+                '<span > <button  class="btn" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                ' </span>' +
+                '  </div>' +
+                '</li>';
+          /*'<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
             '<div class="slds-tree__item slds-is-selected">' +
             '<button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button" >' +
             '<svg aria-hidden="true" class="slds-button__icon slds-button__icon_small">' +
@@ -4321,7 +4348,7 @@ document.addEventListener("touchend ", function(){
             '<span class="slds-tree__item-label slds-truncate"> <button value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
             ' </span>' +
             '  </div>' +
-            '</li>'
+            '</li>'*/
         }
       }
       
