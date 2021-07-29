@@ -4704,29 +4704,25 @@ document.addEventListener("touchend ", function(){
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
       dragId=id;
-      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-        if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-         joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
-        }
-        else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-         joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
-        }
-      }   
      }
      else
      {
       var str = dragId.substring(0, dragId.length - 2);
       console.log('Moving:'+str);
       console.log('Line schema getted');
-      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-        if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-         joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
-        }
-        else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-         joinQueryBoxLine( ConnectedTwoDiv.FirstDEExtKey,dragId)
-        }
-      }   
      }
+
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      console.log('First:'+ConnectedTwoDiv.FirstDEExtKey); 
+      console.log('Second:'+ConnectedTwoDiv.SecondDEExtKey);
+      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
+      }
+      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+      }
+    }   
+
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
