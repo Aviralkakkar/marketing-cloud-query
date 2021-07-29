@@ -3597,7 +3597,7 @@ document.addEventListener("touchend ", function(){
         });
     }
 
-    function allowDrop(ev, event) {
+   /* function allowDrop(ev, event) {
       ev.preventDefault();
     }
 
@@ -3609,14 +3609,15 @@ document.addEventListener("touchend ", function(){
 
     document.ondragover = function (event, ev) {
       event.preventDefault();
-    };
+    };*/
     function allowDroping(ev, event) {
                 ev.preventDefault();
               }
           
               document.ondragstart = function (event) {
-                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+                var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
+                console.log('Object12 ' + JSON.stringify(obje));
+                event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
           
               document.ondragover = function (event, ev) {
@@ -3684,7 +3685,7 @@ document.addEventListener("touchend ", function(){
       }
     };
     //script added by priyanka for moving 
-    function drop2(event, target) {
+   /* function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
@@ -3708,7 +3709,7 @@ document.addEventListener("touchend ", function(){
           }
         }
       }
-    };
+    };*/
     //code by nitik started
     function drop3(event, target) {
                 event.preventDefault();
@@ -4342,7 +4343,32 @@ document.addEventListener("touchend ", function(){
        
       
       //priyanka added code----------------
-     for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+    
+      var bool;
+    for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+        for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+            bool = true;
+            break;
+          }
+          else {
+            bool = false;
+          }
+        }
+        if (bool == true) {
+          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+       }
+        else {
+          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+       }
+   
+      }
+
+    /* for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
          
 
         console.log('---inside for loop------');
@@ -4364,7 +4390,7 @@ document.addEventListener("touchend ", function(){
           }
         }
    
-      }
+      }*/
       //------------ends here-----------------
       /*  var html = '';
       var bool;
@@ -4481,9 +4507,9 @@ document.addEventListener("touchend ", function(){
           '            border:none;' +
           '        }' +
           '' +
-          '    </style>' +
-          '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          ' </style>' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + 'schemaBox">'+
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4527,7 +4553,8 @@ document.addEventListener("touchend ", function(){
           '</div>'+
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
           '</div>'+
-          '</div>';
+          '</div>'
+          ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -4584,15 +4611,7 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          //For Creating line ANIL KUMAR
-
-          var o=e;
-          while(!o.target.id)
-          {
-             o=o.target.parentNode; 
-          }
-          console.log('Schema1:'+o.target.id);
-        }
+        }  
 
         function elementDrag(e) {
           e = e || window.event;
@@ -4605,14 +4624,6 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          //For Creating line ANIL KUMAR
-          var o=e;
-          while(!o.target.id)
-          {
-             o=o.target.parentNode; 
-          }
-          console.log('Schema2:'+o.target.id);
-          
         }
 
         function closeDragElement() {
@@ -4631,6 +4642,14 @@ document.addEventListener("touchend ", function(){
       */
     }
     //--code by nitik
+
+  //Anil kumar for creating Line
+   function schemaAction(id) 
+   {
+     console.log('Line schema getted');
+     console.log('ID:'+id);
+   }
+
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -4783,6 +4802,7 @@ document.addEventListener("touchend ", function(){
     function CancelThirdModal() {
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    
 
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
