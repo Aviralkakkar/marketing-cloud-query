@@ -4587,7 +4587,7 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          console.log('Schema1:'+e.target.id);
+          console.log('Schema1:'+e.target.parentNode.id);
           
           //For Creating line ANIL KUMAR
           
@@ -4604,7 +4604,7 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          console.log('Schema1:'+e.target.id);
+          console.log('Schema2:'+e.target.parentNode.id);
           
         }
 
