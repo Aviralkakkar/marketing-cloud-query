@@ -4587,9 +4587,14 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          console.log('Schema1:'+e.target.parentNode.id);
           
           //For Creating line ANIL KUMAR
+          var oid=e;
+          while(!oid.id) {
+            oid = oid.parentNode;
+          }
+          console.log('Parnet1:'+oid.id);
+          
           
         }
 
@@ -4604,7 +4609,13 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          console.log('Schema2:'+e.target.parentNode.id);
+          
+          //For Creating line ANIL KUMAR
+          var oid=e;
+          while(!oid.id) {
+            oid = oid.parentNode;
+          }
+          console.log('Parnet1:'+oid.id);
           
         }
 
