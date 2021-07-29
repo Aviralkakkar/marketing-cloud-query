@@ -4158,6 +4158,7 @@ document.addEventListener("touchend ", function(){
         document.getElementById('ulList').innerHTML = '';
         if (openSelectFieldsDEExtKey == '') {
           if(DEDragData.DEExtKey in DEListMap.DEMap) {
+            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DEName;
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -4169,6 +4170,7 @@ document.addEventListener("touchend ", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.SharedDEMap) {
+            document.getElementById('DEnamemoda21').innerHTML = DEDragData.SharedDEMap;
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -4180,6 +4182,7 @@ document.addEventListener("touchend ", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.DataViewMap) {
+            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DataViewMap;
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
