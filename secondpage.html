@@ -3615,8 +3615,9 @@ document.addEventListener("touchend ", function(){
               }
           
               document.ondragstart = function (event) {
-                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+                var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
+                console.log('Object12 ' + JSON.stringify(obje));
+                event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
           
               document.ondragover = function (event, ev) {
