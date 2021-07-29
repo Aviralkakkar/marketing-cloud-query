@@ -4550,7 +4550,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + 'schemaBox">'+
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">'+
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4652,6 +4652,8 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
+          //Added by ANIL KUMAR
+          schemaAction();
         }  
 
         function elementDrag(e) {
@@ -4665,6 +4667,8 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+          //Added by ANIL KUMAR
+          schemaAction();
         }
 
         function closeDragElement() {
@@ -4685,10 +4689,23 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
+   var dragId='';
    function schemaAction(id) 
    {
-     console.log('Line schema getted');
-     console.log('ID:'+id);
+     if(id)
+     {
+      var str = id.substring(0, id.length - 2);
+      console.log('OnMouseDown:'+str);
+      console.log('Line schema getted');
+      dragId=id;
+     }
+     else
+     {
+      var str = dragId.substring(0, dragId.length - 2);
+      console.log('Moving:'+str);
+      console.log('Line schema getted');
+     }
+     
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
