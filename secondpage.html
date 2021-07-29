@@ -3266,7 +3266,8 @@ function openModal() {
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
           }
-      else{
+      else if(DESetQueryBox.size=0){
+        console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
       }    
           
