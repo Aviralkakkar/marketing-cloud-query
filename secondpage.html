@@ -3759,7 +3759,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3774,7 +3774,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3789,7 +3789,7 @@ document.addEventListener("touchend ", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName + ']';
-          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+          var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
@@ -3849,8 +3849,8 @@ document.addEventListener("touchend ", function(){
         tempDESet = new Set();
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClause').innerHTML;
-          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClause').innerHTML;
+          FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClauseValue').innerHTML;
+          SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClauseValue').innerHTML;
           if (FirstDEWhereClause != '') {
             if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
               for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DEFields) {
@@ -4556,7 +4556,7 @@ document.addEventListener("touchend ", function(){
       }
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
-          document.getElementById(openWhereDEExtKey + 'WhereClause').innerHTML = document.getElementById("RichTextEditor").innerHTML;
+          document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
       DEDragData = {
@@ -4615,7 +4615,7 @@ document.addEventListener("touchend ", function(){
         }
       }
       /*
-      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClause').innerHTML;
+      whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
       whereClauseValue = whereClauseValue.replace(/<div>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<br>/g, ' ');
       whereClauseValue = whereClauseValue.replace(/<\/div>/g, ' ');
