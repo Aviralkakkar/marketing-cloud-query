@@ -4497,7 +4497,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction(this.id)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4633,6 +4633,13 @@ document.addEventListener("touchend ", function(){
       */
     }
     //--code by nitik
+
+  //Anil kumar
+  function lineAction(id)
+  {
+    console.log('LineID:'+id);
+  }
+    
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -4785,6 +4792,7 @@ document.addEventListener("touchend ", function(){
     function CancelThirdModal() {
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    
 
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
