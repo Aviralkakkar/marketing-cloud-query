@@ -4705,12 +4705,6 @@ document.addEventListener("touchend ", function(){
       console.log('Line schema getted');
       dragId=str;
      }
-     else
-     {
-      var str = dragId.substring(0, dragId.length - 2);
-      console.log('Moving:'+str);
-      console.log('Line schema getted');
-     }
 
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       console.log('First:'+ConnectedTwoDiv.FirstDEExtKey); 
@@ -4719,7 +4713,7 @@ document.addEventListener("touchend ", function(){
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
       }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId )
       }
     }   
 
