@@ -3258,13 +3258,16 @@ function openModal() {
               if(value==""){
                 console.log("nitik value12");
               }
-              document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+              else{
+                document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
                 '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
+              }
+              
             }
             console.log("nitik value2");
             document.getElementById("backdrop").style.display = "block"
