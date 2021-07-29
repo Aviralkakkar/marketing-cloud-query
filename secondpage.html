@@ -2524,7 +2524,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDroping(event,this)">
                               </div>
                     
                     
@@ -3610,7 +3610,18 @@ document.addEventListener("touchend ", function(){
     document.ondragover = function (event, ev) {
       event.preventDefault();
     };
-
+    function allowDroping(ev, event) {
+                ev.preventDefault();
+              }
+          
+              document.ondragstart = function (event) {
+                var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+                event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+              };
+          
+              document.ondragover = function (event, ev) {
+                event.preventDefault();
+              };
     function drop(event, target) {
       event.preventDefault();
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -4573,10 +4584,14 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-
-          console.log('ID:'+e.target.id);
           //For Creating line ANIL KUMAR
-          
+
+          var o=e;
+          while(!o.target.id)
+          {
+             o=o.target.parentNode; 
+          }
+          console.log('Schema1:'+o.target.id);
         }
 
         function elementDrag(e) {
@@ -4590,7 +4605,13 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          
+          //For Creating line ANIL KUMAR
+          var o=e;
+          while(!o.target.id)
+          {
+             o=o.target.parentNode; 
+          }
+          console.log('Schema2:'+o.target.id);
           
         }
 
