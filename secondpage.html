@@ -3213,6 +3213,7 @@
         console.log(src.options[src.selectedIndex].id);
 
         console.log(typeof des);
+        console.log(des.sort((a, b) => (a.text > b.text) ? 1 : -1));
         des.options.add(op);
         src.remove(i);
         i--;
