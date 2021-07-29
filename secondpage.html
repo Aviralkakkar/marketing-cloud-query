@@ -4343,7 +4343,32 @@ document.addEventListener("touchend ", function(){
        
       
       //priyanka added code----------------
-     for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+    
+      var bool;
+    for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+        for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+            bool = true;
+            break;
+          }
+          else {
+            bool = false;
+          }
+        }
+        if (bool == true) {
+          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+       }
+        else {
+          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+       }
+   
+      }
+
+    /* for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
          
 
         console.log('---inside for loop------');
@@ -4365,7 +4390,7 @@ document.addEventListener("touchend ", function(){
           }
         }
    
-      }
+      }*/
       //------------ends here-----------------
       /*  var html = '';
       var bool;
@@ -4497,9 +4522,8 @@ document.addEventListener("touchend ", function(){
           '            border:none;' +
           '        }' +
           '' +
-          '    </style>' +
-          '<div>'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1"   id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          ' </style>' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4542,8 +4566,8 @@ document.addEventListener("touchend ", function(){
           '   </div>' +
           '</div>'+
           '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
-          '</div>'+
-          '</div>';
+          '</div>'
+          ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
@@ -4599,16 +4623,9 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          
           //For Creating line ANIL KUMAR
-          var oid=e;
-          while(!oid.id) {
-            oid = oid.parentNode;
-          }
-          console.log('Parnet1:'+oid.id);
-          
-          
-        }
+          console.log('Schema1:'+e.target.parentNode.parentNode.id);
+        }  
 
         function elementDrag(e) {
           e = e || window.event;
@@ -4621,13 +4638,8 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          
           //For Creating line ANIL KUMAR
-          var oid=e;
-          while(!oid.id) {
-            oid = oid.parentNode;
-          }
-          console.log('Parnet1:'+oid.id);
+          console.log('Schema2:'+e.target.parentNode.parentNode.id);
           
         }
 
@@ -4647,6 +4659,14 @@ document.addEventListener("touchend ", function(){
       */
     }
     //--code by nitik
+
+  //Anil kumar
+  function lineAction()
+  {
+    console.log('Mouse Down is working');
+    console.log('LineID:'+id);
+  }
+
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -4799,6 +4819,7 @@ document.addEventListener("touchend ", function(){
     function CancelThirdModal() {
       document.getElementById('ThirdModal').style.display = 'none';
     }
+    
 
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
