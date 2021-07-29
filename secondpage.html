@@ -3252,6 +3252,8 @@ function openModal() {
         console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
+              var value=document.getElementById(temp).innerHTML;
+              console.log('value'+value);
               console.log('nitik key'+temp);
               document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
