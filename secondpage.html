@@ -3702,6 +3702,7 @@ document.addEventListener("touchend ", function(){
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
+              
               range = sel.getRangeAt(0);
               range.deleteContents();
               range.insertNode(document.createTextNode(FieldName));
@@ -3717,16 +3718,22 @@ document.addEventListener("touchend ", function(){
                   "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
                   "FieldName" : JSON.parse(event.dataTransfer.getData("text/plain")).value
                 }
+                console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
                 insertTextAtCaret(DEWhereClauseDragData.FieldName);
                 function insertTextAtCaret(FieldName) {
                   var sel, range;
                   if (window.getSelection) {
+                    console.log("hello1");
                     sel = window.getSelection();
                     var parentID = window.getSelection().anchorNode.parentNode.id;
+                    console.log("parentID"+parentID);
                     var anchorID = window.getSelection().anchorNode.id;
+                    console.log("anchorID"+anchorID);
                     var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                    console.log("superparentID"+superparentID);
                     if (parentID == 'RichTextRichTextEditorForFinalWhereClauseEditor' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
