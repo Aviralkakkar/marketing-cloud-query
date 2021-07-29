@@ -2430,27 +2430,6 @@
                   </div>
                 </div>
               </div>
-              <div id="DESelectAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <P>Please select atleast one field</P>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelFieldSelectNextAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
           </button>
           
@@ -2511,7 +2490,27 @@
                           
                         </header>
                         
-                        
+                        <div id="DESelectAlert" style="display:none">
+                          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                            <span class="slds-assistive-text">error</span>
+                            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                              title="Description of icon when needed">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                            </span>
+                            <P>Please select atleast one field</P>
+                            <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                                onclick="CancelFieldSelectNextAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
           
@@ -2550,7 +2549,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDroping(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
                               </div>
                     
                     
@@ -2560,7 +2559,7 @@
                         <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                             <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
                             
-                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Run</button>
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
                           </footer>
                 
                 </div>
@@ -2820,8 +2819,7 @@
           <h3 style="padding:0; margin:0; margin-top: -25px;
           margin-bottom: 7px;
           font-size: 15px;
-          color: #4e8abe; text-align: left;
-         margin-left: 2%;" id="DEnamemodal1"></h3>
+          color: #4e8abe;" id="DEnamemodal1"></h3>
           <div class="slds-path"
             style="height: 3rem;  padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
             <div class="slds-grid slds-path__track">
@@ -2907,6 +2905,8 @@
             </div>
           </div>
         </div>
+
+        
 
 
 
@@ -3035,8 +3035,7 @@
           <h3 style="padding:0; margin:0; margin-top: -25px;
           margin-bottom: 7px;
           font-size: 15px;
-          color: #4e8abe; text-align: left;
-           margin-left: 2%;" id="DEnamemodal2"></h3>
+          color: #4e8abe;" id="DEnamemodal2"></h3>
           <div class="slds-path"
             style="height: 3rem; padding:0; margin:0; background-color: #f5f5f5; background-image:linear-gradient(to bottom,#fafafa,#eee);">
             <div class="slds-grid slds-path__track">
@@ -3210,7 +3209,6 @@
 
         console.log(des);
         des.options.add(op);
-        console.log()
         src.remove(i);
         i--;
       }
@@ -3246,7 +3244,7 @@
 function openModal() {
   
         
-   if (DESetQueryBox.size > 0) {
+   if (DESetQueryBox.size >=1) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -3254,21 +3252,35 @@ function openModal() {
         console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
+              var value=document.getElementById(temp).innerHTML;
+              console.log('value'+value);
               console.log('nitik key'+temp);
-              document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+              if(value==""){
+                console.log("nitik value12");
+              }
+              else{
+                document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
                 '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
+              }
+              
             }
             console.log("nitik value2");
-          }
-          
-    document.getElementById("backdrop").style.display = "block"
+            document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
+          }
+      else if(DESetQueryBox.size == 0){
+        console.log('hi');
+        document.getElementById('DESelectAlert').style.display = 'Block';
+        console.log('bye');
+      }    
+          
+    
 
 }
 function closeModal() {
@@ -3644,7 +3656,7 @@ document.addEventListener("touchend ", function(){
     document.ondragover = function (event, ev) {
       event.preventDefault();
     };
-   /*function allowDroping(ev, event) {
+    function allowDroping(ev, event) {
                 ev.preventDefault();
               }
           
@@ -3656,7 +3668,7 @@ document.addEventListener("touchend ", function(){
           
               document.ondragover = function (event, ev) {
                 event.preventDefault();
-              };*/
+              };
     function drop(event, target) {
       event.preventDefault();
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -3701,7 +3713,8 @@ document.addEventListener("touchend ", function(){
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
-                 }
+      
+            }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
@@ -3716,7 +3729,6 @@ document.addEventListener("touchend ", function(){
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
-         
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
@@ -3745,7 +3757,7 @@ document.addEventListener("touchend ", function(){
               range.insertNode(document.createTextNode(FieldName));
             }
           }
-          else  if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+          else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
                         range = sel.getRangeAt(0);
@@ -4585,7 +4597,7 @@ document.addEventListener("touchend ", function(){
           '' +
           ' </style>' +
           '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4732,22 +4744,20 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
-      dragId=id;
+      dragId=str;
      }
-     else
-     {
-      var str = dragId.substring(0, dragId.length - 2);
-      console.log('Moving:'+str);
-      console.log('Line schema getted');
-     }
+
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      console.log('First:'+ConnectedTwoDiv.FirstDEExtKey); 
+      console.log('Second:'+ConnectedTwoDiv.SecondDEExtKey);
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
       }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId )
       }
-    }
+    }   
+
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
@@ -4944,8 +4954,8 @@ document.addEventListener("touchend ", function(){
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "DeleteQueryBox";
-      var val2 = de2 + "DeleteQueryBox";
+      var val1 = de1 + "ForConnectedLine";
+      var val2 = de2 + "ForConnectedLine";
       console.log('Val1:'+val1);
 
       var div1 = document.getElementById(val1);
@@ -5020,7 +5030,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
-        document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
+        document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
       }
     }
 
