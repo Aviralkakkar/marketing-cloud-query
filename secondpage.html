@@ -3248,7 +3248,7 @@
 <script>
 function openModal() {
   
-        
+    var count=0;    
    if (DESetQueryBox.size >=1) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
@@ -3261,6 +3261,7 @@ function openModal() {
               console.log('value'+value);
               console.log('nitik key'+temp);
               if(value==""){
+                count++;
                 console.log("nitik value12");
               }
               else{
@@ -3284,6 +3285,12 @@ function openModal() {
         document.getElementById('DESelectAlert').style.display = 'Block';
         console.log('bye');
       }    
+      
+      if(count==DESetQueryBox.size){
+        console.log('calling function validate query');
+        validateQuery(JoinQueryDetails , 'run');
+        console.log('called function validate query');
+      }
           
     
 
