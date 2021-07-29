@@ -4625,8 +4625,6 @@ document.addEventListener("touchend ", function(){
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
-          //For Creating line ANIL KUMAR
-          console.log('Schema1:'+e.target.parentNode.parentNode.id);
         }  
 
         function elementDrag(e) {
@@ -4640,9 +4638,6 @@ document.addEventListener("touchend ", function(){
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          //For Creating line ANIL KUMAR
-          console.log('Schema2:'+e.target.parentNode.parentNode.id);
-          
         }
 
         function closeDragElement() {
@@ -4662,7 +4657,7 @@ document.addEventListener("touchend ", function(){
     }
     //--code by nitik
 
-  //Anil kumar
+  //Anil kumar for creating Line
    function schemaAction(id) 
    {
      console.log('Line schema getted');
