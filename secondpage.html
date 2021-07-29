@@ -2442,7 +2442,7 @@
                   <P>Please select atleast one field</P>
                   <div class="slds-notify__close">
                     <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelFieldSelectNextAlert()">
+                      onclick="CancelDESelectAlert()">
                       <svg class="slds-button__icon" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                       </svg>
@@ -3287,6 +3287,10 @@ function openModal() {
           
     
 
+}
+
+function CancelDESelectAlert() {
+  document.getElementById('DESelectAlert').style.display = 'none';
 }
 function closeModal() {
     document.getElementById("backdrop").style.display = "none"
