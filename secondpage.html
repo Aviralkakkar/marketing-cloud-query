@@ -2529,7 +2529,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop3(event, this)" ondragover="allowDroping(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
                               </div>
                     
                     
@@ -3721,11 +3721,19 @@ document.addEventListener("touchend ", function(){
               range.insertNode(document.createTextNode(FieldName));
             }
           }
+          else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
         }
       }
     };
     //code by nitik started
-    function drop3(event, target) {
+    /*function drop3(event, target) {
                 event.preventDefault();
                 var DEWhereClauseDragData = {
                   "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
@@ -3754,7 +3762,7 @@ document.addEventListener("touchend ", function(){
                     }
                   }
                 }
-              };
+              };*/
     //code by nitik ended
     function Previous() {
       if (DEDragData.DEExtKey != '') {
@@ -4553,7 +4561,7 @@ document.addEventListener("touchend ", function(){
           '' +
           ' </style>' +
           '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4700,22 +4708,20 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
-      dragId=id;
+      dragId=str;
      }
-     else
-     {
-      var str = dragId.substring(0, dragId.length - 2);
-      console.log('Moving:'+str);
-      console.log('Line schema getted');
-     }
+
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      console.log('First:'+ConnectedTwoDiv.FirstDEExtKey); 
+      console.log('Second:'+ConnectedTwoDiv.SecondDEExtKey);
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
       }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId )
       }
-    }
+    }   
+
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
@@ -4912,8 +4918,8 @@ document.addEventListener("touchend ", function(){
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "DeleteQueryBox";
-      var val2 = de2 + "DeleteQueryBox";
+      var val1 = de1 + "ForConnectedLine";
+      var val2 = de2 + "ForConnectedLine";
       console.log('Val1:'+val1);
 
       var div1 = document.getElementById(val1);
@@ -4988,7 +4994,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
-        document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
+        document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
       }
     }
 
