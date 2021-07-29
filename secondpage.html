@@ -4556,7 +4556,7 @@ document.addEventListener("touchend ", function(){
           '' +
           ' </style>' +
           '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4704,6 +4704,7 @@ document.addEventListener("touchend ", function(){
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
       dragId=id;
+      
      }
      else
      {
@@ -4915,8 +4916,8 @@ document.addEventListener("touchend ", function(){
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "DeleteQueryBox";
-      var val2 = de2 + "DeleteQueryBox";
+      var val1 = de1 + "ForConnectedLine";
+      var val2 = de2 + "ForConnectedLine";
       console.log('Val1:'+val1);
 
       var div1 = document.getElementById(val1);
@@ -4991,7 +4992,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
-        document.getElementById(DEExtKeyFordeleteDiv + 'DeleteQueryBox').remove();
+        document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
       }
     }
 
