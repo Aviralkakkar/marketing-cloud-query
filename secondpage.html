@@ -4460,25 +4460,11 @@ document.addEventListener("touchend ", function(){
       
       document.getElementById('RelationPopup').style.display = 'none';
       document.getElementById('SecondModal').style.display = 'none';
-      
-      
-      var RightSidePickListValues = document.getElementById("rightsideListInSelectField").querySelectorAll("option");
-      for (var i = 0; i < RightSidePickListValues.length; i++) {
-         console.log('FieldType----'+RightSidePickListValues[i].value);
-         console.log('DEExtKey-----'+RightSidePickListValues[i].id);
-         console.log('FieldName-----'+RightSidePickListValues[i].label);
-      }
-      var texteditor_string =document.getElementById("RichTextEditor").innerHTML;
-      console.log('text editor value'+texteditor_string);
-      
-      
-
 
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
         DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
-
         for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
@@ -4486,8 +4472,7 @@ document.addEventListener("touchend ", function(){
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
-       
-        console.log('DE1:'+DEDragData.DEExtKey);
+        
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
@@ -4636,6 +4621,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
         }
       }
+      
       DEDragData = {
         "DEName": '',
         "DEExtKey": '',
@@ -4717,7 +4703,14 @@ document.addEventListener("touchend ", function(){
       console.log('Moving:'+str);
       console.log('Line schema getted');
      }
-     
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
+      }
+      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.FirstDEExtKey)
+      }
+    }
    }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
