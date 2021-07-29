@@ -4497,7 +4497,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction(this.id)"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'DeleteQueryBox"  style="left: 140px; top: 36px;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -4635,11 +4635,12 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar
-  function lineAction(id)
+  function lineAction()
   {
+    console.log('Mouse Down is working');
     console.log('LineID:'+id);
   }
-    
+
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
