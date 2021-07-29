@@ -3597,7 +3597,7 @@ document.addEventListener("touchend ", function(){
         });
     }
 
-    function allowDrop(ev, event) {
+   /* function allowDrop(ev, event) {
       ev.preventDefault();
     }
 
@@ -3609,7 +3609,7 @@ document.addEventListener("touchend ", function(){
 
     document.ondragover = function (event, ev) {
       event.preventDefault();
-    };
+    };*/
     function allowDroping(ev, event) {
                 ev.preventDefault();
               }
@@ -3685,7 +3685,7 @@ document.addEventListener("touchend ", function(){
       }
     };
     //script added by priyanka for moving 
-    function drop2(event, target) {
+   /* function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
@@ -3709,7 +3709,7 @@ document.addEventListener("touchend ", function(){
           }
         }
       }
-    };
+    };*/
     //code by nitik started
     function drop3(event, target) {
                 event.preventDefault();
