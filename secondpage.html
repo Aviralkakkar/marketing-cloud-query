@@ -3644,7 +3644,7 @@ document.addEventListener("touchend ", function(){
     document.ondragover = function (event, ev) {
       event.preventDefault();
     };
-    function allowDroping(ev, event) {
+   /*function allowDroping(ev, event) {
                 ev.preventDefault();
               }
           
@@ -3656,7 +3656,7 @@ document.addEventListener("touchend ", function(){
           
               document.ondragover = function (event, ev) {
                 event.preventDefault();
-              };
+              };*/
     function drop(event, target) {
       event.preventDefault();
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -3745,11 +3745,19 @@ document.addEventListener("touchend ", function(){
               range.insertNode(document.createTextNode(FieldName));
             }
           }
+          else  if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
         }
       }
     };
     //code by nitik started
-    function drop3(event, target) {
+    /*function drop3(event, target) {
                 event.preventDefault();
                 var DEWhereClauseDragData = {
                   "FieldType" : JSON.parse(event.dataTransfer.getData("text/plain")).name,
@@ -3778,7 +3786,7 @@ document.addEventListener("touchend ", function(){
                     }
                   }
                 }
-              };
+              };*/
     //code by nitik ended
     function Previous() {
       if (DEDragData.DEExtKey != '') {
