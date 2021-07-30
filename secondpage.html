@@ -4663,8 +4663,6 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-          '<div  id="' + DEDragData.DEExtKey + 'DeleteQueryBoxLine"> '+
-          '</div>'+
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
@@ -4763,22 +4761,24 @@ document.addEventListener("touchend ", function(){
    var dragId='';
    function schemaAction(id) 
    {
+    var line_Num=1;
      if(id)
      {
       var str = id.substring(0, id.length - 2);
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
       dragId=str;
+      line_Num=1;
      }
-
+     
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-      console.log('First:'+ConnectedTwoDiv.FirstDEExtKey); 
-      console.log('Second:'+ConnectedTwoDiv.SecondDEExtKey);
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey)
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,line_Num);
+       line_Num++;
       }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId )
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,line_Num);
+       line_Num++;
       }
     }   
 
@@ -4963,24 +4963,29 @@ document.addEventListener("touchend ", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value
             });
             //Edited By ANIL KUMAR
-            console.log('QueryJoin:'+JSON.stringify(JoinQueryDetails));
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value);
+            var totalJoined=0;
+            for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+              if( FirstDEExtKeyForJoinGlobal== ConnectedTwoDiv.FirstDEExtKey) {
+                totalJoined++;
+              }
+            }   
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=FirstDEExtKeyForJoinGlobal+"DeleteQueryBoxLine"+totalJoined;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"ForConnectedLine").appendChild(newLine_Div);
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,totalJoined);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
-    /*
-     Added by ANIL KUMAR for adding schema blocks dynamically with line
-    */
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2) 
+    function joinQueryBoxLine(de1, de2,lineNo) 
     {
       console.log("Line drawed");
 
       var val1 = de1 + "ForConnectedLine";
       var val2 = de2 + "ForConnectedLine";
-      console.log('Val1:'+val1);
+      console.log('LineNumber:'+lineNo);
 
       var div1 = document.getElementById(val1);
 
@@ -5016,8 +5021,8 @@ document.addEventListener("touchend ", function(){
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-      var lineVar=de1+"DeleteQueryBoxLine";
-      
+      var lineVar=de1+"DeleteQueryBoxLine"+lineNo;
+      console.log('L:'+lineVar);
       var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
