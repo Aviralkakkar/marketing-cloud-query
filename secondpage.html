@@ -2484,10 +2484,10 @@
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal(validate)'
+                onclick='openModal()'
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal(run)'>Run</button>
+                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal()'>Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -3281,8 +3281,8 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-function openModal(string) {
- console.log('string'+string);
+function openModal() {
+ 
     var countOfDeWithWhereClauseValue=0;    
     var countOfDeWithoutWhereClauseValue=0;  
     
