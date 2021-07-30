@@ -4984,7 +4984,7 @@ document.addEventListener("touchend ", function(){
 
       var val1 = de1 + "ForConnectedLine";
       var val2 = de2 + "ForConnectedLine";
-      console.log('Val1:'+val1);
+      console.log('LineNumber:'+lineNo);
 
       var div1 = document.getElementById(val1);
 
@@ -5021,7 +5021,7 @@ document.addEventListener("touchend ", function(){
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
       var lineVar=de1+"DeleteQueryBoxLine"+lineNo;
-      
+      console.log('L:'+lineVar);
       var lineElement=document.getElementById(lineVar).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
