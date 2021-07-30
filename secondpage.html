@@ -2939,9 +2939,9 @@
 
 
         <div class="slds-modal__content slds-p-around_medium" id="grid-1-de"
-          style=" overflow:hidden; margin:0; padding:0; height: 27rem;  ">
+          style=" overflow: scroll; margin:0; padding:0; height: 27rem;  ">
 
-          <div class="container" style="padding:0%; margin:0%; ">
+          <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
             <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
               <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
@@ -3218,6 +3218,7 @@
     }
   }
   function moveRight(src, des) {
+    var l=[];
     if (src.selectedIndex == -1) {
       alert("Please select first!");
       return;
@@ -3236,10 +3237,8 @@
 
         console.log('1'+des); 
         
-        var arr=des.text; 
-
-        console.log('2'+des.value);
-       
+        l.push(src.options[src.selectedIndex].text);
+        console.log(l);
         des.options.add(op);
         src.remove(i);
         i--;
@@ -4810,8 +4809,6 @@ document.addEventListener("touchend ", function(){
    var dragId='';
    function schemaAction(id) 
    {
-
-     var line_Num=1; 
      if(id)
      {
       var str = id.substring(0, id.length - 2);
@@ -4821,14 +4818,11 @@ document.addEventListener("touchend ", function(){
      }
      
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-      
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,line_Num);
-       line_Num++;
-      }
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
+     }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,line_Num);
-       line_Num++;
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
     }   
 
@@ -5000,6 +4994,12 @@ document.addEventListener("touchend ", function(){
                 "JoinField": document.getElementById('FirstDEField').value
               }
             }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
             JoinQueryDetails["DEForJoin"].push({
               "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
               "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
@@ -5010,32 +5010,24 @@ document.addEventListener("touchend ", function(){
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
-              "SecondDEJoinField": document.getElementById('SecondDEField').value
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
             });
             //Edited By ANIL KUMAR
-            var totalJoined=0;
-            for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-              if( FirstDEExtKeyForJoinGlobal== ConnectedTwoDiv.FirstDEExtKey) {
-                totalJoined++;
-              }
-            }   
-            var newLine_Div=document.createElement('div');
-            newLine_Div.id=FirstDEExtKeyForJoinGlobal+"DeleteQueryBoxLine"+totalJoined;
-            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,totalJoined);
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2,lineNo) 
+    function joinQueryBoxLine(de1, de2,lineid) 
     {
       console.log("Line drawed");
 
       var val1 = de1 + "ForConnectedLine";
       var val2 = de2 + "ForConnectedLine";
-      console.log('LineNumber:'+lineNo);
+      console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
 
@@ -5071,9 +5063,8 @@ document.addEventListener("touchend ", function(){
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-      var lineVar=de1+"DeleteQueryBoxLine"+lineNo;
-      console.log('L:'+lineVar);
-      var lineElement=document.getElementById(lineVar).style.cssText=`
+      console.log('LineId:'+lineid);
+      var lineElement=document.getElementById(lineid).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
