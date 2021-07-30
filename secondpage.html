@@ -4810,7 +4810,6 @@ document.addEventListener("touchend ", function(){
    var dragId='';
    function schemaAction(id) 
    {
-     //var line_Num=1; 
      if(id)
      {
       var str = id.substring(0, id.length - 2);
@@ -4821,12 +4820,10 @@ document.addEventListener("touchend ", function(){
      
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDiv);
-       //line_Num++;
-      }
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
+     }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDiv);
-       //line_Num++;
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
     }   
 
@@ -4999,13 +4996,7 @@ document.addEventListener("touchend ", function(){
               }
             }
             //Added by ANIL KUMAR
-            var totalJoined=0;
-            for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-              if( FirstDEExtKeyForJoinGlobal== ConnectedTwoDiv.FirstDEExtKey) {
-                totalJoined++;
-              }
-            } 
-            var line_ID=FirstDEExtKeyForJoinGlobal+"DeleteQueryBoxLine"+totalJoined;  
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
             var newLine_Div=document.createElement('div');
             newLine_Div.id=line_ID;
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
@@ -5021,10 +5012,9 @@ document.addEventListener("touchend ", function(){
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
               "SecondDEJoinField": document.getElementById('SecondDEField').value,
-              "JoinedLineDiv":line_ID
+              "JoinedLineDivId":line_ID
             });
             //Edited By ANIL KUMAR
-            console.log('JoinQueryDetails:'+JoinQueryDetails);
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
           }
         }
