@@ -3308,15 +3308,8 @@ function openModal() {
             document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
-    console.log("nitik value23"+JSON.stringify(joinedDivSet));
-            console.log("nitik value24"+DESetQueryBox.size);
-            if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
-              console.log("nitik value2"+DESetQueryBox.size);
+   
             
-      } 
-           else{
-            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
-           }
           }
       else if(DESetQueryBox.size == 0){
         console.log('hi');
@@ -3330,6 +3323,15 @@ function openModal() {
         validateQuery(JoinQueryDetails , 'run');
         console.log('called function validate query');
       }
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
+      if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+              console.log("nitik value2"+DESetQueryBox.size);
+            
+            } 
+           else{
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+           }
      
           
     
