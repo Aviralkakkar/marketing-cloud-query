@@ -2563,24 +2563,157 @@
                               <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
                 
                             </div-->
-                  <div class="slds-modal__content slds-p-around_medium" id="grid-2-de"
-                    style=" height: 27rem; padding: 0;">
+                            <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
 
 
 
-                    <div id="component-selector-container" class=" slds-float_left "
-                      style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
-                      <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-                        style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions
-                      </h4>
-                      <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
-
-                        <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree"
-                          role="tree" style="padding-left:0rem; background-color:white; position: relative;">
-
-                        </ul>
-
-                      </div>
+                              <div id="component-selector-container" class=" slds-float_left "
+                                style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions</h4>
+                                <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
+                    
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                    style="padding-left:0rem; background-color:white; position: relative;">
+                    
+                                  </ul>
+                    
+                                </div>
+                              </div>
+                    
+                              <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
+                                style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
+                               
+                                    <div class="expression"></div>
+                                    <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
+                                    
+                              </div>
+                              
+                    
+                            </div>
+        
+               
+                        <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                            <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
+                            
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
+                          </footer>
+                
+                </div>
+                
+                </section>
+              <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+                 
+<!--****** Nitik code ended *********-->
+          
+            </div>
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
+                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+      
+      
+      
+                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+                  <table class=" slds-table slds-table_bordered slds-table--header-fixed"
+                    aria-labelledby="element-with-table-label other-element-with-table-label"
+                    style="border:1px solid rgb(177, 172, 172) !important;">
+                    <thead>
+      
+                      <tr class="slds-line-height_reset">
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Account Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Close Date</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Stage</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Confidence</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Amount</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Contact</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Personal Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Company Mail</div>
+                        </th>
+                      </tr>
+                    </thead>
+      
+      
+      
+      
+                    <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
+                      <tr class="slds-hint-parent slds-border_bottom">
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                        <td data-label="Prospecting">
+                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                        </td>
+                        <td data-label="Confidence">
+                          <div class="slds-truncate" title="20%">20%</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">$25k</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                      </tr>
+      
+      
+                    </tbody>
+                  </table>
+                </div>
+                <div style="height:5%;">
+                  <div class="slds-grid">
+                    <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                        data-page="1">
+                        <span class="slds-icon_container slds-icon-utility-chevronleft"
+                          title="Description of icon when needed">
+                          <svg
+                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                            aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+      
+                          </svg>
+                          <span class="slds-assistive-text">Description of icon when needed</span>
+                      </button>
+                    </div>
+                    <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                      <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                          id="totalRecords"></span> </span>
                     </div>
 
                     <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
@@ -3360,37 +3493,51 @@
         validateQuery(JoinQueryDetails, 'run');
         console.log('called function validate query');
       }
-      else {
-        document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
-      }
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
+           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+              console.log("nitik value2"+DESetQueryBox.size);
+              document.getElementById("backdrop").style.display = "block"
+              document.getElementById("exampleModal").style.display = "block"
+              document.getElementById("exampleModal").classList.add("show")
+            } 
+            else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
+              console.log('calling function validate query');
+              document.getElementById('exampleModal').style.display = 'none';
+              validateQuery(JoinQueryDetails , 'run');
+              console.log('called function validate query');
+            }
+           else{
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+           }
+     
+          
+    
 
+}
 
+function CancelDESelectAlert() {
+  document.getElementById('DESelectAlert').style.display = 'none';
+}
+function CancelQueryBoxJoinAlert() {
+  document.getElementById('QueryBoxJoinAlert').style.display = 'none';
+}
+function closeModal() {
+    document.getElementById("backdrop").style.display = "none"
+    document.getElementById("exampleModal").style.display = "none"
+    document.getElementById("exampleModal").classList.remove("show")
+}
+// Get the modal
+var modal = document.getElementById('exampleModal');
 
-
-    }
-
-    function CancelDESelectAlert() {
-      document.getElementById('DESelectAlert').style.display = 'none';
-    }
-    function CancelQueryBoxJoinAlert() {
-      document.getElementById('QueryBoxJoinAlert').style.display = 'none';
-    }
-    function closeModal() {
-      document.getElementById("backdrop").style.display = "none"
-      document.getElementById("exampleModal").style.display = "none"
-      document.getElementById("exampleModal").classList.remove("show")
-    }
-    // Get the modal
-    var modal = document.getElementById('exampleModal');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        closeModal()
-      }
-    }
-  </script>
-  <!--nitik code ended-->
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal()
+  }
+}
+</script>
+<!--nitik code ended-->
   <!-- Khushboo  code starting   -->
 
   <script>
