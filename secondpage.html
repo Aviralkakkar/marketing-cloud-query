@@ -3274,8 +3274,9 @@
 <!--nitik code started-->
 <script>
 function openModal() {
-  
+ 
     var count=0;    
+    
    if (DESetQueryBox.size >=1) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
@@ -3302,8 +3303,10 @@ function openModal() {
               }
               
             }
+            console.log("nitik value23"+joinedDivSet);
+            console.log("nitik value24"+DESetQueryBox.size);
             if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
-              console.log("nitik value2");
+              console.log("nitik value2"+DESetQueryBox.size);
             document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
