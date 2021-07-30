@@ -3335,7 +3335,7 @@ function openModal() {
               document.getElementById("exampleModal").style.display = "block"
               document.getElementById("exampleModal").classList.add("show")
             } 
-            else if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
+            else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
               document.getElementById('exampleModal').style.display = 'none';
               validateQuery(JoinQueryDetails , 'run');
