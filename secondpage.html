@@ -2518,7 +2518,7 @@
                       </div>
                   </div>
               </div-->
-              <section role="dialog" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
+              <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
                 <div class="slds-modal__container" >
                     <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
@@ -3288,7 +3288,7 @@ function openModal() {
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
-        document.getElementById('exampleModal').style.display = 'block';
+        document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('uoList').innerHTML = '';
         console.log("nitik value1");
@@ -3335,12 +3335,12 @@ function openModal() {
            if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
-              document.getElementById("exampleModal").style.display = "block"
-              document.getElementById("exampleModal").classList.add("show")
+              document.getElementById("DEWhereClauseModal").style.display = "block"
+              document.getElementById("DEWhereClauseModal").classList.add("show")
             } 
             else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
-              document.getElementById('exampleModal').style.display = 'none';
+              document.getElementById('DEWhereClauseModal').style.display = 'none';
               validateQuery(JoinQueryDetails , 'run');
               console.log('called function validate query');
             }
@@ -3361,11 +3361,11 @@ function CancelQueryBoxJoinAlert() {
 }
 function closeModal() {
     document.getElementById("backdrop").style.display = "none"
-    document.getElementById("exampleModal").style.display = "none"
-    document.getElementById("exampleModal").classList.remove("show")
+    document.getElementById("DEWhereClauseModal").style.display = "none"
+    document.getElementById("DEWhereClauseModal").classList.remove("show")
 }
 // Get the modal
-var modal = document.getElementById('exampleModal');
+var modal = document.getElementById('DEWhereClauseModal');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
