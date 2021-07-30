@@ -3305,23 +3305,7 @@ function openModal() {
               }
               
             }
-            console.log("nitik value23"+JSON.stringify(joinedDivSet));
-            console.log("nitik value24"+DESetQueryBox.size);
-           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
-              console.log("nitik value2"+DESetQueryBox.size);
-              document.getElementById("backdrop").style.display = "block"
-              document.getElementById("exampleModal").style.display = "block"
-              document.getElementById("exampleModal").classList.add("show")
-            } 
-            else if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
-              console.log('calling function validate query');
-              document.getElementById('exampleModal').style.display = 'none';
-              validateQuery(JoinQueryDetails , 'run');
-              console.log('called function validate query');
-            }
-           else{
-            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
-           }
+
            
    
             
@@ -3338,7 +3322,23 @@ function openModal() {
         validateQuery(JoinQueryDetails , 'run');
         console.log('called function validate query');
       }*/
-     
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
+           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+              console.log("nitik value2"+DESetQueryBox.size);
+              document.getElementById("backdrop").style.display = "block"
+              document.getElementById("exampleModal").style.display = "block"
+              document.getElementById("exampleModal").classList.add("show")
+            } 
+            else if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
+              console.log('calling function validate query');
+              document.getElementById('exampleModal').style.display = 'none';
+              validateQuery(JoinQueryDetails , 'run');
+              console.log('called function validate query');
+            }
+           else{
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+           }
      
           
     
