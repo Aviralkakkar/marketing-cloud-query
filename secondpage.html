@@ -2451,7 +2451,27 @@
                   </div>
                 </div>
               </div>
-
+              <div id="QueryBoxJoinAlert" style="display:none">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                  <span class="slds-assistive-text">error</span>
+                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                  </span>
+                  <P>Please Join the Query Box.</P>
+                  <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                      onclick="CancelQueryBoxJoinAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
 
 
@@ -3214,10 +3234,11 @@
         console.log(src.options[src.selectedIndex].text);
         console.log(src.options[src.selectedIndex].id);
 
-        console.log(des); 
+        console.log('1'+des); 
         
-        var arr=des.text;
-        console.log(des.text);
+        var arr=des.text; 
+
+        console.log('2'+des.value);
        
         des.options.add(op);
         src.remove(i);
@@ -3281,10 +3302,15 @@ function openModal() {
               }
               
             }
-            console.log("nitik value2");
+            if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+              console.log("nitik value2");
             document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
+      } 
+           else{
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+           }
           }
       else if(DESetQueryBox.size == 0){
         console.log('hi');
@@ -3298,6 +3324,7 @@ function openModal() {
         validateQuery(JoinQueryDetails , 'run');
         console.log('called function validate query');
       }
+     
           
     
 
@@ -3305,6 +3332,9 @@ function openModal() {
 
 function CancelDESelectAlert() {
   document.getElementById('DESelectAlert').style.display = 'none';
+}
+function CancelQueryBoxJoinAlert() {
+  document.getElementById('QueryBoxJoinAlert').style.display = 'none';
 }
 function closeModal() {
     document.getElementById("backdrop").style.display = "none"
