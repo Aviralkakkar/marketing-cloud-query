@@ -3273,11 +3273,11 @@
 <!--End here-->
 <!--nitik code started-->
 <script>
-  function isSet(as, bs) {
+ /* function isEqual(as, bs) {
         if (as.size !== bs.size) return false;
         for (var a of as) if (!bs.has(a)) return false;
         return true;
-      }
+      }*/
 function openModal() {
  
     var countOfDeWithWhereClauseValue=0;    
@@ -3329,7 +3329,7 @@ function openModal() {
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
             console.log("nitik value24"+DESetQueryBox.size);
-           if (DESetQueryBox.size > 1 && isSet(DESetQueryBox, joinedDivSet)){
+           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("exampleModal").style.display = "block"
@@ -4258,13 +4258,13 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-      function isSetEqual(as, bs) {
+      
+    }
+    function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }
-    }
-
     function CancelDERecordModal() {
       document.getElementById('recordResultModal').style.display = 'none';
     }
