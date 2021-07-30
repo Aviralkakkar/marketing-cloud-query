@@ -5040,7 +5040,7 @@ document.addEventListener("touchend ", function(){
       console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
 
       if (div1_pos.left < div2_pos.left) {
-        var x1 = div1_pos.left + (div1_pos.width - 2);
+        var x1 = div1_pos.left + (div1_pos.width - 0.5);
         var y1 = div1_pos.top + 10;
         var x2 = (div2_pos.left - div2_pos.width) + (div2_pos.width + 2);
         var y2 = div2_pos.top + div2_pos.height / 2;
@@ -5079,6 +5079,7 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
+                        border-radius:24px
                         `
                 ;
     console.log('Line:'+lineElement);            
