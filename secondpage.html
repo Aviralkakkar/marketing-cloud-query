@@ -4796,7 +4796,6 @@ document.addEventListener("touchend ", function(){
    var dragId='';
    function schemaAction(id) 
    {
-    var line_Num=1;
      if(id)
      {
       var str = id.substring(0, id.length - 2);
@@ -4806,6 +4805,7 @@ document.addEventListener("touchend ", function(){
      }
      
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      var line_Num=1; 
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,line_Num);
        line_Num++;
@@ -5004,9 +5004,9 @@ document.addEventListener("touchend ", function(){
               }
             }   
             var newLine_Div=document.createElement('div');
-            newLine_Div.id=FirstDEExtKeyForJoinGlobal+"DeleteQueryBoxLine"+(totalJoined+1);
+            newLine_Div.id=FirstDEExtKeyForJoinGlobal+"DeleteQueryBoxLine"+totalJoined;
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,totalJoined+1);
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,totalJoined);
           }
         }
       }
