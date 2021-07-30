@@ -3221,58 +3221,7 @@
       currentSel.options[index + 1].selected = true;
     }
   }
-  function moveRight(src, des) {
-    var l=[];
-    if (src.selectedIndex == -1) {
-      alert("Please select first!");
-      return;
-    }
-    for (var i = 0; i < src.length; i++) {
-      if (src[i].selected) {
-        console.log(src[i]);
-        var op = document.createElement("option");
-        op.value = src.options[src.selectedIndex].value;
-        op.text = src.options[src.selectedIndex].text;
-        op.id =src.options[src.selectedIndex].id;
-        op.style='padding:4%; margin:0;';
-        console.log(src.options[src.selectedIndex].value);
-        console.log(src.options[src.selectedIndex].text);
-        console.log(src.options[src.selectedIndex].id);
 
-        console.log('1'+des); 
-        
-        l.push(src.options[src.selectedIndex].text);
-        console.log(l);
-        des.options.add(op);
-        src.remove(i);
-        i--;
-      }
-    }
-      sortList("leftSel");
-      sortListDir("rightSel");
-           
-  }
-  function setButton(obj) {
-    if (obj.length == 0) return;
-    currentSel = obj;
-    if (obj.id == "leftsideListInSelectField") {
-      document.getElementById("btnLeft").disabled = true;
-      document.getElementById("btnRight").disabled = false;
-
-      reSelect(document.getElementById("rightsideListInSelectField"));
-    } else {
-      document.getElementById("btnLeft").disabled = false;
-      document.getElementById("btnRight").disabled = true;
-
-      reSelect(document.getElementById("leftsideListInSelectField"));
-    }
-  }
-
-  function reSelect(obj) {
-    for (var i = 0; i < obj.length; i++) {
-      if (obj[i].selected) obj[i].selected = false;
-    }
-  }
   function sortList(val) {
         var list, i, switching, b, shouldSwitch;
         list = document.getElementById(val)
@@ -3305,6 +3254,59 @@
           }
         }
       }
+  function moveRight(src, des) {
+    
+    if (src.selectedIndex == -1) {
+      alert("Please select first!");
+      return;
+    }
+    for (var i = 0; i < src.length; i++) {
+      if (src[i].selected) {
+        console.log(src[i]);
+        var op = document.createElement("option");
+        op.value = src.options[src.selectedIndex].value;
+        op.text = src.options[src.selectedIndex].text;
+        op.id =src.options[src.selectedIndex].id;
+        op.style='padding:4%; margin:0;';
+        console.log(src.options[src.selectedIndex].value);
+        console.log(src.options[src.selectedIndex].text);
+        console.log(src.options[src.selectedIndex].id);
+
+        console.log('1'+des); 
+        
+        l.push(src.options[src.selectedIndex].text);
+        console.log(l);
+        des.options.add(op);
+        src.remove(i);
+        i--;
+      }
+    }
+           sortList("leftsideListInSelectField");
+           sortListDir("rightsideListInSelectField");
+           
+  }
+  function setButton(obj) {
+    if (obj.length == 0) return;
+    currentSel = obj;
+    if (obj.id == "leftsideListInSelectField") {
+      document.getElementById("btnLeft").disabled = true;
+      document.getElementById("btnRight").disabled = false;
+
+      reSelect(document.getElementById("rightsideListInSelectField"));
+    } else {
+      document.getElementById("btnLeft").disabled = false;
+      document.getElementById("btnRight").disabled = true;
+
+      reSelect(document.getElementById("leftsideListInSelectField"));
+    }
+  }
+
+  function reSelect(obj) {
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].selected) obj[i].selected = false;
+    }
+  }
+  
 
       function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
