@@ -2597,7 +2597,7 @@
                         <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                             <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
                             
-                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
                           </footer>
                 
                 </div>
@@ -2733,7 +2733,7 @@
 
                     <button class="slds-button slds-button_brand"
                       style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;"
-                      onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
+                      onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
                   </footer>
 
                 </div>
@@ -3472,7 +3472,7 @@
       /* if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
          console.log('calling function validate query');
          document.getElementById('exampleModal').style.display = 'none';
-         validateQuery(JoinQueryDetails , 'run');
+         validateQuery(JoinQueryDetails , 'Run');
          console.log('called function validate query');
        }*/
       console.log("nitik value23" + JSON.stringify(joinedDivSet));
@@ -3486,7 +3486,7 @@
       else if (countOfDeWithoutWhereClauseValue == DESetQueryBox.size || countOfDeWithWhereClauseValue == 1) {
         console.log('calling function validate query');
         document.getElementById('exampleModal').style.display = 'none';
-        validateQuery(JoinQueryDetails, 'run');
+        validateQuery(JoinQueryDetails, 'Run');
         console.log('called function validate query');
       }
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
@@ -3500,7 +3500,7 @@
             else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
               document.getElementById('exampleModal').style.display = 'none';
-              validateQuery(JoinQueryDetails , 'run');
+              validateQuery(JoinQueryDetails , 'Run');
               console.log('called function validate query');
             }
            else{
@@ -4112,10 +4112,29 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        var tempDESet = new Set();
-        var FirstDEWhereClause = '';
-        var SecondDEWhereClause = '';
-        for (var key in JoinQueryDetails.DEForJoin) {
+        
+        //var tempDESet = new Set();
+        //var FirstDEWhereClause = '';
+        //var SecondDEWhereClause = '';
+
+        for (var key of DESetQueryBox) {
+          if (key in DEListMap.DEMap) {
+            for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
+              strQuery += ' [' + DEListMap.DEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
+            }
+          }
+          else if (key in DEListMap.SharedDEMap) {
+            for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
+              strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
+            }
+          }
+          else if (key in DEListMap.DataViewMap) {
+            for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
+              strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
+            }
+          }
+          
+          /*
           if (!tempDESet.has(JoinQueryDetails.DEForJoin[key].FirstDEName)) {
             if (JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.DEMap) {
               for (var Field1 of DEListMap.DEMap[JoinQueryDetails.DEForJoin[key].FirstDEExtKey].DESelectedFields) {
@@ -4152,14 +4171,17 @@ document.addEventListener("touchend ", function(){
             }
             tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName)
           }
+          */
         }
         strQuery = strQuery.slice(0, -1);
         strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
         for (var key in JoinQueryDetails.DEForJoin) {
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
-        tempDESet = new Set();
 
+        //for where clause
+        /*
+        tempDESet = new Set();
         for (var key in JoinQueryDetails.DEForJoin) {
           FirstDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].FirstDEExtKey + 'WhereClauseValue').innerHTML;
           SecondDEWhereClause = document.getElementById(JoinQueryDetails.DEForJoin[key].SecondDEExtKey + 'WhereClauseValue').innerHTML;
@@ -4253,6 +4275,8 @@ document.addEventListener("touchend ", function(){
             tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
           }
         }
+        */
+      
       }
       else {
         document.getElementById('MainDivAlert').style.display = 'Block';
