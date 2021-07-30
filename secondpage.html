@@ -2919,9 +2919,9 @@
 
 
         <div class="slds-modal__content slds-p-around_medium" id="grid-1-de"
-          style=" overflow:hidden; margin:0; padding:0; height: 27rem;  ">
+          style=" overflow: scroll; margin:0; padding:0; height: 27rem;  ">
 
-          <div class="container" style="padding:0%; margin:0%; ">
+          <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
             <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
               <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
@@ -3198,6 +3198,7 @@
     }
   }
   function moveRight(src, des) {
+    var l=[];
     if (src.selectedIndex == -1) {
       alert("Please select first!");
       return;
@@ -3216,10 +3217,8 @@
 
         console.log('1'+des); 
         
-        var arr=des.text; 
-
-        console.log('2'+des.value);
-       
+        l.push(src.options[src.selectedIndex].text);
+        console.log(l);
         des.options.add(op);
         src.remove(i);
         i--;
