@@ -3275,9 +3275,10 @@
 <script>
 function openModal() {
  
-    var count=0;    
+    var countOfDeWithWhereClauseValue=0;    
+    var countOfDeWithoutWhereClauseValue=0;  
     
-   if (DESetQueryBox.size >=1) {
+   if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('exampleModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -3289,10 +3290,11 @@ function openModal() {
               console.log('value'+value);
               console.log('nitik key'+temp);
               if(value==""){
-                count++;
+                countOfDeWithoutWhereClauseValue++;
                 console.log("nitik value12");
               }
               else{
+                countOfDeWithWhereClauseValue++;
                 document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
@@ -3303,13 +3305,14 @@ function openModal() {
               }
               
             }
-            console.log("nitik value23"+joinedDivSet);
-            console.log("nitik value24"+DESetQueryBox.size);
-            if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
-              console.log("nitik value2"+DESetQueryBox.size);
             document.getElementById("backdrop").style.display = "block"
     document.getElementById("exampleModal").style.display = "block"
     document.getElementById("exampleModal").classList.add("show")
+    console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
+            if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+              console.log("nitik value2"+DESetQueryBox.size);
+            
       } 
            else{
             document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
@@ -3321,7 +3324,7 @@ function openModal() {
         console.log('bye');
       }    
       
-      if(count==DESetQueryBox.size){
+      if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
         console.log('calling function validate query');
         document.getElementById('exampleModal').style.display = 'none';
         validateQuery(JoinQueryDetails , 'run');
