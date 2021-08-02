@@ -3426,7 +3426,7 @@ function openModal(functionAction) {
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
             console.log("nitik value24"+DESetQueryBox.size);
-           if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue!=DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
+           if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue!=DESetQueryBox.size) && (countOfDeWithWhereClauseValue >= 1)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("DEWhereClauseModal").style.display = "block"
