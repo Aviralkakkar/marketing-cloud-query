@@ -3248,11 +3248,12 @@
     }
   }
 
-  function sortList() {
+  function sortList(val) {
         var list, i, switching, b, shouldSwitch;
-        //list = document.getElementById('leftsideListInSelectField');
-        list =document.getElementById("leftsideListInSelectField").querySelectorAll("option");
-        console.log('------------'+list);
+        console.log(val);
+        list = document.getElementById(val);
+        
+        console.log('------------>'+list);
       
         switching = true;
         /* Make a loop that will continue until
@@ -3307,7 +3308,7 @@
         i--;
       }
     }
-          // sortList("leftsideListInSelectField");
+          sortList("leftsideListInSelectField");
            sortListDir("rightsideListInSelectField");
            
   }
