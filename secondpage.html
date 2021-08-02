@@ -4003,6 +4003,10 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
+      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause");
+      console.log('value======'+richTextEditorForFinalWhereClauseValue);
+      for (const val of DESetQueryBox) {}
+
       console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
