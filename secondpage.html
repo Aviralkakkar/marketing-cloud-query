@@ -30,6 +30,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
   <style>
     #marketing-asideLeft {
 
@@ -2238,14 +2239,12 @@
       padding-right: 0 !important;
       margin: 0;
     }
-
-    #leftsideListInSelectField:focus-visible,
-    #rightsideListInSelectField:focus-visible {
-      outline: none;
-      border: none;
-      position: relative;
-    }
-
+     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+       outline: none;
+       border: none;
+       position: relative;
+     }
+      
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -2569,24 +2568,157 @@
                               <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
                 
                             </div-->
-                  <div class="slds-modal__content slds-p-around_medium" id="grid-2-de"
-                    style=" height: 27rem; padding: 0;">
+                            <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
 
 
 
-                    <div id="component-selector-container" class=" slds-float_left "
-                      style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
-                      <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-                        style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions
-                      </h4>
-                      <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
-
-                        <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree"
-                          role="tree" style="padding-left:0rem; background-color:white; position: relative; ">
-
-                        </ul>
-
-                      </div>
+                              <div id="component-selector-container" class=" slds-float_left "
+                                style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions</h4>
+                                <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
+                    
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                    style="padding-left:0rem; background-color:white; position: relative;">
+                    
+                                  </ul>
+                    
+                                </div>
+                              </div>
+                    
+                              <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
+                                style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
+                               
+                                    <div class="expression"></div>
+                                    <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
+                                    
+                              </div>
+                              
+                    
+                            </div>
+        
+               
+                        <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                            <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
+                            
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
+                          </footer>
+                
+                </div>
+                
+                </section>
+              <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+                 
+<!--****** Nitik code ended *********-->
+          
+            </div>
+            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
+                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
+                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+      
+      
+      
+                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+                  <table class=" slds-table slds-table_bordered slds-table--header-fixed"
+                    aria-labelledby="element-with-table-label other-element-with-table-label"
+                    style="border:1px solid rgb(177, 172, 172) !important;">
+                    <thead>
+      
+                      <tr class="slds-line-height_reset">
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Account Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Close Date</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Stage</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Confidence</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Amount</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Contact</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Personal Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Company Mail</div>
+                        </th>
+                      </tr>
+                    </thead>
+      
+      
+      
+      
+                    <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
+                      <tr class="slds-hint-parent slds-border_bottom">
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Account Name">
+                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                        <td data-label="Prospecting">
+                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                        </td>
+                        <td data-label="Confidence">
+                          <div class="slds-truncate" title="20%">20%</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">$25k</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                        <td data-label="Amount">
+                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
+                        </td>
+                      </tr>
+      
+      
+                    </tbody>
+                  </table>
+                </div>
+                <div style="height:5%;">
+                  <div class="slds-grid">
+                    <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                      <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                        data-page="1">
+                        <span class="slds-icon_container slds-icon-utility-chevronleft"
+                          title="Description of icon when needed">
+                          <svg
+                            class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                            aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+      
+                          </svg>
+                          <span class="slds-assistive-text">Description of icon when needed</span>
+                      </button>
+                    </div>
+                    <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                      <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                          id="totalRecords"></span> </span>
                     </div>
 
                     <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
@@ -2974,8 +3106,8 @@
                       <b>Data Extension Fields</b>
                     </h4>
                   </div>
-                  <ul class="list-group left-side"
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; float: none; ">
+                  <ul class="list-group left-side" 
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)"
                       style="height:100%;width:100%; border: none;">
@@ -3018,10 +3150,12 @@
 
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
-                    <ul class="list-group right-side" aria-activedescendant="cb1-opt6"
-                      style=" border: none; padding:0%; margin:0%;  float: none; ">
-                      <select multiple id="rightsideListInSelectField" onclick="setButton(this)"
-                        style=" height: 23rem; width:100%; border: none;">
+                    <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
+                    style=" border: none; padding:0%; margin:0%;   ">
+                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                      
+                     </select>
+                    
 
                       </select>
 
@@ -3281,53 +3415,23 @@
       }
     }
 
-    function moveRight(src, des) {
-
-      if (src.selectedIndex == -1) {
-        alert("Please select first!");
-        return;
-      }
-      for (var i = 0; i < src.length; i++) {
-        if (src[i].selected) {
-          console.log(src[i]);
-          var op = document.createElement("option");
-          op.value = src.options[src.selectedIndex].value;
-          op.text = src.options[src.selectedIndex].text;
-          op.id = src.options[src.selectedIndex].id;
-          op.style = 'padding:4%; margin:0;';
-          console.log(src.options[src.selectedIndex].value);
-          console.log(src.options[src.selectedIndex].text);
-          console.log(src.options[src.selectedIndex].id);
-
-
-          des.options.add(op);
-          src.remove(i);
-          i--;
-        }
-      }
-      sortList("leftsideListInSelectField");
-      sortListDir("rightsideListInSelectField");
-
-    }
-
-    function sortListDir(val) {
-      var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
-      list = document.getElementById(val);
-      switching = true;
-      // Set the sorting direction to ascending:
-      dir = "desc";
-      // Make a loop that will continue until no switching has been done:
-      while (switching) {
-        // Start by saying: no switching is done:
-        switching = false;
-        b = list.getElementsByTagName("OPTION");
-        // Loop through all list-items:
-        for (i = 0; i < (b.length - 1); i++) {
-          // Start by saying there should be no switching:
-          shouldSwitch = false;
-          /* Check if the next item should switch place with the current item,
-          based on the sorting direction (asc or desc): */
-          if (dir == "asc") {
+  function sortList(val) {
+        var list, i, switching, b, shouldSwitch;
+        list = document.getElementById(val)
+      
+        switching = true;
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+          // Start by saying: no switching is done:
+          switching = false;
+          b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:
+          for (i = 0; i < (b.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Check if the next item should
+            switch place with the current item: */
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
               /* If next item is alphabetically lower than current item,
               mark as a switch and break the loop: */
@@ -3458,38 +3562,54 @@
         document.getElementById('DEWhereClauseModal').style.display = 'none';
         validateQuery(JoinQueryDetails, functionAction);
         console.log('called function validate query');
-      }
-      else {
-        document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
-      }
+      }*/
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
+           if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
+              console.log("nitik value2"+DESetQueryBox.size);
+              document.getElementById("backdrop").style.display = "block"
+              document.getElementById("DEWhereClauseModal").style.display = "block"
+              document.getElementById("DEWhereClauseModal").classList.add("show")
+            } 
+            else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue ==1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
+              console.log('calling function validate query');
+              document.getElementById('DEWhereClauseModal').style.display = 'none';
+              validateQuery(JoinQueryDetails , functionAction);
+              console.log('called function validate query');
+            }
+           else{
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+           }
+          
+    
 
+}
 
+function CancelDESelectAlert() {
+  document.getElementById('DESelectAlert').style.display = 'none';
+}
+function CancelQueryBoxJoinAlert() {
+  document.getElementById('QueryBoxJoinAlert').style.display = 'none';
+}
+function closeModal() {
+    document.getElementById("backdrop").style.display = "none";
+    document.getElementById("DEWhereClauseModal").style.display = "none";
+    document.getElementById("DEWhereClauseModal").classList.remove("show");
+    console.log("tt");
+    document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
+    console.log("tt completed");
+}
+// Get the modal
+var modal = document.getElementById('DEWhereClauseModal');
 
-
-    }
-
-    function CancelDESelectAlert() {
-      document.getElementById('DESelectAlert').style.display = 'none';
-    }
-    function CancelQueryBoxJoinAlert() {
-      document.getElementById('QueryBoxJoinAlert').style.display = 'none';
-    }
-    function closeModal() {
-      document.getElementById("backdrop").style.display = "none"
-      document.getElementById("DEWhereClauseModal").style.display = "none"
-      document.getElementById("DEWhereClauseModal").classList.remove("show")
-    }
-    // Get the modal
-    var modal = document.getElementById('DEWhereClauseModal');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        closeModal()
-      }
-    }
-  </script>
-  <!--nitik code ended-->
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal()
+  }
+}
+</script>
+<!--nitik code ended-->
   <!-- Khushboo  code starting   -->
 
   <script>
@@ -3967,6 +4087,7 @@ document.addEventListener("touchend ", function(){
           }
         }
       }
+      }
     };
     //code by nitik started
     /*function drop3(event, target) {
@@ -4023,7 +4144,11 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-      console.log('action type' + actionType);
+      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+      console.log('value======'+richTextEditorForFinalWhereClauseValue);
+      for (const val of DESetQueryBox) {}
+
+      console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
@@ -4386,6 +4511,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
+      document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     }
     function isSetEqual(as, bs) {
       if (as.size !== bs.size) return false;
@@ -4934,24 +5060,28 @@ document.addEventListener("touchend ", function(){
     }
     //--code by nitik
 
-    //Anil kumar for creating Line
+  //Anil kumar for creating Line
+  $(".mydiv").draggable({
+    containment: ".myDivContainer"
+  }); 
 
-    var dragId = '';
-    function schemaAction(id) {
-      if (id) {
-        var str = id.substring(0, id.length - 2);
-        console.log('OnMouseDown:' + str);
-        console.log('Line schema getted');
-        dragId = str;
-      }
-
-      for (var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-        if (dragId == ConnectedTwoDiv.FirstDEExtKey) {
-          joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey, ConnectedTwoDiv.JoinedLineDivId);
-        }
-        else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-          joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey, dragId, ConnectedTwoDiv.JoinedLineDivId);
-        }
+   var dragId='';
+   function schemaAction(id) 
+   {
+     if(id)
+     {
+      var str = id.substring(0, id.length - 2);
+      console.log('OnMouseDown:'+str);
+      console.log('Line schema getted');
+      dragId=str;
+     }
+     
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
+     }
+      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
 
     }
