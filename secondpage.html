@@ -30,12 +30,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" />
-  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" />
-
-
   <style>
     #marketing-asideLeft {
 
@@ -4932,9 +4926,7 @@ document.addEventListener("touchend ", function(){
       dragId=str;
      }
      //for restricting dragging 
-     $(".mydiv").draggable({
-      containment: ".myDivContainer"
-     });
+     
 
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
