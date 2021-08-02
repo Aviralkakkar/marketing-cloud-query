@@ -3947,7 +3947,7 @@ document.addEventListener("touchend ", function(){
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
         "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
-        "FieldKey": JSON.parse(event.dataTransfer.getData("text")).id
+        "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
