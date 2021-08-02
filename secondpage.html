@@ -2489,10 +2489,10 @@
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal()'
+                onclick='openModal("Validate")'
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal()'>Run</button>
+                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -3426,7 +3426,7 @@ function openModal() {
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
             console.log("nitik value24"+DESetQueryBox.size);
-           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+           if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue!=DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("DEWhereClauseModal").style.display = "block"
