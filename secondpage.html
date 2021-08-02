@@ -4916,11 +4916,13 @@ document.addEventListener("touchend ", function(){
 
   //Anil kumar for creating Line
 
-  $(".mydiv").draggable({
-    containment: ".RelationshipDiv"
+  $(function() { 
+    $(".mydiv").draggable({
+      containment: ".myDivContainer"
+    });
   });
-  
-   var dragId='';
+
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
