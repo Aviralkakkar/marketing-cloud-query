@@ -3248,9 +3248,10 @@
     }
   }
 
-  function sortList(val) {
+  function sortList() {
         var list, i, switching, b, shouldSwitch;
-        list = document.getElementById(val)
+        list = document.getElementById('leftsideListInSelectField');
+        console.log('------------'+list);
       
         switching = true;
         /* Make a loop that will continue until
@@ -3305,7 +3306,7 @@
         i--;
       }
     }
-           sortList("leftsideListInSelectField");
+          // sortList("leftsideListInSelectField");
            sortListDir("rightsideListInSelectField");
            
   }
