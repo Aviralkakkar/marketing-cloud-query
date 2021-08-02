@@ -3960,7 +3960,7 @@ document.addEventListener("touchend ", function(){
               
               range = sel.getRangeAt(0);
               range.deleteContents();
-              range.insertNode(document.createTextNode(' ' + FieldName + ' '));
+              range.insertNode(document.createTextNode(FieldName));
             }
           }
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
@@ -3969,27 +3969,7 @@ document.addEventListener("touchend ", function(){
                         draggedDEKey.push(FieldKey);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
-
-                        if(FieldKey in DEListMap.DEMap) {
-                          for (var key in DEListMap.DEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldKey].DEName + '].[' + DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"] + ']');
-                          }
-                        }
-                        else if(FieldKey in DEListMap.SharedDEMap) {
-                          for (var key in DEListMap.SharedDEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldKey].DEName + '].[' + DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"] + ']');
-                          }
-                        }
-                        else if(FieldKey in DEListMap.DataViewMap) {
-                          for (var key in DEListMap.DataViewMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldKey].DEName + '].[' + DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"] + ']');
-                          }
-                        }
-
-                        range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        range.insertNode(document.createTextNode(FieldName));
                       }
                     }
         }
@@ -4054,7 +4034,6 @@ document.addEventListener("touchend ", function(){
       var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
       for (const val of DESetQueryBox) {
-<<<<<<< HEAD
         var count=0;
         for(var i=0;i<draggedDEKey.length;i++){
           
@@ -4067,8 +4046,6 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-=======
->>>>>>> be8b57c363ebb618bed5396c804153bd9b8bb4b2
       }
       console.log("draggedDEKey"+draggedDEKey);
 
