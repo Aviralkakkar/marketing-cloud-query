@@ -3762,7 +3762,7 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-
+    var draggedDEKey=[];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -3911,18 +3911,19 @@ document.addEventListener("touchend ", function(){
         }
       }
     };
+    
     //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
-        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value
+        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
+        "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
-      if(DEWhereClauseDragData.FieldName != null) {
-        insertTextAtCaret(DEWhereClauseDragData.FieldName);
-      }
-      function insertTextAtCaret(FieldName) {
+      if(DEWhereClauseDragData.FieldName!=null){
+      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey);
+      function insertTextAtCaret(FieldName, FieldKey) {
         var sel, range;
         if (window.getSelection) {
           sel = window.getSelection();
@@ -3932,26 +3933,45 @@ document.addEventListener("touchend ", function(){
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
               
+              
               range = sel.getRangeAt(0);
               range.deleteContents();
               range.insertNode(document.createTextNode(FieldName));
             }
           }
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
-            if (sel.getRangeAt && sel.rangeCount) {
-              console.log("hello");
-              range = sel.getRangeAt(0);
-              range.deleteContents();
+                      if (sel.getRangeAt && sel.rangeCount) {
+                        console.log("hello");
+                        draggedDEKey.push(FieldKey);
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
 
-              for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
-                var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-                whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
-              }
-              
-              range.insertNode(document.createTextNode(FieldName));
-            }
-          }
+                        if(FieldKey in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[FieldKey].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldKey].DEName + '].[' + DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+                        else if(FieldKey in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[FieldKey].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldKey].DEName + '].[' + DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+                        else if(FieldKey in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[FieldKey].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldKey].DEName + '].[' + DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+                        
+                        FieldName = ' ( ' + FieldName + ' ) '
+
+                        range.insertNode(document.createTextNode(FieldName));
+                      }
+                    }
         }
+      }
       }
     };
     //code by nitik started
@@ -4011,7 +4031,10 @@ document.addEventListener("touchend ", function(){
     function validateQuery(JoinQueryDetails, actionType) {
       var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
-      for (const val of DESetQueryBox) {}
+      for (const val of DESetQueryBox) {
+      }
+      console.log("draggedDEKey"+draggedDEKey);
+
 
       console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
@@ -4299,7 +4322,6 @@ document.addEventListener("touchend ", function(){
         document.getElementById('DEListSidebar').style.marginTop = '0px';
       }
 
-      document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
       function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
         if (JoinType == 'Left Outer Join') {
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
@@ -4377,14 +4399,14 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
+      document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     }
     function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }
-    
-      function CancelDERecordModal() {
+    function CancelDERecordModal() {
       document.getElementById('recordResultModal').style.display = 'none';
     }
        
