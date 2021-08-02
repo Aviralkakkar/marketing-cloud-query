@@ -3972,7 +3972,8 @@ document.addEventListener("touchend ", function(){
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
-                        var e=document.getElementById(FieldKey).style.color='red';
+                       document.getElementById(FieldKey).style.color='red';
+                       var e=document.getElementById(FieldKey);
                         console.log('check end'+e);
                         if(FieldKey in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldKey].DEFields) {
