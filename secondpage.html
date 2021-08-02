@@ -4926,7 +4926,9 @@ document.addEventListener("touchend ", function(){
       dragId=str;
      }
      //for restricting dragging 
-     
+     $(".mydiv").draggable({
+      containment: "#queryDiv",
+     });
 
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
