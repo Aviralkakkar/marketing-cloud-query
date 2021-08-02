@@ -3836,7 +3836,8 @@ document.addEventListener("touchend ", function(){
                 console.log('Object12 ' + obje.id);
                 
                 console.log('Object12 ' + JSON.stringify(obje));
-                if(obje.id!=null){
+                if(obje.id!=='undefined'){
+                  console.log('in the if');
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
                 }
               };
