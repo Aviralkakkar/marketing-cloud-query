@@ -3432,7 +3432,7 @@ function openModal(functionAction) {
               document.getElementById("DEWhereClauseModal").style.display = "block"
               document.getElementById("DEWhereClauseModal").classList.add("show")
             } 
-            else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
+            else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue ==1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
               console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
               validateQuery(JoinQueryDetails , functionAction);
@@ -3441,7 +3441,6 @@ function openModal(functionAction) {
            else{
             document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
            }
-     
           
     
 
