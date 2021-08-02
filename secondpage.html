@@ -2408,7 +2408,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div class="slds-col myDivContainer" id="queryDiv" style="height:50%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -4896,6 +4896,10 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
+  $(".mydiv").draggable({
+    containment: ".myDivContainer"
+  }); 
+
    var dragId='';
    function schemaAction(id) 
    {
