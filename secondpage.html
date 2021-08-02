@@ -4973,7 +4973,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-          }  
+            
         }
 
         function closeDragElement() {
@@ -4994,11 +4994,7 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  $(".mydiv").draggable({
-    containment: ".myDivContainer"
-  }); 
-
-   var dragId='';
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
