@@ -2237,6 +2237,11 @@
       padding-right: 0 !important;
       margin: 0;
     }
+     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+       outline: none;
+       border: none;
+       position: relative;
+     }
       
     /*-------End Here------------*/
   </style>
@@ -2484,10 +2489,10 @@
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal()'
+                onclick='openModal("Validate")'
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal()'>Run</button>
+                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2998,7 +3003,7 @@
                     style=" border: none; padding:0%; margin:0%;   ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
-                    </select>
+                     </select>
                     
 
                   </ul>
@@ -3254,6 +3259,7 @@
           }
         }
       }
+
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
@@ -3282,30 +3288,8 @@
            sortListDir("rightsideListInSelectField");
            
   }
-  function setButton(obj) {
-    if (obj.length == 0) return;
-    currentSel = obj;
-    if (obj.id == "leftsideListInSelectField") {
-      document.getElementById("btnLeft").disabled = true;
-      document.getElementById("btnRight").disabled = false;
 
-      reSelect(document.getElementById("rightsideListInSelectField"));
-    } else {
-      document.getElementById("btnLeft").disabled = false;
-      document.getElementById("btnRight").disabled = true;
-
-      reSelect(document.getElementById("leftsideListInSelectField"));
-    }
-  }
-
-  function reSelect(obj) {
-    for (var i = 0; i < obj.length; i++) {
-      if (obj[i].selected) obj[i].selected = false;
-    }
-  }
-  
-
-      function sortListDir(val) {
+  function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
         list = document.getElementById(val);
         switching = true;
@@ -3356,6 +3340,30 @@
         }
       }
     
+  function setButton(obj) {
+    if (obj.length == 0) return;
+    currentSel = obj;
+    if (obj.id == "leftsideListInSelectField") {
+      document.getElementById("btnLeft").disabled = true;
+      document.getElementById("btnRight").disabled = false;
+
+      reSelect(document.getElementById("rightsideListInSelectField"));
+    } else {
+      document.getElementById("btnLeft").disabled = false;
+      document.getElementById("btnRight").disabled = true;
+
+      reSelect(document.getElementById("leftsideListInSelectField"));
+    }
+  }
+
+  function reSelect(obj) {
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].selected) obj[i].selected = false;
+    }
+  }
+  
+
+     
 
 </script>
 
@@ -3418,7 +3426,7 @@ function openModal() {
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
             console.log("nitik value24"+DESetQueryBox.size);
-           if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)){
+           if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue!=DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("DEWhereClauseModal").style.display = "block"
