@@ -4915,6 +4915,11 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
+
+  $(".mydiv").draggable({
+    containment: ".RelationshipDiv"
+  });
+  
    var dragId='';
    function schemaAction(id) 
    {
@@ -5213,11 +5218,6 @@ document.addEventListener("touchend ", function(){
       }
     }
 
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
-    $(".mydiv").draggable({
-      containment: ".myDivContainer"
-    });
   </script>
 </body>
 
