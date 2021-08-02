@@ -3254,6 +3254,7 @@
         list = document.getElementById(val);
         
         console.log('------------>'+list);
+        console.log('=============='+document.getElementById(val).querySelectorAll('select'));
       
         switching = true;
         /* Make a loop that will continue until
@@ -3309,7 +3310,7 @@
       }
     }
              sortList("leftsideListInSelectField");
-           sortListDir("leftsideListInSelectField");
+           sortListDir("rightsideListInSelectField");
            
   }
 
@@ -4947,6 +4948,7 @@ document.addEventListener("touchend ", function(){
 
         function dragMouseDown(e) {
           var tableDiv=document.getElementById('example-unique-id-8');
+          console.log('divpos:'+e.target.id);
           var current_mydiv=document.getElementById(e.target.id);
 
           var tableDiv_pos=tableDiv.getBoundingClientRect();
@@ -4971,7 +4973,7 @@ document.addEventListener("touchend ", function(){
 
           var tableDiv=document.getElementById('example-unique-id-8');
           var current_mydiv=document.getElementById(e.target.id);
-
+          console.log('divpos:'+e.target.id);
           var tableDiv_pos=tableDiv.getBoundingClientRect();
           var current_mydivPos=current_mydiv.getBoundingClientRect();
           
