@@ -3836,10 +3836,10 @@ document.addEventListener("touchend ", function(){
                 console.log('Object12 ' + obje.id);
                 
                 console.log('Object12 ' + JSON.stringify(obje));
-                if(obje.id!=='undefined'){
-                  console.log('in the if');
+                
+                 
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
-                }
+              
               };
           
               document.ondragover = function (event, ev) {
@@ -3917,6 +3917,7 @@ document.addEventListener("touchend ", function(){
         "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
+      if(DEWhereClauseDragData.FieldName!=null){
       insertTextAtCaret(DEWhereClauseDragData.FieldName);
       function insertTextAtCaret(FieldName) {
         var sel, range;
@@ -3943,6 +3944,7 @@ document.addEventListener("touchend ", function(){
                     }
         }
       }
+    }
     };
     //code by nitik started
     /*function drop3(event, target) {
