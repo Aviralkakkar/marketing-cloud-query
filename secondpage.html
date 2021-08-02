@@ -4871,10 +4871,6 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
-
-          $(".mydiv").elementDrag({
-            containment: ".myDivContainer"
-          }); 
         }  
 
         function elementDrag(e) {
@@ -4890,11 +4886,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-
-          $(".mydiv").elementDrag({
-            containment: ".myDivContainer"
-          }); 
-        }
+      }
 
         function closeDragElement() {
           /* stop moving when mouse button is released:*/
