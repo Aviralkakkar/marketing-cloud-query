@@ -4003,7 +4003,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
       for (const val of DESetQueryBox) {}
 
