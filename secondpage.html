@@ -2237,7 +2237,7 @@
       padding-right: 0 !important;
       margin: 0;
     }
-     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+     #leftsideListInSelectField:focus-visible, #rightsideListInSelectField:focus-visible{
        outline: none;
        border: none;
        position: relative;
@@ -2570,7 +2570,7 @@
                                 <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
-                                    style="padding-left:0rem; background-color:white; position: relative;">
+                                    style="padding-left:0rem; background-color:white; position: relative; ">
                     
                                   </ul>
                     
@@ -2962,7 +2962,7 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; float: none; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
@@ -3000,7 +3000,7 @@
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%;   ">
+                    style=" border: none; padding:0%; margin:0%;  float: none; ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
