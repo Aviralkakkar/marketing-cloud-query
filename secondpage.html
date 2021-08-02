@@ -3971,6 +3971,9 @@ document.addEventListener("touchend ", function(){
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
+                        console.log('check start');
+                        document.getElementById(FieldKey).style.backgroundColor='blue';
+                        console.log('check end');
                         if(FieldKey in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldKey].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
