@@ -4935,6 +4935,7 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = '';
       document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
+      var dragId='';
       function dragElement(elmnt) {
         var main_Div=document.getElementById("");
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -4948,12 +4949,9 @@ document.addEventListener("touchend ", function(){
 
         function dragMouseDown(e) {
           var tableDiv=document.getElementById('example-unique-id-8');
-          console.log('divpos:'+e.target.id);
-          var current_mydiv=document.getElementById(e.target.id);
-
+          var current_mydiv=document.getElementById(dragId+"ForConnectedLine");
           var tableDiv_pos=tableDiv.getBoundingClientRect();
           var current_mydivPos=current_mydiv.getBoundingClientRect();
-
           if(tableDiv_pos.right<current_mydivPos.left)
           {
             e = e || window.event;
@@ -4966,17 +4964,14 @@ document.addEventListener("touchend ", function(){
             document.onmousemove = elementDrag;
             //Added by ANIL KUMAR
             schemaAction();
-          }  
+          }
         }  
 
         function elementDrag(e) {
-
           var tableDiv=document.getElementById('example-unique-id-8');
-          var current_mydiv=document.getElementById(e.target.id);
-          console.log('divpos:'+e.target.id);
+          var current_mydiv=document.getElementById(dragId+"ForConnectedLine");
           var tableDiv_pos=tableDiv.getBoundingClientRect();
           var current_mydivPos=current_mydiv.getBoundingClientRect();
-          
           if(tableDiv_pos.right<current_mydivPos.left)
           {
             e = e || window.event;
@@ -4991,7 +4986,7 @@ document.addEventListener("touchend ", function(){
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
             //Added by ANIL KUMAR
             schemaAction();
-          }  
+          }
         }
 
         function closeDragElement() {
@@ -5012,11 +5007,6 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  $(".mydiv").draggable({
-    containment: ".myDivContainer"
-  }); 
-
-   var dragId='';
    function schemaAction(id) 
    {
      if(id)
