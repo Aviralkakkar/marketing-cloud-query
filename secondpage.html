@@ -3250,7 +3250,8 @@
 
   function sortList() {
         var list, i, switching, b, shouldSwitch;
-        list = document.getElementById('leftsideListInSelectField');
+        //list = document.getElementById('leftsideListInSelectField');
+        list =document.getElementById("leftsideListInSelectField").querySelectorAll("option");
         console.log('------------'+list);
       
         switching = true;
