@@ -3972,7 +3972,7 @@ document.addEventListener("touchend ", function(){
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
-                        document.getElementById(FieldKey).style.backgroundColor='blue';
+                        document.getElementById(FieldKey).style.color='blue';
                         console.log('check end');
                         if(FieldKey in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldKey].DEFields) {
