@@ -2413,7 +2413,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div class="slds-col myDivContainer" id="queryDiv" style="height:50%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -3375,8 +3375,8 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-function openModal() {
- 
+function openModal(functionAction) {
+   
     var countOfDeWithWhereClauseValue=0;    
     var countOfDeWithoutWhereClauseValue=0;  
     
@@ -3435,7 +3435,7 @@ function openModal() {
             else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
-              validateQuery(JoinQueryDetails , 'Run');
+              validateQuery(JoinQueryDetails , functionAction);
               console.log('called function validate query');
             }
            else{
@@ -3833,6 +3833,7 @@ document.addEventListener("touchend ", function(){
               document.ondragstart = function (event) {
                 var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
                 console.log('Object12 ' + JSON.stringify(obje));
+                console.log('Object12 ' + obje[id]);
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
           
@@ -3993,6 +3994,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
+      console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
@@ -4869,6 +4871,9 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
+          $(".mydiv").draggable({
+            containment: ".myDivContainer"
+          }); 
         }  
 
         function elementDrag(e) {
@@ -4884,6 +4889,9 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
+          $(".mydiv").draggable({
+            containment: ".myDivContainer"
+          }); 
         }
 
         function closeDragElement() {
@@ -4904,7 +4912,7 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-   var dragId='';
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
