@@ -3936,7 +3936,7 @@ document.addEventListener("touchend ", function(){
               
               range = sel.getRangeAt(0);
               range.deleteContents();
-              range.insertNode(document.createTextNode(FieldName));
+              range.insertNode(document.createTextNode(' ' + FieldName + ' '));
             }
           }
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
@@ -3964,10 +3964,8 @@ document.addEventListener("touchend ", function(){
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldKey].DEName + '].[' + DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"] + ']');
                           }
                         }
-                        
-                        FieldName = ' ( ' + FieldName + ' ) '
 
-                        range.insertNode(document.createTextNode(FieldName));
+                        range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                       }
                     }
         }
