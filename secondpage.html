@@ -3762,7 +3762,7 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-
+    var draggedDEKey=[];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -3911,17 +3911,19 @@ document.addEventListener("touchend ", function(){
         }
       }
     };
+    
     //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
-        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value
+        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
+        "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
-      insertTextAtCaret(DEWhereClauseDragData.FieldName);
-      function insertTextAtCaret(FieldName) {
+      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey);
+      function insertTextAtCaret(FieldName, FieldKey) {
         var sel, range;
         if (window.getSelection) {
           sel = window.getSelection();
@@ -3930,6 +3932,7 @@ document.addEventListener("touchend ", function(){
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
+              draggedDEKey.add(FieldKey);
               
               range = sel.getRangeAt(0);
               range.deleteContents();
@@ -3939,6 +3942,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
+
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
