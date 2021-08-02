@@ -3832,6 +3832,7 @@ document.addEventListener("touchend ", function(){
           
               document.ondragstart = function (event) {
                 var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
+                console.log('Object12 ' + obje.id);
                 console.log('Object12 ' + JSON.stringify(obje));
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
