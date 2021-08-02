@@ -4870,7 +4870,7 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
-          $(".mydiv").draggable({
+          $(".mydiv").dragElement({
             containment: ".myDivContainer"
           }); 
         }  
@@ -4888,7 +4888,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-          $(".mydiv").draggable({
+          $(".mydiv").dragElement({
             containment: ".myDivContainer"
           }); 
         }
