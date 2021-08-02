@@ -4859,6 +4859,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
       function dragElement(elmnt) {
+        var main_Div=document.getElementById("");
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         if (document.getElementById(elmnt.id + "header")) {
           /* if present, the header is where you move the DIV from:*/
@@ -4869,31 +4870,50 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          e = e || window.event;
-          e.preventDefault();
-          // get the mouse cursor position at startup:
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          document.onmouseup = closeDragElement;
-          // call a function whenever the cursor moves:
-          document.onmousemove = elementDrag;
-          //Added by ANIL KUMAR
-          schemaAction();
+          var tableDiv=document.getElementById('example-unique-id-8');
+          var current_mydiv=document.getElementById(e.target.id);
+
+          var tableDiv_pos=tableDiv.getBoundingClientRect();
+          var current_mydivPos=current_mydiv.getBoundingClientRect();
+
+          if(tableDiv_pos.right<current_mydivPos.left)
+          {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+            //Added by ANIL KUMAR
+            schemaAction();
+          }  
         }  
 
         function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-          // calculate the new cursor position:
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          // set the element's new position:
-          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          //Added by ANIL KUMAR
-          schemaAction();
+
+          var tableDiv=document.getElementById('example-unique-id-8');
+          var current_mydiv=document.getElementById(e.target.id);
+
+          var tableDiv_pos=tableDiv.getBoundingClientRect();
+          var current_mydivPos=current_mydiv.getBoundingClientRect();
+          
+          if(tableDiv_pos.right<current_mydivPos.left)
+          {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            //Added by ANIL KUMAR
+            schemaAction();
+          }  
         }
 
         function closeDragElement() {
@@ -4926,9 +4946,9 @@ document.addEventListener("touchend ", function(){
       dragId=str;
      }
      //for restricting dragging 
-     $(".mydiv").draggable({
+     /*$(".mydiv").draggable({
       containment: "#queryDiv",
-     });
+     });*/
 
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
