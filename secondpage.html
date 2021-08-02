@@ -4871,6 +4871,9 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
+          $(".mydiv").draggable({
+            containment: ".myDivContainer"
+          }); 
         }  
 
         function elementDrag(e) {
@@ -4886,6 +4889,9 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
+          $(".mydiv").draggable({
+            containment: ".myDivContainer"
+          }); 
         }
 
         function closeDragElement() {
@@ -4906,11 +4912,7 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  $(".mydiv").draggable({
-    containment: ".myDivContainer"
-  }); 
-
-   var dragId='';
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
