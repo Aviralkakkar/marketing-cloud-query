@@ -3932,7 +3932,7 @@ document.addEventListener("touchend ", function(){
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
-              draggedDEKey.add(FieldKey);
+              
               
               range = sel.getRangeAt(0);
               range.deleteContents();
@@ -3942,7 +3942,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-
+                        draggedDEKey.add(FieldKey);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
