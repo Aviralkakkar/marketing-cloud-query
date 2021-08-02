@@ -2237,6 +2237,10 @@
       padding-right: 0 !important;
       margin: 0;
     }
+     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+       border: none;
+       position: relative;
+     }
       
     /*-------End Here------------*/
   </style>
@@ -2998,7 +3002,7 @@
                     style=" border: none; padding:0%; margin:0%;   ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
-                    </select>
+                     </select>
                     
 
                   </ul>
@@ -3254,6 +3258,7 @@
           }
         }
       }
+      
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
@@ -3282,30 +3287,8 @@
            sortListDir("rightsideListInSelectField");
            
   }
-  function setButton(obj) {
-    if (obj.length == 0) return;
-    currentSel = obj;
-    if (obj.id == "leftsideListInSelectField") {
-      document.getElementById("btnLeft").disabled = true;
-      document.getElementById("btnRight").disabled = false;
 
-      reSelect(document.getElementById("rightsideListInSelectField"));
-    } else {
-      document.getElementById("btnLeft").disabled = false;
-      document.getElementById("btnRight").disabled = true;
-
-      reSelect(document.getElementById("leftsideListInSelectField"));
-    }
-  }
-
-  function reSelect(obj) {
-    for (var i = 0; i < obj.length; i++) {
-      if (obj[i].selected) obj[i].selected = false;
-    }
-  }
-  
-
-      function sortListDir(val) {
+  function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
         list = document.getElementById(val);
         switching = true;
@@ -3356,6 +3339,30 @@
         }
       }
     
+  function setButton(obj) {
+    if (obj.length == 0) return;
+    currentSel = obj;
+    if (obj.id == "leftsideListInSelectField") {
+      document.getElementById("btnLeft").disabled = true;
+      document.getElementById("btnRight").disabled = false;
+
+      reSelect(document.getElementById("rightsideListInSelectField"));
+    } else {
+      document.getElementById("btnLeft").disabled = false;
+      document.getElementById("btnRight").disabled = true;
+
+      reSelect(document.getElementById("leftsideListInSelectField"));
+    }
+  }
+
+  function reSelect(obj) {
+    for (var i = 0; i < obj.length; i++) {
+      if (obj[i].selected) obj[i].selected = false;
+    }
+  }
+  
+
+     
 
 </script>
 
