@@ -3374,8 +3374,8 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-function openModal() {
- 
+function openModal(functionAction) {
+    Console.log("functionAction"+functionAction);
     var countOfDeWithWhereClauseValue=0;    
     var countOfDeWithoutWhereClauseValue=0;  
     
@@ -3434,7 +3434,7 @@ function openModal() {
             else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
-              validateQuery(JoinQueryDetails , 'Run');
+              validateQuery(JoinQueryDetails , functionAction);
               console.log('called function validate query');
             }
            else{
@@ -3992,6 +3992,7 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
+      console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
