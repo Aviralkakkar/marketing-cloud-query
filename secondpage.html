@@ -4925,7 +4925,11 @@ document.addEventListener("touchend ", function(){
       console.log('Line schema getted');
       dragId=str;
      }
-     
+     //for restricting dragging 
+     $(".mydiv").draggable({
+      containment: ".myDivContainer"
+     });
+
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
