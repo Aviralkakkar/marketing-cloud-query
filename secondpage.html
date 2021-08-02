@@ -4947,6 +4947,7 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
+          console.log('dragId:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4961,6 +4962,7 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
+          console.log('dragId:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
