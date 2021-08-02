@@ -3833,7 +3833,6 @@ document.addEventListener("touchend ", function(){
               document.ondragstart = function (event) {
                 var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
                 console.log('Object12 ' + JSON.stringify(obje));
-                console.log('Object12 ' + obje[id]);
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
               };
           
@@ -4871,9 +4870,6 @@ document.addEventListener("touchend ", function(){
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
-          $(".mydiv").draggable({
-            containment: ".myDivContainer"
-          }); 
         }  
 
         function elementDrag(e) {
@@ -4889,9 +4885,6 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-          $(".mydiv").draggable({
-            containment: ".myDivContainer"
-          }); 
         }
 
         function closeDragElement() {
@@ -4912,7 +4905,11 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  var dragId='';
+  $(".mydiv").draggable({
+    containment: ".myDivContainer"
+  }); 
+
+   var dragId='';
    function schemaAction(id) 
    {
      if(id)
