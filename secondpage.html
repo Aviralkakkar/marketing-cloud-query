@@ -3453,9 +3453,12 @@ function CancelQueryBoxJoinAlert() {
   document.getElementById('QueryBoxJoinAlert').style.display = 'none';
 }
 function closeModal() {
-    document.getElementById("backdrop").style.display = "none"
-    document.getElementById("DEWhereClauseModal").style.display = "none"
-    document.getElementById("DEWhereClauseModal").classList.remove("show")
+    document.getElementById("backdrop").style.display = "none";
+    document.getElementById("DEWhereClauseModal").style.display = "none";
+    document.getElementById("DEWhereClauseModal").classList.remove("show");
+    console.log("tt");
+    document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
+    console.log("tt completed");
 }
 // Get the modal
 var modal = document.getElementById('DEWhereClauseModal');
