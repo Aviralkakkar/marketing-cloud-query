@@ -1910,7 +1910,7 @@
       background-color: #fafaf9;
       font-size: 12px;
     }
-
+   
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code started -->
@@ -2237,6 +2237,10 @@
       padding-right: 0 !important;
       margin: 0;
     }
+     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+       border: none;
+       position: relative;
+     }
       
     /*-------End Here------------*/
   </style>
@@ -2588,7 +2592,7 @@
                         <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                             <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
                             
-                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'run')">Run</button>
+                            <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
                           </footer>
                 
                 </div>
@@ -2943,12 +2947,12 @@
 
 
         <div class="slds-modal__content slds-p-around_medium" id="grid-1-de"
-          style=" overflow: scroll; margin:0; padding:0; height: 27rem;  ">
+          style=" overflow-y: scroll; margin:0; padding:0; height: 27rem;  ">
 
           <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
             <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
-              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;">
+              <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative;">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
                     <h4 class="slds-text-title_caps" id=" component-selector-container__heading"
@@ -2983,7 +2987,7 @@
                 </button>-->
               </div>
 
-              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray;  ">
+              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
                 <div class="well" style=" padding:0%;  background-color: white;  ">
                   <div class="row" style="padding:0%; margin:0%;  ">
 
@@ -2998,7 +3002,7 @@
                     style=" border: none; padding:0%; margin:0%;   ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
-                    </select>
+                     </select>
                     
 
                   </ul>
@@ -3221,8 +3225,42 @@
       currentSel.options[index + 1].selected = true;
     }
   }
+
+  function sortList(val) {
+        var list, i, switching, b, shouldSwitch;
+        list = document.getElementById(val)
+      
+        switching = true;
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+          // Start by saying: no switching is done:
+          switching = false;
+          b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:
+          for (i = 0; i < (b.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Check if the next item should
+            switch place with the current item: */
+            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+              /* If next item is alphabetically lower than current item,
+              mark as a switch and break the loop: */
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+            and mark the switch as done: */
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+          }
+        }
+      }
+
   function moveRight(src, des) {
-    var l=[];
+    
     if (src.selectedIndex == -1) {
       alert("Please select first!");
       return;
@@ -3239,16 +3277,68 @@
         console.log(src.options[src.selectedIndex].text);
         console.log(src.options[src.selectedIndex].id);
 
-        console.log('1'+des); 
         
-        l.push(src.options[src.selectedIndex].text);
-        console.log(l);
         des.options.add(op);
         src.remove(i);
         i--;
       }
     }
+           sortList("rightsideListInSelectField");
+           sortListDir("leftsideListInSelectField");
+           
   }
+
+  function sortListDir(val) {
+        var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+        list = document.getElementById(val);
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "desc";
+        // Make a loop that will continue until no switching has been done:
+        while (switching) {
+          // Start by saying: no switching is done:
+          switching = false;
+          b = list.getElementsByTagName("OPTION");
+          // Loop through all list-items:
+          for (i = 0; i < (b.length - 1); i++) {
+            // Start by saying there should be no switching:
+            shouldSwitch = false;
+            /* Check if the next item should switch place with the current item,
+            based on the sorting direction (asc or desc): */
+            if (dir == "asc") {
+              if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                /* If next item is alphabetically lower than current item,
+                mark as a switch and break the loop: */
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                /* If next item is alphabetically higher than current item,
+                mark as a switch and break the loop: */
+                shouldSwitch= true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+            and mark that a switch has been done: */
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+            // Each time a switch is done, increase switchcount by 1:
+            switchcount ++;
+          } else {
+            /* If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again. */
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+    
   function setButton(obj) {
     if (obj.length == 0) return;
     currentSel = obj;
@@ -3270,6 +3360,9 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
+  
+
+     
 
 </script>
 
@@ -3327,7 +3420,7 @@ function openModal() {
      /* if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
         console.log('calling function validate query');
         document.getElementById('exampleModal').style.display = 'none';
-        validateQuery(JoinQueryDetails , 'run');
+        validateQuery(JoinQueryDetails , 'Run');
         console.log('called function validate query');
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
@@ -3341,7 +3434,7 @@ function openModal() {
             else if((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) || (countOfDeWithWhereClauseValue==1) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ))){
               console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
-              validateQuery(JoinQueryDetails , 'run');
+              validateQuery(JoinQueryDetails , 'Run');
               console.log('called function validate query');
             }
            else{
@@ -4672,8 +4765,8 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">'+
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 140px; top: 36px;">' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 30%; top: 5%;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
