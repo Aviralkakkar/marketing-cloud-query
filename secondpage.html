@@ -5009,13 +5009,12 @@ document.addEventListener("touchend ", function(){
   //Anil kumar for creating Line
   function schemaAction(id) 
    {
-     if(id)
-     {
+     
       var str = id.substring(0, id.length - 2);
       console.log('OnMouseDown:'+str);
       console.log('Line schema getted');
       dragId=str;
-     }
+     
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
