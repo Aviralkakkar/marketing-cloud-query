@@ -3493,7 +3493,9 @@ function closeModal() {
     document.getElementById("DEWhereClauseModal").style.display = "none";
     document.getElementById("DEWhereClauseModal").classList.remove("show");
     console.log("tt");
-    document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
+    var text=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+    console.log("text"+text);
+    //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
     draggedDEKey=[]
 }
