@@ -3889,6 +3889,7 @@ document.addEventListener("touchend ", function(){
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
       console.log(" DEDragData.DEName"+ DEDragData.DEName);
       console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
@@ -3951,7 +3952,7 @@ document.addEventListener("touchend ", function(){
     }
     };
     
-  //script added by priyanka for moving 
+  //script added by nitik for moving 
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
@@ -3972,6 +3973,7 @@ document.addEventListener("touchend ", function(){
           console.log("anchorID"+anchorID);
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
           console.log("superparentID"+superparentID);
+          //code added by priyanka  for moving 
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
               
@@ -4085,6 +4087,7 @@ document.addEventListener("touchend ", function(){
             count++;
           }
         }
+        console.log("count==="+count);
         if(count==0){
           console.log("draggedDEKey");
           document.getElementById('DeDragAlert').style.display = 'Block';
