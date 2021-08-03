@@ -2999,7 +2999,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3300,19 +3300,19 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
-        console.log(src.options[src.selectedIndex].value);
-        console.log(src.options[src.selectedIndex].text);
-        console.log(src.options[src.selectedIndex].id);
+       // console.log(src.options[src.selectedIndex].value);
+       // console.log(src.options[src.selectedIndex].text);
+       // console.log(src.options[src.selectedIndex].id);
 
-        console.log('des'+des);
+       // console.log('des'+des);
         des.options.add(op);
         src.remove(i);
         i--;
         
       }
     }
-   sortList("leftsideListInSelectField");
-   sortListDir("rightsideListInSelectField");
+  // sortList("leftsideListInSelectField");
+  // sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3429,7 +3429,7 @@ function openModal(functionAction) {
                 document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3980,9 +3980,11 @@ document.addEventListener("touchend ", function(){
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
-                       document.getElementById(FieldKey).style.backgroundColor='#e9f0f4';
-                       var e=document.getElementById(FieldKey);
-                        console.log('check end'+e);
+                      // document.getElementById(FieldKey).style.backgroundColor='blue !important';
+                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+
+                      
+                        console.log('check end');
                         if(FieldKey in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldKey].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
