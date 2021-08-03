@@ -3428,6 +3428,7 @@ function openModal(functionAction) {
                 console.log("nitik value12");
               }
               else{
+               
                 countOfDeWithWhereClauseValue++;
                 document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -3436,6 +3437,17 @@ function openModal(functionAction) {
                 ' </span>' +
                 '  </div>' +
                 '</li>';
+                if(draggedDeName.length != 0){
+                  for(var i=0;i<draggedDeName.length;i++){
+                    if(val==draggedDeName[i]){
+                      console.log("qwerty");
+                      document.getElementById(draggedDeId[i]).className = "slds-button slds-button_brand"; 
+                      console.log("qwerty end");
+                    }
+                  }
+                  
+                  
+                }
               }
               
             }
@@ -4093,7 +4105,7 @@ document.addEventListener("touchend ", function(){
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
           console.log("draggedDeId"+draggedDeId[i]);
-          document.getElementById(draggedDeId[i]).className = "slds-button slds-button_brand"; 
+         // document.getElementById(draggedDeId[i]).className = "slds-button slds-button_brand"; 
           console.log("Before the if");
           if(val==draggedDeName[i]){
             count++;
