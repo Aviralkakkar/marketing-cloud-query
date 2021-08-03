@@ -3498,7 +3498,8 @@ function closeModal() {
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
     if(text==" "){
-      draggedDEKey=[]
+      draggedDeName=[];
+      draggedDeId=[];
     }
     
 }
@@ -3804,7 +3805,8 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-    var draggedDEKey=[];
+    var draggedDeName=[];
+    var draggedDeId=[];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -3993,7 +3995,8 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDEKey.push(FieldType);
+                        draggedDeName.push(FieldType);
+                        draggedDeId.push(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
@@ -4088,20 +4091,20 @@ document.addEventListener("touchend ", function(){
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
       for (const val of DESetQueryBox) {
         var count=0;
-        for(var i=0;i<draggedDEKey.length;i++){
-          document.getElementById(draggedDEKey[i]).className = "slds-button slds-button_brand"; 
-          if(val==draggedDEKey[i]){
+        for(var i=0;i<draggedDeName.length;i++){
+          document.getElementById(draggedDeId[i]).className = "slds-button slds-button_brand"; 
+          if(val==draggedDeName[i]){
             count++;
           }
         }
         console.log("count==="+count);
         if(count==0){
-          console.log("draggedDEKey");
+          console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
       }
-      console.log("draggedDEKey"+draggedDEKey);
+      console.log("draggedDeName"+draggedDeName);
 
 
       console.log('action type'+actionType);
