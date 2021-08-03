@@ -4985,8 +4985,9 @@ document.addEventListener("touchend ", function(){
           var mydiv1=document.getElementById(dragKeyRes+'ForConnectedLine');
           var queryDiv_pos=queryDiv.getBoundingClientRect();
           var mydiv_pos=mydiv1.getBoundingClientRect();
-          if(queryDiv_pos.right<mydiv_pos)
-          {
+          console.log('D1:'+queryDiv_pos.right);
+          console.log('D2:'+mydiv_pos.left);
+
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -4999,22 +5000,8 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-          }
-          else
-          {
-          e = e || window.event;
-          e.preventDefault();
-          // calculate the new cursor position:
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-          // set the element's new position:
-          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-          //Added by ANIL KUMAR
-          schemaAction();
-          }
+          
+          
         }
 
         function closeDragElement() {
