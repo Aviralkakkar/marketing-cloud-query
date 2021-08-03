@@ -25,11 +25,11 @@ app.use(express.static(path.join(__dirname, './images')));
 app.use(express.static(path.join(__dirname, './slds icons')));
 app.use(express.static("marketing-cloud-query-app"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, './assets')));
+app.use(express.static(path.join(__dirname, './public/assets')));
 app.use(express.static(path.join(__dirname, './marketing-cloud-query')));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname + '/loginpage.html'));
+  res.sendFile(path.join(__dirname + '/public/loginpage.html'));
 })
 
 app.set('view engine', 'html');
@@ -48,7 +48,7 @@ app.post("/secondpage", async function (req, res) {
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
 
-  res.sendFile(path.join(__dirname + '/secondpage.html'));
+  res.sendFile(path.join(__dirname + '/public/secondpage.html'));
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
