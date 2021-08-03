@@ -4796,7 +4796,7 @@ document.addEventListener("touchend ", function(){
         
         //************************************************Edited By ANIL KUMAR**********************************//
         var dragKeyRes='';
-        dragKeyRes=DEDragData.DEExtKey+"##";
+        dragKeyRes=DEDragData.DEExtKey;
         console.log('ID:'+dragKeyRes);
         var relationDivString = '<style>' +
           '        ' +
@@ -5017,15 +5017,12 @@ document.addEventListener("touchend ", function(){
   var dragId='';
   function schemaAction(id) 
    {
-     if(id!=dragKeyRes)
-     {
-       dragKeyRes=id;
-     }  
      if(id)
      {
       var str = id.substring(0, id.length - 2);
       dragId=str;
      }
+     dragKeyRes=dragId;
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
