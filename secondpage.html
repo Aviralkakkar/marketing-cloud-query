@@ -3887,6 +3887,9 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+      conlole.log(" DEDragData.DEName"+ DEDragData.DEName);
+      conlole.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -3945,6 +3948,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
+    }
     };
     
   //script added by priyanka for moving 
