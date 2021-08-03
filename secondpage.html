@@ -3250,10 +3250,11 @@
 
   function sortList(val) {
         var list, i, switching, b, shouldSwitch;
-        console.log(val);
+        console.log('-----val-----'+val);
         list = document.getElementById(val);
         
         console.log('------------>'+list);
+        
         console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
       
         switching = true;
@@ -3307,10 +3308,10 @@
         des.options.add(op);
         src.remove(i);
         i--;
-        sortList("leftsideListInSelectField");
+        
       }
     }
-   
+   sortList("leftsideListInSelectField");
    sortListDir("rightsideListInSelectField");
            
   }
