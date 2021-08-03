@@ -3497,7 +3497,10 @@ function closeModal() {
     console.log("text"+text);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    draggedDEKey=[]
+    if(text==" "){
+      draggedDEKey=[]
+    }
+    
 }
 // Get the modal
 var modal = document.getElementById('DEWhereClauseModal');
@@ -4086,7 +4089,7 @@ document.addEventListener("touchend ", function(){
       for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDEKey.length;i++){
-          
+          document.getElementById(draggedDEKey[i]).className = "slds-button slds-button_brand"; 
           if(val==draggedDEKey[i]){
             count++;
           }
