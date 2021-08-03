@@ -4871,7 +4871,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div onmousedown="schemaAction(this.id);restrictDivToMove(this.id);" id="' + DEDragData.DEExtKey + '##">' +
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 30%; top: 5%;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -5022,7 +5022,6 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
      }
-     dragKeyRes=dragId;
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
@@ -5034,6 +5033,12 @@ document.addEventListener("touchend ", function(){
 
    }
 
+  function restrictDivToMove(Id) 
+  {
+    var str = Id.substring(0, Id.length - 2);
+    dragKeyRes=str;
+    console.log('Restrict:'+dragKeyRes);
+  }
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
