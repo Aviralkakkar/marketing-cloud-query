@@ -3987,8 +3987,11 @@ document.addEventListener("touchend ", function(){
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
                         draggedDEKey.push(FieldType);
+                        console.log("hello");
                         range = sel.getRangeAt(0);
+                        console.log("hello");
                         range.deleteContents();
+                        console.log("hello");
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
