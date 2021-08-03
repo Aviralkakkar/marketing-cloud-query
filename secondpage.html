@@ -4966,52 +4966,36 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId1:'+dragKeyRes);
-          var queryDiv=document.getElementById('queryDiv');
-          var mydiv1=document.getElementById(dragKeyRes+'ForConnectedLine');
-          var queryDiv_pos=queryDiv.getBoundingClientRect();
-          var mydiv_pos=mydiv1.getBoundingClientRect();
-          console.log('D1:'+queryDiv_pos.right);
-          console.log('D2:'+mydiv_pos.left);
-          if(queryDiv_pos.left<mydiv_pos.left)
-          {
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
           pos3 = e.clientX;
           pos4 = e.clientY;
+          console.log('clientX:'+pos3+'clientY:'+pos4);
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
-          }
+          
         }  
 
         function elementDrag(e) {
-          console.log('dragId2:'+dragKeyRes);
           var queryDiv=document.getElementById('queryDiv');
-          var mydiv1=document.getElementById(dragKeyRes+'ForConnectedLine');
           var queryDiv_pos=queryDiv.getBoundingClientRect();
-          var mydiv_pos=mydiv1.getBoundingClientRect();
-          console.log('D1:'+queryDiv_pos.left);
-          console.log('D2:'+mydiv_pos.left);
-          if(queryDiv_pos.left<mydiv_pos.left)
-          {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            //Added by ANIL KUMAR
-            schemaAction();
-          }
-          
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          console.log('pos1:'+pos1+' pos2:'+pos2+' pos3:'+pos3+' pos4:'+pos4);
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+          //Added by ANIL KUMAR
+          schemaAction();
         }
 
         function closeDragElement() {
