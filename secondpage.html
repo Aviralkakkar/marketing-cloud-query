@@ -3431,7 +3431,7 @@ function openModal(functionAction) {
                 document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + ''+val +'" draggable=true name="' + val +'" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3887,6 +3887,9 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+      console.log(" DEDragData.DEName"+ DEDragData.DEName);
+      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -3945,6 +3948,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
+    }
     };
     
   //script added by priyanka for moving 
@@ -3957,14 +3961,17 @@ document.addEventListener("touchend ", function(){
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
-      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey);
-      function insertTextAtCaret(FieldName, FieldKey) {
+      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
+      function insertTextAtCaret(FieldName, FieldKey, FieldType) {
         var sel, range;
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
+          console.log("parentID"+parentID);
           var anchorID = window.getSelection().anchorNode.id;
+          console.log("anchorID"+anchorID);
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+          console.log("superparentID"+superparentID);
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
               
@@ -3977,32 +3984,32 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDEKey.push(FieldKey);
+                        draggedDEKey.push(FieldType);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
-                       document.getElementById(FieldKey).className = "btn1"; 
+                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
                         console.log('check end');
-                        if(FieldKey in DEListMap.DEMap) {
-                          for (var key in DEListMap.DEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldKey].DEName + '].[' + DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        if(FieldType in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
-                        else if(FieldKey in DEListMap.SharedDEMap) {
-                          for (var key in DEListMap.SharedDEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldKey].DEName + '].[' + DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        else if(FieldType in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
-                        else if(FieldKey in DEListMap.DataViewMap) {
-                          for (var key in DEListMap.DataViewMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldKey].DEName + '].[' + DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        else if(FieldType in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
 
@@ -4079,7 +4086,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         if(count==0){
-         
+          console.log("draggedDEKey");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
