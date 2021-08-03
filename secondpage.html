@@ -4790,6 +4790,7 @@ document.addEventListener("touchend ", function(){
         //************************************************Edited By ANIL KUMAR**********************************//
         var dragId='';
         dragId=DEDragData.DEExtKey;
+        console.log('ID:'+dragId);
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -4957,7 +4958,7 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId:'+dragId);
+          console.log('dragId1:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4972,7 +4973,7 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragId:'+dragId);
+          console.log('dragId2:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
