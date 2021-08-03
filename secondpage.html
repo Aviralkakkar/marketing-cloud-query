@@ -5010,9 +5010,8 @@ document.addEventListener("touchend ", function(){
      if(id)
      {
       var str = id.substring(0, id.length - 2);
-      console.log('OnMouseDown:'+str);
-      console.log('Line schema getted');
       dragId=str;
+      console.log('DragId:'+dragId);
      }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
