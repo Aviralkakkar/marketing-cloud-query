@@ -1425,7 +1425,9 @@
       max-width: 900px;
       min-width: 900px
     }
-
+    .btn1{
+      background-color: yellow;
+    }
     .group-template-next-steps-dialog .next-steps-wizard-steps {
       width: 900px;
       max-width: 900px;
@@ -3813,7 +3815,7 @@ document.addEventListener("touchend ", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-
+   
 
 
     onloadofBody();
@@ -3945,6 +3947,7 @@ document.addEventListener("touchend ", function(){
       }
     };
     
+}
     //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
@@ -3981,7 +3984,7 @@ document.addEventListener("touchend ", function(){
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
-                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                       document.getElementById(FieldKey).className = "btn 1"; 
 
                       
                         console.log('check end');
@@ -4955,7 +4958,7 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragid1:'+dragId);
+          console.log('dragId:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4970,7 +4973,7 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragid2:'+dragId);
+          console.log('dragId:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -4983,7 +4986,6 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-          
             
         }
 
@@ -5005,14 +5007,15 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  //var dragId='';
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
      {
       var str = id.substring(0, id.length - 2);
+      console.log('OnMouseDown:'+str);
+      console.log('Line schema getted');
       dragId=str;
-      console.log('DragId:'+dragId);
      }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
