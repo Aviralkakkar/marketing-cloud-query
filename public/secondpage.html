@@ -4092,7 +4092,9 @@ document.addEventListener("touchend ", function(){
       for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
+          console.log("draggedDeId"+draggedDeId[i]);
           document.getElementById(draggedDeId[i]).className = "slds-button slds-button_brand"; 
+          console.log("Before the if");
           if(val==draggedDeName[i]){
             count++;
           }
