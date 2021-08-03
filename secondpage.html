@@ -3957,8 +3957,8 @@ document.addEventListener("touchend ", function(){
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
-      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey);
-      function insertTextAtCaret(FieldName, FieldKey) {
+      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
+      function insertTextAtCaret(FieldName, FieldKey, FieldType) {
         var sel, range;
         if (window.getSelection) {
           sel = window.getSelection();
@@ -3977,7 +3977,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDEKey.push(FieldKey);
+                        draggedDEKey.push(FieldType);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
@@ -3987,22 +3987,22 @@ document.addEventListener("touchend ", function(){
 
                       
                         console.log('check end');
-                        if(FieldKey in DEListMap.DEMap) {
-                          for (var key in DEListMap.DEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldKey].DEName + '].[' + DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        if(FieldType in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
-                        else if(FieldKey in DEListMap.SharedDEMap) {
-                          for (var key in DEListMap.SharedDEMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldKey].DEName + '].[' + DEListMap.SharedDEMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        else if(FieldType in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
-                        else if(FieldKey in DEListMap.DataViewMap) {
-                          for (var key in DEListMap.DataViewMap[FieldKey].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldKey].DEName + '].[' + DEListMap.DataViewMap[FieldKey].DEFields[key]["FieldName"] + ']');
+                        else if(FieldType in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
 
