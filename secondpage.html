@@ -4953,6 +4953,15 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = '';
       document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
+      
+      //Added By ANIL KUMAR for restrcting div to move out from queryDiv
+      function restrictDivToMove(Id) 
+      {
+        var str = Id.substring(0, Id.length - 2);
+        dragKeyRes=str;
+        console.log('Restrict:'+dragKeyRes);
+      }
+
       function dragElement(elmnt) {
         var main_Div=document.getElementById("");
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -5032,13 +5041,6 @@ document.addEventListener("touchend ", function(){
     }   
 
    }
-
-  function restrictDivToMove(Id) 
-  {
-    var str = Id.substring(0, Id.length - 2);
-    dragKeyRes=str;
-    console.log('Restrict:'+dragKeyRes);
-  }
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
