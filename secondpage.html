@@ -3947,8 +3947,7 @@ document.addEventListener("touchend ", function(){
       }
     };
     
-
-    //script added by priyanka for moving 
+  //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
@@ -4789,8 +4788,9 @@ document.addEventListener("touchend ", function(){
         }
         
         //************************************************Edited By ANIL KUMAR**********************************//
-        var dragId='';
-        dragId=DEDragData.DEExtKey;
+        var dragKeyRes='';
+        dragKeyRes=DEDragData.DEExtKey;
+        console.log('ID:'+dragKeyRes);
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -4958,7 +4958,7 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId:'+dragId);
+          console.log('dragId1:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4973,7 +4973,7 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragId:'+dragId);
+          console.log('dragId2:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -5008,8 +5008,9 @@ document.addEventListener("touchend ", function(){
 
   //Anil kumar for creating Line
   var dragId='';
-   function schemaAction(id) 
+  function schemaAction(id) 
    {
+    dragKeyRes= id.substring(0, id.length - 2);
      if(id)
      {
       var str = id.substring(0, id.length - 2);
