@@ -3509,9 +3509,14 @@ function closeModal() {
     console.log("text"+text);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    if(text==" "){
+    if(text==""){
+      console.log("tt1");
       draggedDeName=[];
+      for(var i=0;i<draggedDeId.length;i++){
+        document.getElementById(draggedDeId[i]).className = "btn"; 
+      }
       draggedDeId=[];
+      console.log("tt completed1");
     }
     
 }
