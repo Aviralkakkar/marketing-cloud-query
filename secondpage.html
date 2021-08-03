@@ -4966,7 +4966,6 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId1:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4982,6 +4981,12 @@ document.addEventListener("touchend ", function(){
 
         function elementDrag(e) {
           console.log('dragId2:'+dragKeyRes);
+          var queryDiv=document.getElementById('queryDiv');
+          var mydiv1=document.getElementById(dragKeyRes+'ForConnectedLine');
+          var queryDiv_pos=queryDiv.getBoundingClientRect();
+          var mydiv_pos=mydiv1.getBoundingClientRect();
+          if(queryDiv_pos.right<mydiv_pos)
+          {
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -4994,7 +4999,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-            
+          }  
         }
 
         function closeDragElement() {
