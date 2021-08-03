@@ -1425,7 +1425,9 @@
       max-width: 900px;
       min-width: 900px
     }
-
+    .btn1{
+      background-color: yellow;
+    }
     .group-template-next-steps-dialog .next-steps-wizard-steps {
       width: 900px;
       max-width: 900px;
@@ -2546,7 +2548,27 @@
                         
                           
                         </header>
-                        
+                        <div id="DeDragAlert" style="display:none">
+                          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                            <span class="slds-assistive-text">error</span>
+                            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                              title="Description of icon when needed">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                            </span>
+                            <P>Please drag all the de atleast one time.</P>
+                            <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                                onclick="CancelDeDragAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
@@ -2599,7 +2621,8 @@
                
                         <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                             <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
-                            
+                            <button class="slds-button slds-button_neutral" onclick="validateQuery(JoinQueryDetails , 'Validate')"
+                            style="font-size:11px; line-height:20px; color:#4e8abe;" >Validate</button>
                             <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
                           </footer>
                 
@@ -2985,7 +3008,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));" style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3236,7 +3259,12 @@
 
   function sortList(val) {
         var list, i, switching, b, shouldSwitch;
-        list = document.getElementById(val)
+        console.log('-----val-----'+val);
+        list = document.getElementById(val);
+        
+        console.log('------------>'+list);
+        
+        console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
       
         switching = true;
         /* Make a loop that will continue until
@@ -3281,24 +3309,27 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
-        console.log(src.options[src.selectedIndex].value);
-        console.log(src.options[src.selectedIndex].text);
-        console.log(src.options[src.selectedIndex].id);
+       // console.log(src.options[src.selectedIndex].value);
+       // console.log(src.options[src.selectedIndex].text);
+       // console.log(src.options[src.selectedIndex].id);
 
-        
+       // console.log('des'+des);
         des.options.add(op);
         src.remove(i);
         i--;
+        
       }
     }
-           sortList("leftsideListInSelectField");
-           sortListDir("rightsideListInSelectField");
+  // sortList("leftsideListInSelectField");
+  // sortListDir("rightsideListInSelectField");
            
   }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+        console.log('123'+val);
         list = document.getElementById(val);
+        console.log('99999999'+list);
         switching = true;
         // Set the sorting direction to ascending:
         dir = "desc";
@@ -3407,7 +3438,7 @@ function openModal(functionAction) {
                 document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" value="' + document.getElementById(temp).innerHTML+'" id="' + val + '" draggable=true name="' + val + '" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + ''+val +'" draggable=true name="' + val +'" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3459,6 +3490,10 @@ function CancelDESelectAlert() {
 function CancelQueryBoxJoinAlert() {
   document.getElementById('QueryBoxJoinAlert').style.display = 'none';
 }
+function CancelDeDragAlert() {
+  document.getElementById('DeDragAlert').style.display = 'none';
+}
+
 function closeModal() {
     document.getElementById("backdrop").style.display = "none";
     document.getElementById("DEWhereClauseModal").style.display = "none";
@@ -3769,7 +3804,7 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-
+    var draggedDEKey=[];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -3859,6 +3894,9 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+      console.log(" DEDragData.DEName"+ DEDragData.DEName);
+      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -3917,26 +3955,33 @@ document.addEventListener("touchend ", function(){
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
+    }
     };
-    //script added by priyanka for moving 
+    
+  //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
       var DEWhereClauseDragData = {
         "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
-        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value
+        "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
+        "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
       console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
-      insertTextAtCaret(DEWhereClauseDragData.FieldName);
-      function insertTextAtCaret(FieldName) {
+      insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
+      function insertTextAtCaret(FieldName, FieldKey, FieldType) {
         var sel, range;
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
+          console.log("parentID"+parentID);
           var anchorID = window.getSelection().anchorNode.id;
+          console.log("anchorID"+anchorID);
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+          console.log("superparentID"+superparentID);
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
+              
               
               range = sel.getRangeAt(0);
               range.deleteContents();
@@ -3946,9 +3991,36 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
+                        draggedDEKey.push(FieldType);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
+                        console.log('check start');
+                      // document.getElementById(FieldKey).style.backgroundColor='blue !important';
+                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+
+                      
+                        console.log('check end');
+                        if(FieldType in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+                        else if(FieldType in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+                        else if(FieldType in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          }
+                        }
+
+                        range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                       }
                     }
         }
@@ -4012,7 +4084,22 @@ document.addEventListener("touchend ", function(){
     function validateQuery(JoinQueryDetails, actionType) {
       var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
-      for (const val of DESetQueryBox) {}
+      for (const val of DESetQueryBox) {
+        var count=0;
+        for(var i=0;i<draggedDEKey.length;i++){
+          
+          if(val==draggedDEKey[i]){
+            count++;
+          }
+        }
+        if(count==0){
+          console.log("draggedDEKey");
+          document.getElementById('DeDragAlert').style.display = 'Block';
+          return;
+        }
+      }
+      console.log("draggedDEKey"+draggedDEKey);
+
 
       console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
@@ -4715,6 +4802,9 @@ document.addEventListener("touchend ", function(){
         }
         
         //************************************************Edited By ANIL KUMAR**********************************//
+        var dragKeyRes='';
+        dragKeyRes=DEDragData.DEExtKey;
+        console.log('ID:'+dragKeyRes);
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -4788,7 +4878,7 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '' +
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div onmousedown="schemaAction(this.id);restrictDivToMove(this.id);" id="' + DEDragData.DEExtKey + '##">' +
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 30%; top: 5%;">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -4870,7 +4960,9 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = '';
       document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
+      
       function dragElement(elmnt) {
+        var main_Div=document.getElementById("");
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
         if (document.getElementById(elmnt.id + "header")) {
           /* if present, the header is where you move the DIV from:*/
@@ -4886,14 +4978,18 @@ document.addEventListener("touchend ", function(){
           // get the mouse cursor position at startup:
           pos3 = e.clientX;
           pos4 = e.clientY;
+          console.log('clientX:'+pos3+'clientY:'+pos4);
           document.onmouseup = closeDragElement;
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
           schemaAction();
+          
         }  
 
         function elementDrag(e) {
+          var queryDiv=document.getElementById('queryDiv');
+          var queryDiv_pos=queryDiv.getBoundingClientRect();
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -4901,6 +4997,7 @@ document.addEventListener("touchend ", function(){
           pos2 = pos4 - e.clientY;
           pos3 = e.clientX;
           pos4 = e.clientY;
+          console.log('pos1:'+pos1+' pos2:'+pos2+' pos3:'+pos3+' pos4:'+pos4);
           // set the element's new position:
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
@@ -4926,21 +5023,15 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  $(".mydiv").draggable({
-    containment: ".myDivContainer"
-  }); 
-
-   var dragId='';
-   function schemaAction(id) 
+  var dragId='';
+  function schemaAction(id) 
    {
      if(id)
      {
       var str = id.substring(0, id.length - 2);
-      console.log('OnMouseDown:'+str);
-      console.log('Line schema getted');
       dragId=str;
      }
-     
+     dragKeyRes=dragId;
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
@@ -4951,7 +5042,6 @@ document.addEventListener("touchend ", function(){
     }   
 
    }
-
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
