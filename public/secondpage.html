@@ -2527,7 +2527,7 @@
               </div-->
               <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
                 <div class="slds-modal__container" >
-                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4;" >
+                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
                         <svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">
@@ -2586,9 +2586,9 @@
 
 
                               <div id="component-selector-container" class=" slds-float_left "
-                                style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
+                                style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-                                  style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extensions</h4>
+                                  style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
                                 <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
@@ -2600,7 +2600,7 @@
                               </div>
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
-                                style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
+                                style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
                                 contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
                                
                                     <div class="expression"></div>
@@ -3494,7 +3494,7 @@ function closeModal() {
     console.log("tt");
     document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    draggedDEKey=[];
+    draggedDEKey=[]
 }
 // Get the modal
 var modal = document.getElementById('DEWhereClauseModal');
