@@ -1425,7 +1425,9 @@
       max-width: 900px;
       min-width: 900px
     }
-
+    .btn1{
+      background-color: yellow;
+    }
     .group-template-next-steps-dialog .next-steps-wizard-steps {
       width: 900px;
       max-width: 900px;
@@ -3945,6 +3947,7 @@ document.addEventListener("touchend ", function(){
       }
     };
     
+}
     //script added by priyanka for moving 
     function drop2(event, target) {
       event.preventDefault();
@@ -3981,7 +3984,7 @@ document.addEventListener("touchend ", function(){
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
-                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                       document.getElementById(FieldKey).className = "btn 1"; 
 
                       
                         console.log('check end');
