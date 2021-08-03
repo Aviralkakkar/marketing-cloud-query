@@ -2999,7 +2999,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3250,11 +3250,12 @@
 
   function sortList(val) {
         var list, i, switching, b, shouldSwitch;
-        console.log(val);
+        console.log('-----val-----'+val);
         list = document.getElementById(val);
         
         console.log('------------>'+list);
-        console.log('=============='+document.getElementById(val).querySelectorAll('select'));
+        
+        console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
       
         switching = true;
         /* Make a loop that will continue until
@@ -3299,24 +3300,27 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
-        console.log(src.options[src.selectedIndex].value);
-        console.log(src.options[src.selectedIndex].text);
-        console.log(src.options[src.selectedIndex].id);
+       // console.log(src.options[src.selectedIndex].value);
+       // console.log(src.options[src.selectedIndex].text);
+       // console.log(src.options[src.selectedIndex].id);
 
-        
+       // console.log('des'+des);
         des.options.add(op);
         src.remove(i);
         i--;
+        
       }
     }
-             sortList("leftsideListInSelectField");
-           sortListDir("rightsideListInSelectField");
+  // sortList("leftsideListInSelectField");
+  // sortListDir("rightsideListInSelectField");
            
   }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+        console.log('123'+val);
         list = document.getElementById(val);
+        console.log('99999999'+list);
         switching = true;
         // Set the sorting direction to ascending:
         dir = "desc";
@@ -4947,51 +4951,35 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          var tableDiv=document.getElementById('example-unique-id-8');
-          console.log('divpos:'+e.target.id);
-          var current_mydiv=document.getElementById(e.target.id);
-
-          var tableDiv_pos=tableDiv.getBoundingClientRect();
-          var current_mydivPos=current_mydiv.getBoundingClientRect();
-
-          if(tableDiv_pos.right<current_mydivPos.left)
-          {
-            e = e || window.event;
-            e.preventDefault();
-            // get the mouse cursor position at startup:
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-            //Added by ANIL KUMAR
-            schemaAction();
-          }  
+          console.log('dragId:'+dragId);
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+          //Added by ANIL KUMAR
+          schemaAction();
+          
         }  
 
         function elementDrag(e) {
-
-          var tableDiv=document.getElementById('example-unique-id-8');
-          var current_mydiv=document.getElementById(e.target.id);
-          console.log('divpos:'+e.target.id);
-          var tableDiv_pos=tableDiv.getBoundingClientRect();
-          var current_mydivPos=current_mydiv.getBoundingClientRect();
-          
-          if(tableDiv_pos.right<current_mydivPos.left)
-          {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            //Added by ANIL KUMAR
-            schemaAction();
-          }  
+          console.log('dragId:'+dragId);
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+          //Added by ANIL KUMAR
+          schemaAction();
+            
         }
 
         function closeDragElement() {
@@ -5012,11 +5000,7 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  $(".mydiv").draggable({
-    containment: ".myDivContainer"
-  }); 
-
-   var dragId='';
+  var dragId='';
    function schemaAction(id) 
    {
      if(id)
