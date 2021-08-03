@@ -3984,7 +3984,7 @@ document.addEventListener("touchend ", function(){
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
-                        console.log('check end'+e);
+                        console.log('check end');
                         if(FieldKey in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldKey].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldKey].DEFields[key]["FieldName"], "g")
