@@ -4985,7 +4985,7 @@ document.addEventListener("touchend ", function(){
           var mydiv1=document.getElementById(dragKeyRes+'ForConnectedLine');
           var queryDiv_pos=queryDiv.getBoundingClientRect();
           var mydiv_pos=mydiv1.getBoundingClientRect();
-          if(queryDiv_pos.right<mydiv_pos)
+          if(queryDiv_pos.right>mydiv_pos)
           {
           e = e || window.event;
           e.preventDefault();
