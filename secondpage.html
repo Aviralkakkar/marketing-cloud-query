@@ -3813,7 +3813,7 @@ document.addEventListener("touchend ", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-   
+
 
 
     onloadofBody();
@@ -4939,6 +4939,7 @@ document.addEventListener("touchend ", function(){
       openSelectFieldsDEExtKey = '';
       document.getElementById('rightsideListInSelectField').innerHTML = '';
       document.getElementById("RichTextEditor").innerHTML = '';
+      var dragId='';
       function dragElement(elmnt) {
         var main_Div=document.getElementById("");
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -4951,7 +4952,6 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId:'+dragId);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -4966,7 +4966,14 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragId:'+dragId);
+          var queryDiv=document.getElementById('queryDiv');
+          var mydiv=document.getElementById(dragId+'ForConnectedLine');
+          console.log('mydiv:'+mydiv);
+          var queryDiv_pos=queryDiv.getBoundingClientRect();
+          var mydiv_pos=mydiv.getBoundingClientRect();
+          
+          if(queryDiv_pos.right<mydiv_pos.left)
+          {
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -4979,6 +4986,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
+          }
             
         }
 
@@ -5000,7 +5008,7 @@ document.addEventListener("touchend ", function(){
     //--code by nitik
 
   //Anil kumar for creating Line
-  var dragId='';
+  //var dragId='';
    function schemaAction(id) 
    {
      if(id)
