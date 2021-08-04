@@ -4015,8 +4015,8 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType);
-                        draggedDeId.add(FieldKey)
+                        draggedDeName.push(FieldType);
+                        draggedDeId.push(FieldKey);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
