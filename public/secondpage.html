@@ -3519,6 +3519,7 @@ function closeModal() {
         document.getElementById(draggedDeId[i]).className = "btn"; 
       }
       draggedDeId={};
+      draggedDeKey={};
       console.log("tt completed1");
     }
     
@@ -3827,6 +3828,8 @@ document.addEventListener("touchend ", function(){
   <script type="text/javascript">
     var draggedDeName=new Set();
     var draggedDeId=new Set();
+    var draggedDeKey=new Set();
+
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -4016,10 +4019,10 @@ document.addEventListener("touchend ", function(){
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
                         draggedDeName.add(FieldType);
-                        //key = FieldKey.split("WhereClasueDEList");
-                        //FieldId = key[0];
-                        //console.log("FieldId=="+FieldId);
-                        //draggedDeId.add(FieldId);
+                        key = FieldKey.split("WhereClasueDEList");
+                        FieldId = key[0];
+                        console.log("FieldId=="+FieldId);
+                        draggedDeKey.add(FieldId);
                         draggedDeId.add(FieldKey);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
