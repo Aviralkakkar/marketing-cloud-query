@@ -4018,12 +4018,12 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType);
+                        draggedDeName.add(FieldType)
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
-                        draggedDeKey.add(FieldId);
-                        draggedDeId.add(FieldKey);
+                        draggedDeKey.add(FieldId)
+                        draggedDeId.add(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
