@@ -2475,7 +2475,7 @@
                       <svg class="slds-button__icon" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                       </svg>
-                      <span class="slds-assistive-text">Clos</span>
+                      <span class="slds-assistive-text">close</span>
                     </button>
                   </div>
                 </div>
@@ -3430,13 +3430,16 @@ function openModal(functionAction) {
               else{
                
                 countOfDeWithWhereClauseValue++;
-                document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                if(val in DEListMap.DEMap){
+                  document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + ''+val +'" draggable=true name="' + val +'" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
+                }
+               
                 if(draggedDeName.length != 0){
                   for(var i=0;i<draggedDeName.length;i++){
                     if(val==draggedDeName[i]){
@@ -3822,8 +3825,8 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-    var draggedDeName=[];
-    var draggedDeId=[];
+    var draggedDeName=new Set();
+    var draggedDeId=new Set();
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -4012,8 +4015,8 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.push(FieldType);
-                        draggedDeId.push(FieldKey)
+                        draggedDeName.add(FieldType);
+                        draggedDeId.add(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         range.insertNode(document.createTextNode(FieldName));
