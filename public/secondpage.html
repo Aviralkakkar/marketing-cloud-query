@@ -4015,10 +4015,14 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.push(FieldType);
-                        draggedDeId.push(FieldKey);
+                        draggedDeName.add(FieldType);
+                        key = FieldKey.split("WhereClasueDEList");
+      FieldId = key[0];
+      console.log("FieldId=="+FieldId);
+                        draggedDeId.add(FieldId)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
+                        
                         range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
