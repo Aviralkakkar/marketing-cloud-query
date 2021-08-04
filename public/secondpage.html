@@ -3438,8 +3438,6 @@ function openModal(functionAction) {
                 ' </span>' +
                 '  </div>' +
                 '</li>';
-                }
-               
                 if(draggedDeName.length != 0){
                   for(var i=0;i<draggedDeName.length;i++){
                     if(val==draggedDeName[i]){
@@ -3451,6 +3449,9 @@ function openModal(functionAction) {
                   
                   
                 }
+                }
+               
+           
               }
               
             }
@@ -3514,12 +3515,12 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName= {};
+      draggedDeName= new set();
       for(var i=0;i<draggedDeId.length;i++){
         document.getElementById(draggedDeId[i]).className = "btn"; 
       }
-      draggedDeId={};
-      draggedDeKey={};
+      draggedDeId= new set();
+      draggedDeKey=new set();
       console.log("tt completed1");
     }
     
