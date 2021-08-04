@@ -3519,12 +3519,12 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName= {};
+      draggedDeName= new set();
       for(const Id of draggedDeId){
         document.getElementById(Id).className = "btn"; 
       }
-      draggedDeId= {};
-      draggedDeKey={};
+      draggedDeId= new set();
+      draggedDeKey=new set();
       console.log("tt completed1");
     }
     
@@ -4025,7 +4025,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType)
+                        draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
