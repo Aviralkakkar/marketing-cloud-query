@@ -3438,7 +3438,18 @@ function openModal(functionAction) {
                 ' </span>' +
                 '  </div>' +
                 '</li>';
-                
+                if(draggedDeId.size != 0){
+                  var i=0;
+                  for(const valId of draggedDeId){
+                    if(val == draggedDeKey[i]){
+                      console.log("qwerty");
+                      document.getElementById(valId).className = "slds-button slds-button_brand"; 
+                      console.log("qwerty end");
+                    }
+                  }
+                  
+                  
+                }
                 }
                
            
@@ -3446,18 +3457,7 @@ function openModal(functionAction) {
               
             }
 
-            if(draggedDeId.size != 0){
-                  
-                  for(const valId of draggedDeId){
-                    
-                      console.log("qwerty");
-                      document.getElementById(valId).className = "slds-button slds-button_brand"; 
-                      console.log("qwerty end");
-                    
-                  }
-                  
-                  
-                }
+           
    
             
           }
@@ -4968,7 +4968,7 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
-        document.getElementById("queryDiv").innerHTML += relationDivString;
+        document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
