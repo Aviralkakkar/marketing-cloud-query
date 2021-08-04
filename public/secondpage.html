@@ -2244,6 +2244,13 @@
        border: none;
        position: relative;
      }
+
+     select{
+    pointer-events: none;
+  }
+  option{
+    pointer-events: all;
+  }
       
     /*-------End Here------------*/
   </style>
@@ -2416,7 +2423,8 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-col myDivContainer" id="queryDiv" style="height:50%;margin-bottom:1%;">
-              <div id="RelationshipDiv"> </div>
+              <div id="RelationshipDiv"> 
+              </div>
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2484,10 +2492,10 @@
 
 
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-          </button>
+              </button>
           
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
-          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
+              <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
+                <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
               <button
@@ -2541,8 +2549,8 @@
                         <!--jndjdkmdkmkdmksddddddddddddddddddm-->
                         
                           
-                        </header>
-                        <div id="DeDragAlert" style="display:none">
+                    </header>
+                    <div id="DeDragAlert" style="display:none">
                           <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
                             <span class="slds-assistive-text">error</span>
                             <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
@@ -2562,7 +2570,7 @@
                               </button>
                             </div>
                           </div>
-                        </div>
+                    </div>
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
@@ -2582,7 +2590,7 @@
                               <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
                 
                             </div-->
-                            <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
+                    <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
 
 
 
@@ -2610,22 +2618,22 @@
                               </div>
                               
                     
-                            </div>
+                    </div>
         
                
-                        <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                    <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
                             <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
                             <button class="slds-button slds-button_neutral" onclick="validateQuery(JoinQueryDetails , 'Validate')"
                             style="font-size:11px; line-height:20px; color:#4e8abe;" >Validate</button>
                             <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
-                          </footer>
+                    </footer>
                 
                 </div>
                 
-                </section>
+              </section>
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
-<!--****** Nitik code ended *********-->
+                      <!--****** Nitik code ended *********-->
           
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
@@ -2753,10 +2761,6 @@
                   </div>
                 </div>
             </div>
-          </div>    
-        </div>
-           
-
             <div id="QueryValidateTrueAlert" style="display:none">
               <div class="demo-only" style="height:4rem">
                 <div class="slds-notify_container slds-is-relative">
@@ -2785,7 +2789,6 @@
                 </div>
               </div>
             </div>
-
             <div id="QueryValidateFalseAlert" style="display:none">
               <div class="demo-only" style="height:4rem">
                 <div class="slds-notify_container slds-is-relative">
@@ -2814,21 +2817,17 @@
                 </div>
               </div>
             </div>
-            
-            <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
-       </div>
-         
+          </div>
+        </div>
+    
 
+        <!--**** Khushboo code ended ****-->
+
+    
+
+      </div>
     </div>
-    
-
-      <!--**** Khushboo code ended ****-->
-
-    
-
-  </div>
-
-
+  </div>  
   <div style="display: none; width: 160px;" id="recordResultModal">
     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true"
       aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
@@ -2980,7 +2979,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none; pointer-events: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3017,7 +3016,7 @@
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
                     style=" border: none; padding:0%; margin:0%;   ">
-                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
+                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none; pointer-events: none;" > 
                       
                      </select>
                     
@@ -3294,7 +3293,7 @@
         op.value = src.options[src.selectedIndex].value;
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
-        op.style='padding:4%; margin:0;';
+        op.style='padding:4%; margin:0; pointer-events: all;';
        // console.log(src.options[src.selectedIndex].value);
        // console.log(src.options[src.selectedIndex].text);
        // console.log(src.options[src.selectedIndex].id);
@@ -3365,6 +3364,14 @@
       }
     
   function setButton(obj) {
+
+    console.log('do not scroll to top');
+     var el = document.getElementById('container');
+     el.scrollTop = 0;
+     console.log( el.scrollTop);
+     console.log('7e383uiej');
+
+
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -3940,7 +3947,7 @@ document.addEventListener("touchend ", function(){
               //line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
+                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0; pointer-events: all;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
              
             }
@@ -3957,7 +3964,7 @@ document.addEventListener("touchend ", function(){
 
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
+                 '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0; pointer-events: all;"> '+ DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
             }
           }
@@ -3972,7 +3979,7 @@ document.addEventListener("touchend ", function(){
               *///line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
+                 '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0; pointer-events: all;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
           document.getElementById('RelationPopup').style.display = 'block';
         }
