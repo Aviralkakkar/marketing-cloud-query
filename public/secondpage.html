@@ -2250,13 +2250,13 @@
   <!-- Khushboo code ending  -->
 </head>
 
-<body>
+<body onresize="leftDivHeight()">
 
   <div>
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
+      <div id="FullPageSpinner"  class="demo-only" style="height:650px;position:relative;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2271,12 +2271,12 @@
 
         <div class="sidebar" id="DEListSidebar"
           style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
-          <div class="demo-only-element" style="height: 100%;">
+          <div class="demo-only-element" id="demoElement" style="height: 100%;">
             <script>
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                document.getElementById('FullPageSpinner').style.display = 'block';
+                  document.getElementById('FullPageSpinner').style.display = 'block';
                   document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
@@ -2292,7 +2292,7 @@
                   </button>
                 </div>
               </div>
-              <div class="panel_body slds-panel__body"
+              <div class="panel_body slds-panel__body" id="panelBody" 
                 style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;padding-right:0%;">
 
                 <div class="slds-tree_container ">
@@ -2412,7 +2412,7 @@
         <!--Khushboo code ended -->
 
         <!--********* Khushboo code started ************-->
-        <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
+        <div id="main-div" class="slds-float_right"  style="width:75%;height:100%;" >
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:50%;margin-bottom:1%;position:relative;">
@@ -2753,7 +2753,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
 
 
 
@@ -3546,6 +3546,15 @@ window.onclick = function(event) {
 
   <script>
 
+    var scHeight = screen.height
+  
+    function leftDivHeight()
+    {
+        var h = document.getElementById("panelBody");
+        h.style.height = screen.height + 'px';
+      
+    }
+
     //******** folder hierarchy code *********//
     var dataExtBool = false;
     var sharedDataExtBool = true;
@@ -3722,6 +3731,9 @@ window.onclick = function(event) {
       var totalPages = document.getElementById("totalPages");
       page.innerHTML = " " + 1 + " ";
       totalPages.innerHTML = " " + numPages() + " ";
+
+     
+
     };
 
 
@@ -3736,13 +3748,18 @@ window.onclick = function(event) {
     var dragging = false;
     let m_pos;
     let m_pos_mob;
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+   }
     function resize(e) {
       if (dragging) {
+       
         var hp = parseInt(panel.style.height);
         var hu = parseInt(upper.style.height);
         console.log('hp ' + hp + ' hu ' + hu);
         if (e.clientY <= m_pos) {
           if (hp < 75 && hu > 25) {
+            
             hp = hp + 1;
             panel.style.height = hp + "%";
             hu = hu - 1;
@@ -3761,6 +3778,7 @@ window.onclick = function(event) {
         }
         if (e.clientY > m_pos) {
           if (hp > 25) {
+            
             console.log("Inside 2nd if");
             hp = hp - 1;
             panel.style.height = hp + "%";
