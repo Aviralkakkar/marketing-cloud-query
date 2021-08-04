@@ -4017,8 +4017,8 @@ document.addEventListener("touchend ", function(){
                         console.log("hello");
                         draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
-      FieldId = key[0];
-      console.log("FieldId=="+FieldId);
+                        FieldId = key[0];
+                        console.log("FieldId=="+FieldId);
                         draggedDeId.add(FieldId)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
@@ -4113,7 +4113,7 @@ document.addEventListener("touchend ", function(){
     function validateQuery(JoinQueryDetails, actionType) {
       var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
       console.log('value======'+richTextEditorForFinalWhereClauseValue);
-      for (const val of DESetQueryBox) {
+      /*for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
           console.log("draggedDeId"+draggedDeId[i]);
@@ -4129,6 +4129,12 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
+      }*/
+      var check=isSetEqual(DESetQueryBox, draggedDeId);
+      if(check==0){
+        console.log("draggedDeName");
+          document.getElementById('DeDragAlert').style.display = 'Block';
+          return;
       }
       console.log("draggedDeName"+draggedDeName);
 
