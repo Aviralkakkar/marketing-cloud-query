@@ -4846,9 +4846,6 @@ document.addEventListener("touchend ", function(){
         }
         
         //************************************************Edited By ANIL KUMAR**********************************//
-        var dragKeyRes='';
-        dragKeyRes=DEDragData.DEExtKey;
-        console.log('ID:'+dragKeyRes);
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5016,7 +5013,6 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId1:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -5031,7 +5027,6 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragId2:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -5044,7 +5039,6 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-            
         }
 
         function closeDragElement() {
@@ -5068,14 +5062,11 @@ document.addEventListener("touchend ", function(){
   var dragId='';
   function schemaAction(id) 
    {
-    dragKeyRes= id.substring(0, id.length - 2);
-     if(id)
-     {
+    if(id)
+    {
       var str = id.substring(0, id.length - 2);
-      console.log('OnMouseDown:'+str);
-      console.log('Line schema getted');
       dragId=str;
-     }
+    }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
@@ -5084,8 +5075,7 @@ document.addEventListener("touchend ", function(){
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
     }   
-
-   }
+  }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
