@@ -3461,7 +3461,7 @@ function openModal(functionAction) {
    
             
           }
-      else if(DESetQueryBox.size == 0 || TotalMainDeDragged==0){
+      else if(DESetQueryBox.size == 0 ){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
         console.log('bye');
@@ -3488,7 +3488,7 @@ function openModal(functionAction) {
               console.log('called function validate query');
             }
            else{
-             if(TotalMainDeDragged>=2){
+             if(DESetQueryBox.size != 0 ){
               document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
              }
             
@@ -3836,7 +3836,7 @@ document.addEventListener("touchend ", function(){
     var draggedDeName=new Set();
     var draggedDeId=new Set();
     var draggedDeKey=new Set();
-    var TotalMainDeDragged=0;
+    //var TotalMainDeDragged=0;
 
     var DEDragData = {
       "DEName": '',
@@ -4143,8 +4143,8 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-      var check=isSetEqual(DESetQueryBox, draggedDeKey);
-      if(check==0){
+     
+      if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
@@ -4972,7 +4972,7 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
-      TotalMainDeDragged++;
+      //TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -5357,7 +5357,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
-        TotalMainDeDragged--;
+        //TotalMainDeDragged--;
         document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
       }
     }
