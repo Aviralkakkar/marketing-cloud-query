@@ -3516,12 +3516,12 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName= new set();
-      for(var i=0;i<draggedDeId.length;i++){
-        document.getElementById(draggedDeId[i]).className = "btn"; 
+      draggedDeName= {};
+      for(const Id of draggedDeId){
+        document.getElementById(Id).className = "btn"; 
       }
-      draggedDeId= new set();
-      draggedDeKey=new set();
+      draggedDeId= {};
+      draggedDeKey={};
       console.log("tt completed1");
     }
     
