@@ -2415,8 +2415,9 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col myDivContainer" id="queryDiv" style="height:50%;margin-bottom:1%;">
-              
+            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
+              <div id="RelationshipDiv">
+              </div>
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2822,7 +2823,6 @@
                 </div>
               </div>
             </div>
-            <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
          
@@ -4851,9 +4851,6 @@ document.addEventListener("touchend ", function(){
         }
         
         //************************************************Edited By ANIL KUMAR**********************************//
-        var dragKeyRes='';
-        dragKeyRes=DEDragData.DEExtKey;
-        console.log('ID:'+dragKeyRes);
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -4973,7 +4970,7 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
-        document.getElementById("queryDiv").innerHTML += relationDivString;
+        document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
@@ -5021,7 +5018,6 @@ document.addEventListener("touchend ", function(){
         }
 
         function dragMouseDown(e) {
-          console.log('dragId1:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // get the mouse cursor position at startup:
@@ -5036,7 +5032,6 @@ document.addEventListener("touchend ", function(){
         }  
 
         function elementDrag(e) {
-          console.log('dragId2:'+dragKeyRes);
           e = e || window.event;
           e.preventDefault();
           // calculate the new cursor position:
@@ -5049,7 +5044,6 @@ document.addEventListener("touchend ", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           schemaAction();
-            
         }
 
         function closeDragElement() {
@@ -5073,14 +5067,11 @@ document.addEventListener("touchend ", function(){
   var dragId='';
   function schemaAction(id) 
    {
-    dragKeyRes= id.substring(0, id.length - 2);
-     if(id)
-     {
+    if(id)
+    {
       var str = id.substring(0, id.length - 2);
-      console.log('OnMouseDown:'+str);
-      console.log('Line schema getted');
       dragId=str;
-     }
+    }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
@@ -5089,8 +5080,7 @@ document.addEventListener("touchend ", function(){
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
     }   
-
-   }
+  }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
