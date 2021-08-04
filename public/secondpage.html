@@ -2244,7 +2244,12 @@
        border: none;
        position: relative;
      }
-      
+     select{
+    pointer-events: none;
+  }
+  option{
+    pointer-events: all;
+  }
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -3373,6 +3378,14 @@
       }
     
   function setButton(obj) {
+
+    console.log('do not scroll to top');
+     var el = document.getElementById('container');
+     el.scrollTop = 0;
+     console.log( el.scrollTop);
+     console.log('7e383uiej');
+
+
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
