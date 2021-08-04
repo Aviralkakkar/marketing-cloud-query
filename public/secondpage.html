@@ -2415,8 +2415,9 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
-              
+            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
+              <div id="RelationshipDiv">
+              </div>
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2625,7 +2626,7 @@
                 </section>
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
-                    <!--****** Nitik code ended *********-->
+<!--****** Nitik code ended *********-->
           
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
@@ -2822,7 +2823,6 @@
                 </div>
               </div>
             </div>
-            <div id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
          
@@ -3461,7 +3461,7 @@ function openModal(functionAction) {
    
             
           }
-      else if(DESetQueryBox.size == 0){
+      else if(DESetQueryBox.size == 0 || TotalMainDeDragged==0){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
         console.log('bye');
@@ -3488,7 +3488,10 @@ function openModal(functionAction) {
               console.log('called function validate query');
             }
            else{
-            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+             if(TotalMainDeDragged!=0){
+              document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+             }
+            
            }
           
     
@@ -3516,12 +3519,14 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName= {};
+      draggedDeName.clear();
       for(const Id of draggedDeId){
+        console.log("tt2");
         document.getElementById(Id).className = "btn"; 
+        console.log("tt3");
       }
-      draggedDeId= {};
-      draggedDeKey={};
+      draggedDeId.clear();
+      draggedDeKey.clear();
       console.log("tt completed1");
     }
     
@@ -3831,6 +3836,7 @@ document.addEventListener("touchend ", function(){
     var draggedDeName=new Set();
     var draggedDeId=new Set();
     var draggedDeKey=new Set();
+    var TotalMainDeDragged=0;
 
     var DEDragData = {
       "DEName": '',
@@ -3980,6 +3986,7 @@ document.addEventListener("touchend ", function(){
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
+          
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
@@ -4020,7 +4027,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType)
+                        draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
@@ -4965,6 +4972,7 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
+      TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
