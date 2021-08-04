@@ -3514,11 +3514,11 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName=[];
+      draggedDeName= {};
       for(var i=0;i<draggedDeId.length;i++){
         document.getElementById(draggedDeId[i]).className = "btn"; 
       }
-      draggedDeId=[];
+      draggedDeId={};
       console.log("tt completed1");
     }
     
@@ -4016,10 +4016,11 @@ document.addEventListener("touchend ", function(){
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
                         draggedDeName.add(FieldType);
-                        key = FieldKey.split("WhereClasueDEList");
-                        FieldId = key[0];
-                        console.log("FieldId=="+FieldId);
-                        draggedDeId.add(FieldId)
+                        //key = FieldKey.split("WhereClasueDEList");
+                        //FieldId = key[0];
+                        //console.log("FieldId=="+FieldId);
+                        //draggedDeId.add(FieldId);
+                        draggedDeId.add(FieldKey);
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
