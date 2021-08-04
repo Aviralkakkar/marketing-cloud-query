@@ -2415,7 +2415,8 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div class="slds-col" id="queryDiv" style="height:50%;margin-bottom:1%;">
+              
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2624,7 +2625,7 @@
                 </section>
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
-<!--****** Nitik code ended *********-->
+                    <!--****** Nitik code ended *********-->
           
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
@@ -2821,8 +2822,7 @@
                 </div>
               </div>
             </div>
-            <div id="RelationshipDiv">
-            </div>
+            <div class="slds-scrollable" id="RelationshipDiv"> </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
          
@@ -3461,7 +3461,11 @@ function openModal(functionAction) {
    
             
           }
+<<<<<<< HEAD
       else if(DESetQueryBox.size == 0 ){
+=======
+      else if(DESetQueryBox.size == 0){
+>>>>>>> 3331e31dc479fd19d9bbb830dd951406e5f3e279
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
         console.log('bye');
@@ -3488,10 +3492,14 @@ function openModal(functionAction) {
               console.log('called function validate query');
             }
            else{
+<<<<<<< HEAD
              if(DESetQueryBox.size != 0 ){
               document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
              }
             
+=======
+            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+>>>>>>> 3331e31dc479fd19d9bbb830dd951406e5f3e279
            }
           
     
@@ -3519,14 +3527,12 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName.clear();
+      draggedDeName= {};
       for(const Id of draggedDeId){
-        console.log("tt2");
         document.getElementById(Id).className = "btn"; 
-        console.log("tt3");
       }
-      draggedDeId.clear();
-      draggedDeKey.clear();
+      draggedDeId= {};
+      draggedDeKey={};
       console.log("tt completed1");
     }
     
@@ -3836,7 +3842,10 @@ document.addEventListener("touchend ", function(){
     var draggedDeName=new Set();
     var draggedDeId=new Set();
     var draggedDeKey=new Set();
+<<<<<<< HEAD
     //var TotalMainDeDragged=0;
+=======
+>>>>>>> 3331e31dc479fd19d9bbb830dd951406e5f3e279
 
     var DEDragData = {
       "DEName": '',
@@ -3986,7 +3995,6 @@ document.addEventListener("touchend ", function(){
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
-          
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
@@ -4027,7 +4035,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType);
+                        draggedDeName.add(FieldType)
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
@@ -4972,7 +4980,10 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
+<<<<<<< HEAD
       //TotalMainDeDragged++;
+=======
+>>>>>>> 3331e31dc479fd19d9bbb830dd951406e5f3e279
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
