@@ -4159,11 +4159,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-     /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+     if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }*/
+      }
+      /*
       for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
@@ -4173,7 +4174,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-      }
+      }*/
       //console.log("draggedDeName"+draggedDeKey);
 
 
@@ -4231,6 +4232,25 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        /*for(var de in DESetQueryBox){
+
+        }*/
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+          console.log("in the first");
+        }
+        else if(countOfDeWithWhereClauseValue=1){
+          console.log("in the second");
+        }
+        else if(countOfDeWithWhereClauseValue>1){
+          console.log("in the third");
+        }
+
+        
+
+
+
+
+
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
