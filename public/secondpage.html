@@ -2601,7 +2601,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="c(event,this)">
                                
                                     <div class="expression"></div>
                                     <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
@@ -3417,15 +3417,15 @@ function openModal(functionAction) {
         document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('uoList').innerHTML = '';
-        console.log("nitik value1");
+        //console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
               var value=document.getElementById(temp).innerHTML;
-              console.log('value'+value);
-              console.log('nitik key'+temp);
+              //console.log('value'+value);
+              //console.log('nitik key'+temp);
               if(value==""){
                 countOfDeWithoutWhereClauseValue++;
-                console.log("nitik value12");
+                //console.log("nitik value12");
               }
               else{
                
@@ -3450,9 +3450,9 @@ function openModal(functionAction) {
                   
                   for(const valId of draggedDeKey){
                     
-                      console.log("qwerty");
+                     // console.log("qwerty");
                       document.getElementById(valId+"WhereClasueDEList").className = "slds-button slds-button_brand"; 
-                      console.log("qwerty end");
+                     // console.log("qwerty end");
                     
                   }
                   
@@ -3462,9 +3462,9 @@ function openModal(functionAction) {
             
           }
       else if(DESetQueryBox.size == 0 ){
-        console.log('hi');
+       // console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
-        console.log('bye');
+       // console.log('bye');
       }    
       
      /* if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
@@ -3473,19 +3473,19 @@ function openModal(functionAction) {
         validateQuery(JoinQueryDetails , 'Run');
         console.log('called function validate query');
       }*/
-      console.log("nitik value23"+JSON.stringify(joinedDivSet));
-            console.log("nitik value24"+DESetQueryBox.size);
+     // console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            //console.log("nitik value24"+DESetQueryBox.size);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
-              console.log("nitik value2"+DESetQueryBox.size);
+              //console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("DEWhereClauseModal").style.display = "block"
               document.getElementById("DEWhereClauseModal").classList.add("show")
             } 
             else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue ==1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
-              console.log('calling function validate query');
+              //console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
               validateQuery(JoinQueryDetails , functionAction);
-              console.log('called function validate query');
+              //console.log('called function validate query');
             }
            else{
              if(DESetQueryBox.size != 0 ){
@@ -3512,22 +3512,22 @@ function closeModal() {
     document.getElementById("backdrop").style.display = "none";
     document.getElementById("DEWhereClauseModal").style.display = "none";
     document.getElementById("DEWhereClauseModal").classList.remove("show");
-    console.log("tt");
+    //console.log("tt");
     var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
-    console.log("text"+text);
+   // console.log("text"+text);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
-    console.log("tt completed");
+    //console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
-      console.log("tt1");
+      //console.log("tt1");
       //draggedDeName.clear();
       for(const Id of draggedDeKey){
-        console.log("tt2");
+        //console.log("tt2");
         document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
-        console.log("tt3");
+        //console.log("tt3");
       }
       //draggedDeId.clear();
       draggedDeKey.clear();
-      console.log("tt completed1");
+      //console.log("tt completed1");
     }
     
 }
@@ -3894,25 +3894,14 @@ document.addEventListener("touchend ", function(){
       ev.preventDefault();
     }
 
-    document.ondragstart = function (event) {
-      var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
-      console.log('Object ' + JSON.stringify(obj));
-      event.dataTransfer.setData("text/plain", JSON.stringify(obj));
-    };
-
-    document.ondragover = function (event, ev) {
-      event.preventDefault();
-    };
-    function allowDroping(ev, event) {
-                ev.preventDefault();
-              }
+    
           
               document.ondragstart = function (event) {
                 var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
                
-                console.log('Object12 ' + obje.id);
+               // console.log('Object12 ' + obje.id);
                 
-                console.log('Object12 ' + JSON.stringify(obje));
+                //console.log('Object12 ' + JSON.stringify(obje));
                 
                  
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
@@ -4001,7 +3990,7 @@ document.addEventListener("touchend ", function(){
         "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
         "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
-      console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
+     // console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
       insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
       function insertTextAtCaret(FieldName, FieldKey, FieldType) {
@@ -4009,11 +3998,11 @@ document.addEventListener("touchend ", function(){
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
-          console.log("parentID"+parentID);
+          //console.log("parentID"+parentID);
           var anchorID = window.getSelection().anchorNode.id;
-          console.log("anchorID"+anchorID);
+          //console.log("anchorID"+anchorID);
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-          console.log("superparentID"+superparentID);
+         // console.log("superparentID"+superparentID);
           //code added by priyanka  for moving 
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
@@ -4026,23 +4015,23 @@ document.addEventListener("touchend ", function(){
           }
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
-                        console.log("hello");
+                        //console.log("hello");
                         //draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
-                        console.log("FieldId=="+FieldId);
+                        //console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
                         //draggedDeId.add(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
                         range.insertNode(document.createTextNode(FieldName));
-                        console.log('check start');
+                       // console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
-                        console.log('check end');
+                        //console.log('check end');
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
@@ -4124,8 +4113,8 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
-      console.log('value======'+richTextEditorForFinalWhereClauseValue);
+     // var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
+     // console.log('value======'+richTextEditorForFinalWhereClauseValue);
       /*for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
@@ -4143,7 +4132,7 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-      console.log("draggedDeName000000");
+     // console.log("draggedDeName000000");
      /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
@@ -4154,15 +4143,15 @@ document.addEventListener("touchend ", function(){
 
         }
         else{
-          console.log("draggedDeName8978");
+          //console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
       }
-      console.log("draggedDeName"+draggedDeKey);
+      //console.log("draggedDeName"+draggedDeKey);
 
 
-      console.log('action type'+actionType);
+      //console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
