@@ -3923,7 +3923,7 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-      console.log(" DEDragData.DEName5677"+ DEDragData.DEName);
+      console.log(" DEDragData.DEName"+ DEDragData.DEName);
       //console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
       //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
@@ -4040,26 +4040,26 @@ document.addEventListener("touchend ", function(){
                       
                         //console.log('check end');
                         if(FieldType in DEListMap.DEMap) {
-                          for (var FieldId in DEListMap.DEMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[FieldId]["FieldName"], "g")
-                            console.log("-----"+regex+"dfghjk=="+FieldId);
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                          for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            console.log("-----"+regex+"dfghjk"+key);
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=-"+FieldName);
                            // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]");
                           }
                         
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
-                          for (var FieldId in DEListMap.SharedDEMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[FieldId]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                          for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName-="+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
-                          for (var FieldId in DEListMap.DataViewMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[FieldId]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                          for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=="+FieldName);
                           }
                         }
