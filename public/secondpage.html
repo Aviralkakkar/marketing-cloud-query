@@ -3446,12 +3446,12 @@ function openModal(functionAction) {
               
             }
 
-            if(draggedDeId.size > 0){
+            if(draggedDeKey.size > 0){
                   
-                  for(const valId of draggedDeId){
+                  for(const valId of draggedDeKey){
                     
                       console.log("qwerty");
-                      document.getElementById(valId).className = "slds-button slds-button_brand"; 
+                      document.getElementById(valId+"WhereClasueDEList").className = "slds-button slds-button_brand"; 
                       console.log("qwerty end");
                     
                   }
@@ -3519,13 +3519,13 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName.clear();
-      for(const Id of draggedDeId){
+      //draggedDeName.clear();
+      for(const Id of draggedDeKey){
         console.log("tt2");
-        document.getElementById(Id).className = "btn"; 
+        document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
         console.log("tt3");
       }
-      draggedDeId.clear();
+      //draggedDeId.clear();
       draggedDeKey.clear();
       console.log("tt completed1");
     }
@@ -3833,8 +3833,8 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-    var draggedDeName=new Set();
-    var draggedDeId=new Set();
+    //var draggedDeName=new Set();
+    //var draggedDeId=new Set();
     var draggedDeKey=new Set();
    
 
@@ -4027,12 +4027,12 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType);
+                        //draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
-                        draggedDeId.add(FieldKey)
+                        //draggedDeId.add(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
@@ -4143,13 +4143,13 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-     
+      console.log("draggedDeName000000");
       if(isSetEqual(DESetQueryBox, draggedDeKey)){
-        console.log("draggedDeName");
+        console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
-      console.log("draggedDeName"+draggedDeName);
+      console.log("draggedDeName"+draggedDeKey);
 
 
       console.log('action type'+actionType);
