@@ -4043,8 +4043,15 @@ document.addEventListener("touchend ", function(){
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            console.log("-----"+regex+"dfghjk"+key);
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldName=-"+FieldName);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]");
                           }
+                          for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
+              var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+            }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
