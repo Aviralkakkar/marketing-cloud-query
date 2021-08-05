@@ -2417,7 +2417,8 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:75%;margin-bottom:1%;position:relative;">
-              <div  id="RelationshipDiv">
+              <div id="RelationshipDiv">
+              </div>
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2490,12 +2491,6 @@
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
-          <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"></use>
-            </svg>
-            <span class="slds-assistive-text">Description of icon when needed</span>
-          </span>
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
@@ -2633,7 +2628,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
 <!--****** Nitik code ended *********-->
-              </div>
+          
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height: 25%;padding-top:0%;" style="overflow: scroll;">
@@ -4049,15 +4044,11 @@ document.addEventListener("touchend ", function(){
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            console.log("-----"+regex+"dfghjk"+key);
+                            console.log("-----");
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=-"+FieldName);
                            // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]");
                           }
-                          for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
-              var regex = new RegExp(DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
-            }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
