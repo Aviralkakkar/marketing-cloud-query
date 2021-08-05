@@ -2276,8 +2276,8 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                document.getElementById('FullPageSpinner').style.display = 'block';
-                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                  //document.getElementById('FullPageSpinner').style.display = 'block';
+                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
@@ -2415,7 +2415,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div id="queryDiv" style="height:75%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2628,12 +2628,12 @@
           
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
+                style="height: 25%;padding-top:0%;" style="overflow: scroll;">
                 <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
       
       
       
-                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+                <div class="slds-scrollable  " id="tableDiv" style="height:70%;margin-top:1%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -3731,18 +3731,24 @@ window.onclick = function(event) {
     const upper = document.getElementById("queryDiv");
     const table = document.getElementById("tableDiv");
     const newDiv = document.getElementById("newDiv");
-    var count = 26;
-
+    var count = 0;
+    var cnt=0;
     var dragging = false;
     let m_pos;
     let m_pos_mob;
-    function resize(e) {
-      if (dragging) {
+    function resize(e) 
+    {
+      cnt = cnt +1 ;
+      if (dragging && cnt==2)
+      {
+        cnt=0;
         var hp = parseInt(panel.style.height);
         var hu = parseInt(upper.style.height);
         console.log('hp ' + hp + ' hu ' + hu);
-        if (e.clientY <= m_pos) {
-          if (hp < 75 && hu > 25) {
+        if (e.clientY <= m_pos) 
+        {
+          if (hp < 75 && hu > 25)
+          {
             hp = hp + 1;
             panel.style.height = hp + "%";
             hu = hu - 1;
@@ -3750,17 +3756,18 @@ window.onclick = function(event) {
             console.log('hp ' + hp + ' hu ' + hu);
             count++;
             console.log(count);
-            if (count >= 15 && count <= 35) {
+            if (count >= 15 && count <= 35) 
+            {
               var tb = parseInt(table.style.height);
               tb = tb + 1;
               table.style.height = tb + "%";
             }
-
-
           }
         }
-        if (e.clientY > m_pos) {
-          if (hp > 25) {
+        if (e.clientY > m_pos) 
+        {
+          if (hp > 25) 
+          {
             console.log("Inside 2nd if");
             hp = hp - 1;
             panel.style.height = hp + "%";
@@ -3769,7 +3776,8 @@ window.onclick = function(event) {
             console.log('hp ' + hp + ' hu ' + hu);
             count--;
             console.log(count);
-            if (count >= 15 && count <= 35) {
+            if (count >= 15 && count <= 35) 
+            {
               var tb = parseInt(table.style.height);
               tb = tb - 1;
               table.style.height = tb + "%";
@@ -3786,7 +3794,7 @@ window.onclick = function(event) {
       dragging = true;
       if (e.clientY) {
         m_pos = e.clientY;
-        console.log('mouse down');
+        console.log('mouse down'); 
         document.addEventListener("mousemove", resize, false);
       }
     }, false);
