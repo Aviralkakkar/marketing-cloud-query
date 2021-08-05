@@ -4998,19 +4998,56 @@ document.addEventListener("touchend ", function(){
         }
       }
       if (openSelectFieldsDEExtKey != '') {
-        DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+        //---------------------priyanka code-----------
+        if(openSelectFieldsDEExtKey in DEListMap.DEMap){
+          DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
         }
+        }
+        else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
+          DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+          DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
+            "FieldName": SelectedField.label,
+            "FieldType": SelectedField.value
+          });
+        }
+        }
+        
+        else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
+          DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+          DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields.push({
+            "FieldName": SelectedField.label,
+            "FieldType": SelectedField.value
+          });
+        }
+        }
+       
         fieldsListForRelationDiv = '';
+        if(openSelectFieldsDEExtKey in DEListMap.DEMap){
         for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
+        }
+        else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
+        for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
+        }
+        }
+        else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
+        for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields) {
+          fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
+        }
+        }
         document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul style="padding-left: 0;" class="slds-scrollable">' + fieldsListForRelationDiv + '</ul>';
       }
+     //---------------ends here----------------------
+
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
           document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
