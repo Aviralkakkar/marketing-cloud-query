@@ -2995,7 +2995,7 @@
                   <ul class="list-group left-side" 
                     style=" height: 55vh; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height: 51vh; width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3380,7 +3380,11 @@
       }
     
   function setButton(obj) {
-    
+     console.log('do not scroll to top');
+     var el = document.getElementById('container');
+     el.scrollTop = 0;
+     console.log( el.scrollTop);
+     console.log('7e383uiej');
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -3416,11 +3420,11 @@
         return true;
       }*/
       var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
-    
+    var countOfDeWithoutWhereClauseValue=0; 
 function openModal(functionAction) {
    
-   
+ 
+    
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('DEWhereClauseModal').style.display = 'block';
@@ -4239,7 +4243,6 @@ document.addEventListener("touchend ", function(){
         else if(countOfDeWithWhereClauseValue>1){
           console.log("in the thui");
         }
-
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -5060,7 +5063,7 @@ document.addEventListener("touchend ", function(){
         '          }'+
         ''+
         ' </style>' +
-        '<div style="overflow:auto;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+        '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
         '<div style="top:5%;left:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
         '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
         '        <table>' +
@@ -5249,7 +5252,7 @@ document.addEventListener("touchend ", function(){
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
-     }
+      }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
