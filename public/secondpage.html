@@ -4785,6 +4785,7 @@ document.addEventListener("touchend ", function(){
        }
    
       }
+      document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
     }
     else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
       for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields) {
@@ -4809,6 +4810,7 @@ document.addEventListener("touchend ", function(){
        }
    
       }
+      document.getElementById("modal-heading-01").innerHTML = DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
     }
     else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
       for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields) {
@@ -4833,6 +4835,7 @@ document.addEventListener("touchend ", function(){
        }
    
       }
+      document.getElementById("modal-heading-01").innerHTML = DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
     }
 
     /* for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
@@ -4880,7 +4883,7 @@ document.addEventListener("touchend ", function(){
    
       }
       */
-      document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
+     
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
 
