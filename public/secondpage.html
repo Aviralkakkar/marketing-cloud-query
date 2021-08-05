@@ -4034,10 +4034,10 @@ document.addEventListener("touchend ", function(){
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
-                        range.insertNode(document.createTextNode(FieldName));
+                        //range.insertNode(document.createTextNode(FieldName));
                        // console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
-                      // document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
                         //console.log('check end');
