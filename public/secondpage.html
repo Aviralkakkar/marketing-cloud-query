@@ -2245,6 +2245,13 @@
        position: relative;
      }
       
+     option:active{
+    outline-offset: 0mm;
+  }
+  select:active{
+    outline: none;
+  }
+   
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -2986,7 +2993,7 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style="height: 51vh; border: none; background-color:white; padding:0%; margin:0%; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
@@ -3024,7 +3031,7 @@
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%;   ">
+                    style=" border: none; padding:0%; margin:0%; height: 51vh;  ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
