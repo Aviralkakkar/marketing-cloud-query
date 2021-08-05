@@ -5239,10 +5239,7 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-    for (var classEle in document.getElementsByClassName("mydiv")) {
-      dragElement(document.getElementsByClassName("mydiv")[classEle]);
-    }
-    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
      }
