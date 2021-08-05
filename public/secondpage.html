@@ -4221,11 +4221,12 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        
+        console.log("countOfDeWithoutWhereClauseValue=="+countOfDeWithoutWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
           console.log("in the first");
         }
-        else if(countOfDeWithWhereClauseValue==1){
+        else if(countOfDeWithWhereClauseValue == 1){
           console.log("in the second");
         }
         else if(countOfDeWithWhereClauseValue>1){
