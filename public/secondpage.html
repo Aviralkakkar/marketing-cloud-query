@@ -2276,8 +2276,8 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                  document.getElementById('FullPageSpinner').style.display = 'block';
-                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                  //document.getElementById('FullPageSpinner').style.display = 'block';
+                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
@@ -2293,7 +2293,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 91vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 90vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -3738,7 +3738,7 @@ window.onclick = function(event) {
     function resize(e) 
     {
       cnt = cnt +1 ;
-      if (dragging && cnt==2)
+      if (dragging && cnt==3)
       {
         cnt=0;
         var hp = parseInt(panel.style.height);
@@ -5038,7 +5038,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="position:absolute;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
