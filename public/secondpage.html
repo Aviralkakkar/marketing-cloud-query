@@ -2240,7 +2240,7 @@
       padding-right: 0 !important;
       margin: 0;
     }
-     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+     #leftsideListInSelectField:focus-visible,#rightsideListInSelectField:focus-visible{
        outline: none;
        border: none;
        position: relative;
@@ -2973,7 +2973,7 @@
 
 
         <div class="slds-modal__content slds-p-around_medium" id="grid-1-de"
-          style=" overflow-y: scroll; margin:0; padding:0; height: 27rem;  ">
+          style=" overflow-y: scroll; margin:0; padding:0; height: 60vh; ">
 
           <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
@@ -3159,7 +3159,7 @@
 
 
 
-        <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
+        <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 60vh; padding: 0;">
 
 
 
@@ -3409,10 +3409,10 @@
         return true;
       }*/
       var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+    var countOfDeWithoutWhereClauseValue=0; 
 function openModal(functionAction) {
    
-    
+   
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -4149,12 +4149,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
+     if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
-      /*for(const val of DESetQueryBox){
+     /* for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
         }
@@ -4221,18 +4221,18 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-
-        console.log("countOfDeWithoutWhereClauseValue = "+countOfDeWithoutWhereClauseValue);
-        console.log("countOfDeWithWhereClauseValue = "+countOfDeWithWhereClauseValue);
+        console.log("countOfDeWithoutWhereClauseValue=="+countOfDeWithoutWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
           console.log("in the first");
         }
-        else if(countOfDeWithWhereClauseValue==1){
+        else if(countOfDeWithWhereClauseValue == 1){
           console.log("in the second");
         }
         else if(countOfDeWithWhereClauseValue>1){
           console.log("in the thui");
         }
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -5053,8 +5053,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="position:relative;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5239,7 +5239,7 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
      }
