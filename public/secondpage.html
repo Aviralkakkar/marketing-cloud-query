@@ -3434,14 +3434,14 @@ function openModal(functionAction) {
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; text-align: left; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; text-align: left; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' +'<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' +' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
                 
                 }
                
-           
+                
               }
               
             }
