@@ -2977,7 +2977,7 @@
 
           <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
-            <div class="row" style="width: 37rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
+            <div class="row" style="width: 36rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
               <div class="dual-list list-left col-md-5" style="height: 56vh; padding:0%; margin:0%; border: 1px solid lightgray; position: relative;">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
@@ -3374,6 +3374,17 @@
       }
     
   function setButton(obj) {
+
+    var position = document.getElementById('grid-1-de');
+    window.addEventListener("scroll", function(event) {
+  
+   var scroll_y = this.scrollY;
+  var scroll_x = this.scrollX;
+  console.log(scroll_x, scroll_y);
+  position.innerHTML = " X-axis : " 
+    + scroll_x + "Y-axis : " + scroll_y
+  }); 
+
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
