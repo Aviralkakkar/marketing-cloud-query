@@ -4221,12 +4221,11 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        console.log("countOfDeWithoutWhereClauseValue=="+countOfDeWithoutWhereClauseValue);
-        console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
+        
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
           console.log("in the first");
         }
-        else if(countOfDeWithWhereClauseValue == 1){
+        else if(countOfDeWithWhereClauseValue ==1){
           console.log("in the second");
         }
         else if(countOfDeWithWhereClauseValue>1){
@@ -5239,7 +5238,7 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
      }
