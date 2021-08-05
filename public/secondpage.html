@@ -2246,13 +2246,6 @@
        position: relative;
      }
       
-     option:active{
-    outline-offset: 0mm;
-  }
-  select:active{
-    outline: none;
-  }
-   
     /*-------End Here------------*/
   </style>
   <!-- Khushboo code ending  -->
@@ -3000,7 +2993,7 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style="height: 51vh; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
@@ -3038,7 +3031,7 @@
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%; height: 51vh;  ">
+                    style=" border: none; padding:0%; margin:0%;   ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
@@ -5071,7 +5064,7 @@ document.addEventListener("touchend ", function(){
         '          }'+
         ''+
         ' </style>' +
-        '<div style="position:relative;"  onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+        '<div style="overflow:auto;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
         '<div style="top:5%;left:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
         '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
         '        <table>' +
@@ -5260,7 +5253,7 @@ document.addEventListener("touchend ", function(){
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
-      }
+     }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
