@@ -5735,7 +5735,7 @@ document.addEventListener("touchend ", function(){
 
       if(div1_pos.left<div2_pos.left)
         {
-            var x1 = div1_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
+            var x1 = div1_pos.right+scrollDiv.scrollLeft-DEListSidebar_pos.right;
             var y1 = div1_pos.top+scrollDiv.scrollTop+10;
             var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
             var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.top/2);
