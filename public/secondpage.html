@@ -2240,7 +2240,7 @@
       padding-right: 0 !important;
       margin: 0;
     }
-     #leftsideListInSelectField:focus-visible,#rightsideListInSelectField:focus-visible{
+     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
        outline: none;
        border: none;
        position: relative;
@@ -5052,8 +5052,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div style="position:relative;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5238,7 +5238,7 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
      }
