@@ -2995,7 +2995,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height: 51vh; width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3380,7 +3380,11 @@
       }
     
   function setButton(obj) {
-    
+     console.log('do not scroll to top');
+     var el = document.getElementById('container');
+     el.scrollTop = 0;
+     console.log( el.scrollTop);
+     console.log('7e383uiej');
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -4155,12 +4159,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-     /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+      if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }*/
-      for(const val of DESetQueryBox){
+      }
+      /*for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
         }
@@ -4169,7 +4173,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-      }
+      }*/
       //console.log("draggedDeName"+draggedDeKey);
 
 
