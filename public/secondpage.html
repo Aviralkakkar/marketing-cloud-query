@@ -4036,18 +4036,21 @@ document.addEventListener("touchend ", function(){
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldName"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldName"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
                           for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldName"+FieldName);
                           }
                         }
 
