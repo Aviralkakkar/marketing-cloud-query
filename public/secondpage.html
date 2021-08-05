@@ -4233,7 +4233,15 @@ document.addEventListener("touchend ", function(){
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
 
-        
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+          console.log("in the first");
+        }
+        else if(countOfDeWithWhereClauseValue=1){
+          console.log("in the second");
+        }
+        else if(countOfDeWithWhereClauseValue>1){
+          console.log("in the thui");
+        }
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
