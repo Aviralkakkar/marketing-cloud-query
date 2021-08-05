@@ -4043,6 +4043,7 @@ document.addEventListener("touchend ", function(){
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                            console.log("-----");
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=-"+FieldName);
                           }
