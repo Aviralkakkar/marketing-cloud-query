@@ -4965,138 +4965,137 @@ document.addEventListener("touchend ", function(){
           
         
       //************************************************Edited By ANIL KUMAR**********************************//
-        var relationDivString = '<style>' +
-          '        ' +
-          '        .mainQuaryBoxStyle{' +
-          '            width:10em;' +
-          '            background-color: #387F9D;' +
-          '            border-color:#387F9D;' +
-          '            position: sticky;' +
-          '            -webkit-user-select: none;' +
-          '            -khtml-user-select: none;' +
-          '            -moz-user-select: none;' +
-          '            -ms-user-select: none;' +
-          '            -o-user-select: none;' +
-          '            user-select: none;' +
-          '            user-select: none;' +
-          '            -webkit-touch-callout: none;' +
-          '            opacity:0.9;' +
-          '            ' +
-          '        }' +
-          '' +
-          '        .headerOfQuaryBox' +
-          '        {' +
-          '            text-align: left;' +
-          '            font-size:75%;' +
-          '            border-bottom: 0;' +
-          '            margin:auto;' +
-          '            color:white;' +
-          '            font-weight:bold;' +
-          '            font-family: Calibr;' +
-          '            padding:2%;' +
-          '        }' +
-          '        .data-query-Box-style{' +
-          '            margin:1px;' +
-          '            background-color: #F1F1F1;' +
-          '            padding:0;' +
-          '            font-size: 70%;' +
-          '            max-height:250px;' +
-          '        }' +
-          '        .data-box-style{' +
-          '            color:#686363;' +
-          '            font-size: 80%;' +
-          '            cursor: pointer;' +
-          '            border-bottom: 1px solid #ddc5c5;' +
-          '            font-family: Calibr;' +
-          '            padding:2%;' +
-          '        }' +
-          '' +
-          '        .quaryBox{' +
-          '          color:#686363;  ' +
-          '          text-align:center;' +
-          '          max-height:150px;' +
-          '          margin:0px;' +
-          '          background-color: #F1F1F1;' +
-          '          padding:0;' +
-          '          font-size: 70%;' +
-          '          ' +
-          '        }' +
-          '' +
-          '        .dataFields-area-set{' +
-          '            padding-left: 0;' +
-          '            ' +
-          '        }    ' +
-          '' +
-          '        .buttonStyle{' +
-          '            background-color: transparent;' +
-          '            height:24px;' +
-          '            width:24px;' +
-          '            float: right;' +
-          '            border:none;' +
-          '        }' +
-          '       .mainQuaryBoxStyle:active{'+
-          '            width:10em;'+
-          '            background-color: #353535;'+
-          '            border-color:#2e2e2e;'+
-          '            position: sticky;'+
-          '            -webkit-user-select: none;'+
-          '            -khtml-user-select: none;'+
-          '            -moz-user-select: none;'+
-          '            -ms-user-select: none;'+
-          '            -o-user-select: none;'+
-          '            user-select: none;'+
-          '            user-select: none;'+
-          '            -webkit-touch-callout: none;'+
-          '            opacity:0.9;'+
-          '          }'+
-          ''+
-          ' </style>' +
-          '<div style="width:10em;position:absolute;" class="mydiv" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
-          '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
-          '        <table>' +
-          '            <tbody>' +
-          '                <th>' +
-          '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
-          '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
-          '                              </svg>    ' +
-          '                        </button>' +
-          '                    </td>' +
-          '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
-          '                              </svg>' +
-          '                              ' +
-          '                        </button>' +
-          '                    </td>' +
-          '                </th>' +
-          '            </tbody>' +
-          '        </table>' +
-          '    </div>' +
-          '   <div class="slds-card__body" style="margin-top: 0px;margin-bottom: 0px;">' +
+      var relationDivString = '<style>' +
+        '        ' +
+        '        .mainQuaryBoxStyle{' +
+        '            width:10em;' +
+        '            background-color: #387F9D;' +
+        '            border-color:#387F9D;' +
+        '            position: absolute;' +
+        '            -webkit-user-select: none;' +
+        '            -khtml-user-select: none;' +
+        '            -moz-user-select: none;' +
+        '            -ms-user-select: none;' +
+        '            -o-user-select: none;' +
+        '            user-select: none;' +
+        '            user-select: none;' +
+        '            -webkit-touch-callout: none;' +
+        '            opacity:0.9;' +
+        '            ' +
+        '        }' +
+        '' +
+        '        .headerOfQuaryBox' +
+        '        {' +
+        '            text-align: left;' +
+        '            font-size:75%;' +
+        '            border-bottom: 0;' +
+        '            margin:auto;' +
+        '            color:white;' +
+        '            font-weight:bold;' +
+        '            font-family: Calibr;' +
+        '            padding:2%;' +
+        '        }' +
+        '        .data-query-Box-style{' +
+        '            margin:1px;' +
+        '            background-color: #F1F1F1;' +
+        '            padding:0;' +
+        '            font-size: 70%;' +
+        '            max-height:250px;' +
+        '        }' +
+        '        .data-box-style{' +
+        '            color:#686363;' +
+        '            font-size: 80%;' +
+        '            cursor: pointer;' +
+        '            border-bottom: 1px solid #ddc5c5;' +
+        '            font-family: Calibr;' +
+        '            padding:2%;' +
+        '        }' +
+        '' +
+        '        .quaryBox{' +
+        '          color:#686363;  ' +
+        '          text-align:center;' +
+        '          max-height:150px;' +
+        '          margin:0px;' +
+        '          background-color: #F1F1F1;' +
+        '          padding:0;' +
+        '          font-size: 70%;' +
+        '          ' +
+        '        }' +
+        '' +
+        '        .dataFields-area-set{' +
+        '            padding-left: 0;' +
+        '            ' +
+        '        }    ' +
+        '' +
+        '        .buttonStyle{' +
+        '            background-color: transparent;' +
+        '            height:24px;' +
+        '            width:24px;' +
+        '            float: right;' +
+        '            border:none;' +
+        '        }' +
+        '       .mainQuaryBoxStyle:active{'+
+        '            width:10em;'+
+        '            background-color: #353535;'+
+        '            border-color:#2e2e2e;'+
+        '            position: absolute;'+
+        '            -webkit-user-select: none;'+
+        '            -khtml-user-select: none;'+
+        '            -moz-user-select: none;'+
+        '            -ms-user-select: none;'+
+        '            -o-user-select: none;'+
+        '            user-select: none;'+
+        '            user-select: none;'+
+        '            -webkit-touch-callout: none;'+
+        '            opacity:0.9;'+
+        '          }'+
+        ''+
+        ' </style>' +
+        '<div style="overflow:auto;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+        '<div style="top:5%;left:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+        '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
+        '        <table>' +
+        '            <tbody>' +
+        '                <th>' +
+        '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
+        '                    <td width="20%">' +
+        '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+        '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
+        '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
+        '                              </svg>    ' +
+        '                        </button>' +
+        '                    </td>' +
+        '                    <td width="20%">' +
+        '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
+        '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
+        '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
+        '                              </svg>' +
+        '                              ' +
+        '                        </button>' +
+        '                    </td>' +
+        '                </th>' +
+        '            </tbody>' +
+        '        </table>' +
+        '    </div>' +
+        '   <div class="slds-card__body" style="margin-top: 0px;margin-bottom: 0px;">' +
 
-          '   <div class="data-query-Box-style slds-box slds-scrollable" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
-          '  <ul style="padding-left: 0;">';
-        relationDivString += fieldsListForRelationDiv;
-        relationDivString += '</ul>' +
-          '    </div>' +
-          '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
-          '        <div style="text-align:center;">' +
-          '            <span title="">Where</span>    ' +
-          '        </div>' +
-          '        <div class="slds-scrollable_y slds-box quaryBox">' +
-          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClauseValue">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
-        '            </div>' +
-          '         </div>' +
-          '   </div>' +
-          '</div>'+
-
-          '</div>'
-          ;
+        '   <div class="data-query-Box-style slds-box slds-scrollable" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
+        '  <ul style="padding-left: 0;">';
+      relationDivString += fieldsListForRelationDiv;
+      relationDivString += '</ul>' +
+        '    </div>' +
+        '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+        '        <div style="text-align:center;">' +
+        '            <span title="">Where</span>    ' +
+        '        </div>' +
+        '        <div class="slds-scrollable_y slds-box quaryBox">' +
+        '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClauseValue">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
+      '            </div>' +
+        '         </div>' +
+        '   </div>' +
+        '</div>'+
+        '</div>'
+        ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
       //TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
