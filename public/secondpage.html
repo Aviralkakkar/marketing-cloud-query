@@ -2293,7 +2293,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 91vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 90vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -2344,7 +2344,7 @@
                     </button>
                     <div class="slds-p-left_small">
                       <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="sharedDataExtension"
-                        role="tree">
+                        role="tree" style="width: 100%;">
 
                       </ul>
                     </div>
@@ -2416,8 +2416,7 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:75%;margin-bottom:1%;position:relative;">
-              <div id="RelationshipDiv">
-              </div>
+              <div  id="RelationshipDiv">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2603,7 +2602,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="c(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
                                
                                     <div class="expression"></div>
                                     <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
@@ -2627,7 +2626,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
 <!--****** Nitik code ended *********-->
-          
+              </div>
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height: 25%;padding-top:0%;" style="overflow: scroll;">
@@ -3924,8 +3923,8 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-      console.log(" DEDragData.DEName"+ DEDragData.DEName);
-      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      console.log(" DEDragData.DEName5677"+ DEDragData.DEName);
+      //console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
       //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
@@ -4041,21 +4040,27 @@ document.addEventListener("touchend ", function(){
                       
                         //console.log('check end');
                         if(FieldType in DEListMap.DEMap) {
-                          for (var key in DEListMap.DEMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          for (var FieldId in DEListMap.DEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[FieldId]["FieldName"], "g")
+                            console.log("-----"+regex+"dfghjk=="+FieldId);
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                            console.log("FieldName=-"+FieldName);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]");
                           }
+                        
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
-                          for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          for (var FieldId in DEListMap.SharedDEMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[FieldId]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                            console.log("FieldName-="+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
-                          for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
+                          for (var FieldId in DEListMap.DataViewMap[FieldType].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[FieldId]["FieldName"], "g")
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[FieldId]["FieldName"] + ']');
+                            console.log("FieldName=="+FieldName);
                           }
                         }
 
@@ -4912,7 +4917,7 @@ document.addEventListener("touchend ", function(){
           });
          }
          
-         fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+        // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
       
         }
 
@@ -4925,7 +4930,7 @@ document.addEventListener("touchend ", function(){
           });
         }
         
-        fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+        //fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
       
         }
         else if(DEDragData.DEExtKey in DEListMap.DataViewMap){
@@ -4936,9 +4941,10 @@ document.addEventListener("touchend ", function(){
             "FieldType": SelectedField.value
           });
          }
-         fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+        // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
-        
+       fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+     
       
         
          
@@ -5032,7 +5038,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="position:absolute;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -5730,7 +5736,6 @@ document.addEventListener("touchend ", function(){
                         height:  2px;
                         background-color:#387F9D;
                         line-height: 1px;
-                        position: absolute;
                         left: ${cx}px;
                         top: ${cy}px;
                         width:${length}px;
