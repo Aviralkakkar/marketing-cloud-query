@@ -4051,10 +4051,10 @@ document.addEventListener("touchend ", function(){
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
                             console.log("-----");
-                            //FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            //console.log("FieldName=-"+FieldName);
-                           FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=-"+FieldName);
+                           //FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
@@ -4071,7 +4071,7 @@ document.addEventListener("touchend ", function(){
                             console.log("FieldName=="+FieldName);
                           }
                         }
-
+                        console.log("name=="+FieldName)
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                       }
                     }
