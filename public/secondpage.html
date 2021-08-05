@@ -3376,14 +3376,10 @@
   function setButton(obj) {
 
     var position = document.getElementById('grid-1-de');
-    window.addEventListener("scroll", function(event) {
-  
-   var scroll_y = this.scrollY;
-  var scroll_x = this.scrollX;
-  console.log(scroll_x, scroll_y);
-  position.innerHTML = " X-axis : " 
-    + scroll_x + "Y-axis : " + scroll_y
-  }); 
+    window.addEventListener("scroll", (event) => {
+    let scroll = this.scrollY;
+    console.log(scroll)
+     });   
 
     if (obj.length == 0) return;
     currentSel = obj;
