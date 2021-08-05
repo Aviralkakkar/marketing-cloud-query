@@ -2987,7 +2987,7 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style=" height: 55vh; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
@@ -3013,7 +3013,7 @@
                 </button>-->
               </div>
 
-              <div class="dual-list list-right col-md-5" style="height: 60vh; padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
+              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
                 <div class="well" style=" padding:0%;  background-color: white;  ">
                   <div class="row" style="padding:0%; margin:0%;  ">
 
@@ -3025,7 +3025,7 @@
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%;  ">
+                    style=" border: none; padding:0%; margin:0%;   ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
@@ -3408,10 +3408,11 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
+      var countOfDeWithWhereClauseValue=0;    
+    var countOfDeWithoutWhereClauseValue=0; 
 function openModal(functionAction) {
    
-    var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+   
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -4148,12 +4149,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-     /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+     if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }*/
-      for(const val of DESetQueryBox){
+      }
+     /* for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
         }
@@ -4162,7 +4163,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-      }
+      }*/
       //console.log("draggedDeName"+draggedDeKey);
 
 
@@ -4220,6 +4221,18 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        console.log("countOfDeWithoutWhereClauseValue=="+countOfDeWithoutWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+          console.log("in the first");
+        }
+        else if(countOfDeWithWhereClauseValue == 1){
+          console.log("in the second");
+        }
+        else if(countOfDeWithWhereClauseValue>1){
+          console.log("in the thui");
+        }
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -5040,8 +5053,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="position:relative;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5226,7 +5239,7 @@ document.addEventListener("touchend ", function(){
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
      }
