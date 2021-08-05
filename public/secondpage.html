@@ -2250,7 +2250,7 @@
   <!-- Khushboo code ending  -->
 </head>
 
-<body onresize="leftDivHeight()">
+<body>
 
   <div>
 
@@ -2281,7 +2281,7 @@
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
-              <div class="slds-panel__header">
+              <div class="slds-panel__header" style="height:9vh;">
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
                   style="font-size: larger;">Data Sources</h2>
                 <div class="slds-panel__header-actions">
@@ -2293,7 +2293,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body" id="panelBody" 
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height:91vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -2414,7 +2414,7 @@
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right"  style="width:75%;height:100%;" >
 
-          <div class="slds-grid slds-grid_vertical" style="height:100%">
+          <div class="slds-grid slds-grid_vertical" id="rightDiv" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:50%;margin-bottom:1%;position:sticky;">
               <div id="RelationshipDiv">
               </div>
@@ -3546,14 +3546,9 @@ window.onclick = function(event) {
 
   <script>
 
-    var scHeight = screen.height
+   
   
-    function leftDivHeight()
-    {
-        var h = document.getElementById("panelBody");
-        h.style.height = screen.height + 'px';
-      
-    }
+ 
 
     //******** folder hierarchy code *********//
     var dataExtBool = false;
