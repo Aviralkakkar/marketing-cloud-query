@@ -2995,7 +2995,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height: 51vh; width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3380,11 +3380,7 @@
       }
     
   function setButton(obj) {
-     console.log('do not scroll to top');
-     var el = document.getElementById('container');
-     el.scrollTop = 0;
-     console.log( el.scrollTop);
-     console.log('7e383uiej');
+    
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
