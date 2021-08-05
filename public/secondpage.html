@@ -5054,7 +5054,7 @@ document.addEventListener("touchend ", function(){
           ''+
           ' </style>' +
           '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="left:5%;top:7%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5238,6 +5238,11 @@ document.addEventListener("touchend ", function(){
     {
       var str = id.substring(0, id.length - 2);
       dragId=str;
+    }
+    var allmy_Div=document.getElementsByClassName('mydiv');
+    for(var i=0;i<allmy_Div.length;i++)
+    {
+        dragElement(document.getElementById(allmy_Div[i].id));
     }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
