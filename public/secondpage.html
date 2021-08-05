@@ -2250,13 +2250,13 @@
   <!-- Khushboo code ending  -->
 </head>
 
-<body onresize="leftDivHeight()">
+<body>
 
   <div>
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner"  class="demo-only" style="height:650px;position:relative;display:none">
+      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2271,12 +2271,12 @@
 
         <div class="sidebar" id="DEListSidebar"
           style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
-          <div class="demo-only-element" id="demoElement" style="height: 100%;">
+          <div class="demo-only-element" style="height: 100%;">
             <script>
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                  document.getElementById('FullPageSpinner').style.display = 'block';
+                document.getElementById('FullPageSpinner').style.display = 'block';
                   document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
@@ -2292,7 +2292,7 @@
                   </button>
                 </div>
               </div>
-              <div class="panel_body slds-panel__body" id="panelBody" 
+              <div class="panel_body slds-panel__body"
                 style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;padding-right:0%;">
 
                 <div class="slds-tree_container ">
@@ -2412,12 +2412,10 @@
         <!--Khushboo code ended -->
 
         <!--********* Khushboo code started ************-->
-        <div id="main-div" class="slds-float_right"  style="width:75%;height:100%;" >
+        <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-scrollable" id="queryDiv" style="height:50%;margin-bottom:1%;position:relative;">
-              <div id="RelationshipDiv">
-              </div>
+            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2753,7 +2751,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+              </div>
 
 
 
@@ -2823,7 +2821,8 @@
                 </div>
               </div>
             </div>
-            <div id="RelationshipDiv"> </div>
+            <div id="RelationshipDiv">
+            </div>
             <!-- <div id="recordResult" class="slds-m-top_xx-large" style= "margin-top: 25rem;"> Hey Records in me </div> -->
           </div>
          
@@ -3435,7 +3434,7 @@ function openModal(functionAction) {
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; text-align: center;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + val + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3462,7 +3461,7 @@ function openModal(functionAction) {
    
             
           }
-      else if(DESetQueryBox.size == 0){
+      else if(DESetQueryBox.size == 0 ){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
         console.log('bye');
@@ -3489,7 +3488,10 @@ function openModal(functionAction) {
               console.log('called function validate query');
             }
            else{
-            document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+             if(DESetQueryBox.size != 0 ){
+              document.getElementById('QueryBoxJoinAlert').style.display = 'Block';
+             }
+            
            }
           
     
@@ -3517,12 +3519,14 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName= {};
+      draggedDeName.clear();
       for(const Id of draggedDeId){
+        console.log("tt2");
         document.getElementById(Id).className = "btn"; 
+        console.log("tt3");
       }
-      draggedDeId= {};
-      draggedDeKey={};
+      draggedDeId.clear();
+      draggedDeKey.clear();
       console.log("tt completed1");
     }
     
@@ -3541,15 +3545,6 @@ window.onclick = function(event) {
   <!-- Khushboo  code starting   -->
 
   <script>
-
-    var scHeight = screen.height
-  
-    function leftDivHeight()
-    {
-        var h = document.getElementById("panelBody");
-        h.style.height = screen.height + 'px';
-      
-    }
 
     //******** folder hierarchy code *********//
     var dataExtBool = false;
@@ -3727,9 +3722,6 @@ window.onclick = function(event) {
       var totalPages = document.getElementById("totalPages");
       page.innerHTML = " " + 1 + " ";
       totalPages.innerHTML = " " + numPages() + " ";
-
-     
-
     };
 
 
@@ -3744,18 +3736,13 @@ window.onclick = function(event) {
     var dragging = false;
     let m_pos;
     let m_pos_mob;
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-   }
     function resize(e) {
       if (dragging) {
-       
         var hp = parseInt(panel.style.height);
         var hu = parseInt(upper.style.height);
         console.log('hp ' + hp + ' hu ' + hu);
         if (e.clientY <= m_pos) {
           if (hp < 75 && hu > 25) {
-            
             hp = hp + 1;
             panel.style.height = hp + "%";
             hu = hu - 1;
@@ -3774,7 +3761,6 @@ window.onclick = function(event) {
         }
         if (e.clientY > m_pos) {
           if (hp > 25) {
-            
             console.log("Inside 2nd if");
             hp = hp - 1;
             panel.style.height = hp + "%";
@@ -3850,10 +3836,7 @@ document.addEventListener("touchend ", function(){
     var draggedDeName=new Set();
     var draggedDeId=new Set();
     var draggedDeKey=new Set();
-<<<<<<< HEAD
    
-=======
->>>>>>> 5ce9ab1d8701a265eb0f80740039791f3ce91b04
 
     var DEDragData = {
       "DEName": '',
@@ -3975,7 +3958,6 @@ document.addEventListener("touchend ", function(){
             }
           }
           else if (DEDragData.DECategory == "SharedDEMap") {
-            
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.SharedDEMap;
             DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
@@ -4004,6 +3986,7 @@ document.addEventListener("touchend ", function(){
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
                  '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   }
           }
+          
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
@@ -4044,7 +4027,7 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType)
+                        draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
@@ -4160,13 +4143,13 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-      var check=isSetEqual(DESetQueryBox, draggedDeKey);
-      if(check==0){
+     
+      if(isSetEqual(DESetQueryBox, draggedDeKey)){
         console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
-      //console.log("draggedDeName"+draggedDeName);
+      console.log("draggedDeName"+draggedDeName);
 
 
       console.log('action type'+actionType);
@@ -4780,10 +4763,7 @@ document.addEventListener("touchend ", function(){
       //priyanka added code----------------
     
       var bool;
-
-      if(openSelectFieldsDEExtKey in DEListMap.DEMap) {
-
-        for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+    for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
         for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
             bool = true;
@@ -4791,8 +4771,8 @@ document.addEventListener("touchend ", function(){
           }
           else {
             bool = false;
-           }
-         }
+          }
+        }
         if (bool == true) {
           document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
                  + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
@@ -4805,59 +4785,6 @@ document.addEventListener("touchend ", function(){
        }
    
       }
-      }
-      else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap) {
-
-        for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields) {
-        for (var key1 in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          if (DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-            bool = true;
-            break;
-          }
-          else {
-            bool = false;
-           }
-         }
-        if (bool == true) {
-          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-        else {
-          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-   
-      }
-      }
-      else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap) {
-
-        for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields) {
-        for (var key1 in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          if (DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-            bool = true;
-            break;
-          }
-          else {
-            bool = false;
-           }
-         }
-        if (bool == true) {
-          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-        else {
-          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-   
-      }
-      }
-  
-     //--------------ends here ---------------------------------
 
     /* for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
          
@@ -4916,54 +4843,14 @@ document.addEventListener("touchend ", function(){
       if (DEDragData.DEExtKey != '') {
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
-        //code added by priyanka
-        //-----------------------------------------------------------------------------
-        if(DEDragData.DEExtKey in DEListMap.DEMap[DEDragData.DEExtKey]){
-          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
-          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-                 DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
-                 "FieldName": SelectedField.label,
-                 "FieldType": SelectedField.value
-                  });
-                 }
-                 fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + 
-                 '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-           }
-        else if(DEDragData.DEExtKey in DEListMap.SharedDEMap[DEDragData.DEExtKey]){
-             DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields = [];
-             for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) 
-              {
-                 DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields.push({
-                  "FieldName": SelectedField.label,
-                  "FieldType": SelectedField.value
-                     });
-                }
-                fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + 
-                '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-    
-              }
-        else if(DEDragData.DEExtKey in DEListMap.DataViewMap[DEDragData.DEExtKey]){
-          DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields = [];
-        for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-          DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-           }
-           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + 
-           '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-         }
-        
-      //-----------------ends here------------------
-       /*  DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
-        
+        DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
         for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-        }*/
+        }
         
         //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
@@ -5037,22 +4924,7 @@ document.addEventListener("touchend ", function(){
           '            float: right;' +
           '            border:none;' +
           '        }' +
-          '       .mainQuaryBoxStyle:active{'+
-          '            width:10em;'+
-          '            background-color: #353535;'+
-          '            border-color:#2e2e2e;'+
-          '            position: absolute;'+
-          '            -webkit-user-select: none;'+
-          '            -khtml-user-select: none;'+
-          '            -moz-user-select: none;'+
-          '            -ms-user-select: none;'+
-          '            -o-user-select: none;'+
-          '            user-select: none;'+
-          '            user-select: none;'+
-          '            -webkit-touch-callout: none;'+
-          '            opacity:0.9;'+
-          '          }'+
-          ''+
+          '' +
           ' </style>' +
           '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 10%; top: 5%;">' +
@@ -5100,6 +4972,7 @@ document.addEventListener("touchend ", function(){
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
+      //TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
@@ -5108,64 +4981,19 @@ document.addEventListener("touchend ", function(){
         }
       }
       if (openSelectFieldsDEExtKey != '') {
-
         DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
         for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-         
-          //code added by priyanka------
-        if(openSelectFieldsDEExtKey in DEListMap.DEMap){
-           DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-           DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
+          DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
-           }
-          else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
-             DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-             DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-           }
-          else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
-             DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields = [];
-             DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-          }
-        
-        
-      }
+        }
         fieldsListForRelationDiv = '';
-        /*for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
-        }*/
-        //code added by priyanka
-        
-        
-          if(openSelectFieldsDEExtKey in DEListMap.DEMap){
-             for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+        for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
           fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
         }
-          }
-        else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
-           for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
-        }
-         }
-         else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
-            for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          fieldsListForRelationDiv += '<li  class="data-box-style" title="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '" data-id="' + openSelectFieldsDEExtKey + '"><span>' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key]["FieldName"] + '</span></li>';
-        }
-         }
-        
-  //---------------------------------------ncdjnasjknasdnsdkk-----------------------
-        
-
         document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul style="padding-left: 0;" class="slds-scrollable">' + fieldsListForRelationDiv + '</ul>';
       }
-
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
           document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
@@ -5271,18 +5099,32 @@ document.addEventListener("touchend ", function(){
         '</svg>'+
         '<span class="slds-assistive-text">Close</span>'+
         '</button>'+
+
+      
+       
+        
+          
         '</header>'+
-        '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+
           '<div >' +
           '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
           '</div>' +
+
           '<div class="slds-grid slds-wrap">' +
+
           '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
           '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+
           '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
           '</div>' +
+
+
           '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
           '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
           '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
           '<option value="Left Outer Join">Left Outer Join</option>' +
           '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
@@ -5307,50 +5149,61 @@ document.addEventListener("touchend ", function(){
             joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
           }
         }
-
-
         joinTwoDivString += '</select>' +
           '</div>' +
 
           '</div>' +
-         '<div class="slds-grid slds-wrap">' +
-         '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+
+
+
+
+          '<div class="slds-grid slds-wrap">' +
+
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
           '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-         '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+
+          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
           '<option value="">Select…</option>';
 
         for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
           joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
         }
-           /*
-        if(openSelectFieldsDEExtKey in DEListMap.DEMap){
-
-         }
-          else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
-         }
-        else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
-        }
-        */
-       
-          joinTwoDivString += '</select>' +
+        joinTwoDivString += '</select>' +
           '</div>' +
+
+
           ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
           '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+
+
           '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
           '<option value="AND">AND</option>' +
           '<option value="OR">OR</option>' +
           '</select>' +
           '</div>' +
+
+
+
           '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
           '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+
           '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
           '<option value="">Select…</option>' +
           '</select>' +
           '</div>' +
+
+
+
+
           '</div>' +
+
+
           '</div>' +
+
           '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
           '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+
           '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
           '</footer>' +
           '</div>' +
@@ -5375,17 +5228,6 @@ document.addEventListener("touchend ", function(){
         for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
           document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
         }
-       /*
-       
-        if(openSelectFieldsDEExtKey in DEListMap.DEMap){
-       }
-        else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
-       }
-       else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
-       }
-
-       
-        */
       }
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
@@ -5515,6 +5357,7 @@ document.addEventListener("touchend ", function(){
           }
         }
         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
+        //TotalMainDeDragged--;
         document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
       }
     }
