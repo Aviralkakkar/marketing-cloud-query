@@ -2987,7 +2987,7 @@
                     </h4>
                   </div>
                   <ul class="list-group left-side" 
-                    style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
+                    style=" height: 55vh; border: none; background-color:white; padding:0%; margin:0%; ">
 
                     <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
                      
@@ -3013,7 +3013,7 @@
                 </button>-->
               </div>
 
-              <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
+              <div class="dual-list list-right col-md-5" style="height: 60vh; padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
                 <div class="well" style=" padding:0%;  background-color: white;  ">
                   <div class="row" style="padding:0%; margin:0%;  ">
 
@@ -3025,7 +3025,7 @@
                   </div>
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
-                    style=" border: none; padding:0%; margin:0%;   ">
+                    style=" border: none; padding:0%; margin:0%;  ">
                      <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
@@ -5225,6 +5225,11 @@ document.addEventListener("touchend ", function(){
     {
       var str = id.substring(0, id.length - 2);
       dragId=str;
+    }
+    var allmy_Div=document.getElementsByClassName('mydiv');
+    for(var i=0;i<allmy_Div.length;i++)
+    {
+        dragElement(document.getElementById(allmy_Div[i].id));
     }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
