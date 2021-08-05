@@ -2294,7 +2294,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 91vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 90vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -3380,6 +3380,11 @@
       }
     
   function setButton(obj) {
+     console.log('do not scroll to top');
+     var el = document.getElementById('container');
+     el.scrollTop = 0;
+     console.log( el.scrollTop);
+     console.log('7e383uiej');
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -3746,7 +3751,7 @@ window.onclick = function(event) {
     function resize(e) 
     {
       cnt = cnt +1 ;
-      if (dragging && cnt==2)
+      if (dragging && cnt==3)
       {
         cnt=0;
         var hp = parseInt(panel.style.height);
@@ -4966,7 +4971,7 @@ document.addEventListener("touchend ", function(){
           '            width:10em;' +
           '            background-color: #387F9D;' +
           '            border-color:#387F9D;' +
-          '            position: absolute;' +
+          '            position: sticky;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
           '            -moz-user-select: none;' +
@@ -5033,7 +5038,7 @@ document.addEventListener("touchend ", function(){
           '            width:10em;'+
           '            background-color: #353535;'+
           '            border-color:#2e2e2e;'+
-          '            position: absolute;'+
+          '            position: sticky;'+
           '            -webkit-user-select: none;'+
           '            -khtml-user-select: none;'+
           '            -moz-user-select: none;'+
@@ -5046,8 +5051,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="width:10em;position:absolute;" class="mydiv" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="slds-card mainQuaryBoxStyle box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5089,6 +5094,7 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
+
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
