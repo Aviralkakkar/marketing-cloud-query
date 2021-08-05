@@ -3419,11 +3419,10 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-      var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
 function openModal(functionAction) {
    
-    
+    var countOfDeWithWhereClauseValue=0;    
+    var countOfDeWithoutWhereClauseValue=0;  
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -4233,25 +4232,8 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        /*for(var de in DESetQueryBox){
-
-        }*/
-        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
-          console.log("in the first");
-        }
-        else if(countOfDeWithWhereClauseValue=1){
-          console.log("in the second");
-        }
-        else if(countOfDeWithWhereClauseValue>1){
-          console.log("in the third");
-        }
 
         
-
-
-
-
-
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
