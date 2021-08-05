@@ -2294,7 +2294,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 90vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 91vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -2491,12 +2491,6 @@
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
-          <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"></use>
-            </svg>
-            <span class="slds-assistive-text">Description of icon when needed</span>
-            </span>
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
@@ -3380,11 +3374,6 @@
       }
     
   function setButton(obj) {
-     console.log('do not scroll to top');
-     var el = document.getElementById('container');
-     el.scrollTop = 0;
-     console.log( el.scrollTop);
-     console.log('7e383uiej');
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -3751,7 +3740,7 @@ window.onclick = function(event) {
     function resize(e) 
     {
       cnt = cnt +1 ;
-      if (dragging && cnt==3)
+      if (dragging && cnt==2)
       {
         cnt=0;
         var hp = parseInt(panel.style.height);
@@ -4045,10 +4034,10 @@ document.addEventListener("touchend ", function(){
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
-                        //range.insertNode(document.createTextNode(FieldName));
+                        range.insertNode(document.createTextNode(FieldName));
                        // console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
-                       document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                      // document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
                         //console.log('check end');
@@ -4058,7 +4047,7 @@ document.addEventListener("touchend ", function(){
                             console.log("-----");
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                             console.log("FieldName=-"+FieldName);
-                           //FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
                             //console.log("FieldName=-"+FieldName);
                           }
                         }
@@ -4076,7 +4065,7 @@ document.addEventListener("touchend ", function(){
                             console.log("FieldName=="+FieldName);
                           }
                         }
-                        console.log("name=="+FieldName)
+
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                       }
                     }
@@ -4159,12 +4148,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
+     /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }
-      /*for(const val of DESetQueryBox){
+      }*/
+      for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
         }
@@ -4173,7 +4162,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-      }*/
+      }
       //console.log("draggedDeName"+draggedDeKey);
 
 
@@ -4971,7 +4960,7 @@ document.addEventListener("touchend ", function(){
           '            width:10em;' +
           '            background-color: #387F9D;' +
           '            border-color:#387F9D;' +
-          '            position: sticky;' +
+          '            position: absolute;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
           '            -moz-user-select: none;' +
@@ -5038,7 +5027,7 @@ document.addEventListener("touchend ", function(){
           '            width:10em;'+
           '            background-color: #353535;'+
           '            border-color:#2e2e2e;'+
-          '            position: sticky;'+
+          '            position: absolute;'+
           '            -webkit-user-select: none;'+
           '            -khtml-user-select: none;'+
           '            -moz-user-select: none;'+
@@ -5051,8 +5040,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div style="width:10em;position:absolute;" class="mydiv" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5094,7 +5083,6 @@ document.addEventListener("touchend ", function(){
           '         </div>' +
           '   </div>' +
           '</div>'+
-
           '</div>'
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
