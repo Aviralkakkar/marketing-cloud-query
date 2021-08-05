@@ -2,7 +2,6 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
 
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
@@ -2294,7 +2293,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 90vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 91vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -2491,12 +2490,6 @@
           <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
           <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
-          <span class="slds-icon_container slds-icon-utility-announcement" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"></use>
-            </svg>
-            <span class="slds-assistive-text">Description of icon when needed</span>
-            </span>
 
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
@@ -2610,7 +2603,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="c(event,this)">
                                
                                     <div class="expression"></div>
                                     <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
@@ -2983,7 +2976,7 @@
 
           <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
 
-            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
+            <div class="row" style="width: 35rem;  margin: 0; margin-left: 5%; margin-top: 2%;  height: 55vh;">
               <div class="dual-list list-left col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative;">
                 <div class="well text-right" style="width: -webkit-fill-available; padding:0%; ">
                   <div class="row" style="padding:0%; margin:0%; height:-webkit-fill-available;">
@@ -3321,8 +3314,8 @@
         
       }
     }
-  // sortList("leftsideListInSelectField");
-  // sortListDir("rightsideListInSelectField");
+   sortList("leftsideListInSelectField");
+   sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3380,11 +3373,14 @@
       }
     
   function setButton(obj) {
+
      console.log('do not scroll to top');
      var el = document.getElementById('container');
+     console.log(el);
      el.scrollTop = 0;
      console.log( el.scrollTop);
      console.log('7e383uiej');
+     
     if (obj.length == 0) return;
     currentSel = obj;
     if (obj.id == "leftsideListInSelectField") {
@@ -3751,7 +3747,7 @@ window.onclick = function(event) {
     function resize(e) 
     {
       cnt = cnt +1 ;
-      if (dragging && cnt==3)
+      if (dragging && cnt==2)
       {
         cnt=0;
         var hp = parseInt(panel.style.height);
@@ -3936,8 +3932,8 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-      //console.log(" DEDragData.DEName"+ DEDragData.DEName);
-      //console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      console.log(" DEDragData.DEName"+ DEDragData.DEName);
+      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
       //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
@@ -4045,7 +4041,7 @@ document.addEventListener("touchend ", function(){
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
-                        //range.insertNode(document.createTextNode(FieldName));
+                        range.insertNode(document.createTextNode(FieldName));
                        // console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
@@ -4055,28 +4051,25 @@ document.addEventListener("touchend ", function(){
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            console.log("-----");
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=-"+FieldName);
-                           //FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
-                            //console.log("FieldName=-"+FieldName);
+                            console.log("FieldName"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName-="+FieldName);
+                            console.log("FieldName"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
                           for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=="+FieldName);
+                            console.log("FieldName"+FieldName);
                           }
                         }
-                        console.log("name=="+FieldName)
+
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                       }
                     }
@@ -4159,12 +4152,11 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      // console.log("draggedDeName000000");
-     if(isSetEqual(DESetQueryBox, draggedDeKey)){
+     /* if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }
-      /*
+      }*/
       for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
@@ -4174,7 +4166,7 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
-      }*/
+      }
       //console.log("draggedDeName"+draggedDeKey);
 
 
@@ -4232,25 +4224,6 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        /*for(var de in DESetQueryBox){
-
-        }*/
-        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
-          console.log("in the first");
-        }
-        else if(countOfDeWithWhereClauseValue=1){
-          console.log("in the second");
-        }
-        else if(countOfDeWithWhereClauseValue>1){
-          console.log("in the third");
-        }
-
-        
-
-
-
-
-
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -4948,6 +4921,8 @@ document.addEventListener("touchend ", function(){
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
+          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+     
          }
          
         // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
@@ -4961,6 +4936,8 @@ document.addEventListener("touchend ", function(){
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
+          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+     
         }
         
         //fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
@@ -4973,10 +4950,12 @@ document.addEventListener("touchend ", function(){
             "FieldName": SelectedField.label,
             "FieldType": SelectedField.value
           });
+           fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+     
          }
         // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
-       fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+       //fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
      
       
         
@@ -4985,137 +4964,137 @@ document.addEventListener("touchend ", function(){
           
         
       //************************************************Edited By ANIL KUMAR**********************************//
-      var relationDivString = '<style>' +
-        '        ' +
-        '        .mainQuaryBoxStyle{' +
-        '            width:10em;' +
-        '            background-color: #387F9D;' +
-        '            border-color:#387F9D;' +
-        '            position: absolute;' +
-        '            -webkit-user-select: none;' +
-        '            -khtml-user-select: none;' +
-        '            -moz-user-select: none;' +
-        '            -ms-user-select: none;' +
-        '            -o-user-select: none;' +
-        '            user-select: none;' +
-        '            user-select: none;' +
-        '            -webkit-touch-callout: none;' +
-        '            opacity:0.9;' +
-        '            ' +
-        '        }' +
-        '' +
-        '        .headerOfQuaryBox' +
-        '        {' +
-        '            text-align: left;' +
-        '            font-size:75%;' +
-        '            border-bottom: 0;' +
-        '            margin:auto;' +
-        '            color:white;' +
-        '            font-weight:bold;' +
-        '            font-family: Calibr;' +
-        '            padding:2%;' +
-        '        }' +
-        '        .data-query-Box-style{' +
-        '            margin:1px;' +
-        '            background-color: #F1F1F1;' +
-        '            padding:0;' +
-        '            font-size: 70%;' +
-        '            max-height:250px;' +
-        '        }' +
-        '        .data-box-style{' +
-        '            color:#686363;' +
-        '            font-size: 80%;' +
-        '            cursor: pointer;' +
-        '            border-bottom: 1px solid #ddc5c5;' +
-        '            font-family: Calibr;' +
-        '            padding:2%;' +
-        '        }' +
-        '' +
-        '        .quaryBox{' +
-        '          color:#686363;  ' +
-        '          text-align:center;' +
-        '          max-height:150px;' +
-        '          margin:0px;' +
-        '          background-color: #F1F1F1;' +
-        '          padding:0;' +
-        '          font-size: 70%;' +
-        '          ' +
-        '        }' +
-        '' +
-        '        .dataFields-area-set{' +
-        '            padding-left: 0;' +
-        '            ' +
-        '        }    ' +
-        '' +
-        '        .buttonStyle{' +
-        '            background-color: transparent;' +
-        '            height:24px;' +
-        '            width:24px;' +
-        '            float: right;' +
-        '            border:none;' +
-        '        }' +
-        '       .mainQuaryBoxStyle:active{'+
-        '            width:10em;'+
-        '            background-color: #353535;'+
-        '            border-color:#2e2e2e;'+
-        '            position: absolute;'+
-        '            -webkit-user-select: none;'+
-        '            -khtml-user-select: none;'+
-        '            -moz-user-select: none;'+
-        '            -ms-user-select: none;'+
-        '            -o-user-select: none;'+
-        '            user-select: none;'+
-        '            user-select: none;'+
-        '            -webkit-touch-callout: none;'+
-        '            opacity:0.9;'+
-        '          }'+
-        ''+
-        ' </style>' +
-        '<div style="position: relative;"  onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-        '<div style="top:5%;left:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
-        '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
-        '        <table>' +
-        '            <tbody>' +
-        '                <th>' +
-        '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
-        '                    <td width="20%">' +
-        '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
-        '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
-        '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
-        '                              </svg>    ' +
-        '                        </button>' +
-        '                    </td>' +
-        '                    <td width="20%">' +
-        '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-        '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
-        '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
-        '                              </svg>' +
-        '                              ' +
-        '                        </button>' +
-        '                    </td>' +
-        '                </th>' +
-        '            </tbody>' +
-        '        </table>' +
-        '    </div>' +
-        '   <div class="slds-card__body" style="margin-top: 0px;margin-bottom: 0px;">' +
+        var relationDivString = '<style>' +
+          '        ' +
+          '        .mainQuaryBoxStyle{' +
+          '            width:10em;' +
+          '            background-color: #387F9D;' +
+          '            border-color:#387F9D;' +
+          '            position: absolute;' +
+          '            -webkit-user-select: none;' +
+          '            -khtml-user-select: none;' +
+          '            -moz-user-select: none;' +
+          '            -ms-user-select: none;' +
+          '            -o-user-select: none;' +
+          '            user-select: none;' +
+          '            user-select: none;' +
+          '            -webkit-touch-callout: none;' +
+          '            opacity:0.9;' +
+          '            ' +
+          '        }' +
+          '' +
+          '        .headerOfQuaryBox' +
+          '        {' +
+          '            text-align: left;' +
+          '            font-size:75%;' +
+          '            border-bottom: 0;' +
+          '            margin:auto;' +
+          '            color:white;' +
+          '            font-weight:bold;' +
+          '            font-family: Calibr;' +
+          '            padding:2%;' +
+          '        }' +
+          '        .data-query-Box-style{' +
+          '            margin:1px;' +
+          '            background-color: #F1F1F1;' +
+          '            padding:0;' +
+          '            font-size: 70%;' +
+          '            max-height:250px;' +
+          '        }' +
+          '        .data-box-style{' +
+          '            color:#686363;' +
+          '            font-size: 80%;' +
+          '            cursor: pointer;' +
+          '            border-bottom: 1px solid #ddc5c5;' +
+          '            font-family: Calibr;' +
+          '            padding:2%;' +
+          '        }' +
+          '' +
+          '        .quaryBox{' +
+          '          color:#686363;  ' +
+          '          text-align:center;' +
+          '          max-height:150px;' +
+          '          margin:0px;' +
+          '          background-color: #F1F1F1;' +
+          '          padding:0;' +
+          '          font-size: 70%;' +
+          '          ' +
+          '        }' +
+          '' +
+          '        .dataFields-area-set{' +
+          '            padding-left: 0;' +
+          '            ' +
+          '        }    ' +
+          '' +
+          '        .buttonStyle{' +
+          '            background-color: transparent;' +
+          '            height:24px;' +
+          '            width:24px;' +
+          '            float: right;' +
+          '            border:none;' +
+          '        }' +
+          '       .mainQuaryBoxStyle:active{'+
+          '            width:10em;'+
+          '            background-color: #353535;'+
+          '            border-color:#2e2e2e;'+
+          '            position: absolute;'+
+          '            -webkit-user-select: none;'+
+          '            -khtml-user-select: none;'+
+          '            -moz-user-select: none;'+
+          '            -ms-user-select: none;'+
+          '            -o-user-select: none;'+
+          '            user-select: none;'+
+          '            user-select: none;'+
+          '            -webkit-touch-callout: none;'+
+          '            opacity:0.9;'+
+          '          }'+
+          ''+
+          ' </style>' +
+          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
+          '        <table>' +
+          '            <tbody>' +
+          '                <th>' +
+          '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
+          '                    <td width="20%">' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
+          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
+          '                              </svg>    ' +
+          '                        </button>' +
+          '                    </td>' +
+          '                    <td width="20%">' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
+          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
+          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
+          '                              </svg>' +
+          '                              ' +
+          '                        </button>' +
+          '                    </td>' +
+          '                </th>' +
+          '            </tbody>' +
+          '        </table>' +
+          '    </div>' +
+          '   <div class="slds-card__body" style="margin-top: 0px;margin-bottom: 0px;">' +
 
-        '   <div class="data-query-Box-style slds-box slds-scrollable" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
-        '  <ul style="padding-left: 0;">';
-      relationDivString += fieldsListForRelationDiv;
-      relationDivString += '</ul>' +
-        '    </div>' +
-        '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
-        '        <div style="text-align:center;">' +
-        '            <span title="">Where</span>    ' +
-        '        </div>' +
-        '        <div class="slds-scrollable_y slds-box quaryBox">' +
-        '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClauseValue">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
-      '            </div>' +
-        '         </div>' +
-        '   </div>' +
-        '</div>'+
-        '</div>'
-        ;
+          '   <div class="data-query-Box-style slds-box slds-scrollable" onclick="OpenSelectField(this.id)" id="' + DEDragData.DEExtKey + 'OpenSelectField">' +
+          '  <ul style="padding-left: 0;">';
+        relationDivString += fieldsListForRelationDiv;
+        relationDivString += '</ul>' +
+          '    </div>' +
+          '    <div style="padding: 0px;" onclick="OpenWhere(this.id)" id="' + DEDragData.DEExtKey + 'OpenWhere" class="headerOfQuaryBox" data-original-title="" title="">' +
+          '        <div style="text-align:center;">' +
+          '            <span title="">Where</span>    ' +
+          '        </div>' +
+          '        <div class="slds-scrollable_y slds-box quaryBox">' +
+          '            <p class="slds-align_absolute-center" style="cursor: pointer;" title="Where Clouse Condition" data-id="ee3e3ebe-a7c5-ea11-a2ec-48df37342369" id="' + DEDragData.DEExtKey + 'WhereClauseValue">' + document.getElementById("RichTextEditor").innerHTML + '</p>'+
+        '            </div>' +
+          '         </div>' +
+          '   </div>' +
+          '</div>'+
+          '</div>'
+          ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
       //TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
