@@ -4945,7 +4945,7 @@ document.addEventListener("touchend ", function(){
          
           
         
-        //************************************************Edited By ANIL KUMAR**********************************//
+      //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -4969,8 +4969,6 @@ document.addEventListener("touchend ", function(){
           '        {' +
           '            text-align: left;' +
           '            font-size:75%;' +
-          '            background-color: #387F9D;' +
-          '            border: 1px solid #387F9D;' +
           '            border-bottom: 0;' +
           '            margin:auto;' +
           '            color:white;' +
@@ -5011,16 +5009,31 @@ document.addEventListener("touchend ", function(){
           '        }    ' +
           '' +
           '        .buttonStyle{' +
-          '            background-color: #387F9D;' +
+          '            background-color: transparent;' +
           '            height:24px;' +
           '            width:24px;' +
           '            float: right;' +
           '            border:none;' +
           '        }' +
-          '' +
+          '       .mainQuaryBoxStyle:active{'+
+          '            width:10em;'+
+          '            background-color: #353535;'+
+          '            border-color:#2e2e2e;'+
+          '            position: absolute;'+
+          '            -webkit-user-select: none;'+
+          '            -khtml-user-select: none;'+
+          '            -moz-user-select: none;'+
+          '            -ms-user-select: none;'+
+          '            -o-user-select: none;'+
+          '            user-select: none;'+
+          '            user-select: none;'+
+          '            -webkit-touch-callout: none;'+
+          '            opacity:0.9;'+
+          '          }'+
+          ''+
           ' </style>' +
           '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 10%; top: 5%;">' +
+          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
