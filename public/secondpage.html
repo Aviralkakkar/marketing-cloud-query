@@ -3420,11 +3420,11 @@
         return true;
       }*/
       var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0; 
+    var countOfDeWithoutWhereClauseValue=0;  
+    
 function openModal(functionAction) {
    
- 
-    
+   
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('DEWhereClauseModal').style.display = 'block';
@@ -4243,6 +4243,7 @@ document.addEventListener("touchend ", function(){
         else if(countOfDeWithWhereClauseValue>1){
           console.log("in the thui");
         }
+
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
