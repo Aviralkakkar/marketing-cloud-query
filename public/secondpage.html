@@ -4154,8 +4154,9 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-      console.log("draggedDeName000000"+draggedDeKey.size);
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
+      console.log("draggedDeName000000=="+draggedDeKey.size);
+      console.log("DESetQueryBox=="+DESetQueryBox.size);
+      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
