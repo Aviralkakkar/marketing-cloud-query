@@ -5101,7 +5101,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div style="position:relative;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -5765,8 +5765,8 @@ document.addEventListener("touchend ", function(){
       var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
 
       var scrollDiv=document.getElementById('queryDiv');
-      scrollDiv.scrollTop=1000;
-      scrollDiv.scrollLeft=1000;
+      scrollDiv.scrollTop=10000;
+      scrollDiv.scrollLeft=10000;
 
       if(div1_pos.left<div2_pos.left)
       {
