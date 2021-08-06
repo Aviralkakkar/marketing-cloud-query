@@ -2975,7 +2975,7 @@
         <div class="slds-modal__content slds-p-around_medium" id="grid-1-de"
           style=" overflow-y: scroll; margin:0; padding:0; height: 60vh;  ">
 
-          <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; ">
+          <div class="container" style="padding:0%; margin:0%; margin-bottom: 2%; margin-top: 3%; ">
 
             <div class="row" style="width: 36rem;  margin: 0; margin-left: 5%; margin-top: 2%;">
               <div class="dual-list list-left col-md-5" style="height: 55vh; padding:0%; margin:0%; border: 1px solid lightgray; position: relative;">
@@ -5075,8 +5075,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5733,32 +5733,30 @@ document.addEventListener("touchend ", function(){
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
-
       var div2 = document.getElementById(val2);
-
       var div1_pos = div1.getBoundingClientRect();
-
       var div2_pos = div2.getBoundingClientRect();
-
       var DEListSidebar=document.getElementById('DEListSidebar');
       var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
 
-      if (div1_pos.left < div2_pos.left) {
-        var x1 = div1_pos.right-(DEListSidebar_pos.right+0.5);
-        var y1 = div1_pos.top+10;
-        var x2 = div2_pos.left-(DEListSidebar_pos.right-2);
-        var y2 = div2_pos.top+div2_pos.height/2;
-      }
-      else {
-        var x1 = div1_pos.left-(DEListSidebar_pos.right-2);
-        var y1 = div1_pos.top+div1_pos.height/2;
-        var x2 = div2_pos.right-(DEListSidebar_pos.right+0.5);
-        var y2 = div2_pos.top+10;
-      }
+      var scrollDiv=document.getElementById('queryDiv');
+      scrollDiv.scrollTop=1000;
+      scrollDiv.scrollLeft=1000;
 
-      //console.log("right="+y2);
-
-      // distance
+      if(div1_pos.left<div2_pos.left)
+        {
+            var x1 = div1_pos.right+scrollDiv.scrollLeft-DEListSidebar_pos.right;
+            var y1 = div1_pos.top+scrollDiv.scrollTop+10;
+            var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
+            var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.top/2);
+        }
+        else
+        {
+            var x1 = div1_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
+            var y1 = (div1_pos.top+scrollDiv.scrollTop)+(div1_pos.top/2);
+            var x2 = div2_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
+            var y2 = div2_pos.top+scrollDiv.scrollTop+10;
+        }    
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
       // center
       var cx = ((x1 + x2) / 2) - (length / 2);
