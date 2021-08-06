@@ -3266,10 +3266,14 @@
           // Start by saying: no switching is done:
           switching = false;
           b = list.getElementsByTagName("OPTION");
+          console.log('list-------');
+          console.log(b);
           // Loop through all list items:
           for (i = 0; i < (b.length - 1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
+            console.log('dddddddd------');
+            console.log(b[i]);
             /* Check if the next item should
             switch place with the current item: */
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
