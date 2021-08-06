@@ -4228,6 +4228,33 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+        for (var key in DESetQueryBox) {
+          if(key in DEListMap.DEMap) {
+            
+              for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
+
+                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery1= "+strQuery );
+            }
+            else if (key in DEListMap.SharedDEMap) {
+              for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
+                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
+            }
+            else if (key in DEListMap.DataViewMap) {
+              for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
+                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JDESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery3="+strQuery );
+            }
+            tempDESet.add(DESetQueryBox[key].FirstDEName);
+          
+    
+        }
+
 
         console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
         console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
