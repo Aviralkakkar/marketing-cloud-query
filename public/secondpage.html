@@ -4232,33 +4232,33 @@ document.addEventListener("touchend ", function(){
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         console.log("before the for");
-        for (const  k of DESetQueryBox) {
+        for (const  key of DESetQueryBox) {
           console.log("in the for");
-          if(k in DEListMap.DEMap) {
+          if(key in DEListMap.DEMap) {
             console.log("in the if");
-              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
+              for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' + k+ '].[' + Field1.FieldName + '] as [' + k + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + key+ '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
-            else if (k in DEListMap.SharedDEMap) {
+            else if (key in DEListMap.SharedDEMap) {
               console.log("in the else-if");
-              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+              for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + key + '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
-            else if (k in DEListMap.DataViewMap) {
+            else if (key in DEListMap.DataViewMap) {
               console.log("in the else=if");
-              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
+              for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
                 console.log("in the for4");
-                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + JDESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + key + '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
-            tempDESet.add(DESetQueryBox[k].FirstDEName);
+            tempDESet.add(key);
           
     
         }
