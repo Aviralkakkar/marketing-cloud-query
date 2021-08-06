@@ -4262,7 +4262,8 @@ document.addEventListener("touchend ", function(){
           
     
         }
-
+        strQuery = strQuery.slice(0, -1);
+        console.log(" strQuery=="+strQuery);        
 
         console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
         console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
