@@ -4228,7 +4228,7 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
-        
+        console.log("before the for");
         for (var key in DESetQueryBox) {
           console.log("in the for");
           if(key in DEListMap.DEMap) {
