@@ -3507,13 +3507,13 @@ function openModal(functionAction) {
             console.log("DeName"+NameOfDe);
             var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
             console.log("FieldWhereClause"+FieldWhereClause);
-            var key=OnlyOneDeWhichContainWhereClause;
+           // var key=OnlyOneDeWhichContainWhereClause;
          
                         if(NameOfDe in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"], "g")
                             console.log("-----");
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
                             console.log("FieldWhereClause=-"+FieldWhereClause);
                            // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
                             //console.log("FieldName=-"+FieldName);
