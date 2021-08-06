@@ -3506,6 +3506,7 @@ function openModal(functionAction) {
             var DeName=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
             console.log("DeName"+DeName);
             var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            console.log("FieldWhereClause"+FieldWhereClause);
             if(DeName in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[DeName].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
