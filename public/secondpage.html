@@ -5304,7 +5304,7 @@ document.addEventListener("touchend ", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
-          //schemaAction();
+           schemaAction();
           
         }  
 
@@ -5821,34 +5821,21 @@ document.addEventListener("touchend ", function(){
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
-
       var div2 = document.getElementById(val2);
-
       var div1_pos = div1.getBoundingClientRect();
-
       var div2_pos = div2.getBoundingClientRect();
 
-      var DEListSidebar=document.getElementById('DEListSidebar');
-      var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
-
-      var scrollDiv=document.getElementById('queryDiv');
-      scrollDiv.scrollTop=10000;
-      scrollDiv.scrollLeft=10000;
-
-      if(div1_pos.left<div2_pos.left)
-      {
-        var x1 = div1_pos.right+scrollDiv.scrollLeft-DEListSidebar_pos.right;
-        var y1 = div1_pos.top+scrollDiv.scrollTop+10;
-        var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
-        var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.height/2);
-      }
-      else
-      {
-        var x1 = div1_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
-        var y1 = (div1_pos.top+scrollDiv.scrollTop)+(div1_pos.height/2);
-        var x2 = div2_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
-        var y2 = div2_pos.top+scrollDiv.scrollTop+10;
-      }    
+      if(div1_pos.left<div2_pos.left){
+        var x1 = div1.offsetLeft+div1.offsetWidth-1;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
+      }else{
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth+1;
+        var y2 = div2.offsetTop+10;
+      } 
 
       // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
