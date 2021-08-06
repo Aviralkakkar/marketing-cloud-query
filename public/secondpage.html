@@ -4238,7 +4238,7 @@ document.addEventListener("touchend ", function(){
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DESetQueryBox[k]+ '].[' + Field1.FieldName + '] as [' + DESetQueryBox[k] + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
