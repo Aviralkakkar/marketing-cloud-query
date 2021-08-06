@@ -5137,8 +5137,8 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5805,11 +5805,16 @@ document.addEventListener("touchend ", function(){
       var DEListSidebar=document.getElementById('DEListSidebar');
       var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
 
-      if (div1_pos.left < div2_pos.left) {
-        var x1 = div1_pos.right-(DEListSidebar_pos.right+0.5);
-        var y1 = div1_pos.top+10;
-        var x2 = div2_pos.left-(DEListSidebar_pos.right-2);
-        var y2 = div2_pos.top+div2_pos.height/2;
+      var scrollDiv=document.getElementById('queryDiv');
+      scrollDiv.scrollTop=10000;
+      scrollDiv.scrollLeft=10000;
+
+      if(div1_pos.left<div2_pos.left)
+      {
+        var x1 = div1_pos.right+scrollDiv.scrollLeft-DEListSidebar_pos.right;
+        var y1 = div1_pos.top+scrollDiv.scrollTop+10;
+        var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
+        var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.height/2);
       }
       else {
         var x1 = div1_pos.left-(DEListSidebar_pos.right-2);
