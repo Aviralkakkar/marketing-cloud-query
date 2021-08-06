@@ -2988,7 +2988,7 @@
                   <ul class="list-group left-side" 
                     style="height: 51vh; border: none; background-color:white; padding:0%; margin:0%; border-bottom: 1px solid lightgray; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); " style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); " onChange="jsFunction()" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3002,7 +3002,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); jsFunction(leftsideListInSelectField); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft"  onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3266,10 +3266,14 @@
           // Start by saying: no switching is done:
           switching = false;
           b = list.getElementsByTagName("OPTION");
+          console.log('list-------');
+          console.log(b);
           // Loop through all list items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
+            console.log('dddddddd------');
+            console.log(b[i]);
             /* Check if the next item should
             switch place with the current item: */
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
@@ -3313,7 +3317,7 @@
         
       }
     }
-   //sortList("leftsideListInSelectField");
+   sortList();
    sortListDir("rightsideListInSelectField");
            
   }
@@ -3332,7 +3336,7 @@
           switching = false;
           b = list.getElementsByTagName("option");
           // Loop through all list-items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should switch place with the current item,
@@ -3401,9 +3405,16 @@
   
   function jsFunction()
 { 
-   console.log('--------123---------')
+   console.log('--------onchange-start-------');
   
-   sortList();
+   list = document.getElementById("leftsideListInSelectField");
+        
+   console.log('--------onchange---->'+list);
+   b = list.getElementsByTagName("OPTION");
+   console.log('list-------');
+   console.log(b);
+
+   console.log('--------onchange-end-------');
  
 }
      
