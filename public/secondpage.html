@@ -3441,7 +3441,7 @@ function openModal(functionAction) {
         document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
         document.getElementById('uoList').innerHTML = '';
-        //console.log("nitik value1");
+        console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
               var value=document.getElementById(temp).innerHTML;
@@ -3449,11 +3449,13 @@ function openModal(functionAction) {
               //console.log('nitik key'+temp);
               if(value==""){
                 countOfDeWithoutWhereClauseValue++;
-                //console.log("nitik value12");
+                console.log("nitik value12");
               }
               else{
+                console.log("nitik value128");
                 OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
+                console.log("nitik value1289");
                 if(val in DEListMap.DEMap){
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
