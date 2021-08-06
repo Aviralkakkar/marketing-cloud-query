@@ -3504,7 +3504,7 @@ function openModal(functionAction) {
 
           if(countOfDeWithWhereClauseValue==1){
             var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
-            console.log("NameOfDe=="+NameOfDe);
+            console.log("DeName"+NameOfDe);
             var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
             console.log("FieldWhereClause"+FieldWhereClause);
          
@@ -5845,14 +5845,14 @@ document.addEventListener("touchend ", function(){
       var div2_pos = div2.getBoundingClientRect();
 
       if(div1_pos.left<div2_pos.left){
-        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var x1 = div1.offsetLeft+div1.offsetWidth-1;
         var y1 = div1.offsetTop+10;
         var x2 = div2.offsetLeft;
         var y2 = (div2.offsetTop+div2_pos.height/2);
       }else{
         var x1 = div1.offsetLeft;
         var y1 = (div1.offsetTop+div1_pos.height/2);
-        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var x2 = div2.offsetLeft+div2.offsetWidth+1;
         var y2 = div2.offsetTop+10;
       } 
 
