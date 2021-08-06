@@ -4229,33 +4229,33 @@ document.addEventListener("touchend ", function(){
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         console.log("before the for");
-        for (var key in DESetQueryBox) {
+        for (var k in DESetQueryBox) {
           console.log("in the for");
-          if(key in DEListMap.DEMap) {
+          if(k in DEListMap.DEMap) {
             console.log("in the if");
-              for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
-            else if (key in DEListMap.SharedDEMap) {
+            else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
-              for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
-            else if (key in DEListMap.DataViewMap) {
+            else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
-              for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
-                strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JDESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DESetQueryBox[k].FirstDEName + '].[' + Field1.FieldName + '] as [' + JDESetQueryBox[k].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
-            tempDESet.add(DESetQueryBox[key].FirstDEName);
+            tempDESet.add(DESetQueryBox[k].FirstDEName);
           
     
         }
