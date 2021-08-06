@@ -3252,7 +3252,7 @@
   }
 
   function sortList() {
-        setTimeout(() => {console.log('1 second finished!')}, 1000);
+        
         var list, i, switching, b, shouldSwitch;
        
         list = document.getElementById("leftsideListInSelectField");
@@ -3318,6 +3318,7 @@
         
       }
     }
+    setTimeout(() => {console.log('1 second finished!')}, 3000); 
    sortList();
    sortListDir("rightsideListInSelectField");
            
