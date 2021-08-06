@@ -3404,9 +3404,9 @@
   }
   
   function jsFunction()
-{ 
+{  var list, i, sortFlag, LiEle, sorted;
    console.log('--------onchange-start-------');
-  
+   
    list = document.getElementById("leftsideListInSelectField");
         
    console.log('--------onchange---->'+list);
@@ -3415,8 +3415,31 @@
    console.log(b);
 
    console.log('--------onchange-end-------');
+      sortFlag = true;
+      while (sortFlag) {
+         sortFlag = false;
+         LiEle = list.getElementsByTagName("select");
+         console.log(LiEle);
+         for (i = 0; i < LiEle.length - 1; i++) {
+            sorted = false;
+            console.log('---1---');
+            console.log(LiEle);
+            if ( LiEle[i].innerHTML.toLowerCase() > LiEle[i + 1].innerHTML.toLowerCase() ) {
+               sorted = true;
+               break;
+            }
+         }
+
+         if (sorted) {
+           console.log('---1---');
+            console.log(LiEle);
+            LiEle[i].parentNode.insertBefore(LiEle[i + 1], LiEle[i]);
+            sortFlag = true;
+         }
+      }
  
 }
+  
      
 
 </script>
