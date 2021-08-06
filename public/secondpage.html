@@ -5054,8 +5054,8 @@ document.addEventListener("touchend ", function(){
           '        ' +
           '        .mainQuaryBoxStyle{' +
           '            width:10em;' +
-          '            background-color: #387F9D;' +
-          '            border-color:#387F9D;' +
+          '            background-color: #353535;' +
+          '            border-color:#353535;' +
           '            position: absolute;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
@@ -5121,8 +5121,8 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '       .mainQuaryBoxStyle:active{'+
           '            width:10em;'+
-          '            background-color: #353535;'+
-          '            border-color:#2e2e2e;'+
+          '            background-color: #387F9D;'+
+          '            border-color:#387F9D;'+
           '            position: absolute;'+
           '            -webkit-user-select: none;'+
           '            -khtml-user-select: none;'+
@@ -5815,14 +5815,13 @@ document.addEventListener("touchend ", function(){
         var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
         var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.height/2);
       }
-      else {
-        var x1 = div1_pos.left-(DEListSidebar_pos.right-2);
-        var y1 = div1_pos.top+div1_pos.height/2;
-        var x2 = div2_pos.right-(DEListSidebar_pos.right+0.5);
-        var y2 = div2_pos.top+10;
-      }
-
-      //console.log("right="+y2);
+      else
+      {
+        var x1 = div1_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
+        var y1 = (div1_pos.top+scrollDiv.scrollTop)+(div1_pos.height/2);
+        var x2 = div2_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
+        var y2 = div2_pos.top+scrollDiv.scrollTop+10;
+      }    
 
       // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
