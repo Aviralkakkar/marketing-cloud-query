@@ -4317,7 +4317,7 @@ document.addEventListener("touchend ", function(){
         
         
         console.log("before the for");
-        for (var k in DESetQueryBox) {
+        for (const k of DESetQueryBox) {
           console.log("in the for");
           if(k in DEListMap.DEMap) {
             console.log("in the if");
