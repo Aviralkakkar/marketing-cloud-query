@@ -3405,9 +3405,16 @@
   
   function jsFunction()
 { 
-   console.log('--------123---------')
+   console.log('--------onchange-start-------');
   
-   //sortList();
+   list = document.getElementById("leftsideListInSelectField");
+        
+   console.log('--------onchange---->'+list);
+   b = list.getElementsByTagName("OPTION");
+   console.log('list-------');
+   console.log(b);
+
+   console.log('--------onchange-end-------');
  
 }
      
