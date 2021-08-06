@@ -4376,9 +4376,13 @@ document.addEventListener("touchend ", function(){
         }
         console.log("strQuery"+strQuery);
         console.log("strQuery.length="+strQuery.length);
-        var l=strQuery.length;
-        var char=strQuery.charAt(l)
-        console.log("char"+char);
+        //var l=strQuery.length;
+        //var char=strQuery.charAt(l)
+        //console.log("char"+char);
+        var copy=strQuery;
+        console.log("copy="+copy);
+        var char=copy.slice(0, -1);
+        console.log("char=="+char);
         if(char=="d"){
           strQuery = strQuery.slice(0, -3);
         }
