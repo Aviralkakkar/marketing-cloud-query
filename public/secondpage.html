@@ -4212,11 +4212,14 @@ document.addEventListener("touchend ", function(){
       }*/
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size);
-      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+      if(draggedDeKey.size>0){
+        if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
+      }
+      
       /*for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
