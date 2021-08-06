@@ -3503,31 +3503,32 @@ function openModal(functionAction) {
             console.log("nitik value24"+DESetQueryBox.size);
 
           if(countOfDeWithWhereClauseValue==1){
-            var DeName=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
             console.log("DeName"+DeName);
             var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
             console.log("FieldWhereClause"+FieldWhereClause);
-            if(DeName in DEListMap.DEMap) {
-                          for (var key in DEListMap.DEMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+         
+                        if(NameOfDe in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
                             console.log("-----");
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[DeName].DEName + '].[' + DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause=-"+FieldWhereClause);
                            // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
                             //console.log("FieldName=-"+FieldName);
                           }
                         }
-                        else if(DeName in DEListMap.SharedDEMap) {
-                          for (var key in DEListMap.SharedDEMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[DeName].DEName + '].[' + DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                        else if(NameOfDe in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause-="+FieldWhereClause);
                           }
                         }
-                        else if(DeName in DEListMap.DataViewMap) {
-                          for (var key in DEListMap.DataViewMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[DeName].DEName + '].[' + DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                        else if(NameOfDe in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause=="+FieldWhereClause);
                           }
                         }
