@@ -2417,7 +2417,7 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:75%;margin-bottom:1%;position:relative;">
-              <div id="RelationshipDiv">
+              <div class=".slds-is-relative" id="RelationshipDiv">
               </div>
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
@@ -2628,7 +2628,6 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
 <!--****** Nitik code ended *********-->
-          
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height: 25%;padding-top:0%;" style="overflow: scroll;">
@@ -2989,7 +2988,7 @@
                   <ul class="list-group left-side" 
                     style="height: 51vh; border: none; background-color:white; padding:0%; margin:0%; border-bottom: 1px solid lightgray; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); " style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); " onChange="jsFunction()" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3003,7 +3002,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); jsFunction(document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft"  onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3252,12 +3251,12 @@
     }
   }
 
-  function sortList(val) {
+  function sortList() {
         var list, i, switching, b, shouldSwitch;
-        console.log('-----val-----'+val);
-       // list = document.getElementById(val);
+       
+        list = document.getElementById("leftsideListInSelectField");
         
-      //  console.log('------------>'+list);
+        console.log('------------>'+list);
 
       
         switching = true;
@@ -3266,11 +3265,15 @@
         while (switching) {
           // Start by saying: no switching is done:
           switching = false;
-          b = val.getElementsByTagName("OPTION");
+          b = list.getElementsByTagName("OPTION");
+          console.log('list-------');
+          console.log(b);
           // Loop through all list items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
+            console.log('dddddddd------');
+            console.log(b[i]);
             /* Check if the next item should
             switch place with the current item: */
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
@@ -3314,7 +3317,7 @@
         
       }
     }
-   //sortList("leftsideListInSelectField");
+   sortList();
    sortListDir("rightsideListInSelectField");
            
   }
@@ -3333,7 +3336,7 @@
           switching = false;
           b = list.getElementsByTagName("option");
           // Loop through all list-items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should switch place with the current item,
@@ -3400,11 +3403,18 @@
     }
   }
   
-  function jsFunction(value)
+  function jsFunction()
 { 
-  console.log('--------123---------')
-   console.log(value);
-   sortList(value)
+   console.log('--------onchange-start-------');
+  
+   list = document.getElementById("leftsideListInSelectField");
+        
+   console.log('--------onchange---->'+list);
+   b = list.getElementsByTagName("OPTION");
+   console.log('list-------');
+   console.log(b);
+
+   console.log('--------onchange-end-------');
  
 }
      
@@ -5165,7 +5175,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -5306,7 +5316,7 @@ document.addEventListener("touchend ", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
-          schemaAction();
+           schemaAction();
           
         }  
 
@@ -5823,34 +5833,21 @@ document.addEventListener("touchend ", function(){
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
-
       var div2 = document.getElementById(val2);
-
       var div1_pos = div1.getBoundingClientRect();
-
       var div2_pos = div2.getBoundingClientRect();
 
-      var DEListSidebar=document.getElementById('DEListSidebar');
-      var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
-
-      var scrollDiv=document.getElementById('queryDiv');
-      scrollDiv.scrollTop=10000;
-      scrollDiv.scrollLeft=10000;
-
-      if(div1_pos.left<div2_pos.left)
-      {
-        var x1 = div1_pos.right+scrollDiv.scrollLeft-DEListSidebar_pos.right;
-        var y1 = div1_pos.top+scrollDiv.scrollTop+10;
-        var x2 = div2_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
-        var y2 = (div2_pos.top+scrollDiv.scrollTop)+(div2_pos.height/2);
-      }
-      else
-      {
-        var x1 = div1_pos.left+scrollDiv.scrollLeft-(DEListSidebar_pos.right-2);
-        var y1 = (div1_pos.top+scrollDiv.scrollTop)+(div1_pos.height/2);
-        var x2 = div2_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
-        var y2 = div2_pos.top+scrollDiv.scrollTop+10;
-      }    
+      if(div1_pos.left<div2_pos.left){
+        var x1 = div1.offsetLeft+div1.offsetWidth-1;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
+      }else{
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth+1;
+        var y2 = div2.offsetTop+10;
+      } 
 
       // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
