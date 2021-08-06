@@ -2989,7 +2989,7 @@
                   <ul class="list-group left-side" 
                     style="height: 51vh; border: none; background-color:white; padding:0%; margin:0%; border-bottom: 1px solid lightgray; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); jsFunction(this.value);" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this); " style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3003,7 +3003,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); jsFunction(document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3315,7 +3315,7 @@
         
       }
     }
-   sortList("leftsideListInSelectField");
+   //sortList("leftsideListInSelectField");
    sortListDir("rightsideListInSelectField");
            
   }
@@ -3332,7 +3332,7 @@
         while (switching) {
           // Start by saying: no switching is done:
           switching = false;
-          b = list.getElementsByTagName("OPTION");
+          b = list.getElementsByTagName("option");
           // Loop through all list-items:
           for (i = 0; i < (b.length - 1); i++) {
             // Start by saying there should be no switching:
@@ -3402,8 +3402,11 @@
   }
   
   function jsFunction(value)
-{
-    alert(value);
+{ 
+  console.log('--------123---------')
+   console.log(value);
+   sortList(value)
+ 
 }
      
 
@@ -4235,27 +4238,27 @@ document.addEventListener("touchend ", function(){
         
         
         console.log("before the for");
-        for (const  key of DESetQueryBox) {
+        for (var k in DESetQueryBox) {
           console.log("in the for");
-          if(key in DEListMap.DEMap) {
+          if(k in DEListMap.DEMap) {
             console.log("in the if");
-              for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
                 strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
-            else if (key in DEListMap.SharedDEMap) {
+            else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
-              for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
                 console.log("in the for3");
                 strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
-            else if (key in DEListMap.DataViewMap) {
+            else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
-              for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
                 strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
@@ -5042,8 +5045,8 @@ document.addEventListener("touchend ", function(){
           '        ' +
           '        .mainQuaryBoxStyle{' +
           '            width:10em;' +
-          '            background-color: #387F9D;' +
-          '            border-color:#387F9D;' +
+          '            background-color: #353535;' +
+          '            border-color:#353535;' +
           '            position: absolute;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
@@ -5109,8 +5112,8 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '       .mainQuaryBoxStyle:active{'+
           '            width:10em;'+
-          '            background-color: #353535;'+
-          '            border-color:#2e2e2e;'+
+          '            background-color: #387F9D;'+
+          '            border-color:#387F9D;'+
           '            position: absolute;'+
           '            -webkit-user-select: none;'+
           '            -khtml-user-select: none;'+
@@ -5124,7 +5127,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div style="position:relative;" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
@@ -5776,20 +5779,25 @@ document.addEventListener("touchend ", function(){
     function joinQueryBoxLine(de1, de2,lineid) 
     {
       console.log("Line drawed");
+
       var val1 = de1 + "ForConnectedLine";
       var val2 = de2 + "ForConnectedLine";
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
+
       var div2 = document.getElementById(val2);
+
       var div1_pos = div1.getBoundingClientRect();
+
       var div2_pos = div2.getBoundingClientRect();
+
       var DEListSidebar=document.getElementById('DEListSidebar');
       var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
 
       var scrollDiv=document.getElementById('queryDiv');
-      scrollDiv.scrollTop=1000;
-      scrollDiv.scrollLeft=1000;
+      scrollDiv.scrollTop=10000;
+      scrollDiv.scrollLeft=10000;
 
       if(div1_pos.left<div2_pos.left)
       {
@@ -5805,6 +5813,8 @@ document.addEventListener("touchend ", function(){
         var x2 = div2_pos.right+scrollDiv.scrollLeft-(DEListSidebar_pos.right+0.5);
         var y2 = div2_pos.top+scrollDiv.scrollTop+10;
       }    
+
+      // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
       // center
       var cx = ((x1 + x2) / 2) - (length / 2);
@@ -5829,7 +5839,7 @@ document.addEventListener("touchend ", function(){
                         position: absolute;
                         `
                 ;
-       console.log('Line:'+lineElement);            
+    console.log('Line:'+lineElement);            
 
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
