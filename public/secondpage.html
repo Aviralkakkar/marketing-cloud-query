@@ -4181,7 +4181,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
-      var tempDESet = new Set();
+      
       var strQuery = 'SELECT';
       if (DESetQueryBox.size == 1) {
         if (Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
@@ -4231,6 +4231,9 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+        
+        
         console.log("before the for");
         for (const  key of DESetQueryBox) {
           console.log("in the for");
@@ -4238,7 +4241,7 @@ document.addEventListener("touchend ", function(){
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' + key+ '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
@@ -4246,7 +4249,7 @@ document.addEventListener("touchend ", function(){
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [' + key + '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
@@ -4254,29 +4257,48 @@ document.addEventListener("touchend ", function(){
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
                 console.log("in the for4");
-                strQuery += ' [' + key + '].[' + Field1.FieldName + '] as [' + key + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
-            tempDESet.add(key);
+            
           
     
         }
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);        
-
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery==="+strQuery); 
         console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
         console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
+
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
           console.log("in the first");
+            
         }
         else if(countOfDeWithWhereClauseValue==1){
           console.log("in the second");
+
         }
         else if(countOfDeWithWhereClauseValue>1){
           console.log("in the thui");
+          strQuery=strQuery+" Where ";
+          var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause;
+
         }
-       
+        console.log("strQuery"+strQuery);
+
+
+
+
+
+        var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
         for (var key in JoinQueryDetails.DEForJoin) {
