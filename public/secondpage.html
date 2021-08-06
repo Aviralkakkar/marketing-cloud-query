@@ -4230,22 +4230,27 @@ document.addEventListener("touchend ", function(){
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         
         for (var key in DESetQueryBox) {
+          console.log("in the for");
           if(key in DEListMap.DEMap) {
-            
+            console.log("in the if");
               for (var Field1 of DEListMap.DEMap[key].DESelectedFields) {
-
+                console.log("in the for2");
                 strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
             else if (key in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[key].DESelectedFields) {
+                console.log("in the for3");
                 strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + DESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
             else if (key in DEListMap.DataViewMap) {
+              console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[key].DESelectedFields) {
+                console.log("in the for4");
                 strQuery += ' [' + DESetQueryBox[key].FirstDEName + '].[' + Field1.FieldName + '] as [' + JDESetQueryBox[key].FirstDEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
