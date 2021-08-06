@@ -4376,7 +4376,8 @@ document.addEventListener("touchend ", function(){
         }
         console.log("strQuery"+strQuery);
         console.log("strQuery.length="+strQuery.length);
-        var char=strQuery[strQuery.length-1]
+        var l=strQuery.length;
+        var char=strQuery.charAt(l)
         console.log("char"+char);
         if(char=="d"){
           strQuery = strQuery.slice(0, -3);
