@@ -3487,8 +3487,8 @@ function openModal(functionAction) {
         validateQuery(JoinQueryDetails , 'Run');
         console.log('called function validate query');
       }*/
-     // console.log("nitik value23"+JSON.stringify(joinedDivSet));
-            //console.log("nitik value24"+DESetQueryBox.size);
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+            console.log("nitik value24"+DESetQueryBox.size);
 
           if(countOfDeWithWhereClauseValue==1){
             var DeName=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
@@ -3518,8 +3518,9 @@ function openModal(functionAction) {
                             console.log("FieldWhereClause=="+FieldWhereClause);
                           }
                         }
+                        document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
           }
-          document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
+          
 
 
 
