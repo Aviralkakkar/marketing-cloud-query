@@ -4381,7 +4381,7 @@ document.addEventListener("touchend ", function(){
         //console.log("char"+char);
         var copy=strQuery;
         console.log("copy="+copy);
-        var char=copy.slice(0, -1);
+        var char=copy.slice(copy.length-1, copy.length);
         console.log("char=="+char);
         if(char=="d"){
           strQuery = strQuery.slice(0, -3);
