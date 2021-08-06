@@ -5845,14 +5845,22 @@ document.addEventListener("touchend ", function(){
       var div2_pos = div2.getBoundingClientRect();
 
       if(div1_pos.left<div2_pos.left){
+<<<<<<< HEAD
         var x1 = div1.offsetLeft+div1.offsetWidth-1;
+=======
+        var x1 = div1.offsetLeft+div1.offsetWidth-0.5;
+>>>>>>> 39ea88d6314a4fa6095953a245461c8c7c3f578c
         var y1 = div1.offsetTop+10;
-        var x2 = div2.offsetLeft;
+        var x2 = div2.offsetLeft+0.5;
         var y2 = (div2.offsetTop+div2_pos.height/2);
       }else{
-        var x1 = div1.offsetLeft;
+        var x1 = div1.offsetLeft+0.5;
         var y1 = (div1.offsetTop+div1_pos.height/2);
+<<<<<<< HEAD
         var x2 = div2.offsetLeft+div2.offsetWidth+1;
+=======
+        var x2 = div2.offsetLeft+div2.offsetWidth-0.5;
+>>>>>>> 39ea88d6314a4fa6095953a245461c8c7c3f578c
         var y2 = div2.offsetTop+10;
       } 
 
