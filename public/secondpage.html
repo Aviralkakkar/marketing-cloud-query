@@ -4376,19 +4376,20 @@ document.addEventListener("touchend ", function(){
         }
         console.log("strQuery"+strQuery);
         console.log("strQuery.length="+strQuery.length);
-        //var l=strQuery.length;
+        /*var l=strQuery.length;
         //var char=strQuery.charAt(l)
         //console.log("char"+char);
-        var copy=strQuery;
-        console.log("copy="+copy);
-        var char=copy.slice(copy.length-1, copy.length);
+        //var copy=strQuery;
+        //console.log("copy="+copy);
+        //var char=copy.slice(copy.length-1, copy.length);
         console.log("char=="+char);
         if(char=="d"){
           strQuery = strQuery.slice(0, -3);
         }
         else{
           strQuery = strQuery.slice(0, -2);
-        }
+        }*/
+        strQuery = strQuery.slice(0, -6);
         console.log("Final strQuery = "+strQuery);
 
 
