@@ -2417,8 +2417,7 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:75%;margin-bottom:1%;position:relative;">
-              <div id="RelationshipDiv">
-              </div>
+              <div class=".slds-is-relative" id="RelationshipDiv">
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2628,7 +2627,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
 <!--****** Nitik code ended *********-->
-          
+                </div>
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height: 25%;padding-top:0%;" style="overflow: scroll;">
@@ -3420,7 +3419,8 @@
         return true;
       }*/
       var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+    var countOfDeWithoutWhereClauseValue=0;
+    var OnlyOneDeWhichContainWhereClause;  
 function openModal(functionAction) {
    
     
@@ -3441,7 +3441,7 @@ function openModal(functionAction) {
                 //console.log("nitik value12");
               }
               else{
-               
+                OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
                 if(val in DEListMap.DEMap){
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
@@ -3488,6 +3488,40 @@ function openModal(functionAction) {
       }*/
      // console.log("nitik value23"+JSON.stringify(joinedDivSet));
             //console.log("nitik value24"+DESetQueryBox.size);
+
+          if(countOfDeWithWhereClauseValue==1){
+            var DeName=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            console.log("DeName"+DeName);
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            if(DeName in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[DeName].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+                            console.log("-----");
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[DeName].DEName + '].[' + DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
+                          }
+                        }
+                        else if(DeName in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[DeName].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[DeName].DEName + '].[' + DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
+                          }
+                        }
+                        else if(DeName in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[DeName].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[DeName].DEName + '].[' + DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
+                          }
+                        }
+          }
+          document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
+
+
+
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               //console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
@@ -4184,7 +4218,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
       
-      var strQuery = 'SELECT';
+      var strQuery = 'SELECT ';
       if (DESetQueryBox.size == 1) {
         if (Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
           for (var i in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
@@ -4284,6 +4318,9 @@ document.addEventListener("touchend ", function(){
         }
         else if(countOfDeWithWhereClauseValue==1){
           console.log("in the second");
+          var clause=document.getElementById('DEWhereClauseModal').innerHTML ;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause; 
 
         }
         else if(countOfDeWithWhereClauseValue>1){
@@ -5126,7 +5163,7 @@ document.addEventListener("touchend ", function(){
           '          }'+
           ''+
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
           '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
