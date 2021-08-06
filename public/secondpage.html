@@ -4154,13 +4154,18 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
+<<<<<<< Updated upstream
       console.log("draggedDeName000000");
       if(isSetEqual(DESetQueryBox, draggedDeKey)){
+=======
+     // console.log("draggedDeName000000");
+      /*if(isSetEqual(DESetQueryBox, draggedDeKey)){
+>>>>>>> Stashed changes
         console.log("draggedDeName8978");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
-      }
-      /*for(const val of DESetQueryBox){
+      }*/
+      for(const val of DESetQueryBox){
         if(draggedDeKey.has(val)){
 
         }
@@ -4169,8 +4174,13 @@ document.addEventListener("touchend ", function(){
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
         }
+<<<<<<< Updated upstream
       }*/
       console.log("draggedDeName"+draggedDeKey);
+=======
+      }
+      //console.log("draggedDeName"+draggedDeKey);
+>>>>>>> Stashed changes
 
 
       console.log('action type'+actionType);
@@ -4229,7 +4239,7 @@ document.addEventListener("touchend ", function(){
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
 
         console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
-        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue) ;
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
           console.log("in the first");
         }
