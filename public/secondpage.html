@@ -3492,33 +3492,33 @@ function openModal(functionAction) {
 
           if(countOfDeWithWhereClauseValue==1){
             var DeName=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
-            var FieldName;
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
             if(DeName in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.DEMap[DeName].DEFields[key]["FieldName"], "g")
+                            var regex = new RegExp(DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
                             console.log("-----");
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[DeName].DEName + '].[' + DEListMap.DEMap[DeName].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=-"+FieldName);
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[DeName].DEName + '].[' + DEListMap.DEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
                            // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
                             //console.log("FieldName=-"+FieldName);
                           }
                         }
                         else if(DeName in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.SharedDEMap[DeName].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[DeName].DEName + '].[' + DEListMap.SharedDEMap[DeName].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName-="+FieldName);
+                            var regex = new RegExp(DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[DeName].DEName + '].[' + DEListMap.SharedDEMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
                           }
                         }
                         else if(DeName in DEListMap.DataViewMap) {
                           for (var key in DEListMap.DataViewMap[DeName].DEFields) {
-                            var regex = new RegExp(DEListMap.DataViewMap[DeName].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[DeName].DEName + '].[' + DEListMap.DataViewMap[DeName].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=="+FieldName);
+                            var regex = new RegExp(DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[DeName].DEName + '].[' + DEListMap.DataViewMap[DeName].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
                           }
                         }
           }
-          document.getElementById('DEWhereClauseModal').innerHTML = FieldName; 
+          document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
 
 
 
