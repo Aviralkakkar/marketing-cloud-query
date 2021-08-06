@@ -4181,7 +4181,7 @@ document.addEventListener("touchend ", function(){
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
-
+      var tempDESet = new Set();
       var strQuery = 'SELECT';
       if (DESetQueryBox.size == 1) {
         if (Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
@@ -4275,7 +4275,7 @@ document.addEventListener("touchend ", function(){
         else if(countOfDeWithWhereClauseValue>1){
           console.log("in the thui");
         }
-        var tempDESet = new Set();
+       
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
         for (var key in JoinQueryDetails.DEForJoin) {
