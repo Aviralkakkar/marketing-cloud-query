@@ -3454,12 +3454,7 @@
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
-      var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
-      console.log("value of t"+t);
-      if(t!=''){
-        console.log('in the if of t');
-        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
-      }
+     
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -4661,6 +4656,14 @@ window.onclick = function(event) {
       else{
         countOfDeWithWhereClauseValueMain=0;
         countOfDeWithoutWhereClauseValueMain=0;
+      }
+      if(DESetQueryBox.size==1){
+        var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
+        console.log("value of t"+t);
+        if(t!=''){
+          console.log('in the if of t');
+          document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
+        }
       }
      
     }
