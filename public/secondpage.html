@@ -4641,6 +4641,10 @@ document.addEventListener("touchend ", function(){
       if(draggedDeKey.size>1){
         closeModal();
       }
+      else{
+        countOfDeWithWhereClauseValue=0;
+        countOfDeWithoutWhereClauseValue=0;
+      }
      
     }
     function isSetEqual(as, bs) {
