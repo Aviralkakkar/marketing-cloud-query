@@ -3000,7 +3000,26 @@
  
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));  func(document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+              <script>
+                function func(val){
+       
 
+                  console.log('------onchange--------')
+                    var options = $("#leftsideListInSelectField option");
+                    console.log(options);
+                    options.detach().sort(function(a, b) {
+                        var at = $(a).text();
+                        var bt = $(b).text();
+                        return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+                    });
+                    options.appendTo("#leftsideListInSelectField");
+                    
+                    console.log('------onchange khtm--------')
+                
+              
+                }
+                   
+              </script>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3400,24 +3419,7 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
-  function func(val){
-       
-
-    console.log('------onchange--------')
-      var options = $("#leftsideListInSelectField option");
-      console.log(options);
-      options.detach().sort(function(a, b) {
-          var at = $(a).text();
-          var bt = $(b).text();
-          return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
-      });
-      options.appendTo("#leftsideListInSelectField");
-      
-      console.log('------onchange khtm--------')
   
-
-  }
-     
 
 </script>
 
