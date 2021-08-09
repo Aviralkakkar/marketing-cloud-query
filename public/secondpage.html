@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+  <link rel="stylesheet" type="text/css" src="/public/assets/styles/salesforce-lightning-design-system.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -2627,6 +2627,7 @@
 <!--****** Nitik code ended *********-->
           
             </div>
+            <div id="newDiv" style="border:1px solid #c9cacc;"></div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height:25%;padding-top:0%;" style="overflow: scroll;">
                 <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
@@ -2988,7 +2989,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this);" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3002,7 +3003,7 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));  func(document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
 
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3258,7 +3259,7 @@
         
         console.log('------------>'+list);
         
-        console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
+      //  console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
       
         switching = true;
         /* Make a loop that will continue until
@@ -3303,6 +3304,11 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
+        op.label=src.options[src.selectedIndex].text;
+       
+        op.draggable='true';
+        
+
        // console.log(src.options[src.selectedIndex].value);
        // console.log(src.options[src.selectedIndex].text);
        // console.log(src.options[src.selectedIndex].id);
@@ -3314,8 +3320,8 @@
         
       }
     }
-  // sortList("leftsideListInSelectField");
-  // sortListDir("rightsideListInSelectField");
+     //sortList("leftsideListInSelectField");
+     //sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3333,7 +3339,7 @@
           switching = false;
           b = list.getElementsByTagName("OPTION");
           // Loop through all list-items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length -1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should switch place with the current item,
@@ -3393,8 +3399,23 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
+  function func(val){
+       
+
+    console.log('------onchange--------')
+      var options = $("#leftsideListInSelectField option");
+      console.log(options);
+      options.detach().sort(function(a, b) {
+          var at = $(a).text();
+          var bt = $(b).text();
+          return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+      });
+      options.appendTo("#leftsideListInSelectField");
+      
+      console.log('------onchange khtm--------')
   
 
+  }
      
 
 </script>
@@ -3407,10 +3428,13 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
+      var countOfDeWithWhereClauseValueMain=0;    
+      var countOfDeWithoutWhereClauseValueMain=0;  
+      var OnlyOneDeWhichContainWhereClause;  
 function openModal(functionAction) {
-   
-    var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+  var countOfDeWithWhereClauseValue=0;    
+      var countOfDeWithoutWhereClauseValue=0; 
+     
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -3425,11 +3449,13 @@ function openModal(functionAction) {
               console.log('nitik key'+temp);
               if(value==""){
                 countOfDeWithoutWhereClauseValue++;
+                countOfDeWithoutWhereClauseValueMain=countOfDeWithoutWhereClauseValue;
                 console.log("nitik value12");
               }
               else{
                
                 countOfDeWithWhereClauseValue++;
+                countOfDeWithWhereClauseValueMain=countOfDeWithWhereClauseValue; 
                 if(val in DEListMap.DEMap){
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -3474,6 +3500,41 @@ function openModal(functionAction) {
         console.log('called function validate query');
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
+
+
+      if(countOfDeWithWhereClauseValue==1){
+            var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            console.log("DeName"+NameOfDe);
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            console.log("FieldWhereClause"+FieldWhereClause);
+           // var key=OnlyOneDeWhichContainWhereClause;
+         
+                        if(NameOfDe in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"], "g")
+                            console.log("-----");
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
+                          }
+                        }
+                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = FieldWhereClause; 
+          }
             console.log("nitik value24"+DESetQueryBox.size);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               console.log("nitik value2"+DESetQueryBox.size);
@@ -3517,7 +3578,7 @@ function closeModal() {
     console.log("text"+text);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
+    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 0){
       console.log("tt1");
       draggedDeName.clear();
       for(const Id of draggedDeId){
@@ -3782,6 +3843,7 @@ window.onclick = function(event) {
     }
 
     newDiv.addEventListener("mousedown", function (e) {
+      e.preventDefault();
       console.log('offset y ' + e.clientY);
       dragging = true;
       if (e.clientY) {
@@ -3951,8 +4013,7 @@ document.addEventListener("touchend ", function(){
                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
               //line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
              
             }
@@ -4206,6 +4267,95 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+                
+       console.log("before the for");
+        for (const k of DESetQueryBox) {
+          console.log("in the for");
+          if(k in DEListMap.DEMap) {
+            console.log("in the if");
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
+                console.log("in the for2");
+                strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery1= "+strQuery );
+            }
+            else if (k in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+                console.log("in the for3");
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
+            }
+            else if (k in DEListMap.DataViewMap) {
+              console.log("in the else=if");
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
+                console.log("in the for4");
+                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery3="+strQuery );
+            }
+            
+          
+    
+        }
+        strQuery = strQuery.slice(0, -1);
+        console.log(" strQuery=="+strQuery);        
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery==="+strQuery);
+        
+        console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
+        console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
+
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+        strQuery +="Where field 1 is null" ;
+        console.log(" strQuery23==="+strQuery);
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
+          console.log("in the first");
+            
+        }
+        else if(countOfDeWithWhereClauseValueMain==1){
+          console.log("in the second");
+          var clause=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML ;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause; 
+
+        }
+        else if(countOfDeWithWhereClauseValueMain>1){
+          console.log("in the thui");
+          if(strQuery.search("Where")<1){
+            console.log("in the if of search");
+            strQuery=strQuery+" Where ";
+          }
+          else{
+            strQuery=strQuery+" And/Or ";
+          }
+          var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause;
+
+        }
+        console.log("strQuery"+strQuery);
+        //console.log("strQuery.length="+strQuery.length);
+        /*var l=strQuery.length;
+        //var char=strQuery.charAt(l)
+        //console.log("char"+char);
+        //var copy=strQuery;
+        //console.log("copy="+copy);
+        //var char=copy.slice(copy.length-1, copy.length);
+        console.log("char=="+char);
+        if(char=="d"){
+          strQuery = strQuery.slice(0, -3);
+        }
+        else{
+          strQuery = strQuery.slice(0, -2);
+        }*/
+        strQuery = strQuery.slice(0, -7);
+        console.log("Final strQuery = "+strQuery);
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -4515,7 +4665,22 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-      closeModal();
+      if(draggedDeKey.size>1){
+        closeModal();
+      }
+      else{
+        countOfDeWithWhereClauseValueMain=0;
+        countOfDeWithoutWhereClauseValueMain=0;
+      }
+      if(DESetQueryBox.size==1){
+        var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
+        console.log("value of t"+t);
+        if(t!=''){
+          console.log('in the if of t');
+          document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
+        }
+      }
+     
     }
     function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
