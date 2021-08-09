@@ -2630,7 +2630,8 @@
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height:25%;padding-top:0%;" style="overflow: scroll;">
-                <div id="newDiv" style="border: 1px solid #ddd; background-color:#eee;height:13px;"></div> 
+                <div id="newDiv" style="border: 1px solid #ddd; background-color:#eee;height:13px;">
+                  </div> 
                
       
       
@@ -3808,8 +3809,11 @@ window.onclick = function(event) {
     var dragging = false;
     let m_pos;
     let m_pos_mob;
+    let cnt = 0;
     function resize(e) {
-      if (dragging) {
+      cnt++;
+      if (dragging && cnt==3) {
+        cnt=0;
         var hp = parseInt(panel.style.height);
         var hu = parseInt(upper.style.height);
         console.log('hp ' + hp + ' hu ' + hu);
