@@ -3418,7 +3418,10 @@ function openModal(functionAction) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
+       if(DESetQueryBox.size =1){
         document.getElementById('uoList').innerHTML = '';
+       }
+      
         console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
