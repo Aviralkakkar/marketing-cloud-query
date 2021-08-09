@@ -4637,7 +4637,10 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-      closeModal();
+      if(draggedDeKey.size>1){
+        closeModal();
+      }
+     
     }
     function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
