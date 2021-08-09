@@ -4990,8 +4990,8 @@ document.addEventListener("touchend ", function(){
           '        ' +
           '        .mainQuaryBoxStyle{' +
           '            width:10em;' +
-          '            background-color: #387F9D;' +
-          '            border-color:#387F9D;' +
+          '            background-color: #353535;' +
+          '            border-color:#353535;' +
           '            position: absolute;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
@@ -5009,8 +5009,6 @@ document.addEventListener("touchend ", function(){
           '        {' +
           '            text-align: left;' +
           '            font-size:75%;' +
-          '            background-color: #387F9D;' +
-          '            border: 1px solid #387F9D;' +
           '            border-bottom: 0;' +
           '            margin:auto;' +
           '            color:white;' +
@@ -5051,16 +5049,34 @@ document.addEventListener("touchend ", function(){
           '        }    ' +
           '' +
           '        .buttonStyle{' +
-          '            background-color: #387F9D;' +
+          '            background-color: transparent;' +
           '            height:24px;' +
           '            width:24px;' +
           '            float: right;' +
           '            border:none;' +
           '        }' +
-          '' +
+          '       .mainQuaryBoxStyle:active{'+
+          '            width:10em;'+
+          '            background-color: #387F9D;'+
+          '            border-color:#387F9D;'+
+          '            position: absolute;'+
+          '            -webkit-user-select: none;'+
+          '            -khtml-user-select: none;'+
+          '            -moz-user-select: none;'+
+          '            -ms-user-select: none;'+
+          '            -o-user-select: none;'+
+          '            user-select: none;'+
+          '            user-select: none;'+
+          '            -webkit-touch-callout: none;'+
+          '            opacity:0.9;'+
+          '          }'+
+          '         .headerOfQuaryBox:hover'+
+          '         {'+
+          '           cursor: move;'+
+          '          }'+
           ' </style>' +
-          '<div onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine"  style="left: 10%; top: 5%;">' +
+          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5420,30 +5436,21 @@ document.addEventListener("touchend ", function(){
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
-
       var div2 = document.getElementById(val2);
-
       var div1_pos = div1.getBoundingClientRect();
-
       var div2_pos = div2.getBoundingClientRect();
-      console.log(div1_pos.top, div1_pos.right, div1_pos.bottom, div1_pos.left);
 
-      if (div1_pos.left < div2_pos.left) {
-        var x1 = div1_pos.left + (div1_pos.width - 2);
-        var y1 = div1_pos.top + 10;
-        var x2 = (div2_pos.left - div2_pos.width) + (div2_pos.width + 2);
-        var y2 = div2_pos.top + div2_pos.height / 2;
-      }
-      else {
-        var x1 = (div1_pos.left - div1_pos.width) + (div1_pos.width + 1);
-        var y1 = div1_pos.top + div1_pos.height / 2;
-        var x2 = div2_pos.left + (div2_pos.width - 2);
-        var y2 = div2_pos.top + 10;
-      }
-      console.log(" div2 left=" + div2_pos.left);
-      console.log(" div1 left=" + div1_pos.left);
-
-      //console.log("right="+y2);
+      if(div1_pos.left<div2_pos.left){
+        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
+      }else{
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var y2 = div2.offsetTop+10;
+      } 
 
       // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
@@ -5460,7 +5467,6 @@ document.addEventListener("touchend ", function(){
                         height:  2px;
                         background-color:#387F9D;
                         line-height: 1px;
-                        position: absolute;
                         left: ${cx}px;
                         top: ${cy}px;
                         width:${length}px;
@@ -5468,10 +5474,10 @@ document.addEventListener("touchend ", function(){
                         -webkit-transform: rotate(${angle}deg);
                         -o-transform: rotate(${angle}deg);
                         -ms-transform: rotate(${angle}deg);
+                        position: absolute;
                         `
                 ;
-    console.log('Line:'+lineElement);            
-
+        console.log('Line:'+lineElement);            
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
