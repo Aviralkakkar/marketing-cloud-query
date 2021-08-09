@@ -3597,16 +3597,16 @@ window.onclick = function(event) {
 
     function showDataExtensions() {
       var de = document.getElementById("dataExtensionButton");
-      console.log(de);
+     
       if (dataExtBool) {
-        console.log('show');
+       
         document.getElementById("dataExtension").className = "myUlClass button-padding slds-show slds-tree";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
 
         dataExtBool = false;
       }
       else {
-        console.log('hide');
+       
         document.getElementById("dataExtension").className = "slds-hide slds-tree";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
         dataExtBool = true;
@@ -3617,13 +3617,13 @@ window.onclick = function(event) {
     function showSharedDataExtensions() {
       var de = document.getElementById("sharedDataExtensionButton");
       if (sharedDataExtBool) {
-        console.log('show');
+        
         document.getElementById("sharedDataExtension").className = "myUlClass button-padding slds-show slds-tree";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
         sharedDataExtBool = false;
       }
       else {
-        console.log('hide');
+       
         document.getElementById("sharedDataExtension").className = "slds-hide";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
         sharedDataExtBool = true;
@@ -3634,14 +3634,14 @@ window.onclick = function(event) {
     function showDataViews() {
       var de = document.getElementById("dataViewsButton");
       if (dataViewsBool) {
-        console.log('show');
+      
         document.getElementById("dataViews").className = "myUlClass button-padding slds-show slds-tree";
 
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
         dataViewsBool = false;
       }
       else {
-        console.log('hide');
+        
         document.getElementById("dataViews").className = "slds-hide";
         de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
         dataViewsBool = true;
@@ -3704,7 +3704,7 @@ window.onclick = function(event) {
 
     var records = document.getElementById("totalRecords");
     records.innerHTML = "( " + objJSON.length + " rows )";
-    console.log("Row " + objJSON.length);
+   
 
     function prevPage() {
       if (current_page > 1) {
@@ -3785,7 +3785,7 @@ window.onclick = function(event) {
           count++;
         }
         
-            console.log('count '+count);
+           
             if (count >= 15 && count <= 35) 
             {
               var tb = parseInt(table.style.height);
@@ -3802,7 +3802,7 @@ window.onclick = function(event) {
           count--;
         }
         
-        console.log('count '+count);
+      
             if (count >= 15 && count <= 35)
             {
               var tb = parseInt(table.style.height);
@@ -3815,17 +3815,17 @@ window.onclick = function(event) {
 
     }
     document.addEventListener("mouseup", function () {
-     console.log('mouse up');
+   
       document.removeEventListener("mousemove", resize, false);
     }, false);
     right.addEventListener("mousedown",function(e)
     {
       if (e.clientY) {
         m_pos = e.clientY;
-        console.log('mouse down');
+      
         document.addEventListener("mousemove", resize, false);
         document.addEventListener("mouseup", function () {
-     console.log('mouse up');
+   
       document.removeEventListener("mousemove", resize, false);
     }, false);
       }
