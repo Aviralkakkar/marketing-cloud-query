@@ -3434,7 +3434,7 @@ function openModal(functionAction) {
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; text-align: center;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + val + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; " value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3446,12 +3446,12 @@ function openModal(functionAction) {
               
             }
 
-            if(draggedDeId.size > 0){
+            if(draggedDeKey.size > 0){
                   
-                  for(const valId of draggedDeId){
+                  for(const valId of draggedDeKey){
                     
                       console.log("qwerty");
-                      document.getElementById(valId).className = "slds-button slds-button_brand"; 
+                      document.getElementById(valId+"WhereClasueDEList").className = "slds-button slds-button_brand"; 
                       console.log("qwerty end");
                     
                   }
@@ -3519,13 +3519,13 @@ function closeModal() {
     console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
-      draggedDeName.clear();
-      for(const Id of draggedDeId){
+      //draggedDeName.clear();
+      for(const Id of draggedDeKey){
         console.log("tt2");
-        document.getElementById(Id).className = "btn"; 
+        document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
         console.log("tt3");
       }
-      draggedDeId.clear();
+      //draggedDeId.clear();
       draggedDeKey.clear();
       console.log("tt completed1");
     }
@@ -3833,8 +3833,8 @@ document.addEventListener("touchend ", function(){
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-    var draggedDeName=new Set();
-    var draggedDeId=new Set();
+   // var draggedDeName=new Set();
+   // var draggedDeId=new Set();
     var draggedDeKey=new Set();
     //var TotalMainDeDragged=0;
 
@@ -4027,16 +4027,16 @@ document.addEventListener("touchend ", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
-                        draggedDeName.add(FieldType);
+                        //draggedDeName.add(FieldType);
                         key = FieldKey.split("WhereClasueDEList");
                         FieldId = key[0];
                         console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
-                        draggedDeId.add(FieldKey)
+                       // draggedDeId.add(FieldKey)
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
-                        range.insertNode(document.createTextNode(FieldName));
+                        //range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
@@ -4144,12 +4144,12 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
-        console.log("draggedDeName");
+      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+        //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
-      console.log("draggedDeName"+draggedDeName);
+     // console.log("draggedDeName"+draggedDeName);
 
 
       console.log('action type'+actionType);
@@ -4206,6 +4206,87 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+                
+        console.log("before the for");
+        for (const k of DESetQueryBox) {
+          console.log("in the for");
+          if(k in DEListMap.DEMap) {
+            console.log("in the if");
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
+                console.log("in the for2");
+                strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery1= "+strQuery );
+            }
+            else if (k in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+                console.log("in the for3");
+                strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
+            }
+            else if (k in DEListMap.DataViewMap) {
+              console.log("in the else=if");
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
+                console.log("in the for4");
+                strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery3="+strQuery );
+            }
+            
+          
+    
+        }
+        strQuery = strQuery.slice(0, -1);
+        console.log(" strQuery=="+strQuery);        
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery==="+strQuery); 
+        console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
+
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+          console.log("in the first");
+            
+        }
+        else if(countOfDeWithWhereClauseValue==1){
+          console.log("in the second");
+          var clause=document.getElementById('DEWhereClauseModal').innerHTML ;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause; 
+
+        }
+        else if(countOfDeWithWhereClauseValue>1){
+          console.log("in the thui");
+          strQuery=strQuery+" Where ";
+          var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause;
+
+        }
+        console.log("strQuery"+strQuery);
+        //console.log("strQuery.length="+strQuery.length);
+        /*var l=strQuery.length;
+        //var char=strQuery.charAt(l)
+        //console.log("char"+char);
+        //var copy=strQuery;
+        //console.log("copy="+copy);
+        //var char=copy.slice(copy.length-1, copy.length);
+        console.log("char=="+char);
+        if(char=="d"){
+          strQuery = strQuery.slice(0, -3);
+        }
+        else{
+          strQuery = strQuery.slice(0, -2);
+        }*/
+        strQuery = strQuery.slice(0, -7);
+        console.log("Final strQuery = "+strQuery);
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
