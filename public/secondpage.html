@@ -3412,11 +3412,14 @@
      while (run) {
          run = false;
          li = val.getElementsByTagName("OPTION");
+         console.log('00000000000000');
          console.log(li)
          // Loop traversing through all the list items
-         for (i = 0; i < (li.length - 1); i++) {
+         for (i = 0; i < (li.length -1); i++) {
              stop = false;
-             console.log(li[i].text);
+             console.log(li[i]);
+             console.log(li[i].innerHTML);
+             console.log(li[i+1].innerHTML);
              if (li[i].innerHTML.toLowerCase() > 
                  li[i + 1].innerHTML.toLowerCase()) {
                  stop = true;
