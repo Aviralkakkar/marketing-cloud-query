@@ -3416,6 +3416,7 @@
          // Loop traversing through all the list items
          for (i = 0; i < (li.length - 1); i++) {
              stop = false;
+             console.log(li[i].text);
              if (li[i].innerHTML.toLowerCase() > 
                  li[i + 1].innerHTML.toLowerCase()) {
                  stop = true;
