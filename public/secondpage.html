@@ -4300,7 +4300,9 @@ window.onclick = function(event) {
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);        
         strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
-        console.log(" strQuery==="+strQuery); 
+        console.log(" strQuery==="+strQuery);
+        strQuery +="where field 1 is null" ;
+        console.log(" strQuery23==="+strQuery);
         console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
         console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
@@ -4321,7 +4323,12 @@ window.onclick = function(event) {
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          strQuery=strQuery+" Where ";
+          if(strQuery.search("Where")<=0){
+            strQuery=strQuery+" Where ";
+          }
+          else{
+            strQuery=strQuery+" And/Or ";
+          }
           var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
           console.log("clause"+ clause);
           strQuery=strQuery+clause;
