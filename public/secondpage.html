@@ -3414,11 +3414,12 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-      var countOfDeWithWhereClauseValue=0;    
-      var countOfDeWithoutWhereClauseValue=0;  
+      var countOfDeWithWhereClauseValueMain=0;    
+      var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
 function openModal(functionAction) {
-   
+  var countOfDeWithWhereClauseValue=0;    
+      var countOfDeWithoutWhereClauseValue=0; 
    
     
    if (DESetQueryBox.size >0) {
@@ -3437,12 +3438,14 @@ function openModal(functionAction) {
               console.log('nitik key'+temp);
               if(value==""){
                 countOfDeWithoutWhereClauseValue++;
+                countOfDeWithoutWhereClauseValueMain=countOfDeWithoutWhereClauseValue;
                 console.log("nitik value12");
               }
               else{
                 console.log("nitik value128");
                 OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
+                countOfDeWithWhereClauseValueMain=countOfDeWithWhereClauseValue; 
                 if(val in DEListMap.DEMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
@@ -3786,7 +3789,7 @@ window.onclick = function(event) {
     
       if(e.clientY <= m_pos)
       {
-        if(count < 140 )
+        if(count < 60 )
         {
           count++;
         }
@@ -4232,7 +4235,7 @@ window.onclick = function(event) {
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
@@ -4240,7 +4243,7 @@ window.onclick = function(event) {
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
@@ -4248,7 +4251,7 @@ window.onclick = function(event) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
-                strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
@@ -4260,25 +4263,25 @@ window.onclick = function(event) {
         console.log(" strQuery=="+strQuery);        
         strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
         console.log(" strQuery==="+strQuery); 
-        console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
-        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
+        console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
+        console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
         for (var key in JoinQueryDetails.DEForJoin) {
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
 
-        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
           console.log("in the first");
             
         }
-        else if(countOfDeWithWhereClauseValue==1){
+        else if(countOfDeWithWhereClauseValueMain==1){
           console.log("in the second");
           var clause=document.getElementById('DEWhereClauseModal').innerHTML ;
           console.log("clause"+ clause);
           strQuery=strQuery+clause; 
 
         }
-        else if(countOfDeWithWhereClauseValue>1){
+        else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
           strQuery=strQuery+" Where ";
           var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
@@ -4617,8 +4620,8 @@ window.onclick = function(event) {
         closeModal();
       }
       else{
-        countOfDeWithWhereClauseValue=0;
-        countOfDeWithoutWhereClauseValue=0;
+        countOfDeWithWhereClauseValueMain=0;
+        countOfDeWithoutWhereClauseValueMain=0;
       }
      
     }
