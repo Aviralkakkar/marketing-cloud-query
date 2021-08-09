@@ -3976,7 +3976,7 @@ window.onclick = function(event) {
           document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
           if (DEDragData.DECategory == "DEMap") {
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-            //DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+            DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
                 DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
