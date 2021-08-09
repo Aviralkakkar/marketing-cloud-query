@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" src="public/assets/styles/salesforce-lightning-design-system.css" />
+  <link rel="stylesheet" type="text/css" src="/public/assets/styles/salesforce-lightning-design-system.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -3321,8 +3321,8 @@
         
       }
     }
-    // sortList("leftsideListInSelectField");
-    // sortListDir("rightsideListInSelectField");
+     sortList("leftsideListInSelectField");
+     sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3401,52 +3401,6 @@
     }
   }
   
-  function func(val){
-    var geek_list, i, run, li, stop;
-    console.log('-------on change function-----');
-    console.log(val);
-    b = val.getElementsByTagName("OPTION");
-   
-     // Declaring Variables
-    
-  
-     // Taking content of list as input
-     
-
-     run = true;
-
-     while (run) {
-         run = false;
-         li = val.getElementsByTagName("OPTION");
-         console.log('-------li----');
-         console.log(li.length);
-         console.log(li);
-
-         // Loop traversing through all the list items
-         for (i = 0; i < (li.length - 1); i++) {
-             stop = false;
-             if (li[i].innerHTML.toLowerCase() > 
-                 li[i + 1].innerHTML.toLowerCase()) {
-                 stop = true;
-                 break;
-             }
-         }
-
-         /* If the current item is smaller than 
-            the next item then adding it after 
-            it using insertBefore() method */
-         if (stop) {
-             li[i].parentNode.insertBefore(
-                     li[i + 1], li[i]);
-
-             run = true;
-         }
-    
-        }
-     }
-
-
-  
      
 
 </script>
@@ -3465,7 +3419,8 @@
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
-   
+      var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
+      console.log("value of t"+t);
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -3569,7 +3524,7 @@ function openModal(functionAction) {
                             console.log("FieldWhereClause=="+FieldWhereClause);
                           }
                         }
-                        document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
+                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = FieldWhereClause; 
           }
             console.log("nitik value24"+DESetQueryBox.size);
             console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
@@ -4321,7 +4276,7 @@ window.onclick = function(event) {
         }
         else if(countOfDeWithWhereClauseValueMain==1){
           console.log("in the second");
-          var clause=document.getElementById('DEWhereClauseModal').innerHTML ;
+          var clause=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML ;
           console.log("clause"+ clause);
           strQuery=strQuery+clause; 
 
