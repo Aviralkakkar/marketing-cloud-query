@@ -2985,7 +2985,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this)" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3321,8 +3321,8 @@
         
       }
     }
-     sortList("leftsideListInSelectField");
-     sortListDir("rightsideListInSelectField");
+    // sortList("leftsideListInSelectField");
+    // sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3401,7 +3401,11 @@
     }
   }
   
-
+  function func(val){
+    
+    console.log('-------on change function-----');
+    console.log(val);
+  }
      
 
 </script>
