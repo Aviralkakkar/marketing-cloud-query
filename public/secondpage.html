@@ -2985,7 +2985,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="alphabetizeList('#leftsideListInSelectField');" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this)" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3402,26 +3402,50 @@
   }
   
   function func(val){
-    
-   /* console.log('-------on change function-----');
+    var geek_list, i, run, li, stop;
+    console.log('-------on change function-----');
     console.log(val);
     b = val.getElementsByTagName("OPTION");
-    console.log('-------b----');
-    console.log(b.length);
-    console.log(b);*/
+   
+     // Declaring Variables
+    
+  
+     // Taking content of list as input
+     
+
+     run = true;
+
+     while (run) {
+         run = false;
+         li = val.getElementsByTagName("OPTION");
+         console.log('-------li----');
+         console.log(li.length);
+         console.log(li);
+
+         // Loop traversing through all the list items
+         for (i = 0; i < (li.length - 1); i++) {
+             stop = false;
+             if (li[i].innerHTML.toLowerCase() > 
+                 li[i + 1].innerHTML.toLowerCase()) {
+                 stop = true;
+                 break;
+             }
+         }
+
+         /* If the current item is smaller than 
+            the next item then adding it after 
+            it using insertBefore() method */
+         if (stop) {
+             li[i].parentNode.insertBefore(
+                     li[i + 1], li[i]);
+
+             run = true;
+         }
+    
+        }
      }
 
-     function alphabetizeList() {
-      var sel = $(listField);
-      var selected = sel.val(); // cache selected value, before reordering
-      var opts_list = sel.find('option');
-      opts_list.sort(function (a, b) {
-          return $(a).text() > $(b).text() ? 1 : -1;
-      });
-      sel.html('').append(opts_list);
-      sel.val(selected); // set cached selected value
-  }
-  
+
   
      
 
