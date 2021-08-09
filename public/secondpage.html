@@ -4308,7 +4308,7 @@ window.onclick = function(event) {
         for (var key in JoinQueryDetails.DEForJoin) {
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
-        strQuery +="where field 1 is null" ;
+        strQuery +="Where field 1 is null" ;
         console.log(" strQuery23==="+strQuery);
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
           console.log("in the first");
