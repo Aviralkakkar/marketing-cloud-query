@@ -4298,15 +4298,15 @@ window.onclick = function(event) {
         console.log(" strQuery=="+strQuery);        
         strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
         console.log(" strQuery==="+strQuery);
-        strQuery +="where field 1 is null" ;
-        console.log(" strQuery23==="+strQuery);
+        
         console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
         console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
         for (var key in JoinQueryDetails.DEForJoin) {
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
-
+        strQuery +="where field 1 is null" ;
+        console.log(" strQuery23==="+strQuery);
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
           console.log("in the first");
             
@@ -4320,7 +4320,8 @@ window.onclick = function(event) {
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          if(strQuery.search("Where")<=0){
+          if(strQuery.search("Where")<1){
+            console.log("in the if of search");
             strQuery=strQuery+" Where ";
           }
           else{
