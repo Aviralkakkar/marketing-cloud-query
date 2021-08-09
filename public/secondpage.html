@@ -3411,7 +3411,7 @@ function openModal(functionAction) {
    
     var countOfDeWithWhereClauseValue=0;    
     var countOfDeWithoutWhereClauseValue=0;  
-    
+    var OnlyOneDeWhichContainWhereClause;  
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('DEWhereClauseModal').style.display = 'block';
@@ -3475,6 +3475,41 @@ function openModal(functionAction) {
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
             console.log("nitik value24"+DESetQueryBox.size);
+            if(countOfDeWithWhereClauseValue==1){
+            var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            console.log("DeName"+NameOfDe);
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            console.log("FieldWhereClause"+FieldWhereClause);
+           // var key=OnlyOneDeWhichContainWhereClause;
+         
+                        if(NameOfDe in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"], "g")
+                            console.log("-----");
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
+                          }
+                        }
+                        document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
+          }
+            console.log("nitik value24"+DESetQueryBox.size);
+            console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
@@ -4036,7 +4071,7 @@ document.addEventListener("touchend ", function(){
                         range = sel.getRangeAt(0);
                         range.deleteContents();
                         
-                        range.insertNode(document.createTextNode(FieldName));
+                        //range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
@@ -4124,8 +4159,15 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-      var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
-      console.log('value======'+richTextEditorForFinalWhereClauseValue);
+      console.log("draggedDeName000000=="+draggedDeKey.size);
+      console.log("DESetQueryBox=="+DESetQueryBox.size);
+      if(DESetQueryBox.size>1){
+      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+        //console.log("draggedDeName");
+          document.getElementById('DeDragAlert').style.display = 'Block';
+          return;
+      }
+    }
       /*for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
@@ -4144,12 +4186,7 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
-        console.log("draggedDeName");
-          document.getElementById('DeDragAlert').style.display = 'Block';
-          return;
-      }
-      console.log("draggedDeName"+draggedDeName);
+     
 
 
       console.log('action type'+actionType);
@@ -4206,6 +4243,92 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+                  
+       console.log("before the for");
+        for (const k of DESetQueryBox) {
+          console.log("in the for");
+          if(k in DEListMap.DEMap) {
+            console.log("in the if");
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
+                console.log("in the for2");
+                strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery1= "+strQuery );
+            }
+            else if (k in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+                console.log("in the for3");
+                strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
+            }
+            else if (k in DEListMap.DataViewMap) {
+              console.log("in the else=if");
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
+                console.log("in the for4");
+                strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery3="+strQuery );
+            }
+            
+          
+    
+        }
+        strQuery = strQuery.slice(0, -1);
+        console.log(" strQuery=="+strQuery);        
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery==="+strQuery); 
+        console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
+        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
+
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+          console.log("in the first");
+            
+        }
+        else if(countOfDeWithWhereClauseValue==1){
+          console.log("in the second");
+          var clause=document.getElementById('DEWhereClauseModal').innerHTML ;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause; 
+
+        }
+        else if(countOfDeWithWhereClauseValue>1){
+          console.log("in the thui");
+          strQuery=strQuery+" Where ";
+          var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause;
+
+        }
+        console.log("strQuery"+strQuery);
+        //console.log("strQuery.length="+strQuery.length);
+        /*var l=strQuery.length;
+        //var char=strQuery.charAt(l)
+        //console.log("char"+char);
+        //var copy=strQuery;
+        //console.log("copy="+copy);
+        //var char=copy.slice(copy.length-1, copy.length);
+        console.log("char=="+char);
+        if(char=="d"){
+          strQuery = strQuery.slice(0, -3);
+        }
+        else{
+          strQuery = strQuery.slice(0, -2);
+        }*/
+        strQuery = strQuery.slice(0, -7);
+        console.log("Final strQuery = "+strQuery);
+        
+        
+        
+        
+        
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -4515,7 +4638,13 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-      closeModal();
+      if(draggedDeKey.size>1){
+        closeModal();
+      }
+      else{
+        countOfDeWithWhereClauseValue=0;
+        countOfDeWithoutWhereClauseValue=0;
+      }
     }
     function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
