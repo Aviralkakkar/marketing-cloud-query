@@ -3456,6 +3456,10 @@ function openModal(functionAction) {
       var countOfDeWithoutWhereClauseValue=0; 
       var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
       console.log("value of t"+t);
+      if(t!=''){
+        console.log('in the if of t');
+        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
+      }
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
