@@ -1917,29 +1917,6 @@
   </style>
   <!-- Khushboo code started -->
   <style>
-    .tooltip {
-    position: relative;
-    display: inline-block;
-   
-    }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
     body {
       overflow: hidden !important;
     }
@@ -2441,9 +2418,7 @@
             <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
               </div>
-              <div class="tooltip" id="newDiv" style="border:1px solid #c9cacc;">
-                <span class="tooltiptext">Tooltip text</span>
-              </div>
+              
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2656,7 +2631,7 @@
 <!--****** Nitik code ended *********-->
 
             </div>
-           
+            <div id="newDiv" style="border:1px solid #c9cacc;"></div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;" style="overflow: scroll;">
                <!--<div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div> -->
@@ -3329,10 +3304,11 @@
         op.value = src.options[src.selectedIndex].value;
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
-        op.style='padding:4%; margin:0;';
+        op.style='padding:0%; margin:0;';
         op.label=src.options[src.selectedIndex].text;
         op.name=src.options[src.selectedIndex].text;
         op.draggable='true';
+        
 
        // console.log(src.options[src.selectedIndex].value);
        // console.log(src.options[src.selectedIndex].text);
@@ -3810,7 +3786,7 @@ window.onclick = function(event) {
     
       if(e.clientY <= m_pos)
       {
-        if(count < 60 )
+        if(count < 140 )
         {
           count++;
         }
