@@ -3479,7 +3479,7 @@ function openModal(functionAction) {
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
 
 
-      /*if(countOfDeWithWhereClauseValue==1){
+      if(countOfDeWithWhereClauseValue==1){
             var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
             console.log("DeName"+NameOfDe);
             var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
@@ -3511,7 +3511,7 @@ function openModal(functionAction) {
                           }
                         }
                         document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
-          }*/
+          }
             console.log("nitik value24"+DESetQueryBox.size);
             console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
@@ -4250,7 +4250,7 @@ document.addEventListener("touchend ", function(){
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         
                 
-       /* console.log("before the for");
+       console.log("before the for");
         for (const k of DESetQueryBox) {
           console.log("in the for");
           if(k in DEListMap.DEMap) {
@@ -4326,8 +4326,8 @@ document.addEventListener("touchend ", function(){
         else{
           strQuery = strQuery.slice(0, -2);
         }*/
-        //strQuery = strQuery.slice(0, -7);
-        //console.log("Final strQuery = "+strQuery);
+        strQuery = strQuery.slice(0, -7);
+        console.log("Final strQuery = "+strQuery);
         
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
