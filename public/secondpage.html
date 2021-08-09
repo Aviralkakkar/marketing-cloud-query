@@ -2301,7 +2301,7 @@
                       id="dataExtensionButton">
                       <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/public/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2332,7 +2332,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                            xlink:href="/public/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
 
                         </svg>
@@ -3264,12 +3264,16 @@
           // Start by saying: no switching is done:
           switching = false;
           b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:
-          for (i = 0; i < (b.length - 1); i++) {
+          // Loop through all list items:\
+          console.log('0000000000000');
+          console.log(b);
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should
             switch place with the current item: */
+            console.log('1111111111111111');
+            console.log(b[i]);
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
               /* If next item is alphabetically lower than current item,
               mark as a switch and break the lop: */
@@ -3311,8 +3315,8 @@
         
       }
     }
-  // sortList("leftsideListInSelectField");
-  // sortListDir("rightsideListInSelectField");
+     sortList("leftsideListInSelectField");
+     sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3776,7 +3780,7 @@ window.onclick = function(event) {
     
       if(e.clientY <= m_pos)
       {
-        if(count < 200 )
+        if(count < 140 )
         {
           count++;
         }
@@ -5813,7 +5817,7 @@ window.onclick = function(event) {
                         position: absolute;
                         `
                 ;
-        console.log('Line:'+lineElement);            
+        console.log('NewLine:'+lineElement);            
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
