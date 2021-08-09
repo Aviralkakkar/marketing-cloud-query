@@ -3407,10 +3407,12 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
+      var countOfDeWithWhereClauseValue=0;    
+      var countOfDeWithoutWhereClauseValue=0;  
+      var OnlyOneDeWhichContainWhereClause;  
 function openModal(functionAction) {
    
-    var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+   
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
@@ -3428,7 +3430,8 @@ function openModal(functionAction) {
                 console.log("nitik value12");
               }
               else{
-               
+                console.log("nitik value128");
+                OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
                 if(val in DEListMap.DEMap){
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
@@ -3474,6 +3477,41 @@ function openModal(functionAction) {
         console.log('called function validate query');
       }*/
       console.log("nitik value23"+JSON.stringify(joinedDivSet));
+
+
+      if(countOfDeWithWhereClauseValue==1){
+            var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            console.log("DeName"+NameOfDe);
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            console.log("FieldWhereClause"+FieldWhereClause);
+           // var key=OnlyOneDeWhichContainWhereClause;
+         
+                        if(NameOfDe in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"], "g")
+                            console.log("-----");
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
+                          }
+                        }
+                        document.getElementById('DEWhereClauseModal').innerHTML = FieldWhereClause; 
+          }
             console.log("nitik value24"+DESetQueryBox.size);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
               console.log("nitik value2"+DESetQueryBox.size);
@@ -4144,7 +4182,7 @@ document.addEventListener("touchend ", function(){
         }
       }*/
      
-      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+      if(isSetEqual(DESetQueryBox, draggedDeKey)){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
