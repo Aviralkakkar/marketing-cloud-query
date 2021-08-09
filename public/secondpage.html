@@ -4183,12 +4183,13 @@ document.addEventListener("touchend ", function(){
       }*/
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size);
-     
+      if(DESetQueryBox.size()>1){
       if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
+    }
      // console.log("draggedDeName"+draggedDeName);
 
 
