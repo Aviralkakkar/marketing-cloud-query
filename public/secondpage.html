@@ -2270,18 +2270,18 @@
         <!--   Khushboo code started   -->
 
         <div class="sidebar" id="DEListSidebar"
-          style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;">
+          style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;height:1000vh;">
           <div class="demo-only-element" style="height: 100%;">
             <script>
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                document.getElementById('FullPageSpinner').style.display = 'block';
-                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                  //document.getElementById('FullPageSpinner').style.display = 'block';
+                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
-              <div class="slds-panel__header">
+              <div class="slds-panel__header" style='height:9vh;'>
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
                   style="font-size: larger;">Data Sources</h2>
                 <div class="slds-panel__header-actions">
@@ -2293,7 +2293,7 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 687px;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 89vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
@@ -2415,7 +2415,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div id="queryDiv" style="height:50%;margin-bottom:1%;">
+            <div id="queryDiv" style="height:70%;resize: vertical;border-bottom:2px solid rgb(226, 226, 226);overflow: hidden;" onmousedown="getHeight()" >
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2628,12 +2628,12 @@
           
             </div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-                style="height: 50%;padding-top:0%;" style="overflow: scroll;">
-                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div>
+                style="height:30%;padding-top:0%;" style="overflow: scroll;">
+               <!--<div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div> -->
       
       
       
-                <div class="slds-scrollable  " id="tableDiv" style="height:81%;margin-top:1%;">
+                <div class="slds-scrollable  " id="tableDiv" style="height:70%;margin-top:1%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -3726,12 +3726,62 @@ window.onclick = function(event) {
 
 
     //  *************** Resizeable code *****************//
+    var m_pos;
+    count = 0;
+    const table = document.getElementById("tableDiv");
+    function resize()
+    {
+      const right = document.getElementById("queryDiv");
+      var h=parseInt(right.style.height);
+      console.log('height '+h);
+      if(m_pos > h)
+      {
+        console.log('height decreased '+h);
+        count++;
+            console.log('count '+count);
+            if (count >= 15 && count <= 35) 
+            {
+              var tb = parseInt(table.style.height);
+              tb = tb + 1;
+              table.style.height = tb + "%";
+            }
 
-    const panel = document.getElementById("right_panel");
+      }
+      if(m_pos<h)
+      {
+        console.log('height increased '+h);
+        count--;
+        console.log('count '+count);
+            if (count >= 15 && count <= 35)
+            {
+              var tb = parseInt(table.style.height);
+              tb = tb - 1;
+              table.style.height = tb + "%";
+            }
+
+      }
+      
+
+    }
+    function getHeight(e)
+    {
+      const right = document.getElementById("queryDiv");
+      var h=parseInt(right.style.height);
+      console.log('height '+h);
+      m_pos =h;
+      document.addEventListener("mousemove", resize, false);
+      
+    }
+
+    
+
+
+
+    /*const panel = document.getElementById("right_panel");
     const upper = document.getElementById("queryDiv");
     const table = document.getElementById("tableDiv");
     const newDiv = document.getElementById("newDiv");
-    var count = 26;
+    var count = 0;
 
     var dragging = false;
     let m_pos;
@@ -3795,7 +3845,7 @@ window.onclick = function(event) {
       dragging = false;
       console.log('mouse up');
       document.removeEventListener("mousemove", resize, false);
-    }, false);
+    }, false);*/
 
    
 
