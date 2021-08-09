@@ -2240,7 +2240,7 @@
       padding-right: 0 !important;
       margin: 0;
     }
-     #leftsideListInSelectField:focus-visible,rightsideListInSelectField:focus-visible{
+     #leftsideListInSelectField:focus-visible,#rightsideListInSelectField:focus-visible{
        outline: none;
        border: none;
        position: relative;
@@ -2999,7 +2999,7 @@
                     <script>
                       function func(){
                         var list = document.getElementById('leftsideListInSelectField');
-                         console.log(list);
+                        console.log(list);
                         var items = list.childNodes;
                         console.log(items);
                         var itemsArr = [];
@@ -3008,6 +3008,7 @@
                             itemsArr.push(items[i]);
                         }
                          }
+                        console.log('itemsArr');
                        console.log( itemsArr);
                        itemsArr.sort(function(a, b) {
                        return a.innerHTML == b.innerHTML
