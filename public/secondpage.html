@@ -3267,7 +3267,7 @@
           // Loop through all list items:\
           console.log('0000000000000---lngth-----'+b.length);
           console.log(b);
-          for (i = 0; i < (b.length ); i++) {
+          for (i = 0; i < (b.length -1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should
@@ -3305,6 +3305,10 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
+        op.label=src.options[src.selectedIndex].text;
+        op.name=src.options[src.selectedIndex].text;
+        op.draggable='true';
+
        // console.log(src.options[src.selectedIndex].value);
        // console.log(src.options[src.selectedIndex].text);
        // console.log(src.options[src.selectedIndex].id);
@@ -3335,7 +3339,7 @@
           switching = false;
           b = list.getElementsByTagName("OPTION");
           // Loop through all list-items:
-          for (i = 0; i < (b.length ); i++) {
+          for (i = 0; i < (b.length -1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should switch place with the current item,
