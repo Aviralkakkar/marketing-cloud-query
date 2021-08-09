@@ -3420,7 +3420,8 @@
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
-   
+      var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
+      console.log("value of t"+t);
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
