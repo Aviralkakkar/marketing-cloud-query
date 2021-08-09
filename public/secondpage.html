@@ -3261,12 +3261,16 @@
           // Start by saying: no switching is done:
           switching = false;
           b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:
+          // Loop through all list items:\
+          console.log('0000000000000');
+          console.log(b);
           for (i = 0; i < (b.length - 1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should
             switch place with the current item: */
+            console.log('1111111111111111');
+            console.log(b[i]);
             if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
               /* If next item is alphabetically lower than current item,
               mark as a switch and break the lop: */
@@ -3308,8 +3312,8 @@
         
       }
     }
-  // sortList("leftsideListInSelectField");
-  // sortListDir("rightsideListInSelectField");
+     sortList("leftsideListInSelectField");
+     sortListDir("rightsideListInSelectField");
            
   }
 
