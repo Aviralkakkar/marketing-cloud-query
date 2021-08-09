@@ -4233,7 +4233,7 @@ window.onclick = function(event) {
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                strQuery += ' [' +  DEListMap.DEMap[key].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
@@ -4241,7 +4241,7 @@ window.onclick = function(event) {
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [' + DEListMap.SharedDEMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
@@ -4249,7 +4249,7 @@ window.onclick = function(event) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
-                strQuery += ' [' + DEListMap.DataViewMap[key].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[key].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
