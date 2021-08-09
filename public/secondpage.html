@@ -2985,7 +2985,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="alphabetizeList('#leftsideListInSelectField');" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3403,16 +3403,26 @@
   
   function func(val){
     
-    console.log('-------on change function-----');
+   /* console.log('-------on change function-----');
     console.log(val);
     b = val.getElementsByTagName("OPTION");
     console.log('-------b----');
     console.log(b.length);
-    console.log(b);
+    console.log(b);*/
+     }
 
-
-
+     function alphabetizeList() {
+      var sel = $(listField);
+      var selected = sel.val(); // cache selected value, before reordering
+      var opts_list = sel.find('option');
+      opts_list.sort(function (a, b) {
+          return $(a).text() > $(b).text() ? 1 : -1;
+      });
+      sel.html('').append(opts_list);
+      sel.val(selected); // set cached selected value
   }
+  
+  
      
 
 </script>
