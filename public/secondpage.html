@@ -2276,8 +2276,8 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                  document.getElementById('FullPageSpinner').style.display = 'block';
-                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                  //document.getElementById('FullPageSpinner').style.display = 'block';
+                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
@@ -2415,7 +2415,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;">
+            <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
               </div>
               <div id="MainDivAlert" style="display:none">
@@ -2754,12 +2754,6 @@
                   </div>
                 </div>
               </div>
-
-
-
-
-
-
 
             </div>
               
@@ -3771,15 +3765,18 @@ window.onclick = function(event) {
     var m_pos;
     count = 0;
     const table = document.getElementById("tableDiv");
-    function resize()
+    const right = document.getElementById("queryDiv");
+    function resize(e)
     {
-      const right = document.getElementById("queryDiv");
-      var h=parseInt(right.style.height);
-      console.log('height '+h);
-      if(m_pos > h)
+     
+    
+      if(e.clientY <= m_pos)
       {
-        console.log('height decreased '+h);
-        count++;
+        if(count < 390 )
+        {
+          count++;
+        }
+        
             console.log('count '+count);
             if (count >= 15 && count <= 35) 
             {
@@ -3789,10 +3786,14 @@ window.onclick = function(event) {
             }
 
       }
-      if(m_pos<h)
+      if(e.clientY > m_pos)
       {
-        console.log('height increased '+h);
-        count--;
+      
+        if(count > 0)
+        {
+          count--;
+        }
+        
         console.log('count '+count);
             if (count >= 15 && count <= 35)
             {
@@ -3805,119 +3806,27 @@ window.onclick = function(event) {
       
 
     }
-    function getHeight(e)
+    document.addEventListener("mouseup", function () {
+     console.log('mouse up');
+      document.removeEventListener("mousemove", resize, false);
+    }, false);
+    right.addEventListener("mousedown",function(e)
     {
-      const right = document.getElementById("queryDiv");
-      var h=parseInt(right.style.height);
-      console.log('height '+h);
-      m_pos =h;
-      document.addEventListener("mousemove", resize, false);
-      
-    }
-
-    
-
-
-
-    /*const panel = document.getElementById("right_panel");
-    const upper = document.getElementById("queryDiv");
-    const table = document.getElementById("tableDiv");
-    const newDiv = document.getElementById("newDiv");
-    var count = 0;
-
-    var dragging = false;
-    let m_pos;
-    let m_pos_mob;
-    function resize(e) {
-      if (dragging) {
-        var hp = parseInt(panel.style.height);
-        var hu = parseInt(upper.style.height);
-        console.log('hp ' + hp + ' hu ' + hu);
-        if (e.clientY <= m_pos) {
-          if (hp < 75 && hu > 25) {
-            hp = hp + 1;
-            panel.style.height = hp + "%";
-            hu = hu - 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count++;
-            console.log(count);
-            if (count >= 15 && count <= 35) {
-              var tb = parseInt(table.style.height);
-              tb = tb + 1;
-              table.style.height = tb + "%";
-            }
-
-
-          }
-        }
-        if (e.clientY > m_pos) {
-          if (hp > 25) {
-            console.log("Inside 2nd if");
-            hp = hp - 1;
-            panel.style.height = hp + "%";
-            hu = hu + 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count--;
-            console.log(count);
-            if (count >= 15 && count <= 35) {
-              var tb = parseInt(table.style.height);
-              tb = tb - 1;
-              table.style.height = tb + "%";
-            }
-
-          }
-
-        }
-      }
-    }
-
-    newDiv.addEventListener("mousedown", function (e) {
-      console.log('offset y ' + e.clientY);
-      dragging = true;
       if (e.clientY) {
         m_pos = e.clientY;
         console.log('mouse down');
         document.addEventListener("mousemove", resize, false);
-      }
-    }, false);
-
-    document.addEventListener("mouseup", function () {
-      dragging = false;
-      console.log('mouse up');
+        document.addEventListener("mouseup", function () {
+     console.log('mouse up');
       document.removeEventListener("mousemove", resize, false);
-    }, false);*/
+    }, false);
+      }
 
-   
-
-
-//------- Mobile View ----------------//
-
-
-    /*  function resizeMobile(e){
-  console.log('Touch moved ');
-  var hp = parseInt(panel.style.height);
-  var hu = parseInt(upper.style.height);
-  console.log('hp '+hp+' hu '+hu);
-  if(e.touches[0].clientY<=m_pos_mob )
-  {
-    if(hp<=75 && hu>=25)
-    {
-    hp=hp+1;
-    panel.style.height = hp+"%";
-    hu = hu-1;
-    upper.style.height = hu+"%";
-    console.log('hp '+hp+' hu '+hu);
-    }
-  }
-}, false);
+      
+    },false);
 
 
-document.addEventListener("touchend ", function(){
-  console.log('mobile mouse up');
-    document.removeEventListener("touchmove", resizeMobile, false);
-}, false);*/
+
 
 
   </script>
