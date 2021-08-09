@@ -2991,9 +2991,34 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this);" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func();" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
+                    <script>
+                      function func(){
+                        var list = document.getElementById('leftsideListInSelectField');
+                    
+                        var items = list.childNodes;
+                       var itemsArr = [];
+                      for (var i in items) {
+                        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                            itemsArr.push(items[i]);
+                        }
+                         }
+                    
+                      itemsArr.sort(function(a, b) {
+                      return a.innerHTML == b.innerHTML
+                              ? 0
+                              : (a.innerHTML > b.innerHTML ? 1 : -1);
+                       });
+                    
+                    for (i = 0; i < itemsArr.length; ++i) {
+                      list.appendChild(itemsArr[i]);
+                    }
+                    }
+                    
+                    
+                  </script>
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -3006,25 +3031,31 @@
  
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));  func(document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-              <script>
-                function func(val){
-       
-
-                  console.log('------onchange--------')
-                    var options = $("#leftsideListInSelectField option");
-                    console.log(options);
-                    options.detach().sort(function(a, b) {
-                        var at = $(a).text();
-                        var bt = $(b).text();
-                        return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
-                    });
-                    options.appendTo("#leftsideListInSelectField");
-                    
-                    console.log('------onchange khtm--------')
+            
+                <script>
+                  function func(){
+                    var list = document.getElementById('rightsideListInSelectField');
                 
-              
+                    var items = list.childNodes;
+                   var itemsArr = [];
+                  for (var i in items) {
+                    if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                        itemsArr.push(items[i]);
+                    }
+                     }
+                
+                  itemsArr.sort(function(a, b) {
+                  return a.innerHTML == b.innerHTML
+                          ? 0
+                          : (a.innerHTML > b.innerHTML ? 1 : -1);
+                   });
+                
+                for (i = 0; i < itemsArr.length; ++i) {
+                  list.appendChild(itemsArr[i]);
                 }
-                   
+                }
+                
+                
               </script>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
@@ -3047,32 +3078,9 @@
                   <div style="overflow: hidden;  height: 23rem;">
                     <ul class="list-group right-side"  aria-activedescendant="cb1-opt6"
                     style=" border: none; padding:0%; margin:0%;   ">
-                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)" onchange="func()" style=" height: 23rem; width:100%; border: none;" > 
+                     <select multiple id="rightsideListInSelectField"  onclick="setButton(this)"  style=" height: 23rem; width:100%; border: none;" > 
                       
                      </select>
-                     <script>
-                      function func(){
-                        var list = document.getElementById('rightsideListInSelectField');
-                    
-                        var items = list.childNodes;
-                       var itemsArr = [];
-                      for (var i in items) {
-                        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
-                            itemsArr.push(items[i]);
-                        }
-                         }
-                    
-                      itemsArr.sort(function(a, b) {
-                      return a.innerHTML == b.innerHTML
-                              ? 0
-                              : (a.innerHTML > b.innerHTML ? 1 : -1);
-                       });
-                    
-                    for (i = 0; i < itemsArr.length; ++i) {
-                      list.appendChild(itemsArr[i]);
-                    }
-                    }
-                     </script>
                     
 
                   </ul>
@@ -3365,7 +3373,7 @@
       }
     }
      //sortList("leftsideListInSelectField");
-     //sortListDir("rightsideListInSelectField");
+     sortListDir("rightsideListInSelectField");
            
   }
 
