@@ -2418,6 +2418,7 @@
             <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
               </div>
+              
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2485,10 +2486,10 @@
 
 
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-          </button>
+              </button>
           
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
-          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
+              <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
+              <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
               <button
@@ -2500,6 +2501,7 @@
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+               
               <!--********  Nitik code started *************-->
 
               <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
@@ -2627,8 +2629,9 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
 <!--****** Nitik code ended *********-->
-          
+
             </div>
+            <div id="newDiv" style="border:1px solid #c9cacc;"></div>
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;" style="overflow: scroll;">
                <!--<div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div> -->
@@ -2753,7 +2756,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
 
             </div>
               
@@ -3435,6 +3438,7 @@ function openModal(functionAction) {
                 OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
                 if(val in DEListMap.DEMap){
+                  console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
@@ -3776,7 +3780,7 @@ window.onclick = function(event) {
     
       if(e.clientY <= m_pos)
       {
-        if(count < 390 )
+        if(count < 140 )
         {
           count++;
         }
