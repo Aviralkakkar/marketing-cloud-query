@@ -5338,7 +5338,7 @@ window.onclick = function(event) {
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
-          changeSchmaPosition(elmnt)
+          //changeSchmaPosition(elmnt)
           schemaAction();
         }
 
@@ -5361,7 +5361,7 @@ window.onclick = function(event) {
   
   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
-  function changeSchmaPosition(e)
+ /* function changeSchmaPosition(e)
     {
         console.log('OKKK:'+e.offsetLeft);
         if(e.offsetLeft<0)
@@ -5373,6 +5373,7 @@ window.onclick = function(event) {
             e.style.top=0+"px";
         }
     }
+   */ 
 
   //Anil kumar for creating Line
   var dragId='';
