@@ -3583,7 +3583,7 @@ function openModal(functionAction) {
            console.log(" @@@@@@@@@@@@sec ");
            if(DESetQueryBox.size > 1){
              console.log(" @@@@@@@@@@@@ ");
-            document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
+            //document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
              var count=0, Str;
                   for (var key in JoinQueryDetails.DEForJoin) {
                     console.log(" %%%%%%%%%%%  ");
@@ -3627,13 +3627,13 @@ function openModal(functionAction) {
                             }
                             count++;
                         }
+                      
+
+
+                    }
                         console.log(" #$%^&*() ");
                         Str+=' And/Or '
                         document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
-
-
-              }
-          
            }
            
     
