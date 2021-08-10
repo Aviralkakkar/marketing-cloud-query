@@ -3584,62 +3584,7 @@ function openModal(functionAction) {
              }
             
            }
-           console.log(" @@@@@@@@@@@@sec ");
-           if(DESetQueryBox.size > 1){
-             console.log(" @@@@@@@@@@@@ ");
-            //document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
-             var count=0, Str;
-                  for (var key in JoinQueryDetails.DEForJoin) {
-                    console.log(" %%%%%%%%%%%  ");
-                        console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
-                        if(count==0){
-                          console.log(" *********** ");
-                          Str=' WHERE ';
-                              if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-                              Str += '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                              }
 
-                            
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
-                              Str +=  '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                            }
-                        
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
-                            Str = '[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                            console.log("str=="+Str);
-                            }
-                            count++;
-                        }
-                        else{
-                          console.log(" &&&&*********^^^^^ ");
-                          if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-                              Str += ' And/Or [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                              }
-
-                            
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
-                              Str +=  ' And/Or [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                            }
-                        
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
-                            Str = ' And/Or [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                            console.log("str=="+Str);
-                            }
-                            count++;
-                        }
-                      
-
-
-                    }
-                        console.log(" #$%^&*() ");
-                        Str+=' And/Or '
-                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
-           }
-           
           
     
 
