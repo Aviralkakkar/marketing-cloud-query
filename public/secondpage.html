@@ -2076,6 +2076,7 @@
 
     #newDiv:hover {
       cursor: n-resize;
+      background: linear-gradient(#edf5fa,#fff);
     }
 
     #tableDiv {
@@ -2415,7 +2416,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;" >
+            <div class="slds-scrollable" id="queryDiv" style="height:75%;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
               </div>
               
@@ -2631,14 +2632,22 @@
 <!--****** Nitik code ended *********-->
 
             </div>
-            <div id="newDiv" style="border:1px solid #c9cacc;"></div>
+           
             <div class="slds-col slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;" style="overflow: scroll;">
-               <!--<div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);"></div> -->
+                <div id="newDiv" style="border: 1px solid #ddd; background-color:#eee;height:13px;">
+                  <span class="slds-icon_container slds-icon-utility-rows" title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon-text-default slds-icon_xx-small" aria-hidden="true">
+                      <use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#rows">
+                      </use>
+                    </svg>
+                      
+                      </span>
+                </div> 
       
       
       
-                <div class="slds-scrollable  " id="tableDiv" style="height:70%;margin-top:1%;">
+                <div class="slds-scrollable  " id="tableDiv" style="height:70%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -3619,16 +3628,19 @@ function openModal(functionAction) {
           //strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
           console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
           if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-            Str = ' WHERE [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+            var Str = ' WHERE [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+            console.log("str=="+Str);
           }
 
           
-        else if (JoinType == 'Right Outer Join with Exclusion') {
-          Str +=  ' WHERE [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
+        else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
+          var Str =  ' WHERE [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
+          console.log("str=="+Str);
         }
      
-        else if (JoinType == 'Outer Join') {
-        Str = ' WHERE [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';;
+        else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
+        var Str = ' WHERE [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+        console.log("str=="+Str);
         }
        
 
@@ -3867,70 +3879,78 @@ window.onclick = function(event) {
 
 
     //  *************** Resizeable code *****************//
-    var m_pos;
-    count = 0;
+    const panel = document.getElementById("right_panel");
+    const upper = document.getElementById("queryDiv");
     const table = document.getElementById("tableDiv");
-    const right = document.getElementById("queryDiv");
-    function resize(e)
-    {
-     
-    
-      if(e.clientY <= m_pos)
-      {
-        if(count < 60 )
-        {
-          count++;
-        }
-        
-           
-            if (count >= 15 && count <= 35) 
-            {
+    const newDiv = document.getElementById("newDiv");
+    var count = 0;
+    var cnt = 0;
+    var dragging = false;
+    let m_pos;
+    let m_pos_mob;
+    function resize(e) {
+      cnt++;
+      if (dragging && cnt==2) {
+        cnt=0;
+        var hp = parseInt(panel.style.height);
+        var hu = parseInt(upper.style.height);
+        console.log('hp ' + hp + ' hu ' + hu);
+        if (e.clientY <= m_pos) {
+          if (hp < 75 && hu > 25) {
+            hp = hp + 1;
+            panel.style.height = hp + "%";
+            hu = hu - 1;
+            upper.style.height = hu + "%";
+            console.log('hp ' + hp + ' hu ' + hu);
+            count++;
+            console.log(count);
+            if (count >= 15 && count <= 35) {
               var tb = parseInt(table.style.height);
               tb = tb + 1;
               table.style.height = tb + "%";
             }
 
-      }
-      if(e.clientY > m_pos)
-      {
-      
-        if(count > 0)
-        {
-          count--;
+
+          }
         }
-        
-      
-            if (count >= 15 && count <= 35)
-            {
+        if (e.clientY > m_pos) {
+          if (hp > 25) {
+            console.log("Inside 2nd if");
+            hp = hp - 1;
+            panel.style.height = hp + "%";
+            hu = hu + 1;
+            upper.style.height = hu + "%";
+            console.log('hp ' + hp + ' hu ' + hu);
+            count--;
+            console.log(count);
+            if (count >= 15 && count <= 35) {
               var tb = parseInt(table.style.height);
               tb = tb - 1;
               table.style.height = tb + "%";
             }
 
-      }
-      
+          }
 
+        }
+      }
     }
-    document.addEventListener("mouseup", function () {
-   
-      document.removeEventListener("mousemove", resize, false);
-    }, false);
-    right.addEventListener("mousedown",function(e)
-    {
+
+    newDiv.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      console.log('offset y ' + e.clientY);
+      dragging = true;
       if (e.clientY) {
         m_pos = e.clientY;
-      
+        console.log('mouse down');
         document.addEventListener("mousemove", resize, false);
-        document.addEventListener("mouseup", function () {
-   
+      }
+    }, false);
+
+    document.addEventListener("mouseup", function () {
+      dragging = false;
+      console.log('mouse up');
       document.removeEventListener("mousemove", resize, false);
     }, false);
-      }
-
-      
-    },false);
-
-
 
 
 
