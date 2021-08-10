@@ -3035,7 +3035,7 @@
  
                 
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-                <button type="button" onclick="func()">+</button>
+                <button type="button" onclick="sortList() ">+</button>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3283,7 +3283,7 @@
     }
   }
 
-  function sortList(val) {
+  function sortList() {
         var list, i, switching, b, shouldSwitch;
         console.log('-----val-----'+val);
         list = document.getElementById(val);
