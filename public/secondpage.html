@@ -2999,6 +2999,7 @@
                     <script>
                       function func(){
                         var list = document.getElementById('leftsideListInSelectField');
+                        document.getElementById("leftsideListInSelectField").innerHTML = "";
                         console.log(list);
                         var items = list.childNodes;
                         console.log(items);
@@ -3015,7 +3016,7 @@
                               ? 0
                               : (a.innerHTML > b.innerHTML ? 1 : -1);
                        });
-                    
+                      
                       for (i = 0; i < itemsArr.length; ++i) {
                         list.appendChild(itemsArr[i]);
                       }
