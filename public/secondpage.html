@@ -3015,8 +3015,33 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField'));  " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-             
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+                <script>
+                  function func(){
+                    var list = document.getElementById('leftsideListInSelectField');
+                    console.log(list);
+                    var items = list.childNodes;
+                   var itemsArr = [];
+                   console.log(items);
+                   console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+                  for (var i in items) {
+                    if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                        itemsArr.push(items[i]);
+                    }
+                     }
+                   
+                  itemsArr.sort(function(a, b) {
+                  return a.innerHTML == b.innerHTML
+                          ? 0
+                          : (a.innerHTML > b.innerHTML ? 1 : -1);
+                   });
+                   console.log(itemsArr.length);
+                   console.log(itemsArr);
+                for (i = 0; i < itemsArr.length; ++i) {
+                  list.appendChild(itemsArr[i]);
+                }
+                }
+                 </script>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
