@@ -3597,16 +3597,19 @@ function openModal(functionAction) {
           //strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
           console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
           if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-            Str = ' WHERE [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+            var Str = ' WHERE [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+            console.log("str=="+Str);
           }
 
           
-        else if (JoinType == 'Right Outer Join with Exclusion') {
-          Str +=  ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+        else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
+          var Str =  ' WHERE [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
+          console.log("str=="+Str);
         }
      
-        else if (JoinType == 'Outer Join') {
-        Str = ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
+        var Str = ' WHERE [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
+        console.log("str=="+Str);
         }
        
 
