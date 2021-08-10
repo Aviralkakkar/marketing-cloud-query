@@ -3669,7 +3669,7 @@ function closeModal() {
     console.log("Str.length==="+Str.length);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == (Str.length +4)){
+    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == (Str.length + 2) || document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 0){
       console.log("tt1");
       //draggedDeName.clear();
       for(const Id of draggedDeKey){
