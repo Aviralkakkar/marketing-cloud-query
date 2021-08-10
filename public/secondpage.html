@@ -2295,8 +2295,8 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                  document.getElementById('FullPageSpinner').style.display = 'block';
-                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                  //document.getElementById('FullPageSpinner').style.display = 'block';
+                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
@@ -2320,7 +2320,7 @@
                       id="dataExtensionButton">
                       <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/public/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/public/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -3942,27 +3942,15 @@ const table = document.getElementById("tableDiv");
 let m_pos;
 function resize(e){
   const dx = m_pos - e.y;
-  console.log('position '+ m_pos + 'ey '+e.y);
   m_pos = e.y;
-  console.log('position '+ m_pos + 'ey '+e.y);
   if(m_pos>=50 && m_pos<=490)
   {
-    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     
-    /*if (m_pos >= 200 && m_pos <= 300 && dx>0) 
-    {
-        var tb = parseInt(table.style.height);
-        tb = tb + 1;
-        table.style.height = tb + "%";
-    }
-    if (m_pos >= 200 && m_pos <= 300 && dx<0) 
-    {
-        var tb = parseInt(table.style.height);
-        tb = tb - 1;
-        table.style.height = tb + "%";
-    }*/
+    console.log('position '+ m_pos + 'ey '+e.y);
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
 
   }
+
 }
 
 panel.addEventListener("mousedown", function(e){
