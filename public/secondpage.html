@@ -3455,6 +3455,7 @@
       var countOfDeWithWhereClauseValueMain=0;    
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
+      var Str;
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
@@ -3589,7 +3590,7 @@ function openModal(functionAction) {
            if(DESetQueryBox.size > 1){
              console.log(" @@@@@@@@@@@@ ");
             //document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
-             var count=0, Str;
+             var count=0;
                   for (var key in JoinQueryDetails.DEForJoin) {
                     console.log(" %%%%%%%%%%%  ");
                         console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
@@ -3665,9 +3666,10 @@ function closeModal() {
     console.log("tt");
     var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
     console.log("text"+text);
+    console.log("Str.length==="+Str.length);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
+    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == Str.length){
       console.log("tt1");
       //draggedDeName.clear();
       for(const Id of draggedDeKey){
