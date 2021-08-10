@@ -3020,8 +3020,9 @@
                   function func(){
                     var list = document.getElementById('leftsideListInSelectField');
                     console.log(list);
-                    var items = list.childNodes;
+                    var items = list.getElementsByTagName("OPTION");
                     var itemsArr = [];
+                    console.log('-----option list------');
                     console.log(items);
                     console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
                     for (var i in items) {
@@ -3047,6 +3048,8 @@
                       list.appendChild(itemsArr[i]);
                       console.log( list.appendChild(itemsArr[i]));
                    }
+                   console.log('----------end-----');
+                   console.log( list);
                  }
                  </script>
                <!-- <button class="btn btn-default btn-sm move-right">
@@ -3354,7 +3357,7 @@
         var op = document.createElement("option");
         op.value = src.options[src.selectedIndex].value;
         op.text = src.options[src.selectedIndex].text;
-        op.id =src.options[src.selectedIndex].id;
+       
         op.style='padding:4%; margin:0;';
         op.label=src.options[src.selectedIndex].text;
        
