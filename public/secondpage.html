@@ -2319,7 +2319,7 @@
                       id="dataExtensionButton">
                       <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2350,7 +2350,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
 
                         </svg>
@@ -2435,6 +2435,8 @@
          
             <div class="slds-scrollable" id="queryDiv" style="height:100%;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
+              </div>
+              
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2609,7 +2611,17 @@
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
                                   style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
-                                <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
+                    
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                    style="padding-left:0rem; background-color:white; position: relative;">
+                    
+                                  </ul>
+                    
+                                </div>
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                  style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
@@ -2645,7 +2657,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
                       <!--****** Nitik code ended *********-->
-          </div>   
+
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
@@ -3015,48 +3027,33 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func(); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-                <script>
-                  function func(){
-                    var list = document.getElementById('leftsideListInSelectField');
-                    console.log(list);
-                    var items = list.getElementsByTagName("OPTION");
-                    var itemsArr = [];
-                    console.log('-----option list------');
-                    console.log(items);
-                    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-                    for (var i in items) {
-                     if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
-                      console.log(items[i]);
-                        itemsArr.push(items[i]);
-                        
-                    }
-                     }
-                   
-                   itemsArr.sort(function(a, b) {
-                   return a.innerHTML == b.innerHTML
-                          ? 0
-                          : (a.innerHTML > b.innerHTML ? 1 : -1);
-                   });
-                   console.log(itemsArr.length);
-                   console.log(itemsArr);
-                   console.log('before');
-                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
-                   document.getElementById("leftsideListInSelectField").innerHTML = "";
-                   console.log('3333333');
-                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
-                   
-                  for (i = 0; i < itemsArr.length; ++i) {
-                      list.appendChild(itemsArr[i]);
-                      console.log( list.appendChild(itemsArr[i]));
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               <script>
+                function func(){
+                  var list = document.getElementById('leftsideListInSelectField');
+                  console.log(list);
+                  var items = list.childNodes;
+                 var itemsArr = [];
+                 console.log(items);
+                 console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+                for (var i in items) {
+                  if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                      itemsArr.push(items[i]);
+                  }
                    }
-                   console.log('----------end-----');
-                   console.log(list);
-                   
                  
-                  
-                 }
-                 </script>
+                itemsArr.sort(function(a, b) {
+                return a.innerHTML == b.innerHTML
+                        ? 0
+                        : (a.innerHTML > b.innerHTML ? 1 : -1);
+                 });
+                 console.log(itemsArr.length);
+                 console.log(itemsArr);
+              for (i = 0; i < itemsArr.length; ++i) {
+                list.appendChild(itemsArr[i]);
+              }
+              }
+               </script>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3326,7 +3323,7 @@
           // Loop through all list items:\
           console.log('0000000000000---lngth-----'+b.length);
           console.log(b);
-          for (i = 0; i < (b.length-1 ); i++) {
+          for (i = 0; i < (b.length ); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should
@@ -3362,7 +3359,7 @@
         var op = document.createElement("option");
         op.value = src.options[src.selectedIndex].value;
         op.text = src.options[src.selectedIndex].text;
-       
+        op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
         op.label=src.options[src.selectedIndex].text;
        
@@ -3380,8 +3377,8 @@
         
       }
     }
-    //sortList("leftsideListInSelectField");
-    sortListDir("rightsideListInSelectField");
+     //sortList("leftsideListInSelectField");
+     //sortListDir("rightsideListInSelectField");
            
   }
 
@@ -3974,7 +3971,7 @@ let m_pos;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  if(m_pos>=50 && m_pos<=458)
+  if(m_pos>=50 && m_pos<=490)
   {
     
     console.log('position '+ m_pos + 'ey '+e.y);
