@@ -3031,13 +3031,15 @@
                <script>
                 function func(){
                   //var list = document.getElementById('leftsideListInSelectField');
-                  var div = document.querySelector('#leftsideListInSelectField'),
+                  var div = document.getElementById('#leftsideListInSelectField'),
                   para = document.querySelectorAll('#leftsideListInSelectField option');
                   console.log('99999999999999');
                   console.log(para);
                   var paraArr = [].slice.call(para).sort(function (a, b) {
                         return a.textContent > b.textContent ? 1 : -1;
                      });
+                     console.log('-------------');
+                     console.log(paraArr);
                    paraArr.forEach(function (option) {
                    div.appendChild(option);
                 });
