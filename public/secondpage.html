@@ -3589,18 +3589,18 @@ function openModal(functionAction) {
           console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
           if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
             var Str = ' WHERE [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-            console.log("str=="+str);
+            console.log("str=="+Str);
           }
 
           
         else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
           var Str =  ' WHERE [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-          console.log("str=="+str);
+          console.log("str=="+Str);
         }
      
         else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
         var Str = ' WHERE [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-        console.log("str=="+str);
+        console.log("str=="+Str);
         }
        
 
