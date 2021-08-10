@@ -2433,9 +2433,8 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
          
-            <div class="slds-scrollable" id="queryDiv" style="height:100%;position:relative;" >
-              <div class=".slds-is-relative" id="RelationshipDiv">
-              </div>
+            <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-scrollable" id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
@@ -2657,7 +2656,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
                       <!--****** Nitik code ended *********-->
-
+               </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
@@ -3609,7 +3608,7 @@ function openModal(functionAction) {
                                 document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="' + val + 'WhereClasueDEList'+'" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].['+JoinQueryDetails.DEForJoin[key].SecondDEName + ']'+'"   >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].['+JoinQueryDetails.DEForJoin[key].SecondDEName + ']'+'"   >' + '<span  style=" width: 185px; text-align: left; " > </span>' + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3950,7 +3949,7 @@ let m_pos;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  if(m_pos>=50 && m_pos<=490)
+  if(m_pos>=50 && m_pos<=458)
   {
     
     console.log('position '+ m_pos + 'ey '+e.y);
@@ -5423,7 +5422,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
-          //changeSchmaPosition(elmnt)
+          changeSchmaPosition(elmnt)
           schemaAction();
         }
 
@@ -5446,7 +5445,7 @@ document.addEventListener("mouseup", function(){
   
   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
- /* function changeSchmaPosition(e)
+ function changeSchmaPosition(e)
     {
         console.log('OKKK:'+e.offsetLeft);
         if(e.offsetLeft<0)
@@ -5458,7 +5457,7 @@ document.addEventListener("mouseup", function(){
             e.style.top=0+"px";
         }
     }
-   */ 
+ 
 
   //Anil kumar for creating Line
   var dragId='';
