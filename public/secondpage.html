@@ -3027,23 +3027,7 @@
  
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-               <script>
-                function func(){
-                  //var list = document.getElementById('leftsideListInSelectField');
-                  var div = document.getElementById('#leftsideListInSelectField'),
-                  para = document.querySelectorAll('#leftsideListInSelectField option');
-                  console.log('99999999999999');
-                  console.log(para);
-                  var paraArr = [].slice.call(para).sort(function (a, b) {
-                        return a.label > b.label ? 1 : -1;
-                     });
-                     console.log('-------------');
-                     console.log(paraArr);
-                   paraArr.forEach(function (option) {
-                   console.log(option);
-                });
-                }
-               </script>
+               
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3367,10 +3351,45 @@
         
       }
     }
+    
      //sortList("leftsideListInSelectField");
      //sortListDir("rightsideListInSelectField");
            
   }
+  function func(){
+    var list = document.getElementById('leftSel');
+    console.log(list);
+    b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:\
+    console.log('-----------lngth-----'+b.length);
+    console.log(b);
+    const map1 = new Map();
+    var list1=[];
+    for(i=0;i<b.length;i++){
+     console.log(b[i].value);
+     console.log(b[i].text);
+     list1.push({
+      "FieldName" :b[i].text ,
+      "FieldType" : b[i].value
+    }) ;
+      }
+      console.log('---------------------end of loc---------');
+      console.log(list1);
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
+      list1.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+      console.log(list1);
+      for (var i = 0; i < list1.length; i++) {
+        /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
+          DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
+          + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+          '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
+        //line added by priyanka to create list in dueking picklist
+        document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
+           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+
+       
+      }
+    }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
