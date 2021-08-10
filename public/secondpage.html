@@ -3588,16 +3588,16 @@ function openModal(functionAction) {
           //strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
           console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
           if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-            queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+            Str = ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
           }
 
           
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          Str +=  ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
      
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        Str = ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
        
 
