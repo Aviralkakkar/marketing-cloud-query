@@ -3027,7 +3027,9 @@
                     console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
                     for (var i in items) {
                      if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                      console.log(items[i]);
                         itemsArr.push(items[i]);
+                        
                     }
                      }
                    
@@ -3050,14 +3052,9 @@
                    }
                    console.log('----------end-----');
                    console.log(list);
-                   list.sort(function(a,b){
                    
-                      if(a.innerHTML.toLowerCase() < b.innerHTML.toLowerCase()) return -1;
-                      if(a.innerHTML.toLowerCase() > b.innerHTML.toLowerCase()) return 1;
-                      return 0;
+                 
                   
-                   });
-                   console.log('after sort'+list);
                  }
                  </script>
                <!-- <button class="btn btn-default btn-sm move-right">
