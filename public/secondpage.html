@@ -3615,6 +3615,10 @@ function openModal(functionAction) {
              }
             
            }
+           for (var key in JoinQueryDetails.DEForJoin) {
+          //strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+          console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
+        }
           
     
 
@@ -4354,7 +4358,7 @@ window.onclick = function(event) {
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          if(strQuery.search("Where")<1){
+          if(strQuery.search("WHERE")<1){
             console.log("in the if of search");
             strQuery=strQuery+" Where ";
           }
