@@ -2435,6 +2435,8 @@
          
             <div class="slds-scrollable" id="queryDiv" style="height:100%;position:relative;" >
               <div class=".slds-is-relative" id="RelationshipDiv">
+              </div>
+              
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
                   <span class="slds-assistive-text">error</span>
@@ -2769,7 +2771,6 @@
                   </div>
                   </div>
                   </div>
-                </div>
                 </div>
             </div>
            
@@ -3259,6 +3260,9 @@
   function moveUp(direction) {
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
+    console.log(currentSel);
+    console.log(index);
+    console.log(direction);
     if (direction) {//up 
       if (index == 0) return;
 
