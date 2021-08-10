@@ -3021,23 +3021,28 @@
                     var list = document.getElementById('leftsideListInSelectField');
                     console.log(list);
                     var items = list.childNodes;
-                   var itemsArr = [];
-                   console.log(items);
-                   console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-                  for (var i in items) {
-                    if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                    var itemsArr = [];
+                    console.log(items);
+                    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+                    for (var i in items) {
+                     if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
                         itemsArr.push(items[i]);
                     }
                      }
                    
-                  itemsArr.sort(function(a, b) {
-                  return a.innerHTML == b.innerHTML
+                   itemsArr.sort(function(a, b) {
+                   return a.innerHTML == b.innerHTML
                           ? 0
                           : (a.innerHTML > b.innerHTML ? 1 : -1);
                    });
                    console.log(itemsArr.length);
                    console.log(itemsArr);
+                   console.log('before');
+                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
                    document.getElementById("leftsideListInSelectField").innerHTML = "";
+                   console.log('3333333');
+                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
+                   
                   for (i = 0; i < itemsArr.length; ++i) {
                       list.appendChild(itemsArr[i]);
                    }
