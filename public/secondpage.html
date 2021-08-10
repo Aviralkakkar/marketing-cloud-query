@@ -2985,44 +2985,9 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)"  style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this)" style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
-                    <script>
-                      function func(){
-                        var list = document.getElementById('leftsideListInSelectField');
-                        
-                        console.log('list-----------</br>');
-                        console.log(list);
-                        var items = list.childNodes;
-                        console.log('items-------------</br>');
-                        console.log(items);
-                        var itemsArr = [];
-                        for (var i in items) {
-                        if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
-                            itemsArr.push(items[i]);
-                        }
-                         }
-                        console.log('itemsArr-----------</br>');
-                       console.log( itemsArr);
-                       console.log( itemsArr.sort());
-                       itemsArr.sort(function(a, b) {
-                        
-
-                       return a.innerHTML == b.innerHTML
-                              ? 0
-                              : (a.innerHTML > b.innerHTML ? 1 : -1);
-                       });
-                      
-                      for (i = 0; i < itemsArr.length; ++i) {
-                        list.appendChild(itemsArr[i]);
-                        console.log('---------------------------------');
-                        console.log(list.appendChild(itemsArr[i]))
-                      }
-                      }
-                    
-                    
-                  </script>
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
                             -->
                   </ul>
@@ -3033,9 +2998,9 @@
 
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
-                
+ 
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-                <button type="button" onclick="sortList() ">+</button>
+
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3283,10 +3248,10 @@
     }
   }
 
-  function sortList() {
+  function sortList(val) {
         var list, i, switching, b, shouldSwitch;
         console.log('-----val-----'+val);
-        list = document.getElementById('leftsideListInSelectField');
+        list = document.getElementById(val);
         
         console.log('------------>'+list);
         
@@ -3435,7 +3400,46 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
+  function func(val){
+     // Declaring Variables
+     var geek_list, i, run, li, stop;
+  
+     // Taking content of list as input
+     geek_list = document.getElementById("GeekList");
+
+     run = true;
+
+     while (run) {
+         run = false;
+         li = val.getElementsByTagName("OPTION");
+         console.log('00000000000000');
+         console.log(li)
+         // Loop traversing through all the list items
+         for (i = 0; i < (li.length -1); i++) {
+             stop = false;
+             console.log(li[i]);
+             console.log(li[i].innerHTML);
+             console.log(li[i+1].innerHTML);
+             if (li[i].innerHTML.toLowerCase() > 
+                 li[i + 1].innerHTML.toLowerCase()) {
+                 stop = true;
+                 break;
+             }
+         }
+
+         /* If the current item is smaller than 
+            the next item then adding it after 
+            it using insertBefore() method */
+         if (stop) {
+             li[i].parentNode.insertBefore(
+                     li[i + 1], li[i]);
+
+             run = true;
+         }
+     }
  
+
+  }
      
 
 </script>
@@ -3636,6 +3640,7 @@ function openModal(functionAction) {
                         document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
            }
            
+          
     
 
 }
@@ -4050,7 +4055,7 @@ window.onclick = function(event) {
           document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
           if (DEDragData.DECategory == "DEMap") {
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-            DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+            //DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
                 DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
@@ -4359,7 +4364,7 @@ window.onclick = function(event) {
         for (var key in JoinQueryDetails.DEForJoin) {
           strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
-        strQuery +="Where field 1 is null" ;
+       // strQuery +="Where field 1 is null" ;
         console.log(" strQuery23==="+strQuery);
         if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
           console.log("in the first");
@@ -4374,7 +4379,7 @@ window.onclick = function(event) {
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          if(strQuery.search("Where")<1){
+          if(strQuery.search("WHERE")<1){
             console.log("in the if of search");
             strQuery=strQuery+" Where ";
           }
