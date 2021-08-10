@@ -2416,8 +2416,8 @@
 
           <div class="slds-grid slds-grid_vertical" style="height:100%">
             <div class="slds-scrollable" id="queryDiv" style="height:75%;resize:vertical;position:relative;" >
-              <div class=".slds-is-relative" id="RelationshipDiv">
-              </div>
+              <!--<div class=".slds-is-relative" id="RelationshipDiv">
+              </div>-->
               
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
@@ -5260,7 +5260,7 @@ window.onclick = function(event) {
           ;
       //************************************************FINISH(ANIL KUMAR)**********************************//
       //TotalMainDeDragged++;
-        document.getElementById("RelationshipDiv").innerHTML += relationDivString;
+        document.getElementById("queryDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
