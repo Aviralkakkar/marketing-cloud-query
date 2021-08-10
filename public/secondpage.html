@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" src="/assets/styles/salesforce-lightning-design-system.css" />
+  <link rel="stylesheet" type="text/css" src="/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -3002,7 +3002,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" onchange="func(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)"  style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3016,8 +3016,33 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               <script>
+                function func(){
+                  var list = document.getElementById('leftsideListInSelectField');
+                  console.log(list);
+                  var items = list.childNodes;
+                 var itemsArr = [];
+                 console.log(items);
+                 console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+                for (var i in items) {
+                  if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
+                      itemsArr.push(items[i]);
+                  }
+                   }
+                 
+                itemsArr.sort(function(a, b) {
+                return a.innerHTML == b.innerHTML
+                        ? 0
+                        : (a.innerHTML > b.innerHTML ? 1 : -1);
+                 });
+                 console.log(itemsArr.length);
+                 console.log(itemsArr);
+              for (i = 0; i < itemsArr.length; ++i) {
+                list.appendChild(itemsArr[i]);
+              }
+              }
+               </script>
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3417,47 +3442,7 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
-  function func(val){
-     // Declaring Variables
-     var geek_list, i, run, li, stop;
   
-     // Taking content of list as input
-     geek_list = document.getElementById("GeekList");
-
-     run = true;
-
-     while (run) {
-         run = false;
-         li = val.getElementsByTagName("OPTION");
-         console.log('00000000000000');
-         console.log(li)
-         // Loop traversing through all the list items
-         for (i = 0; i < (li.length -1); i++) {
-             stop = false;
-             console.log(li[i]);
-             console.log(li[i].innerHTML);
-             console.log(li[i+1].innerHTML);
-             if (li[i].innerHTML.toLowerCase() > 
-                 li[i + 1].innerHTML.toLowerCase()) {
-                 stop = true;
-                 break;
-             }
-         }
-
-         /* If the current item is smaller than 
-            the next item then adding it after 
-            it using insertBefore() method */
-         if (stop) {
-             li[i].parentNode.insertBefore(
-                     li[i + 1], li[i]);
-
-             run = true;
-         }
-     }
- 
-
-  }
-     
 
 </script>
 
@@ -4107,7 +4092,7 @@ document.addEventListener("mouseup", function(){
           document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
           if (DEDragData.DECategory == "DEMap") {
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-            //DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+            DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
                 DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
