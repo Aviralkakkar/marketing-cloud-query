@@ -3593,11 +3593,11 @@ function openModal(functionAction) {
 
           
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          Str +=  ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          Str +=  ' WHERE [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
         }
      
         else if (JoinType == 'Outer Join') {
-        Str = ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+        Str = ' WHERE [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';;
         }
        
 
