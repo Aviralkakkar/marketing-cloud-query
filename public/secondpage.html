@@ -3005,7 +3005,12 @@
                          }
                         console.log('itemsArr-----------</br>');
                        console.log( itemsArr);
+                       console.log( itemsArr);
                        itemsArr.sort(function(a, b) {
+                         console.log('innerhtml');
+                         console.log(a.innerHTML);
+                         console.log(b.innerHTML);
+
                        return a.innerHTML == b.innerHTML
                               ? 0
                               : (a.innerHTML > b.innerHTML ? 1 : -1);
