@@ -3278,48 +3278,7 @@
     }
   }
 
-  function sortList(val) {
-        var list, i, switching, b, shouldSwitch;
-        console.log('-----val-----'+val);
-        list = document.getElementById(val);
-        
-        console.log('------------>'+list);
-        
-      //  console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
-      
-        switching = true;
-        /* Make a loop that will continue until
-        no switching has been done: */
-        while (switching) {
-          // Start by saying: no switching is done:
-          switching = false;
-          b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:\
-          console.log('0000000000000---lngth-----'+b.length);
-          console.log(b);
-          for (i = 0; i < (b.length ); i++) {
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should
-            switch place with the current item: */
-            console.log('1111111111111111');
-            console.log(b[i]);
-            console.log('llllllllllll');
-            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-              /* If next item is alphabetically lower than current item,
-              mark as a switch and break the lop: */
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark the switch as done: */
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
-          }
-        }
-      }
+ 
 
   function moveRight(src, des) {
     
@@ -3352,8 +3311,8 @@
       }
     }
     
-     //sortList("leftsideListInSelectField");
-     //sortListDir("rightsideListInSelectField");
+     
+    sortListDir("rightsideListInSelectField");
            
   }
   function func(){
@@ -3379,11 +3338,7 @@
       list1.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
       console.log(list1);
       for (var i = 0; i < list1.length; i++) {
-        /*document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
-          DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '"  value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName
-          + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-          '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
-        //line added by priyanka to create list in dueking picklist
+        
         document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
            + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
 
