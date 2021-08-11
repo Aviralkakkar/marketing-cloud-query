@@ -4187,7 +4187,7 @@ document.addEventListener("mouseup", function(){
                           console.log("start-FieldName==="+FieldName);
                           draggedDeJoinKey.add(FieldKey);
                           document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
-                          range.insertNode(document.createTextNode(FieldName));
+                          range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
                         }
                         else{
                           console.log("stop");
