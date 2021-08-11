@@ -2485,6 +2485,25 @@
                 </button>
                 </div>
                 </div>
+                <!--priyanka added-->
+                 <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="JoinDESelectAlert" style="display:none; background-color: #c23934;">
+                <span class="slds-assistive-text">warning</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+                </span>
+                <h6 >You can not delete Joined Query Box. You need to referesh the page.
+                </h6>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
                 <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
                   <span class="slds-assistive-text">warning</span>
                   <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -5359,7 +5378,11 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="
+        
+        
+        
+        (this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
@@ -6105,6 +6128,7 @@ document.addEventListener("mouseup", function(){
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+         document.getElementById("JoinDESelectAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
