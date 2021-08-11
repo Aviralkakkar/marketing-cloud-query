@@ -2444,9 +2444,8 @@
             <div id="queryDiv" style="height:100%;position:relative;" >
               <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
-            <div id="MainDivAlert" style="display:none">
-              <!--********* nitik code started ************-->
-                <!--div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
+              <div id="MainDivAlert" style="display:none">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
                   <span class="slds-assistive-text">error</span>
                   <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
                     title="Description of icon when needed">
@@ -2465,47 +2464,50 @@
                     </button>
                   </div>
                 </div>
-              </div-->
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e; width:auto;">
-                <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                </svg>
-                </span>
-                <h6>Please select atleast one DE.
-              
-                </h6>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
-                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; width:auto;">
-                  <span class="slds-assistive-text">warning</span>
-                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                  </svg>
+              </div>
+              <div id="DESelectAlert" style="display:none">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                  <span class="slds-assistive-text">error</span>
+                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
                   </span>
-                  <h6>Please Join the Query Box.
-                
-                  </h6>
+                  <P>Please select atleast one DE</P>
                   <div class="slds-notify__close">
-                  <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                  </button>
+                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                      onclick="CancelDESelectAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
                   </div>
+                </div>
+              </div>
+              <div id="QueryBoxJoinAlert" style="display:none">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                  <span class="slds-assistive-text">error</span>
+                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                    title="Description of icon when needed">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                  </span>
+                  <P>Please Join the Query Box.</P>
+                  <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                      onclick="CancelQueryBoxJoinAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">close</span>
+                    </button>
                   </div>
-             
-                    <!--********* Khushboo code ended ************-->
+                </div>
+              </div>
+
 
 
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
@@ -2570,26 +2572,27 @@
                         
                           
                         </header>
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto;">
-                          <span class="slds-assistive-text">warning</span>
-                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                          </svg>
-                          </span>
-                          <h6>Please drag all the DE and JoinType atleast one time.
-                        
-                          </h6>
-                          <div class="slds-notify__close">
-                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
-                          <svg class="slds-button__icon" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Close</span>
-                          </button>
+                        <div id="DeDragAlert" style="display:none">
+                          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                            <span class="slds-assistive-text">error</span>
+                            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                              title="Description of icon when needed">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                            </span>
+                            <P>Please drag all the DE and JoinType atleast one time.</P>
+                            <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
+                                onclick="CancelDeDragAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                              </button>
+                            </div>
                           </div>
-                          </div>
-                 
+                        </div>
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
