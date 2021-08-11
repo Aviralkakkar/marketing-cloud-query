@@ -2558,12 +2558,14 @@
                 <div class="slds-modal__container" >
                     <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
-                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                     
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick="CancelDEWhereClauseModal()">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                         </svg>
                         <span class="slds-assistive-text">Close</span>
-                        </button>
+                      </button>
         
                       
                         <!--jndjdkmdkmkdmksddddddddddddddddddm-->
@@ -2579,7 +2581,7 @@
                                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                               </svg>
                             </span>
-                            <P>Please drag all the de atleast one time.</P>
+                            <P>Please drag all the DE and JoinType atleast one time.</P>
                             <div class="slds-notify__close">
                               <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
                                 onclick="CancelDeDragAlert()">
@@ -3651,6 +3653,9 @@ function CancelDeDragAlert() {
   document.getElementById('DeDragAlert').style.display = 'none';
 }
 
+function CancelDEWhereClauseModal() {
+  document.getElementById('DEWhereClauseModal').style.display = 'none';
+}
 function closeModal() {
     document.getElementById("backdrop").style.display = "none";
     document.getElementById("DEWhereClauseModal").style.display = "none";
@@ -4181,8 +4186,8 @@ document.addEventListener("mouseup", function(){
                           console.log("start-JoineDeWhereClause==="+JoineDeWhereClause);
                           console.log("start-FieldName==="+FieldName);
                           draggedDeJoinKey.add(FieldKey);
-                          document.getElementById(JoineDeWhereClause).className = "slds-button slds-button_brand"; 
-                          range.insertNode(document.createTextNode(FieldName));
+                          document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                          range.insertNode(document.createTextNode(JoineDeWhereClause));
                         }
                         else{
                           console.log("stop");
