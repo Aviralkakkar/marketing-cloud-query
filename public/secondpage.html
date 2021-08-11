@@ -4182,12 +4182,12 @@ document.addEventListener("mouseup", function(){
                         if(FieldKey.charAt(0)=="["){
                           console.log("start");
                           
-                          JoineDeWhereClause = document.getElementById(FieldKey).value;
+                         
                           console.log("start-JoineDeWhereClause==="+JoineDeWhereClause);
                           console.log("start-FieldName==="+FieldName);
                           draggedDeJoinKey.add(FieldKey);
                           document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
-                          range.insertNode(document.createTextNode(JoineDeWhereClause));
+                          range.insertNode(document.createTextNode(FieldName));
                         }
                         else{
                           console.log("stop");
