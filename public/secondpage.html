@@ -3631,8 +3631,7 @@ function openModal(functionAction) {
 
                     
                         console.log(" #$%^&*() ");
-                        Str+=' And/Or '
-                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
+                       
               }
            
            }
@@ -4171,14 +4170,17 @@ document.addEventListener("mouseup", function(){
                         //draggedDeName.add(FieldType);
                         if(FieldKey.charAt(0)=="["){
                           console.log("start");
-                          key = FieldKey.split("JoinedDe");
+                          
+                          FieldName = document.getElementById(FieldKey).value;
+                          console.log("start-FieldName==="+FieldName);
+                          draggedDeJoinKey++;
+                          document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                          range.insertNode(document.createTextNode(FieldName));
                         }
                         else{
                           console.log("stop");
                           key = FieldKey.split("WhereClasueDEList");
-                        }
-                       
-                        FieldId = key[0];
+                          FieldId = key[0];
                         console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
                        // draggedDeId.add(FieldKey)
@@ -4212,6 +4214,9 @@ document.addEventListener("mouseup", function(){
                         }
 
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        }
+                       
+                       
                       }
                     }
         }
