@@ -20,7 +20,8 @@ var DEListMap = {
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
-
+// Serve static files
+app.use(express.static(__dirname + '/public'));
 // use the express-static middleware
 app.use(express.static(path.join(__dirname, './public/assets/icons')));
 app.use(express.static(path.join(__dirname, './slds icons')));
