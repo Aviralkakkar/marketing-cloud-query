@@ -2241,6 +2241,14 @@
       font-size: 12px;
     }
 
+    .relationship-grid 
+    {
+      background-image:
+      repeating-linear-gradient(rgb(224, 233, 235) 0 1px, transparent 1px 100%),
+      repeating-linear-gradient(90deg, rgb(224, 233, 235) 0 1px, transparent 1px 100%);
+      background-size: 10px 10px;
+    }
+
     .list-group-item {
       text-align: left;
     }
@@ -2350,7 +2358,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
 
                         </svg>
@@ -2362,7 +2370,7 @@
                     </button>
                     <div class="slds-p-left_small">
                       <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="sharedDataExtension"
-                        role="tree">
+                        role="tree" style="width:100%;">
 
                       </ul>
                     </div>
@@ -2433,10 +2441,12 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
          
-            <div class="slds-scrollable" id="queryDiv" style="height:100%;position:relative;" >
-              <div class=".slds-is-relative" id="RelationshipDiv">
+            <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
+              
               <div id="MainDivAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
+                      <!--********* nitik code started ************-->
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
                   <span class="slds-assistive-text">error</span>
                   <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
                     title="Description of icon when needed">
@@ -2456,49 +2466,46 @@
                   </div>
                 </div>
               </div>
-              <div id="DESelectAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <P>Please select atleast one DE</P>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelDESelectAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                  </div>
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
+                <span class="slds-assistive-text">warning</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                </svg>
+                </span>
+                <h6>Please select atleast one DE.
+              
+                </h6>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
                 </div>
-              </div>
-              <div id="QueryBoxJoinAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <P>Please Join the Query Box.</P>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelQueryBoxJoinAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">close</span>
-                    </button>
-                  </div>
                 </div>
-              </div>
-
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                  <span class="slds-assistive-text">warning</span>
+                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                  </svg>
+                  </span>
+                  <h6>Please Join the Query Box.
+                
+                  </h6>
+                  <div class="slds-notify__close">
+                  <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
+                  <svg class="slds-button__icon" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                  </button>
+                  </div>
+                  </div>
+             
+                    <!--********* nitik code ended ************-->
 
 
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
@@ -2549,39 +2556,40 @@
                 <div class="slds-modal__container" >
                     <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
-                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                     
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick="CancelDEWhereClauseModal()">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                         </svg>
                         <span class="slds-assistive-text">Close</span>
-                        </button>
+                      </button>
         
                       
                         <!--jndjdkmdkmkdmksddddddddddddddddddm-->
                         
                           
                         </header>
-                        <div id="DeDragAlert" style="display:none">
-                          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                            <span class="slds-assistive-text">error</span>
-                            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                              title="Description of icon when needed">
-                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                              </svg>
-                            </span>
-                            <P>Please drag all the de atleast one time.</P>
-                            <div class="slds-notify__close">
-                              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                                onclick="CancelDeDragAlert()">
-                                <svg class="slds-button__icon" aria-hidden="true">
-                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                </svg>
-                                <span class="slds-assistive-text">Close</span>
-                              </button>
-                            </div>
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto;">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          </svg>
+                          </span>
+                          <h6>Please drag all the DE and JoinType atleast one time.
+                        
+                          </h6>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
                           </div>
-                        </div>
+                          </div>
+                     
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
@@ -2609,9 +2617,19 @@
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
                                   style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
-                                <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                    style="padding-left:0rem; background-color:white; position: relative;">
+                    
+                                  </ul>
+                    
+                                </div>
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                  style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
+                    
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList2" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
                     
                                   </ul>
@@ -2645,7 +2663,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
                       <!--****** Nitik code ended *********-->
-          </div>   
+               </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
@@ -2881,7 +2899,7 @@
       <div class="slds-modal__container">
         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-            onclick="CancelDERecordModal()">
+            onclick="CancelDERecordModal()" style=" position: sticky;">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -2956,27 +2974,34 @@
 
 
 
-        <div id="FieldSelectNextAlert" style="display:none">
-          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-            <span class="slds-assistive-text">error</span>
-            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-              title="Description of icon when needed">
-              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-              </svg>
+        
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+            <span class="slds-assistive-text">warning</span>
+            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+            margin-left: 2%;
+            margin-top: 1.3%;
+        ">
+            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            </svg>
             </span>
-            <P>Please select atleast one field</P>
+            <h6 style="padding: 0;
+            float: left;
+            margin-top: 1%;">Please Select Atleast One Field.
+          
+            </h6>
             <div class="slds-notify__close">
-              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                onclick="CancelFieldSelectNextAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-              </button>
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close">
+            <svg class="slds-button__icon" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+            </button>
             </div>
-          </div>
-        </div>
+            </div>
+         
+
+      
 
         
 
@@ -3015,40 +3040,8 @@
                 <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
  
  
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func(); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-                <script>
-                  function func(){
-                    var list = document.getElementById('leftsideListInSelectField');
-                    console.log(list);
-                    var items = list.childNodes;
-                    var itemsArr = [];
-                    console.log(items);
-                    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-                    for (var i in items) {
-                     if (items[i].nodeType == 1) { // get rid of the whitespace text nodes
-                        itemsArr.push(items[i]);
-                    }
-                     }
-                   
-                   itemsArr.sort(function(a, b) {
-                   return a.innerHTML == b.innerHTML
-                          ? 0
-                          : (a.innerHTML > b.innerHTML ? 1 : -1);
-                   });
-                   console.log(itemsArr.length);
-                   console.log(itemsArr);
-                   console.log('before');
-                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
-                   document.getElementById("leftsideListInSelectField").innerHTML = "";
-                   console.log('3333333');
-                   console.log(document.getElementById('leftsideListInSelectField').innerHTML);
-                   
-                  for (i = 0; i < itemsArr.length; ++i) {
-                      list.appendChild(itemsArr[i]);
-                      console.log( list.appendChild(itemsArr[i]));
-                   }
-                 }
-                 </script>
+                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3299,53 +3292,12 @@
     }
   }
 
-  function sortList(val) {
-        var list, i, switching, b, shouldSwitch;
-        console.log('-----val-----'+val);
-        list = document.getElementById(val);
-        
-        console.log('------------>'+list);
-        
-      //  console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
-      
-        switching = true;
-        /* Make a loop that will continue until
-        no switching has been done: */
-        while (switching) {
-          // Start by saying: no switching is done:
-          switching = false;
-          b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:\
-          console.log('0000000000000---lngth-----'+b.length);
-          console.log(b);
-          for (i = 0; i < (b.length-1 ); i++) {
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should
-            switch place with the current item: */
-            console.log('1111111111111111');
-            console.log(b[i]);
-            console.log('llllllllllll');
-            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-              /* If next item is alphabetically lower than current item,
-              mark as a switch and break the lop: */
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark the switch as done: */
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
-          }
-        }
-      }
+ 
 
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
-      alert("Please select first!");
+      document.getElementById("FieldSelectNextAlert").style.display = "block";
       return;
     }
     for (var i = 0; i < src.length; i++) {
@@ -3372,10 +3324,41 @@
         
       }
     }
-    //sortList("leftsideListInSelectField");
+    
+     
     sortListDir("rightsideListInSelectField");
            
   }
+  function func(){
+    var list = document.getElementById('leftsideListInSelectField');
+    console.log(list);
+    b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:\
+    console.log('-----------lngth-----'+b.length);
+    console.log(b);
+    const map1 = new Map();
+    var list1=[];
+    for(i=0;i<b.length;i++){
+     console.log(b[i].value);
+     console.log(b[i].text);
+     list1.push({
+      "FieldName" :b[i].text ,
+      "FieldType" : b[i].value
+    }) ;
+      }
+      console.log('---------------------end of loc---------');
+      console.log(list1);
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
+      list1.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+      console.log(list1);
+      for (var i = 0; i < list1.length; i++) {
+        
+        document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
+           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+
+       
+      }
+    }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
@@ -3601,56 +3584,58 @@ function openModal(functionAction) {
            if(DESetQueryBox.size > 1){
              console.log(" @@@@@@@@@@@@ ");
             //document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
-             var count=0;
+            document.getElementById('uoList2').innerHTML = '';
+            
                   for (var key in JoinQueryDetails.DEForJoin) {
                     console.log(" %%%%%%%%%%%  ");
                         console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
-                        if(count==0){
+                        
                           console.log(" *********** ");
-                          Str=' WHERE ';
+                          
                               if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-                              Str += '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
+                                document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("1=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                               }
 
                             
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
-                              Str +=  '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
+                             
+                              document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("2=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                             }
                         
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
-                            Str = '[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                            console.log("str=="+Str);
-                            }
-                            count++;
-                        }
-                        else{
-                          console.log(" &&&&*********^^^^^ ");
-                          if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
-                              Str += ' And/Or [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                              }
+                         
 
+                            document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("3=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                            }
                             
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
-                              Str +=  ' And/Or [' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
-                            }
-                        
-                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
-                            Str = ' And/Or [' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                            console.log("str=="+Str);
-                            }
-                            count++;
                         }
+                        
                       
 
-
-                    }
+                    
                         console.log(" #$%^&*() ");
-                        Str+=' And/Or '
-                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
+                       
               }
            
            }
@@ -3670,6 +3655,9 @@ function CancelDeDragAlert() {
   document.getElementById('DeDragAlert').style.display = 'none';
 }
 
+function CancelDEWhereClauseModal() {
+  document.getElementById('DEWhereClauseModal').style.display = 'none';
+}
 function closeModal() {
     document.getElementById("backdrop").style.display = "none";
     document.getElementById("DEWhereClauseModal").style.display = "none";
@@ -3677,10 +3665,10 @@ function closeModal() {
     console.log("tt");
     var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
     console.log("text"+text);
-    console.log("Str.length==="+Str.length);
+   // console.log("Str.length==="+Str.length);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
     console.log("tt completed");
-    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == (Str.length - 2) || document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 0){
+    if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
       console.log("tt1");
       //draggedDeName.clear();
       for(const Id of draggedDeKey){
@@ -3688,7 +3676,13 @@ function closeModal() {
         document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
         console.log("tt3");
       }
+      for(const Id of draggedDeJoinKey){
+        console.log("tt2");
+        document.getElementById(Id).className = "btn"; 
+        console.log("tt3");
+      }
       //draggedDeId.clear();
+      draggedDeJoinKey.clear();
       draggedDeKey.clear();
       console.log("tt completed1");
     }
@@ -3966,11 +3960,12 @@ let m_pos;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  if(m_pos>=50 && m_pos<=458)
+  var hl = screen.height-(screen.height*40)/100;
+  var hu = screen.height-(screen.height*80)/100;
+  if(m_pos>=hu && m_pos<= hl)
   {
-    
-    console.log('position '+ m_pos + 'ey '+e.y);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    
 
   }
 
@@ -3994,6 +3989,7 @@ document.addEventListener("mouseup", function(){
    // var draggedDeName=new Set();
    // var draggedDeId=new Set();
     var draggedDeKey=new Set();
+    var draggedDeJoinKey=new Set();
     //var TotalMainDeDragged=0;
 
     var DEDragData = {
@@ -4162,7 +4158,7 @@ document.addEventListener("mouseup", function(){
       if(DEWhereClauseDragData.FieldName!=null){
       insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
       function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-        var sel, range;
+        var sel, range, JoineDeWhereClause;
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
@@ -4184,14 +4180,27 @@ document.addEventListener("mouseup", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
                         //draggedDeName.add(FieldType);
-                        key = FieldKey.split("WhereClasueDEList");
-                        FieldId = key[0];
+                        if(FieldKey.charAt(0)=="["){
+                          console.log("start");
+                          
+                         
+                         
+                          console.log("start-FieldName==="+FieldName);
+                          draggedDeJoinKey.add(FieldKey);
+                          document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                          range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        }
+                        else{
+                          console.log("stop");
+                          key = FieldKey.split("WhereClasueDEList");
+                          FieldId = key[0];
                         console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
                        // draggedDeId.add(FieldKey)
-                        range = sel.getRangeAt(0);
-                        range.deleteContents();
+                        
                         
                         //range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
@@ -4220,6 +4229,9 @@ document.addEventListener("mouseup", function(){
                         }
 
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        }
+                       
+                       
                       }
                     }
         }
@@ -4301,9 +4313,11 @@ document.addEventListener("mouseup", function(){
         }
       }*/
       console.log("draggedDeName000000=="+draggedDeKey.size);
-      console.log("DESetQueryBox=="+DESetQueryBox.size);
+      console.log("DESetQueryBox=="+DESetQueryBox.size); 
+      console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
+      //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if(DESetQueryBox.size>1){
-      if(isSetEqual(DESetQueryBox, draggedDeKey)==0){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length)){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
@@ -5293,16 +5307,32 @@ document.addEventListener("mouseup", function(){
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
-          '                              </svg>    ' +
+          '                       <span class="slds-icon_container slds-icon-utility-close"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                        </button>' +
           '                    </td>' +
           '                    <td width="20%">' +
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
-          '                              </svg>' +
+          '                     <span class="slds-icon_container slds-icon-utility-add"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                              ' +
           '                        </button>' +
           '                    </td>' +
@@ -5439,7 +5469,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
-          //changeSchmaPosition(elmnt)
+          changeSchmaPosition(elmnt)
           schemaAction();
         }
 
@@ -5462,7 +5492,7 @@ document.addEventListener("mouseup", function(){
   
   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
- /* function changeSchmaPosition(e)
+ function changeSchmaPosition(e)
     {
         console.log('OKKK:'+e.offsetLeft);
         if(e.offsetLeft<0)
@@ -5474,7 +5504,7 @@ document.addEventListener("mouseup", function(){
             e.style.top=0+"px";
         }
     }
-   */ 
+ 
 
   //Anil kumar for creating Line
   var dragId='';
@@ -5499,14 +5529,18 @@ document.addEventListener("mouseup", function(){
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
       if (joinedDivSet.size == 0 || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
-        //-----------priyanka added code----------------------------------------
+        //-----------nitik code started----------------------------------------
+        
+                        
+                          
+                       
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
           '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"onclick="CancelDEWhereClauseModal()">'+
+          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
@@ -5535,17 +5569,7 @@ document.addEventListener("mouseup", function(){
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-  
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-            '<option value="Left Outer Join">Left Outer Join</option>' +
-            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-            '<option value="Right Outer Join">Right Outer Join</option>' +
-            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-            '<option value="Inner Join">Inner Join</option>' +
-            '<option value="Full Outer Join">Full Outer Join</option>' +
-            '<option value="Outer Join">Outer Join</option>' +
-            '</select>' +
+            
             '</div>' +
   
   
@@ -5566,7 +5590,36 @@ document.addEventListener("mouseup", function(){
   
             '</div>' +
   
+            '<div class="slds-grid slds-wrap">' +
   
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+           
+            '</div>' +
+
+
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
+
+
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+            
+            '</div>' +
+
+            '</div>' +
   
   
   
@@ -5586,13 +5639,7 @@ document.addEventListener("mouseup", function(){
   
   
             ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
-  
-  
-            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
-            '<option value="AND">AND</option>' +
-            '<option value="OR">OR</option>' +
-            '</select>' +
+            
             '</div>' +
   
   
@@ -5933,7 +5980,7 @@ document.addEventListener("mouseup", function(){
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
-              "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
