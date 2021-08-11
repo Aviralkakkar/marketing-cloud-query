@@ -2967,27 +2967,29 @@
 
 
 
-        <div id="FieldSelectNextAlert" style="display:none">
-          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-            <span class="slds-assistive-text">error</span>
-            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-              title="Description of icon when needed">
-              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-              </svg>
+        
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #fe9339; width:65rem;">
+            <span class="slds-assistive-text">warning</span>
+            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            </svg>
             </span>
-            <P>Please select atleast one field</P>
+            <h6>Your browser is outdated. Your Salesforce experience may be degraded.
+            <a href="#">More Information</a>
+            </h6>
             <div class="slds-notify__close">
-              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                onclick="CancelFieldSelectNextAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-              </button>
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close">
+            <svg class="slds-button__icon" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+            </button>
             </div>
-          </div>
-        </div>
+            </div>
+         
+
+      
 
         
 
@@ -3283,7 +3285,7 @@
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
-      alert("Please select first!");
+      document.getElementById("FieldSelectNextAlert").style.display = "block";
       return;
     }
     for (var i = 0; i < src.length; i++) {
