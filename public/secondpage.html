@@ -5261,16 +5261,32 @@ document.addEventListener("mouseup", function(){
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
-          '                              </svg>    ' +
+          '                       <span class="slds-icon_container slds-icon-utility-close"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                        </button>' +
           '                    </td>' +
           '                    <td width="20%">' +
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
-          '                              </svg>' +
+          '                     <span class="slds-icon_container slds-icon-utility-add"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                              ' +
           '                        </button>' +
           '                    </td>' +
