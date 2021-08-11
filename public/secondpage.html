@@ -4178,6 +4178,8 @@ document.addEventListener("mouseup", function(){
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
                         console.log("hello");
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
                         //draggedDeName.add(FieldType);
                         if(FieldKey.charAt(0)=="["){
                           console.log("start");
@@ -4196,9 +4198,8 @@ document.addEventListener("mouseup", function(){
                         console.log("FieldId=="+FieldId);
                         draggedDeKey.add(FieldId)
                        // draggedDeId.add(FieldKey)
-                        range = sel.getRangeAt(0);
-                        range.deleteContents();
-                        draggedDeJoinKey
+                        
+                        
                         //range.insertNode(document.createTextNode(FieldName));
                         console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
