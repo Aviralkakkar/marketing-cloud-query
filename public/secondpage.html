@@ -3580,13 +3580,13 @@ function openModal(functionAction) {
                           
                               if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
                                 document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                  ' <span class="slds-size_1-of-1">' +
-                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; " > </span>' + ' </button> </span>' +
-                  ' </span>' +
-                  '  </div>' +
-                  '</li>';
-                        
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; " > </span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                               }
 
                             
@@ -5902,7 +5902,7 @@ document.addEventListener("mouseup", function(){
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
-              "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+             // "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
