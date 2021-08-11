@@ -2319,7 +2319,7 @@
                       id="dataExtensionButton">
                       <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2350,7 +2350,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                            xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
 
                         </svg>
@@ -2378,7 +2378,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                            xlink:href="assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
 
                         </svg>
@@ -2416,7 +2416,7 @@
                 <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
                   title="Close" onclick="CancelDEListDivAlert()">
                   <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                   </svg>
                   <span class="slds-assistive-text">Close</span>
                 </button>
@@ -2433,9 +2433,8 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
          
-            <div class="slds-scrollable" id="queryDiv" style="height:100%;position:relative;" >
-              <div class=".slds-is-relative" id="RelationshipDiv">
-              </div>
+            <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-scrollable" id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
@@ -2657,7 +2656,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
                       <!--****** Nitik code ended *********-->
-
+               </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
@@ -3028,21 +3027,7 @@
  
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-               <script>
-                function func(){
-                  //var list = document.getElementById('leftsideListInSelectField');
-                  var div = document.querySelector('#leftsideListInSelectField'),
-                  para = document.querySelectorAll('#leftsideListInSelectField option');
-                  console.log('99999999999999');
-                  console.log(para);
-                  var paraArr = [].slice.call(para).sort(function (a, b) {
-                        return a.textContent > b.textContent ? 1 : -1;
-                     });
-                   paraArr.forEach(function (option) {
-                   div.appendChild(option);
-                });
-                }
-               </script>
+               
                <!-- <button class="btn btn-default btn-sm move-right">
                   <span class="glyphicon glyphicon-chevron-right">R</span>
                 </button>
@@ -3293,48 +3278,7 @@
     }
   }
 
-  function sortList(val) {
-        var list, i, switching, b, shouldSwitch;
-        console.log('-----val-----'+val);
-        list = document.getElementById(val);
-        
-        console.log('------------>'+list);
-        
-      //  console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
-      
-        switching = true;
-        /* Make a loop that will continue until
-        no switching has been done: */
-        while (switching) {
-          // Start by saying: no switching is done:
-          switching = false;
-          b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:\
-          console.log('0000000000000---lngth-----'+b.length);
-          console.log(b);
-          for (i = 0; i < (b.length ); i++) {
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should
-            switch place with the current item: */
-            console.log('1111111111111111');
-            console.log(b[i]);
-            console.log('llllllllllll');
-            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-              /* If next item is alphabetically lower than current item,
-              mark as a switch and break the lop: */
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark the switch as done: */
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
-          }
-        }
-      }
+ 
 
   function moveRight(src, des) {
     
@@ -3366,10 +3310,41 @@
         
       }
     }
-     //sortList("leftsideListInSelectField");
-     //sortListDir("rightsideListInSelectField");
+    
+     
+    sortListDir("rightsideListInSelectField");
            
   }
+  function func(){
+    var list = document.getElementById('leftsideListInSelectField');
+    console.log(list);
+    b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:\
+    console.log('-----------lngth-----'+b.length);
+    console.log(b);
+    const map1 = new Map();
+    var list1=[];
+    for(i=0;i<b.length;i++){
+     console.log(b[i].value);
+     console.log(b[i].text);
+     list1.push({
+      "FieldName" :b[i].text ,
+      "FieldType" : b[i].value
+    }) ;
+      }
+      console.log('---------------------end of loc---------');
+      console.log(list1);
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
+      list1.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+      console.log(list1);
+      for (var i = 0; i < list1.length; i++) {
+        
+        document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
+           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+
+       
+      }
+    }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
@@ -3948,11 +3923,12 @@ let m_pos;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  if(m_pos>=50 && m_pos<=490)
+  var hl = screen.height-(screen.height*40)/100;
+  var hu = screen.height-(screen.height*80)/100;
+  if(m_pos>=hu && m_pos<= hl)
   {
-    
-    console.log('position '+ m_pos + 'ey '+e.y);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    
 
   }
 
@@ -5421,7 +5397,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
-          //changeSchmaPosition(elmnt)
+          changeSchmaPosition(elmnt)
           schemaAction();
         }
 
@@ -5444,7 +5420,7 @@ document.addEventListener("mouseup", function(){
   
   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
- /* function changeSchmaPosition(e)
+ function changeSchmaPosition(e)
     {
         console.log('OKKK:'+e.offsetLeft);
         if(e.offsetLeft<0)
@@ -5456,7 +5432,7 @@ document.addEventListener("mouseup", function(){
             e.style.top=0+"px";
         }
     }
-   */ 
+ 
 
   //Anil kumar for creating Line
   var dragId='';
