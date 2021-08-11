@@ -2991,7 +2991,7 @@
           
             </h6>
             <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
             <svg class="slds-button__icon" aria-hidden="true">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -2999,6 +2999,9 @@
             </button>
             </div>
             </div>
+            
+              
+           
          
 
       
@@ -3040,7 +3043,21 @@
                
                <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" />
                -->
-                <button class="slds-button slds-button_neutral btn-pagination" id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;">
+                <button class="slds-button slds-button_neutral btn-pagination" id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 30%; border: 1px solid lightgrey; margin-bottom: 20%;">
+                <span class="slds-icon_container slds-icon-utility-chevronright"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+              
+               <!-- <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               -->
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;">
                 <span class="slds-icon_container slds-icon-utility-chevronleft"
                   title="Description of icon when needed">
                   <svg
@@ -3050,10 +3067,8 @@
 
                   </svg>
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
-              </button>
- 
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
-               
+               </button>
+             
                  
               </div>
 
@@ -3441,7 +3456,9 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
-  
+  function closrerror(){
+    document.getElementById("FieldSelectNextAlert").style.display = "none";
+  }
 
 </script>
 
