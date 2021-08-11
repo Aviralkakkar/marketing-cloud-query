@@ -4312,9 +4312,10 @@ document.addEventListener("mouseup", function(){
       }*/
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
-      console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length); 
+      console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
+      //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if(DESetQueryBox.size>1){
-      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (isSetEqual(draggedDeJoinKey, JoinQueryDetails.DEForJoin)==0)){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length)){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
