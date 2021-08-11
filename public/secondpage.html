@@ -2762,7 +2762,7 @@
                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
       
                           </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
+                          <span class="slds-assistive-text">Description of icon when needed</span></span>
                       </button>
                     </div>
                     <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
@@ -3037,17 +3037,24 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
- 
+               
+               <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" />
+               -->
+                <button class="slds-button slds-button_neutral btn-pagination" id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;">
+                <span class="slds-icon_container slds-icon-utility-chevronleft"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+              </button>
  
                 <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
                
-               <!-- <button class="btn btn-default btn-sm move-right">
-                  <span class="glyphicon glyphicon-chevron-right">R</span>
-                </button>
-                <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
-                  <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>-->
+                 
               </div>
 
               <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
