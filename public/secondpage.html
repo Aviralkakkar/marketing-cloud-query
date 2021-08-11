@@ -4489,13 +4489,14 @@ document.addEventListener("mouseup", function(){
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          if(strQuery.search("WHERE")<1){
+          /*if(strQuery.search("WHERE")<1){
             console.log("in the if of search");
             strQuery=strQuery+" Where ";
           }
           else{
             strQuery=strQuery+" And/Or ";
-          }
+          }*/
+          strQuery=strQuery+" Where ";
           var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
           console.log("clause"+ clause);
           strQuery=strQuery+clause;
@@ -4756,13 +4757,15 @@ document.addEventListener("mouseup", function(){
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
           queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
           queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
@@ -4771,7 +4774,8 @@ document.addEventListener("mouseup", function(){
           queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
       }
