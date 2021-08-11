@@ -4151,7 +4151,7 @@ document.addEventListener("mouseup", function(){
       if(DEWhereClauseDragData.FieldName!=null){
       insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
       function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-        var sel, range;
+        var sel, range, JoineDeWhereClause;
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
@@ -4177,7 +4177,7 @@ document.addEventListener("mouseup", function(){
                         if(FieldKey.charAt(0)=="["){
                           console.log("start");
                           
-                          var JoineDeWhereClause = document.getElementById(FieldKey).value;
+                          JoineDeWhereClause = document.getElementById(FieldKey).value;
                           console.log("start-FieldName==="+FieldName);
                           draggedDeJoinKey.add(FieldKey);
                           document.getElementById(JoineDeWhereClause).className = "slds-button slds-button_brand"; 
