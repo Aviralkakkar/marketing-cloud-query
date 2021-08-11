@@ -2554,23 +2554,24 @@
               </div-->
               <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
                 <div class="slds-modal__container" >
-                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
+                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd; height:5rem;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
                      
-                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-                        onclick="CancelDEWhereClauseModal()">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-        
                       
+                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                      onclick="CancelDEWhereClauseModal()" style=" position: sticky; margin-left: 94%;">
+                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+        
+                  
                         <!--jndjdkmdkmkdmksddddddddddddddddddm-->
                         
                           
                         </header>
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto;">
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2762,7 +2763,7 @@
                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
       
                           </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
+                          <span class="slds-assistive-text">Description of icon when needed</span></span>
                       </button>
                     </div>
                     <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
@@ -2899,12 +2900,13 @@
       <div class="slds-modal__container">
         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-            onclick="CancelDERecordModal()" style=" position: sticky;">
+            onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
             <span class="slds-assistive-text">Close</span>
           </button>
+          
           <h3 style="padding:0; margin:0; margin-top: -25px;
           margin-bottom: 7px;
           font-size: 15px;
@@ -2991,7 +2993,7 @@
           
             </h6>
             <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
             <svg class="slds-button__icon" aria-hidden="true">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -2999,6 +3001,9 @@
             </button>
             </div>
             </div>
+            
+              
+           
          
 
       
@@ -3037,17 +3042,36 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
- 
- 
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
                
-               <!-- <button class="btn btn-default btn-sm move-right">
-                  <span class="glyphicon glyphicon-chevron-right">R</span>
-                </button>
-                <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
-                  <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>-->
+               <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" />
+               -->
+                <button class="slds-button slds-button_neutral btn-pagination" id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 30%; border: 1px solid lightgrey; margin-bottom: 20%;">
+                <span class="slds-icon_container slds-icon-utility-chevronright"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+              
+               <!-- <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               -->
+              <button class="slds-button slds-button_neutral btn-pagination" id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 23%; height: 2rem; margin-left: -1%;">
+                <span class="slds-icon_container slds-icon-utility-chevronleft"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+              
+                 
               </div>
 
               <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
@@ -3076,11 +3100,37 @@
 
               </div>
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
-                <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
+               <!-- <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
                  height: 2rem;
                  border: 1px solid lightgray;
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
+               -->
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
+               height: 2rem;
+               border: 1px solid lightgray;
+               margin-bottom: 20%; margin-left: 9%;">
+                <span class="slds-icon_container slds-icon-utility-chevronup"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronup"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+                <span class="slds-icon_container slds-icon-utility-chevrondown"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
 
               <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
@@ -3123,7 +3173,7 @@
         <!--Header for modal 2-->
         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-            onclick="CancelDERecordModal()">
+           onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -3434,7 +3484,9 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
-  
+  function closrerror(){
+    document.getElementById("FieldSelectNextAlert").style.display = "none";
+  }
 
 </script>
 
@@ -4439,13 +4491,14 @@ document.addEventListener("mouseup", function(){
         }
         else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
-          if(strQuery.search("WHERE")<1){
+          /*if(strQuery.search("WHERE")<1){
             console.log("in the if of search");
             strQuery=strQuery+" Where ";
           }
           else{
             strQuery=strQuery+" And/Or ";
-          }
+          }*/
+          strQuery=strQuery+" Where ";
           var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
           console.log("clause"+ clause);
           strQuery=strQuery+clause;
@@ -4706,13 +4759,15 @@ document.addEventListener("mouseup", function(){
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
           queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
           queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
@@ -4721,7 +4776,8 @@ document.addEventListener("mouseup", function(){
           queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
       }
@@ -5532,15 +5588,17 @@ document.addEventListener("mouseup", function(){
         //-----------nitik code started----------------------------------------
         
                         
-                          
-                       
+        
+                     
+                        
+                     
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
           '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"onclick="CancelDEWhereClauseModal()">'+
-          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          ' <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelDEWhereClauseModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
