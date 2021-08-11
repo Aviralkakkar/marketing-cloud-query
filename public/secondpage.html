@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" src="/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
+ <link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -15,8 +15,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css"
     integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw=="
     crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css"
-    src="/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -2240,6 +2239,14 @@
       background-color: #fafaf9;
       font-size: 12px;
     }
+    
+    .relationshipgrid 
+    {
+      background-image:
+      repeating-linear-gradient(rgb(224, 233, 235) 0 1px, transparent 1px 100%),
+      repeating-linear-gradient(90deg, rgb(224, 233, 235) 0 1px, transparent 1px 100%);
+      background-size: 10px 10px;
+    }
 
     .list-group-item {
       text-align: left;
@@ -2350,7 +2357,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                            xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
 
                         </svg>
@@ -2378,7 +2385,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                            xlink:href="assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
 
                         </svg>
@@ -2416,7 +2423,7 @@
                 <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
                   title="Close" onclick="CancelDEListDivAlert()">
                   <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                   </svg>
                   <span class="slds-assistive-text">Close</span>
                 </button>
@@ -2434,7 +2441,7 @@
 
          
             <div id="queryDiv" style="height:100%;position:relative;" >
-              <div class="slds-scrollable" id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
+              <div class="slds-scrollable relationshipgrid" id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
@@ -3472,7 +3479,7 @@ function openModal(functionAction) {
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small; " >' + val + ' </span>' + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3582,24 +3589,39 @@ function openModal(functionAction) {
                           
                               if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
                                 document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].['+JoinQueryDetails.DEForJoin[key].SecondDEName + ']'+'"   >' + '<span  style=" width: 185px; text-align: left; " > </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
-                        
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("1=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                               }
 
                             
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
-                              Str =  '[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL';
-                              console.log("str=="+Str);
+                             
+                              document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id=" " draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("2=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                             }
                         
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
-                            Str = '[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL';
-                            console.log("str=="+Str);
+                         
+
+                            document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id=" " draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("3=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
                             }
                             
                         }
@@ -3608,8 +3630,8 @@ function openModal(functionAction) {
 
                     
                         console.log(" #$%^&*() ");
-                        Str+=' And/Or '
-                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = Str; 
+                      
+                        
               }
            
            }
@@ -5495,17 +5517,7 @@ document.addEventListener("mouseup", function(){
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-  
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-            '<option value="Left Outer Join">Left Outer Join</option>' +
-            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-            '<option value="Right Outer Join">Right Outer Join</option>' +
-            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-            '<option value="Inner Join">Inner Join</option>' +
-            '<option value="Full Outer Join">Full Outer Join</option>' +
-            '<option value="Outer Join">Outer Join</option>' +
-            '</select>' +
+          
             '</div>' +
   
   
@@ -5526,9 +5538,36 @@ document.addEventListener("mouseup", function(){
   
             '</div>' +
   
+              '<div class="slds-grid slds-wrap">' +
+              
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+              '</div>' +
+
+
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+              '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+              '<option value="Left Outer Join">Left Outer Join</option>' +
+              '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+              '<option value="Right Outer Join">Right Outer Join</option>' +
+              '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+              '<option value="Inner Join">Inner Join</option>' +
+              '<option value="Full Outer Join">Full Outer Join</option>' +
+              '<option value="Outer Join">Outer Join</option>' +
+              '</select>' +
+              '</div>' +
+
+
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+             
+
+              '</div>' +
   
-  
-  
+              '</div>' +
   
             '<div class="slds-grid slds-wrap">' +
   
@@ -5546,13 +5585,7 @@ document.addEventListener("mouseup", function(){
   
   
             ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
-  
-  
-            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
-            '<option value="AND">AND</option>' +
-            '<option value="OR">OR</option>' +
-            '</select>' +
+          
             '</div>' +
   
   
@@ -5893,7 +5926,7 @@ document.addEventListener("mouseup", function(){
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
-              "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+             // "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
