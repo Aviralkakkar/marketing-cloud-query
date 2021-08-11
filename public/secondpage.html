@@ -2975,18 +2975,21 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="padding-top: 3%; display:none; background-color: #c23934; width:auto;">
            
-              <span class="slds-assistive-text">error</span>
-              <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top">
-                <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/pub/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-              </span>
-              <div class="slds-notify__content">
+              <span class="slds-icon_container slds-icon-utility-chevronup"
+                  title="Description of icon when needed" style="float: left;">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronup"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+              <div class="slds-notify__content" style="float: left;">
                 <h2 class="slds-text-heading_small ">Please Select Atleast one Field.<br> </h2>
               </div>
-              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelPopup()">
+              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelPopup()" style="margin-right: -5%;float: right;">
                 <svg class="slds-button__icon" aria-hidden="true">
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
