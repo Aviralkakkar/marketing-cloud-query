@@ -2325,9 +2325,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2337,7 +2337,7 @@
                           </span>
                         </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-hide slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2466,34 +2466,15 @@
                   </div>
                 </div>
               </div>
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;">
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
                 <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
                 </svg>
                 </span>
-                <h6 >Please select atleast one DE.
+                <h6>Please select atleast one DE.
               
-                </h6>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
-                <!--priyanka added-->
-                 <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="JoinDESelectAlert" style="display:none; background-color: #c23934;">
-                <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-                </span>
-                <h6 >You can not delete Joined Query Box. You need to referesh the page.
                 </h6>
                 <div class="slds-notify__close">
                 <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
@@ -2540,10 +2521,10 @@
                 style="background-color: #4e8abe !important;">Validate Query</button>
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
-              <button
+        <!--      <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
-               
+        -->       
               <!--********  Nitik code started *************-->
 
               <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
@@ -2573,22 +2554,39 @@
               </div-->
               <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
                 <div class="slds-modal__container" >
-                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
-                      <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
-                     
-                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-                        onclick="CancelDEWhereClauseModal()">
-                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-        
+                  <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                      onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
+                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                    
+                    <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px;
+                    margin-bottom: 7px;
+                    font-size: 15px;
+                    color: #4e8abe; text-align: left;
+                    margin-left: 2.1%;" id="DEnamemodal1">DE Where Clause</h3>
+                    </header>
+                    <!--header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd; " >
                       
-                        <!--jndjdkmdkmkdmksddddddddddddddddddm-->
+                      <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
+                     
+                      
+                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                      onclick="CancelDEWhereClauseModal()" style=" position: sticky; margin-left: 94%;">
+                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h3 id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">DE Where Clause</h3>
+                  
+                       
                         
                           
-                        </header>
+                        </header-->
                         <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -2687,7 +2685,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2768,7 +2766,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:20px;">
+                  <div class="slds-col" style="height:10%;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -2924,6 +2922,7 @@
             </svg>
             <span class="slds-assistive-text">Close</span>
           </button>
+          
           <h3 style="padding:0; margin:0; margin-top: -25px;
           margin-bottom: 7px;
           font-size: 15px;
@@ -2994,28 +2993,29 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="height: 5vh; padding-top: 1%; display:none; background-color: #c23934; width:auto;">
-           
-              <span class="slds-icon_container slds-icon-utility-error"
-                  title="Description of icon when needed" style="float: left;">
-                  <svg
-                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
-                    aria-hidden="true" style="fill: white;  margin-top: -6%;">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-
-                  </svg>
-                  <span class="slds-assistive-text">Description of icon when needed</span></span>
-              <div class="slds-notify__content" style="float: left;">
-                <h2 class="slds-text-heading_small ">Please Select Atleast one Field.<br> </h2>
-              </div>
-              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelPopup()" style="margin-right: -5%;float: right;">
-                <svg class="slds-button__icon" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+            <span class="slds-assistive-text">warning</span>
+            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+            margin-left: 2%;
+            margin-top: 1.3%;
+        ">
+            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            </svg>
+            </span>
+            <h6 style="padding: 0;
+            float: left;
+            margin-top: 1%;">Please Select Atleast One Field.
           
-            
+            </h6>
+            <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
+            <svg class="slds-button__icon" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            </div>
             </div>
             
               
@@ -3772,7 +3772,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
+    var dataExtBool = false;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
@@ -5378,11 +5378,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="
-        
-        
-        
-        (this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
@@ -5608,20 +5604,25 @@ document.addEventListener("mouseup", function(){
         //-----------nitik code started----------------------------------------
         
                         
-                          
-                       
+        
+        
+                   
+                   
+                   
+                        
+                     
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"onclick="CancelDEWhereClauseModal()">'+
-          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6109,7 +6110,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#353535;
+                        background-color:#387F9D;
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
@@ -6128,7 +6129,6 @@ document.addEventListener("mouseup", function(){
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
-         document.getElementById("JoinDESelectAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
