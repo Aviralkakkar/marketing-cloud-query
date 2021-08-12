@@ -6399,12 +6399,9 @@ document.addEventListener("mouseup", function(){
         document.getElementById('SecondDEField').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>';
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"]){
-
-            }
-            else{
+            
               document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
-            }
+            
             
           }
         }
