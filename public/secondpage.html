@@ -6493,7 +6493,7 @@ document.addEventListener("mouseup", function(){
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           console.log("hell in the i");
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
-            console.log("hell in the for");
+            console.log("hell in the for"+ DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"]);
               document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
             
             
