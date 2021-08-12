@@ -6480,15 +6480,15 @@ document.addEventListener("mouseup", function(){
 
     function SecondDEChange(keyForSecondDEField) {
       console.log("keyForSecondDEField"+keyForSecondDEField);
-      if(keyForSecondDEField==null){
+      /*if(keyForSecondDEField==null){
         console.log("keyForSecondDEFielddfbbdfbndf"+keyForSecondDEField);
       }
       else{
         console.log("bye");
-      }
+      }*/
      // console.log("SecondDEJoinField======>"+JoinQueryDetails.DEForJoin[keyForSecondDEField].SecondDEJoinField);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
-        document.getElementById('SecondDEField').innerHTML = '<option value="">select</option>';
+        document.getElementById('SecondDEField').innerHTML = '<option value="">select..</option>';
         console.log("hell in the iff");
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           console.log("hell in the i");
@@ -6498,6 +6498,7 @@ document.addEventListener("mouseup", function(){
             
             
           }
+          console.log("hell out the for");
         }
        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
           for (var i in DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields) {
@@ -6513,7 +6514,7 @@ document.addEventListener("mouseup", function(){
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
       }
-      if (DESetQueryBox.has(document.getElementById('select-01').value)) {
+      if (DESetQueryBox.has(document.getElementById('select-01').value) && keyForSecondDEField!=null) {
         console.log("hell in the iff");
         document.getElementById('select-01').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[keyForSecondDEField].JoinType +'</option>';
         console.log("hell in the iff");
