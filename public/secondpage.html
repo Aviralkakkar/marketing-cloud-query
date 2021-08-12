@@ -5594,7 +5594,12 @@ document.addEventListener("mouseup", function(){
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
-    }   
+    }
+    for (var classEle in document.getElementsByClassName(dragId+"##")) 
+    {
+      document.getElementsByClassName(dragId+"##")[classEle].style.backgroundColor='#387F9D';
+    }
+
   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
@@ -6029,6 +6034,7 @@ document.addEventListener("mouseup", function(){
             var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
             var newLine_Div=document.createElement('div');
             newLine_Div.id=line_ID;
+            newLine_Div.className =FirstDEExtKeyForJoinGlobal+"##";
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
 
             JoinQueryDetails["DEForJoin"].push({
