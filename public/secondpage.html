@@ -4063,7 +4063,7 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-  if(pHeight>=225 && pHeight<=600)
+ /* if(pHeight>=225 && pHeight<=600)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
@@ -4083,14 +4083,23 @@ function resize(e){
     
     panel.style.height = "600px";
     pHeight=600;
-  }
-  /* if(m_pos>=hu && m_pos<= hl)
+  }*/
+ if(m_pos>=hu && m_pos<= hl)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
     console.log('Bottom div height '+panel.style.height);
 
-  }*/
+  }
+  else if(m_pos<hu)
+  {
+    panel.style.height=pHeight;
+  }
+  else if(m_pos>hl)
+  {
+    panel.style.height=pHeight;
+  }
 
 }
 
