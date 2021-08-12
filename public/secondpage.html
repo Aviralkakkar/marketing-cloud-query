@@ -5313,6 +5313,8 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
+        var mydivLength=document.getElementsByClassName("mydiv").length;
+
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5467,13 +5469,8 @@ document.addEventListener("mouseup", function(){
       //TotalMainDeDragged++;
         document.getElementById("RelationshipDiv").innerHTML += relationDivString;
         if (document.getElementsByClassName("mydiv")) {
-          var changePos=1;
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
-            var draggedDiv=document.getElementsByClassName("mydiv")[classEle];  
-            draggedDiv.style.left=(draggedDiv.style.left+(changePos*5))+"px";
-            draggedDiv.style.top=(draggedDiv.style.top+(changePos*5))+"px";
-            changePos++;
           }
         }
       }
