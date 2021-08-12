@@ -2282,7 +2282,7 @@
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
+      <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2325,9 +2325,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2337,7 +2337,7 @@
                           </span>
                         </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2442,6 +2442,14 @@
 
          
             <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="relationship-grid" style="height:5%;" >
+                <button
+                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
+                onclick='openModal("Validate")'
+                style="background-color: #4e8abe !important;">Validate Query</button>
+              <button
+                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+                </div>
               <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
@@ -2466,14 +2474,15 @@
                   </div>
                 </div>
               </div>
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;
+              height: 6vh;">
                 <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                 </svg>
                 </span>
-                <h6>Please select atleast one DE.
+                <h6 style="float: left;">Please select atleast one DE.
               
                 </h6>
                 <div class="slds-notify__close">
@@ -2485,14 +2494,14 @@
                 </button>
                 </div>
                 </div>
-                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #c23934; ">
                   <span class="slds-assistive-text">warning</span>
                   <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                   <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                   </svg>
                   </span>
-                  <h6>Please Join the Query Box.
+                  <h6 style="float: left;">Please Join the Query Box.
                 
                   </h6>
                   <div class="slds-notify__close">
@@ -2504,6 +2513,27 @@
                   </button>
                   </div>
                   </div>
+
+                  <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
+                  height: 6vh;">
+                    <span class="slds-assistive-text">warning</span>
+                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                    </span>
+                    <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                  
+                    </h6>
+                    <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                    </button>
+                    </div>
+                    </div>
              
                     <!--********* nitik code ended ************-->
 
@@ -2515,12 +2545,7 @@
               <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal("Validate")'
-                style="background-color: #4e8abe !important;">Validate Query</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+             
         <!--      <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2685,7 +2710,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2766,7 +2791,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:10%;">
+                  <div class="slds-col" style="height:20px;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -2993,14 +3018,15 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #c23934; width:auto; height: 5vh;
+          padding-top: 0%;">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
             margin-left: 2%;
             margin-top: 1.3%;
         ">
             <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
             </svg>
             </span>
             <h6 style="padding: 0;
@@ -3772,7 +3798,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
@@ -4030,8 +4056,12 @@ function resize(e){
   m_pos = e.y;
   var hl = screen.height-(screen.height*40)/100;
   var hu = screen.height-(screen.height*80)/100;
-  if(m_pos>=hu && m_pos<= hl)
+  
+  var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
+  console.log('Relationship height '+rl);
+   if(m_pos>=hu && m_pos<= rl)
   {
+    console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     
 
@@ -4153,6 +4183,7 @@ document.addEventListener("mouseup", function(){
       console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
       //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
+        console.log('DEDragData.DEExtKey----->'+DEDragData.DEExtKey);
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -4195,6 +4226,7 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
+            console.log('DEDragData.DEName'+DEDragData.DEName);
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
@@ -5281,6 +5313,8 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
+        var mydivLength=document.getElementsByClassName("mydiv").length;
+
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5566,7 +5600,7 @@ document.addEventListener("mouseup", function(){
   
  function changeSchmaPosition(e)
     {
-        console.log('OKKK:'+e.offsetLeft);
+
         if(e.offsetLeft<0)
         {
             e.style.left=0+"px";
@@ -5594,7 +5628,7 @@ document.addEventListener("mouseup", function(){
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
-    }   
+    }
   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
@@ -6394,6 +6428,7 @@ document.addEventListener("mouseup", function(){
             var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
             var newLine_Div=document.createElement('div');
             newLine_Div.id=line_ID;
+            newLine_Div.className =FirstDEExtKeyForJoinGlobal+"##";
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
 
             JoinQueryDetails["DEForJoin"].push({
@@ -6456,7 +6491,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#387F9D;
+                        background-color:#353535;
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
@@ -6475,6 +6510,8 @@ document.addEventListener("mouseup", function(){
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+        document.getElementById("joinQueryboxAlert").style.display = "block";
+
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
@@ -6514,6 +6551,9 @@ document.addEventListener("mouseup", function(){
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
+    }
+    function joinQueryboxAlert(){
+      document.getElementById("joinQueryboxAlert").style.display = "none";
     }
 
   </script>
