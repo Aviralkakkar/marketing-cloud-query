@@ -5640,10 +5640,11 @@ document.addEventListener("mouseup", function(){
         for (var key in JoinQueryDetails.DEForJoin) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
-          console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal]);
-        }
-        console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEName);
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+          console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
+          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEName);
+        
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEName==joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName){
+          console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
@@ -5700,7 +5701,10 @@ document.addEventListener("mouseup", function(){
             '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+
+            }
+            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
               joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
             }
           }
@@ -6002,6 +6006,8 @@ document.addEventListener("mouseup", function(){
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
+        }
+        
       }
       else if (joinedDivSet.size >= 0 ) {
         //-----------nitik code started----------------------------------------
@@ -6389,10 +6395,16 @@ document.addEventListener("mouseup", function(){
 
     function SecondDEChange() {
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
-        document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        document.getElementById('SecondDEField').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>';
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
-            document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"]){
+
+            }
+            else{
+              document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+            }
+            
           }
         }
        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
