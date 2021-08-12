@@ -2,8 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" src="public/assets/styles/salesforce-lightning-design-system.css" />
-
+  <link rel="stylesheet" type="text/css" src="/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
     integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
@@ -16,8 +15,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system_touch.min.css"
     integrity="sha512-5j2QXzkr/ZIuvsLKYgRr8HEfAx5D+Mg0dFDCSGwKR2GKcdZbJSynKdirYGVGRVWLz9ryxV4/0kfoCGffJD3fQw=="
     crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css"
-    src="public/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
+    <link rel="stylesheet" type="text/css"
+    src="/assets/salesforce-lightning-design-system-2.13.7/assets/styles/salesforce-lightning-design-system.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -1918,6 +1917,24 @@
   </style>
   <!-- Khushboo code started -->
   <style>
+       #right_panel {
+    position: absolute;
+    width: 100%;
+    padding-top: 4px;
+    height: 96px;
+    bottom: 0;
+    background-color: #f0f0ff;
+}
+
+#right_panel::after {
+    content: '';
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    cursor: ns-resize;
+}
     body {
       overflow: hidden !important;
     }
@@ -2224,6 +2241,14 @@
       font-size: 12px;
     }
 
+    .relationship-grid 
+    {
+      background-image:
+      repeating-linear-gradient(rgb(224, 233, 235) 0 1px, transparent 1px 100%),
+      repeating-linear-gradient(90deg, rgb(224, 233, 235) 0 1px, transparent 1px 100%);
+      background-size: 10px 10px;
+    }
+
     .list-group-item {
       text-align: left;
     }
@@ -2282,7 +2307,7 @@
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
-              <div class="slds-panel__header" style="height:9vh;">
+              <div class="slds-panel__header" style='height:9vh;'>
                 <h2 class="slds-panel__header-title slds-text-heading_small " title="Panel Header"
                   style="font-size: larger;">Data Sources</h2>
                 <div class="slds-panel__header-actions">
@@ -2294,15 +2319,15 @@
                 </div>
               </div>
               <div class="panel_body slds-panel__body"
-                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 88vh;padding-right:0%;">
+                style="overflow:scroll;width:95%;border:2px solid #d8dde6;margin:10px;border-radius:2%;height: 89vh;padding-right:0%;">
 
                 <div class="slds-tree_container ">
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2312,7 +2337,7 @@
                           </span>
                         </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2333,7 +2358,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="/slds icons/utility-sprite/svg/symbols.svg#open_folder">
+                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
 
                         </svg>
@@ -2345,7 +2370,7 @@
                     </button>
                     <div class="slds-p-left_small">
                       <ul aria-labelledby="treeheading" class="myUlClass slds-hide slds-tree" id="sharedDataExtension"
-                        role="tree" style="width: 100%;">
+                        role="tree" style="width:100%;">
 
                       </ul>
                     </div>
@@ -2361,7 +2386,7 @@
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small"
                           aria-hidden="true">
                           <use
-                            xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
 
                         </svg>
@@ -2415,12 +2440,13 @@
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-          <div class="slds-grid slds-grid_vertical" style="height:100%">
-            <div class="slds-scrollable" id="queryDiv" style="height:75%;margin-bottom:1%;position:relative;" draggable="false">
-              <div id="RelationshipDiv">
-              </div>
+         
+            <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
+              
               <div id="MainDivAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none">
+                      <!--********* nitik code started ************-->
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
                   <span class="slds-assistive-text">error</span>
                   <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
                     title="Description of icon when needed">
@@ -2440,56 +2466,72 @@
                   </div>
                 </div>
               </div>
-              <div id="DESelectAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <P>Please select atleast one DE</P>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelDESelectAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                  </div>
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;">
+                <span class="slds-assistive-text">warning</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+                </span>
+                <h6 >Please select atleast one DE.
+              
+                </h6>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
                 </div>
-              </div>
-              <div id="QueryBoxJoinAlert" style="display:none">
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <P>Please Join the Query Box.</P>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                      onclick="CancelQueryBoxJoinAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">close</span>
-                    </button>
-                  </div>
                 </div>
-              </div>
-
+                <!--priyanka added-->
+                 <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="JoinDESelectAlert" style="display:none; background-color: #c23934;">
+                <span class="slds-assistive-text">warning</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+                </span>
+                <h6 >You can not delete Joined Query Box. You need to referesh the page.
+                </h6>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                  <span class="slds-assistive-text">warning</span>
+                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                  </svg>
+                  </span>
+                  <h6>Please Join the Query Box.
+                
+                  </h6>
+                  <div class="slds-notify__close">
+                  <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
+                  <svg class="slds-button__icon" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                  </button>
+                  </div>
+                  </div>
+             
+                    <!--********* nitik code ended ************-->
 
 
               <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-          </button>
+              </button>
           
-          <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
-          <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
+              <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
+              <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
               <button
@@ -2501,6 +2543,7 @@
               <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+               
               <!--********  Nitik code started *************-->
 
               <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
@@ -2532,39 +2575,40 @@
                 <div class="slds-modal__container" >
                     <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd;" >
                       <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
-                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                        <svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                     
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick="CancelDEWhereClauseModal()">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                         </svg>
                         <span class="slds-assistive-text">Close</span>
-                        </button>
+                      </button>
         
                       
                         <!--jndjdkmdkmkdmksddddddddddddddddddm-->
                         
                           
                         </header>
-                        <div id="DeDragAlert" style="display:none">
-                          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-                            <span class="slds-assistive-text">error</span>
-                            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                              title="Description of icon when needed">
-                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                              </svg>
-                            </span>
-                            <P>Please drag all the de atleast one time.</P>
-                            <div class="slds-notify__close">
-                              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                                onclick="CancelDeDragAlert()">
-                                <svg class="slds-button__icon" aria-hidden="true">
-                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                </svg>
-                                <span class="slds-assistive-text">Close</span>
-                              </button>
-                            </div>
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          </svg>
+                          </span>
+                          <h6>Please drag all the DE and JoinType atleast one time.
+                        
+                          </h6>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
                           </div>
-                        </div>
+                          </div>
+                     
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
           
@@ -2592,9 +2636,19 @@
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
                                   style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
-                                <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                    style="padding-left:0rem; background-color:white; position: relative;">
+                    
+                                  </ul>
+                    
+                                </div>
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                  style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
+                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
+                    
+                                  <ul aria-labelledby="component-selector-container__heading" id="uoList2" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
                     
                                   </ul>
@@ -2604,7 +2658,7 @@
                     
                               <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
                                 style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
-                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
+                                contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
                                
                                     <div class="expression"></div>
                                     <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
@@ -2627,16 +2681,13 @@
                 </section>
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
-<!--****** Nitik code ended *********-->
-          
-            </div>
-            <div class="slds-col slds-table--header-fixed_container " id="right_panel"
-                style="height: 25%;padding-top:0%;" style="overflow: scroll;" draggable="false">
-                <div id="newDiv" style="border: 2px solid rgb(226, 226, 226); background-color:rgb(226, 226, 226);" draggable="false"></div>
-      
-      
-      
-                <div class="slds-scrollable  " id="tableDiv" style="height:70%;margin-top:1%;">
+                      <!--****** Nitik code ended *********-->
+               </div>
+
+                <div class="slds-table--header-fixed_container " id="right_panel"
+                style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
+                <div class="slds-grid slds-grid_vertical" style="height: 100%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2716,8 +2767,8 @@
       
                     </tbody>
                   </table>
-                </div>
-                <div style="height:5%;">
+                  </div>
+                  <div class="slds-col" style="height:20px;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -2730,7 +2781,7 @@
                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
       
                           </svg>
-                          <span class="slds-assistive-text">Description of icon when needed</span>
+                          <span class="slds-assistive-text">Description of icon when needed</span></span>
                       </button>
                     </div>
                     <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
@@ -2753,16 +2804,14 @@
                       </button>
                     </div>
                   </div>
+                  </div>
+                  </div>
                 </div>
-              </div>
-
-
-
-
-
-
-
             </div>
+           
+            
+
+            
               
             </div>
            
@@ -2869,7 +2918,7 @@
       <div class="slds-modal__container">
         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-            onclick="CancelDERecordModal()">
+            onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -2944,27 +2993,36 @@
 
 
 
-        <div id="FieldSelectNextAlert" style="display:none">
-          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-            <span class="slds-assistive-text">error</span>
-            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-              title="Description of icon when needed">
-              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-              </svg>
-            </span>
-            <P>Please select atleast one field</P>
-            <div class="slds-notify__close">
-              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"
-                onclick="CancelFieldSelectNextAlert()">
+        
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="height: 5vh; padding-top: 1%; display:none; background-color: #c23934; width:auto;">
+           
+              <span class="slds-icon_container slds-icon-utility-error"
+                  title="Description of icon when needed" style="float: left;">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true" style="fill: white;  margin-top: -6%;">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+              <div class="slds-notify__content" style="float: left;">
+                <h2 class="slds-text-heading_small ">Please Select Atleast one Field.<br> </h2>
+              </div>
+              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelPopup()" style="margin-right: -5%;float: right;">
                 <svg class="slds-button__icon" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
                 <span class="slds-assistive-text">Close</span>
-              </button>
+                </button>
+          
+            
             </div>
-          </div>
-        </div>
+            
+              
+           
+         
+
+      
 
         
 
@@ -2989,7 +3047,7 @@
                   <ul class="list-group left-side" 
                     style="height: 23rem; border: none; background-color:white; padding:0%; margin:0%; ">
 
-                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)" style="height:100%;width:100%; border: none;"> 
+                    <select multiple id="leftsideListInSelectField" onclick="setButton(this)"  style="height:100%;width:100%; border: none;"> 
                      
                     </select> 
                     <!-- <li class="list-group-item" value="Attribute_1" name="s" label="ss">Attribute_1</li> 
@@ -3000,17 +3058,36 @@
 
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
 
-                <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" /> 
- 
- 
-                <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); sortList(document.getElementById('leftsideListInSelectField').querySelectorAll('options')); " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               
+               <!-- <input type="button" value=" >> " id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 10%; border: 1px solid lightgrey; margin-bottom: 20%;" />
+               -->
+                <button class="slds-button slds-button_neutral btn-pagination" id="btnRight" onClick="move(document.getElementById('leftsideListInSelectField'),document.getElementById('rightsideListInSelectField'));" style="margin: 3px; width: 2rem; height: 2rem; padding-left: 30%; border: 1px solid lightgrey; margin-bottom: 20%;">
+                <span class="slds-icon_container slds-icon-utility-chevronright"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
 
-               <!-- <button class="btn btn-default btn-sm move-right">
-                  <span class="glyphicon glyphicon-chevron-right">R</span>
-                </button>
-                <button class="btn btn-default btn-sm move-left" onlick=" modal1button()" style="margin-top: 25%;">
-                  <span class="glyphicon glyphicon-chevron-left">L</span>
-                </button>-->
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+              
+               <!-- <input type="button" value=" << " id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 3%; height: 2rem;" /> 
+               -->
+              <button class="slds-button slds-button_neutral btn-pagination" id="btnLeft" onClick="move(document.getElementById('rightsideListInSelectField'),document.getElementById('leftsideListInSelectField')); func() " style="width:2rem; padding-left: 23%; height: 2rem; margin-left: -1%;">
+                <span class="slds-icon_container slds-icon-utility-chevronleft"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+              
+                 
               </div>
 
               <div class="dual-list list-right col-md-5" style="padding:0%; margin:0%; border: 1px solid lightgray; position: relative; ">
@@ -3039,11 +3116,37 @@
 
               </div>
               <div class="list-arrows col-md-1 text-center" style="padding:0%; margin:0%; margin-top: 25%;">
-                <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
+               <!-- <input type="button" value="/\" id="btnUp" onClick="move(true);" style="width: 2rem;
                  height: 2rem;
                  border: 1px solid lightgray;
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
+               -->
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
+               height: 2rem;
+               border: 1px solid lightgray;
+               margin-bottom: 20%; margin-left: 9%;">
+                <span class="slds-icon_container slds-icon-utility-chevronup"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronup"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+                <span class="slds-icon_container slds-icon-utility-chevrondown"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
 
               <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
                   <span class="glyphicon glyphicon-chevron-up">U</span>
@@ -3086,7 +3189,7 @@
         <!--Header for modal 2-->
         <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; height:5rem;">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-            onclick="CancelDERecordModal()">
+           onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
             <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -3164,9 +3267,9 @@
 
 
           <div id="component-selector-container" class=" slds-float_left "
-            style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
+            style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
             <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-              style=" border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; margin-bottom: 0; ">Data Extension Fields</h4>
+              style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
             <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
 
               <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
@@ -3178,7 +3281,7 @@
           </div>
 
           <div id="RichTextEditor" class="editor slds-float_right  "
-            style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
+            style=" width:70%; height:100%; border: 2px solid lightgray; font-size: 15px; position: -webkit-sticky; "
             contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDrop(event,this)">
           </div>
 
@@ -3221,6 +3324,9 @@
   function moveUp(direction) {
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
+    console.log(currentSel);
+    console.log(index);
+    console.log(direction);
     if (direction) {//up 
       if (index == 0) return;
 
@@ -3252,48 +3358,12 @@
     }
   }
 
-  function sortList(val) {
-        var list, i, switching, b, shouldSwitch;
-        console.log('-----val-----'+val);
-        list = document.getElementById(val);
-        
-        console.log('------------>'+list);
-        
-        console.log('==============new option'+ document.getElementById(val).querySelectorAll('option'));
-      
-        switching = true;
-        /* Make a loop that will continue until
-        no switching has been done: */
-        while (switching) {
-          // Start by saying: no switching is done:
-          switching = false;
-          b = list.getElementsByTagName("OPTION");
-          // Loop through all list items:
-          for (i = 0; i < (b.length - 1); i++) {
-            // Start by saying there should be no switching:
-            shouldSwitch = false;
-            /* Check if the next item should
-            switch place with the current item: */
-            if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
-              /* If next item is alphabetically lower than current item,
-              mark as a switch and break the loop: */
-              shouldSwitch = true;
-              break;
-            }
-          }
-          if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark the switch as done: */
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
-          }
-        }
-      }
+ 
 
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
-      alert("Please select first!");
+      document.getElementById("FieldSelectNextAlert").style.display = "block";
       return;
     }
     for (var i = 0; i < src.length; i++) {
@@ -3304,6 +3374,11 @@
         op.text = src.options[src.selectedIndex].text;
         op.id =src.options[src.selectedIndex].id;
         op.style='padding:4%; margin:0;';
+        op.label=src.options[src.selectedIndex].text;
+       
+        op.draggable='true';
+        
+
        // console.log(src.options[src.selectedIndex].value);
        // console.log(src.options[src.selectedIndex].text);
        // console.log(src.options[src.selectedIndex].id);
@@ -3315,10 +3390,41 @@
         
       }
     }
-  // sortList("leftsideListInSelectField");
-  // sortListDir("rightsideListInSelectField");
+    
+     
+    sortListDir("rightsideListInSelectField");
            
   }
+  function func(){
+    var list = document.getElementById('leftsideListInSelectField');
+    console.log(list);
+    b = list.getElementsByTagName("OPTION");
+          // Loop through all list items:\
+    console.log('-----------lngth-----'+b.length);
+    console.log(b);
+    const map1 = new Map();
+    var list1=[];
+    for(i=0;i<b.length;i++){
+     console.log(b[i].value);
+     console.log(b[i].text);
+     list1.push({
+      "FieldName" :b[i].text ,
+      "FieldType" : b[i].value
+    }) ;
+      }
+      console.log('---------------------end of loc---------');
+      console.log(list1);
+      document.getElementById('leftsideListInSelectField').innerHTML = '';
+      list1.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+      console.log(list1);
+      for (var i = 0; i < list1.length; i++) {
+        
+        document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
+           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+
+       
+      }
+    }
 
   function sortListDir(val) {
         var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
@@ -3334,7 +3440,7 @@
           switching = false;
           b = list.getElementsByTagName("OPTION");
           // Loop through all list-items:
-          for (i = 0; i < (b.length - 1); i++) {
+          for (i = 0; i < (b.length -1); i++) {
             // Start by saying there should be no switching:
             shouldSwitch = false;
             /* Check if the next item should switch place with the current item,
@@ -3394,9 +3500,9 @@
       if (obj[i].selected) obj[i].selected = false;
     }
   }
-  
-
-     
+  function closrerror(){
+    document.getElementById("FieldSelectNextAlert").style.display = "none";
+  }
 
 </script>
 
@@ -3408,42 +3514,52 @@
         for (var a of as) if (!bs.has(a)) return false;
         return true;
       }*/
-      var countOfDeWithWhereClauseValue=0;    
-    var countOfDeWithoutWhereClauseValue=0;  
+      var countOfDeWithWhereClauseValueMain=0;    
+      var countOfDeWithoutWhereClauseValueMain=0;  
+      var OnlyOneDeWhichContainWhereClause;  
+      var Str;
 function openModal(functionAction) {
-   
-    
+  var countOfDeWithWhereClauseValue=0;    
+      var countOfDeWithoutWhereClauseValue=0; 
+     
     
    if (DESetQueryBox.size >0) {
         //document.getElementById('RelationPopup').style.display = 'none';
         document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
+      
         document.getElementById('uoList').innerHTML = '';
-        //console.log("nitik value1");
+       
+      
+        console.log("nitik value1");
             for (const val of DESetQueryBox) {
               var temp=val+"WhereClauseValue";
               var value=document.getElementById(temp).innerHTML;
-              //console.log('value'+value);
-              //console.log('nitik key'+temp);
+              console.log('value'+value);
+              console.log('nitik key'+temp);
               if(value==""){
                 countOfDeWithoutWhereClauseValue++;
-                //console.log("nitik value12");
+                countOfDeWithoutWhereClauseValueMain=countOfDeWithoutWhereClauseValue;
+                console.log("nitik value12");
               }
               else{
-               
+                console.log("nitik value128");
+                OnlyOneDeWhichContainWhereClause=val;
                 countOfDeWithWhereClauseValue++;
+                countOfDeWithWhereClauseValueMain=countOfDeWithWhereClauseValue; 
                 if(val in DEListMap.DEMap){
+                  console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; text-align: left; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' +'<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' +' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
                 
                 }
                
-                
+           
               }
               
             }
@@ -3452,9 +3568,9 @@ function openModal(functionAction) {
                   
                   for(const valId of draggedDeKey){
                     
-                     // console.log("qwerty");
+                      console.log("qwerty");
                       document.getElementById(valId+"WhereClasueDEList").className = "slds-button slds-button_brand"; 
-                     // console.log("qwerty end");
+                      console.log("qwerty end");
                     
                   }
                   
@@ -3464,9 +3580,9 @@ function openModal(functionAction) {
             
           }
       else if(DESetQueryBox.size == 0 ){
-       // console.log('hi');
+        console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
-       // console.log('bye');
+        console.log('bye');
       }    
       
      /* if(countOfDeWithoutWhereClauseValue==DESetQueryBox.size || countOfDeWithWhereClauseValue==1){
@@ -3475,19 +3591,55 @@ function openModal(functionAction) {
         validateQuery(JoinQueryDetails , 'Run');
         console.log('called function validate query');
       }*/
-     // console.log("nitik value23"+JSON.stringify(joinedDivSet));
-            //console.log("nitik value24"+DESetQueryBox.size);
+      console.log("nitik value23"+JSON.stringify(joinedDivSet));
+
+
+      if(countOfDeWithWhereClauseValue==1){
+            var NameOfDe=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").name;
+            console.log("DeName"+NameOfDe);
+            var FieldWhereClause=document.getElementById(OnlyOneDeWhichContainWhereClause+"WhereClasueDEList").value;
+            console.log("FieldWhereClause"+FieldWhereClause);
+           // var key=OnlyOneDeWhichContainWhereClause;
+         
+                        if(NameOfDe in DEListMap.DEMap) {
+                          for (var key in DEListMap.DEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"], "g")
+                            console.log("-----");
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DEMap[NameOfDe].DEName + '].[' + DEListMap.DEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
+                            console.log("FieldWhereClause=-"+FieldWhereClause);
+                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
+                            //console.log("FieldName=-"+FieldName);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.SharedDEMap) {
+                          for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause-="+FieldWhereClause);
+                          }
+                        }
+                        else if(NameOfDe in DEListMap.DataViewMap) {
+                          for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
+                            var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            console.log("FieldWhereClause=="+FieldWhereClause);
+                          }
+                        }
+                        document.getElementById('RichTextEditorForFinalWhereClause').innerHTML = FieldWhereClause; 
+          }
+            console.log("nitik value24"+DESetQueryBox.size);
+            console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
-              //console.log("nitik value2"+DESetQueryBox.size);
+              console.log("nitik value2"+DESetQueryBox.size);
               document.getElementById("backdrop").style.display = "block"
               document.getElementById("DEWhereClauseModal").style.display = "block"
               document.getElementById("DEWhereClauseModal").classList.add("show")
             } 
             else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue ==1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
-              //console.log('calling function validate query');
+              console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
               validateQuery(JoinQueryDetails , functionAction);
-              //console.log('called function validate query');
+              console.log('called function validate query');
             }
            else{
              if(DESetQueryBox.size != 0 ){
@@ -3495,6 +3647,67 @@ function openModal(functionAction) {
              }
             
            }
+           if(draggedDeKey.size==0){
+            console.log(" @@@@@@@@@@@@sec ");
+           if(DESetQueryBox.size > 1){
+             console.log(" @@@@@@@@@@@@ ");
+            //document.getElementById('RichTextEditorForFinalWhereClause').innerHTML=''
+            document.getElementById('uoList2').innerHTML = '';
+            
+                  for (var key in JoinQueryDetails.DEForJoin) {
+                    console.log(" %%%%%%%%%%%  ");
+                        console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
+                        
+                          console.log(" *********** ");
+                          
+                              if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
+                                document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("1=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                              }
+
+                            
+                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Right Outer Join with Exclusion') {
+                             
+                              document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("2=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                            }
+                        
+                            else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
+                         
+
+                            document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
+                                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                                  ' <span class="slds-size_1-of-1">' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + FirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  ' </span>' +
+                                  '  </div>' +
+                                  '</li>';
+                                  console.log("3=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                            }
+                            
+                        }
+                        
+                      
+
+                    
+                        console.log(" #$%^&*() ");
+                       
+              }
+           
+           }
+
           
     
 
@@ -3510,26 +3723,36 @@ function CancelDeDragAlert() {
   document.getElementById('DeDragAlert').style.display = 'none';
 }
 
+function CancelDEWhereClauseModal() {
+  document.getElementById('DEWhereClauseModal').style.display = 'none';
+}
 function closeModal() {
     document.getElementById("backdrop").style.display = "none";
     document.getElementById("DEWhereClauseModal").style.display = "none";
     document.getElementById("DEWhereClauseModal").classList.remove("show");
-    //console.log("tt");
+    console.log("tt");
     var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
-   // console.log("text"+text);
+    console.log("text"+text);
+   // console.log("Str.length==="+Str.length);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
-    //console.log("tt completed");
+    console.log("tt completed");
     if(document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length == 158){
-      //console.log("tt1");
+      console.log("tt1");
       //draggedDeName.clear();
       for(const Id of draggedDeKey){
-        //console.log("tt2");
+        console.log("tt2");
         document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
-        //console.log("tt3");
+        console.log("tt3");
+      }
+      for(const Id of draggedDeJoinKey){
+        console.log("tt2");
+        document.getElementById(Id).className = "btn"; 
+        console.log("tt3");
       }
       //draggedDeId.clear();
+      draggedDeJoinKey.clear();
       draggedDeKey.clear();
-      //console.log("tt completed1");
+      console.log("tt completed1");
     }
     
 }
@@ -3549,24 +3772,24 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
     function showDataExtensions() {
       var de = document.getElementById("dataExtensionButton");
-      console.log(de);
+     
       if (dataExtBool) {
-        console.log('show');
+       
         document.getElementById("dataExtension").className = "myUlClass button-padding slds-show slds-tree";
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
 
         dataExtBool = false;
       }
       else {
-        console.log('hide');
+       
         document.getElementById("dataExtension").className = "slds-hide slds-tree";
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Data Extensions</h6></span>';
         dataExtBool = true;
       }
 
@@ -3575,15 +3798,15 @@ window.onclick = function(event) {
     function showSharedDataExtensions() {
       var de = document.getElementById("sharedDataExtensionButton");
       if (sharedDataExtBool) {
-        console.log('show');
+        
         document.getElementById("sharedDataExtension").className = "myUlClass button-padding slds-show slds-tree";
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
         sharedDataExtBool = false;
       }
       else {
-        console.log('hide');
+       
         document.getElementById("sharedDataExtension").className = "slds-hide";
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;">Shared Data Extensions</h6></span>';
         sharedDataExtBool = true;
       }
 
@@ -3592,16 +3815,16 @@ window.onclick = function(event) {
     function showDataViews() {
       var de = document.getElementById("dataViewsButton");
       if (dataViewsBool) {
-        console.log('show');
+      
         document.getElementById("dataViews").className = "myUlClass button-padding slds-show slds-tree";
 
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
         dataViewsBool = false;
       }
       else {
-        console.log('hide');
+        
         document.getElementById("dataViews").className = "slds-hide";
-        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="assets/salesforce-lightning-design-system-2.13.7/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
+        de.innerHTML = '<span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder"></use><svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="tree-label" id="31244-label"><h6 style="color:#425769 ;font-size:larger;text-align:left;">Data Views</h6></span>';
         dataViewsBool = true;
       }
 
@@ -3662,7 +3885,7 @@ window.onclick = function(event) {
 
     var records = document.getElementById("totalRecords");
     records.innerHTML = "( " + objJSON.length + " rows )";
-    console.log("Row " + objJSON.length);
+   
 
     function prevPage() {
       if (current_page > 1) {
@@ -3728,147 +3951,114 @@ window.onclick = function(event) {
 
 
     //  *************** Resizeable code *****************//
-
-
-  /*  function getHeight()
-    {
-      const queryDiv = document.getElementById("queryDiv");
-      console.log('div height '+parseInt(queryDiv.style.height));
-      var cmp = parseInt(queryDiv.style.height);
-      if(cmp>190 && cmp<565)
-      {
-        console.log('Inside cmp'+cmp);
-        //queryDiv.style.resize = 'unset';
-      }
-      else
-      {
-        console.log('Inside else cmp '+cmp);
-        //queryDiv.style.resize = 'vertical';
-      }
-      
-
-    }*/
-
-
-    const panel = document.getElementById("right_panel");
+   /* const panel = document.getElementById("right_panel");
     const upper = document.getElementById("queryDiv");
     const table = document.getElementById("tableDiv");
-    const newDiv = document.getElementById("newDiv");
-    var count = 0;
-    var cnt=0;
-    var dragging = false;
-    let m_pos;
-    let m_pos_mob;
-    function resize(e) 
+    const right = document.getElementById("queryDiv");
+    function resize(e)
     {
-      cnt = cnt +1 ;
-      if (dragging && cnt==2)
+     
+    
+      if(e.clientY <= m_pos)
       {
-        cnt=0;
-        var hp = parseInt(panel.style.height);
-        var hu = parseInt(upper.style.height);
-        console.log('hp ' + hp + ' hu ' + hu);
-        if (e.clientY <= m_pos) 
+        if(count < 60 )
         {
-          if (hp < 75 && hu > 25)
-          {
-            hp = hp + 1;
-            panel.style.height = hp + "%";
-            hu = hu - 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count++;
-            console.log(count);
+          count++;
+        }
+        
+           
             if (count >= 15 && count <= 35) 
             {
               var tb = parseInt(table.style.height);
               tb = tb + 1;
               table.style.height = tb + "%";
             }
-          }
-        }
-        if (e.clientY > m_pos) 
+
+      }
+      if(e.clientY > m_pos)
+      {
+      
+        if(count > 0)
         {
-          if (hp > 25) 
-          {
-            console.log("Inside 2nd if");
-            hp = hp - 1;
-            panel.style.height = hp + "%";
-            hu = hu + 1;
-            upper.style.height = hu + "%";
-            console.log('hp ' + hp + ' hu ' + hu);
-            count--;
-            console.log(count);
-            if (count >= 15 && count <= 35) 
+          count--;
+        }
+        
+      
+            if (count >= 15 && count <= 35)
             {
               var tb = parseInt(table.style.height);
               tb = tb - 1;
               table.style.height = tb + "%";
             }
 
-          }
-
-        }
       }
-    }
+      
 
-    newDiv.addEventListener("mousedown", function (e) {
-      console.log('offset y ' + e.clientY);
-      dragging = true;
+    }
+    document.addEventListener("mouseup", function () {
+   
+      document.removeEventListener("mousemove", resize, false);
+    }, false);
+    right.addEventListener("mousedown",function(e)
+    {
       if (e.clientY) {
         m_pos = e.clientY;
-        console.log('mouse down'); 
+      
         document.addEventListener("mousemove", resize, false);
         document.addEventListener("mouseup", function () {
-          dragging = false;
-          console.log('mouse up');
-          document.removeEventListener("mousemove", resize, false);
-        }, false);
-      }
-    }, false);
-
- 
-
    
+      document.removeEventListener("mousemove", resize, false);
+    }, false);
+      }
+
+      
+    },false);
 
 
-//------- Mobile View ----------------//
 
+*/
 
-    /*  function resizeMobile(e){
-  console.log('Touch moved ');
-  var hp = parseInt(panel.style.height);
-  var hu = parseInt(upper.style.height);
-  console.log('hp '+hp+' hu '+hu);
-  if(e.touches[0].clientY<=m_pos_mob )
+  </script>
+  <script>
+    const BORDER_SIZE = 4;
+const panel = document.getElementById("right_panel");
+const table = document.getElementById("tableDiv");
+
+let m_pos;
+function resize(e){
+  const dx = m_pos - e.y;
+  m_pos = e.y;
+  var hl = screen.height-(screen.height*40)/100;
+  var hu = screen.height-(screen.height*80)/100;
+  if(m_pos>=hu && m_pos<= hl)
   {
-    if(hp<=75 && hu>=25)
-    {
-    hp=hp+1;
-    panel.style.height = hp+"%";
-    hu = hu-1;
-    upper.style.height = hu+"%";
-    console.log('hp '+hp+' hu '+hu);
-    }
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    
+
+  }
+
+}
+
+panel.addEventListener("mousedown", function(e){
+  if (e.offsetY < BORDER_SIZE) {
+    m_pos = e.y;
+    document.addEventListener("mousemove", resize, false);
   }
 }, false);
 
-
-document.addEventListener("touchend ", function(){
-  console.log('mobile mouse up');
-    document.removeEventListener("touchmove", resizeMobile, false);
-}, false);*/
-
-
-  </script>
+document.addEventListener("mouseup", function(){
+    document.removeEventListener("mousemove", resize, false);
+}, false);
+</script>
 
   <!-- Khushboo code Ending -->
 
   <script type="text/javascript">
-    //var draggedDeName=new Set();
-    //var draggedDeId=new Set();
+   // var draggedDeName=new Set();
+   // var draggedDeId=new Set();
     var draggedDeKey=new Set();
-   
+    var draggedDeJoinKey=new Set();
+    //var TotalMainDeDragged=0;
 
     var DEDragData = {
       "DEName": '',
@@ -3926,14 +4116,25 @@ document.addEventListener("touchend ", function(){
       ev.preventDefault();
     }
 
-    
+    document.ondragstart = function (event) {
+      var obj = { id: event.target.id, value: event.target.value, name: event.target.name };
+      console.log('Object ' + JSON.stringify(obj));
+      event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+    };
+
+    document.ondragover = function (event, ev) {
+      event.preventDefault();
+    };
+    function allowDroping(ev, event) {
+                ev.preventDefault();
+              }
           
               document.ondragstart = function (event) {
                 var obje = { id: event.target.id, value: event.target.value, name: event.target.name };
                
-               // console.log('Object12 ' + obje.id);
+                console.log('Object12 ' + obje.id);
                 
-                //console.log('Object12 ' + JSON.stringify(obje));
+                console.log('Object12 ' + JSON.stringify(obje));
                 
                  
                 event.dataTransfer.setData("text/plain", JSON.stringify(obje));
@@ -3948,8 +4149,8 @@ document.addEventListener("touchend ", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-      //console.log(" DEDragData.DEName"+ DEDragData.DEName);
-      //console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
+      console.log(" DEDragData.DEName"+ DEDragData.DEName);
+      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
       //if condition added by nitik
       if(DEDragData.DEName==DEDragData.DEExtKey){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
@@ -3972,8 +4173,7 @@ document.addEventListener("touchend ", function(){
                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" > ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '<br>';*/
               //line added by priyanka to create list in dueking picklist
               document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                 '" label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
+                 + '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';   
       
              
             }
@@ -4022,19 +4222,19 @@ document.addEventListener("touchend ", function(){
         "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
         "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
       }
-     // console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
+      console.log('DEWhereClauseDragData : ' + JSON.stringify(DEWhereClauseDragData));
       if(DEWhereClauseDragData.FieldName!=null){
       insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
       function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-        var sel, range;
+        var sel, range, JoineDeWhereClause;
         if (window.getSelection) {
           sel = window.getSelection();
           var parentID = window.getSelection().anchorNode.parentNode.id;
-          //console.log("parentID"+parentID);
+          console.log("parentID"+parentID);
           var anchorID = window.getSelection().anchorNode.id;
-          //console.log("anchorID"+anchorID);
+          console.log("anchorID"+anchorID);
           var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-         // console.log("superparentID"+superparentID);
+          console.log("superparentID"+superparentID);
           //code added by priyanka  for moving 
           if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
             if (sel.getRangeAt && sel.rangeCount) {
@@ -4047,49 +4247,59 @@ document.addEventListener("touchend ", function(){
           }
           else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
                       if (sel.getRangeAt && sel.rangeCount) {
-                        //console.log("hello");
-                        //draggedDeName.add(FieldType);
-                        key = FieldKey.split("WhereClasueDEList");
-                        FieldId = key[0];
-                        //console.log("FieldId=="+FieldId);
-                        draggedDeKey.add(FieldId)
-                        //draggedDeId.add(FieldKey)
+                        console.log("hello");
                         range = sel.getRangeAt(0);
                         range.deleteContents();
+                        //draggedDeName.add(FieldType);
+                        if(FieldKey.charAt(0)=="["){
+                          console.log("start");
+                          
+                         
+                         
+                          console.log("start-FieldName==="+FieldName);
+                          draggedDeJoinKey.add(FieldKey);
+                          document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
+                          range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        }
+                        else{
+                          console.log("stop");
+                          key = FieldKey.split("WhereClasueDEList");
+                          FieldId = key[0];
+                        console.log("FieldId=="+FieldId);
+                        draggedDeKey.add(FieldId)
+                       // draggedDeId.add(FieldKey)
+                        
                         
                         //range.insertNode(document.createTextNode(FieldName));
-                       // console.log('check start');
+                        console.log('check start');
                       // document.getElementById(FieldKey).style.backgroundColor='blue !important';
                        document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
 
                       
-                        //console.log('check end');
+                        console.log('check end');
                         if(FieldType in DEListMap.DEMap) {
                           for (var key in DEListMap.DEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            console.log("-----");
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=-"+FieldName);
-                           // FieldName = "["+FieldName+"].["+DEListMap.DEMap[FieldType].DEFields[key]['FieldName']+"]";
-                            //console.log("FieldName=-"+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName-="+FieldName);
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
                           for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
                             FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
-                            console.log("FieldName=="+FieldName);
                           }
                         }
 
                         range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        }
+                       
+                       
                       }
                     }
         }
@@ -4151,8 +4361,8 @@ document.addEventListener("touchend ", function(){
     }
 
     function validateQuery(JoinQueryDetails, actionType) {
-     // var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
-     // console.log('value======'+richTextEditorForFinalWhereClauseValue);
+      //var richTextEditorForFinalWhereClauseValue= document.getElementById("RichTextEditorForFinalWhereClause").innerHTML.split("\"");
+      //console.log('value======'+richTextEditorForFinalWhereClauseValue);
       /*for (const val of DESetQueryBox) {
         var count=0;
         for(var i=0;i<draggedDeName.length;i++){
@@ -4170,26 +4380,21 @@ document.addEventListener("touchend ", function(){
           return;
         }
       }*/
-     // console.log("draggedDeName000000");
-      if(isSetEqual(DESetQueryBox, draggedDeKey)){
-        console.log("draggedDeName8978");
+      console.log("draggedDeName000000=="+draggedDeKey.size);
+      console.log("DESetQueryBox=="+DESetQueryBox.size); 
+      console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
+      //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
+      if(DESetQueryBox.size>1){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length)){
+        //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
       }
-      /*for(const val of DESetQueryBox){
-        if(draggedDeKey.has(val)){
-
-        }
-        else{
-          //console.log("draggedDeName8978");
-          document.getElementById('DeDragAlert').style.display = 'Block';
-          return;
-        }
-      }*/
-      //console.log("draggedDeName"+draggedDeKey);
+    }
+     // console.log("draggedDeName"+draggedDeName);
 
 
-      //console.log('action type'+actionType);
+      console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
       document.getElementById('FullPageSpinner').style.display = 'block';
       document.getElementById('DEListSidebar').style.marginTop = '-650px';
@@ -4243,18 +4448,96 @@ document.addEventListener("touchend ", function(){
         }
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
+        
+                
+       console.log("before the for");
+        for (const k of DESetQueryBox) {
+          console.log("in the for");
+          if(k in DEListMap.DEMap) {
+            console.log("in the if");
+              for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
+                console.log("in the for2");
+                strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DEListMap.DEMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery1= "+strQuery );
+            }
+            else if (k in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+                console.log("in the for3");
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
+            }
+            else if (k in DEListMap.DataViewMap) {
+              console.log("in the else=if");
+              for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
+                console.log("in the for4");
+                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery3="+strQuery );
+            }
+            
+          
+    
+        }
+        strQuery = strQuery.slice(0, -1);
+        console.log(" strQuery=="+strQuery);        
+        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery==="+strQuery);
+        
+        console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
+        console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
-        console.log("countOfDeWithoutWhereClauseValue "+countOfDeWithoutWhereClauseValue);
-        console.log("countOfDeWithWhereClauseValue "+ countOfDeWithWhereClauseValue);
-        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValue){
+        for (var key in JoinQueryDetails.DEForJoin) {
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+        }
+       // strQuery +="Where field 1 is null" ;
+        console.log(" strQuery23==="+strQuery);
+        if(DESetQueryBox.size==countOfDeWithoutWhereClauseValueMain){
           console.log("in the first");
+            
         }
-        else if(countOfDeWithWhereClauseValue==1){
+        else if(countOfDeWithWhereClauseValueMain==1){
           console.log("in the second");
+          var clause=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML ;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause; 
+
         }
-        else if(countOfDeWithWhereClauseValue>1){
+        else if(countOfDeWithWhereClauseValueMain>1){
           console.log("in the thui");
+          /*if(strQuery.search("WHERE")<1){
+            console.log("in the if of search");
+            strQuery=strQuery+" Where ";
+          }
+          else{
+            strQuery=strQuery+" And/Or ";
+          }*/
+          strQuery=strQuery+" Where ";
+          var clause=document.getElementById("RichTextEditorForFinalWhereClause").innerHTML;
+          console.log("clause"+ clause);
+          strQuery=strQuery+clause;
+
         }
+        console.log("strQuery"+strQuery);
+        //console.log("strQuery.length="+strQuery.length);
+        /*var l=strQuery.length;
+        //var char=strQuery.charAt(l)
+        //console.log("char"+char);
+        //var copy=strQuery;
+        //console.log("copy="+copy);
+        //var char=copy.slice(copy.length-1, copy.length);
+        console.log("char=="+char);
+        if(char=="d"){
+          strQuery = strQuery.slice(0, -3);
+        }
+        else{
+          strQuery = strQuery.slice(0, -2);
+        }*/
+        strQuery = strQuery.slice(0, -7);
+        console.log("Final strQuery = "+strQuery);
+        
         var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
@@ -4492,13 +4775,15 @@ document.addEventListener("touchend ", function(){
           queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
           queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
           queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
@@ -4507,7 +4792,8 @@ document.addEventListener("touchend ", function(){
           queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
       }
@@ -4564,7 +4850,22 @@ document.addEventListener("touchend ", function(){
           document.getElementById('grid-record-result').innerHTML = DETableBody;
         }
       }
-      closeModal();
+      if(draggedDeKey.size>1){
+        closeModal();
+      }
+      else{
+        countOfDeWithWhereClauseValueMain=0;
+        countOfDeWithoutWhereClauseValueMain=0;
+      }
+      if(DESetQueryBox.size==1){
+        var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
+        console.log("value of t"+t);
+        if(t!=''){
+          console.log('in the if of t');
+          document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
+        }
+      }
+     
     }
     function isSetEqual(as, bs) {
         if (as.size !== bs.size) return false;
@@ -4813,81 +5114,81 @@ document.addEventListener("touchend ", function(){
     
       var bool;
       if(openSelectFieldsDEExtKey in DEListMap.DEMap){
-      for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
-        for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-            bool = true;
-            break;
+        for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
+          for (var key1 in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+            if (DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+              bool = true;
+              break;
+            }
+            else {
+              bool = false;
+            }
           }
+          if (bool == true) {
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
           else {
-            bool = false;
-          }
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
+     
         }
-        if (bool == true) {
-          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-        else {
-          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-   
+        document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       }
-      document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
-    }
-    else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
-      for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields) {
-        for (var key1 in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          if (DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-            bool = true;
-            break;
+      else if(openSelectFieldsDEExtKey in DEListMap.SharedDEMap){
+        for (var key in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields) {
+          for (var key1 in DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields) {
+            if (DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+              bool = true;
+              break;
+            }
+            else {
+              bool = false;
+            }
           }
+          if (bool == true) {
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
           else {
-            bool = false;
-          }
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
+     
         }
-        if (bool == true) {
-          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-        else {
-          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-   
+        document.getElementById("modal-heading-01").innerHTML = DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       }
-      document.getElementById("modal-heading-01").innerHTML = DEListMap.SharedDEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
-    }
-    else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
-      for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields) {
-        for (var key1 in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields) {
-          if (DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
-            bool = true;
-            break;
+      else if(openSelectFieldsDEExtKey in DEListMap.DataViewMap){
+        for (var key in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields) {
+          for (var key1 in DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields) {
+            if (DEListMap.DataViewMap[openSelectFieldsDEExtKey].DESelectedFields[key1]["FieldName"] == DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key]["FieldName"]) {
+              bool = true;
+              break;
+            }
+            else {
+              bool = false;
+            }
           }
+          if (bool == true) {
+            document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
           else {
-            bool = false;
-          }
+            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
+                   + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
+                   '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
+         }
+     
         }
-        if (bool == true) {
-          document.getElementById('rightsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-        else {
-          document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldType
-                 + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName +
-                 '" label="' + DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '" style="padding:4%; margin:0;"> '+ DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEFields[key].FieldName + '</option><br>';   
-       }
-   
+        document.getElementById("modal-heading-01").innerHTML = DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       }
-      document.getElementById("modal-heading-01").innerHTML = DEListMap.DataViewMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
-    }
-
+  
     /* for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DEFields) {
          
 
@@ -4933,7 +5234,7 @@ document.addEventListener("touchend ", function(){
    
       }
       */
-     
+      document.getElementById("modal-heading-01").innerHTML = DEListMap.DEMap[openSelectFieldsDEExtKey].DEName + " Data Extension Fields";
       document.getElementById('leftsideListInSelectField').innerHTML = html;
     }
 
@@ -4946,61 +5247,46 @@ document.addEventListener("touchend ", function(){
         var fieldsListForRelationDiv = '';
         DESetQueryBox.add(DEDragData.DEExtKey);
         if(DEDragData.DEExtKey in DEListMap.DEMap){
-           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
-           for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-           DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-      
-         }
-         
-        // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-      
+          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+          DEListMap.DEMap[DEDragData.DEExtKey].DESelectedFields.push({
+           "FieldName": SelectedField.label,
+           "FieldType": SelectedField.value
+         });
+         fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
         }
+       // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+       }
+       else if(DEDragData.DEExtKey in DEListMap.SharedDEMap){
+          DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+          DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields.push({
+           "FieldName": SelectedField.label,
+           "FieldType": SelectedField.value
+         });
+         fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+       }
+       //fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+       }
+       else if(DEDragData.DEExtKey in DEListMap.DataViewMap){
+          DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields = [];
+          for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
+          DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields.push({
+           "FieldName": SelectedField.label,
+           "FieldType": SelectedField.value
+         });
+         fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+        }
+       // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
+       }
 
-        else if(DEDragData.DEExtKey in DEListMap.SharedDEMap){
-           DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields = [];
-           for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-           DEListMap.SharedDEMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-      
-        }
-        
-        //fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-      
-        }
-        else if(DEDragData.DEExtKey in DEListMap.DataViewMap){
-           DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields = [];
-           for (var SelectedField of document.getElementById("rightsideListInSelectField").querySelectorAll("option")) {
-           DEListMap.DataViewMap[DEDragData.DEExtKey].DESelectedFields.push({
-            "FieldName": SelectedField.label,
-            "FieldType": SelectedField.value
-          });
-          fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-      
-         }
-        // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-        }
-      // fieldsListForRelationDiv += '<li class="data-box-style" title="' + SelectedField.label + '" data-id="e63e3ebe-a7c5-ea11-a2ec-48df37342369"><span>' + SelectedField.label + '</span></li>';
-     
-      
-        
-         
-         
-          
-        
-      //************************************************Edited By ANIL KUMAR**********************************//
+        //************************************************Edited By ANIL KUMAR**********************************//
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
           '            width:10em;' +
-          '            background-color: #387F9D;' +
-          '            border-color:#387F9D;' +
+          '            background-color: #353535;' +
+          '            border-color:#353535;' +
           '            position: absolute;' +
           '            -webkit-user-select: none;' +
           '            -khtml-user-select: none;' +
@@ -5066,8 +5352,8 @@ document.addEventListener("touchend ", function(){
           '        }' +
           '       .mainQuaryBoxStyle:active{'+
           '            width:10em;'+
-          '            background-color: #353535;'+
-          '            border-color:#2e2e2e;'+
+          '            background-color: #387F9D;'+
+          '            border-color:#387F9D;'+
           '            position: absolute;'+
           '            -webkit-user-select: none;'+
           '            -khtml-user-select: none;'+
@@ -5079,27 +5365,46 @@ document.addEventListener("touchend ", function(){
           '            -webkit-touch-callout: none;'+
           '            opacity:0.9;'+
           '          }'+
-          ''+
+          '         .headerOfQuaryBox:hover'+
+          '         {'+
+          '           cursor: move;'+
+          '          }'+
           ' </style>' +
-          '<div class=".slds-is-absolute" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div class="slds-card mainQuaryBoxStyle mydiv box1" onmousedown="lineAction()"  id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
-          '                              </svg>    ' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="(this.id)" >' +
+          '                       <span class="slds-icon_container slds-icon-utility-close"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                        </button>' +
           '                    </td>' +
           '                    <td width="20%">' +
           '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="joinTwoDiv(this.id)">' +
-          '                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">' +
-          '                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>' +
-          '                              </svg>' +
+          '                     <span class="slds-icon_container slds-icon-utility-add"'+
+          '                        title="Description of icon when needed">'+
+          '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
+          '                          aria-hidden="true">'+
+          '                          <use'+
+          '                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add">'+
+          '                          </use>'+
+          ''+
+          '                        </svg>'+
+          '                        <span class="slds-assistive-text">Description of icon when needed</span>'+
+          '                      </span>'+
           '                              ' +
           '                        </button>' +
           '                    </td>' +
@@ -5165,7 +5470,6 @@ document.addEventListener("touchend ", function(){
           });
         }
         }
-       
         fieldsListForRelationDiv = '';
         if(openSelectFieldsDEExtKey in DEListMap.DEMap){
         for (var key in DEListMap.DEMap[openSelectFieldsDEExtKey].DESelectedFields) {
@@ -5185,7 +5489,6 @@ document.addEventListener("touchend ", function(){
         document.getElementById(openSelectFieldsDEExtKey + 'OpenSelectField').innerHTML = '<ul style="padding-left: 0;" class="slds-scrollable">' + fieldsListForRelationDiv + '</ul>';
       }
      //---------------ends here----------------------
-
       if (openWhereDEExtKey != '') {
         if (DESetQueryBox.has(openWhereDEExtKey)) {
           document.getElementById(openWhereDEExtKey + 'WhereClauseValue').innerHTML = document.getElementById("RichTextEditor").innerHTML;
@@ -5238,6 +5541,7 @@ document.addEventListener("touchend ", function(){
           elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
+          changeSchmaPosition(elmnt)
           schemaAction();
         }
 
@@ -5257,6 +5561,22 @@ document.addEventListener("touchend ", function(){
       */
     }
     //--code by nitik
+  
+  //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
+  
+ function changeSchmaPosition(e)
+    {
+        console.log('OKKK:'+e.offsetLeft);
+        if(e.offsetLeft<0)
+        {
+            e.style.left=0+"px";
+        }
+        else if(e.offsetTop<0)
+        {
+            e.style.top=0+"px";
+        }
+    }
+ 
 
   //Anil kumar for creating Line
   var dragId='';
@@ -5281,374 +5601,391 @@ document.addEventListener("touchend ", function(){
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
       if (joinedDivSet.size == 0 || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
-        //-----------priyanka added code----------------------------------------
+        //-----------nitik code started----------------------------------------
+        
+                        
+                          
+                       
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
-        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-          '<div class="slds-modal__container">' +
-            '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-        '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-        '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
-        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-        '</svg>'+
-        '<span class="slds-assistive-text">Close</span>'+
-        '</button>'+
-
-      
-       
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"onclick="CancelDEWhereClauseModal()">'+
+          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+  
         
+         
           
-        '</header>'+
-          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
-
-          '<div >' +
-          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
-          '</div>' +
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-
-          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-
-          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-          '<option value="Left Outer Join">Left Outer Join</option>' +
-          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-          '<option value="Right Outer Join">Right Outer Join</option>' +
-          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-          '<option value="Inner Join">Inner Join</option>' +
-          '<option value="Full Outer Join">Full Outer Join</option>' +
-          '<option value="Outer Join">Outer Join</option>' +
-          '</select>' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-
-          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>';
-
-        for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-          if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-            joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">Select…</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+            }
           }
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
 
-          '</div>' +
-
-
-
-
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-          '<option value="">Select…</option>';
-
-        for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-          joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
+           
+            '</div>' +
 
 
-          ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
 
 
-          '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
-          '<option value="AND">AND</option>' +
-          '<option value="OR">OR</option>' +
-          '</select>' +
-          '</div>' +
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
 
+            
+            '</div>' +
 
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-          '<option value="">Select…</option>' +
-          '</select>' +
-          '</div>' +
-
-
-
-
-          '</div>' +
-
-
-          '</div>' +
-
-          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
-          '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
-
-          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
-          '</footer>' +
-          '</div>' +
-          '</section>' +
-          '<div class="slds-backdrop slds-backdrop_open"></div>';
-        }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
-        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-          '<div class="slds-modal__container">' +
-            '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-        '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-        '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
-        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-        '</svg>'+
-        '<span class="slds-assistive-text">Close</span>'+
-        '</button>'+
-
-      
-       
+            '</div>' +
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">Select…</option>';
+  
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">Select…</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
+          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+  
         
+         
           
-        '</header>'+
-          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
-
-          '<div >' +
-          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
-          '</div>' +
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-
-          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-
-          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-          '<option value="Left Outer Join">Left Outer Join</option>' +
-          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-          '<option value="Right Outer Join">Right Outer Join</option>' +
-          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-          '<option value="Inner Join">Inner Join</option>' +
-          '<option value="Full Outer Join">Full Outer Join</option>' +
-          '<option value="Outer Join">Outer Join</option>' +
-          '</select>' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-
-          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>';
-
-        for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-          if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-            joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+  
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">Select…</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+            }
           }
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-
-          '</div>' +
-
-
-
-
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-          '<option value="">Select…</option>';
-
-        for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-          joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-
-
-          ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
-
-
-          '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
-          '<option value="AND">AND</option>' +
-          '<option value="OR">OR</option>' +
-          '</select>' +
-          '</div>' +
-
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-          '<option value="">Select…</option>' +
-          '</select>' +
-          '</div>' +
-
-
-
-
-          '</div>' +
-
-
-          '</div>' +
-
-          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
-          '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
-
-          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
-          '</footer>' +
-          '</div>' +
-          '</section>' +
-          '<div class="slds-backdrop slds-backdrop_open"></div>';
-        }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
-        joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-          '<div class="slds-modal__container">' +
-            '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-        '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-        '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-        '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
-        '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-        '</svg>'+
-        '<span class="slds-assistive-text">Close</span>'+
-        '</button>'+
-
-      
-       
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+            '</div>' +
+  
+  
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">Select…</option>';
+  
+          for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+  
+  
+            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+            '<option value="AND">AND</option>' +
+            '<option value="OR">OR</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">Select…</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
+          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+  
         
+         
           
-        '</header>'+
-          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
-
-          '<div >' +
-          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
-          '</div>' +
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-
-          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-
-          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-          '<option value="Left Outer Join">Left Outer Join</option>' +
-          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-          '<option value="Right Outer Join">Right Outer Join</option>' +
-          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-          '<option value="Inner Join">Inner Join</option>' +
-          '<option value="Full Outer Join">Full Outer Join</option>' +
-          '<option value="Outer Join">Outer Join</option>' +
-          '</select>' +
-          '</div>' +
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
-
-          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-          '<option value="">Select…</option>';
-
-        for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-          if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-            joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+  
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">Select…</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+            }
           }
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-
-          '</div>' +
-
-
-
-
-
-          '<div class="slds-grid slds-wrap">' +
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-          '<option value="">Select…</option>';
-
-        for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-          joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-        }
-        joinTwoDivString += '</select>' +
-          '</div>' +
-
-
-          ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
-
-
-          '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
-          '<option value="AND">AND</option>' +
-          '<option value="OR">OR</option>' +
-          '</select>' +
-          '</div>' +
-
-
-
-          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-          '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-
-          '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-          '<option value="">Select…</option>' +
-          '</select>' +
-          '</div>' +
-
-
-
-
-          '</div>' +
-
-
-          '</div>' +
-
-          '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
-          '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
-
-          '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
-          '</footer>' +
-          '</div>' +
-          '</section>' +
-          '<div class="slds-backdrop slds-backdrop_open"></div>';
-        }
-        //-----------------------ends here--------------------------------------
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+            '</div>' +
+  
+  
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">Select…</option>';
+  
+          for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+  
+  
+            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+            '<option value="AND">AND</option>' +
+            '<option value="OR">OR</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">Select…</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          //-----------------------ends here--------------------------------------
       }
       else {
         console.log('Please try using connected DE\'s');
@@ -5666,20 +6003,20 @@ document.addEventListener("touchend ", function(){
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
-        for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
-          document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+          for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
+            document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+          }
         }
-      }
-     else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
-        for (var i in DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields) {
-          document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+       else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          for (var i in DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields) {
+            document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+          }
         }
-      }
-     else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
-        for (var i in DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields) {
-          document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+       else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+          for (var i in DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields) {
+            document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+          }
         }
-      }
       }
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
@@ -5715,7 +6052,7 @@ document.addEventListener("touchend ", function(){
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
-              "WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
@@ -5739,30 +6076,21 @@ document.addEventListener("touchend ", function(){
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
-
       var div2 = document.getElementById(val2);
-
       var div1_pos = div1.getBoundingClientRect();
-
       var div2_pos = div2.getBoundingClientRect();
 
-      var DEListSidebar=document.getElementById('DEListSidebar');
-      var DEListSidebar_pos=DEListSidebar.getBoundingClientRect();
-
-      if (div1_pos.left < div2_pos.left) {
-        var x1 = div1_pos.right-(DEListSidebar_pos.right+0.5);
-        var y1 = div1_pos.top+10;
-        var x2 = div2_pos.left-(DEListSidebar_pos.right-2);
-        var y2 = div2_pos.top+div2_pos.height/2;
-      }
-      else {
-        var x1 = div1_pos.left-(DEListSidebar_pos.right-2);
-        var y1 = div1_pos.top+div1_pos.height/2;
-        var x2 = div2_pos.right-(DEListSidebar_pos.right+0.5);
-        var y2 = div2_pos.top+10;
-      }
-
-      //console.log("right="+y2);
+      if(div1_pos.left<div2_pos.left){
+        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
+      }else{
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var y2 = div2.offsetTop+10;
+      } 
 
       // distance
       var length = Math.sqrt(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
@@ -5777,7 +6105,7 @@ document.addEventListener("touchend ", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#387F9D;
+                        background-color:#353535;
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
@@ -5789,53 +6117,53 @@ document.addEventListener("touchend ", function(){
                         position: absolute;
                         `
                 ;
-    console.log('Line:'+lineElement);            
-
+        console.log('NewLine:'+lineElement);            
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+         document.getElementById("JoinDESelectAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
-        for (var key in DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields) {
-          SetValStr = JSON.stringify({
-            "FieldName": DEListMap.DEMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
-          });
-          if (NewDEFieldsSet.has(SetValStr)) {
-            NewDEFieldsSet.delete(SetValStr);
+          for (var key in DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields) {
+            SetValStr = JSON.stringify({
+              "FieldName": DEListMap.DEMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap.DEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
+            });
+            if (NewDEFieldsSet.has(SetValStr)) {
+              NewDEFieldsSet.delete(SetValStr);
+            }
           }
         }
-      }
-      else if(DEExtKeyFordeleteDiv in DEListMap.SharedDEMap){
-        for (var key in DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields) {
-          SetValStr = JSON.stringify({
-            "FieldName": DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
-          });
-          if (NewDEFieldsSet.has(SetValStr)) {
-            NewDEFieldsSet.delete(SetValStr);
+        else if(DEExtKeyFordeleteDiv in DEListMap.SharedDEMap){
+          for (var key in DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields) {
+            SetValStr = JSON.stringify({
+              "FieldName": DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap.SharedDEMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
+            });
+            if (NewDEFieldsSet.has(SetValStr)) {
+              NewDEFieldsSet.delete(SetValStr);
+            }
           }
         }
-      }
-      else if(DEExtKeyFordeleteDiv in DEListMap.DataViewMap){
-        for (var key in DEListMap.DDataViewMap[DEExtKeyFordeleteDiv].DESelectedFields) {
-          SetValStr = JSON.stringify({
-            "FieldName": DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
-            "FieldType": DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
-          });
-          if (NewDEFieldsSet.has(SetValStr)) {
-            NewDEFieldsSet.delete(SetValStr);
+        else if(DEExtKeyFordeleteDiv in DEListMap.DataViewMap){
+          for (var key in DEListMap.DDataViewMap[DEExtKeyFordeleteDiv].DESelectedFields) {
+            SetValStr = JSON.stringify({
+              "FieldName": DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DEName + " " + DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldName"],
+              "FieldType": DEListMap.DataViewMap[DEExtKeyFordeleteDiv].DESelectedFields[key]["FieldType"]
+            });
+            if (NewDEFieldsSet.has(SetValStr)) {
+              NewDEFieldsSet.delete(SetValStr);
+            }
           }
         }
-      }
-        DESetQueryBox.delete(DEExtKeyFordeleteDiv);
-        //TotalMainDeDragged--;
-        document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
-      }
+          DESetQueryBox.delete(DEExtKeyFordeleteDiv);
+          //TotalMainDeDragged--;
+          document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
+        }
     }
 
   </script>
