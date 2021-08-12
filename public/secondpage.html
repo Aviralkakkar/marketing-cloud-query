@@ -2482,7 +2482,7 @@
                       </button>
                       </div>
                       </div>
-              <div id="runValidateButton" class="relationship-grid" style="height:5%;" >
+              <div  class="relationship-grid" style="height:5%;" >
                 
              
                 <button
@@ -2492,7 +2492,7 @@
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
                 </div>
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 66.5%;position: relative;">
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="top:-50px;width: 100%;height:73%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                       <!--********* nitik code started ************-->
@@ -5642,9 +5642,9 @@ document.addEventListener("mouseup", function(){
       {
         e.style.left=0+"px";
       }
-      else if(e.offsetTop<-(document.getElementById('runValidateButton').getBoundingClientRect().height))
+      else if(e.offsetTop<0)
       {
-        e.style.top="-"+document.getElementById('runValidateButton').getBoundingClientRect().height+"px";
+        e.style.top=0+"px";
       }
         
     }
