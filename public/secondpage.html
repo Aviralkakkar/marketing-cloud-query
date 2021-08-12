@@ -4063,23 +4063,27 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-    if(pHeight>=225 && pHeight<=600)
+  if(pHeight>=225 && pHeight<=600)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     pHeight = parseInt(panel.style.height);
+    console.log(pHeight);
     console.log('Bottom div height '+parseInt(panel.style.height));
 
   }
   else if(pHeight<225){
   
+
     panel.style.height = "225px";
+    pHeight=225;
   }
   else if(pHeight>600)
   {
+    
     panel.style.height = "600px";
+    pHeight=600;
   }
-  
   /* if(m_pos>=hu && m_pos<= hl)
   {
     console.log('Position '+m_pos);
