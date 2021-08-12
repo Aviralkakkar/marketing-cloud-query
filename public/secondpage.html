@@ -2442,7 +2442,7 @@
 
          
             <div id="queryDiv" style="height:100%;position:relative;" >
-              <div >
+              <div class="relationship-grid" style="height:5%;" >
                 <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
                 onclick='openModal("Validate")'
@@ -4222,6 +4222,7 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
+            console.log('DEDragData.DEName'+DEDragData.DEName);
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
