@@ -6539,8 +6539,9 @@ document.addEventListener("mouseup", function(){
     }
     
 
-    function SaveJoinQuery() {
-      console.log("in the SaveJoinQuery");
+    function SaveJoinQuery(keyForDEField) {
+      
+      console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEFieldd').value) {
