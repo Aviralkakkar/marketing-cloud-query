@@ -5643,7 +5643,7 @@ document.addEventListener("mouseup", function(){
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
           console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal]);
         }
-        console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[FirstDEExtKeyForJoinGlobal].FirstDEName);
+        console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEName);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
@@ -5673,7 +5673,7 @@ document.addEventListener("mouseup", function(){
   
             '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
   
-            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[FirstDEExtKeyForJoinGlobal].FirstDEName + '" disabled="" class="slds-input" />' +
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].FirstDEName + '" disabled="" class="slds-input" />' +
             '</div>' +
   
   
@@ -5698,7 +5698,7 @@ document.addEventListener("mouseup", function(){
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">Select…</option>';
+            '<option value="' + JoinQueryDetails.DEForJoin[key].SecondDEName + '"></option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
