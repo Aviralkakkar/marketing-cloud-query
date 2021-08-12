@@ -5313,8 +5313,7 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
-        var mydivLength=document.getElementsByClassName("mydiv").length;
-
+        var mydivStyle="top:"+(document.getElementsByClassName("mydiv").length*10)+"px;"+"left:"+(document.getElementsByClassName("mydiv").length*10)+"px;";
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5405,7 +5404,7 @@ document.addEventListener("mouseup", function(){
           '          }'+
           ' </style>' +
           '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
