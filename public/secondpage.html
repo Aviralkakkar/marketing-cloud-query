@@ -5725,6 +5725,9 @@ document.addEventListener("mouseup", function(){
             '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
           for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("hello");
+            }
             joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
           }
           joinTwoDivString += '</select>' +
