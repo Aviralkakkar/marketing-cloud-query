@@ -4127,7 +4127,7 @@ document.addEventListener("mouseup", function(){
     var draggedDeKey=new Set();
     var draggedDeJoinKey=new Set();
     //var TotalMainDeDragged=0;
-
+    var JoinTypeArray=['Left Outer Join','Left Outer Join with Exclusion','Right Outer Join','Right Outer Join with Exclusion','Inner Join','Full Outer Join','Outer Join'];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -5739,15 +5739,21 @@ document.addEventListener("mouseup", function(){
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
+             
+
+
               '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-              '<option value="Left Outer Join">Left Outer Join</option>' +
-              '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-              '<option value="Right Outer Join">Right Outer Join</option>' +
-              '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-              '<option value="Inner Join">Inner Join</option>' +
-              '<option value="Full Outer Join">Full Outer Join</option>' +
-              '<option value="Outer Join">Outer Join</option>' +
-              '</select>' +
+            '<option value="">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+            for(var i=0;i<7;i++){
+              if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
+
+                }
+                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                  joinTwoDivString += '<option value=" "></option>';
+                }
+            }
+         
+          joinTwoDivString += '</select>' +
             
             '</div>' +
   
