@@ -4054,6 +4054,7 @@ const panel = document.getElementById("right_panel");
 const table = document.getElementById("tableDiv");
 
 let m_pos;
+    var pHeight=300;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
@@ -4062,13 +4063,22 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-   if(m_pos>=hu && m_pos<= hl)
+    if(pHeight>=225 && pHeight<=600)
+  {
+    console.log('Position '+m_pos);
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log('Bottom div height '+parseInt(panel.style.height));
+
+  }
+  
+  /* if(m_pos>=hu && m_pos<= hl)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     console.log('Bottom div height '+panel.style.height);
 
-  }
+  }*/
 
 }
 
