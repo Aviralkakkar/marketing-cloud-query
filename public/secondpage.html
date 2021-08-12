@@ -5697,7 +5697,7 @@ document.addEventListener("mouseup", function(){
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6393,17 +6393,14 @@ document.addEventListener("mouseup", function(){
       document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
     }
 
-    function SecondDEChange() {
+    function SecondDEChange(keyForSecondDEField) {
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
-        document.getElementById('SecondDEField').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>';
+        document.getElementById('SecondDEField').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[keyForSecondDEField].SecondDEJoinField +'</option>';
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"]){
-
-            }
-            else{
+            
               document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
-            }
+            
             
           }
         }
