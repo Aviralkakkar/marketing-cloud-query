@@ -5640,10 +5640,10 @@ document.addEventListener("mouseup", function(){
         for (var key in JoinQueryDetails.DEForJoin) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
-          console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
-          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEName);
+         // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
+          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEName==joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
