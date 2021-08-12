@@ -6198,7 +6198,7 @@ document.addEventListener("mouseup", function(){
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEFieldd">' +
             '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
@@ -6494,7 +6494,7 @@ document.addEventListener("mouseup", function(){
           console.log("hell in the i");
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
             console.log("hell in the for"+ DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"]);
-              document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
+              document.getElementById('SecondDEFieldd').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
             
             
           }
