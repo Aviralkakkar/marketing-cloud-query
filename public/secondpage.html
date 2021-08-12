@@ -4222,6 +4222,7 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
+            console.log('DEDragData.DEName'+DEDragData.DEName);
             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
