@@ -6550,7 +6550,11 @@ document.addEventListener("mouseup", function(){
           console.log("in the 2 ");
           JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
-
+        if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
+          console.log("in the 2 ");
+          JoinQueryDetails.DEForJoin[keyForDEField].JoinType=document.getElementById('select-01').value;
+        }
+        document.getElementById('ThirdModal').style.display = 'none';
 
       }
       else{
