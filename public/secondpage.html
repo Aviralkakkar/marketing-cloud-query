@@ -2325,9 +2325,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2337,7 +2337,7 @@
                           </span>
                         </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-hide slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2707,7 +2707,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2788,7 +2788,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:10%;">
+                  <div class="slds-col" style="height:20px;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -3795,7 +3795,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
