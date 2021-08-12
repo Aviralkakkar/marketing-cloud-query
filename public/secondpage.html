@@ -5605,12 +5605,13 @@ document.addEventListener("mouseup", function(){
 
         if(e.offsetLeft<0)
         {
-            e.style.left=0+"px";
+          e.style.left=0+"px";
         }
         else if(e.offsetTop<0)
         {
-            e.style.top=0+"px";
+          e.style.top=0+"px";
         }
+        
     }
  
 
@@ -5625,10 +5626,10 @@ document.addEventListener("mouseup", function(){
     }
      for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
      }
       else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
       }
     }
   }
@@ -6484,14 +6485,15 @@ document.addEventListener("mouseup", function(){
             });
 
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2,lineid) 
+    function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
       console.log("Line drawed");
 
@@ -6529,7 +6531,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#353535;
+                        background-color:${lineColor};
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
