@@ -2441,7 +2441,7 @@
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
          
-            <div id="queryDiv" style="height:100%;position:relative;" >
+            <div class="relationship-grid" id="queryDiv" style="height:100%;position:relative;" >
               <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
                   height: 6vh;">
                     <span class="slds-assistive-text">warning</span>
@@ -5351,7 +5351,7 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
-        var mydivStyle="top:"+(document.getElementsByClassName("mydiv").length*15)+"px;"+"left:"+(document.getElementsByClassName("mydiv").length*15)+"px;";
+        var mydivStyle="top:"+((document.getElementsByClassName("mydiv").length*15) +40)+"px;"+"left:"+((document.getElementsByClassName("mydiv").length*15)+40)+"px;";
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
