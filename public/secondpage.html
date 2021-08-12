@@ -5470,8 +5470,9 @@ document.addEventListener("mouseup", function(){
           var changePos=1;
           for (var classEle in document.getElementsByClassName("mydiv")) {
             dragElement(document.getElementsByClassName("mydiv")[classEle]);
-            document.getElementsByClassName("mydiv")[classEle].style.left=(document.getElementsByClassName("mydiv")[classEle].style.left+5*changePos)+"px";
-            document.getElementsByClassName("mydiv")[classEle].style.top=(document.getElementsByClassName("mydiv")[classEle].style.top+5*changePos)+"px";
+            var draggedDiv=document.getElementsByClassName("mydiv")[classEle];  
+            draggedDiv.style.left=(draggedDiv.style.left+(changePos*5))+"px";
+            draggedDiv.style.top=(draggedDiv.style.top+(changePos*5))+"px";
             changePos++;
           }
         }
