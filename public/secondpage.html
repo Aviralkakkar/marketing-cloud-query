@@ -6530,7 +6530,7 @@ document.addEventListener("mouseup", function(){
        
       }
       else {
-        document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        //document.getElementById('SecondDEFieldd').innerHTML = '<option value="">Select…</option>';
       }
     }
     //--end of code by nitik
@@ -6542,7 +6542,7 @@ document.addEventListener("mouseup", function(){
     function SaveJoinQuery() {
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+          if (document.getElementById('SecondDEFieldd').value) {
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -6568,7 +6568,7 @@ document.addEventListener("mouseup", function(){
 
               "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
               "SecondDEExtKey": document.getElementById('select-02').value,
-              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "SecondDEJoinField": document.getElementById('SecondDEFieldd').value,
               "JoinedLineDivId":line_ID
             });
 
