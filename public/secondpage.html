@@ -2442,7 +2442,49 @@
 
          
             <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
+                  height: 6vh;">
+                    <span class="slds-assistive-text">warning</span>
+                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                    </span>
+                    <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                  
+                    </h6>
+                    <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                    </button>
+                    </div>
+                    </div>
+                    <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;
+                    height: 6vh;">
+                      <span class="slds-assistive-text">warning</span>
+                      <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                      </svg>
+                      </span>
+                      <h6 style="float: left;">Please select atleast one DE.
+                    
+                      </h6>
+                      <div class="slds-notify__close">
+                      <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                      </button>
+                      </div>
+                      </div>
               <div class="relationship-grid" style="height:5%;" >
+                
+             
                 <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
                 onclick='openModal("Validate")'
@@ -2474,26 +2516,7 @@
                   </div>
                 </div>
               </div>
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;
-              height: 6vh;">
-                <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-                </span>
-                <h6 style="float: left;">Please select atleast one DE.
-              
-                </h6>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
+             
                 <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #c23934; ">
                   <span class="slds-assistive-text">warning</span>
                   <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -2514,27 +2537,7 @@
                   </div>
                   </div>
 
-                  <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
-                  height: 6vh;">
-                    <span class="slds-assistive-text">warning</span>
-                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                    </span>
-                    <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
                   
-                    </h6>
-                    <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
-                    <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                    </svg>
-                    <span class="slds-assistive-text">Close</span>
-                    </button>
-                    </div>
-                    </div>
-             
                     <!--********* nitik code ended ************-->
 
 
@@ -4051,6 +4054,7 @@ const panel = document.getElementById("right_panel");
 const table = document.getElementById("tableDiv");
 
 let m_pos;
+    var pHeight=300;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
@@ -4059,12 +4063,42 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-   if(m_pos>=hu && m_pos<= hl)
+ /* if(pHeight>=225 && pHeight<=600)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
-    
+    pHeight = parseInt(panel.style.height);
+    console.log(pHeight);
+    console.log('Bottom div height '+parseInt(panel.style.height));
 
+  }
+  else if(pHeight<225){
+  
+
+    panel.style.height = "225px";
+    pHeight=225;
+  }
+  else if(pHeight>600)
+  {
+    
+    panel.style.height = "600px";
+    pHeight=600;
+  }*/
+ if(m_pos>=hu && m_pos<= hl)
+  {
+    console.log('Position '+m_pos);
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log('Bottom div height '+panel.style.height);
+
+  }
+  else if(m_pos<hu)
+  {
+    panel.style.height=pHeight;
+  }
+  else if(m_pos>hl)
+  {
+    panel.style.height=pHeight;
   }
 
 }
@@ -5403,8 +5437,8 @@ document.addEventListener("mouseup", function(){
           '           cursor: move;'+
           '          }'+
           ' </style>' +
-          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="position:relative;" onmouseup="changingColorOfLine()" onmousedown="schemaActionMyDiv(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + '-ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5558,7 +5592,7 @@ document.addEventListener("mouseup", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
-          schemaAction();
+          schemaAction(elmnt);
           
         }  
 
@@ -5575,7 +5609,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           changeSchmaPosition(elmnt)
-          schemaAction();
+          schemaAction(elmnt);
         }
 
         function closeDragElement() {
@@ -5602,34 +5636,54 @@ document.addEventListener("mouseup", function(){
 
         if(e.offsetLeft<0)
         {
-            e.style.left=0+"px";
+          e.style.left=0+"px";
         }
         else if(e.offsetTop<0)
         {
-            e.style.top=0+"px";
+          e.style.top=0+"px";
         }
+        
     }
  
 
   //Anil kumar for creating Line
   var dragId='';
-  function schemaAction(id) 
+
+  function schemaAction(elmnt) 
+   {
+    var myDivId=(elmnt.id).split('-'); 
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(myDivId[0] == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(myDivId[0], ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+     }
+      else if (myDivId[0] == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,myDivId[0],ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+      }
+    }
+  }
+
+  function schemaActionMyDiv(id) 
    {
     if(id)
     {
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+  }
+
+  function changingColorOfLine()
+  {
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#353535");
      }
-      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
+     else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId,'#353535');
       }
     }
   }
 
+  //**************************************************END*****************************************************
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       var SecondDEExtKeyForJoinGlobal;
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
@@ -6483,19 +6537,20 @@ document.addEventListener("mouseup", function(){
             });
 
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2,lineid) 
+    function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "ForConnectedLine";
-      var val2 = de2 + "ForConnectedLine";
+      var val1 = de1 + "-ForConnectedLine";
+      var val2 = de2 + "-ForConnectedLine";
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
@@ -6528,7 +6583,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#353535;
+                        background-color:${lineColor};
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
