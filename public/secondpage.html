@@ -4059,7 +4059,7 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-   if(m_pos>=hu && m_pos<= rl)
+   if(m_pos>=hu && m_pos<= hl)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
