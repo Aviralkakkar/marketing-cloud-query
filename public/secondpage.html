@@ -2302,7 +2302,7 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                 document.getElementById('FullPageSpinner').style.display = 'block';
+                  document.getElementById('FullPageSpinner').style.display = 'block';
                   document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
@@ -2325,9 +2325,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -2337,7 +2337,7 @@
                           </span>
                         </button>
                     <div class="slds-p-left_small">
-                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-hide slds-tree" id="dataExtension"
+                      <ul aria-labelledby="treeheading" class="myUlClass button-padding slds-show slds-tree" id="dataExtension"
                         role="tree">
 
 
@@ -2466,11 +2466,12 @@
                   </div>
                 </div>
               </div>
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;
+              height: 6vh;">
                 <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                 </svg>
                 </span>
                 <h6>Please select atleast one DE.
@@ -2485,11 +2486,11 @@
                 </button>
                 </div>
                 </div>
-                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #c23934; ">
                   <span class="slds-assistive-text">warning</span>
                   <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                   <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                   </svg>
                   </span>
                   <h6>Please Join the Query Box.
@@ -2504,6 +2505,27 @@
                   </button>
                   </div>
                   </div>
+
+                  <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
+                  height: 6vh;">
+                    <span class="slds-assistive-text">warning</span>
+                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                    </span>
+                    <h6>Please select atleast one DE.
+                  
+                    </h6>
+                    <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                    </button>
+                    </div>
+                    </div>
              
                     <!--********* nitik code ended ************-->
 
@@ -2685,7 +2707,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2766,7 +2788,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:20px;">
+                  <div class="slds-col" style="height:10%;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -2803,7 +2825,7 @@
                     </div>
                   </div>
                   </div>
-                </div>
+                  </div>
                 </div>
             </div>
            
@@ -2993,14 +3015,15 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #c23934; width:auto; height: 5vh;
+          padding-top: 0%;">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
             margin-left: 2%;
             margin-top: 1.3%;
         ">
             <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
             </svg>
             </span>
             <h6 style="padding: 0;
@@ -3772,7 +3795,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
+    var dataExtBool = false;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
@@ -6109,6 +6132,8 @@ document.addEventListener("mouseup", function(){
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+        document.getElementById("joinQueryboxAlert").style.display = "block";
+
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
