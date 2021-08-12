@@ -2302,8 +2302,8 @@
               spinnerOnLoad();
               function spinnerOnLoad()
               {
-                  //document.getElementById('FullPageSpinner').style.display = 'block';
-                  //document.getElementById('DEListSidebar').style.marginTop = '-650px';
+                 document.getElementById('FullPageSpinner').style.display = 'block';
+                  document.getElementById('DEListSidebar').style.marginTop = '-650px';
               }
             </script>
             <div aria-hidden="false" id="example-unique-id-8">
@@ -2325,9 +2325,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -3772,7 +3772,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
