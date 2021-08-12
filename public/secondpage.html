@@ -2518,7 +2518,7 @@
                   
                     </h6>
                     <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
                     <svg class="slds-button__icon" aria-hidden="true">
                     <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                     </svg>
@@ -6173,6 +6173,9 @@ document.addEventListener("mouseup", function(){
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
+    }
+    function joinQueryboxAlert(){
+      document.getElementById("joinQueryboxAlert").style.display = "none";
     }
 
   </script>
