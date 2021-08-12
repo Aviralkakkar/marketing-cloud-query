@@ -5698,7 +5698,7 @@ document.addEventListener("mouseup", function(){
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="' + JoinQueryDetails.DEForJoin[key].SecondDEName + '"></option>';
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
@@ -5719,7 +5719,7 @@ document.addEventListener("mouseup", function(){
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="">Select…</option>';
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
           for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
             joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
@@ -5738,7 +5738,7 @@ document.addEventListener("mouseup", function(){
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">Select…</option>' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' +
             '</select>' +
             '</div>' +
   
