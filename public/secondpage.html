@@ -3030,7 +3030,7 @@
             margin-left: 2%;
             margin-top: 1.3%;
         ">
-            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+            <svg class="slds-icon slds-icon_x-small" aria-hidden="true" style="fill: white;">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
             </svg>
             </span>
@@ -5843,7 +5843,7 @@ document.addEventListener("mouseup", function(){
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6541,24 +6541,8 @@ document.addEventListener("mouseup", function(){
     }
     
 
-    function SaveJoinQuery(keyForDEField) {
-      if(keyForDEField!=null){
-        if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
-
-          JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField=document.getElementById('FirstDEField').value;
-          console.log("in the ");
-        }
-        if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEFieldd').value){
-          console.log("in the 2 ");
-          JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEFieldd').value;
-        }
-
-
-      }
-      else{
-        console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
-     
-
+    function SaveJoinQuery() {
+      console.log("in the SaveJoinQuery");
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEFieldd').value) {
@@ -6598,8 +6582,6 @@ document.addEventListener("mouseup", function(){
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
-      }
-     
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
