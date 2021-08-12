@@ -5593,7 +5593,7 @@ document.addEventListener("mouseup", function(){
   
  function changeSchmaPosition(e)
     {
-        console.log('OKKK:'+e.offsetLeft);
+      
         if(e.offsetLeft<0)
         {
             e.style.left=0+"px";
@@ -5622,11 +5622,6 @@ document.addEventListener("mouseup", function(){
        joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
       }
     }
-    for (var classEle in document.getElementsByClassName(dragId+"##")) 
-    {
-      document.getElementsByClassName(dragId+"##")[classEle].style.backgroundColor='#387F9D';
-    }
-
   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
