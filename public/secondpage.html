@@ -2442,7 +2442,29 @@
 
          
             <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
+                  height: 6vh;">
+                    <span class="slds-assistive-text">warning</span>
+                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                    </svg>
+                    </span>
+                    <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                  
+                    </h6>
+                    <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                    </button>
+                    </div>
+                    </div>
               <div class="relationship-grid" style="height:5%;" >
+                
+             
                 <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
                 onclick='openModal("Validate")'
@@ -2450,7 +2472,7 @@
               <button
                 class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
                 </div>
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 65%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                       <!--********* nitik code started ************-->
@@ -2514,27 +2536,7 @@
                   </div>
                   </div>
 
-                  <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
-                  height: 6vh;">
-                    <span class="slds-assistive-text">warning</span>
-                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                    </span>
-                    <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
                   
-                    </h6>
-                    <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
-                    <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                    </svg>
-                    <span class="slds-assistive-text">Close</span>
-                    </button>
-                    </div>
-                    </div>
-             
                     <!--********* nitik code ended ************-->
 
 
@@ -4059,11 +4061,11 @@ function resize(e){
   
   var rl = document.getElementById("RelationshipDiv").getBoundingClientRect().height;
   console.log('Relationship height '+rl);
-   if(m_pos>=hu && m_pos<= rl)
+   if(m_pos>=hu && m_pos<= hl)
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
-    
+    console.log('Bottom div height '+panel.style.height);
 
   }
 
@@ -5632,7 +5634,7 @@ document.addEventListener("mouseup", function(){
   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      
+      var SecondDEExtKeyForJoinGlobal;
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -5641,10 +5643,11 @@ document.addEventListener("mouseup", function(){
         for (var key in JoinQueryDetails.DEForJoin) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
-          console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
-          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEName);
+         // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
+          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEName==joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
+          SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
@@ -5726,7 +5729,14 @@ document.addEventListener("mouseup", function(){
             '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
           for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("hello");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+            }
+            
           }
           joinTwoDivString += '</select>' +
             '</div>' +
@@ -5741,9 +5751,22 @@ document.addEventListener("mouseup", function(){
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' +
-            '</select>' +
+            
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>';
+  
+          for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
             '</div>' +
   
   
@@ -6395,8 +6418,9 @@ document.addEventListener("mouseup", function(){
     }
 
     function SecondDEChange(keyForSecondDEField) {
+      console.log("keyForSecondDEField"+keyForSecondDEField);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
-        document.getElementById('SecondDEField').innerHTML = '<option value="">'+ JoinQueryDetails.DEForJoin[keyForSecondDEField].SecondDEJoinField +'</option>';
+        document.getElementById('SecondDEField').innerHTML = '<option value="">select</option>';
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
             
