@@ -6480,6 +6480,12 @@ document.addEventListener("mouseup", function(){
 
     function SecondDEChange(keyForSecondDEField) {
       console.log("keyForSecondDEField"+keyForSecondDEField);
+      if(keyForSecondDEField==null){
+        console.log("keyForSecondDEFielddfbbdfbndf"+keyForSecondDEField);
+      }
+      else{
+        console.log("bye");
+      }
       console.log("SecondDEJoinField======>"+JoinQueryDetails.DEForJoin[keyForSecondDEField].SecondDEJoinField);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         document.getElementById('SecondDEField').innerHTML = '<option value="">select</option>';
