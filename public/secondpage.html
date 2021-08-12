@@ -4067,9 +4067,17 @@ function resize(e){
   {
     console.log('Position '+m_pos);
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
-    pHeight = parseInt(panel.style.height);
+    pHeight = parseInt(panel.style.heigh);
     console.log('Bottom div height '+parseInt(panel.style.height));
 
+  }
+  else if(pHeight<225){
+  
+    panel.style.height = "225px";
+  }
+  else if(pHeight>600)
+  {
+    panel.style.height = "600px";
   }
   
   /* if(m_pos>=hu && m_pos<= hl)
