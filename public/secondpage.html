@@ -2482,7 +2482,7 @@
                       </button>
                       </div>
                       </div>
-              <div class="relationship-grid" style="height:5%;" >
+              <div id="runValidateButton" class="relationship-grid" style="height:5%;" >
                 
              
                 <button
@@ -5634,14 +5634,14 @@ document.addEventListener("mouseup", function(){
  function changeSchmaPosition(e)
     {
 
-        if(e.offsetLeft<0)
-        {
-          e.style.left=0+"px";
-        }
-        else if(e.offsetTop<0)
-        {
-          e.style.top=0+"px";
-        }
+      if(e.offsetLeft<0)
+      {
+        e.style.left=0+"px";
+      }
+      else if(e.offsetTop<-(document.getElementById('runValidateButton').getBoundingClientRect().height))
+      {
+        e.style.top="-"+document.getElementById('runValidateButton').getBoundingClientRect().height+"px";
+      }
         
     }
  
