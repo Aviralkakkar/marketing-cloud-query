@@ -5631,7 +5631,7 @@ document.addEventListener("mouseup", function(){
   }
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      
+      var SecondDEExtKeyForJoinGlobal;
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -5644,6 +5644,7 @@ document.addEventListener("mouseup", function(){
           console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
+          SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
@@ -5728,7 +5729,11 @@ document.addEventListener("mouseup", function(){
             if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("hello");
             }
-            joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+            }
+            
           }
           joinTwoDivString += '</select>' +
             '</div>' +
@@ -5746,6 +5751,21 @@ document.addEventListener("mouseup", function(){
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
             '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' +
             '</select>' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>';
+  
+          for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
             '</div>' +
   
   
