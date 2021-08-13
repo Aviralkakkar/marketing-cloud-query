@@ -2698,7 +2698,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2779,7 +2779,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:20px;">
+                  <div class="slds-col" style="height:10%;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -3135,7 +3135,7 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onclick="listboxMove('rightsideListInSelectField', 'up');" style="width: 2rem;
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3149,7 +3149,7 @@
                   </svg>
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
-               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onclick="listboxMove('rightsideListInSelectField', 'down');" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
                 <span class="slds-icon_container slds-icon-utility-chevrondown"
                   title="Description of icon when needed">
                   <svg
@@ -3337,15 +3337,21 @@
   function moveUp(direction) {
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
-    console.log(currentSel);
-    console.log(index);
-    console.log(direction);
+
+    console.log('currentsel'+currentSel);
+    console.log('index'+index);
+    console.log('direction'+direction);
     if (direction) {//up 
       if (index == 0) return;
 
       var value = currentSel.options[index - 1].value;
       var text = currentSel.options[index - 1].text;
-
+      console.log('before');
+      console.log('1-->'+currentSel.options[index - 1].value);
+      console.log('2-->'+currentSel.options[index - 1].text);
+      console.log('after');
+      console.log('1-->'+currentSel.options[index ].value);
+      console.log('2-->'+currentSel.options[index ].text);
       currentSel.options[index - 1].value = currentSel.options[index].value;
       currentSel.options[index - 1].text = currentSel.options[index].text;
 
@@ -3359,7 +3365,12 @@
 
       var value = currentSel.options[index + 1].value;
       var text = currentSel.options[index + 1].text;
-
+      console.log('before');
+      console.log('1-->'+currentSel.options[index].value);
+      console.log('2-->'+currentSel.options[index].text);
+      console.log('after');
+      console.log('1-->'+currentSel.options[index+1 ].value);
+      console.log('2-->'+currentSel.options[index+1].text);
       currentSel.options[index + 1].value = currentSel.options[index].value;
       currentSel.options[index + 1].text = currentSel.options[index].text;
 
@@ -3519,30 +3530,30 @@
  
 
   //code for moving up and down
-  function listboxMove(listID, direction) {
-    var listbox = document.getElementById(listID);
-    var selIndex = listbox.selectedIndex;
-    if (-1 == selIndex) {
-      alert("Please select an option to move.");
-      return;
+   function listboxMove(listID, direction) {
+      var listbox = document.getElementById(listID);
+      var selIndex = listbox.selectedIndex;
+      if (-1 == selIndex) {
+        alert("Please select an option to move.");
+        return;
+      }
+      var increment = -1;
+      if (direction == 'up')
+        increment = -1;
+      else
+        increment = 1;
+      if ((selIndex + increment) < 0 ||
+        (selIndex + increment) > (listbox.options.length - 1)) {
+        return;
+      }
+      var selValue = listbox.options[selIndex].value;
+      var selText = listbox.options[selIndex].text;
+      listbox.options[selIndex].value = listbox.options[selIndex + increment].value
+      listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+      listbox.options[selIndex + increment].value = selValue;
+      listbox.options[selIndex + increment].text = selText;
+      listbox.selectedIndex = selIndex + increment;
     }
-    var increment = -1;
-    if (direction == 'up')
-      increment = -1;
-    else
-      increment = 1;
-    if ((selIndex + increment) < 0 ||
-      (selIndex + increment) > (listbox.options.length - 1)) {
-      return;
-    }
-    var selValue = listbox.options[selIndex].value;
-    var selText = listbox.options[selIndex].text;
-    listbox.options[selIndex].value = listbox.options[selIndex + increment].value
-    listbox.options[selIndex].text = listbox.options[selIndex + increment].text
-    listbox.options[selIndex + increment].value = selValue;
-    listbox.options[selIndex + increment].text = selText;
-    listbox.selectedIndex = selIndex + increment;
-  }
 </script>
 
 <!--End here-->
