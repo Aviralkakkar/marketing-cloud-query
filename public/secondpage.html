@@ -2444,7 +2444,7 @@
 
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
-
+            
           <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -2465,35 +2465,18 @@
             </div>
             </div>
             <div id="queryDiv" style="height:100%;position:relative;" >
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
+                 <div style="height:8.9%;">
+            <button
+            class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
+            onclick='openModal("Validate")'
+            style="background-color: #4e8abe !important;">Validate Query</button>
+          <button
+            class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+          </div>
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                       <!--********* nitik code started ************-->
-
-                <!--priyanka added alert-->
-
-                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display:none; background-color: #c23934;
-                height: 6vh; border-radius: 0.25rem;">
-                  <span class="slds-assistive-text">warning</span>
-                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                  </svg>
-                  </span>
-                  <h6 style="float: left;">You can not delete Joined Query Box. You need to referesh the page.
-                
-                  </h6>
-                  <div class="slds-notify__close">
-                  <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="joinQueryboxAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                  </button>
-                  </div>
-                  </div>
-
-                <!---->
                 <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
                   <span class="slds-assistive-text">error</span>
                   <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
@@ -2506,7 +2489,7 @@
                   <div class="slds-notify__close">
                     <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
                       title="Close" onclick="CancelQueryBoxAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                      <svg class="slds-button__icon" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                       </svg>
                       <span class="slds-assistive-text">Close</span>
@@ -2514,76 +2497,26 @@
                   </div>
                 </div>
               </div>
-              <!--priyanka added code-->
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #c23934;
-              height: 6vh ; border-radius: 0.25rem;">
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
                 <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
                 </svg>
                 </span>
-                <p style="padding: 0; float: left;">Please Select Atleast One Field.
-                </p>
+                <h6>Please select atleast one DE.
+              
+                </h6>
                 <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
-                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
                 <span class="slds-assistive-text">Close</span>
                 </button>
                 </div>
                 </div>
-
-                <!--sucess alert-->
-              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="runQueryAlert" style="display:none; background-color: #04844b;
-              height: 6vh ; border-radius: 0.25rem;">
-                <span class="slds-assistive-text">check</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                </svg>
-                </span>
-                <p style="padding: 0; float: left;">
-                  Valid SQL Query Syntax.
-                </p>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="closerunQueryAlert()">
-                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
-                <!--alert for already exist div-->
-               <div id="DEListDivAlert" style="display:none; background-color: #c23934;
-                height: 6vh; border-radius: 0.25rem;">
-                  <div class="slds-notify slds-notify_alert slds-alert_error" role="alert"style= "background-color: #c23934;
-                  height: 6vh;
-                  border-radius: 0.25rem;
-                  justify-content: end;
-                  align-items: baseline;">
-                    <span class="slds-assistive-text">error</span>
-                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                      title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                      </svg>
-                    </span>
-                    <P id="DEListDivAlertPera"></P>
-                    <div class="slds-notify__close">
-                      <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
-                        title="Close" onclick="CancelDEListDivAlert()">
-                        <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                        </svg>
-                        <span class="slds-assistive-text">Close</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              <!--end-->
+           
              
                     <!--********* nitik code ended ************-->
 
@@ -2595,12 +2528,7 @@
               <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal("Validate")'
-                style="background-color: #4e8abe !important;">Validate Query</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+             
         <!--      <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -3081,14 +3009,9 @@
 
 
         
-        <div  id="FieldSelectNextAlert" style="display:none; background: white;">
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
-          width: 100%;
-          height: 5vh;
-          padding-top: 0%;
-          border-radius: 0.25rem;
-          justify-content: left;
-          align-items: self-start;">
+        <div  id="FieldSelectNextAlert" style="display:none;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934; width:auto; height: 5vh;
+          padding-top: 0%;">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
             margin-left: 2%;
@@ -3100,9 +3023,10 @@
             <p style="padding: 0;
             float: left;
             margin-top: 1%;">Please Select Atleast One Field.
-            </p>
+          
+          </p>
             <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
             <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -3649,9 +3573,6 @@
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
       var countOfJoinTypeWhere=0;
-function closerunQueryAlert(){
-  document.getElementById('runQueryAlert').style.display = 'none';
-}
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
@@ -3661,7 +3582,7 @@ function openModal(functionAction) {
         //document.getElementById('RelationPopup').style.display = 'none';
         //document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
-        document.getElementById('runQueryAlert').style.display = 'block';
+      
         document.getElementById('uoList').innerHTML = '';
        
       
@@ -4172,23 +4093,63 @@ window.onclick = function(event) {
 */
 
   </script>
-  <script>
+ <script>
     const BORDER_SIZE = 4;
-const panel = document.getElementById("right_panel");
-const table = document.getElementById("tableDiv");
-
-let m_pos;
-function resize(e){
+  const panel = document.getElementById("right_panel");
+  const table = document.getElementById("tableDiv");
+  var hl = screen.height-(screen.height*20)/100;
+  var hu = screen.height-(screen.height*75)/100;
+  panel.style.height=hu+"px";
+  let m_pos;
+  var pHeight=300;
+  function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  var hl = screen.height-(screen.height*40)/100;
-  var hu = screen.height-(screen.height*80)/100;
-  if(m_pos>=hu && m_pos<= hl)
+
+  console.log('Upper '+hu+' Lower '+hl);
+  if(pHeight>=hu && pHeight<= hl)
   {
+    
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log('pHeight '+pHeight);
+    console.log('Bottom div height '+panel.style.height);
     
 
   }
+  else if(pHeight<hu)
+  {
+    panel.style.height=hu+"px";
+    pHeight=300;
+  }
+  else if(pHeight>hl)
+  {
+    panel.style.height=hl+"px";
+    pHeight=300;
+  }
+ /* if(pHeight>=225 && pHeight<=600)
+  {
+    console.log('Position '+m_pos);
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log(pHeight);
+    console.log('Bottom div height '+parseInt(panel.style.height));
+
+  }
+  else if(pHeight<225){
+  
+    console.log('Inside less');
+    panel.style.height = "225px";
+    pHeight=225;
+  }
+  else if(pHeight>600)
+  {
+    console.log('Inside more');
+    panel.style.height = "600px";
+    pHeight=600;
+  }*/
+  
+ 
 
 }
 
@@ -4316,7 +4277,7 @@ document.addEventListener("mouseup", function(){
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
         if (DESetQueryBox.has(DEDragData.DEExtKey)) {
-          document.getElementById('DEListDivAlertPera').innerHTML = 'Have already selected this ' + DEDragData.DEName + ' Data Extension.'
+          document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
         }
         else {
@@ -6316,7 +6277,6 @@ function changeSchmaPosition(e)
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
-        document.getElementById("joinQueryboxAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
@@ -6357,9 +6317,7 @@ function changeSchmaPosition(e)
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
     }
-    function joinQueryboxAlert(){
-      document.getElementById("joinQueryboxAlert").style.display = "none";
-    }
+
   </script>
 </body>
 
