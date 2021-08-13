@@ -3397,19 +3397,26 @@
   function moveUp(direction) {
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
-    console.log(currentSel);
-    console.log(index);
-    console.log(direction);
+    console.log('current sel'+currentSel);
+    console.log('index'+index);
+    console.log('direction'+direction);
     if (direction) {//up 
       if (index == 0) return;
        
       var value = currentSel.options[index - 1].value;
       var text = currentSel.options[index - 1].text;
-      console.log('value'+value);
-      console.log('text'+text);
+      
+      console.log('value-1:'+currentSel.options[index - 1].value);
+      console.log('text-1:'+currentSel.options[index - 1].text);
+
+      console.log('value:'+currentSel.options[index].value);
+      console.log('text:'+currentSel.options[index].text);
+
+
+
       currentSel.options[index - 1].value = currentSel.options[index].value;
       currentSel.options[index - 1].text = currentSel.options[index].text;
-
+        
       currentSel.options[index].value = value;
       currentSel.options[index].text = text;
 
