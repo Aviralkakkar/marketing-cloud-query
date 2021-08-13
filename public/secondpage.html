@@ -3718,7 +3718,18 @@ function openModal(functionAction) {
                             }
                             
                         }
-                        
+                        if(draggedDeJoinKey.size > 0){
+                  
+                            for(const valId of draggedDeJoinKey){
+                              
+                                console.log("qwerty");
+                                document.getElementById(valId).className = "slds-button slds-button_brand"; 
+                                console.log("qwerty end");
+                              
+                            }
+                  
+                  
+                         }
                       
 
                     
