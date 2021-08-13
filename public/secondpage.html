@@ -2466,6 +2466,11 @@
             </div>
             <div id="queryDiv" style="height:100%;position:relative;" >
                  <div style="height:8.9%;">
+
+                  <!--priyanka added alerts-->
+
+
+                  <!--ends here-->
             <button
             class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
             onclick='openModal("Validate")'
@@ -3008,10 +3013,15 @@
 
 
 
-        
-        <div  id="FieldSelectNextAlert" style="display:none;">
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934; width:auto; height: 5vh;
-          padding-top: 0%;">
+        <!--added by priyanka-->
+       <div  id="FieldSelectNextAlert" style="display:none; background: white;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+          width: 100%;
+          height: 5vh;
+          padding-top: 0%;
+          border-radius: 0.25rem;
+          justify-content: left;
+          align-items: self-start;">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
             margin-left: 2%;
@@ -3023,10 +3033,9 @@
             <p style="padding: 0;
             float: left;
             margin-top: 1%;">Please Select Atleast One Field.
-          
-          </p>
+            </p>
             <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
             <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
@@ -3036,11 +3045,6 @@
             </div>
           </div> 
             
-              
-           
-         
-
-      
 
         
 
@@ -6277,6 +6281,7 @@ function changeSchmaPosition(e)
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+        document.getElementById("joinQueryboxAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
@@ -6316,6 +6321,9 @@ function changeSchmaPosition(e)
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
+    }
+    function joinQueryboxAlert(){
+      document.getElementById("joinQueryboxAlert").style.display = "none";
     }
 
   </script>
