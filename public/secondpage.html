@@ -3642,6 +3642,7 @@ function openModal(functionAction) {
           }
             console.log("nitik value24"+DESetQueryBox.size);
             console.log("countOfDeWithWhereClauseValue=="+countOfDeWithWhereClauseValue);
+           
            if ((DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) && (countOfDeWithoutWhereClauseValue < DESetQueryBox.size) && (countOfDeWithWhereClauseValue > 1)){
             console.log("qwertyuiop");
               console.log("nitik value2"+DESetQueryBox.size);
@@ -3662,6 +3663,7 @@ function openModal(functionAction) {
              }
             
            }
+           var countOfJoinType=0;
            if(draggedDeKey.size==0){
             console.log(" @@@@@@@@@@@@sec ");
            if(DESetQueryBox.size > 1){
@@ -3684,7 +3686,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("1=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
-                                  countOfJoinTypeWhere++;
+                                  countOfJoinType++;
                               }
 
                             
@@ -3698,7 +3700,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("2=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
-                                  countOfJoinTypeWhere++;
+                                  countOfJoinType++;
                             }
                         
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
@@ -3712,7 +3714,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("3=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
-                                  countOfJoinTypeWhere++;
+                                  countOfJoinType++;
                             }
                             
                         }
@@ -3726,6 +3728,7 @@ function openModal(functionAction) {
            
            }
 
+           countOfJoinTypeWhere=countOfJoinType;
           
     
 
