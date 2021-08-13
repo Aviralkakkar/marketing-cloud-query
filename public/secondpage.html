@@ -2444,7 +2444,14 @@
 
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
-
+               <div style="height:8.9%;">
+            <button
+            class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
+            onclick='openModal("Validate")'
+            style="background-color: #4e8abe !important;">Validate Query</button>
+          <button
+            class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+          </div>
           <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -2520,12 +2527,7 @@
               <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal("Validate")'
-                style="background-color: #4e8abe !important;">Validate Query</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
+             
         <!--      <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
