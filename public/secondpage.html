@@ -2440,9 +2440,27 @@
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-         
-            <div id="queryDiv" style="height:100%;position:relative;" ></div>
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;"></div>
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+            <span class="slds-assistive-text">warning</span>
+            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            </svg>
+            </span>
+            <h6>Please Join the Query Box.
+          
+            </h6>
+            <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
+            <svg class="slds-button__icon" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+            </svg>
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            </div>
+            </div>
+            <div id="queryDiv" style="height:100%;position:relative;" >
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 70%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
                       <!--********* nitik code started ************-->
@@ -2485,25 +2503,7 @@
                 </button>
                 </div>
                 </div>
-                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
-                  <span class="slds-assistive-text">warning</span>
-                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                  </svg>
-                  </span>
-                  <h6>Please Join the Query Box.
-                
-                  </h6>
-                  <div class="slds-notify__close">
-                  <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                  </button>
-                  </div>
-                  </div>
+           
              
                     <!--********* nitik code ended ************-->
 
@@ -2680,7 +2680,7 @@
               <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
                  
                       <!--****** Nitik code ended *********-->
-              
+               </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
@@ -2805,7 +2805,7 @@
                   </div>
                   </div>
                 </div>
-            
+            </div>
            
             
 
