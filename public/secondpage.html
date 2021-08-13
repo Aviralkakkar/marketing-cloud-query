@@ -4166,10 +4166,9 @@ document.addEventListener("mouseup", function(){
       DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
       DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-      console.log(" DEDragData.DEName"+ DEDragData.DEName);
-      console.log(" DEDragData.DEName"+ DEDragData.DEExtKey );
-      //if condition added by nitik
-      if(DEDragData.DEName==DEDragData.DEExtKey){
+      console.log(" DEDragData.DEName  "+ DEDragData.DEName);
+      console.log(" DEDragData.DEName  "+ DEDragData.DEExtKey );
+     
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -4228,7 +4227,7 @@ document.addEventListener("mouseup", function(){
           document.getElementById('RelationPopup').style.display = 'block';
         }
       }
-    }
+    
     };
     
   //script added by nitik for moving 
