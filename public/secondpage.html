@@ -3428,6 +3428,13 @@
       var value = currentSel.options[index + 1].value;
       var text = currentSel.options[index + 1].text;
 
+      console.log('value+1:'+currentSel.options[index + 1].value);
+      console.log('text+1:'+currentSel.options[index + 1].text);
+
+      console.log('value:'+currentSel.options[index].value);
+      console.log('text:'+currentSel.options[index].text);
+
+
       currentSel.options[index + 1].value = currentSel.options[index].value;
       currentSel.options[index + 1].text = currentSel.options[index].text;
 
