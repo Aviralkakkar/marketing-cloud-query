@@ -4095,7 +4095,7 @@ document.addEventListener("mouseup", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-   
+   var data;
 
 
     onloadofBody();
@@ -4169,13 +4169,13 @@ document.addEventListener("mouseup", function(){
       DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
       console.log(" DEDragData.DEName  "+ DEDragData.DEName);
       console.log(" DEDragData.DEName  "+ DEDragData.DEExtKey );
-      var key=DEDragData.DEExtKey;
-      key = Key.split("WhereClasueDEList");
+      data=DEDragData.DEExtKey;
+      data = data.split("WhereClasueDEList");
       
       
       //condition added by nitik
      
-      if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (key[1]!="WhereClasueDEList") && (key[0][0]!="[")){
+      if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (data[1]!="WhereClasueDEList") && (data[0][0]!="[")){
         console.log(" hiiiiiiiiiii  " );
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
