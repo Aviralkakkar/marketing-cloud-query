@@ -4392,7 +4392,7 @@ document.addEventListener("mouseup", function(){
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
-      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || ((draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length) && (countOfJoinTypeWhere!=0))){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
