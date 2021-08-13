@@ -2287,7 +2287,7 @@
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
+      <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2330,9 +2330,9 @@
                   <div class="tree-branch-header ">
                     <button class="button-padding slds-nav-vertical__action slds-button " onclick="showDataExtensions()"
                       id="dataExtensionButton">
-                      <span class="slds-icon_container slds-icon-utility-opened_folder" title="Description of icon when needed">
+                      <span class="slds-icon_container slds-icon-utility-open_folder" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#opened_folder">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#open_folder">
                           </use>
                         </svg>
                             <span class="slds-assistive-text">Description of icon when needed</span>
@@ -3804,7 +3804,7 @@ window.onclick = function(event) {
   <script>
 
     //******** folder hierarchy code *********//
-    var dataExtBool = false;
+    var dataExtBool = true;
     var sharedDataExtBool = true;
     var dataViewsBool = true;
 
