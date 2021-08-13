@@ -3006,30 +3006,26 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
-            <span class="slds-assistive-text">warning</span>
-            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
-            margin-left: 2%;
-            margin-top: 1.3%;
-        ">
-            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-            </svg>
+        <div id="FieldSelectNextAlert" style="display:none; width:65rem; ">
+          <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+              </svg>
             </span>
-            <h6 style="padding: 0;
-            float: left;
-            margin-top: 1%;">Please Select Atleast One Field.
-          
-            </h6>
+            <p>Please select atleast one field</p>
             <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
-            <svg class="slds-button__icon" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-            </svg>
-            <span class="slds-assistive-text">Close</span>
-            </button>
+              <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close"  onclick="CancelFieldSelectNextAlert()">
+                <svg class="slds-button__icon" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+              </button>
             </div>
-            </div>
+          </div>
+        </div>
+
             
               
            
@@ -4092,59 +4088,19 @@ window.onclick = function(event) {
     const BORDER_SIZE = 4;
 const panel = document.getElementById("right_panel");
 const table = document.getElementById("tableDiv");
-var hl = screen.height-(screen.height*20)/100;
-var hu = screen.height-(screen.height*75)/100;
-panel.style.height=hu+"px";
+
 let m_pos;
-var pHeight=300;
 function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-
-  console.log('Upper '+hu+' Lower '+hl);
-  if(pHeight>=hu && pHeight<= hl)
+  var hl = screen.height-(screen.height*40)/100;
+  var hu = screen.height-(screen.height*80)/100;
+  if(m_pos>=hu && m_pos<= hl)
   {
-    
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
-    pHeight = parseInt(panel.style.height);
-    console.log('pHeight '+pHeight);
-    console.log('Bottom div height '+panel.style.height);
     
 
   }
-  else if(pHeight<hu)
-  {
-    panel.style.height=hu+"px";
-    pHeight=300;
-  }
-  else if(pHeight>hl)
-  {
-    panel.style.height=hl+"px";
-    pHeight=300;
-  }
- /* if(pHeight>=225 && pHeight<=600)
-  {
-    console.log('Position '+m_pos);
-    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
-    pHeight = parseInt(panel.style.height);
-    console.log(pHeight);
-    console.log('Bottom div height '+parseInt(panel.style.height));
-
-  }
-  else if(pHeight<225){
-  
-    console.log('Inside less');
-    panel.style.height = "225px";
-    pHeight=225;
-  }
-  else if(pHeight>600)
-  {
-    console.log('Inside more');
-    panel.style.height = "600px";
-    pHeight=600;
-  }*/
-  
- 
 
 }
 
