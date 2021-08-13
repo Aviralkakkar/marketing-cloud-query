@@ -474,7 +474,11 @@
     .graph-object-figure .graph-object-primary .graph-object-data-sources ul.horizontal-list li .no-icon {
       background: url('../images/data-sources/data-source-no-icon.png') no-repeat
     }
-
+    
+    .inner
+    {
+      display: inline-block;
+    }
     .graph-object-figure .graph-object-primary .graph-object-footer {
       padding: 2px;
       text-align: center;
@@ -2646,8 +2650,8 @@
                                 style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
                               <div class="slds-scrollable" style="height: 8%; width:auto; overflow-x: hidden;">
                   
-                                <div class="inner"><button type="submit" draggable="true" class="slds-button" value="and" style="width: 90px;  padding: 1px 1px 1px 1px; margin-top: 2px;">And</button></div>
-                                <div class="inner"><button class="slds-button" draggable="true" value="or" style="width: 90px; padding: 1px 1px 1px 1px; margin-top: 2px;">Or</button></div>
+                                <div class="inner"><button name="And" id="And" draggable="true" class="slds-button" value="and" style="width: 90px;  padding: 1px 1px 1px 1px; margin-top: 2px;">And</button></div>
+                                <div class="inner"><button class="slds-button" draggable="true" value="or" name="Or" id="Or" style="width: 90px; padding: 1px 1px 1px 1px; margin-top: 2px;">Or</button></div>
                   
                               </div>
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
@@ -4273,6 +4277,9 @@ document.addEventListener("mouseup", function(){
                           draggedDeJoinKey.add(FieldKey);
                           document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
                           range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
+                        }
+                        else if(FieldKey=="And" || FieldKey=="Or"){
+                          range.insertNode(document.createTextNode(' ' + FieldName + ' '));
                         }
                         else{
                           console.log("stop");
