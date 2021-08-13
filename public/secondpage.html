@@ -3135,7 +3135,7 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onclick="listboxMove('rightsideListInSelectField', 'up');" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3149,7 +3149,7 @@
                   </svg>
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
-               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onclick="listboxMove('rightsideListInSelectField', 'down');" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
                 <span class="slds-icon_container slds-icon-utility-chevrondown"
                   title="Description of icon when needed">
                   <svg
@@ -3516,7 +3516,33 @@
   function closrerror(){
     document.getElementById("FieldSelectNextAlert").style.display = "none";
   }
+ 
 
+  //code for moving up and down
+  function listboxMove(listID, direction) {
+    var listbox = document.getElementById(listID);
+    var selIndex = listbox.selectedIndex;
+    if (-1 == selIndex) {
+      alert("Please select an option to move.");
+      return;
+    }
+    var increment = -1;
+    if (direction == 'up')
+      increment = -1;
+    else
+      increment = 1;
+    if ((selIndex + increment) < 0 ||
+      (selIndex + increment) > (listbox.options.length - 1)) {
+      return;
+    }
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    listbox.options[selIndex].value = listbox.options[selIndex + increment].value
+    listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+    listbox.options[selIndex + increment].value = selValue;
+    listbox.options[selIndex + increment].text = selText;
+    listbox.selectedIndex = selIndex + increment;
+  }
 </script>
 
 <!--End here-->
