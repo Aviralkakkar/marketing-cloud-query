@@ -5324,6 +5324,7 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
+        var mydivStyle="top:"+((document.getElementsByClassName("mydiv").length*15) +40)+"px;"+"left:"+((document.getElementsByClassName("mydiv").length*15)+40)+"px;";
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5413,8 +5414,8 @@ document.addEventListener("mouseup", function(){
           '           cursor: move;'+
           '          }'+
           ' </style>' +
-          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="position:relative;" onmouseup="changingColorOfLine()" onmousedown="schemaActionMyDiv(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + '-ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5568,7 +5569,7 @@ document.addEventListener("mouseup", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
-          schemaAction();
+          schemaAction(elmnt);
           
         }  
 
@@ -5585,7 +5586,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           changeSchmaPosition(elmnt)
-          schemaAction();
+          schemaAction(elmnt);
         }
 
         function closeDragElement() {
@@ -5604,41 +5605,62 @@ document.addEventListener("mouseup", function(){
       */
     }
     //--code by nitik
-  
   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
- function changeSchmaPosition(e)
-    {
-        console.log('OKKK:'+e.offsetLeft);
-        if(e.offsetLeft<0)
-        {
-            e.style.left=0+"px";
-        }
-        else if(e.offsetTop<0)
-        {
-            e.style.top=0+"px";
-        }
-    }
+function changeSchmaPosition(e)
+{
+
+  if(e.offsetLeft<0)
+  {
+    e.style.left=0+"px";
+  }
+  else if(e.offsetTop<0)
+  {
+    e.style.top=0+"px";
+  }
+        
+}
  
 
   //Anil kumar for creating Line
   var dragId='';
-  function schemaAction(id) 
+
+  function schemaAction(elmnt) 
+   {
+    var myDivId=(elmnt.id).split('-'); 
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(myDivId[0] == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(myDivId[0], ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+     }
+      else if (myDivId[0] == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,myDivId[0],ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+      }
+    }
+  }
+
+  function schemaActionMyDiv(id) 
    {
     if(id)
     {
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
-     }
-      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
-      }
-    }   
   }
+
+  function changingColorOfLine()
+  {
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#353535");
+     }
+     else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId,'#353535');
+      }
+    }
+  }
+
+  //**************************************************END***************************************************** 
+ 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
@@ -6108,19 +6130,20 @@ document.addEventListener("mouseup", function(){
               "JoinedLineDivId":line_ID
             });
             //Edited By ANIL KUMAR
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2,lineid) 
+    function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "ForConnectedLine";
-      var val2 = de2 + "ForConnectedLine";
+      var val1 = de1 + "-ForConnectedLine";
+      var val2 = de2 + "-ForConnectedLine";
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
@@ -6153,7 +6176,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#387F9D;
+                        background-color:${lineColor};
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
