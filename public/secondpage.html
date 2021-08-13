@@ -3517,7 +3517,7 @@
       var countOfDeWithWhereClauseValueMain=0;    
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
-      var Str;
+      var countOfJoinTypeWhere=0;
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
@@ -3671,6 +3671,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("1=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                                  countOfJoinTypeWhere++;
                               }
 
                             
@@ -3684,6 +3685,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("2=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                                  countOfJoinTypeWhere++;
                             }
                         
                             else if (JoinQueryDetails.DEForJoin[key].JoinType == 'Outer Join') {
@@ -3697,6 +3699,7 @@ function openModal(functionAction) {
                                   '  </div>' +
                                   '</li>';
                                   console.log("3=[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "]" );
+                                  countOfJoinTypeWhere++;
                             }
                             
                         }
@@ -4385,10 +4388,11 @@ document.addEventListener("mouseup", function(){
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
       console.log("draggedDeJoinKey=="+draggedDeJoinKey.size); 
+      console.log("countOfJoinTypeWhere=="+countOfJoinTypeWhere); 
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
-      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length)){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || ((draggedDeJoinKey.size!= JoinQueryDetails.DEForJoin.length) && (countOfJoinTypeWhere!=0))){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return;
