@@ -2556,7 +2556,7 @@
                 <div class="slds-modal__container" >
                   <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">
                     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-                      onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">
+                      onclick="closeModal()" style=" position: sticky; margin-left: 94%;">
                       <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                       </svg>
@@ -2634,7 +2634,7 @@
                                 style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
                                   style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
-                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
+                                <div class="slds-scrollable" style="height: 46%; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
@@ -2643,8 +2643,16 @@
                     
                                 </div>
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
+                              <div class="slds-scrollable" style="height: 8%; width:auto; overflow-x: hidden;">
+                  
+                                <div class="inner"><button type="submit" draggable="true" class="slds-button" value="and" style="width: 90px;  padding: 1px 1px 1px 1px; margin-top: 2px;">And</button></div>
+                                <div class="inner"><button class="slds-button" draggable="true" value="or" style="width: 90px; padding: 1px 1px 1px 1px; margin-top: 2px;">Or</button></div>
+                  
+                              </div>
+                                <h4 class="slds-text-title_caps" id="component-selector-container__heading"
                                   style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
-                                <div class="slds-scrollable" style="height: 50%; width:auto; overflow-x: hidden;">
+                                <div class="slds-scrollable" style="height: 46%; width:auto; overflow-x: hidden;">
                     
                                   <ul aria-labelledby="component-selector-container__heading" id="uoList2" class="slds-tree" role="tree"
                                     style="padding-left:0rem; background-color:white; position: relative;">
@@ -4264,7 +4272,7 @@ document.addEventListener("mouseup", function(){
                           console.log("start-FieldName==="+FieldName);
                           draggedDeJoinKey.add(FieldKey);
                           document.getElementById(FieldKey).className = "slds-button slds-button_brand"; 
-                          range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                          range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                         }
                         else{
                           console.log("stop");
@@ -4301,7 +4309,7 @@ document.addEventListener("mouseup", function(){
                           }
                         }
 
-                        range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) AND/OR '));
+                        range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                         }
                        
                        
@@ -5622,7 +5630,7 @@ document.addEventListener("mouseup", function(){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelPopup()" style=" position: sticky; margin-left: 94%;">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
           ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
