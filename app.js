@@ -1880,6 +1880,7 @@ app.post("/secondpage", async function (req, res) {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
+          console.log("Token:"+response);
           resolve({
             'AccessToken' : response.data.access_token,
             'RestURL' : response.data.rest_instance_url,
