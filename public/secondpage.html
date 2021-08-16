@@ -5794,11 +5794,12 @@ function changeSchmaPosition(e)
   function changingColorOfLine()
   {
     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#353535");
-     }
-     else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId,'#353535');
+      for(var ConnectedTwoDiv2 of JoinQueryDetails.DEForJoin)
+      {
+        if(ConnectedTwoDiv.FirstDEExtKey!=ConnectedTwoDiv2.FirstDEExtKey)
+        {
+          joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey, ConnectedTwoDiv2.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#353535");
+        }
       }
     }
   }
