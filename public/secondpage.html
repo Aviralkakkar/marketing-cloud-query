@@ -5917,6 +5917,9 @@ function changeSchmaPosition(e)
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
       if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal)){
+        for (const val of joinedDivSet) {
+          console.log('joinedDivSet===='+joinedDivSet);
+        }
         for (var key in JoinQueryDetails.DEForJoin) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
