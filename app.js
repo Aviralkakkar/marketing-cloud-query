@@ -1506,15 +1506,18 @@ app.post("/secondpage", async function (req, res) {
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
+         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
+        console.log('TaskId '+taskId);
         if (taskId) {
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
-              console.log('Inside if');
+              console.log('Inside if '+NewDEName);
               DERecords = await getDERecords(NewDEName);
+              console.log('Records Server '+DERecords);
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
