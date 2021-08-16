@@ -1777,7 +1777,7 @@ app.post("/secondpage", async function (req, res) {
         //var NextUrl;
         var DEDataOptions = {
           'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/IGO_PROFILES/rowset/',
+          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/'+key+'/rowset/',
           'headers': {
             'Authorization': 'Bearer ' + AuthResponse.AccessToken
           }
