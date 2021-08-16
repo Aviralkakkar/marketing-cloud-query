@@ -1897,6 +1897,7 @@ app.post("/secondpage", async function (req, res) {
           else
           {
             console.log('Error');
+            res.sendFile(path.join(__dirname + '/public/loginpage.html'));
           }
         },
         (error) => {
