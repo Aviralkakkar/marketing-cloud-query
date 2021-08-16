@@ -49,6 +49,7 @@ app.post("/secondpage", async function (req, res) {
   //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
+  res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   console.log(AuthResponse);
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
