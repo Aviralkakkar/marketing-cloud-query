@@ -37,20 +37,18 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 app.post("/secondpage", async function (req, res) {
-  // var AuthRequest = {
-  //   "ClientId" : req.body.clientid,
-  //   "ClientSecret" : req.body.clientsecret,
-  //   "ClinentAuthURL" : req.body.authurl
-  // }
-  var AuthRequest = {
-    "ClientId" : "sr7id7zht854bwdco8t9qdym",
-    "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
-    "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
-  }
+   var AuthRequest = {
+     "ClientId" : req.body.clientid,
+     "ClientSecret" : req.body.clientsecret,
+     "ClinentAuthURL" : req.body.authurl
+   }
+  //var AuthRequest = {
+  //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
+  //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
+  //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
+  //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
-
-  res.sendFile(path.join(__dirname + '/public/secondpage.html'));
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1880,11 +1878,19 @@ app.post("/secondpage", async function (req, res) {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          resolve({
-            'AccessToken' : response.data.access_token,
-            'RestURL' : response.data.rest_instance_url,
-            'SoapURL' : response.data.soap_instance_url
-          });
+          if(response.status==200)
+          {
+            console.log('Success');
+            resolve({
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
+            });
+          }
+          else
+          {
+            console.log('Error');
+          }
         },
         (error) => {
           reject(error);
