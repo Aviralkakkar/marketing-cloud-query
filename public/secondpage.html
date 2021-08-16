@@ -3571,7 +3571,7 @@
       for (var i = 0; i < list1.length; i++) {
         
         document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
-           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+           + '" draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
 
        
       }
@@ -5180,6 +5180,8 @@ document.addEventListener("mouseup", function(){
     }
 
     function RunQuery() {
+      
+      console.log("Inside run query");
       $.ajax
         ({
           url: '/RunQuery',
