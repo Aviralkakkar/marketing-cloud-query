@@ -1880,18 +1880,11 @@ app.post("/secondpage", async function (req, res) {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          if(response.status==200)
-          {
-            reject(error);  
-          }
-          else
-          {
           resolve({
             'AccessToken' : response.data.access_token,
             'RestURL' : response.data.rest_instance_url,
             'SoapURL' : response.data.soap_instance_url
           });
-        }
         },
         (error) => {
           reject(error);
