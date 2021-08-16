@@ -4479,6 +4479,7 @@ document.addEventListener("mouseup", function(){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
+        console.log('DEDragData.DEExtKey---->'+DEDragData.DEExtKey);
         if (DESetQueryBox.has(DEDragData.DEExtKey)) {
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
