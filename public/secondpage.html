@@ -2692,7 +2692,7 @@
                         
                           
                         </header-->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2711,6 +2711,37 @@
                           </button>
                           </div>
                           </div>
+                          <div  id="DeDragAlert" style="display:none; background: white;">
+                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+                            width: 100%;
+                            height: 5vh;
+                            padding-top: 0%;
+                            border-radius: 0.25rem;
+                            justify-content: left;
+                            align-items: self-start;">
+                              <span class="slds-assistive-text">warning</span>
+                              <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+                              margin-left: 2%;
+                              margin-top: 1.3%;">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                              </span>
+                              <p style="padding: 0;
+                              float: left;
+                              margin-top: 1%;">Please drag all the DE and JoinType atleast one time.
+                              </p>
+                              <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                              <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Close</span>
+                              </button>
+                              </div>
+                              </div>
+                            </div> 
+                              
                      
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
