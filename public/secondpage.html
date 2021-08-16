@@ -3273,7 +3273,7 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="listboxMove('rightsideListInSelectField', 'up');" style="width: 2rem;
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onclick="moveUp()" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3287,7 +3287,7 @@
                   </svg>
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
-               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="listboxMove('rightsideListInSelectField', 'down');" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onclick="moveDown()" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
                 <span class="slds-icon_container slds-icon-utility-chevrondown"
                   title="Description of icon when needed">
                   <svg
@@ -3533,41 +3533,60 @@
 
  
   /*code for moving up and down*/
-  function listboxMove(listID, direction) {
-    console.log('ID--->'+listID);
-    console.log('direction--->'+direction);
-    var listbox = document.getElementById(listID);
-    var selIndex = listbox.selectedIndex;
-    if (-1 == selIndex) {
-      alert("Please select an option to move.");
-      return;
-    }
-    console.log('lstbox---->'+listbox);
-    console.log('selIndex------'+selIndex);
-    var increment = -1;
-    if (direction == 'up')
-      increment = -1;
-    else
-      increment = 1;
-    if ((selIndex + increment) < 0 ||
-      (selIndex + increment) > (listbox.options.length - 1)) {
-      return;
-    }
-    var selValue = listbox.options[selIndex].value;
-    var selText = listbox.options[selIndex].text;
-    console.log('selvalue----'+selValue);
-    console.log('selText----'+selText);
+    //rightsideListInSelectField
+    function moveUp()
+        {
+            var ddl = document.getElementById('rightsideListInSelectField');
+            //var size = ddl.length;
+            //var index = ddl.selectedIndex;
+            var selectedItems = new Array();
+			var temp = {innerHTML:null, value:null};
+            for(var i = 0; i < ddl.length; i++)
+                if(ddl.options[i].selected)             
+                    selectedItems.push(i);
 
-    var selValue1 = listbox.options[selIndex + increment].value;
-    var selText1 = listbox.options[selIndex + increment].text;
-    console.log('selvalue11----'+selValue1);
-    console.log('selText11----'+selText1);
-    listbox.options[selIndex].innerHTML.value = listbox.options[selIndex + increment].value;
-    listbox.options[selIndex].innerHTML.text = listbox.options[selIndex + increment].text;
-    listbox.options[selIndex + increment].innerHTML.value = selValue;
-    listbox.options[selIndex + increment].innerHTML.text = selText;
-    listbox.selectedIndex = selIndex + increment;
-  }
+            if(selectedItems.length > 0)    
+                if(selectedItems[0] != 0)
+                    for(var i = 0; i < selectedItems.length; i++)
+                    {
+						temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
+						temp.value = ddl.options[selectedItems[i]].value;
+                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] - 1].innerHTML;
+                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] - 1].value;
+                        ddl.options[selectedItems[i] - 1].innerHTML = temp.innerHTML; 
+                        ddl.options[selectedItems[i] - 1].value = temp.value; 
+                        ddl.options[selectedItems[i] - 1].selected = true;
+                        ddl.options[selectedItems[i]].selected = false;
+                    }
+        }
+
+        function moveDown()
+        {
+            var ddl = document.getElementById('rightsideListInSelectField');
+            //var size = ddl.length;
+            //var index = ddl.selectedIndex;
+            var selectedItems = new Array();
+			var temp = {innerHTML:null, value:null};
+            for(var i = 0; i < ddl.length; i++)
+                if(ddl.options[i].selected)             
+                    selectedItems.push(i);
+
+            if(selectedItems.length > 0)    
+                if(selectedItems[selectedItems.length - 1] != ddl.length - 1)
+                    for(var i = selectedItems.length - 1; i >= 0; i--)
+                    {
+                        temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
+                        temp.value = ddl.options[selectedItems[i]].value;
+                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] + 1].innerHTML;
+                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] + 1].value;
+                        ddl.options[selectedItems[i] + 1].innerHTML = temp.innerHTML; 
+                        ddl.options[selectedItems[i] + 1].value = temp.value; 
+                        ddl.options[selectedItems[i] + 1].selected = true;
+                        ddl.options[selectedItems[i]].selected = false;
+                    }
+        }
+    
+    //ends here
 
   function moveRight(src, des) {
     
@@ -5267,7 +5286,6 @@ document.addEventListener("mouseup", function(){
             '<tr class="slds-text-heading--label">';
 
           for (var key in DERecords[0]) {
-            console.log('KEY '+key);
             DETableBody += '<th class="slds-cell-shrink" scope="col">' +
               '<span class="slds-truncate">' + key + '</span>' +
               '</th>';
