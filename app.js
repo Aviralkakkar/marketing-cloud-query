@@ -1894,21 +1894,14 @@ app.post("/secondpage", async function (req, res) {
               'SoapURL' : response.data.soap_instance_url
             });
           }
-          else
-          {
-            console.log('Error');
-          }
         },
         (error) => {
-          console.log("Error:"+error.message);
           reject(error);
         })
 
       });
     }
     catch (err) { 
-      console.log("Error1:"+JOSN.stringify(err));
-      console.log("Error2:"+err.message);
     }
   }
 });
