@@ -5094,7 +5094,9 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
+              console.log('Client data '+data);
               if (data != "false") {
+                
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
@@ -5965,7 +5967,7 @@ function changeSchmaPosition(e)
 
                 }
                 else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value=" ">'+JoinTypeArray[i]+'</option>';
+                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
                 }
             }
          
