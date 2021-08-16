@@ -3273,7 +3273,7 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onclick="moveUp()" style="width: 2rem;
+             <!-- <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onclick="moveUp()" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3299,8 +3299,8 @@
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
 
-              <!--  
-                 <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="(true);move" style="width: 2rem;
+              -->
+                 <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3326,7 +3326,7 @@
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
 
-              -->
+              
               </div>
 
 
@@ -3489,12 +3489,14 @@
   var currentSel = null;
   function move() {
     if (arguments.length == 1) {
+      console.log('up and down');
       moveUp(arguments[0]);
     } else if (arguments.length == 2) {
       moveRight(arguments[0], arguments[1]);
     }
   }
   function moveUp(direction) {
+    console.log(direction);
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
     console.log(currentSel);
@@ -3505,12 +3507,34 @@
 
       var value = currentSel.options[index - 1].value;
       var text = currentSel.options[index - 1].text;
+      var id=currentSel.options[index - 1].id;
+      var label=currentSel.options[index - 1].label;
+      var style=currentSel.options[index - 1].style;
+      console.log('1+'+value);
+      console.log('2+'+text);
+
+      console.log('3+'+id);
+
+      console.log('4+'+label);
+
+      console.log('5+'+style);
+
+
+
 
       currentSel.options[index - 1].value = currentSel.options[index].value;
       currentSel.options[index - 1].text = currentSel.options[index].text;
+      currentSel.options[index - 1].id=currentSel.options[index ].id;
+      currentSel.options[index - 1].label=currentSel.options[index ].label;
+      currentSel.options[index - 1].style=currentSel.options[index ].style;
+
 
       currentSel.options[index].value = value;
       currentSel.options[index].text = text;
+      currentSel.options[index ].id =  id
+      currentSel.options[index ].label =label
+      currentSel.options[index ].style=style
+
 
       currentSel.options[index].selected = false;
       currentSel.options[index - 1].selected = true;
@@ -3519,12 +3543,32 @@
 
       var value = currentSel.options[index + 1].value;
       var text = currentSel.options[index + 1].text;
+      var id=currentSel.options[index + 1].id;
+      var label=currentSel.options[index + 1].label;
+      var style=currentSel.options[index + 1].style;
+
+      console.log('1+'+value);
+      console.log('2+'+text);
+
+      console.log('3+'+id);
+
+      console.log('4+'+label);
+
+      console.log('5+'+style);
+
+
 
       currentSel.options[index + 1].value = currentSel.options[index].value;
       currentSel.options[index + 1].text = currentSel.options[index].text;
+      currentSel.options[index + 1].id=currentSel.options[index ].id;
+      currentSel.options[index + 1].label=currentSel.options[index ].label;
+      currentSel.options[index + 1].style=currentSel.options[index ].style;
 
       currentSel.options[index].value = value;
       currentSel.options[index].text = text;
+      currentSel.options[index ].id =  id
+      currentSel.options[index ].label =label
+      currentSel.options[index ].style=style
 
       currentSel.options[index].selected = false;
       currentSel.options[index + 1].selected = true;
