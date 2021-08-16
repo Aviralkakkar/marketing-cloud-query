@@ -3555,17 +3555,20 @@
     }
     var selValue = listbox.options[selIndex].value;
     var selText = listbox.options[selIndex].text;
-    console.log('selvalue----'+listbox.options[selIndex].value);
-    console.log('selText----'+listbox.options[selIndex].text);
+    console.log('selvalue----'+selValue);
+    console.log('selText----'+selText);
 
-    console.log('+1------'+listbox.options[selIndex + increment].value);
-    console.log('+1------'+listbox.options[selIndex + increment].text);
+    var selValue1 = listbox.options[selIndex + increment].value;
+    var selText1 = listbox.options[selIndex + increment].text;
+    console.log('selvalue----'+selValue1);
+    console.log('selText----'+selText1);
     listbox.options[selIndex].value = listbox.options[selIndex + increment].value;
     listbox.options[selIndex].text = listbox.options[selIndex + increment].text;
     listbox.options[selIndex + increment].value = selValue;
     listbox.options[selIndex + increment].text = selText;
     listbox.selectedIndex = selIndex + increment;
   }
+
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
