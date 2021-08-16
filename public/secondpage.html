@@ -5950,7 +5950,7 @@ function changeSchmaPosition(e)
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
       '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-        '<option value="">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+        '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
             for(var i=0;i<7;i++){
               if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
 
@@ -5969,7 +5969,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
@@ -5999,7 +5999,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
             for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
             if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
@@ -6025,7 +6025,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
             for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("helloDFGW");
