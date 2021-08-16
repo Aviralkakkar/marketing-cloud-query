@@ -2093,7 +2093,7 @@
       text-align: left;
     }
 
-    th {
+    #tableDiv th {
       padding-top: 1% !important;
     }
 
@@ -2465,20 +2465,37 @@
             </div>
             </div>
             <div id="queryDiv" style="height:100%;position:relative;" >
-                   <div class="slds-grid"style="height:8.9%;">
-                <div class="slds-col" style="width:78%;">
-                 
-                </div>
-                <div class="slds-col" style="width: 22%;">
-                  <button
-                  class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                  onclick='openModal("Validate")'
-                  style="background-color: #4e8abe !important;">Validate Query</button>
-                <button
-                  class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>
-                </div>
-               
-              </div>
+                 <div style="height:8.9%;">
+                <table style="height:100%;">
+                  <tbody><tr>
+                    <th style="width: max-content;padding-right: 1%;padding-left: 1%;padding-top:1%;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: block; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                        <span class="slds-assistive-text">warning</span>
+                        <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                        <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                        </svg>
+                        </span>
+                        <p style="padding: 0; float: left;">Please Select Atleast One Field.
+                        </p>
+                        <div class="slds-notify__close">
+                        <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
+                        <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                        </button>
+                        </div>
+                        </div></th>
+                    <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal()" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
+                    <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal()" style="height:6vh;">Run</button></th>
+                  </tr>
+                  </tbody></table>
+            
+            
+            </div>
               <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;">
               
               <div id="MainDivAlert" style="display:none">
@@ -4126,12 +4143,12 @@ window.onclick = function(event) {
   else if(pHeight<hu)
   {
     panel.style.height=hu+"px";
-    pHeight=300;
+    pHeight=hu;
   }
   else if(pHeight>hl)
   {
     panel.style.height=hl+"px";
-    pHeight=300;
+    pHeight=hl;
   }
  /* if(pHeight>=225 && pHeight<=600)
   {
