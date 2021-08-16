@@ -6667,6 +6667,25 @@ function changeSchmaPosition(e)
     
 
     function SaveJoinQuery() {
+      if(keyForDEField!=null){
+        if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
+
+          JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField=document.getElementById('FirstDEField').value;
+          console.log("in the ");
+        }
+        if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEField').value){
+          console.log("in the 2 ");
+          JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
+        }
+        if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
+          console.log("in the 2 ");
+          JoinQueryDetails.DEForJoin[keyForDEField].JoinType=document.getElementById('select-01').value;
+        }
+        document.getElementById('ThirdModal').style.display = 'none';
+
+      }
+      else{
+        console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -6703,6 +6722,7 @@ function changeSchmaPosition(e)
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
+      }
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
