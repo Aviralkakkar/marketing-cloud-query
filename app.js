@@ -1517,7 +1517,10 @@ app.post("/secondpage", async function (req, res) {
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
               console.log('Inside if '+NewDEName);
-              DERecords = await getDERecords(NewDEName);
+         //---------kkkkkkkkkk-----------------//
+               //DERecords = await getDERecords(NewDEName);
+              DERecords = await getDERecords('IGO_PROFILES');
+               //---------kkkkkkkkkk-----------------//
               console.log('Records Server '+DERecords);
 
               await QueryDelete(queryDefinitionId);
