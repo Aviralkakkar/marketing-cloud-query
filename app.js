@@ -1897,16 +1897,19 @@ app.post("/secondpage", async function (req, res) {
           else
           {
             console.log('Error');
-            res.sendFile(path.join(__dirname + '/public/loginpage.html'));
           }
         },
         (error) => {
+          console.log("Error:"+error.message);
           reject(error);
         })
 
       });
     }
-    catch (err) { }
+    catch (err) { 
+      console.log("Error1:"+JOSN.stringify(err));
+      console.log("Error2:"+err.message);
+    }
   }
 });
 
