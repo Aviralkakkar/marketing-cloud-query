@@ -2469,14 +2469,14 @@
                 <table style="height:100%;">
                   <tbody><tr>
                     <th style="width: max-content;padding-right: 1%;padding-left: 1%;padding-top:1%;">
-                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: block; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                         <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                         </svg>
                         </span>
-                        <p style="padding: 0; float: left;">Please Select Atleast One Field.
+                        <p style="padding: 0; float: left;">Please Select Atleast One DE.
                         </p>
                         <div class="slds-notify__close">
                         <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
@@ -2486,11 +2486,80 @@
                         <span class="slds-assistive-text">Close</span>
                         </button>
                         </div>
-                        </div></th>
+                        </div>
+                        <!--alerts and warning-->
+                        <!--for -->
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                          </svg>
+                          </span>
+                          <p style="padding: 0; float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                          </p>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="joinQueryboxAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
+                          </div>
+                          </div>
+                        
+              <!--priyanka added code-->
+             
+                <!--sucess alert-->
+              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="runQueryAlert" style="display:none; background-color: #04844b;
+              height: 6vh ; border-radius: 0.25rem;">
+                <span class="slds-assistive-text">check</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                </svg>
+                </span>
+                <p style="padding: 0; float: left;">
+                  Valid SQL Query Syntax.
+                </p>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="closerunQueryAlert()">
+                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
+               
+               
+                 <!--alert for already exist div-->
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                  <span class="slds-assistive-text">warning</span>
+                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                  </svg>
+                  </span>
+                  <p id="DEListDivAlertPera" style="padding: 0; float: left;">
+                  </p>
+                  <div class="slds-notify__close">
+                  <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDEListDivAlert()" >
+                  <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                  </button>
+                  </div>
+                  </div>
+              <!--end-->
+
+                        <!--ends here-->
+                      </th>
                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
-                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal()" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
+                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate')" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
-                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal()" style="height:6vh;">Run</button></th>
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run')" style="height:6vh;">Run</button></th>
                   </tr>
                   </tbody></table>
             
@@ -2623,7 +2692,7 @@
                         
                           
                         </header-->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2642,6 +2711,37 @@
                           </button>
                           </div>
                           </div>
+                          <div  id="DeDragAlert" style="display:none; background: white;">
+                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+                            width: 100%;
+                            height: 5vh;
+                            padding-top: 0%;
+                            border-radius: 0.25rem;
+                            justify-content: left;
+                            align-items: self-start;">
+                              <span class="slds-assistive-text">warning</span>
+                              <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+                              margin-left: 2%;
+                              margin-top: 1.3%;">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                              </span>
+                              <p style="padding: 0;
+                              float: left;
+                              margin-top: 1%;">Please drag all the DE and JoinType atleast one time.
+                              </p>
+                              <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                              <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Close</span>
+                              </button>
+                              </div>
+                              </div>
+                            </div> 
+                              
                      
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
@@ -2729,7 +2829,7 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:90%;">
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
                     style="border:1px solid rgb(177, 172, 172) !important;">
@@ -2810,7 +2910,7 @@
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:10%;">
+                  <div class="slds-col" style="height:20px;">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -3037,30 +3137,36 @@
 
 
         
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="FieldSelectNextAlert" style="display:none; background-color: #DA2222; width:auto;">
+        <div  id="FieldSelectNextAlert" style="display:none; background: white;">
+          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+          width: 100%;
+          height: 5vh;
+          padding-top: 0%;
+          border-radius: 0.25rem;
+          justify-content: left;
+          align-items: self-start;">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
             margin-left: 2%;
-            margin-top: 1.3%;
-        ">
+            margin-top: 1.3%;">
             <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
             </svg>
             </span>
-            <h6 style="padding: 0;
+            <p style="padding: 0;
             float: left;
             margin-top: 1%;">Please Select Atleast One Field.
-          
-            </h6>
+            </p>
             <div class="slds-notify__close">
             <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="closrerror()">
-            <svg class="slds-button__icon" aria-hidden="true">
+            <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
             </svg>
             <span class="slds-assistive-text">Close</span>
             </button>
             </div>
             </div>
+          </div> 
             
               
            
@@ -3562,12 +3668,18 @@
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
       var countOfJoinTypeWhere=0;
+      /*added by priyanka*/
+
+      function closerunQueryAlert(){
+        document.getElementById('runQueryAlert').style.display = 'none';
+      }
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
      
     
    if (DESetQueryBox.size >0 ) {
+       document.getElementById('runQueryAlert').style.display = 'block';
         //document.getElementById('RelationPopup').style.display = 'none';
         //document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -4084,21 +4196,61 @@ window.onclick = function(event) {
   </script>
   <script>
     const BORDER_SIZE = 4;
-const panel = document.getElementById("right_panel");
-const table = document.getElementById("tableDiv");
-
-let m_pos;
-function resize(e){
+  const panel = document.getElementById("right_panel");
+  const table = document.getElementById("tableDiv");
+  var hl = screen.height-(screen.height*20)/100;
+  var hu = screen.height-(screen.height*75)/100;
+  panel.style.height=hu+"px";
+  let m_pos;
+  var pHeight=300;
+  function resize(e){
   const dx = m_pos - e.y;
   m_pos = e.y;
-  var hl = screen.height-(screen.height*40)/100;
-  var hu = screen.height-(screen.height*80)/100;
-  if(m_pos>=hu && m_pos<= hl)
+  var adiv = document.getElementById("RelationshipDiv").offsetHeight;
+  console.log('Upper '+hu+' Lower '+hl+' height relation '+adiv+ ' hello '+document.getElementById("RelationshipDiv").getBoundingClientRect().height);
+  if(pHeight>=hu && pHeight<= hl)
   {
+    
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log('pHeight '+pHeight);
+    console.log('Bottom div height '+panel.style.height);
     
 
   }
+  else if(pHeight<hu)
+  {
+    panel.style.height=hu+"px";
+    pHeight=hu;
+  }
+  else if(pHeight>hl)
+  {
+    panel.style.height=hl+"px";
+    pHeight=hl;
+  }
+ /* if(pHeight>=225 && pHeight<=600)
+  {
+    console.log('Position '+m_pos);
+    panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
+    pHeight = parseInt(panel.style.height);
+    console.log(pHeight);
+    console.log('Bottom div height '+parseInt(panel.style.height));
+
+  }
+  else if(pHeight<225){
+  
+    console.log('Inside less');
+    panel.style.height = "225px";
+    pHeight=225;
+  }
+  else if(pHeight>600)
+  {
+    console.log('Inside more');
+    panel.style.height = "600px";
+    pHeight=600;
+  }*/
+  
+ 
 
 }
 
@@ -4221,7 +4373,7 @@ document.addEventListener("mouseup", function(){
       //condition added by nitik
      
       if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (data[1]!="") && (data[0][0]!="[")){
-        console.log(" hiiiiiiiiiii  " );
+         console.log(" hiiiiiiiiiii  " );
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -5355,6 +5507,7 @@ document.addEventListener("mouseup", function(){
        }
 
         //************************************************Edited By ANIL KUMAR**********************************//
+        var mydivStyle="top:"+((document.getElementsByClassName("mydiv").length*15) +40)+"px;"+"left:"+((document.getElementsByClassName("mydiv").length*15)+40)+"px;";
         var relationDivString = '<style>' +
           '        ' +
           '        .mainQuaryBoxStyle{' +
@@ -5444,8 +5597,8 @@ document.addEventListener("mouseup", function(){
           '           cursor: move;'+
           '          }'+
           ' </style>' +
-          '<div class=".slds-is-relative" onmousedown="schemaAction(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="left:5%;top:5%;" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + 'ForConnectedLine">' +
+          '<div style="position:relative;" onmouseup="changingColorOfLine()" onmousedown="schemaActionMyDiv(this.id)" id="' + DEDragData.DEExtKey + '##">' +
+          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + '-ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5599,7 +5752,7 @@ document.addEventListener("mouseup", function(){
           // call a function whenever the cursor moves:
           document.onmousemove = elementDrag;
           //Added by ANIL KUMAR
-          schemaAction();
+          schemaAction(elmnt);
           
         }  
 
@@ -5616,7 +5769,7 @@ document.addEventListener("mouseup", function(){
           elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
           //Added by ANIL KUMAR
           changeSchmaPosition(elmnt)
-          schemaAction();
+          schemaAction(elmnt);
         }
 
         function closeDragElement() {
@@ -5636,40 +5789,62 @@ document.addEventListener("mouseup", function(){
     }
     //--code by nitik
   
-  //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
+   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
- function changeSchmaPosition(e)
-    {
-        console.log('OKKK:'+e.offsetLeft);
-        if(e.offsetLeft<0)
-        {
-            e.style.left=0+"px";
-        }
-        else if(e.offsetTop<0)
-        {
-            e.style.top=0+"px";
-        }
-    }
+function changeSchmaPosition(e)
+{
+
+  if(e.offsetLeft<0)
+  {
+    e.style.left=0+"px";
+  }
+  else if(e.offsetTop<0)
+  {
+    e.style.top=0+"px";
+  }
+        
+}
  
 
   //Anil kumar for creating Line
   var dragId='';
-  function schemaAction(id) 
+
+  function schemaAction(elmnt) 
+   {
+    var myDivId=(elmnt.id).split('-'); 
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      if(myDivId[0] == ConnectedTwoDiv.FirstDEExtKey) {
+       joinQueryBoxLine(myDivId[0], ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+     }
+      else if (myDivId[0] == ConnectedTwoDiv.SecondDEExtKey) {
+       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,myDivId[0],ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
+      }
+    }
+  }
+
+  function schemaActionMyDiv(id) 
    {
     if(id)
     {
       var str = id.substring(0, id.length - 2);
       dragId=str;
     }
-     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
-      if(dragId == ConnectedTwoDiv.FirstDEExtKey) {
-       joinQueryBoxLine(dragId, ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId);
-     }
-      else if (dragId == ConnectedTwoDiv.SecondDEExtKey) {
-       joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey,dragId,ConnectedTwoDiv.JoinedLineDivId);
-      }
-    }   
   }
+
+  function changingColorOfLine()
+  {
+    for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
+      for(var ConnectedTwoDiv2 of JoinQueryDetails.DEForJoin)
+      {
+        if(ConnectedTwoDiv.FirstDEExtKey!=ConnectedTwoDiv2.FirstDEExtKey)
+        {
+          joinQueryBoxLine(ConnectedTwoDiv.FirstDEExtKey, ConnectedTwoDiv2.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#353535");
+        }
+      }
+    }
+  }
+
+  //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       var SecondDEExtKeyForJoinGlobal;
@@ -6506,20 +6681,20 @@ document.addEventListener("mouseup", function(){
               "SecondDEJoinField": document.getElementById('SecondDEField').value,
               "JoinedLineDivId":line_ID
             });
-            //Edited By ANIL KUMAR
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID);
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
           }
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
     }
     //****************************************Edited By ANIL KUMAR******************************************
-    function joinQueryBoxLine(de1, de2,lineid) 
+    function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
       console.log("Line drawed");
 
-      var val1 = de1 + "ForConnectedLine";
-      var val2 = de2 + "ForConnectedLine";
+      var val1 = de1 + "-ForConnectedLine";
+      var val2 = de2 + "-ForConnectedLine";
       console.log('LineNumber:'+lineid);
 
       var div1 = document.getElementById(val1);
@@ -6552,7 +6727,7 @@ document.addEventListener("mouseup", function(){
                         opacity: 0.9;
                         margin: 0px;
                         height:  2px;
-                        background-color:#387F9D;
+                        background-color:${lineColor};
                         line-height: 1px;
                         left: ${cx}px;
                         top: ${cy}px;
@@ -6567,10 +6742,16 @@ document.addEventListener("mouseup", function(){
         console.log('NewLine:'+lineElement);            
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
+
+    function joinQueryboxAlert(){
+      document.getElementById("joinQueryboxAlert").style.display = "none";
+
+    }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+        document.getElementById("joinQueryboxAlert").style.display = "block";
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
