@@ -2077,7 +2077,7 @@
 
     }
 
-    @media (min-height:400px) and (max-height: 500px) {
+    @media (min-height:400px) and (max-height: 500px) {git 
       #tableDiv {
         height: 30%;
       }
@@ -2094,7 +2094,7 @@
     }
 
    #tableDiv th {
-      padding-top: 1% ;
+      padding-top: 1% !important;
     }
 
     #newDiv:hover {
@@ -2287,7 +2287,7 @@
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
+      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2444,7 +2444,7 @@
 
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
-            
+
           <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
             <span class="slds-assistive-text">warning</span>
             <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
@@ -2465,18 +2465,18 @@
             </div>
             </div>
             <div id="queryDiv" style="height:100%;position:relative;" >
-              <div style="height:8.9%;">
-                <table>
+                 <div style="height:8.9%;">
+                <table style="height:100%;">
                   <tbody><tr>
                     <th style="width: max-content;padding-right: 1%;padding-left: 1%;padding-top:1%;">
-                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: block; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                         <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                         </svg>
                         </span>
-                        <p style="padding: 0; float: left;">Please Select Atleast One Field.
+                        <p style="padding: 0; float: left;">Please Select Atleast One DE.
                         </p>
                         <div class="slds-notify__close">
                         <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
@@ -2486,17 +2486,86 @@
                         <span class="slds-assistive-text">Close</span>
                         </button>
                         </div>
-                        </div></th>
-                    <th style="width: 0px;padding-left: 0px;margin-left: 0px;">
-                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal()" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
-                    <th style="width: 0px;padding-left: 0%;"> 
-                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal()" style="height:6vh;">Run</button></th>
+                        </div>
+                        <!--alerts and warning-->
+                        <!--for -->
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                          </svg>
+                          </span>
+                          <p style="padding: 0; float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                          </p>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="joinQueryboxAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
+                          </div>
+                          </div>
+                        
+              <!--priyanka added code-->
+             
+                <!--sucess alert-->
+              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="runQueryAlert" style="display:none; background-color: #04844b;
+              height: 6vh ; border-radius: 0.25rem;">
+                <span class="slds-assistive-text">check</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                </svg>
+                </span>
+                <p style="padding: 0; float: left;">
+                  Valid SQL Query Syntax.
+                </p>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="closerunQueryAlert()">
+                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
+               
+               
+                 <!--alert for already exist div-->
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                  <span class="slds-assistive-text">warning</span>
+                  <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                  </svg>
+                  </span>
+                  <p id="DEListDivAlertPera" style="padding: 0; float: left;">
+                  </p>
+                  <div class="slds-notify__close">
+                  <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDEListDivAlert()" >
+                  <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                  </button>
+                  </div>
+                  </div>
+              <!--end-->
+
+                        <!--ends here-->
+                      </th>
+                    <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');"  style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
+                    <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');RunQuery();" style="height:6vh;">Run</button></th>
                   </tr>
                   </tbody></table>
             
             
             </div>
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;">
+              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;border-top:1px solid #dddbda">
               
               <div id="MainDivAlert" style="display:none">
                       <!--********* nitik code started ************-->
@@ -2551,7 +2620,12 @@
               <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
 
 
-             
+          <!--    <button
+                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
+                onclick='openModal("Validate")'
+                style="background-color: #4e8abe !important;">Validate Query</button>
+              <button
+                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>-->
         <!--      <button
                 class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
                 onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
@@ -2618,7 +2692,7 @@
                         
                           
                         </header-->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DeDragAlert" style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2637,6 +2711,37 @@
                           </button>
                           </div>
                           </div>
+                          <div  id="DeDragAlert" style="display:none; background: white;">
+                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+                            width: 100%;
+                            height: 5vh;
+                            padding-top: 0%;
+                            border-radius: 0.25rem;
+                            justify-content: left;
+                            align-items: self-start;">
+                              <span class="slds-assistive-text">warning</span>
+                              <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+                              margin-left: 2%;
+                              margin-top: 1.3%;">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                              </span>
+                              <p style="padding: 0;
+                              float: left;
+                              margin-top: 1%;">Please drag all the DE and JoinType atleast one time.
+                              </p>
+                              <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                              <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Close</span>
+                              </button>
+                              </div>
+                              </div>
+                            </div> 
+                              
                      
                        
                         <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
@@ -3031,8 +3136,8 @@
 
 
 
-        <!--added by priyanka-->
-       <div  id="FieldSelectNextAlert" style="display:none; background: white;">
+        
+        <div  id="FieldSelectNextAlert" style="display:none; background: white;">
           <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
           width: 100%;
           height: 5vh;
@@ -3063,6 +3168,11 @@
             </div>
           </div> 
             
+              
+           
+         
+
+      
 
         
 
@@ -3364,21 +3474,15 @@
   function moveUp(direction) {
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
-
-    console.log('currentsel'+currentSel);
-    console.log('index'+index);
-    console.log('direction'+direction);
+    console.log(currentSel);
+    console.log(index);
+    console.log(direction);
     if (direction) {//up 
       if (index == 0) return;
 
       var value = currentSel.options[index - 1].value;
       var text = currentSel.options[index - 1].text;
-      console.log('before');
-      console.log('1-->'+currentSel.options[index - 1].value);
-      console.log('2-->'+currentSel.options[index - 1].text);
-      console.log('after');
-      console.log('1-->'+currentSel.options[index ].value);
-      console.log('2-->'+currentSel.options[index ].text);
+
       currentSel.options[index - 1].value = currentSel.options[index].value;
       currentSel.options[index - 1].text = currentSel.options[index].text;
 
@@ -3392,12 +3496,7 @@
 
       var value = currentSel.options[index + 1].value;
       var text = currentSel.options[index + 1].text;
-      console.log('before');
-      console.log('1-->'+currentSel.options[index].value);
-      console.log('2-->'+currentSel.options[index].text);
-      console.log('after');
-      console.log('1-->'+currentSel.options[index+1 ].value);
-      console.log('2-->'+currentSel.options[index+1].text);
+
       currentSel.options[index + 1].value = currentSel.options[index].value;
       currentSel.options[index + 1].text = currentSel.options[index].text;
 
@@ -3554,33 +3653,7 @@
   function closrerror(){
     document.getElementById("FieldSelectNextAlert").style.display = "none";
   }
- 
 
-  //code for moving up and down
-   function listboxMove(listID, direction) {
-      var listbox = document.getElementById(listID);
-      var selIndex = listbox.selectedIndex;
-      if (-1 == selIndex) {
-        alert("Please select an option to move.");
-        return;
-      }
-      var increment = -1;
-      if (direction == 'up')
-        increment = -1;
-      else
-        increment = 1;
-      if ((selIndex + increment) < 0 ||
-        (selIndex + increment) > (listbox.options.length - 1)) {
-        return;
-      }
-      var selValue = listbox.options[selIndex].value;
-      var selText = listbox.options[selIndex].text;
-      listbox.options[selIndex].value = listbox.options[selIndex + increment].value
-      listbox.options[selIndex].text = listbox.options[selIndex + increment].text
-      listbox.options[selIndex + increment].value = selValue;
-      listbox.options[selIndex + increment].text = selText;
-      listbox.selectedIndex = selIndex + increment;
-    }
 </script>
 
 <!--End here-->
@@ -3595,12 +3668,18 @@
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
       var countOfJoinTypeWhere=0;
+      /*added by priyanka*/
+
+      function closerunQueryAlert(){
+        document.getElementById('runQueryAlert').style.display = 'none';
+      }
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
      
     
    if (DESetQueryBox.size >0 ) {
+       document.getElementById('runQueryAlert').style.display = 'block';
         //document.getElementById('RelationPopup').style.display = 'none';
         //document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -3931,53 +4010,8 @@ window.onclick = function(event) {
     var current_page = 1;
     var records_per_page = 20;
 
-    var objJSON = [
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" },
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"NewHub\">NewHub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" }
-
-
-    ];
+     objJSON = [
+      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" }];
 
     var records = document.getElementById("totalRecords");
     records.innerHTML = "( " + objJSON.length + " rows )";
@@ -4115,7 +4149,7 @@ window.onclick = function(event) {
 */
 
   </script>
- <script>
+  <script>
     const BORDER_SIZE = 4;
   const panel = document.getElementById("right_panel");
   const table = document.getElementById("tableDiv");
@@ -4195,7 +4229,7 @@ document.addEventListener("mouseup", function(){
     var draggedDeKey=new Set();
     var draggedDeJoinKey=new Set();
     //var TotalMainDeDragged=0;
-
+    var JoinTypeArray=['Left Outer Join','Left Outer Join with Exclusion','Right Outer Join','Right Outer Join with Exclusion','Inner Join','Full Outer Join','Outer Join'];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -4294,7 +4328,7 @@ document.addEventListener("mouseup", function(){
       //condition added by nitik
      
       if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (data[1]!="") && (data[0][0]!="[")){
-        console.log(" hiiiiiiiiiii  " );
+         console.log(" hiiiiiiiiiii  " );
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
@@ -4404,7 +4438,7 @@ document.addEventListener("mouseup", function(){
                           range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                         }
                         else if(FieldKey=="And" || FieldKey=="Or"){
-                          range.insertNode(document.createTextNode(' ' + FieldName + ' '));
+                          range.insertNode(document.createTextNode(' '+ FieldName + ' '));
                         }
                         else{
                           console.log("stop");
@@ -4956,7 +4990,9 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
-              if (data != "false") {
+            console.log('client data '+data);
+              if (data != "false" && data) {
+                console.log(' Inside If '+data);
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
@@ -4965,27 +5001,31 @@ document.addEventListener("mouseup", function(){
             }
           })
       }
-      function DEListShow(DERecords) {
+      function DEListShow(DERecords) 
+      {
         var DETableBody = ""
 
-        if (DERecords.lemgth != 0) {
+        if (DERecords.lemgth != 0) 
+        {
 
-          DETableBody = '<table class="slds-table slds-table--bordered">' +
+           DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
             '<thead>' +
-            '<tr class="slds-text-heading--label">';
+            '<tr class="slds-line-height_reset">';
 
-          for (var key in DERecords[0]) {
-            DETableBody += '<th class="slds-cell-shrink" scope="col">' +
-              '<span class="slds-truncate">' + key + '</span>' +
-              '</th>';
+          for (var key in DERecords[0])
+          {
+            DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
+             
           }
-          DETableBody += '</tr>' +
+            DETableBody += '</tr>' +
             '</thead>' +
             '<tbody>';
 
-          for (var i in DERecords) {
+          for (var i in DERecords) 
+          {
             DETableBody += '<tr class="slds-hint-parent">';
-            for (var key in DERecords[i]) {
+            for (var key in DERecords[i]) 
+            {
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
             DETableBody += '</tr>';
@@ -4995,16 +5035,17 @@ document.addEventListener("mouseup", function(){
             '</table>';
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
+          document.getElementById('tableDiv').innerHTML = DETableBody;
         }
       }
-      if(draggedDeKey.size>1){
+        if(draggedDeKey.size>1){
         closeModal();
-      }
-      else{
+        }
+        else{
         countOfDeWithWhereClauseValueMain=0;
         countOfDeWithoutWhereClauseValueMain=0;
-      }
-      if(DESetQueryBox.size==1){
+        }
+        if(DESetQueryBox.size==1){
         var t=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML;
         console.log("value of t"+t);
         if(t!=''){
@@ -5111,6 +5152,7 @@ document.addEventListener("mouseup", function(){
             'Content-type': 'application/x-www-form-urlencoded'
           },
           success: function (data) {
+
             console.log('DE Records Get : ' + JSON.stringify(data));
             DEListShow(data);
           }
@@ -5709,7 +5751,8 @@ document.addEventListener("mouseup", function(){
       */
     }
     //--code by nitik
-  //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
+  
+   //Added by ANIL KUMAR for restricting left dragging and top dragging(out from query div)  
   
 function changeSchmaPosition(e)
 {
@@ -5764,12 +5807,414 @@ function changeSchmaPosition(e)
   }
 
   //**************************************************END***************************************************** 
- 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
+      var SecondDEExtKeyForJoinGlobal;
+      console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
-      if (joinedDivSet.size == 0 || joinedDivSet.has(FirstDEExtKeyForJoinGlobal)) {
+      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal)){
+        for (var key in JoinQueryDetails.DEForJoin) {
+          console.log("sbhab==="+key);
+          console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
+         // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
+          console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
+        
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
+          SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
+          console.log("fghuikol");
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+        
+         
+          
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].FirstDEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+        '<option value="">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+            for(var i=0;i<7;i++){
+              if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
+
+                }
+                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                  joinTwoDivString += '<option value=" ">'+JoinTypeArray[i]+'</option>';
+                }
+            }
+         
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+
+            }
+            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+            }
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+      
+
+
+
+            '</div>' +
+  
+           
+
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+  
+            for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("hello");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
+          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+  
+        
+         
+          
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+  
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">Select…</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+            }
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+            '</div>' +
+  
+  
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">Select…</option>';
+  
+          for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+  
+  
+            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+            '<option value="AND">AND</option>' +
+            '<option value="OR">OR</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">Select…</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
+          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
+          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+  
+        
+         
+          
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+  
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="">Select…</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+            }
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+            '</div>' +
+  
+  
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="">Select…</option>';
+  
+          for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="selectWhereClauseANDOR">Where Clause Operator</label>' +
+  
+  
+            '<select class="slds-select" style="width: 180px;" id="selectWhereClauseANDOR">' +
+            '<option value="AND">AND</option>' +
+            '<option value="OR">OR</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="">Select…</option>' +
+            '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+        
+        }
+      }
+      else if (joinedDivSet.size == 0 ) {
         //-----------nitik code started----------------------------------------
         
                         
@@ -5815,7 +6260,17 @@ function changeSchmaPosition(e)
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            
+              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+      '<option value="Left Outer Join">Left Outer Join</option>' +
+      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+      '<option value="Right Outer Join">Right Outer Join</option>' +
+      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+      '<option value="Inner Join">Inner Join</option>' +
+      '<option value="Full Outer Join">Full Outer Join</option>' +
+      '<option value="Outer Join">Outer Join</option>' +
+      '</select>' +
             '</div>' +
   
   
@@ -5836,36 +6291,8 @@ function changeSchmaPosition(e)
   
             '</div>' +
   
-            '<div class="slds-grid slds-wrap">' +
-  
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
            
-            '</div>' +
 
-
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-            '<option value="Left Outer Join">Left Outer Join</option>' +
-            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-            '<option value="Right Outer Join">Right Outer Join</option>' +
-            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-            '<option value="Inner Join">Inner Join</option>' +
-            '<option value="Full Outer Join">Full Outer Join</option>' +
-            '<option value="Outer Join">Outer Join</option>' +
-            '</select>' +
-            '</div>' +
-
-
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-
-            
-            '</div>' +
-
-            '</div>' +
   
   
   
@@ -6233,7 +6660,6 @@ function changeSchmaPosition(e)
               "SecondDEJoinField": document.getElementById('SecondDEField').value,
               "JoinedLineDivId":line_ID
             });
-            //Edited By ANIL KUMAR
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
           }
@@ -6295,6 +6721,11 @@ function changeSchmaPosition(e)
         console.log('NewLine:'+lineElement);            
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
+
+    function joinQueryboxAlert(){
+      document.getElementById("joinQueryboxAlert").style.display = "none";
+
+    }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
@@ -6339,9 +6770,6 @@ function changeSchmaPosition(e)
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
-    }
-    function joinQueryboxAlert(){
-      document.getElementById("joinQueryboxAlert").style.display = "none";
     }
 
   </script>

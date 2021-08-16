@@ -1507,22 +1507,34 @@ app.post("/secondpage", async function (req, res) {
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
+        console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
+        console.log('TaskId '+taskId);
         if (taskId) {
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
+            console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
-              DERecords = await getDERecords(NewDEName);
+              console.log('Inside if '+NewDEName);
+             
+              //---------kkkkkkkkkk-----------------//
+               //DERecords = await getDERecords(NewDEName);
+             
+              console.log('Records Server '+DERecords);
+
               await QueryDelete(queryDefinitionId);
+              console.log('ClearInterval up');
               clearInterval(b);
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
+            console.log('In Derecord get');
             if (queryStatus != "Complete") {
               resCall1.send("false");
             }
             else {
+              console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
             }
           })
