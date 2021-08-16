@@ -2445,25 +2445,7 @@
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
-            <span class="slds-assistive-text">warning</span>
-            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-            </svg>
-            </span>
-            <h6>Please Join the Query Box.
-          
-            </h6>
-            <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
-            <svg class="slds-button__icon" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-            </svg>
-            <span class="slds-assistive-text">Close</span>
-            </button>
-            </div>
-            </div>
+    
             <div id="queryDiv" style="height:100%;position:relative;" >
                  <div style="height:8.9%;">
                 <table style="height:100%;">
@@ -2487,6 +2469,25 @@
                         </button>
                         </div>
                         </div>
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          </svg>
+                          </span>
+                          <h6>Please Join the Query Box.
+                        
+                          </h6>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
+                          </div>
+                          </div>
                         <!--alerts and warning-->
                         <!--for -->
                         <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
@@ -6666,7 +6667,7 @@ function changeSchmaPosition(e)
     }
     
 
-    function SaveJoinQuery() {
+    function SaveJoinQuery(keyForDEField) {
       if(keyForDEField!=null){
         if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
 
