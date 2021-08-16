@@ -1887,6 +1887,7 @@ app.post("/secondpage", async function (req, res) {
           if(response.status==200)
           {
             console.log('Success');
+            res.sendFile(path.join(__dirname + '/public/secondpage.html'));
             resolve({
               'AccessToken' : response.data.access_token,
               'RestURL' : response.data.rest_instance_url,
