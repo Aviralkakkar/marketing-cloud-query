@@ -2560,7 +2560,7 @@
                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
                         <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate')" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
-                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run')" style="height:6vh;">Run</button></th>
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');RunQuery();" style="height:6vh;">Run</button></th>
                   </tr>
                   </tbody></table>
             
@@ -3273,7 +3273,34 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
+               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="listboxMove('rightsideListInSelectField', 'up');" style="width: 2rem;
+               height: 2rem;
+               border: 1px solid lightgray;
+               margin-bottom: 20%; margin-left: 9%;">
+                <span class="slds-icon_container slds-icon-utility-chevronup"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronup"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+               <button class="slds-button slds-button_neutral btn-pagination" id="btnDowm" onClick="listboxMove('rightsideListInSelectField', 'down');" style="height: 2rem; width: 2rem; border: 1px solid lightgray;">
+                <span class="slds-icon_container slds-icon-utility-chevrondown"
+                  title="Description of icon when needed">
+                  <svg
+                    class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                    aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+
+                  </svg>
+                  <span class="slds-assistive-text">Description of icon when needed</span></span>
+               </button>
+
+              <!--  
+                 <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="(true);move" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3299,12 +3326,7 @@
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
 
-              <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
-                  <span class="glyphicon glyphicon-chevron-up">U</span>
-                </button>
-                <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
-                  <span class="glyphicon glyphicon-chevron-down">D</span>
-                </button>-->
+              -->
               </div>
 
 
@@ -3510,7 +3532,35 @@
   }
 
  
-
+  /*code for moving up and down*/
+  function listboxMove(listID, direction) {
+    console.log('ID--->'+listID);
+    console.log('direction--->'+direction);
+    var listbox = document.getElementById(listID);
+    var selIndex = listbox.selectedIndex;
+    if (-1 == selIndex) {
+      alert("Please select an option to move.");
+      return;
+    }
+    console.log('lstbox---->'+listbox);
+    console.log('selIndex------'+selIndex);
+    var increment = -1;
+    if (direction == 'up')
+      increment = -1;
+    else
+      increment = 1;
+    if ((selIndex + increment) < 0 ||
+      (selIndex + increment) > (listbox.options.length - 1)) {
+      return;
+    }
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    listbox.options[selIndex].value = listbox.options[selIndex + increment].value
+    listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+    listbox.options[selIndex + increment].value = selValue;
+    listbox.options[selIndex + increment].text = selText;
+    listbox.selectedIndex = selIndex + increment;
+  }
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
