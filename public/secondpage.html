@@ -5138,8 +5138,8 @@ document.addEventListener("mouseup", function(){
             },
             success: function (data) {
               console.log('Client data '+data);
-              if (data != "false") {
-                
+             if (data != "false" && data) {
+                console.log(' Inside If '+data);
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
