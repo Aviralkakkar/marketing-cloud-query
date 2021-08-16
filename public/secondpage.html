@@ -3555,8 +3555,13 @@
     }
     var selValue = listbox.options[selIndex].value;
     var selText = listbox.options[selIndex].text;
-    listbox.options[selIndex].value = listbox.options[selIndex + increment].value
-    listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+    console.log('selvalue----'+listbox.options[selIndex].value);
+    console.log('selText----'+listbox.options[selIndex].text);
+
+    console.log('+1------'+listbox.options[selIndex + increment].value);
+    console.log('+1------'+listbox.options[selIndex + increment].text);
+    listbox.options[selIndex].value = listbox.options[selIndex + increment].value;
+    listbox.options[selIndex].text = listbox.options[selIndex + increment].text;
     listbox.options[selIndex + increment].value = selValue;
     listbox.options[selIndex + increment].text = selText;
     listbox.selectedIndex = selIndex + increment;
@@ -5248,7 +5253,6 @@ document.addEventListener("mouseup", function(){
           }
         })
       function DEListShow(DERecords) {
-        console.log('Records '+DERecords);
         var DETableBody = ""
         if (DERecords.lemgth != 0) {
 
@@ -6732,9 +6736,8 @@ function changeSchmaPosition(e)
           JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
-          console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
-          JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+          JoinQueryDetails.DEForJoin[keyForDEField].JoinType=document.getElementById('select-01').value;
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
         }
         document.getElementById('ThirdModal').style.display = 'none';
