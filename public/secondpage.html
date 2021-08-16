@@ -3489,12 +3489,14 @@
   var currentSel = null;
   function move() {
     if (arguments.length == 1) {
+      console.log('up and down');
       moveUp(arguments[0]);
     } else if (arguments.length == 2) {
       moveRight(arguments[0], arguments[1]);
     }
   }
   function moveUp(direction) {
+    console.log(direction);
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
     console.log(currentSel);
