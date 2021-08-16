@@ -3555,8 +3555,13 @@
     }
     var selValue = listbox.options[selIndex].value;
     var selText = listbox.options[selIndex].text;
-    listbox.options[selIndex].value = listbox.options[selIndex + increment].value
-    listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+    console.log('selvalue----'+listbox.options[selIndex].value);
+    console.log('selText----'+listbox.options[selIndex].text);
+
+    console.log('+1------'+listbox.options[selIndex + increment].value);
+    console.log('+1------'+listbox.options[selIndex + increment].text);
+    listbox.options[selIndex].value = listbox.options[selIndex + increment].value;
+    listbox.options[selIndex].text = listbox.options[selIndex + increment].text;
     listbox.options[selIndex + increment].value = selValue;
     listbox.options[selIndex + increment].text = selText;
     listbox.selectedIndex = selIndex + increment;
@@ -5086,7 +5091,9 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
+              console.log('Client data '+data);
               if (data != "false") {
+                
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
@@ -6795,15 +6802,15 @@ function changeSchmaPosition(e)
       var div2_pos = div2.getBoundingClientRect();
 
       if(div1_pos.left<div2_pos.left){
-        var x1 = div1.offsetLeft+div1.offsetWidth;
-        var y1 = div1.offsetTop+10;
-        var x2 = div2.offsetLeft;
-        var y2 = (div2.offsetTop+div2_pos.height/2);
+        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
       }else{
-        var x1 = div1.offsetLeft;
-        var y1 = (div1.offsetTop+div1_pos.height/2);
-        var x2 = div2.offsetLeft+div2.offsetWidth;
-        var y2 = div2.offsetTop+10;
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var y2 = div2.offsetTop+10;
       } 
 
       // distance
