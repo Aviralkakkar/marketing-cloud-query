@@ -3560,12 +3560,12 @@
 
     var selValue1 = listbox.options[selIndex + increment].value;
     var selText1 = listbox.options[selIndex + increment].text;
-    console.log('selvalue----'+selValue1);
-    console.log('selText----'+selText1);
-    listbox.options[selIndex].value = listbox.options[selIndex + increment].value;
-    listbox.options[selIndex].text = listbox.options[selIndex + increment].text;
-    listbox.options[selIndex + increment].value = selValue;
-    listbox.options[selIndex + increment].text = selText;
+    console.log('selvalue11----'+selValue1);
+    console.log('selText11----'+selText1);
+    listbox.options[selIndex].innerHTML.value = listbox.options[selIndex + increment].value;
+    listbox.options[selIndex].innerHTML.text = listbox.options[selIndex + increment].text;
+    listbox.options[selIndex + increment].innerHTML.value = selValue;
+    listbox.options[selIndex + increment].innerHTML.text = selText;
     listbox.selectedIndex = selIndex + increment;
   }
 
