@@ -6755,7 +6755,7 @@ function changeSchmaPosition(e)
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-      else if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName!=document.getElementById('select-02').value){
+      else if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName!=document.getElementById('select-02').value){
         if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
