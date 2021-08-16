@@ -5918,7 +5918,7 @@ function changeSchmaPosition(e)
          // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
           console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && ((JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal) || (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)) ){
           SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
@@ -6065,6 +6065,7 @@ function changeSchmaPosition(e)
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
+          
           else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
