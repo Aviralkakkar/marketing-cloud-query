@@ -49,6 +49,7 @@ app.post("/secondpage", async function (req, res) {
   //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
+  console.log(AuthResponse);
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1884,16 +1885,11 @@ app.post("/secondpage", async function (req, res) {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          if(response.status==200)
-          {
-            console.log('Success');
-            res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-            resolve({
+          resolve({
               'AccessToken' : response.data.access_token,
               'RestURL' : response.data.rest_instance_url,
               'SoapURL' : response.data.soap_instance_url
             });
-          }
         },
         (error) => {
           reject(error);
