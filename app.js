@@ -1505,7 +1505,7 @@ app.post("/secondpage", async function (req, res) {
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
-         connsole.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
+         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
