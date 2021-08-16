@@ -1517,10 +1517,9 @@ app.post("/secondpage", async function (req, res) {
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
               console.log('Inside if '+NewDEName);
-         //---------kkkkkkkkkk-----------------//
-               //DERecords = await getDERecords(NewDEName);
-              DERecords = await getDERecords('IGO_PROFILES');
-               //---------kkkkkkkkkk-----------------//
+        
+               DERecords = await getDERecords(NewDEName);
+        
               console.log('Records Server '+DERecords);
 
               await QueryDelete(queryDefinitionId);
@@ -1778,7 +1777,7 @@ app.post("/secondpage", async function (req, res) {
         //var NextUrl;
         var DEDataOptions = {
           'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/' + key + '/rowset/',
+          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/IGO_PROFILES/rowset/',
           'headers': {
             'Authorization': 'Bearer ' + AuthResponse.AccessToken
           }
