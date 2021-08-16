@@ -5915,7 +5915,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">Select…</option>';
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
@@ -5928,6 +5928,10 @@ function changeSchmaPosition(e)
           joinTwoDivString += '</select>' +
             '</div>' +
   
+      
+
+
+
             '</div>' +
   
            
@@ -5967,8 +5971,19 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">Select…</option>' +
-            '</select>' +
+            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
             '</div>' +
   
   
