@@ -5935,15 +5935,21 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal;
+      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
+      for (var key in JoinQueryDetails.DEForJoin) {
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+          CountOfFirstDEExtKeyForJoin++;
+        }
+      }
+      console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
-      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal)){
-        for (const val of joinedDivSet) {
+      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal) && CountOfFirstDEExtKeyForJoin<=1 ){
+        /*for (const val of joinedDivSet) {
           console.log('joinedDivSet===='+val);
-        }
-        for (var key in JoinQueryDetails.DEForJoin) {
+        }*/
+        for (var key in JoinQueryDetails.DEForJoin ) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
          // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
