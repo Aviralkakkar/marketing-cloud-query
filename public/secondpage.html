@@ -5267,6 +5267,7 @@ document.addEventListener("mouseup", function(){
             '<tr class="slds-text-heading--label">';
 
           for (var key in DERecords[0]) {
+            console.log('KEY '+key);
             DETableBody += '<th class="slds-cell-shrink" scope="col">' +
               '<span class="slds-truncate">' + key + '</span>' +
               '</th>';
