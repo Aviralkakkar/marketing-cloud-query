@@ -6681,8 +6681,9 @@ function changeSchmaPosition(e)
           JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
+          console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
-          JoinQueryDetails.DEForJoin[keyForDEField].JoinType=document.getElementById('select-01').value;
+          JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
         }
         document.getElementById('ThirdModal').style.display = 'none';
