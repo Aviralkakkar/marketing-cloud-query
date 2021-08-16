@@ -1528,6 +1528,7 @@ app.post("/secondpage", async function (req, res) {
               resCall1.send("false");
             }
             else {
+              console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
             }
           })
