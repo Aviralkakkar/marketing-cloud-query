@@ -2469,14 +2469,14 @@
                 <table style="height:100%;">
                   <tbody><tr>
                     <th style="width: max-content;padding-right: 1%;padding-left: 1%;padding-top:1%;">
-                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: block; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                         <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                         </svg>
                         </span>
-                        <p style="padding: 0; float: left;">Please Select Atleast One Field.
+                        <p style="padding: 0; float: left;">Please Select Atleast One DE.
                         </p>
                         <div class="slds-notify__close">
                         <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
@@ -2486,7 +2486,63 @@
                         <span class="slds-assistive-text">Close</span>
                         </button>
                         </div>
-                        </div></th>
+                        </div>
+                        <!--alerts and warning-->
+                        
+              <!--priyanka added code-->
+             
+                <!--sucess alert-->
+              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="runQueryAlert" style="display:none; background-color: #04844b;
+              height: 6vh ; border-radius: 0.25rem;">
+                <span class="slds-assistive-text">check</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                </svg>
+                </span>
+                <p style="padding: 0; float: left;">
+                  Valid SQL Query Syntax.
+                </p>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="closerunQueryAlert()">
+                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
+                <!--alert for already exist div-->
+               <div id="DEListDivAlert" style="display:none; background-color: #c23934;
+                height: 6vh; border-radius: 0.25rem;">
+                  <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style= "background-color: #c23934;
+                  height: 6vh;
+                  border-radius: 0.25rem;
+                  justify-content: end;
+                  align-items: baseline;">
+                    <span class="slds-assistive-text">error</span>
+                    <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                      title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                      </svg>
+                    </span>
+                    <P id="DEListDivAlertPera"></P>
+                    <div class="slds-notify__close">
+                      <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
+                        title="Close" onclick="CancelDEListDivAlert()">
+                        <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              <!--end-->
+
+                        <!--ends here-->
+                      </th>
                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
                         <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal()" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
@@ -2520,8 +2576,7 @@
                   </div>
                 </div>
               </div>
-
-             <!-- <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
+              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
                 <span class="slds-assistive-text">warning</span>
                 <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2540,7 +2595,7 @@
                 </button>
                 </div>
                 </div>
-              -->
+           
              
                     <!--********* nitik code ended ************-->
 
@@ -3563,12 +3618,18 @@
       var countOfDeWithoutWhereClauseValueMain=0;  
       var OnlyOneDeWhichContainWhereClause;  
       var countOfJoinTypeWhere=0;
+      /*added by priyanka*/
+
+      function closerunQueryAlert(){
+        document.getElementById('runQueryAlert').style.display = 'none';
+      }
 function openModal(functionAction) {
   var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
      
     
    if (DESetQueryBox.size >0 ) {
+       document.getElementById('runQueryAlert').style.display = 'block';
         //document.getElementById('RelationPopup').style.display = 'none';
         //document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -6143,15 +6204,15 @@ document.addEventListener("mouseup", function(){
       var div2_pos = div2.getBoundingClientRect();
 
       if(div1_pos.left<div2_pos.left){
-        var x1 = div1.offsetLeft+div1.offsetWidth;
-        var y1 = div1.offsetTop+10;
-        var x2 = div2.offsetLeft;
-        var y2 = (div2.offsetTop+div2_pos.height/2);
+        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
       }else{
-        var x1 = div1.offsetLeft;
-        var y1 = (div1.offsetTop+div1_pos.height/2);
-        var x2 = div2.offsetLeft+div2.offsetWidth;
-        var y2 = div2.offsetTop+10;
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var y2 = div2.offsetTop+10;
       } 
 
       // distance
