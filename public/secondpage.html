@@ -478,6 +478,7 @@
  
     .inner
     {
+      text-align: center;
       display: inline-block;
     }
     .graph-object-figure .graph-object-primary .graph-object-footer {
@@ -2763,8 +2764,8 @@
                                 style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
                               <div id="outer" class="slds-scrollable" style="height: 9%; width:auto; overflow-x: hidden;">
                   
-                                <div class="inner"><button name="And" id="And" draggable="true" class="slds-button" value="And" style="width: 90px;  padding: 1px 1px 1px 1px; margin-top: 1px;">And</button></div>
-                                <div class="inner"><button class="slds-button" draggable="true" value="Or" name="Or" id="Or" style="width: 90px; padding: 1px 1px 1px 1px; margin-top: 1px;">Or</button></div>
+                                <div class="inner"><button name="AND" id="And" draggable="true" class="slds-button" value="AND" style="width: 90px;  padding: 1px 1px 1px 1px; margin-top: 1px;">AND</button></div>
+                                <div class="inner"><button class="slds-button" draggable="true" value="OR" name="OR" id="Or" style="width: 90px; padding: 1px 1px 1px 1px; margin-top: 1px;">OR</button></div>
                   
                               </div>
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
@@ -3941,7 +3942,7 @@ function closeModal() {
     document.getElementById("DEWhereClauseModal").style.display = "none";
     document.getElementById("DEWhereClauseModal").classList.remove("show");
     console.log("tt");
-    var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
+    /*var text=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML.trim().length;
     console.log("text"+text);
    // console.log("Str.length==="+Str.length);
     //document.getElementById("RichTextEditorForFinalWhereClause").innerHTML = "";
@@ -3963,7 +3964,20 @@ function closeModal() {
       draggedDeJoinKey.clear();
       draggedDeKey.clear();
       console.log("tt completed1");
-    }
+    }*/
+    for(const Id of draggedDeKey){
+        console.log("tt2");
+        document.getElementById(Id+"WhereClasueDEList").className = "btn"; 
+        console.log("tt3");
+      }
+      for(const Id of draggedDeJoinKey){
+        console.log("tt2");
+        document.getElementById(Id).className = "btn"; 
+        console.log("tt3");
+      }
+      
+      draggedDeJoinKey.clear();
+      draggedDeKey.clear();
     
 }
 // Get the modal
