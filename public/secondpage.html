@@ -2817,38 +2817,7 @@
                     style="border:1px solid rgb(177, 172, 172) !important;">
                     <thead>
       
-                      <tr class="slds-line-height_reset">
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Account Name</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Close Date</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Stage</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Confidence</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Amount</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Contact</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Mail</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Personal Mail</div>
-                        </th>
-                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
-                          <div class="slds-truncate" title="lastname">Company Mail</div>
-                        </th>
-                      </tr>
+                     
                     </thead>
       
       
@@ -3366,7 +3335,7 @@
           <div id="component-selector-container" class=" slds-float_left "
             style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
             <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-              style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
+              style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0;background-color: #F0F2F3;font-size: 14px; ">Data Extension Fields</h4>
             <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
 
               <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
@@ -4201,7 +4170,7 @@ document.addEventListener("mouseup", function(){
     
     
       var current_page = 1;
-        var records_per_page = 20;
+        var records_per_page = 5;
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
@@ -4226,6 +4195,10 @@ document.addEventListener("mouseup", function(){
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
       var page_span = document.getElementById("page");
+       var records = document.getElementById("totalRecords");
+    records.innerHTML = "( " + objJSON.length + " rows )";
+    console.log("Row " + objJSON.length);
+
 
       // Validate page
       if (page < 1) {
@@ -5052,7 +5025,8 @@ document.addEventListener("mouseup", function(){
           }
             DETableBody += '</tr>' +
             '</thead>' +
-        
+          '<tbody id="listingTable">';
+              DETableBody += '</tbody>' +
             '</table>';
 
           for (var i in DERecords) 
@@ -5068,7 +5042,7 @@ document.addEventListener("mouseup", function(){
 
           console.log('objJSONN '+objJSON);
       
-          loadPage();
+         
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
@@ -5078,6 +5052,7 @@ document.addEventListener("mouseup", function(){
  
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
+           loadPage();
         
         }
       }

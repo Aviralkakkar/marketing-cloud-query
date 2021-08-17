@@ -1085,6 +1085,11 @@
 </head>
 
 <body class="" data-new-gr-c-s-check-loaded="14.997.0" data-gr-ext-installed="">
+	<% if(message.length > 0){ %>
+		<div class="alert alert-success">
+			<% =message %>
+		</div>
+	<%}%>
 	<div class="mainWrapper">
 		<div class="contentWrapper">
 			<div class="mainFormWrapper ">
@@ -1093,30 +1098,7 @@
 						<div id="header-logo"></div>
 					</div>
 				</div>
-				<!--
-					Error Message
-				-->
-				<div id="errorMessageCredential" style="display: none;" class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-					<span class="slds-assistive-text">error</span>
-					<span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
-					  <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-						<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-					  </svg>
-					</span>
-					<h2>
-						Your platforms has trouble connecting due to the provided credentials being incorrect
-					</h2>
-					<div class="slds-notify__close">
-					  <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close">
-						<svg class="slds-button__icon" aria-hidden="true">
-						  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-						</svg>
-						<span class="slds-assistive-text">Close</span>
-					  </button>
-					</div>
-				  </div>
 				<form id="LoginForm" class="mainForm" action="/secondpage" method="POST"  autocomplete="off">
-					<p id="flashMessage" style="display: none;" onchange="showErrorMsg()"></p>
 					<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
 					<div class="slds-form-element">
 						<div class="slds-form-element__label"><label for="clientid">Client Id</label></div>
@@ -1164,14 +1146,4 @@
 		<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
 		<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
 </body>
-
-<script>
- function showErrorMsg()
- {
-	document.getElementById('errorMessageCredential').style.display = 'block';
-	setTimeout(function(){
-            document.getElementById("FieldSelectNextAlert").style.display = 'none';
-          }, 5000);
- }
-</script>
 </html>
