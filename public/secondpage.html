@@ -4215,6 +4215,73 @@ document.addEventListener("mouseup", function(){
    var data;
 
     
+    
+      var current_page = 1;
+        var records_per_page = 20;
+        var objJSON = [];
+   function prevPage() {
+      if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+      }
+    }
+
+    function nextPage() {
+      if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+      }
+    }
+
+    function changePage(page) {
+      var btn_next = document.getElementById("btn_next");
+      var btn_prev = document.getElementById("btn_prev");
+      var listing_table = document.getElementById("listingTable");
+      var page_span = document.getElementById("page");
+
+      // Validate page
+      if (page < 1) {
+        page = 1;
+      }
+
+      if (page > numPages()) {
+        page = numPages();
+      }
+
+      listing_table.innerHTML = "";
+
+      for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+        listing_table.innerHTML += objJSON[i].row;
+      }
+      page_span.innerHTML = page;
+
+      if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+      } else {
+        btn_prev.style.visibility = "visible";
+      }
+
+      if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+      } else {
+        btn_next.style.visibility = "visible";
+      }
+    }
+
+    function numPages() {
+      return Math.ceil(objJSON.length / records_per_page);
+    }
+
+    window.onload = function () {
+      changePage(1);
+
+      var page = document.getElementById("page");
+      var totalPages = document.getElementById("totalPages");
+      page.innerHTML = " " + 1 + " ";
+      totalPages.innerHTML = " " + numPages() + " ";
+    };
+
+
 
     
     
@@ -5014,79 +5081,14 @@ document.addEventListener("mouseup", function(){
           }
 
           console.log('objJSONN '+objJSON);
+          changePage(current_page);
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
           //------Pagination code by  k------------//
 
     
-    var records = document.getElementById("totalRecords");
-    records.innerHTML = "( " + objJSON.length + " rows )";
-   
-
-    function prevPage() {
-      if (current_page > 1) {
-        current_page--;
-        changePage(current_page);
-      }
-    }
-
-    function nextPage() {
-      if (current_page < numPages()) {
-        current_page++;
-        changePage(current_page);
-      }
-    }
-
-    function changePage(page) {
-      var btn_next = document.getElementById("btn_next");
-      var btn_prev = document.getElementById("btn_prev");
-      var listing_table = document.getElementById("listingTable");
-      var page_span = document.getElementById("page");
-
-      // Validate page
-      if (page < 1) {
-        page = 1;
-      }
-
-      if (page > numPages()) {
-        page = numPages();
-      }
-
-      listing_table.innerHTML = "";
-
-      for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
-        listing_table.innerHTML += objJSON[i].row;
-      }
-      page_span.innerHTML = page;
-
-      if (page == 1) {
-        btn_prev.style.visibility = "hidden";
-      } else {
-        btn_prev.style.visibility = "visible";
-      }
-
-      if (page == numPages()) {
-        btn_next.style.visibility = "hidden";
-      } else {
-        btn_next.style.visibility = "visible";
-      }
-    }
-
-    function numPages() {
-      return Math.ceil(objJSON.length / records_per_page);
-    }
-
-    window.onload = function () {
-      changePage(1);
-
-      var page = document.getElementById("page");
-      var totalPages = document.getElementById("totalPages");
-      page.innerHTML = " " + 1 + " ";
-      totalPages.innerHTML = " " + numPages() + " ";
-    };
-
-    //pagination code by k ended //
+ 
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
         
