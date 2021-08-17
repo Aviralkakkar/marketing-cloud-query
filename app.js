@@ -57,7 +57,6 @@ app.post("/secondpage", async function (req, res) {
   }
   else
   {
-    window.stop();
     console.log('Something went wrong!');
   }
   
@@ -1910,7 +1909,7 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.end();
-          window.stop();
+          req.abort()
         })
 
       });
