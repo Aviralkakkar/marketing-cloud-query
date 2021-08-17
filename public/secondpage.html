@@ -5086,43 +5086,39 @@ document.addEventListener("mouseup", function(){
             }
           })
       }
-      function DEListShow(DERecords) {
-          console.log('Records2 '+JSON.stringify(DERecords));
+       function DEListShow(DERecords) 
+      {
+       console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
-
             if (DERecords.lemgth != 0) 
         {
-
            DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
             '<thead>' +
             '<tr class="slds-line-height_reset">';
-
           for (var key in DERecords[0])
           {
             console.log('KEY '+key);
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
-             
           }
             DETableBody += '</tr>' +
             '</thead>' +
             '<tbody>';
-
           for (var i in DERecords) 
           {
             DETableBody += '<tr class="slds-hint-parent">';
             for (var key in DERecords[i]) 
             {
-		    console.log('Body key '+key+' Recordds[i] '+DERecords[i][key] );
+        console.log('Body key '+key+' Recordds[i] '+DERecords[i][key] );
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
             DETableBody += '</tr>';
           }
-
           DETableBody += '</tbody>' +
             '</table>';
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
           document.getElementById('tableDiv').innerHTML = DETableBody;
+        
         }
       }
       if(draggedDeKey.size>1){
