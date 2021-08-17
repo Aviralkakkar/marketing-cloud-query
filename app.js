@@ -21,7 +21,7 @@ var DEListMap = {
   "DataViewMap" : {}
 };
 //Added by ANIL KUMAR
-app.use(cookieParser('secretString'));
+
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
 //END
