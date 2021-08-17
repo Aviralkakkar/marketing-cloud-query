@@ -61,6 +61,7 @@ app.post("/credential", async function (req, res) {
   {
     console.log('Successfully redirected');
     res.sendFile(__dirname + "/public/secondpage.html");
+    res.sendFile(path.resolve('public/secondpage.html'));
   }
   
   async function getacesstoken(AuthRequest) {
