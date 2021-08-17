@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 //Added By ANIL KUMAR
-app.post("/credential", async function (req, res) {
+app.post("/secondpage", async function (req, res) {
   console.log(req.body.clientid);
   console.log(req.body.clientsecret);
   console.log(req.body.authurl);
@@ -60,9 +60,7 @@ app.post("/credential", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    app.get("*", (req,res) => {
-      res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
-    });
+    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   }
   
   async function getacesstoken(AuthRequest) {
