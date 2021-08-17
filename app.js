@@ -36,12 +36,6 @@ app.get("/", function (req, res) {
 
 app.set('view engine', 'html');
 
-app.post("/",async function(req,res){
-  console.log(req.body.clientid);
-  console.log(req.body.clientsecret);
-  console.log(req.body.authurl);
-});
-
 app.post("/secondpage", async function (req, res) {
    var AuthRequest = {
      "ClientId" : req.body.clientid,
