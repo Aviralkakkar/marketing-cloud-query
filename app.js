@@ -35,6 +35,7 @@ app.get("/", function (req, res) {
 })
 
 app.set('view engine', 'html');
+
 var NewDEName;
 //Added By ANIL KUMAR
 app.post("/credential", async function (req, res) {
@@ -58,9 +59,12 @@ app.post("/credential", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    res.sendFile(path.join(__dirname + '/public/secondpage.html'));   
+    res.sendFile(path.resolve(__dirname, 'public/secondpage.html'));   
   }
-  
+  else
+  {
+    res.end('no');
+  }
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
