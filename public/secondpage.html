@@ -4417,6 +4417,9 @@ document.addEventListener("mouseup", function(){
           console.log('DEDragData.DEExtKey has(DEDragData.DEExtKey---->'+DEDragData.DEExtKey);
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
+          setTimeout(function(){
+            document.getElementById("DEListDivAlert").style.display = 'none';
+          }, 5000);
         }
         else {
           document.getElementById('DEListDivAlert').style.display = 'none';
