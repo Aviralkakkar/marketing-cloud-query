@@ -1520,7 +1520,7 @@ app.post("/secondpage", async function (req, res) {
         
                DERecords = await getDERecords(NewDEName);
         
-              console.log('Records Server '+DERecords);
+               console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
