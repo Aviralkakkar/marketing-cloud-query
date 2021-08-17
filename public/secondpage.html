@@ -5190,39 +5190,62 @@ document.addEventListener("mouseup", function(){
             DEListShow(data);
           }
         })
-      function DEListShow(DERecords) {
+       function DEListShow(DERecords) {
         console.log('Records '+DERecords);
-        var DETableBody = ""
-        if (DERecords.lemgth != 0) {
+        var tableBody = "";
+        var DETableBody = "";
+        if (DERecords.length != 0) 
+        {
 
-          DETableBody = '<table class="slds-table slds-table--bordered">' +
+           DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
             '<thead>' +
-            '<tr class="slds-text-heading--label">';
+            '<tr class="slds-line-height_reset">';
 
-          for (var key in DERecords[0]) {
-            DETableBody += '<th class="slds-cell-shrink" scope="col">' +
-              '<span class="slds-truncate">' + key + '</span>' +
-              '</th>';
+          for (var key in DERecords[0])
+          {
+            console.log('KEY ')
+            DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
+             
           }
-          DETableBody += '</tr>' +
+            DETableBody += '</tr>' +
             '</thead>' +
-            '<tbody>';
+          '<tbody id="listingTable">';
+              DETableBody += '</tbody>' +
+            '</table>';
 
-          for (var i in DERecords) {
-            DETableBody += '<tr class="slds-hint-parent">';
-            for (var key in DERecords[i]) {
-              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+          for (var i in DERecords) 
+          {
+            tableBody = '<tr class="slds-hint-parent">';
+            for (var key in DERecords[i]) 
+            {
+              tableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
-            DETableBody += '</tr>';
+            tableBody += '</tr>';
+            objJSON.push({row:tableBody});
           }
 
-          DETableBody += '</tbody>' +
-            '</table>';
-          document.getElementById('recordResultModal').style.display = 'block';
-          document.getElementById('grid-record-result').innerHTML = DETableBody;
+          console.log('objJSONN '+objJSON);
+      
+         document.getElementById('paginationBar').style.display='block';
+         // document.getElementById('recordResultModal').style.display = 'block';
+         // document.getElementById('grid-record-result').innerHTML = DETableBody;
+
+          //------Pagination code by  k------------//
+
+    
+ 
+
+          document.getElementById('tableDiv').innerHTML = DETableBody;
+           loadPage();
+          // document.getElementById('runQueryAlert').style.display = 'none';
+        }
+        else{
+        noRecordFoundDiv
+          document.getElementById('noRecordFoundDiv').style.display = 'block';
         }
       }
     }
+    
 
     function CancelPopup() {
       document.getElementById('FieldSelectNextAlert').style.display = 'none';
