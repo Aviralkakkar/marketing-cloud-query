@@ -1921,7 +1921,6 @@ app.post("/secondpage", async function (req, res) {
         },
         (error) => {
           req.flash('message','Your platforms has trouble connecting due to the provided credentials being incorrect');
-          req.body.flashMessage='hello123';
           res.redirect('back');
           
         })
