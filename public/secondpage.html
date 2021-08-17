@@ -4272,7 +4272,7 @@ document.addEventListener("mouseup", function(){
       return Math.ceil(objJSON.length / records_per_page);
     }
 
-    window.onload = function () {
+   function loadPage() {
       changePage(1);
 
       var page = document.getElementById("page");
