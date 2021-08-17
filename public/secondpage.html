@@ -2855,38 +2855,7 @@
       
       
                     <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                      <tr class="slds-hint-parent slds-border_bottom">
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Close Date">
-                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                        </td>
-                        <td data-label="Prospecting">
-                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                        </td>
-                        <td data-label="Confidence">
-                          <div class="slds-truncate" title="20%">20%</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">$25k</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                      </tr>
+                     
       
       
                     </tbody>
@@ -4269,6 +4238,7 @@ document.addEventListener("mouseup", function(){
       listing_table.innerHTML = "";
 
       for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+         console.log('OBJJSON--'+ objJSON[i].row);
         listing_table.innerHTML += objJSON[i].row;
       }
       page_span.innerHTML = page;
@@ -5081,8 +5051,7 @@ document.addEventListener("mouseup", function(){
           }
             DETableBody += '</tr>' +
             '</thead>' +
-           '<tbody id="listingTable">';
-              DETableBody += '</tbody>' +
+        
             '</table>';
 
           for (var i in DERecords) 
