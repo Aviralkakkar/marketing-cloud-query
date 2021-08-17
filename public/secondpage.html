@@ -3674,7 +3674,7 @@
      
     
      if (DESetQueryBox.size >0 ) {
-       document.getElementById('runQueryAlert').style.display = 'block';
+       //document.getElementById('runQueryAlert').style.display = 'block';
       
       /* setTimeout(function(){
          document.getElementById("runQueryAlert").style.display = 'none';
@@ -4350,7 +4350,7 @@ document.addEventListener("mouseup", function(){
       console.log("data== "+ data[0]);
       //condition added by nitik
      
-      if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (data[1]!="") && (data[0][0]!="[")){
+      if((DEDragData.DEName!="AND" && DEDragData.DEName!="OR") && (data[1]!="") && (data[0][0]!="[")){
          console.log(" hiiiiiiiiiii  " );
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
@@ -5080,6 +5080,7 @@ document.addEventListener("mouseup", function(){
         
         }
       }
+      document.getElementById('runQueryAlert').style.display = 'block';
       if(draggedDeKey.size>1){
         closeModal();
       }
