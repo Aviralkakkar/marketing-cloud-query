@@ -5131,16 +5131,17 @@ document.addEventListener("mouseup", function(){
           })
       }
       function DEListShow(DERecords) {
-        console.log('Records2 '+DERecords);
+          console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
 
         if (DERecords.lemgth != 0) {
-
+	
           DETableBody = '<table class="slds-table slds-table--bordered">' +
             '<thead>' +
             '<tr class="slds-text-heading--label">';
 
           for (var key in DERecords[0]) {
+		  console.log('KEY '+key);
             DETableBody += '<th class="slds-cell-shrink" scope="col">' +
               '<span class="slds-truncate">' + key + '</span>' +
               '</th>';
