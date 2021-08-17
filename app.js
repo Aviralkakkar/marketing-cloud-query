@@ -49,17 +49,8 @@ app.post("/secondpage", async function (req, res) {
   //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
+  res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   console.log(AuthResponse);
-  if(AuthResponse.AccessToken)
-  {
-    console.log('Successfully redirected');
-    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
-  }
-  else
-  {
-    console.log('Something went wrong!');
-  }
-  
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1529,7 +1520,7 @@ app.post("/secondpage", async function (req, res) {
         
                DERecords = await getDERecords(NewDEName);
         
-               console.log('Records Server '+JSON.stringify(DERecords));
+              console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1907,8 +1898,7 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          //reject(error);
-          //res.end();
+          reject(error);
         })
 
       });
