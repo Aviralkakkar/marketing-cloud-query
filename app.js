@@ -59,12 +59,10 @@ app.post("/credential", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    res.sendFile(path.resolve(__dirname, 'public/secondpage.html'));   
+    res.sendFile(path.resolve(__dirname, 'public/secondpage.html'));
+    res.end('no');   
   }
-  else
-  {
-    res.end('no');
-  }
+  
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
