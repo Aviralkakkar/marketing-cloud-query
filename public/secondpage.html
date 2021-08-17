@@ -4225,6 +4225,10 @@ document.addEventListener("mouseup", function(){
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
       var page_span = document.getElementById("page");
+       var records = document.getElementById("totalRecords");
+    records.innerHTML = "( " + objJSON.length + " rows )";
+    console.log("Row " + objJSON.length);
+
 
       // Validate page
       if (page < 1) {
