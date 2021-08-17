@@ -1907,8 +1907,9 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          reject(error);
-          //res.end();
+          //reject(error);
+          res.redirect('back');
+          
         })
 
       });
