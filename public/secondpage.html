@@ -2811,9 +2811,9 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:99%;">
-                    <div style="height: 99%;background-color: white;padding-top: 5%;" id="noRecordFoundDiv">
-                      <div class="slds-text-align_center" style="font-size: larger;color: #425769;">No Record Found</div>
+                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
+                     <div style="height: 99%;background-color: #73ea734d;padding-top: 5%;display:block;" id="noRecordFoundDiv">
+                      <div class="slds-text-align_center" style="font-size: larger;color: #425769;">Success - 0 rows returned.</div>
                     </div>
                   <table class=" slds-table slds-table_bordered slds-table--header-fixed"
                     aria-labelledby="element-with-table-label other-element-with-table-label"
@@ -3646,7 +3646,7 @@
      
     
      if (DESetQueryBox.size >0 ) {
-       
+       //document.getElementById('runQueryAlert').style.display = 'block';
       
       /* setTimeout(function(){
          document.getElementById("runQueryAlert").style.display = 'none';
@@ -4326,7 +4326,7 @@ document.addEventListener("mouseup", function(){
       console.log("data== "+ data[0]);
       //condition added by nitik
      
-      if((DEDragData.DEName!="And" && DEDragData.DEName!="Or") && (data[1]!="") && (data[0][0]!="[")){
+      if((DEDragData.DEName!="AND" && DEDragData.DEName!="OR") && (data[1]!="") && (data[0][0]!="[")){
          console.log(" hiiiiiiiiiii  " );
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
@@ -4571,14 +4571,16 @@ document.addEventListener("mouseup", function(){
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
+        console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
-        //console.log("draggedDeName");
+        console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
-          return;
+          return
+          console.log("after return")
       }
     }
      // console.log("draggedDeName"+draggedDeName);
-
+     console.log("after return and out of if")
 
       console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
@@ -5058,8 +5060,13 @@ document.addEventListener("mouseup", function(){
            loadPage();
            document.getElementById('runQueryAlert').style.display = 'none';
         }
+        else{
+        noRecordFoundDiv
+          document.getElementById('noRecordFoundDiv').style.display = 'block';
+        }
       }
-        if(draggedDeKey.size>1){
+      document.getElementById('runQueryAlert').style.display = 'block';
+      if(draggedDeKey.size>1){
         closeModal();
         }
         else{
@@ -5077,9 +5084,9 @@ document.addEventListener("mouseup", function(){
      
     }
     function isSetEqual(as, bs) {
-        if (as.size !== bs.size) return false;
-        for (var a of as) if (!bs.has(a)) return false;
-        return true;
+        if (as.size !== bs.size) return 0;
+        for (var a of as) if (!bs.has(a)) return 1;
+        return 1;
       }
     function CancelDERecordModal() {
       document.getElementById('recordResultModal').style.display = 'none';
