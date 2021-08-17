@@ -5095,9 +5095,9 @@ document.addEventListener("mouseup", function(){
         var records_per_page = 20;
 
           var objJSON = [];
-     
+        var tableBody;
 
-        if (DERecords.lemgth != 0) 
+        if (DERecords.length != 0) 
         {
 
            DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
@@ -5113,20 +5113,21 @@ document.addEventListener("mouseup", function(){
             DETableBody += '</tr>' +
             '</thead>' +
             '<tbody>';
+              DETableBody += '</tbody>' +
+            '</table>';
 
           for (var i in DERecords) 
           {
-            DETableBody = '<tr class="slds-hint-parent">';
+            tableBody = '<tr class="slds-hint-parent">';
             for (var key in DERecords[i]) 
             {
-              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+              tableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
-            DETableBody += '</tr>';
-            objJSON.push({row:DETableBody});
+            tableBody += '</tr>';
+            objJSON.push({row:tableBody});
           }
 
-          DETableBody += '</tbody>' +
-            '</table>';
+          
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
