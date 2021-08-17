@@ -35,33 +35,62 @@ app.get("/", function (req, res) {
 })
 
 app.set('view engine', 'html');
+var NewDEName;
+//Added By ANIL KUMAR
+app.post("/credential", async function (req, res) {
+  console.log(req.body.clientid);
+  console.log(req.body.clientsecret);
+  console.log(req.body.authurl);
+  var AuthRequest = {
+    "ClientId" : req.body.clientid,
+    "ClientSecret" : req.body.clientsecret,
+    "ClinentAuthURL" : req.body.authurl
+  }
 
-app.post("/secondpage", async function (req, res) {
-   var AuthRequest = {
-     "ClientId" : req.body.clientid,
-     "ClientSecret" : req.body.clientsecret,
-     "ClinentAuthURL" : req.body.authurl
-   }
   //var AuthRequest = {
   //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
   //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
   //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
   //}
-  var NewDEName;
+
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
-  }
-  else
-  {
-    console.log('Something went wrong!');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));   
   }
   
+  async function getacesstoken(AuthRequest) {
+    try {
+      return new Promise(function (resolve, reject) {
+        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
+        {
+          'client_id': AuthRequest.ClientId,
+          'client_secret': AuthRequest.ClientSecret,
+          'grant_type': 'client_credentials'
+        })
+        .then((response) => {
+          resolve({
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
+            });
+        },
+        (error) => {
+          //reject(error);
+          //res.end();
+        })
 
-  app.post("/DEListFetch", async (reqCall, resCall) => {
+      });
+    }
+    catch (err) { 
+    }
+  }
+
+});
+
+app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
         "DEName": "_EnterpriseAttribute",
@@ -1854,7 +1883,7 @@ app.post("/secondpage", async function (req, res) {
 
   });
 
-  app.post("/RunQuery", async (reqCall, resCall) => {
+app.post("/RunQuery", async (reqCall, resCall) => {
     var DERecords = [];
     DERecords = await getDERecords(NewDEName);
     resCall.send(DERecords);
@@ -1889,34 +1918,7 @@ app.post("/secondpage", async function (req, res) {
       })
     }
   })
-  
-  async function getacesstoken(AuthRequest) {
-    try {
-      return new Promise(function (resolve, reject) {
-        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
-        {
-          'client_id': AuthRequest.ClientId,
-          'client_secret': AuthRequest.ClientSecret,
-          'grant_type': 'client_credentials'
-        })
-        .then((response) => {
-          resolve({
-              'AccessToken' : response.data.access_token,
-              'RestURL' : response.data.rest_instance_url,
-              'SoapURL' : response.data.soap_instance_url
-            });
-        },
-        (error) => {
-          //reject(error);
-          //res.end();
-        })
 
-      });
-    }
-    catch (err) { 
-    }
-  }
-});
 
 app.listen(process.env.PORT || 3000,
   () => console.log("Server is running."));
