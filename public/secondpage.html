@@ -4568,7 +4568,7 @@ document.addEventListener("mouseup", function(){
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
         console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
-      if((isSetEqual(DESetQueryBox, draggedDeKey)=="false") || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
+      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
         console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return
@@ -5080,9 +5080,9 @@ document.addEventListener("mouseup", function(){
      
     }
     function isSetEqual(as, bs) {
-        if (as.size !== bs.size) return false;
-        for (var a of as) if (!bs.has(a)) return false;
-        return true;
+        if (as.size !== bs.size) return 0;
+        for (var a of as) if (!bs.has(a)) return 1;
+        return 1;
       }
     function CancelDERecordModal() {
       document.getElementById('recordResultModal').style.display = 'none';
