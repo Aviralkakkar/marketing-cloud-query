@@ -5134,7 +5134,7 @@ document.addEventListener("mouseup", function(){
           console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
 
-          if (DERecords.length != 0) 
+            if (DERecords.lemgth != 0) 
         {
 
            DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
@@ -5143,7 +5143,7 @@ document.addEventListener("mouseup", function(){
 
           for (var key in DERecords[0])
           {
-            console.log('KEY ')
+            console.log('KEY '+key);
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
              
           }
