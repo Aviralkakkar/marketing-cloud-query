@@ -1093,6 +1093,11 @@
 						<div id="header-logo"></div>
 					</div>
 				</div>
+				<% if(message.length>0){ %>
+					<div class="alert alert-success">
+						<%= message %>
+					</div>
+				}%>
 
 				<form id="LoginForm" class="mainForm" action="/secondpage" method="POST"  autocomplete="off">
 					<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>

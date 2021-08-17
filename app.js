@@ -6,6 +6,10 @@ const axios = require('axios');
 const xmlParser = require('xml2json');
 const { stringify } = require("querystring");
 
+//Added BY ANIL KUMAR
+var session=require('express-session');
+var flush=require('connect-flash');
+
 var request = require('request');
 var Set = require("collections/set");
 var moment = require('moment');
@@ -16,7 +20,15 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-
+//Added by ANIL KUMAR
+app.use(session({
+  secret:'secret',
+  cookie:{maxAge:6000},
+  resave:false,
+  saveUninitialized:false
+}));
+app.use(flush());
+//END
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -58,6 +70,7 @@ app.post("/secondpage", async function (req, res) {
   else
   {
     console.log('Something went wrong!');
+    res.redirect('back');
   }
   
 
@@ -1907,7 +1920,7 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          //reject(error);
+          req.flash('message','Your platforms has trouble connecting due to the provided credentials being incorrect');
           res.redirect('back');
           
         })
