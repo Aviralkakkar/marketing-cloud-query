@@ -4214,16 +4214,12 @@ document.addEventListener("mouseup", function(){
     var joinedDivSet = new Set();
    var data;
 
-      //------Pagination code by  k------------//
-    var current_page = 1;
-    var records_per_page = 20;
-    var objJSON = [];
     
-    var records = document.getElementById("totalRecords");
-    records.innerHTML = "( " + objJSON.length + " rows )";
-   
-
-    function prevPage() {
+    
+      var current_page = 1;
+        var records_per_page = 20;
+        var objJSON = [];
+   function prevPage() {
       if (current_page > 1) {
         current_page--;
         changePage(current_page);
@@ -4285,7 +4281,7 @@ document.addEventListener("mouseup", function(){
       totalPages.innerHTML = " " + numPages() + " ";
     };
 
-    //pagination code by k ended //
+
 
     
     
@@ -5049,7 +5045,9 @@ document.addEventListener("mouseup", function(){
       {
        console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
-
+    var current_page = 1;
+    var records_per_page = 20;
+    var objJSON = [];
         var tableBody="";
 
         if (DERecords.length != 0) 
@@ -5083,10 +5081,14 @@ document.addEventListener("mouseup", function(){
           }
 
           console.log('objJSONN '+objJSON);
+          changePage(current_page);
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
+          //------Pagination code by  k------------//
 
+    
+ 
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
         
@@ -6860,8 +6862,21 @@ function changeSchmaPosition(e)
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
           console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
+
           JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
+
+          var nameOfBothDE= "["+ JoinQueryDetails.DEForJoin[keyForDEField].FirstDEName+"].["+JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName+"]"  ;
+          console.log("kaam shuru 2");
+          for(var item of draggedDeJoinKey){
+            console.log("kaam shuru 1");
+            if(nameOfBothDE==item){
+              console.log("kaam shuru");
+              draggedDeJoinKey.delete(item);
+              console.log("kaam khatam");
+            }
+          }
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
