@@ -2817,7 +2817,38 @@
                     style="border:1px solid rgb(177, 172, 172) !important;">
                     <thead>
       
-                     
+                      <tr class="slds-line-height_reset">
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="firstname">Opportunity Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Account Name</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Close Date</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Stage</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Confidence</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Amount</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Contact</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Personal Mail</div>
+                        </th>
+                        <th class="slds-text-title_caps slds-cell-wrap" scope="col">
+                          <div class="slds-truncate" title="lastname">Company Mail</div>
+                        </th>
+                      </tr>
                     </thead>
       
       
@@ -3339,8 +3370,7 @@
             <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
 
               <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
-                style="padding-left:0rem; background-color:white; position: relative; font-size: 14px;
-                background-color: #F0F2F3;">
+                style="padding-left:0rem; background-color:white; position: relative;">
 
               </ul>
 
@@ -3644,7 +3674,7 @@
      
     
      if (DESetQueryBox.size >0 ) {
-       document.getElementById('runQueryAlert').style.display = 'block';
+       
       
       /* setTimeout(function(){
          document.getElementById("runQueryAlert").style.display = 'none';
@@ -4195,10 +4225,6 @@ document.addEventListener("mouseup", function(){
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
       var page_span = document.getElementById("page");
-       var records = document.getElementById("totalRecords");
-    records.innerHTML = "( " + objJSON.length + " rows )";
-    console.log("Row " + objJSON.length);
-
 
       // Validate page
       if (page < 1) {
@@ -4561,6 +4587,7 @@ document.addEventListener("mouseup", function(){
           return;
         }
       }*/
+      document.getElementById('runQueryAlert').style.display = 'block';
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
       console.log("draggedDeJoinKey=="+draggedDeJoinKey.size); 
@@ -5053,7 +5080,7 @@ document.addEventListener("mouseup", function(){
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
            loadPage();
-        
+           document.getElementById('runQueryAlert').style.display = 'none';
         }
       }
       if(draggedDeKey.size>1){
