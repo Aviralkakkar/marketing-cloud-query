@@ -68,7 +68,7 @@ app.post("/credential", (req, res) => {
             res.json([{
               authToken: response.data.access_token
             }]);
-            res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+            res.redirect('/secondpage');
           }
           else
           {
