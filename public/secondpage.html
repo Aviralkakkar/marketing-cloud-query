@@ -4221,12 +4221,14 @@ document.addEventListener("mouseup", function(){
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
+        console.log('prev page');
         current_page--;
         changePage(current_page);
       }
     }
 
     function nextPage() {
+        console.log('next page');
       if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
@@ -4234,6 +4236,8 @@ document.addEventListener("mouseup", function(){
     }
 
     function changePage(page) {
+        console.log('change page');
+      console.log('ObjJSON2 '+objJSON);
       var btn_next = document.getElementById("btn_next");
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
