@@ -5156,6 +5156,7 @@ document.addEventListener("mouseup", function(){
             DETableBody += '<tr class="slds-hint-parent">';
             for (var key in DERecords[i]) 
             {
+		    console.log('Body key '+key+' Recordds[i] '+DERecords[i][key] );
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
             DETableBody += '</tr>';
