@@ -37,20 +37,20 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 app.post("/secondpage", async function (req, res) {
-  // var AuthRequest = {
-  //   "ClientId" : req.body.clientid,
-  //   "ClientSecret" : req.body.clientsecret,
-  //   "ClinentAuthURL" : req.body.authurl
-  // }
-  var AuthRequest = {
-    "ClientId" : "sr7id7zht854bwdco8t9qdym",
-    "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
-    "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
-  }
+   var AuthRequest = {
+     "ClientId" : req.body.clientid,
+     "ClientSecret" : req.body.clientsecret,
+     "ClinentAuthURL" : req.body.authurl
+   }
+  //var AuthRequest = {
+  //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
+  //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
+  //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
+  //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
-
-  res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+  res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
+  console.log(AuthResponse);
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1507,7 +1507,7 @@ app.post("/secondpage", async function (req, res) {
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
-        console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
+         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
@@ -1517,11 +1517,10 @@ app.post("/secondpage", async function (req, res) {
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
               console.log('Inside if '+NewDEName);
-             
-              //---------kkkkkkkkkk-----------------//
-               //DERecords = await getDERecords(NewDEName);
-             
-              console.log('Records Server '+DERecords);
+        
+               DERecords = await getDERecords(NewDEName);
+        
+              console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1778,7 +1777,7 @@ app.post("/secondpage", async function (req, res) {
         //var NextUrl;
         var DEDataOptions = {
           'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/' + key + '/rowset/',
+          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/'+key+'/rowset/',
           'headers': {
             'Authorization': 'Bearer ' + AuthResponse.AccessToken
           }
@@ -1893,10 +1892,10 @@ app.post("/secondpage", async function (req, res) {
         })
         .then((response) => {
           resolve({
-            'AccessToken' : response.data.access_token,
-            'RestURL' : response.data.rest_instance_url,
-            'SoapURL' : response.data.soap_instance_url
-          });
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
+            });
         },
         (error) => {
           reject(error);
@@ -1904,7 +1903,8 @@ app.post("/secondpage", async function (req, res) {
 
       });
     }
-    catch (err) { }
+    catch (err) { 
+    }
   }
 });
 

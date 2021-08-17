@@ -2287,7 +2287,7 @@
 
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
 
-      <div id="FullPageSpinner" class="demo-only" style="height:650px;position:relative;display:none">
+      <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
             <span class="slds-assistive-text">Loading</span>
@@ -2415,27 +2415,7 @@
             </div>
           </div>
 
-          <div id="DEListDivAlert" style="display:none">
-            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
-              <span class="slds-assistive-text">error</span>
-              <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                title="Description of icon when needed">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                </svg>
-              </span>
-              <P id="DEListDivAlertPera"></P>
-              <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
-                  title="Close" onclick="CancelDEListDivAlert()">
-                  <svg class="slds-button__icon" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                  </svg>
-                  <span class="slds-assistive-text">Close</span>
-                </button>
-              </div>
-            </div>
-          </div>
+         
 
 
 
@@ -2445,25 +2425,7 @@
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-          <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
-            <span class="slds-assistive-text">warning</span>
-            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-            </svg>
-            </span>
-            <h6>Please Join the Query Box.
-          
-            </h6>
-            <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
-            <svg class="slds-button__icon" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-            </svg>
-            <span class="slds-assistive-text">Close</span>
-            </button>
-            </div>
-            </div>
+    
             <div id="queryDiv" style="height:100%;position:relative;" >
                  <div style="height:8.9%;">
                 <table style="height:100%;">
@@ -2487,6 +2449,25 @@
                         </button>
                         </div>
                         </div>
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                          <span class="slds-assistive-text">warning</span>
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          </svg>
+                          </span>
+                          <h6>Please Join the Query Box.
+                        
+                          </h6>
+                          <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                          </svg>
+                          <span class="slds-assistive-text">Close</span>
+                          </button>
+                          </div>
+                          </div>
                         <!--alerts and warning-->
                         <!--for -->
                         <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
@@ -3272,7 +3253,8 @@
                  margin-bottom: 20%;"/> 
                 <input type="button" value="\/" id="btnDowm" onClick="move(false);" style="height: 2rem; width: 2rem; border: 1px solid lightgray;" /> 
                -->
-               <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
+             
+                 <button class="slds-button slds-button_neutral btn-pagination"  id="btnUp" onClick="move(true);" style="width: 2rem;
                height: 2rem;
                border: 1px solid lightgray;
                margin-bottom: 20%; margin-left: 9%;">
@@ -3298,12 +3280,7 @@
                   <span class="slds-assistive-text">Description of icon when needed</span></span>
                </button>
 
-              <!--  <button class="btn btn-default btn-sm move-up" onlick=" modal1button()" style="margin-top: 15%;">
-                  <span class="glyphicon glyphicon-chevron-up">U</span>
-                </button>
-                <button class="btn btn-default btn-sm move-down" onlick=" modal1button()" style="margin-top: 20%;">
-                  <span class="glyphicon glyphicon-chevron-down">D</span>
-                </button>-->
+              
               </div>
 
 
@@ -3466,28 +3443,52 @@
   var currentSel = null;
   function move() {
     if (arguments.length == 1) {
+      console.log('up and down');
       moveUp(arguments[0]);
     } else if (arguments.length == 2) {
       moveRight(arguments[0], arguments[1]);
     }
   }
   function moveUp(direction) {
+    
     if (currentSel == null) return;
     var index = currentSel.selectedIndex;
-    console.log(currentSel);
-    console.log(index);
-    console.log(direction);
+    console.log('currentsel'+currentSel);
+    console.log('index'+index);
+    console.log('direction'+direction);
     if (direction) {//up 
       if (index == 0) return;
 
       var value = currentSel.options[index - 1].value;
       var text = currentSel.options[index - 1].text;
+      var id=currentSel.options[index - 1].id;
+      var label=currentSel.options[index - 1].label;
+      var style=currentSel.options[index - 1].style;
+      console.log('1+'+value);
+      console.log('2+'+text);
+
+      console.log('3+'+id);
+
+      console.log('4+'+label);
+
+      console.log('5+'+style);
+
+
+
 
       currentSel.options[index - 1].value = currentSel.options[index].value;
       currentSel.options[index - 1].text = currentSel.options[index].text;
+      currentSel.options[index - 1].id=currentSel.options[index ].id;
+      currentSel.options[index - 1].label=currentSel.options[index ].label;
+      currentSel.options[index - 1].style="padding:4%; margin:0;";
+
 
       currentSel.options[index].value = value;
       currentSel.options[index].text = text;
+      currentSel.options[index ].id =  id;
+      currentSel.options[index ].label =label;
+      currentSel.options[index ].style="padding:4%; margin:0;";
+
 
       currentSel.options[index].selected = false;
       currentSel.options[index - 1].selected = true;
@@ -3496,12 +3497,32 @@
 
       var value = currentSel.options[index + 1].value;
       var text = currentSel.options[index + 1].text;
+      var id=currentSel.options[index + 1].id;
+      var label=currentSel.options[index + 1].label;
+      var style=currentSel.options[index + 1].style;
+
+      console.log('1+'+value);
+      console.log('2+'+text);
+
+      console.log('3+'+id);
+
+      console.log('4+'+label);
+
+      console.log('5+'+style);
+
+
 
       currentSel.options[index + 1].value = currentSel.options[index].value;
       currentSel.options[index + 1].text = currentSel.options[index].text;
+      currentSel.options[index + 1].id=currentSel.options[index ].id;
+      currentSel.options[index + 1].label=currentSel.options[index ].label;
+      currentSel.options[index + 1].style="padding:4%; margin:0;";
 
       currentSel.options[index].value = value;
       currentSel.options[index].text = text;
+      currentSel.options[index ].id =  id;
+      currentSel.options[index ].label =label;
+      currentSel.options[index ].style="padding:4%; margin:0;";
 
       currentSel.options[index].selected = false;
       currentSel.options[index + 1].selected = true;
@@ -3509,6 +3530,67 @@
   }
 
  
+  /*code for moving up and down*/
+    //rightsideListInSelectField
+    /*
+    function moveUp()
+        {
+            var ddl = document.getElementById('rightsideListInSelectField');
+            //var size = ddl.length;
+            //var index = ddl.selectedIndex;
+            var selectedItems = new Array();
+		      	var temp = {innerHTML:null, value:null};
+            for(var i = 0; i < ddl.length; i++)
+                if(ddl.options[i].selected)             
+                    selectedItems.push(i);
+
+            if(selectedItems.length > 0)    
+                if(selectedItems[0] != 0)
+                    for(var i = 0; i < selectedItems.length; i++)
+                    {
+                      console.log('2222222----'+ddl.options[selectedItems[i]].innerHTML);
+                      console.log('1111111111----'+ddl.options[selectedItems[i]].value);
+
+                      console.log(ddl.options[selectedItems[i] - 1].innerHTML);
+                      console.log(ddl.options[selectedItems[i] - 1].value);
+					        	temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
+					        	temp.value = ddl.options[selectedItems[i]].value;
+                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] - 1].innerHTML;
+                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] - 1].value;
+                        ddl.options[selectedItems[i] - 1].innerHTML = temp.innerHTML; 
+                        ddl.options[selectedItems[i] - 1].value = temp.value; 
+                        ddl.options[selectedItems[i] - 1].selected = true;
+                        ddl.options[selectedItems[i]].selected = false;
+                    }
+        }
+
+        function moveDown()
+        {
+            var ddl = document.getElementById('rightsideListInSelectField');
+            //var size = ddl.length;
+            //var index = ddl.selectedIndex;
+            var selectedItems = new Array();
+			var temp = {innerHTML:null, value:null};
+            for(var i = 0; i < ddl.length; i++)
+                if(ddl.options[i].selected)             
+                    selectedItems.push(i);
+
+            if(selectedItems.length > 0)    
+                if(selectedItems[selectedItems.length - 1] != ddl.length - 1)
+                    for(var i = selectedItems.length - 1; i >= 0; i--)
+                    {
+                        temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
+                        temp.value = ddl.options[selectedItems[i]].value;
+                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] + 1].innerHTML;
+                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] + 1].value;
+                        ddl.options[selectedItems[i] + 1].innerHTML = temp.innerHTML; 
+                        ddl.options[selectedItems[i] + 1].value = temp.value; 
+                        ddl.options[selectedItems[i] + 1].selected = true;
+                        ddl.options[selectedItems[i]].selected = false;
+                    }
+        }
+    */
+    //ends here
 
   function moveRight(src, des) {
     
@@ -3570,7 +3652,7 @@
       for (var i = 0; i < list1.length; i++) {
         
         document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + list1[i].FieldType
-           + ' draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
+           + '" draggable=true  label="' + list1[i].FieldName + '" style="padding:4%; margin:0;"> '+ list1[i].FieldName + '</option><br>';   
 
        
       }
@@ -4007,78 +4089,7 @@ window.onclick = function(event) {
 
     // *************** Pagination code ***************//
 
-    var current_page = 1;
-    var records_per_page = 20;
-
-     objJSON = [
-      { row: "<tr class=\"slds-hint-parent slds-border_bottom\"><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Account Name\"><div class=\"slds-truncate\" title=\"Cloudhub\">Cloudhub</div></td><td data-label=\"Close Date\"><div class=\"slds-truncate\" title=\"4/14/2015\">4/14/2015</div></td><td data-label=\"Prospecting\"><div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div></td><td data-label=\"Confidence\"><div class=\"slds-truncate\" title=\"20%\">20%</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">$25k</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td><td data-label=\"Amount\"><div class=\"slds-truncate\" title=\"$25k\">jrogers@cloudhub.com</div></td></tr>" }];
-
-    var records = document.getElementById("totalRecords");
-    records.innerHTML = "( " + objJSON.length + " rows )";
    
-
-    function prevPage() {
-      if (current_page > 1) {
-        current_page--;
-        changePage(current_page);
-      }
-    }
-
-    function nextPage() {
-      if (current_page < numPages()) {
-        current_page++;
-        changePage(current_page);
-      }
-    }
-
-    function changePage(page) {
-      var btn_next = document.getElementById("btn_next");
-      var btn_prev = document.getElementById("btn_prev");
-      var listing_table = document.getElementById("listingTable");
-      var page_span = document.getElementById("page");
-
-      // Validate page
-      if (page < 1) {
-        page = 1;
-      }
-
-      if (page > numPages()) {
-        page = numPages();
-      }
-
-      listing_table.innerHTML = "";
-
-      for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
-        listing_table.innerHTML += objJSON[i].row;
-      }
-      page_span.innerHTML = page;
-
-      if (page == 1) {
-        btn_prev.style.visibility = "hidden";
-      } else {
-        btn_prev.style.visibility = "visible";
-      }
-
-      if (page == numPages()) {
-        btn_next.style.visibility = "hidden";
-      } else {
-        btn_next.style.visibility = "visible";
-      }
-    }
-
-    function numPages() {
-      return Math.ceil(objJSON.length / records_per_page);
-    }
-
-    window.onload = function () {
-      changePage(1);
-
-      var page = document.getElementById("page");
-      var totalPages = document.getElementById("totalPages");
-      page.innerHTML = " " + 1 + " ";
-      totalPages.innerHTML = " " + numPages() + " ";
-    };
-
 
     //  *************** Resizeable code *****************//
    /* const panel = document.getElementById("right_panel");
@@ -4248,6 +4259,70 @@ document.addEventListener("mouseup", function(){
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
    var data;
+   var current_page = 1;
+        var records_per_page = 20;
+        var objJSON = [];
+   function prevPage() {
+      if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+      }
+    }
+
+    function nextPage() {
+      if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+      }
+    }
+
+    function changePage(page) {
+      var btn_next = document.getElementById("btn_next");
+      var btn_prev = document.getElementById("btn_prev");
+      var listing_table = document.getElementById("listingTable");
+      var page_span = document.getElementById("page");
+
+      // Validate page
+      if (page < 1) {
+        page = 1;
+      }
+
+      if (page > numPages()) {
+        page = numPages();
+      }
+
+      listing_table.innerHTML = "";
+
+      for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+        listing_table.innerHTML += objJSON[i].row;
+      }
+      page_span.innerHTML = page;
+
+      if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+      } else {
+        btn_prev.style.visibility = "visible";
+      }
+
+      if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+      } else {
+        btn_next.style.visibility = "visible";
+      }
+    }
+
+    function numPages() {
+      return Math.ceil(objJSON.length / records_per_page);
+    }
+
+    window.onload = function () {
+      changePage(1);
+
+      var page = document.getElementById("page");
+      var totalPages = document.getElementById("totalPages");
+      page.innerHTML = " " + 1 + " ";
+      totalPages.innerHTML = " " + numPages() + " ";
+    };
 
 
     onloadofBody();
@@ -4332,7 +4407,9 @@ document.addEventListener("mouseup", function(){
       if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
         document.getElementById('leftsideListInSelectField').innerHTML = '';
         //document.getElementById('rightselect').innerHTML = '';
+        console.log('DEDragData.DEExtKey---->'+DEDragData.DEExtKey);
         if (DESetQueryBox.has(DEDragData.DEExtKey)) {
+          console.log('DEDragData.DEExtKey has(DEDragData.DEExtKey---->'+DEDragData.DEExtKey);
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
         }
@@ -4990,8 +5067,8 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
-            console.log('client data '+data);
-              if (data != "false" && data) {
+              console.log('Client data '+data);
+             if (data != "false" && data) {
                 console.log(' Inside If '+data);
                 DEListShow(data);
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -5003,9 +5080,14 @@ document.addEventListener("mouseup", function(){
       }
       function DEListShow(DERecords) 
       {
+        console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
 
-        if (DERecords.lemgth != 0) 
+       
+    
+        var tableBody;
+
+        if (DERecords.length != 0) 
         {
 
            DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
@@ -5014,27 +5096,50 @@ document.addEventListener("mouseup", function(){
 
           for (var key in DERecords[0])
           {
+            console.log('KEY ')
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
              
           }
             DETableBody += '</tr>' +
             '</thead>' +
-            '<tbody>';
+            '<tbody id="listingTable">';
+              DETableBody += '</tbody>' +
+            '</table>';
 
           for (var i in DERecords) 
           {
-            DETableBody += '<tr class="slds-hint-parent">';
+            tableBody = '<tr class="slds-hint-parent">';
             for (var key in DERecords[i]) 
             {
-              DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
+              tableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
-            DETableBody += '</tr>';
+            tableBody += '</tr>';
+            objJSON.push({row:tableBody});
           }
 
-          DETableBody += '</tbody>' +
-            '</table>';
+          console.log('JSON KKKKK '+objJSON);
+          changePage(current_page);
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
+
+          //--Pagination-------//
+
+           //------Pagination code by  k------------//
+    
+   
+    var records = document.getElementById("totalRecords");
+    records.innerHTML = "( " + objJSON.length + " rows )";
+   
+
+  
+    //pagination code by k ended //
+
+
+
+           //--Pagination-------//
+
+
+
           document.getElementById('tableDiv').innerHTML = DETableBody;
         }
       }
@@ -5141,6 +5246,8 @@ document.addEventListener("mouseup", function(){
     }
 
     function RunQuery() {
+      
+      console.log("Inside run query");
       $.ajax
         ({
           url: '/RunQuery',
@@ -5158,6 +5265,7 @@ document.addEventListener("mouseup", function(){
           }
         })
       function DEListShow(DERecords) {
+        console.log('Records '+DERecords);
         var DETableBody = ""
         if (DERecords.lemgth != 0) {
 
@@ -5809,18 +5917,27 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal;
+      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
+      for (var key in JoinQueryDetails.DEForJoin) {
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+          CountOfFirstDEExtKeyForJoin++;
+        }
+      }
+      console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
-      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal)){
-        for (var key in JoinQueryDetails.DEForJoin) {
+      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal) && CountOfFirstDEExtKeyForJoin<=1 ){
+        /*for (const val of joinedDivSet) {
+          console.log('joinedDivSet===='+val);
+        }*/
+        for (var key in JoinQueryDetails.DEForJoin ) {
           console.log("sbhab==="+key);
           console.log("sbhFirstDEExtKeyForJoinGlobalab==="+FirstDEExtKeyForJoinGlobal);
          // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
           console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal) ){
           SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
@@ -5860,13 +5977,13 @@ function changeSchmaPosition(e)
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
       '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-        '<option value="">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+        '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
             for(var i=0;i<7;i++){
               if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
 
                 }
                 else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value=" ">'+JoinTypeArray[i]+'</option>';
+                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
                 }
             }
          
@@ -5879,7 +5996,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
@@ -5909,7 +6026,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
             for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
             if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
@@ -5935,7 +6052,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
             for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("helloDFGW");
@@ -5961,11 +6078,160 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
+          }
+          else if((JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
+            SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
+            FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
+          console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
+          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            '<div class="slds-modal__container">' +
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
+          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+          '</svg>'+
+          '<span class="slds-assistive-text">Close</span>'+
+          '</button>'+
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+        
+         
+          
+            
+          '</header>'+
+            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+  
+            '<div >' +
+            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+            '</div>' +
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].FirstDEName + '" disabled="" class="slds-input" />' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+
+      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+        '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+            for(var i=0;i<7;i++){
+              if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
+
+                }
+                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
+                }
+            }
+         
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
+  
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+
+            }
+            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+            }
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+      
+
+
+
+            '</div>' +
+  
+           
+
+  
+  
+  
+            '<div class="slds-grid slds-wrap">' +
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+  
+            for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("hello");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+            ' <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            
+            '</div>' +
+  
+  
+  
+            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+  
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+            
+          }
+          joinTwoDivString += '</select>' +
+            '</div>' +
+  
+  
+  
+  
+            '</div>' +
+  
+  
+            '</div>' +
+  
+            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
+  
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '</footer>' +
+            '</div>' +
+            '</section>' +
+            '<div class="slds-backdrop slds-backdrop_open"></div>';
+            break;
           }
           else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
@@ -6088,6 +6354,7 @@ function changeSchmaPosition(e)
             '</div>' +
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
+            break;
           }
           else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
@@ -6629,7 +6896,69 @@ function changeSchmaPosition(e)
     }
     
 
-    function SaveJoinQuery() {
+    function SaveJoinQuery(keyForDEField) {
+      
+      if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName==document.getElementById('select-02').value){
+        console.log('keyForDEField'+keyForDEField);
+        if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
+
+          JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField=document.getElementById('FirstDEField').value;
+          console.log("in the ");
+        }
+        if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEField').value){
+          console.log("in the 2 ");
+          JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
+        }
+        if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
+          console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
+          console.log("in the 2 ");
+          JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+          console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
+        }
+        document.getElementById('ThirdModal').style.display = 'none';
+
+      }
+      else if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName!=document.getElementById('select-02').value){
+        if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+              "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
+              "SecondDEExtKey": document.getElementById('select-02').value,
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
+            });
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+          }
+        }
+      }
+      document.getElementById('ThirdModal').style.display = 'none';
+
+      }
+      else{
+        console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
       if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -6666,6 +6995,7 @@ function changeSchmaPosition(e)
         }
       }
       document.getElementById('ThirdModal').style.display = 'none';
+      }
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
@@ -6682,15 +7012,15 @@ function changeSchmaPosition(e)
       var div2_pos = div2.getBoundingClientRect();
 
       if(div1_pos.left<div2_pos.left){
-        var x1 = div1.offsetLeft+div1.offsetWidth;
-        var y1 = div1.offsetTop+10;
-        var x2 = div2.offsetLeft;
-        var y2 = (div2.offsetTop+div2_pos.height/2);
+        var x1 = div1.offsetLeft+div1.offsetWidth;
+        var y1 = div1.offsetTop+10;
+        var x2 = div2.offsetLeft;
+        var y2 = (div2.offsetTop+div2_pos.height/2);
       }else{
-        var x1 = div1.offsetLeft;
-        var y1 = (div1.offsetTop+div1_pos.height/2);
-        var x2 = div2.offsetLeft+div2.offsetWidth;
-        var y2 = div2.offsetTop+10;
+        var x1 = div1.offsetLeft;
+        var y1 = (div1.offsetTop+div1_pos.height/2);
+        var x2 = div2.offsetLeft+div2.offsetWidth;
+        var y2 = div2.offsetTop+10;
       } 
 
       // distance
