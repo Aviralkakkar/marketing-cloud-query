@@ -6,6 +6,10 @@ const axios = require('axios');
 const xmlParser = require('xml2json');
 const { stringify } = require("querystring");
 
+//Added BY ANIL KUMAR
+var session=require('express-session');
+var flush=require('connect-flash');
+
 var request = require('request');
 var Set = require("collections/set");
 var moment = require('moment');
@@ -16,7 +20,11 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-
+//Added by ANIL KUMAR
+app.use(cookieParser('secretString'));
+app.use(session({cookie: { maxAge: 60000 }}));
+app.use(flash());
+//END
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -49,8 +57,18 @@ app.post("/secondpage", async function (req, res) {
   //}
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
-  res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   console.log(AuthResponse);
+  if(AuthResponse.AccessToken)
+  {
+    console.log('Successfully redirected');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
+  }
+  else
+  {
+    console.log('Something went wrong!');
+    res.redirect('back');
+  }
+  
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1520,7 +1538,7 @@ app.post("/secondpage", async function (req, res) {
         
                DERecords = await getDERecords(NewDEName);
         
-              console.log('Records Server '+JSON.stringify(DERecords));
+               console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1898,7 +1916,9 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          reject(error);
+          req.flash('message','Your platforms has trouble connecting due to the provided credentials being incorrect');
+          res.redirect('back');
+          
         })
 
       });

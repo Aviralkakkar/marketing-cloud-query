@@ -3530,73 +3530,16 @@
   }
 
  
-  /*code for moving up and down*/
-    //rightsideListInSelectField
-    /*
-    function moveUp()
-        {
-            var ddl = document.getElementById('rightsideListInSelectField');
-            //var size = ddl.length;
-            //var index = ddl.selectedIndex;
-            var selectedItems = new Array();
-		      	var temp = {innerHTML:null, value:null};
-            for(var i = 0; i < ddl.length; i++)
-                if(ddl.options[i].selected)             
-                    selectedItems.push(i);
-
-            if(selectedItems.length > 0)    
-                if(selectedItems[0] != 0)
-                    for(var i = 0; i < selectedItems.length; i++)
-                    {
-                      console.log('2222222----'+ddl.options[selectedItems[i]].innerHTML);
-                      console.log('1111111111----'+ddl.options[selectedItems[i]].value);
-
-                      console.log(ddl.options[selectedItems[i] - 1].innerHTML);
-                      console.log(ddl.options[selectedItems[i] - 1].value);
-					        	temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
-					        	temp.value = ddl.options[selectedItems[i]].value;
-                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] - 1].innerHTML;
-                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] - 1].value;
-                        ddl.options[selectedItems[i] - 1].innerHTML = temp.innerHTML; 
-                        ddl.options[selectedItems[i] - 1].value = temp.value; 
-                        ddl.options[selectedItems[i] - 1].selected = true;
-                        ddl.options[selectedItems[i]].selected = false;
-                    }
-        }
-
-        function moveDown()
-        {
-            var ddl = document.getElementById('rightsideListInSelectField');
-            //var size = ddl.length;
-            //var index = ddl.selectedIndex;
-            var selectedItems = new Array();
-			var temp = {innerHTML:null, value:null};
-            for(var i = 0; i < ddl.length; i++)
-                if(ddl.options[i].selected)             
-                    selectedItems.push(i);
-
-            if(selectedItems.length > 0)    
-                if(selectedItems[selectedItems.length - 1] != ddl.length - 1)
-                    for(var i = selectedItems.length - 1; i >= 0; i--)
-                    {
-                        temp.innerHTML = ddl.options[selectedItems[i]].innerHTML;
-                        temp.value = ddl.options[selectedItems[i]].value;
-                        ddl.options[selectedItems[i]].innerHTML = ddl.options[selectedItems[i] + 1].innerHTML;
-                        ddl.options[selectedItems[i]].value = ddl.options[selectedItems[i] + 1].value;
-                        ddl.options[selectedItems[i] + 1].innerHTML = temp.innerHTML; 
-                        ddl.options[selectedItems[i] + 1].value = temp.value; 
-                        ddl.options[selectedItems[i] + 1].selected = true;
-                        ddl.options[selectedItems[i]].selected = false;
-                    }
-        }
-    */
-    //ends here
+  
 
   function moveRight(src, des) {
     
     if (src.selectedIndex == -1) {
       document.getElementById("FieldSelectNextAlert").style.display = "block";
-      return;
+      setTimeout(function(){
+        document.getElementById("FieldSelectNextAlert").style.display = 'none';
+      }, 5000);
+      return; 
     }
     for (var i = 0; i < src.length; i++) {
       if (src[i].selected) {
@@ -3755,13 +3698,18 @@
       function closerunQueryAlert(){
         document.getElementById('runQueryAlert').style.display = 'none';
       }
-function openModal(functionAction) {
-  var countOfDeWithWhereClauseValue=0;    
+   function openModal(functionAction) {
+    var countOfDeWithWhereClauseValue=0;    
       var countOfDeWithoutWhereClauseValue=0; 
      
     
-   if (DESetQueryBox.size >0 ) {
+     if (DESetQueryBox.size >0 ) {
        document.getElementById('runQueryAlert').style.display = 'block';
+      
+      /* setTimeout(function(){
+         document.getElementById("runQueryAlert").style.display = 'none';
+       }, 5000);*/
+      
         //document.getElementById('RelationPopup').style.display = 'none';
         //document.getElementById('DEWhereClauseModal').style.display = 'block';
         //document.getElementById('FieldSelectNextAlert').style.display = 'none';
@@ -3820,6 +3768,11 @@ function openModal(functionAction) {
       else if(DESetQueryBox.size == 0 ){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
+       
+        setTimeout(function(){
+          document.getElementById("DESelectAlert").style.display = 'none';
+        }, 5000);
+       
         console.log('bye');
       }    
       
@@ -4250,6 +4203,7 @@ document.addEventListener("mouseup", function(){
       "PrimaryDE": {},
       "DEForJoin": []
     }
+    
     var NewDEFieldsList = [];
     var DEListMap = {};
     var openSelectFieldsDEExtKey = '';
@@ -4324,7 +4278,77 @@ document.addEventListener("mouseup", function(){
       totalPages.innerHTML = " " + numPages() + " ";
     };
 
+    
+    
+      var current_page = 1;
+        var records_per_page = 20;
+        var objJSON = [];
+   function prevPage() {
+      if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+      }
+    }
 
+    function nextPage() {
+      if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+      }
+    }
+
+    function changePage(page) {
+      var btn_next = document.getElementById("btn_next");
+      var btn_prev = document.getElementById("btn_prev");
+      var listing_table = document.getElementById("listingTable");
+      var page_span = document.getElementById("page");
+
+      // Validate page
+      if (page < 1) {
+        page = 1;
+      }
+
+      if (page > numPages()) {
+        page = numPages();
+      }
+
+      listing_table.innerHTML = "";
+
+      for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+        listing_table.innerHTML += objJSON[i].row;
+      }
+      page_span.innerHTML = page;
+
+      if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+      } else {
+        btn_prev.style.visibility = "visible";
+      }
+
+      if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+      } else {
+        btn_next.style.visibility = "visible";
+      }
+    }
+
+    function numPages() {
+      return Math.ceil(objJSON.length / records_per_page);
+    }
+
+    window.onload = function () {
+      changePage(1);
+
+      var page = document.getElementById("page");
+      var totalPages = document.getElementById("totalPages");
+      page.innerHTML = " " + 1 + " ";
+      totalPages.innerHTML = " " + numPages() + " ";
+    };
+
+
+
+    
+    
     onloadofBody();
     function onloadofBody() {
       //document.getElementById('FullPageSpinner').style.display = 'block';
@@ -4412,6 +4436,9 @@ document.addEventListener("mouseup", function(){
           console.log('DEDragData.DEExtKey has(DEDragData.DEExtKey---->'+DEDragData.DEExtKey);
           document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
           document.getElementById('DEListDivAlert').style.display = 'block';
+          setTimeout(function(){
+            document.getElementById("DEListDivAlert").style.display = 'none';
+          }, 5000);
         }
         else {
           document.getElementById('DEListDivAlert').style.display = 'none';
@@ -5078,14 +5105,12 @@ document.addEventListener("mouseup", function(){
             }
           })
       }
-      function DEListShow(DERecords) 
+       function DEListShow(DERecords) 
       {
-        console.log('Records2 '+JSON.stringify(DERecords));
+       console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
-
-       
-    
-        var tableBody;
+  
+        var tableBody="";
 
         if (DERecords.length != 0) 
         {
@@ -5102,7 +5127,7 @@ document.addEventListener("mouseup", function(){
           }
             DETableBody += '</tr>' +
             '</thead>' +
-            '<tbody id="listingTable">';
+           '<tbody id="listingTable">';
               DETableBody += '</tbody>' +
             '</table>';
 
@@ -5117,30 +5142,18 @@ document.addEventListener("mouseup", function(){
             objJSON.push({row:tableBody});
           }
 
-          console.log('JSON KKKKK '+objJSON);
+          console.log('objJSONN '+objJSON);
           changePage(current_page);
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
-          //--Pagination-------//
+          //------Pagination code by  k------------//
 
-           //------Pagination code by  k------------//
     
-   
-    var records = document.getElementById("totalRecords");
-    records.innerHTML = "( " + objJSON.length + " rows )";
-   
-
-  
-    //pagination code by k ended //
-
-
-
-           //--Pagination-------//
-
-
+ 
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
+        
         }
       }
         if(draggedDeKey.size>1){
@@ -6912,8 +6925,21 @@ function changeSchmaPosition(e)
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
           console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
+
           JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
+
+          var nameOfBothDE= "["+ JoinQueryDetails.DEForJoin[keyForDEField].FirstDEName+"].["+JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName+"]JoinedDe"  ;
+          console.log("kaam shuru 2"+nameOfBothDE);
+          for(var item of draggedDeJoinKey){
+            console.log("kaam shuru 1"+item);
+            if(nameOfBothDE==item){
+              console.log("kaam shuru");
+              draggedDeJoinKey.delete(item);
+              console.log("kaam khatam");
+            }
+          }
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
@@ -7060,7 +7086,12 @@ function changeSchmaPosition(e)
       var SetValStr = '';
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
+
         document.getElementById("joinQueryboxAlert").style.display = "block";
+        setTimeout(function(){
+          document.getElementById("joinQueryboxAlert").style.display = 'none';
+        }, 5000);
+        return; 
       }
       else {
         if(DEExtKeyFordeleteDiv in DEListMap.DEMap){
