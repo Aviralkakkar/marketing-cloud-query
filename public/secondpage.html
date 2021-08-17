@@ -4571,6 +4571,7 @@ document.addEventListener("mouseup", function(){
       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
         console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
+          console.log("draggedDeName");
           return
           console.log("after return")
       }
@@ -5061,7 +5062,9 @@ document.addEventListener("mouseup", function(){
           document.getElementById('noRecordFoundDiv').style.display = 'block';
         }
       }
+      console.log("runQueryAlert")
       document.getElementById('runQueryAlert').style.display = 'block';
+      console.log("runQueryAlert")
       if(draggedDeKey.size>1){
         closeModal();
       }
