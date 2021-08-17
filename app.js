@@ -21,9 +21,13 @@ var DEListMap = {
   "DataViewMap" : {}
 };
 //Added by ANIL KUMAR
-app.use(cookieParser('secretString'));
-app.use(session({cookie: { maxAge: 60000 }}));
-app.use(flash());
+app.use(session({
+  secret:'secret',
+  cookie:{maxAge:6000},
+  resave:false,
+  saveUninitialized:false
+}));
+app.use(flush());
 //END
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
