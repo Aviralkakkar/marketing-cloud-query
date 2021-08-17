@@ -4269,6 +4269,7 @@ document.addEventListener("mouseup", function(){
       listing_table.innerHTML = "";
 
       for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+         console.log('OBJJSON--'+ objJSON[i].row);
         listing_table.innerHTML += objJSON[i].row;
       }
       page_span.innerHTML = page;
