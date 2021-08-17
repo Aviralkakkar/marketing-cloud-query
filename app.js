@@ -53,7 +53,7 @@ app.post("/credential", (req, res) => {
   //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
   //}
 
-  var AuthResponse = await getacesstoken(AuthRequest);
+  var AuthResponse =getacesstoken(AuthRequest);
   console.log(AuthResponse);
 
   res.json([{
@@ -68,7 +68,7 @@ app.post("/credential", (req, res) => {
     res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   }
 
-  async function getacesstoken(AuthRequest) {
+   function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
         axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
