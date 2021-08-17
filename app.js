@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 //Added By ANIL KUMAR
-app.post("/credential", (req, res) => {
+app.post("/credential", async function (req, res) {
   console.log(req.body.clientid);
   console.log(req.body.clientsecret);
   console.log(req.body.authurl);
@@ -53,9 +53,20 @@ app.post("/credential", (req, res) => {
   //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
   //}
 
-  getacesstoken(AuthRequest);
-  function getacesstoken(AuthRequest) {
+  var NewDEName;
+
+  var AuthResponse = await getacesstoken(AuthRequest);
+  console.log(AuthResponse);
+  if(AuthResponse.AccessToken)
+  {
+    console.log('Successfully redirected');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
+  }
+
+
+  async function getacesstoken(AuthRequest) {
     try {
+      return new Promise(function (resolve, reject) {
         axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
         {
           'client_id': AuthRequest.ClientId,
@@ -63,29 +74,23 @@ app.post("/credential", (req, res) => {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          if(response.data.access_token)
-          {
-            res.json([{
-              authToken: response.data.access_token
-            }]);
-            res.redirect('/secondpage');
-          }
-          else
-          {
-            res.json([{
-              authToken:'Something went wrong'
-            }]);
-          }
+          resolve({
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
+            });
         },
         (error) => {
-          res.json([{
-            authToken:'Something went wrong'
-          }]);
+          //reject(error);
+          //res.end();
         })
-      }
+
+      });
+    }
     catch (err) { 
     }
   }
+
 });
 
 app.post("/DEListFetch", async (reqCall, resCall) => {
