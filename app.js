@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 app.set('view engine', 'html');
 
 //Added By ANIL KUMAR
-app.post("/secondpage", async function (req, res) {
+app.post("/credential", async function (req, res) {
   console.log(req.body.clientid);
   console.log(req.body.clientsecret);
   console.log(req.body.authurl);
