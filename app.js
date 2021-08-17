@@ -9,6 +9,8 @@ const { stringify } = require("querystring");
 //Added BY ANIL KUMAR
 var session=require('express-session');
 var flush=require('connect-flash');
+var cookieParser =require('cookie-parser');
+var toastr=require('express-toastr'); 
 
 var request = require('request');
 var Set = require("collections/set");
@@ -21,13 +23,16 @@ var DEListMap = {
   "DataViewMap" : {}
 };
 //Added by ANIL KUMAR
+app.use(cookieParser('secret'));
+
 app.use(session({
-  secret:'secret',
-  cookie:{maxAge:6000},
-  resave:false,
-  saveUninitialized:false
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
 }));
-app.use(flush());
+
+app.use(flash());
+app.use(toastr());
 //END
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
@@ -1920,9 +1925,10 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          req.flash('message','Your platforms has trouble connecting due to the provided credentials being incorrect');
+          req.toastr.error('Your platforms has trouble connecting due to the provided credentials being incorrect');
           res.redirect('back');
           
+          res.render('login', {req: req});
         })
 
       });
