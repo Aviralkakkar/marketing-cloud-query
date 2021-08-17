@@ -32,68 +32,35 @@ app.use(express.static(path.join(__dirname, './marketing-cloud-query')));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/loginpage.html'));
-
-
-  var AuthRequest = {
-    "ClientId" : req.body.clientid,
-    "ClientSecret" : req.body.clientsecret,
-    "ClinentAuthURL" : req.body.authurl
-  }
- //var AuthRequest = {
- //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
- //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
- //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
- //}
- var NewDEName;
- var AuthResponse = await getacesstoken(AuthRequest);
- console.log(AuthResponse);
- if(AuthResponse.AccessToken)
- {
-   console.log('Successfully redirected');
-   res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
- }
- else
- {
-   console.log('Something went wrong!');
- }
-
- async function getacesstoken(AuthRequest) {
-  try {
-    return new Promise(function (resolve, reject) {
-      axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
-      {
-        'client_id': AuthRequest.ClientId,
-        'client_secret': AuthRequest.ClientSecret,
-        'grant_type': 'client_credentials'
-      })
-      .then((response) => {
-        resolve({
-            'AccessToken' : response.data.access_token,
-            'RestURL' : response.data.rest_instance_url,
-            'SoapURL' : response.data.soap_instance_url
-          });
-      },
-      (error) => {
-        //reject(error);
-        //res.end();
-        //req.aborted();
-        console.log("Something went wrong!");
-      })
-
-    });
-  }
-  catch (err) { 
-  }
-}
-
 })
-
-
 
 app.set('view engine', 'html');
 
 app.post("/secondpage", async function (req, res) {
+   var AuthRequest = {
+     "ClientId" : req.body.clientid,
+     "ClientSecret" : req.body.clientsecret,
+     "ClinentAuthURL" : req.body.authurl
+   }
+  //var AuthRequest = {
+  //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
+  //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
+  //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
+  //}
+  var NewDEName;
+  var AuthResponse = await getacesstoken(AuthRequest);
+  console.log(AuthResponse);
+  if(AuthResponse.AccessToken)
+  {
+    console.log('Successfully redirected');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
+  }
+  else
+  {
+    console.log('Something went wrong!');
+  }
   
+
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
@@ -1922,6 +1889,33 @@ app.post("/secondpage", async function (req, res) {
       })
     }
   })
+  
+  async function getacesstoken(AuthRequest) {
+    try {
+      return new Promise(function (resolve, reject) {
+        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
+        {
+          'client_id': AuthRequest.ClientId,
+          'client_secret': AuthRequest.ClientSecret,
+          'grant_type': 'client_credentials'
+        })
+        .then((response) => {
+          resolve({
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
+            });
+        },
+        (error) => {
+          //reject(error);
+          //res.end();
+        })
+
+      });
+    }
+    catch (err) { 
+    }
+  }
 });
 
 app.listen(process.env.PORT || 3000,
