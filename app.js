@@ -58,13 +58,7 @@ app.post("/credential", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    //res.sendFile(path.resolve(__dirname, 'public/secondpage.html'));
-    //res.end('no');   
-    app.use('/secondpage', function(req1, res1, next){
-      console.log("Authenticate and Redirect")
-      res1.redirect('/secondpage');
-      next();
-  });
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
   }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
