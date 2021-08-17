@@ -53,24 +53,9 @@ app.post("/credential", (req, res) => {
   //  "ClinentAuthURL" : "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/"
   //}
 
-  var AuthResponse =getacesstoken(AuthRequest);
-  console.log(AuthResponse);
-
-  res.json([{
-    authToken: AuthResponse.AccessToken,
-    RestURL:AuthResponse.RestURL,
-    SoapURL:AuthResponse.SoapURL 
-  }]);
-
-  if(AuthResponse.AccessToken)
-  {
-    console.log('Successfully redirected');
-    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
-  }
-
-   function getacesstoken(AuthRequest) {
+  getacesstoken(AuthRequest);
+  function getacesstoken(AuthRequest) {
     try {
-      return new Promise(function (resolve, reject) {
         axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
         {
           'client_id': AuthRequest.ClientId,
@@ -78,19 +63,26 @@ app.post("/credential", (req, res) => {
           'grant_type': 'client_credentials'
         })
         .then((response) => {
-          resolve({
-              'AccessToken' : response.data.access_token,
-              'RestURL' : response.data.rest_instance_url,
-              'SoapURL' : response.data.soap_instance_url
-            });
+          if(response.data.access_token)
+          {
+            res.json([{
+              authToken: response.data.access_token
+            }]);
+            res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+          }
+          else
+          {
+            res.json([{
+              authToken:'Something went wrong'
+            }]);
+          }
         },
         (error) => {
-          //reject(error);
-          //res.end();
+          res.json([{
+            authToken:'Something went wrong'
+          }]);
         })
-
-      });
-    }
+      }
     catch (err) { 
     }
   }
