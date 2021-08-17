@@ -1908,7 +1908,8 @@ app.post("/secondpage", async function (req, res) {
         },
         (error) => {
           //reject(error);
-          res.end('Something went wrong!');
+          //res.end();
+          req.aborted();
         })
 
       });
