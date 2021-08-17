@@ -4564,8 +4564,9 @@ document.addEventListener("mouseup", function(){
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
+        console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
-        //console.log("draggedDeName");
+        console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
           return
           console.log("after return")
