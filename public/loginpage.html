@@ -1095,6 +1095,11 @@
 						<div id="header-logo"></div>
 					</div>
 				</div>
+				{{#if errors}}
+					{{#each errors}}
+						<div class="alert alert-danger">{{msg}}</div>
+					{{/each}}
+				{{/if}}
 				<form id="LoginForm" class="mainForm" action="/secondpage" method="POST"  autocomplete="off">
 					<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
 					<div class="slds-form-element">

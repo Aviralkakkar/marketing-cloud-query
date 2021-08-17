@@ -1920,9 +1920,20 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          req.flash('message','Your platforms has trouble connecting due to the provided credentials being incorrect');
-          res.redirect('back');
-          
+          //reject(error);
+          var clinetID=req.body.clientid;
+          var clienSec=req.body.clientsecret;
+          var authURL=req.body.authurl;
+          req.checkBody('clinetID','ClientID is not valid').isLength({min: 100});;
+
+          var errors=req.validationErrors();
+          if(errors)
+          {
+            res.render('login',{
+              errors:errors,
+              form:form
+            });
+          }
         })
 
       });
