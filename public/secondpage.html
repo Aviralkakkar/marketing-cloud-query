@@ -6868,7 +6868,9 @@ function changeSchmaPosition(e)
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
 
           var nameOfBothDE= "["+ JoinQueryDetails.DEForJoin[keyForDEField].FirstDEName+"].["+JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName+"]"  ;
+          console.log("kaam shuru 2");
           for(var item of draggedDeJoinKey){
+            console.log("kaam shuru 1");
             if(nameOfBothDE==item){
               console.log("kaam shuru");
               draggedDeJoinKey.delete(item);
