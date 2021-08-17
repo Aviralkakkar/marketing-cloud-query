@@ -6860,8 +6860,19 @@ function changeSchmaPosition(e)
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
           console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
+
           JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+
           console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
+
+          var name= "["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"  ;
+          for(var item of draggedDeJoinKey){
+            if(name==item){
+              console.log("kaam shuru");
+              draggedDeJoinKey.delete(item);
+              console.log("kaam khatam");
+            }
+          }
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
