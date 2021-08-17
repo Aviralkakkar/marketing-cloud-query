@@ -32,12 +32,15 @@ app.use(express.static(path.join(__dirname, './marketing-cloud-query')));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/loginpage.html'));
-  console.log(req.body.clientid);
-  console.log(req.body.clientsecret);
-  console.log(req.body.authurl);
 })
 
 app.set('view engine', 'html');
+
+app.post("/",async function(req,res){
+  console.log(req.body.clientid);
+  console.log(req.body.clientsecret);
+  console.log(req.body.authurl);
+});
 
 app.post("/secondpage", async function (req, res) {
    var AuthRequest = {
