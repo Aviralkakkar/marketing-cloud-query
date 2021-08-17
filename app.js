@@ -6,10 +6,6 @@ const axios = require('axios');
 const xmlParser = require('xml2json');
 const { stringify } = require("querystring");
 
-//Added BY ANIL KUMAR
-var session=require('express-session');
-var flush=require('connect-flash');
-
 var request = require('request');
 var Set = require("collections/set");
 var moment = require('moment');
@@ -20,15 +16,7 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-//Added by ANIL KUMAR
-app.use(session({
-  secret:'secret',
-  cookie:{maxAge:6000},
-  resave:false,
-  saveUninitialized:false
-}));
-app.use(flush());
-//END
+
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -47,6 +35,13 @@ app.get("/", function (req, res) {
 })
 
 app.set('view engine', 'html');
+
+//Added By ANIL KUMAR
+app.post("/credential", (req, res) => {
+  console.log(req.body.clientid);
+  console.log(req.body.clientsecret);
+  console.log(req.body.authurl);
+});
 
 app.post("/secondpage", async function (req, res) {
    var AuthRequest = {
@@ -67,13 +62,7 @@ app.post("/secondpage", async function (req, res) {
     console.log('Successfully redirected');
     res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   }
-  else
-  {
-    console.log('Something went wrong!');
-    res.redirect('back');
-  }
   
-
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
@@ -1921,19 +1910,7 @@ app.post("/secondpage", async function (req, res) {
         },
         (error) => {
           //reject(error);
-          var clinetID=req.body.clientid;
-          var clienSec=req.body.clientsecret;
-          var authURL=req.body.authurl;
-          req.checkBody('clinetID','ClientID is not valid').isLength({min: 100});;
-
-          var errors=req.validationErrors();
-          if(errors)
-          {
-            res.render('login',{
-              errors:errors,
-              form:form
-            });
-          }
+          //res.end();
         })
 
       });
