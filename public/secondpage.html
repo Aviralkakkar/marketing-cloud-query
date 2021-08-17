@@ -2855,44 +2855,13 @@
       
       
                     <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                      <tr >
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Account Name">
-                          <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-                        </td>
-                        <td data-label="Close Date">
-                          <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-                        </td>
-                        <td data-label="Prospecting">
-                          <div class="slds-truncate" title="Prospecting">Prospecting</div>
-                        </td>
-                        <td data-label="Confidence">
-                          <div class="slds-truncate" title="20%">20%</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">$25k</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                        <td data-label="Amount">
-                          <div class="slds-truncate" title="$25k">jrogers@cloudhub.com</div>
-                        </td>
-                      </tr>
+                     
       
       
                     </tbody>
                   </table>
                   </div>
-                  <div class="slds-col" style="height:20px;">
+                  <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
                   <div class="slds-grid">
                     <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
                       <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
@@ -3397,7 +3366,7 @@
           <div id="component-selector-container" class=" slds-float_left "
             style="height: -webkit-fill-available; width:30%; background-color:white; border: 2px solid lightgray;">
             <h4 class="slds-text-title_caps" id="component-selector-container__heading"
-              style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0; ">Data Extension Fields</h4>
+              style="text-align: center; border-bottom: 2px solid #ddd; margin-bottom: 0;background-color: #F0F2F3;font-size: 14px; ">Data Extension Fields</h4>
             <div class="slds-scrollable" style="height: 25.7rem; width:auto; overflow-x: hidden;">
 
               <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
@@ -3739,7 +3708,7 @@
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                 ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
+                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + val + ' </span>' + ' </button> </span>' +
                 ' </span>' +
                 '  </div>' +
                 '</li>';
@@ -3860,7 +3829,7 @@
                                 document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
@@ -3874,7 +3843,7 @@
                               document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
@@ -3888,7 +3857,7 @@
                             document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName  + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName  + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
@@ -4227,8 +4196,11 @@ document.addEventListener("mouseup", function(){
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
    var data;
-   var current_page = 1;
-        var records_per_page = 20;
+
+    
+    
+      var current_page = 1;
+        var records_per_page = 5;
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
@@ -4253,6 +4225,10 @@ document.addEventListener("mouseup", function(){
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
       var page_span = document.getElementById("page");
+       var records = document.getElementById("totalRecords");
+    records.innerHTML = "( " + objJSON.length + " rows )";
+    console.log("Row " + objJSON.length);
+
 
       // Validate page
       if (page < 1) {
@@ -4266,7 +4242,7 @@ document.addEventListener("mouseup", function(){
       listing_table.innerHTML = "";
 
       for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
-        console.log('OBJJSON--'+ objJSON[i].row);
+         console.log('OBJJSON--'+ objJSON[i].row);
         listing_table.innerHTML += objJSON[i].row;
       }
       page_span.innerHTML = page;
@@ -5083,7 +5059,7 @@ document.addEventListener("mouseup", function(){
           }
             DETableBody += '</tr>' +
             '</thead>' +
-           '<tbody id="listingTable">';
+          '<tbody id="listingTable">';
               DETableBody += '</tbody>' +
             '</table>';
 
@@ -5100,7 +5076,7 @@ document.addEventListener("mouseup", function(){
 
           console.log('objJSONN '+objJSON);
       
-          loadPage();
+         
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
 
@@ -5110,6 +5086,7 @@ document.addEventListener("mouseup", function(){
  
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
+           loadPage();
         
         }
       }
