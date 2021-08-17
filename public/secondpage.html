@@ -5086,11 +5086,18 @@ document.addEventListener("mouseup", function(){
             }
           })
       }
-      function DEListShow(DERecords) {
-          console.log('Records2 '+JSON.stringify(DERecords));
+       function DEListShow(DERecords) 
+      {
+        console.log('Records2 '+JSON.stringify(DERecords));
         var DETableBody = ""
 
-            if (DERecords.lemgth != 0) 
+        var current_page = 1;
+        var records_per_page = 20;
+
+          var objJSON = [];
+     
+
+        if (DERecords.lemgth != 0) 
         {
 
            DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
@@ -5099,7 +5106,7 @@ document.addEventListener("mouseup", function(){
 
           for (var key in DERecords[0])
           {
-            console.log('KEY '+key);
+            console.log('KEY ')
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
              
           }
@@ -5109,19 +5116,97 @@ document.addEventListener("mouseup", function(){
 
           for (var i in DERecords) 
           {
-            DETableBody += '<tr class="slds-hint-parent">';
+            DETableBody = '<tr class="slds-hint-parent">';
             for (var key in DERecords[i]) 
             {
-		    console.log('Body key '+key+' Recordds[i] '+DERecords[i][key] );
               DETableBody += '<td data-label="' + key + '" id="' + key + '">' + DERecords[i][key] + '</td>';
             }
             DETableBody += '</tr>';
+            objJSON.push({row:DETableBody});
           }
 
           DETableBody += '</tbody>' +
             '</table>';
           document.getElementById('recordResultModal').style.display = 'block';
           document.getElementById('grid-record-result').innerHTML = DETableBody;
+
+          //--Pagination-------//
+
+   
+
+            var records = document.getElementById("totalRecords");
+            records.innerHTML = "( " + objJSON.length + " rows )";
+   
+
+            function prevPage() {
+            if (current_page > 1) {
+            current_page--;
+            changePage(current_page);
+              }
+            }
+
+            function nextPage() {
+            if (current_page < numPages()) {
+              current_page++;
+              changePage(current_page);
+            }
+            }
+
+            function changePage(page) {
+            var btn_next = document.getElementById("btn_next");
+            var btn_prev = document.getElementById("btn_prev");
+            var listing_table = document.getElementById("listingTable");
+            var page_span = document.getElementById("page");
+
+             // Validate page
+            if (page < 1) {
+            page = 1;
+            }
+
+            if (page > numPages()) {
+            page = numPages();
+            }
+
+            listing_table.innerHTML = "";
+
+            for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
+            listing_table.innerHTML += objJSON[i].row;
+            }
+            page_span.innerHTML = page;
+
+            if (page == 1) {
+              btn_prev.style.visibility = "hidden";
+             } else {
+              btn_prev.style.visibility = "visible";
+             }
+
+              if (page == numPages()) {
+              btn_next.style.visibility = "hidden";
+              } else {
+              btn_next.style.visibility = "visible";
+             }
+            }
+
+              function numPages() {
+                 return Math.ceil(objJSON.length / records_per_page);
+             }
+
+           window.onload = function () {
+             changePage(1);
+
+              var page = document.getElementById("page");
+              var totalPages = document.getElementById("totalPages");
+              page.innerHTML = " " + 1 + " ";
+                totalPages.innerHTML = " " + numPages() + " ";
+            };
+
+
+
+
+           //--Pagination-------//
+
+
+
           document.getElementById('tableDiv').innerHTML = DETableBody;
         }
       }
