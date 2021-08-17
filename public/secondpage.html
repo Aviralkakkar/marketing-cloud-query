@@ -4567,11 +4567,12 @@ document.addEventListener("mouseup", function(){
       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
         //console.log("draggedDeName");
           document.getElementById('DeDragAlert').style.display = 'Block';
-          return;
+          return
+          console.log("after return")
       }
     }
      // console.log("draggedDeName"+draggedDeName);
-
+     console.log("after return and out of if")
 
       console.log('action type'+actionType);
       document.getElementById('MainDivAlert').style.display = 'none';
