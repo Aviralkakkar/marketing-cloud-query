@@ -1543,6 +1543,10 @@ app.post("/secondpage", async function (req, res) {
             if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
+              else if(count!=1)
+              {
+                resCall1.send("false");
+              }
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
