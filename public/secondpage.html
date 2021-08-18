@@ -7261,6 +7261,7 @@ function changeSchmaPosition(e)
             joinedDivSet.add(document.getElementById('select-02').value);
            
              if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}'){
+               console.log("happening");
               JoinQueryDetails["PrimaryDE"] = {
                 "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
                 "JoinField": document.getElementById('FirstDEField').value
@@ -7287,6 +7288,7 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+            console.log("happening");
           }
         }
       }
