@@ -57,9 +57,9 @@ app.post("/secondpage", async function (req, res) {
     res.sendFile(path.join(__dirname + '/public/secondpage.html'));
     //res.writeHead(301, { "Location": "http://" + req.headers['host'] + '/secondpage.html' });
     //    return res.end();
-    app.get('/',function(req1,res1){
-      res1.redirect('https://marketing-cloud-querybuilder.herokuapp.com/secondpage#');
-    });
+    
+    res.redirect('https://marketing-cloud-querybuilder.herokuapp.com/secondpage');
+    
   }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
