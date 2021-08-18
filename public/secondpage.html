@@ -2813,14 +2813,7 @@
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                   <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                      
-               <div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv">
-                      <div class="slds-text-align_center" style="font-size: larger;color: #425769;">
-                       No record found<br>
-                       <img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" >
-                       
-                       
-                      </div>
-                    </div>
+               
                   </div>
                   <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
                   <div class="slds-grid">
@@ -5055,7 +5048,7 @@ document.addEventListener("mouseup", function(){
         }
         else{
           console.log('I am inside else');
-  document.getElementById('noRecordFoundDiv').style.display='block';      
+      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
       }
       }
