@@ -1534,7 +1534,7 @@ app.post("/secondpage", async function (req, res) {
               clearInterval(b);
           
             }
-          }, 10000);
+          }, 1000);
              app.post("/DERecordGet", async (reqCall1, resCall1) => {
            console.log('In Derecord get status '+queryStatus);
             if (queryStatus != "Complete") {
@@ -1543,7 +1543,7 @@ app.post("/secondpage", async function (req, res) {
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-           
+             
             
             }
           });
