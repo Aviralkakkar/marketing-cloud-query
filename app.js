@@ -16,8 +16,9 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-var count =0 ;
+
 var DERecords2=[];
+var queryStatus="";
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1523,8 +1524,8 @@ app.post("/secondpage", async function (req, res) {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
-              count = 1;
-              console.log('----'+count+'-----');
+            
+            
               console.log('Inside if '+NewDEName);
       
                DERecords = await getDERecords(NewDEName);
@@ -1537,18 +1538,14 @@ app.post("/secondpage", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get'+queryStatus+' '+count );
-            if (queryStatus != "Complete" && count!=1) {
+            console.log('In Derecord get'+queryStatus );
+            if (queryStatus != "Complete") {
               resCall1.send("false");
-            }
-            else if(count!=1)
-            {
-               resCall1.send("false");
             }
             else {
                  console.log('Server Side '+JSON.stringify(DERecords2));
               resCall1.send(DERecords2);
-              count=0;
+             
             }
           })
         }
