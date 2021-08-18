@@ -5183,6 +5183,7 @@ document.addEventListener("mouseup", function(){
           }
         })
        function DEListShow(DERecords) {
+         objJSON=[];
         console.log('Records '+DERecords);
         var tableBody = "";
         var DETableBody = "";
@@ -5230,9 +5231,10 @@ document.addEventListener("mouseup", function(){
           document.getElementById('tableDiv').innerHTML = DETableBody;
            loadPage();
           // document.getElementById('runQueryAlert').style.display = 'none';
+          document.getElementById('noRecordFoundDiv').style.display = 'none';
         }
         else{
-        noRecordFoundDiv
+       
           document.getElementById('noRecordFoundDiv').style.display = 'block';
         }
       }
