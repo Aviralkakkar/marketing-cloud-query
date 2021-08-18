@@ -57,7 +57,7 @@ app.post("/secondpage", async function (req, res) {
     res.sendFile(path.join(__dirname + '/public/secondpage.html'));
     //res.writeHead(301, { "Location": "http://" + req.headers['host'] + '/secondpage.html' });
     //    return res.end();
-    res.redirect("/public/secondpage.html");
+    //res.redirect("/public/secondpage.html");
     
     
   }
