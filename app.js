@@ -6,6 +6,8 @@ const axios = require('axios');
 const xmlParser = require('xml2json');
 const { stringify } = require("querystring");
 
+var dialog = require('dialog');
+
 var request = require('request');
 var Set = require("collections/set");
 var moment = require('moment');
@@ -1905,8 +1907,11 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
-          
-          return res.redirect('/')
+          dialog.warn(msg, title, callback);
+          // example, without setting title
+          dialog.warn('Your platforms has trouble connecting due to the provided credentials being incorrect', function(exitCode){
+            if (exitCode == 1) console.log('User closed window');
+          })
         })
 
       });
