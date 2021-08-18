@@ -1540,10 +1540,9 @@ app.post("/secondpage", async function (req, res) {
             }
             else {
               console.log('Server Side '+DERecords);
-            
-
+              queryStatus="Queued";
               resCall1.send(DERecords);
-              
+             
             }
           })
         }
@@ -1909,8 +1908,7 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
-          
-          return res.redirect('/')
+          return res.redirect('/');
         })
 
       });
