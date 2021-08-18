@@ -17,6 +17,7 @@ var DEListMap = {
   "DataViewMap" : {}
 };
  var count = 0;
+var DERecords = [];
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1456,7 +1457,7 @@ app.post("/secondpage", async function (req, res) {
 
   app.post("/validatequery", async (reqCall, resCall) => {
     NewDEName = moment().format('yyyy-mm-dd:hh:mm:ss');
-    var DERecords = [];
+    //var DERecords = [];
     var NewDEFieldsList = reqCall.body.NewDEFieldsList;
     var dynamicQuery = reqCall.body.dynamicQuery;
     var actionType = reqCall.body.actionType
@@ -1550,7 +1551,7 @@ app.post("/secondpage", async function (req, res) {
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-              DERecords=[];
+            
               count=0;
             
             }
