@@ -1516,6 +1516,7 @@ app.post("/secondpage", async function (req, res) {
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
+            DERecords=[];
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
@@ -1524,7 +1525,7 @@ app.post("/secondpage", async function (req, res) {
               count = 1;
               console.log('----'+count+'-----');
               console.log('Inside if '+NewDEName);
-        DERecords=[];
+      
                DERecords = await getDERecords(NewDEName);
         
                console.log('Records Server '+JSON.stringify(DERecords));
