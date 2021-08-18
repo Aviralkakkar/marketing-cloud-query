@@ -56,6 +56,7 @@ app.post("/credential", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     res.redirect('/secondpage');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
   }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
