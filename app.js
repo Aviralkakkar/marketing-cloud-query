@@ -35,22 +35,14 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/loginpage.html'));
 })
 
-app.get("/secondpage", function (req, res) {
-  console.log('sended to second page');
-  res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-})
-
 app.set('view engine', 'html');
 
-app.post("/credential", async function (req, res) {
-  console.log(req.body.clientid);
-  console.log(req.body.clientsecret);
-  console.log(req.body.authurl);
-  var AuthRequest = {
+app.post("/secondpage", async function (req, res) {
+   var AuthRequest = {
     "ClientId" : req.body.clientid,
     "ClientSecret" : req.body.clientsecret,
     "ClinentAuthURL" : req.body.authurl
-  }
+   }
   //var AuthRequest = {
   //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
   //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
@@ -59,7 +51,12 @@ app.post("/credential", async function (req, res) {
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
-  res.send(AuthResponse);
+  if(AuthResponse.AccessToken)
+  {
+    console.log('Successfully redirected');
+    console.log('URL:'+req.url);
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+  }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1918,7 +1915,7 @@ app.post("/credential", async function (req, res) {
           //reject(error);
           //res.redirect('back');
           //res.write('Hello World!');
-          //return res.redirect('/');
+          return res.redirect('/');
         })
 
       });
