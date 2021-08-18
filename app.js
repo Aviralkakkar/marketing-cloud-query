@@ -1515,9 +1515,9 @@ app.post("/secondpage", async function (req, res) {
          console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
-              var queryStatus;
+             
         if (taskId) {
-    
+          var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
@@ -1531,7 +1531,7 @@ app.post("/secondpage", async function (req, res) {
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
               clearInterval(b);
-              queryStatus="Complete";
+          
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
