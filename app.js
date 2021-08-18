@@ -1524,7 +1524,7 @@ app.post("/secondpage", async function (req, res) {
               count = 1;
               console.log('----'+count+'-----');
               console.log('Inside if '+NewDEName);
-        
+        DERecords=[];
                DERecords = await getDERecords(NewDEName);
         
                console.log('Records Server '+JSON.stringify(DERecords));
