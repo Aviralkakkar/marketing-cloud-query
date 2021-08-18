@@ -1905,8 +1905,8 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
+          //res.write('Hello World!');
           return res.redirect('/');
-          //res.write('Your credentail are incorrect!');
         })
 
       });
