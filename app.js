@@ -1516,7 +1516,7 @@ app.post("/secondpage", async function (req, res) {
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
-          var queryStatus="Queued";
+          var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
@@ -1539,6 +1539,7 @@ app.post("/secondpage", async function (req, res) {
             }
             else {
               console.log('Server Side '+DERecords);
+              queryStatus="Queued";
               resCall1.send(DERecords);
              
             }
