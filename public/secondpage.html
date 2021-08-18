@@ -2811,9 +2811,31 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color:white;">
-                     
-               
+                   <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
+                    <div style="font-size: 25px;color:grey;">
+                      <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+  
+                      </svg>
+                      <span class="slds-assistive-text">Description of icon when needed</span></span>
+                      <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+    
+                        </svg>
+                        <span class="slds-assistive-text">Description of icon when needed</span></span>
+                        <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+      
+                          </svg>
+                          <span class="slds-assistive-text">Description of icon when needed</span></span>
+                          <br>
+                          Your result will be shown here
+                    </div>
+              
+                    
                   </div>
                   <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
                   <div class="slds-grid">
@@ -4154,7 +4176,7 @@ document.addEventListener("mouseup", function(){
     
     
       var current_page = 1;
-        var records_per_page = 5;
+        var records_per_page = 25;
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
@@ -5107,7 +5129,9 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.SharedDEMap) {
-            document.getElementById('DEnamemoda21').innerHTML = DEDragData.DEName;
+            console.log(DEListMap.SharedDEMap);
+            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DEName;
+            console.log(DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length);
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -5119,7 +5143,9 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.DataViewMap) {
+            console.log(DEListMap.DataViewMap);
             document.getElementById('DEnamemodal2').innerHTML = DEDragData.DEName;
+            console.log(DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length);
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
