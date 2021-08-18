@@ -4992,6 +4992,7 @@ document.addEventListener("mouseup", function(){
              if (data != "false" && data) {
                 console.log(' Inside If '+data);
                 DEListShow(data);
+               data="false";
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 clearInterval(b);
@@ -5050,7 +5051,7 @@ document.addEventListener("mouseup", function(){
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
            loadPage();
-          // document.getElementById('runQueryAlert').style.display = 'none';
+           document.getElementById('runQueryAlert').style.display = 'none';
             
         }
         else{
@@ -6175,15 +6176,15 @@ function changeSchmaPosition(e)
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6316,15 +6317,15 @@ function changeSchmaPosition(e)
           console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6456,15 +6457,15 @@ function changeSchmaPosition(e)
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6598,15 +6599,15 @@ function changeSchmaPosition(e)
           console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6867,15 +6868,15 @@ function changeSchmaPosition(e)
           else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -6980,15 +6981,15 @@ function changeSchmaPosition(e)
           else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color:#e7edf0;" >'+
-          '<span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 14px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">Data Extension Fields</span>'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">'+
-          '<svg class="slds-button_icon slds-button_icon_large" aria-hidden="true">'+
+              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-  
+            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -7247,7 +7248,7 @@ function changeSchmaPosition(e)
         }
       }
         }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
           if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -7291,7 +7292,8 @@ function changeSchmaPosition(e)
       }
       else{
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
-      if (document.getElementById('select-02').value) {
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+          if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
@@ -7326,6 +7328,82 @@ function changeSchmaPosition(e)
           }
         }
       }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+                "JoinType": document.getElementById('select-01').value,
+                //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                "SecondDEName": DEListMap.SharedDEMap[document.getElementById('select-02').value].DEName,
+                "SecondDEExtKey": document.getElementById('select-02').value,
+                "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                "JoinedLineDivId":line_ID
+              });
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+              }
+            }
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                  "SecondDEName": DEListMap.DEListMap[document.getElementById('select-02').value].DEName,
+                  "SecondDEExtKey": document.getElementById('select-02').value,
+                  "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                  "JoinedLineDivId":line_ID
+                });
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+              }
+            }
+          }
+        }
+
       document.getElementById('ThirdModal').style.display = 'none';
       }
     }
