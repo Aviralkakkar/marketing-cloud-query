@@ -16,7 +16,7 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-
+ var count = 0;
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1518,7 +1518,7 @@ app.post("/secondpage", async function (req, res) {
              
         if (taskId) {
           var queryStatus;
-          var count = 0;
+         
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
