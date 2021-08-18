@@ -1530,6 +1530,7 @@ app.post("/secondpage", async function (req, res) {
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
               clearInterval(b);
+              queryStatus="Complete";
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
@@ -1540,6 +1541,7 @@ app.post("/secondpage", async function (req, res) {
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
+              queryStatus="Queued";
             
             }
           })
