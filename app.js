@@ -1545,6 +1545,7 @@ app.post("/secondpage", async function (req, res) {
             else {
                  console.log('Server Side '+JSON.stringify(DERecords2));
               resCall1.send(DERecords2);
+              queryStatus="Queued";
              
             }
           })
