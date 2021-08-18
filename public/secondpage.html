@@ -7284,23 +7284,29 @@ function changeSchmaPosition(e)
           }
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+          console.log('shi jagah shuru');
           if (document.getElementById('select-02').value) {
+            console.log('shi jagah shuru2');
         if (document.getElementById('FirstDEField').value) {
+          console.log('shi jagah shuru 4');
           if (document.getElementById('SecondDEField').value) {
+            console.log('shi jagah shuru');
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
+            console.log('shi jagah shuru7');
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
               JoinQueryDetails["PrimaryDE"] = {
                 "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
                 "JoinField": document.getElementById('FirstDEField').value
               }
             }
+            console.log('shi jagah shuru 8');
             //Added by ANIL KUMAR
             var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
             var newLine_Div=document.createElement('div');
             newLine_Div.id=line_ID;
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-
+            console.log('shi jagah shuru 77');
             JoinQueryDetails["DEForJoin"].push({
               "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
               "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
@@ -7314,11 +7320,16 @@ function changeSchmaPosition(e)
                   "SecondDEJoinField": document.getElementById('SecondDEField').value,
                   "JoinedLineDivId":line_ID
                 });
+                console.log('shi jagah shuru=====');
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+                console.log('shi jagah shuru===-------------');
               }
+              console.log('shi jagah shuru===---');
             }
+            console.log('shi jagah shuru-------------');
           }
+          console.log('shi jagah shuru7');
         }
 
       document.getElementById('ThirdModal').style.display = 'none';
