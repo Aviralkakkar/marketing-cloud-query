@@ -35,6 +35,11 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + '/public/loginpage.html'));
 })
 
+app.get("/secondpage", function (req, res) {
+  console.log('sended to second page');
+  res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+})
+
 app.set('view engine', 'html');
 
 app.post("/credential", async function (req, res) {

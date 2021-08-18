@@ -1158,7 +1158,13 @@
 			console.log('status:'+status);
 			if(data.AccessToken)
 			{
-				location.replace("https://marketing-cloud-querybuilder.herokuapp.com/secondpage#")
+				$.get("/secondpage",
+				{
+					ok:"ok" 
+				},
+				function (data, status) {
+					console.log('called second page');
+				});
 			}
          });
    });
