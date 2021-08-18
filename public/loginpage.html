@@ -1095,12 +1095,7 @@
 						<div id="header-logo"></div>
 					</div>
 				</div>
-				{{#if errors}}
-					{{#each errors}}
-						<div class="alert alert-danger">{{msg}}</div>
-					{{/each}}
-				{{/if}}
-				<form id="LoginForm" class="mainForm" action="/secondpage" method="POST"  autocomplete="off">
+				<form id="LoginForm" class="mainForm"  autocomplete="off">
 					<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
 					<div class="slds-form-element">
 						<div class="slds-form-element__label"><label for="clientid">Client Id</label></div>
@@ -1128,7 +1123,7 @@
 					</div>
 
 					<!-- Don't change the style name of the Login input (".submit-btn") without contacting the Security team, as WebMetrics has a dependency on this value.Â&nbsp; -->
-					<input type="submit" id="submit-btn" value="Submit"
+					<input id="submit-btn" value="Submit"
 						class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070d2;">
 					<div id="jsBrowserDetectionBottom" style="display:none"></div>
 				</form>
@@ -1148,4 +1143,22 @@
 		<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
 		<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+   $(document).ready(function () {
+   $("#submit-btn").click(function () {
+      $.post("/credential",
+         {
+			clientid: $("#clientid").val(),
+			clientsecret: $("#clientsecret").val(),
+			authurl: $("#authurl").val(),
+         },
+         function (data, status) {
+            console.log('data:'+data);
+			console.log('status:'+status);
+         });
+   });
+});
+</script>
+
 </html>
