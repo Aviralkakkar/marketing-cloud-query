@@ -1533,14 +1533,14 @@ app.post("/secondpage", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get');
+           console.log('In Derecord get status '+queryStatus);
             if (queryStatus != "Complete") {
               resCall1.send("false");
             }
             else {
               console.log('Server Side '+DERecords);
-              queryStatus="Queued";
               resCall1.send(DERecords);
+               queryStatus="Queued";
              
             }
           })
