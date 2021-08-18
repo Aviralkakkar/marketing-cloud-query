@@ -1542,10 +1542,11 @@ app.post("/secondpage", async function (req, res) {
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-              queryStatus="Queued";
+             
             
             }
           })
+           queryStatus="Queued";
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
