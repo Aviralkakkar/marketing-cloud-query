@@ -7164,29 +7164,19 @@ function changeSchmaPosition(e)
 
       }
       else if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName!=document.getElementById('select-02').value){
-        if (document.getElementById('select-02').value) {
+        if (FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+          if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
-            if ((FirstDEExtKeyForJoinGlobal in DEListMap.DEMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')) {
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
               JoinQueryDetails["PrimaryDE"] = {
                 "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
                 "JoinField": document.getElementById('FirstDEField').value
               }
             }
-            else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')){
-              JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
-                "JoinField": document.getElementById('FirstDEField').value
-              }
-            }
-            else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')){
-              JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
-                "JoinField": document.getElementById('FirstDEField').value
-              }
-            }
+            
             //Added by ANIL KUMAR
             var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
             var newLine_Div=document.createElement('div');
@@ -7211,6 +7201,85 @@ function changeSchmaPosition(e)
           }
         }
       }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            
+            if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}'){
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+              "SecondDEName": DEListMap.SharedDEMap[document.getElementById('select-02').value].DEName,
+              "SecondDEExtKey": document.getElementById('select-02').value,
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
+            });
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+          }
+        }
+      }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+           
+             if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}'){
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+              "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
+              "SecondDEExtKey": document.getElementById('select-02').value,
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
+            });
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+          }
+        }
+      }
+        }
+     
       document.getElementById('ThirdModal').style.display = 'none';
 
       }
