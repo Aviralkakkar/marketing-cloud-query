@@ -36,18 +36,11 @@ app.get("/", function (req, res) {
 
 app.set('view engine', 'html');
 
-//Added By ANIL KUMAR
-app.post("/credential", (req, res) => {
-  console.log(req.body.clientid);
-  console.log(req.body.clientsecret);
-  console.log(req.body.authurl);
-});
-
 app.post("/secondpage", async function (req, res) {
    var AuthRequest = {
-     "ClientId" : req.body.clientid,
-     "ClientSecret" : req.body.clientsecret,
-     "ClinentAuthURL" : req.body.authurl
+    "ClientId" : req.body.clientid,
+    "ClientSecret" : req.body.clientsecret,
+    "ClinentAuthURL" : req.body.authurl
    }
   //var AuthRequest = {
   //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
@@ -60,7 +53,8 @@ app.post("/secondpage", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
-    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
+    console.log('URL:'+req.url);
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
   }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
