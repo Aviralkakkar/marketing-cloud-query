@@ -53,11 +53,13 @@ app.post("/secondpage", async function (req, res) {
   if(AuthResponse.AccessToken)
   {
     console.log('Successfully redirected');
+    console.log('URL:'+req.url);
+    console.log('res URL:'+res.url);
     res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
   }
   else
   {
-    res.end('no');
+    console.log('Error');
   }
   
 
