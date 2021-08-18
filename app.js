@@ -50,12 +50,7 @@ app.post("/secondpage", async function (req, res) {
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
-  if(AuthResponse.AccessToken)
-  {
-    console.log('Successfully redirected');
-    console.log('URL:'+req.url);
-    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-  }
+  res.send(AuthResponse);
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
@@ -1906,7 +1901,7 @@ app.post("/secondpage", async function (req, res) {
           //reject(error);
           //res.redirect('back');
           //res.write('Hello World!');
-          return res.redirect('/');
+          //return res.redirect('/');
         })
 
       });
