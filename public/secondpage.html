@@ -7160,9 +7160,21 @@ function changeSchmaPosition(e)
           if (document.getElementById('SecondDEField').value) {
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
-            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+            if ((FirstDEExtKeyForJoinGlobal in DEListMap.DEMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')) {
               JoinQueryDetails["PrimaryDE"] = {
                 "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')){
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) && (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}')){
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
                 "JoinField": document.getElementById('FirstDEField').value
               }
             }
