@@ -6516,11 +6516,11 @@ function changeSchmaPosition(e)
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DaaViewMap[DEExtKeyLoop].DEName){
+              if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
 
               }
               else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DaaViewMap[DEExtKeyLoop].DEName + '</option>';
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
               }
             }
             joinTwoDivString += '</select>' +
@@ -6540,12 +6540,12 @@ function changeSchmaPosition(e)
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
               '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
-            for (var i in DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+            for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("hello");
             }
             else{
-              joinTwoDivString += '<option value="' + DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
             }
             
@@ -6562,12 +6562,12 @@ function changeSchmaPosition(e)
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
               '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-            for (var i in DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+            for (var i in DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("helloDFGW");
             }
             else{
-              joinTwoDivString += '<option value="' + DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
              
             }
@@ -6656,11 +6656,11 @@ function changeSchmaPosition(e)
               '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
               for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-                if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DaaViewMap[DEExtKeyLoop].DEName){
+                if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
 
                 }
                 else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DaaViewMap[DEExtKeyLoop].DEName + '</option>';
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
                 }
               }
               joinTwoDivString += '</select>' +
@@ -6681,12 +6681,12 @@ function changeSchmaPosition(e)
             '<option value="">Select…</option>';
             '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
   
-            for (var i in DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+            for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("hello");
             }
             else{
-              joinTwoDivString += '<option value="' + DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DaaViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
             }
             
@@ -6704,12 +6704,12 @@ function changeSchmaPosition(e)
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
                 '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-                for (var i in DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-                if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                for (var i in DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+                if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                     console.log("helloDFGW");
                 }
                 else{
-                  joinTwoDivString += '<option value="' + DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DaaViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+                  joinTwoDivString += '<option value="' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
                 
                 }
