@@ -57,17 +57,7 @@ app.post("/credential", async function (req, res) {
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   res.send(AuthResponse);
-
-  /*if(AuthResponse.AccessToken)
-  {
-    res.redirect('public/secondpage.html');
-    res.end();
-    //res.setHeader("Content-Type", "text/html");
-    //res.write("<p>Hello World</p>");
-    
-    //res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-  }*/
-  
+ 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
@@ -1922,10 +1912,10 @@ app.post("/credential", async function (req, res) {
             });
         },
         (error) => {
-          //reject(error);
-          //res.redirect('back');
-          //res.write('Hello World!');
-          return res.redirect('/');
+          var errorMessage={
+            error:"This is error"
+          };
+          res.send(errorMessage);
         })
 
       });
