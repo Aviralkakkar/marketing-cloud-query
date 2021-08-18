@@ -16,8 +16,7 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
- var count = 0;
-var DERecords = [];
+var count =0 ;
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1457,7 +1456,7 @@ app.post("/secondpage", async function (req, res) {
 
   app.post("/validatequery", async (reqCall, resCall) => {
     NewDEName = moment().format('yyyy-mm-dd:hh:mm:ss');
-    //var DERecords = [];
+    var DERecords = [];
     var NewDEFieldsList = reqCall.body.NewDEFieldsList;
     var dynamicQuery = reqCall.body.dynamicQuery;
     var actionType = reqCall.body.actionType
@@ -1516,47 +1515,40 @@ app.post("/secondpage", async function (req, res) {
          console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
-             
         if (taskId) {
           var queryStatus;
-         
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
-              count=1;
-              console.log('--------'+count);
+              count = 1;
+              console.log('----'+count+'-----');
               console.log('Inside if '+NewDEName);
-        
+        DERecords=[];
                DERecords = await getDERecords(NewDEName);
         
                console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
-           
               console.log('ClearInterval up');
               clearInterval(b);
-          
             }
           }, 10000);
-             app.post("/DERecordGet", async (reqCall1, resCall1) => {
-           console.log('In Derecord get status '+queryStatus+' '+count);
+          app.post("/DERecordGet", async (reqCall1, resCall1) => {
+            console.log('In Derecord get'+queryStatus+' '+count );
             if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
-             else if(count!=1)
-              {
-                resCall1.send("false");
-              }
+            else if(count!=1)
+            {
+               resCall1.send("false");
+            }
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-            
               count=0;
-            
             }
-          });
-          
+          })
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
@@ -1920,6 +1912,7 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
+          //res.write('Hello World!');
           return res.redirect('/');
         })
 
