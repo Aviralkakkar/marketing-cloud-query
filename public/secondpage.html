@@ -4990,7 +4990,7 @@ document.addEventListener("mouseup", function(){
             success: function (data) {
               console.log('Client data '+data);
              if (data != "false" && data) {
-                console.log(' Inside If '+data);
+            console.log(' Inside If '+JSON.stringify(data));
                 DEListShow(data);
          
                 document.getElementById('FullPageSpinner').style.display = 'none';
