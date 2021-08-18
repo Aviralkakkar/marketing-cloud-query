@@ -54,15 +54,11 @@ app.post("/secondpage", async function (req, res) {
   {
     console.log('Successfully redirected');
     console.log('URL:'+req.url);
-    console.log('res URL:'+res.url);
-    res.sendFile(path.join(__dirname + '/public/secondpage.html')); 
-  }
-  else
-  {
-    console.log('Error');
+    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+    res.writeHead(301, { "Location": "http://" + req.headers['host'] + '/secondpage.html' });
+        return res.end();
   }
   
-
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
