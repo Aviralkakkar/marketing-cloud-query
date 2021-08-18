@@ -1156,8 +1156,17 @@
          function (data, status) {
             console.log('data:'+JSON.stringify(data));
 			console.log('status:'+status);
-			
-		});
+			if(data.AccessToken)
+			{
+				$.get("/secondpage",
+				{
+					ok:"ok" 
+				},
+				function (data, status) {
+					console.log('Get data:'+data);
+				});
+			}
+         });
    });
 });
 </script>

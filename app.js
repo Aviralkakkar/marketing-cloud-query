@@ -37,6 +37,11 @@ app.get("/", function (req, res) {
 
 app.set('view engine', 'html');
 
+app.get("/secondpage", function (req, res) {
+  console.log('sended to second page');
+  return res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+})
+
 app.post("/credential", async function (req, res) {
    var AuthRequest = {
     "ClientId" : req.body.clientid,
@@ -53,7 +58,7 @@ app.post("/credential", async function (req, res) {
   console.log(AuthResponse);
   res.send(AuthResponse);
 
-  if(AuthResponse.AccessToken)
+  /*if(AuthResponse.AccessToken)
   {
     res.redirect('public/secondpage.html');
     res.end();
@@ -61,7 +66,7 @@ app.post("/credential", async function (req, res) {
     //res.write("<p>Hello World</p>");
     
     //res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-  }
+  }*/
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
