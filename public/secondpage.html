@@ -2821,23 +2821,7 @@
                        
                       </div>
                     </div>
-                  <table class=" slds-table slds-table_bordered slds-table--header-fixed"
-                    aria-labelledby="element-with-table-label other-element-with-table-label"
-                    style="border:1px solid rgb(177, 172, 172) !important;">
-                    <thead>
-      
-                    
-                    </thead>
-      
-      
-      
-      
-                    <tbody id="listingTable" style="font-size:14px ; color:black;padding:2%;">
-                     
-      
-      
-                    </tbody>
-                  </table>
+               
                   </div>
                   <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
                   <div class="slds-grid">
@@ -5067,9 +5051,10 @@ document.addEventListener("mouseup", function(){
           document.getElementById('tableDiv').innerHTML = DETableBody;
            loadPage();
           // document.getElementById('runQueryAlert').style.display = 'none';
+            document.getElementById('noRecordFoundDiv').style.display = 'none';
         }
         else{
-        noRecordFoundDiv
+      
           document.getElementById('noRecordFoundDiv').style.display = 'block';
         }
       }
