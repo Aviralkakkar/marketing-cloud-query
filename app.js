@@ -1529,12 +1529,7 @@ app.post("/secondpage", async function (req, res) {
                console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
-              console.log('ClearInterval up');
-              clearInterval(b);
-          
-            }
-          }, 10000);
-          app.post("/DERecordGet", async (reqCall1, resCall1) => {
+               app.post("/DERecordGet", async (reqCall1, resCall1) => {
            console.log('In Derecord get status '+queryStatus);
             if (queryStatus != "Complete") {
               resCall1.send("false");
@@ -1545,8 +1540,14 @@ app.post("/secondpage", async function (req, res) {
              
             
             }
-          })
-           queryStatus="Queued";
+          });
+              console.log('ClearInterval up');
+              clearInterval(b);
+          
+            }
+          }, 10000);
+         
+          
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
