@@ -1515,6 +1515,7 @@ app.post("/secondpage", async function (req, res) {
          console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
+        
         if (taskId) 
         {
           var queryStatus;
@@ -1527,21 +1528,23 @@ app.post("/secondpage", async function (req, res) {
                DERecords = await getDERecords(NewDEName);
         
                console.log('Records Server '+JSON.stringify(DERecords));
-
+               
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
               clearInterval(b);
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get');
+            console.log('In Derecord get status '+queryStatus);
+            
             if (queryStatus != "Complete") {
               resCall1.send("false");
             }
             else {
               console.log('Server Side '+DERecords);
-              queryStatus="Queued";
               resCall1.send(DERecords);
+
+            
              
             }
           })
