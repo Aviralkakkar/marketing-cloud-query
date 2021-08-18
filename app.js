@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 
 app.set('view engine', 'html');
 
-app.post("/secondpage", async function (req, res) {
+app.post("/credential", async function (req, res) {
    var AuthRequest = {
     "ClientId" : req.body.clientid,
     "ClientSecret" : req.body.clientsecret,
@@ -51,11 +51,11 @@ app.post("/secondpage", async function (req, res) {
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
+  res.send(AuthResponse);
+
   if(AuthResponse.AccessToken)
   {
-    console.log('Successfully redirected');
-    console.log('URL:'+req.url);
-    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+    res.redirect('/secondpage');
   }
   
   app.post("/DEListFetch", async (reqCall, resCall) => {
