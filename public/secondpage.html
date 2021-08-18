@@ -2541,7 +2541,7 @@
                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
                         <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate')" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
-                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');RunQuery();" style="height:6vh;">Run</button></th>
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button></th>
                   </tr>
                   </tbody></table>
             
@@ -4992,15 +4992,14 @@ document.addEventListener("mouseup", function(){
              if (data != "false" && data) {
                 console.log(' Inside If '+data);
                 DEListShow(data);
-               data="false";
+         
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 clearInterval(b);
               }
             }
           })
-      }
-       function DEListShow(DERecords) 
+          function DEListShow(DERecords) 
       {
         objJSON=[];
        console.log('Records2 '+JSON.stringify(DERecords));
@@ -5059,6 +5058,8 @@ document.addEventListener("mouseup", function(){
   document.getElementById('noRecordFoundDiv').style.display='block';      
         }
       }
+      }
+     
       console.log("runQueryAlert")
       document.getElementById('runQueryAlert').style.display = 'block';
       console.log("runQueryAlert")
@@ -5164,7 +5165,7 @@ document.addEventListener("mouseup", function(){
       document.getElementById('QueryValidateFalseAlert').style.display = 'none';
     }
 
-    function RunQuery() {
+   /* function RunQuery() {
       
       console.log("Inside run query");
       $.ajax
@@ -5231,13 +5232,13 @@ document.addEventListener("mouseup", function(){
           document.getElementById('tableDiv').innerHTML = DETableBody;
            loadPage();
           // document.getElementById('runQueryAlert').style.display = 'none';
-          document.getElementById('noRecordFoundDiv').style.display = 'none';
+        
         }
         else{
        console.log('I am inside run query else');
          document.getElementById('noRecordFoundDiv').style.display='block';   }
       }
-    }
+    }*/
     
 
     function CancelPopup() {
