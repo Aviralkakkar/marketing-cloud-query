@@ -1518,10 +1518,13 @@ app.post("/secondpage", async function (req, res) {
              
         if (taskId) {
           var queryStatus;
+          var count = 0;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
+              count=1;
+              console.log('--------'+count);
               console.log('Inside if '+NewDEName);
         
                DERecords = await getDERecords(NewDEName);
@@ -1536,14 +1539,14 @@ app.post("/secondpage", async function (req, res) {
             }
           }, 1000);
              app.post("/DERecordGet", async (reqCall1, resCall1) => {
-           console.log('In Derecord get status '+queryStatus);
-            if (queryStatus != "Complete") {
+           console.log('In Derecord get status '+queryStatus+' '+count);
+            if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-             
+              count=0;
             
             }
           });
