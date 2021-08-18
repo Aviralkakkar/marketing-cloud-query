@@ -16,7 +16,6 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
- var count = 0;
 
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
@@ -1516,16 +1515,12 @@ app.post("/secondpage", async function (req, res) {
          console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
-             
         if (taskId) {
           var queryStatus;
-         
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
-              count=1;
-              console.log('--------'+count);
               console.log('Inside if '+NewDEName);
         
                DERecords = await getDERecords(NewDEName);
@@ -1533,30 +1528,20 @@ app.post("/secondpage", async function (req, res) {
                console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
-           
               console.log('ClearInterval up');
               clearInterval(b);
-          
             }
           }, 10000);
-             app.post("/DERecordGet", async (reqCall1, resCall1) => {
-           console.log('In Derecord get status '+queryStatus+' '+count);
-            if (queryStatus != "Complete" && count!=1) {
+          app.post("/DERecordGet", async (reqCall1, resCall1) => {
+            console.log('In Derecord get');
+            if (queryStatus != "Complete") {
               resCall1.send("false");
             }
-             else if(count!=1)
-              {
-                resCall1.send("false");
-              }
             else {
               console.log('Server Side '+DERecords);
               resCall1.send(DERecords);
-            
-              count=0;
-            
             }
-          });
-          
+          })
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
@@ -1920,8 +1905,8 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
-          res.write('Your credentail are incorrect!');
           return res.redirect('/');
+          //res.write('Your credentail are incorrect!');
         })
 
       });
