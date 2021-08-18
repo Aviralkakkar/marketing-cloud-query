@@ -4994,7 +4994,7 @@ document.addEventListener("mouseup", function(){
             success: function (data) {
               console.log('Client data '+data);
              if (data != "false" && data) {
-                console.log(' Inside If '+data);
+            console.log(' Inside If '+JSON.stringify(data));
                 DEListShow(data);
          
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -6745,6 +6745,9 @@ function changeSchmaPosition(e)
             '</div>' +
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
+            console.log("before break");
+            break;
+            console.log("after break") 
           }
         
         }

@@ -1542,7 +1542,7 @@ app.post("/secondpage", async function (req, res) {
               resCall1.send("false");
             }
             else {
-              console.log('Server Side '+DERecords);
+              console.log('Server Side '+JSON.stringify(DERecords));
               resCall1.send(DERecords);
               count = 0;
             }
