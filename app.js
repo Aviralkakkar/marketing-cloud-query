@@ -55,7 +55,7 @@ app.post("/credential", async function (req, res) {
 
   if(AuthResponse.AccessToken)
   {
-    res.redirect('/secondpage');
+    res.redirect('public/secondpage');
     res.sendFile(path.join(__dirname + '/public/secondpage.html'));
   }
   
