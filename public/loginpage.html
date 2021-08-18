@@ -1098,10 +1098,10 @@
 					  </svg>
 					</span>
 					<div class="slds-notify__content">
-					  <h2 class="slds-text-heading_small ">Can’t save lead “Sally Wong” because
+					  <h2 class="slds-text-heading_small ">Provided credentials being incorrect
 					</div>
 					<div class="slds-notify__close">
-					  <button onclick="CancelErrorPopUp()" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style=" position: sticky; margin-left: 94%;">
+					  <button id="CancelErrorPopUp" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style="background: none;border: none;padding: 3;position: sticky;">
 						<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
 						  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
 						</svg>
@@ -1172,11 +1172,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 
-   $(document).ready(function(){
-	   $("#CancelErrorPopUp").click(function(){
+	$(document).ready(function(){
+	$("#CancelErrorPopUp").click(function(){
 		$("#errorBlockOfLoginPage").css({'display':'none'});
-	   });
-   });
+	});
+	});
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
