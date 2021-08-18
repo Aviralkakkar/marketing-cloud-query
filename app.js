@@ -1537,13 +1537,13 @@ app.post("/secondpage", async function (req, res) {
               clearInterval(b);
           
             }
-          }, 1000);
+          }, 10000);
              app.post("/DERecordGet", async (reqCall1, resCall1) => {
            console.log('In Derecord get status '+queryStatus+' '+count);
             if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
-              else if(count!=1)
+             else if(count!=1)
               {
                 resCall1.send("false");
               }
