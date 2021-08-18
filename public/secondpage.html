@@ -7373,7 +7373,7 @@ function changeSchmaPosition(e)
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
               JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
                 "JoinField": document.getElementById('FirstDEField').value
               }
             }
@@ -7384,14 +7384,14 @@ function changeSchmaPosition(e)
             document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
 
             JoinQueryDetails["DEForJoin"].push({
-              "FirstDEName": DEListMap.DEListMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
               "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
               "FirstDEJoinField": document.getElementById('FirstDEField').value,
 
               "JoinType": document.getElementById('select-01').value,
               //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
-                  "SecondDEName": DEListMap.DEListMap[document.getElementById('select-02').value].DEName,
+                  "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
                   "SecondDEExtKey": document.getElementById('select-02').value,
                   "SecondDEJoinField": document.getElementById('SecondDEField').value,
                   "JoinedLineDivId":line_ID
