@@ -16,7 +16,8 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-
+var count =0 ;
+var DERecords2=[];
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1511,15 +1512,18 @@ app.post("/secondpage", async function (req, res) {
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
+            DERecords2=[];
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
             console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
+              count = 1;
+              console.log('----'+count+'-----');
               console.log('Inside if '+NewDEName);
-        
+      
                DERecords = await getDERecords(NewDEName);
-        
+                DERecords2=DERecords;
                console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
@@ -1528,13 +1532,18 @@ app.post("/secondpage", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get');
-            if (queryStatus != "Complete") {
+            console.log('In Derecord get'+queryStatus+' '+count );
+            if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
+            else if(count!=1)
+            {
+               resCall1.send("false");
+            }
             else {
-              console.log('Server Side '+DERecords);
-              resCall1.send(DERecords);
+                 console.log('Server Side '+JSON.stringify(DERecords2));
+              resCall1.send(DERecords2);
+              count=0;
             }
           })
         }

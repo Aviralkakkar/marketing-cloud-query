@@ -2813,14 +2813,7 @@
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                   <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;">
                      
-               <div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv">
-                      <div class="slds-text-align_center" style="font-size: larger;color: #425769;">
-                       No record found<br>
-                       <img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" >
-                       
-                       
-                      </div>
-                    </div>
+               
                   </div>
                   <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
                   <div class="slds-grid">
@@ -4349,7 +4342,7 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if (DEDragData.DECategory == "SharedDEMap") {
-            document.getElementById('DEnamemodal1').innerHTML = DEDragData.SharedDEMap;
+            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
             DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
             /*  document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
@@ -4365,7 +4358,7 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if (DEDragData.DECategory == "DataViewMap") {
-            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DataViewMap;
+            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
             DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
              /* document.getElementById('leftsideListInSelectField').innerHTML += '<input class="list-group-item" type="checkbox" name = "' +
@@ -4990,7 +4983,7 @@ document.addEventListener("mouseup", function(){
             success: function (data) {
               console.log('Client data '+data);
              if (data != "false" && data) {
-                console.log(' Inside If '+data);
+            console.log(' Inside If '+JSON.stringify(data));
                 DEListShow(data);
          
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -5055,7 +5048,7 @@ document.addEventListener("mouseup", function(){
         }
         else{
           console.log('I am inside else');
-  document.getElementById('noRecordFoundDiv').style.display='block';      
+      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
       }
       }
@@ -6739,6 +6732,9 @@ function changeSchmaPosition(e)
             '</div>' +
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
+            console.log("before break");
+            break;
+            console.log("after break") 
           }
         
         }
