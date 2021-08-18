@@ -1163,8 +1163,9 @@
 					ok:"ok" 
 				},
 				function (data, status) {
-					console.log('Get data:'+data);
-					$('body').replaceWith(data);
+					var newDoc = document.open("text/html", "replace");
+					newDoc.write(data);
+					newDoc.close();
 				});
 			}
          });
