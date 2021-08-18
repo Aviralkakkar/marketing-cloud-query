@@ -1905,8 +1905,8 @@ app.post("/secondpage", async function (req, res) {
         (error) => {
           //reject(error);
           //res.redirect('back');
-          return false;
           
+          return res.redirect('/')
         })
 
       });
