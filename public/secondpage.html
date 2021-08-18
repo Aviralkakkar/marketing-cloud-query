@@ -5042,13 +5042,15 @@ document.addEventListener("mouseup", function(){
  
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
+          document.getElementById('paginationBar').style.display='block';
            loadPage();
            document.getElementById('runQueryAlert').style.display = 'none';
             
         }
         else{
           console.log('I am inside else');
-      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
+          document.getElementById('paginationBar').style.display='none';
+      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:block;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
       }
       }
