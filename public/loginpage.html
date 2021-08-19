@@ -1180,10 +1180,12 @@
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
+	$('#submit-btn').prop('disabled', true); 
 	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
 	  {
 		$('#loginErrorMsg').text("Please provide all credentials");
 		$("#errorBlockOfLoginPage").css({'display':'block'});
+		$('#submit-btn').prop('disabled', false); 
 	  }
 	  else
 	  {
@@ -1218,6 +1220,7 @@
 			{
 				$('#loginErrorMsg').text("Provided credentials being incorrect");
 				$("#errorBlockOfLoginPage").css({'display':'block'});
+				$('#submit-btn').prop('disabled', false); 
 			}
          });
 		} 
