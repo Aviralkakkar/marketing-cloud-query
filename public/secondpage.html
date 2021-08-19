@@ -2832,7 +2832,7 @@
                           </svg>
                           <span class="slds-assistive-text">Description of icon when needed</span></span>
                           <br>
-                          Your result will be shown here
+                          Result will be shown here
                     </div>
               
                     
@@ -4086,14 +4086,13 @@ window.onclick = function(event) {
   const dx = m_pos - e.y;
   m_pos = e.y;
   var adiv = document.getElementById("RelationshipDiv").offsetHeight;
-  console.log('Upper '+hu+' Lower '+hl+' height relation '+adiv+ ' hello '+document.getElementById("RelationshipDiv").getBoundingClientRect().height);
+ 
   if(pHeight>=hu && pHeight<= hl)
   {
     
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     pHeight = parseInt(panel.style.height);
-    console.log('pHeight '+pHeight);
-    console.log('Bottom div height '+panel.style.height);
+  
     
 
   }
@@ -4180,14 +4179,14 @@ document.addEventListener("mouseup", function(){
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
-        console.log('prev page');
+      
         current_page--;
         changePage(current_page);
       }
     }
 
     function nextPage() {
-        console.log('next page');
+      
       if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
@@ -4195,8 +4194,7 @@ document.addEventListener("mouseup", function(){
     }
 
     function changePage(page) {
-        console.log('change page');
-      console.log('ObjJSON2 '+objJSON);
+      
       var btn_next = document.getElementById("btn_next");
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
@@ -4204,7 +4202,7 @@ document.addEventListener("mouseup", function(){
       
       var records = document.getElementById("totalRecords");
     records.innerHTML = "( " + objJSON.length + " rows )";
-    console.log("Row " + objJSON.length);
+ 
 
 
       // Validate page
@@ -4219,7 +4217,7 @@ document.addEventListener("mouseup", function(){
       listing_table.innerHTML = "";
 
       for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
-         console.log('OBJJSON--'+ objJSON[i].row);
+        
         listing_table.innerHTML += objJSON[i].row;
       }
       page_span.innerHTML = page;
@@ -4269,7 +4267,7 @@ document.addEventListener("mouseup", function(){
             'Content-type': "application/json"
           },
           success: function (data) {
-            console.log('Data ' + JSON.stringify(data));
+         
             DEListMap = data;
             for (var key in DEListMap.DEMap) {
               document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
@@ -5003,9 +5001,9 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
-              console.log('Client data '+data);
+             
              if (data != "false" && data) {
-            console.log(' Inside If '+JSON.stringify(data));
+          
                 DEListShow(data);
          
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -5031,7 +5029,7 @@ document.addEventListener("mouseup", function(){
 
           for (var key in DERecords[0])
           {
-            console.log('KEY ')
+           
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
              
           }
@@ -5052,7 +5050,7 @@ document.addEventListener("mouseup", function(){
             objJSON.push({row:tableBody});
           }
 
-          console.log('objJSONN '+objJSON);
+        
       
          document.getElementById('paginationBar').style.display='block';
          // document.getElementById('recordResultModal').style.display = 'block';
@@ -5070,7 +5068,7 @@ document.addEventListener("mouseup", function(){
             
         }
         else{
-          console.log('I am inside else');
+         
           document.getElementById('paginationBar').style.display='none';
       document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:block;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
