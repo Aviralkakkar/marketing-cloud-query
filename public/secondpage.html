@@ -2543,11 +2543,11 @@
                         <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');"  style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
                        <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button></th>
-                       <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
-                        <button class="  slds-button" onclick="refreshMethod()">
+                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                        <button class="  slds-button" onclick="refreshMethod()" >
                           <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
-                              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#refresh">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
                               </use>
     
                             </svg>
@@ -2556,7 +2556,7 @@
                           </span>
                         </button>
                        </th>
-                  </tr>
+                    </tr>
                   </tbody></table>
             
             
@@ -4030,6 +4030,18 @@ window.onclick = function(event) {
     // *************** Pagination code ***************//
 
    
+    //*********** Refresh Method starts *************//
+     function refreshMethod()
+    {
+      console.log('Inside refreshMethod');
+        var obj  =  document.querySelectorAll('.myRefreshClass');
+        for (const button of obj) {
+              console.log('const '+button);
+              button.remove();
+          }
+      document.getElementById('runQueryAlert').style.display='none';
+        document.getElementById('tableDiv').innerHTML = '<div style="font-size: 25px;color:grey;"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>'
+    }
 
     //  *************** Resizeable code *****************//
    /* const panel = document.getElementById("right_panel");
@@ -4274,6 +4286,7 @@ document.addEventListener("mouseup", function(){
       var totalPages = document.getElementById("totalPages");
       page.innerHTML = " " + 1 + " ";
       totalPages.innerHTML = " " + numPages() + " ";
+       document.getElementById('runQueryAlert').style.display='none';
     };
 
     
@@ -5095,8 +5108,9 @@ document.addEventListener("mouseup", function(){
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
           document.getElementById('paginationBar').style.display='block';
+            document.getElementById('runQueryAlert').style.display = 'none';
            loadPage();
-           document.getElementById('runQueryAlert').style.display = 'none';
+         
             
         }
         else{
