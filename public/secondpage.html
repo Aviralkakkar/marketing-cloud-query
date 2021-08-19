@@ -2432,6 +2432,7 @@
                   <table style="height:100%;">
                   <tbody>
                     <tr>
+                    
                     <th style="width: max-content;padding-right: 1%;padding-left: 1%;padding-top:1%;">
                       <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
@@ -2539,15 +2540,11 @@
 
                         <!--ends here-->
                       </th>
-                    <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
-                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');"  style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button></th>
-                    <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
-                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button></th>
-                     <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
                         <button class="  slds-button" onclick="refreshMethod()" >
                           <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
-                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
+                              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#refresh">
                               </use>
     
                             </svg>
@@ -2556,6 +2553,13 @@
                           </span>
                         </button>
                        </th>
+                    <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                        <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');"  style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button>
+                      </th>
+                    <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
+                       <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button>
+                      </th>
+                    
                     </tr>
                   </tbody></table>
             
@@ -2826,22 +2830,22 @@
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                    <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
-                    <div style="font-size: 25px;color:grey;">
+                    <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" >
                       <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                      <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                      <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                        <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
   
                       </svg>
                       <span class="slds-assistive-text">Description of icon when needed</span></span>
                       <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                        <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                        <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
     
                         </svg>
                         <span class="slds-assistive-text">Description of icon when needed</span></span>
                         <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                          <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                          <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                            <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
       
                           </svg>
                           <span class="slds-assistive-text">Description of icon when needed</span></span>
@@ -4022,7 +4026,7 @@ window.onclick = function(event) {
               console.log('const '+button);
               button.remove();
           }
-        document.getElementById('tableDiv').innerHTML = '<div style="font-size: 25px;color:grey;"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>'
+        document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
     }
 
 
@@ -4113,6 +4117,8 @@ window.onclick = function(event) {
 
   </script>
   <script>
+
+
     const BORDER_SIZE = 4;
   const panel = document.getElementById("right_panel");
   const table = document.getElementById("tableDiv");
@@ -4125,9 +4131,14 @@ window.onclick = function(event) {
   const dx = m_pos - e.y;
   m_pos = e.y;
   var adiv = document.getElementById("RelationshipDiv").offsetHeight;
- 
+  let content = document.getElementById('tableDiv');
+    let child = content.querySelector('table[name="myTable"]');
+    console.log('NEW  '+child);
+  if(child!=null)
+  {
   if(pHeight>=hu && pHeight<= hl)
   {
+  
     
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     pHeight = parseInt(panel.style.height);
@@ -4145,6 +4156,7 @@ window.onclick = function(event) {
     panel.style.height=hl+"px";
     pHeight=hl;
   }
+}
  /* if(pHeight>=225 && pHeight<=600)
   {
     console.log('Position '+m_pos);
@@ -5068,7 +5080,7 @@ document.addEventListener("mouseup", function(){
         if (DERecords.length != 0) 
         {
 
-           DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;">' +
+           DETableBody = '<table class="slds-table slds-table_bordered slds-table--header-fixed" aria-labelledby="element-with-table-label other-element-with-table-label" style="border:1px solid rgb(177, 172, 172) !important;" name="myTable" id="iAmTable">' +
             '<thead>' +
             '<tr class="slds-line-height_reset">';
 
