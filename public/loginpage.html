@@ -1203,15 +1203,15 @@
 					ok:"ok" 
 				},
 				function (data, status) {
-					//const nextURL = 'https://marketing-cloud-querybuilder.herokuapp.com/secondpage';
-					//const nextTitle = 'Query App';
-					//const nextState = { additionalInformation: 'Updated the URL with JS' };
+					const nextURL = 'https://marketing-cloud-querybuilder.herokuapp.com/secondpage';
+					const nextTitle = 'Query App';
+					const nextState = { additionalInformation: 'Updated the URL with JS' };
 
 					var newDoc = document.open("text/html", "replace");
 					newDoc.write(data);
 					newDoc.close();
-					//window.history.pushState(nextState, nextTitle, nextURL);
-					//window.history.replaceState(nextState, nextTitle, nextURL);
+					window.history.pushState(nextState, nextTitle, nextURL);
+					window.history.replaceState(nextState, nextTitle, nextURL);
 				});
 			}
 			else
