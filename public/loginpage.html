@@ -1081,6 +1081,8 @@
 			vertical-align: middle;
 			margin-right: 8px
 		}
+		.iframe-class
+		 { overflow-x:hidden; overflow-y:auto; }
 	</style>
 </head>
 
@@ -1148,8 +1150,8 @@
 					</div>
 
 					<!-- Don't change the style name of the Login input (".submit-btn") without contacting the Security team, as WebMetrics has a dependency on this value.Â&nbsp; -->
-					<input id="submit-btn" value="Submit" 
-						class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070d2;">
+					<button id="submit-btn" 
+						class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070d2;">Submit</button>
 					<div id="jsBrowserDetectionBottom" style="display:none"></div>
 				</form>
 
@@ -1158,8 +1160,8 @@
 		</div>
 	</div>
 		<div id="marketing-aside" class="bb-hide ">
-			<iframe frameborder="0" id="marketing" name="marketing"
-				sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" scrolling="no"
+			<iframe class="iframe-class"  frameborder="0" id="marketing" name="marketing"
+				sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" scrolling="yes"
 				src="https://cyntexa.com" tabindex="-1" title="Marketing"></iframe>
 		</div>
 
@@ -1180,10 +1182,12 @@
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
+	$('#submit-btn').prop('disabled', true); 
 	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
 	  {
 		$('#loginErrorMsg').text("Please provide all credentials");
 		$("#errorBlockOfLoginPage").css({'display':'block'});
+		$('#submit-btn').prop('disabled', false); 
 	  }
 	  else
 	  {
@@ -1203,15 +1207,22 @@
 					ok:"ok" 
 				},
 				function (data, status) {
+					const nextURL = 'https://marketing-cloud-querybuilder.herokuapp.com/secondpage';
+					const nextTitle = 'Query App';
+					const nextState = { additionalInformation: 'Updated the URL with JS' };
+
 					var newDoc = document.open("text/html", "replace");
 					newDoc.write(data);
 					newDoc.close();
+					window.history.pushState(nextState, nextTitle, nextURL);
+					window.history.replaceState(nextState, nextTitle, nextURL);
 				});
 			}
 			else
 			{
 				$('#loginErrorMsg').text("Provided credentials being incorrect");
 				$("#errorBlockOfLoginPage").css({'display':'block'});
+				$('#submit-btn').prop('disabled', false); 
 			}
          });
 		} 
