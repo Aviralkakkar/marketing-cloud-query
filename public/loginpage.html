@@ -1087,6 +1087,32 @@
 <body class="" data-new-gr-c-s-check-loaded="14.997.0" data-gr-ext-installed="">
 	<div class="mainWrapper">
 		<div class="contentWrapper">
+
+			<div id="errorBlockOfLoginPage" style="display: none;" class="demo-only" style="height:4rem">
+				<div class="slds-notify_container slds-is-relative">
+				  <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+					<span class="slds-assistive-text">error</span>
+					<span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+					  <svg class="slds-icon slds-icon_small" aria-hidden="true">
+						<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+					  </svg>
+					</span>
+					<div class="slds-notify__content">
+					  <h2 class="slds-text-heading_small ">Provided credentials being incorrect
+					</div>
+					<div class="slds-notify__close">
+					  <button id="CancelErrorPopUp" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style="background: none;border: none;padding: 3;position: sticky;">
+						<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+						  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+						</svg>
+						<span class="slds-assistive-text">Close</span>
+					  </button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+
 			<div class="mainFormWrapper ">
 				<div class="header-wrapper">
 					<div class="header">
@@ -1094,7 +1120,7 @@
 					</div>
 				</div>
 
-				<form id="LoginForm" class="mainForm" action="/secondpage" method="POST" autocomplete="off">
+				<form id="LoginForm" class="mainForm" autocomplete="off">
 					<div id="jsBrowserDetectionTop" class="notification error" style="display:none"></div>
 					<div class="slds-form-element">
 						<div class="slds-form-element__label"><label for="clientid">Client Id</label></div>
@@ -1122,7 +1148,7 @@
 					</div>
 
 					<!-- Don't change the style name of the Login input (".submit-btn") without contacting the Security team, as WebMetrics has a dependency on this value.Â&nbsp; -->
-					<input type="submit" id="submit-btn" value="Submit"
+					<input id="submit-btn" value="Submit" 
 						class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070d2;">
 					<div id="jsBrowserDetectionBottom" style="display:none"></div>
 				</form>
@@ -1142,4 +1168,45 @@
 		<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
 		<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+
+	$(document).ready(function(){
+	$("#CancelErrorPopUp").click(function(){
+		$("#errorBlockOfLoginPage").css({'display':'none'});
+	});
+	});
+
+   $(document).ready(function () {
+   $("#submit-btn").click(function () {
+      $.post("/credential",
+         {
+			clientid: $("#clientid").val(),
+			clientsecret: $("#clientsecret").val(),
+			authurl: $("#authurl").val(),
+         },
+         function (data, status) {
+            console.log('data:'+JSON.stringify(data));
+			console.log('status:'+status);
+			if(data.AccessToken)
+			{
+				$.get("/secondpage",
+				{
+					ok:"ok" 
+				},
+				function (data, status) {
+					var newDoc = document.open("text/html", "replace");
+					newDoc.write(data);
+					newDoc.close();
+				});
+			}
+			else
+			{
+				$("#errorBlockOfLoginPage").css({'display':'block'});
+			}
+         });
+   });
+});
+</script>
 </html>

@@ -2764,8 +2764,8 @@
                                 style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
                               <div id="outer" class="slds-scrollable" style="height: 9%; width:auto; overflow-x: hidden;">
                   
-                                <div class="inner"><button name="AND" id="And" draggable="true" class="slds-button" value="AND" style="width: 83px;  padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #0000FF;margin-inline-start: 3px;">AND</button></div>
-                                <div class="inner"><button class="slds-button" draggable="true" value="OR" name="OR" id="Or" style="width: 83px; padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #0000FF;margin-inline-start: 5px;">OR</button></div>
+                                <div class="inner"><button name="AND" id="And" draggable="true" class="slds-button" value="AND" style="width: 83px;  padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 3px;">AND</button></div>
+                                <div class="inner"><button class="slds-button" draggable="true" value="OR" name="OR" id="Or" style="width: 83px; padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 5px;">OR</button></div>
                   
                               </div>
                                 <h4 class="slds-text-title_caps" id="component-selector-container__heading"
@@ -2811,28 +2811,28 @@
                 <div class="slds-table--header-fixed_container " id="right_panel"
                 style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                  <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
+                   <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
                     <div style="font-size: 25px;color:grey;">
                       <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
                       <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                        <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
   
                       </svg>
                       <span class="slds-assistive-text">Description of icon when needed</span></span>
                       <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
                         <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
     
                         </svg>
                         <span class="slds-assistive-text">Description of icon when needed</span></span>
                         <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;">
-                            <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use>
       
                           </svg>
                           <span class="slds-assistive-text">Description of icon when needed</span></span>
                           <br>
-                          Your result will be shown here
+                          Result will be shown here
                     </div>
               
                     
@@ -4085,14 +4085,13 @@ window.onclick = function(event) {
   const dx = m_pos - e.y;
   m_pos = e.y;
   var adiv = document.getElementById("RelationshipDiv").offsetHeight;
-  console.log('Upper '+hu+' Lower '+hl+' height relation '+adiv+ ' hello '+document.getElementById("RelationshipDiv").getBoundingClientRect().height);
+ 
   if(pHeight>=hu && pHeight<= hl)
   {
     
     panel.style.height = (parseInt(getComputedStyle(panel, '').height) + dx) + "px";
     pHeight = parseInt(panel.style.height);
-    console.log('pHeight '+pHeight);
-    console.log('Bottom div height '+panel.style.height);
+  
     
 
   }
@@ -4176,18 +4175,18 @@ document.addEventListener("mouseup", function(){
     
     
       var current_page = 1;
-        var records_per_page = 5;
+        var records_per_page = 25;
         var objJSON = [];
    function prevPage() {
       if (current_page > 1) {
-        console.log('prev page');
+      
         current_page--;
         changePage(current_page);
       }
     }
 
     function nextPage() {
-        console.log('next page');
+      
       if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
@@ -4195,8 +4194,7 @@ document.addEventListener("mouseup", function(){
     }
 
     function changePage(page) {
-        console.log('change page');
-      console.log('ObjJSON2 '+objJSON);
+      
       var btn_next = document.getElementById("btn_next");
       var btn_prev = document.getElementById("btn_prev");
       var listing_table = document.getElementById("listingTable");
@@ -4204,7 +4202,7 @@ document.addEventListener("mouseup", function(){
       
       var records = document.getElementById("totalRecords");
     records.innerHTML = "( " + objJSON.length + " rows )";
-    console.log("Row " + objJSON.length);
+ 
 
 
       // Validate page
@@ -4219,7 +4217,7 @@ document.addEventListener("mouseup", function(){
       listing_table.innerHTML = "";
 
       for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJSON.length; i++) {
-         console.log('OBJJSON--'+ objJSON[i].row);
+        
         listing_table.innerHTML += objJSON[i].row;
       }
       page_span.innerHTML = page;
@@ -4273,7 +4271,7 @@ document.addEventListener("mouseup", function(){
             'Content-type': "application/json"
           },
           success: function (data) {
-            console.log('Data ' + JSON.stringify(data));
+         
             DEListMap = data;
             for (var key in DEListMap.DEMap) {
               document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
@@ -5007,9 +5005,9 @@ document.addEventListener("mouseup", function(){
               'Content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
-              console.log('Client data '+data);
+             
              if (data != "false" && data) {
-                console.log(' Inside If '+JSON.stringify(data));
+          
                 DEListShow(data);
          
                 document.getElementById('FullPageSpinner').style.display = 'none';
@@ -5035,7 +5033,7 @@ document.addEventListener("mouseup", function(){
 
           for (var key in DERecords[0])
           {
-            console.log('KEY ')
+           
             DETableBody += '  <th class="slds-text-title_caps slds-cell-wrap" scope="col"><div class="slds-truncate" title="firstname">'+key+'</div></th>';
              
           }
@@ -5056,7 +5054,7 @@ document.addEventListener("mouseup", function(){
             objJSON.push({row:tableBody});
           }
 
-          console.log('objJSONN '+objJSON);
+        
       
          document.getElementById('paginationBar').style.display='block';
          // document.getElementById('recordResultModal').style.display = 'block';
@@ -5068,15 +5066,15 @@ document.addEventListener("mouseup", function(){
  
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
-          document.getElementById('paginationBar').style.display='block';  
+          document.getElementById('paginationBar').style.display='block';
            loadPage();
            document.getElementById('runQueryAlert').style.display = 'none';
             
         }
         else{
-          console.log('I am inside else');
-      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:none;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';   
-      document.getElementById('paginationBar').style.display='none';        
+         
+          document.getElementById('paginationBar').style.display='none';
+      document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:block;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
       }
       }
@@ -5133,7 +5131,9 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.SharedDEMap) {
-            document.getElementById('DEnamemoda21').innerHTML = DEDragData.SharedDEMap;
+            console.log(DEListMap.SharedDEMap);
+            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DEName;
+            console.log(DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length);
             for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -5145,7 +5145,9 @@ document.addEventListener("mouseup", function(){
             }
           }
           else if(DEDragData.DEExtKey in DEListMap.DataViewMap) {
-            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DataViewMap;
+            console.log(DEListMap.DataViewMap);
+            document.getElementById('DEnamemodal2').innerHTML = DEDragData.DEName;
+            console.log(DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length);
             for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
               document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                 '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
@@ -7563,4 +7565,9 @@ function changeSchmaPosition(e)
 
   </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+
+</html>
+>>>>>>> e7e24efad57b133578fa2bbbe266cc691a8dfed5

@@ -37,7 +37,12 @@ app.get("/", function (req, res) {
 
 app.set('view engine', 'html');
 
-app.post("/secondpage", async function (req, res) {
+app.get("/secondpage", function (req, res) {
+  console.log('sended to second page');
+  return res.sendFile(path.join(__dirname + '/public/secondpage.html'));
+})
+
+app.post("/credential", async function (req, res) {
    var AuthRequest = {
     "ClientId" : req.body.clientid,
     "ClientSecret" : req.body.clientsecret,
@@ -51,13 +56,8 @@ app.post("/secondpage", async function (req, res) {
   var NewDEName;
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
-  if(AuthResponse.AccessToken)
-  {
-    console.log('Successfully redirected');
-    console.log('URL:'+req.url);
-    res.sendFile(path.join(__dirname + '/public/secondpage.html'));
-  }
-  
+  res.send(AuthResponse);
+ 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
@@ -1912,10 +1912,10 @@ app.post("/secondpage", async function (req, res) {
             });
         },
         (error) => {
-          //reject(error);
-          //res.redirect('back');
-          //res.write('Hello World!');
-          return res.redirect('/');
+          var errorMessage={
+            error:"This is error"
+          };
+          res.send(errorMessage);
         })
 
       });
