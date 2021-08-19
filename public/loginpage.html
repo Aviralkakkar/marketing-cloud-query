@@ -1098,7 +1098,7 @@
 					  </svg>
 					</span>
 					<div class="slds-notify__content">
-					  <h2 class="slds-text-heading_small ">Provided credentials being incorrect
+					  <h2 id="loginErrorMsg" class="slds-text-heading_small ">Provided credentials being incorrect
 					</div>
 					<div class="slds-notify__close">
 					  <button id="CancelErrorPopUp" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style="background: none;border: none;padding: 3;position: sticky;">
@@ -1180,6 +1180,13 @@
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
+	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
+	  {
+		$('#clientid').text("Please provide all credentials");
+		$("#errorBlockOfLoginPage").css({'display':'block'});
+	  }
+	  else
+	  {
       $.post("/credential",
          {
 			clientid: $("#clientid").val(),
@@ -1206,6 +1213,7 @@
 				$("#errorBlockOfLoginPage").css({'display':'block'});
 			}
          });
+		} 
    });
 });
 </script>
