@@ -1182,7 +1182,7 @@
    $("#submit-btn").click(function () {
 	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
 	  {
-		$('#clientid').text("Please provide all credentials");
+		$('#loginErrorMsg').text("Please provide all credentials");
 		$("#errorBlockOfLoginPage").css({'display':'block'});
 	  }
 	  else
