@@ -2543,7 +2543,7 @@
                     <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
                        <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button></th>
                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
-                        <button class="  slds-button" >
+                        <button class="  slds-button" onclick="refreshMethod()" >
                           <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
                               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
@@ -4015,6 +4015,16 @@ window.onclick = function(event) {
     // *************** Pagination code ***************//
 
    
+    //*********** Refresh Method starts *************//
+    function refreshMethod()
+    {
+      console.log('Inside refreshMethod');
+        var obj  =  document.querySelectorAll('.myRefreshClass');
+        for (const button of obj) {
+              console.log('const '+button);
+              button.remove();
+          }
+    }
 
 
     //  *************** Resizeable code *****************//
