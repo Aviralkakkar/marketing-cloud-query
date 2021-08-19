@@ -4016,7 +4016,7 @@ window.onclick = function(event) {
 
    
     //*********** Refresh Method starts *************//
-    function refreshMethod()
+     function refreshMethod()
     {
       console.log('Inside refreshMethod');
         var obj  =  document.querySelectorAll('.myRefreshClass');
@@ -4024,6 +4024,7 @@ window.onclick = function(event) {
               console.log('const '+button);
               button.remove();
           }
+        document.getElementById('tableDiv').innerHTML = '<div style="font-size: 25px;color:grey;"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 100px;width: 100px;fill: lightgray;"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>'
     }
 
 
@@ -5086,8 +5087,9 @@ document.addEventListener("mouseup", function(){
 
           document.getElementById('tableDiv').innerHTML = DETableBody;
           document.getElementById('paginationBar').style.display='block';
+            document.getElementById('runQueryAlert').style.display = 'none';
            loadPage();
-           document.getElementById('runQueryAlert').style.display = 'none';
+         
             
         }
         else{
