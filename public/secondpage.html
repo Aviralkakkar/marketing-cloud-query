@@ -7499,11 +7499,9 @@ function changeSchmaPosition(e)
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
-      console.log("Line drawed");
-
       var val1 = de1 + "-ForConnectedLine";
       var val2 = de2 + "-ForConnectedLine";
-      console.log('LineNumber:'+lineid);
+      
 
       var div1 = document.getElementById(val1);
       var div2 = document.getElementById(val2);
@@ -7530,7 +7528,7 @@ function changeSchmaPosition(e)
       // angle
       var angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
       // make hr
-      console.log('LineId:'+lineid);
+      
       var lineElement=document.getElementById(lineid).style.cssText=`
                         opacity: 0.9;
                         margin: 0px;
@@ -7547,7 +7545,7 @@ function changeSchmaPosition(e)
                         position: absolute;
                         `
                 ;
-        console.log('NewLine:'+lineElement);            
+        
     }
     //****************************************FINISH(ANIL KUMAR)******************************************    
 

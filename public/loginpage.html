@@ -1198,9 +1198,7 @@
 			authurl: $("#authurl").val(),
          },
          function (data, status) {
-            console.log('data:'+JSON.stringify(data));
-			console.log('status:'+status);
-			if(data.AccessToken)
+            if(data.AccessToken)
 			{
 				$.get("/secondpage",
 				{
