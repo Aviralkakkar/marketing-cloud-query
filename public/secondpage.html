@@ -2827,7 +2827,7 @@
                </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
-                style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
+                style="height:30%;padding-top:0%;margin-bottom:3%;" style="overflow: scroll;">
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                    <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
                     <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" >
@@ -4030,6 +4030,8 @@ window.onclick = function(event) {
               button.remove();
           }
       document.getElementById('runQueryAlert').style.display='none';
+       document.getElementById('right_panel').style ="margin-bottom:3%"; 
+          document.getElementById('right_panel').style ="padding-bottom:0%"; 
          document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
               
     }
@@ -5100,7 +5102,8 @@ document.addEventListener("mouseup", function(){
 
     
  
-
+          document.getElementById('right_panel').style ="margin-bottom:0%"; 
+          document.getElementById('right_panel').style ="padding-bottom:3%"; 
           document.getElementById('tableDiv').innerHTML = DETableBody;
           document.getElementById('paginationBar').style.display='block';
             document.getElementById('runQueryAlert').style.display = 'none';
@@ -5109,6 +5112,8 @@ document.addEventListener("mouseup", function(){
             
         }
         else{
+           document.getElementById('right_panel').style ="margin-bottom:3%"; 
+          document.getElementById('right_panel').style ="padding-bottom:0%"; 
          
           document.getElementById('paginationBar').style.display='none';
       document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:block;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
