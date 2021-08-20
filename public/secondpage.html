@@ -5677,7 +5677,7 @@ document.addEventListener("mouseup", function(){
           '          }'+
           ' </style>' +
           '<div style="position:relative;" class="myRefreshClass" onmouseup="changingColorOfLine()" onmousedown="schemaActionMyDiv(this.id)" id="' + DEDragData.DEExtKey + '##">' +
-          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + '-ForConnectedLine">' +
+          '<div style="' +mydivStyle+ '" class="slds-card mainQuaryBoxStyle mydiv box1" id="' + DEDragData.DEExtKey + '#ForConnectedLine">' +
           '    <div class="headerOfQuaryBox" data-original-title="" title="">' +
           '        <table>' +
           '            <tbody>' +
@@ -5891,7 +5891,7 @@ function changeSchmaPosition(e)
 
   function schemaAction(elmnt) 
    {
-    var myDivId=(elmnt.id).split('-'); 
+    var myDivId=(elmnt.id).split('#'); 
     for(var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
       if(myDivId[0] == ConnectedTwoDiv.FirstDEExtKey) {
        joinQueryBoxLine(myDivId[0], ConnectedTwoDiv.SecondDEExtKey,ConnectedTwoDiv.JoinedLineDivId,"#387F9D");
@@ -7499,8 +7499,8 @@ function changeSchmaPosition(e)
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
     {
-      var val1 = de1 + "-ForConnectedLine";
-      var val2 = de2 + "-ForConnectedLine";
+      var val1 = de1 + "#ForConnectedLine";
+      var val2 = de2 + "#ForConnectedLine";
       
 
       var div1 = document.getElementById(val1);
