@@ -2427,7 +2427,7 @@
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
           <div class="slds-modal__container" style="width: 400px;">
             <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
-              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  style=" position: sticky; margin-left: 90%;"> 
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelRefreshModel()" style=" position: sticky; margin-left: 90%;"> 
                 <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                   <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                 </svg>
@@ -2449,10 +2449,10 @@
           </div>
         </div>
           <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
-          <button class="slds-button slds-button_neutral" style="    font-size: 11px;
+          <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
           line-height: 20px;
           color: #4e8abe">Cancel</button>
-          <button class="slds-button slds-button_brand" style="font-size: 11px;
+          <button class="slds-button slds-button_brand" onclick="refreshMethod()" style="font-size: 11px;
           line-height: 20px;
           color: #edf5fa;">Refresh</button>
           </footer>
@@ -4252,11 +4252,15 @@ document.addEventListener("mouseup", function(){
       "PrimaryDE": {},
       "DEForJoin": []
     }
+<<<<<<< HEAD
   
     var NewDEFieldsList = [];
     var DEListMap = {};
     var openSelectFieldsDEExtKey = '';
     var openWhereDEExtKey = '';
+=======
+    var NewDEFi    var openWhereDEExtKey = '';
+>>>>>>> 0f69aa53bd726a8c820d7e454c1fade2a7a3424c
     var FirstDEExtKeyForJoinGlobal;
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
@@ -4266,6 +4270,14 @@ document.addEventListener("mouseup", function(){
     
     
      //*********** Refresh Method starts *************//
+     function refreshModalDisplay()
+    {
+      document.getElementById('refreshModal').style.display='block';
+    }
+    function cancelRefreshModel()
+    {
+      document.getElementById('refreshModal').style.display='none';
+    }
      function refreshMethod()
     {
       console.log('Inside refreshMethod');
@@ -4278,6 +4290,7 @@ document.addEventListener("mouseup", function(){
               console.log('const '+button);
               button.remove();
           }
+        
       document.getElementById('paginationBar').style.display='none';
       document.getElementById('runQueryAlert').style.display='none';
       document.getElementById('right_panel').style="height:29%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;"
