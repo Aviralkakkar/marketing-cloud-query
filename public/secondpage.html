@@ -4246,7 +4246,11 @@ document.addEventListener("mouseup", function(){
      //*********** Refresh Method starts *************//
      function refreshModalDisplay()
     {
+         var obj  =  document.querySelectorAll('.myRefreshClass');
+      if(obj.length!=0)
+      {
       document.getElementById('refreshModal').style.display='block';
+      }
     }
     function cancelRefreshModel()
     {
