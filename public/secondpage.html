@@ -4252,7 +4252,8 @@ document.addEventListener("mouseup", function(){
       {
       document.getElementById('refreshModal').style.display='block';
       }
-      var ele = document.getElementById('runQueryAlert').display;
+      var ele = document.getElementById('runQueryAlert').style.display;
+      console.log('display '+ele);
       if(ele!='none')
       {
         document.getElementById('refreshModal').style.display='block';
