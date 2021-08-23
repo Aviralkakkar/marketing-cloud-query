@@ -2580,7 +2580,7 @@
                         <!--ends here-->
                       </th>
                       <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
-                        <button class="  slds-button" onclick="refreshMethod()" >
+                        <button class="  slds-button" onclick="refreshModalDisplay()" >
                           <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
                               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
@@ -4228,10 +4228,7 @@ document.addEventListener("mouseup", function(){
       "PrimaryDE": {},
       "DEForJoin": []
     }
-    var NewDEFieldsList = [];
-    var DEListMap = {};
-    var openSelectFieldsDEExtKey = '';
-    var openWhereDEExtKey = '';
+    var NewDEFi    var openWhereDEExtKey = '';
     var FirstDEExtKeyForJoinGlobal;
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
@@ -4241,6 +4238,10 @@ document.addEventListener("mouseup", function(){
     
     
      //*********** Refresh Method starts *************//
+    function refreshModalDisplay()
+    {
+      document.getElementById('refreshModal').style.display='block';
+    }
      function refreshMethod()
     {
       console.log('Inside refreshMethod');
@@ -4253,7 +4254,7 @@ document.addEventListener("mouseup", function(){
               console.log('const '+button);
               button.remove();
           }
-          document.getElementById('refreshModal').style.display='block';
+        
       document.getElementById('paginationBar').style.display='none';
       document.getElementById('runQueryAlert').style.display='none';
       document.getElementById('right_panel').style="height:29%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;"
