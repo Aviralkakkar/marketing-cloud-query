@@ -4020,21 +4020,7 @@ window.onclick = function(event) {
     // *************** Pagination code ***************//
 
    
-    //*********** Refresh Method starts *************//
-     function refreshMethod()
-    {
-      console.log('Inside refreshMethod');
-        var obj  =  document.querySelectorAll('.myRefreshClass');
-        for (const button of obj) {
-              console.log('const '+button);
-              button.remove();
-          }
-      document.getElementById('paginationBar').style.display='none';
-      document.getElementById('runQueryAlert').style.display='none';
-      document.getElementById('right_panel').style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 3%;"
-         document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
-              
-    }
+   
 
 
     //  *************** Resizeable code *****************//
@@ -4214,6 +4200,26 @@ document.addEventListener("mouseup", function(){
    var data;
 
     
+    
+     //*********** Refresh Method starts *************//
+     function refreshMethod()
+    {
+      console.log('Inside refreshMethod');
+      NewDEFieldsList=[];
+      openSelectFieldsDEExtKey = '';
+      openWhereDEExtKey = '';
+      FirstDEExtKeyForJoinGlobal = '';
+        var obj  =  document.querySelectorAll('.myRefreshClass');
+        for (const button of obj) {
+              console.log('const '+button);
+              button.remove();
+          }
+      document.getElementById('paginationBar').style.display='none';
+      document.getElementById('runQueryAlert').style.display='none';
+      document.getElementById('right_panel').style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 3%;"
+         document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
+              
+    }
     
       var current_page = 1;
         var records_per_page = 25;
