@@ -2422,7 +2422,45 @@
 
         </div>
         <!--Khushboo code ended -->
-
+        <!-- Khushboo Refresh Model  -->
+        <div style="display: block;" id="refreshModal">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container" style="width: 400px;">
+            <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"  style=" position: sticky; margin-left: 90%;"> 
+                <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+              </button> 
+              <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
+            </header>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <div class="slds-grid">
+            <div class="slds-col">
+            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;margin-right:10px;">
+              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+            </svg>
+          </div>
+          <div class="slds-col">
+            <p style="color: #16325c;font-size: 14px;">  Refreshing page means you will loose your all current changes.This action cannot be undo. Click Refresh to continue.</p>
+            <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
+          </div>
+          </div>
+        </div>
+          <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
+          <button class="slds-button slds-button_neutral" style="    font-size: 11px;
+          line-height: 20px;
+          color: #4e8abe">Cancel</button>
+          <button class="slds-button slds-button_brand" style="font-size: 11px;
+          line-height: 20px;
+          color: #edf5fa;">Refresh</button>
+          </footer>
+          </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        <!-- Khushboo Refresh Model  ended-->
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
@@ -2827,7 +2865,7 @@
                </div>
 
                 <div class="slds-table--header-fixed_container " id="right_panel"
-                style="height:30%;padding-top:0%;padding-bottom: 3%;" style="overflow: scroll;">
+                style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 3%;" >
                 <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                    <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
                     <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" >
@@ -4043,6 +4081,7 @@ window.onclick = function(event) {
               console.log('const '+button);
               button.remove();
           }
+          document.getElementById('right_panel').style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 3%;"
       document.getElementById('runQueryAlert').style.display='none';
          document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
     }
@@ -5117,7 +5156,7 @@ document.addEventListener("mouseup", function(){
 
     
  
-
+          document.getElementById('right_panel').style="height:30%;padding-top:0%;padding-bottom: 3%;margin-bottom: 0%;overflow:scroll;";
           document.getElementById('tableDiv').innerHTML = DETableBody;
           document.getElementById('paginationBar').style.display='block';
             document.getElementById('runQueryAlert').style.display = 'none';
@@ -5126,7 +5165,7 @@ document.addEventListener("mouseup", function(){
             
         }
         else{
-         
+          document.getElementById('right_panel').style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 3%;"
           document.getElementById('paginationBar').style.display='none';
       document.getElementById('tableDiv').innerHTML='<div style="height: 99%;background-color: white;display:block;" id="noRecordFoundDiv"><div class="slds-text-align_center" style="font-size: larger;color: #425769;">No record found<br><img src="noRecord.png" alt="Girl in a jacket" style="width: 250px;" ></div></div>';           
         }
