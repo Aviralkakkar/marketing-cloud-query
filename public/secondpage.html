@@ -4256,6 +4256,9 @@ document.addEventListener("mouseup", function(){
       openSelectFieldsDEExtKey = '';
       openWhereDEExtKey = '';
       FirstDEExtKeyForJoinGlobal = '';
+         DESetQueryBox = new Set();
+     NewDEFieldsSet = new Set();
+     joinedDivSet = new Set();
         var obj  =  document.querySelectorAll('.myRefreshClass');
         for (const button of obj) {
               console.log('const '+button);
