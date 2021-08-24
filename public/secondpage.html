@@ -4845,8 +4845,14 @@ document.addEventListener("mouseup", function(){
     
         }
         strQuery = strQuery.slice(0, -1);
-        console.log(" strQuery=="+strQuery);        
-        strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        console.log(" strQuery=="+strQuery);   
+        if(JoinQueryDetails.PrimaryDE.DEName in DEListMap.SharedDEMap)  {
+          strQuery += ' FROM [ent.' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        }   
+        else{
+          strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
+        }
+    
         console.log(" strQuery==="+strQuery);
         
         console.log("countOfDeWithoutWhereClauseValueMain "+countOfDeWithoutWhereClauseValueMain);
