@@ -6092,7 +6092,7 @@ function changeSchmaPosition(e)
          // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
           console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal) ){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey == FirstDEExtKeyForJoinGlobal) ){
           SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
@@ -6237,7 +6237,7 @@ function changeSchmaPosition(e)
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
-          else if((FirstDEExtKeyForJoinGlobal in DEListMap.DEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
+          /*else if((FirstDEExtKeyForJoinGlobal in DEListMap.DEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
             FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
           console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
@@ -6383,7 +6383,7 @@ function changeSchmaPosition(e)
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
             break;
-          }
+          }*/
           else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
           console.log("fghuikol");
@@ -6524,7 +6524,7 @@ function changeSchmaPosition(e)
             '<div class="slds-backdrop slds-backdrop_open"></div>';
             break;
           }
-          else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
+         /* else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
             FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
           console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
@@ -6664,7 +6664,7 @@ function changeSchmaPosition(e)
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
             break;
-          }
+          }*/
           else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
             console.log(" JoinQueryDetails.DEForJoin[key].SecondDEName=="+ JoinQueryDetails.DEForJoin[key].SecondDEName);
@@ -6807,7 +6807,7 @@ function changeSchmaPosition(e)
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
-          else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
+          /*else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
             FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
           console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
@@ -6954,7 +6954,7 @@ function changeSchmaPosition(e)
             console.log("before break");
             break;
             console.log("after break") 
-          }
+          }*/
         
         }
       }
