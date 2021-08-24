@@ -4847,7 +4847,9 @@ document.addEventListener("mouseup", function(){
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);   
         if(JoinQueryDetails.PrimaryDE.DEName in DEListMap.SharedDEMap)  {
+          console.log('adding ent')
           strQuery += ' FROM [ent.' + JoinQueryDetails.PrimaryDE.DEName + ']';
+          console.log('added ent')
         }   
         else{
           strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
