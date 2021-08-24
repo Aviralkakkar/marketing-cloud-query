@@ -4789,7 +4789,7 @@ document.addEventListener("mouseup", function(){
           if (whereClauseValue != '') {
             for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-              whereClauseValue = whereClauseValue.replace(regex, 'ent.[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
             }
             strQuery += ' WHERE ' + whereClauseValue;
           }
