@@ -1194,9 +1194,9 @@
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
+
 	$("#submitSpinner").css({'display':'block'});   
 	$('#submit-btn').prop('disabled', true);
-	$("#submit-btn").css({'background-color':'#60c4ecad'});
 	$("#submitText").css({'display':'none'});
 
 	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
@@ -1234,13 +1234,11 @@
 			}
 			else
 			{
-				$("#submitText").css({'display':'block'});
 				$('#loginErrorMsg').text("Provided credentials being incorrect");
-				$("#errorBlockOfLoginPage").css({'display':'block'});
+
+				$("#submitSpinner").css({'display':'none'});   
 				$('#submit-btn').prop('disabled', false);
-				$("#submitSpinner").css({'display':'none'});
-				$("#submit-btn").css({'background-color':'#0070D2'});
-				$("#submit-btn").text("Submit"); 
+				$("#submitText").css({'display':'block'});
 			}
          });
 		} 
