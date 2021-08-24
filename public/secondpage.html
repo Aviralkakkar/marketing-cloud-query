@@ -2568,7 +2568,7 @@
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                 </svg>
                 </span>
-                <p style="padding: 0; float: left;">
+                <p id="msgQueryValidateFalseAlert" style="padding: 0; float: left;">
                  Error in SQL Query Syntax.
                 </p>
                 <div class="slds-notify__close">
@@ -4847,9 +4847,7 @@ document.addEventListener("mouseup", function(){
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);   
         if(JoinQueryDetails.PrimaryDE.DEName in DEListMap.SharedDEMap)  {
-          console.log('adding ent')
           strQuery += ' FROM [ent.' + JoinQueryDetails.PrimaryDE.DEName + ']';
-          console.log('added ent')
         }   
         else{
           strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
@@ -5108,6 +5106,7 @@ document.addEventListener("mouseup", function(){
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'none';
+                document.getElementById('msgQueryValidateFalseAlert').innerHTML = 'Query Validate ErrorMsg : ' + data.ErrorMsg;
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
