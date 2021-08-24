@@ -4769,7 +4769,7 @@ document.addEventListener("mouseup", function(){
             strQuery += ' [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [ent.' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
           var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
@@ -4784,12 +4784,12 @@ document.addEventListener("mouseup", function(){
             strQuery += ' [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ' ' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
-          strQuery += ' FROM [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          strQuery += ' FROM [ent.' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
           var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields) {
               var regex = new RegExp(DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"], "g")
-              whereClauseValue = whereClauseValue.replace(regex, '[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
+              whereClauseValue = whereClauseValue.replace(regex, '[ent.' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName + '].[' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEFields[key]["FieldName"] + ']');
             }
             strQuery += ' WHERE ' + whereClauseValue;
           }
