@@ -6980,9 +6980,15 @@ function changeSchmaPosition(e)
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-            }
+            if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
           }
           joinTwoDivString += '</select>' +
             '</div>' +
@@ -7096,8 +7102,16 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
+             
             }
           }
           joinTwoDivString += '</select>' +
@@ -7210,7 +7224,15 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
             }
           }
           joinTwoDivString += '</select>' +
