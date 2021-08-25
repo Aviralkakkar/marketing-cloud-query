@@ -2476,7 +2476,7 @@
                     <tr>
                     
                     <th style="width: max-content;padding-left: 1%;">
-                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                         <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2494,19 +2494,19 @@
                         </button>
                         </div>
                         </div>
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display:none; background-color: #ea001e; ">
+                        
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                           <span class="slds-assistive-text">warning</span>
-                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                           </svg>
                           </span>
-                          <h6>Please Join the Query Box.
-                        
-                          </h6>
+                          <p style="padding: 0; float: left;">Please Join the Query Box.
+                          </p>
                           <div class="slds-notify__close">
-                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelQueryBoxJoinAlert()">
-                          <svg class="slds-button__icon" aria-hidden="true">
+                          <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelQueryBoxJoinAlert()">
+                          <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
                           <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
                           </svg>
                           <span class="slds-assistive-text">Close</span>
@@ -2515,7 +2515,7 @@
                           </div>
                         <!--alerts and warning-->
                         <!--for -->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2538,7 +2538,7 @@
              
                 <!--sucess alert-->
                  <!--sucess alert-->
-              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; background-color: #04844b;
+              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
               height: 6vh ; border-radius: 0.25rem;">
                 <span class="slds-assistive-text">check</span>
                 <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
@@ -2561,7 +2561,7 @@
 
                  <!--invalid alert-->
               <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
-              height: 8vh ; border-radius: 0.25rem;">
+              height: 7vh ; border-radius: 0.25rem;">
                 <span class="slds-assistive-text">check</span>
                 <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -6466,40 +6466,48 @@ function changeSchmaPosition(e)
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              console.log("hibye")
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                console.log("hibye2")
               if(DEExtKeyLoop in DEListMap.DEMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
+                console.log("hibye3")
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+                  console.log("hibye4")
+                }
+                  else{
+                    console.log("hibye5")
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                  }
+                  
+                
               }
               if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                
+                
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
 
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                }
+                else{
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
+              
               }
               if(DEExtKeyLoop in DEListMap.DataViewMap){
+                
+                
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
 
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                }
+                else{
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
+              
               }
             }
+          } 
             joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -7508,131 +7516,7 @@ function changeSchmaPosition(e)
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-      else if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName!=document.getElementById('select-02').value){
-        console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
-        if (FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
-            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
-            joinedDivSet.add(document.getElementById('select-02').value);
-            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
-              JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
-                "JoinField": document.getElementById('FirstDEField').value
-              }
-            }
-            
-            //Added by ANIL KUMAR
-            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
-            var newLine_Div=document.createElement('div');
-            newLine_Div.id=line_ID;
-            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-
-            JoinQueryDetails["DEForJoin"].push({
-              "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
-              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
-              "FirstDEJoinField": document.getElementById('FirstDEField').value,
-
-              "JoinType": document.getElementById('select-01').value,
-              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
-
-              "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
-              "SecondDEExtKey": document.getElementById('select-02').value,
-              "SecondDEJoinField": document.getElementById('SecondDEField').value,
-              "JoinedLineDivId":line_ID
-            });
-            var line_Color="#353535";
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
-        }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
-            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
-            joinedDivSet.add(document.getElementById('select-02').value);
-            
-            if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}'){
-              JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
-                "JoinField": document.getElementById('FirstDEField').value
-              }
-            }
-            
-            //Added by ANIL KUMAR
-            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
-            var newLine_Div=document.createElement('div');
-            newLine_Div.id=line_ID;
-            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-
-            JoinQueryDetails["DEForJoin"].push({
-              "FirstDEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
-              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
-              "FirstDEJoinField": document.getElementById('FirstDEField').value,
-
-              "JoinType": document.getElementById('select-01').value,
-              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
-
-              "SecondDEName": DEListMap.SharedDEMap[document.getElementById('select-02').value].DEName,
-              "SecondDEExtKey": document.getElementById('select-02').value,
-              "SecondDEJoinField": document.getElementById('SecondDEField').value,
-              "JoinedLineDivId":line_ID
-            });
-            var line_Color="#353535";
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
-        }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
-            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
-            joinedDivSet.add(document.getElementById('select-02').value);
-            console.log("happening 90");
-             if(JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}'){
-               console.log("happening");
-              JoinQueryDetails["PrimaryDE"] = {
-                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
-                "JoinField": document.getElementById('FirstDEField').value
-              }
-            }
-            console.log("happening 77");
-            //Added by ANIL KUMAR
-            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
-            var newLine_Div=document.createElement('div');
-            newLine_Div.id=line_ID;
-            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
-
-            JoinQueryDetails["DEForJoin"].push({
-              "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
-              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
-              "FirstDEJoinField": document.getElementById('FirstDEField').value,
-
-              "JoinType": document.getElementById('select-01').value,
-              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
-
-              "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
-              "SecondDEExtKey": document.getElementById('select-02').value,
-              "SecondDEJoinField": document.getElementById('SecondDEField').value,
-              "JoinedLineDivId":line_ID
-            });
-            var line_Color="#353535";
-            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-            console.log("happening 56");
-          }
-        }
-      }
-        }
-
-      
-      document.getElementById('ThirdModal').style.display = 'none';
-
-      }
+    
       else{
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
