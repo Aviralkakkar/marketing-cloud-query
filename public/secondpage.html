@@ -6305,22 +6305,41 @@ function changeSchmaPosition(e)
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
   
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
-            }
-            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
               if(DEExtKeyLoop in DEListMap.DEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
                 joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
               }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+
+              }
+              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
                 joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+               
               }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+
+              }
+              if(DEExtKeyLoop in DEListMap.DataViewMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
                 joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
               }
             }
-          }
           joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -7464,7 +7483,7 @@ function changeSchmaPosition(e)
           console.log("in the ");
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEField').value){
-          console.log("in the 2 ");
+          console.log("in the 2== ");
           JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
