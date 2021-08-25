@@ -4824,15 +4824,15 @@ document.addEventListener("mouseup", function(){
               }
               console.log(" strQuery1= "+strQuery );
             }
-            else if (k in DEListMap.SharedDEMap) {
-              console.log("in the else-if");
-              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-                console.log("in the for3");
-                strQuery += ' [ent.' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
-              }
-              console.log(" strQuery2= "+strQuery );
+          else if (k in DEListMap.SharedDEMap) {
+            console.log("in the else-if");
+            for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+              console.log("in the for3");
+              strQuery += ' [ent.' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
             }
-            else if (k in DEListMap.DataViewMap) {
+            console.log(" strQuery2= "+strQuery );
+          }
+          else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
@@ -4840,9 +4840,7 @@ document.addEventListener("mouseup", function(){
               }
               console.log(" strQuery3="+strQuery );
             }
-            
-          
-    
+           
         }
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);   
