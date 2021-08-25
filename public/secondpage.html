@@ -7105,7 +7105,7 @@ function changeSchmaPosition(e)
   
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01" >' +
       '<option value="Left Outer Join">Left Outer Join</option>' +
       '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
       '<option value="Right Outer Join">Right Outer Join</option>' +
@@ -7121,7 +7121,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required="true">' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
