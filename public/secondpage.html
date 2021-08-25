@@ -6072,7 +6072,7 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0, secondDEExtKey;
+      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
       for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
@@ -7091,12 +7091,12 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+secondDEExtKey+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              secondDEExtKey=DEListMap.DEMap[DEExtKeyLoop].DEExtKey;
+              
               joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
             }
           }
@@ -7280,10 +7280,11 @@ function changeSchmaPosition(e)
       document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
     }
 
-    function SecondDEChange(secondDEExt) {
+    function SecondDEChange() {
       console.log("SecondDeExt"+secondDEExt);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         console.log("SecondDeExt=="+document.getElementById('select-02').value);
+        var secondDEExt=document.getElementById('select-02').value;
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
         if(secondDEExt in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
