@@ -4889,7 +4889,7 @@ document.addEventListener("mouseup", function(){
           strQuery=strQuery+clause;
 
         }
-        console.log("strQuery"+strQuery);
+        console.log("strQuery=="+strQuery);
         //console.log("strQuery.length="+strQuery.length);
         /*var l=strQuery.length;
         //var char=strQuery.charAt(l)
@@ -4904,10 +4904,10 @@ document.addEventListener("mouseup", function(){
         else{
           strQuery = strQuery.slice(0, -2);
         }*/
-        strQuery = strQuery.slice(0, -7);
-        console.log("Final strQuery = "+strQuery);
+       // strQuery = strQuery.slice(0, -7);
+        //console.log("Final strQuery = "+strQuery);
         
-        var tempDESet = new Set();
+       /* var tempDESet = new Set();
         var FirstDEWhereClause = '';
         var SecondDEWhereClause = '';
         for (var key in JoinQueryDetails.DEForJoin) {
@@ -5048,6 +5048,7 @@ document.addEventListener("mouseup", function(){
             tempDESet.add(JoinQueryDetails.DEForJoin[key].SecondDEName);
           }
         }
+      */
       }
       else {
         document.getElementById('MainDivAlert').style.display = 'Block';
