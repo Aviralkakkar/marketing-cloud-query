@@ -6150,7 +6150,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6158,7 +6158,15 @@ function changeSchmaPosition(e)
 
             }
             else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
             }
           }
           joinTwoDivString += '</select>' +
@@ -6294,17 +6302,44 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
   
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
 
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+              if(DEExtKeyLoop in DEListMap.DataViewMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
             }
-            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-            }
-          }
           joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -6427,15 +6462,42 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
 
               }
               else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
                 joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+              if(DEExtKeyLoop in DEListMap.DataViewMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
               }
             }
             joinTwoDivString += '</select>' +
@@ -6477,7 +6539,8 @@ function changeSchmaPosition(e)
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
               '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-            for (var i in DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+              if(SecondDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+                for (var i in DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
             if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("helloDFGW");
             }
@@ -6486,8 +6549,36 @@ function changeSchmaPosition(e)
 
              
             }
+          }
+          }
+          else if(SecondDEExtKeyForJoinGlobal in DEListMap.DEMap){
+            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
+          }
+          }
+          else if(SecondDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+            for (var i in DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
+                console.log("helloDFGW");
+            }
+            else{
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+             
+            }
             
           }
+          }
+          
+              
+         
           joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -6512,7 +6603,7 @@ function changeSchmaPosition(e)
          else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
             //SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
            // FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
-          console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
+          console.log("SecondDEExtKeyForJoinGlobal===="+SecondDEExtKeyForJoinGlobal);
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
@@ -6566,16 +6657,46 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
               '<option value="">Select..</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
 
               }
               else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
               }
+
+              }
+              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+              if(DEExtKeyLoop in DEListMap.DataViewMap){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
+
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+               
+              }
+
+              }
+
+
+           
             }
             joinTwoDivString += '</select>' +
             '</div>' +
@@ -6695,7 +6816,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           
   
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
@@ -6705,7 +6826,15 @@ function changeSchmaPosition(e)
 
               }
               else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
               }
             }
             joinTwoDivString += '</select>' +
@@ -6837,7 +6966,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange('+key+')" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
               '<option value="">Select..</option>';
   
               for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6845,7 +6974,15 @@ function changeSchmaPosition(e)
 
                 }
                 else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                  if(DEExtKeyLoop in DEListMap.DEMap){
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                  }
+                  else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                  }
+                  else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                  }
                 }
               }
               joinTwoDivString += '</select>' +
@@ -6981,7 +7118,15 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
             }
           }
           joinTwoDivString += '</select>' +
@@ -7096,7 +7241,16 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
+             
             }
           }
           joinTwoDivString += '</select>' +
@@ -7209,7 +7363,15 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              if(DEExtKeyLoop in DEListMap.DEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              }
+              else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              }
             }
           }
           joinTwoDivString += '</select>' +
@@ -7280,19 +7442,22 @@ function changeSchmaPosition(e)
     }
 
     function SecondDEChange() {
+      console.log("SecondDeExt"+secondDEExt);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
+        console.log("SecondDeExt=="+document.getElementById('select-02').value);
+        var secondDEExt=document.getElementById('select-02').value;
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+        if(secondDEExt in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
         }
-       else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+       else if(secondDEExt in DEListMap.SharedDEMap){
           for (var i in DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
         }
-       else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+       else if(secondDEExt in DEListMap.DataViewMap){
           for (var i in DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
@@ -7318,7 +7483,7 @@ function changeSchmaPosition(e)
           console.log("in the ");
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEField').value){
-          console.log("in the 2 ");
+          console.log("in the 2== ");
           JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
         if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
@@ -7470,7 +7635,7 @@ function changeSchmaPosition(e)
       }
       else{
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
           if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -7507,7 +7672,81 @@ function changeSchmaPosition(e)
         }
       }
         }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+              "SecondDEName": DEListMap.SharedDEMap[document.getElementById('select-02').value].DEName,
+              "SecondDEExtKey": document.getElementById('select-02').value,
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
+            });
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+          }
+        }
+      }
+        }
+        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+              "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
+              "SecondDEExtKey": document.getElementById('select-02').value,
+              "SecondDEJoinField": document.getElementById('SecondDEField').value,
+              "JoinedLineDivId":line_ID
+            });
+            var line_Color="#353535";
+            joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+          }
+        }
+      }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
           if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -7544,7 +7783,81 @@ function changeSchmaPosition(e)
             }
           }
         }
-        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DEMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+                "JoinType": document.getElementById('select-01').value,
+                //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
+                "SecondDEExtKey": document.getElementById('select-02').value,
+                "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                "JoinedLineDivId":line_ID
+              });
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+              }
+            }
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
+          if (document.getElementById('select-02').value) {
+        if (document.getElementById('FirstDEField').value) {
+          if (document.getElementById('SecondDEField').value) {
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+                "JoinType": document.getElementById('select-01').value,
+                //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
+                "SecondDEExtKey": document.getElementById('select-02').value,
+                "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                "JoinedLineDivId":line_ID
+              });
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+              }
+            }
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
           console.log('shi jagah shuru');
           if (document.getElementById('select-02').value) {
             console.log('shi jagah shuru2');
@@ -7577,6 +7890,102 @@ function changeSchmaPosition(e)
               //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
 
                   "SecondDEName": DEListMap.DataViewMap[document.getElementById('select-02').value].DEName,
+                  "SecondDEExtKey": document.getElementById('select-02').value,
+                  "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                  "JoinedLineDivId":line_ID
+                });
+                console.log('shi jagah shuru=====');
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+                console.log('shi jagah shuru===-------------');
+              }
+              console.log('shi jagah shuru===---');
+            }
+            console.log('shi jagah shuru-------------');
+          }
+          console.log('shi jagah shuru7');
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DEMap){
+          console.log('shi jagah shuru');
+          if (document.getElementById('select-02').value) {
+            console.log('shi jagah shuru2');
+        if (document.getElementById('FirstDEField').value) {
+          console.log('shi jagah shuru 4');
+          if (document.getElementById('SecondDEField').value) {
+            console.log('shi jagah shuru');
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            console.log('shi jagah shuru7');
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            console.log('shi jagah shuru 8');
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+            console.log('shi jagah shuru 77');
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                  "SecondDEName": DEListMap.DEMap[document.getElementById('select-02').value].DEName,
+                  "SecondDEExtKey": document.getElementById('select-02').value,
+                  "SecondDEJoinField": document.getElementById('SecondDEField').value,
+                  "JoinedLineDivId":line_ID
+                });
+                console.log('shi jagah shuru=====');
+                var line_Color="#353535";
+                joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
+                console.log('shi jagah shuru===-------------');
+              }
+              console.log('shi jagah shuru===---');
+            }
+            console.log('shi jagah shuru-------------');
+          }
+          console.log('shi jagah shuru7');
+        }
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
+          console.log('shi jagah shuru');
+          if (document.getElementById('select-02').value) {
+            console.log('shi jagah shuru2');
+        if (document.getElementById('FirstDEField').value) {
+          console.log('shi jagah shuru 4');
+          if (document.getElementById('SecondDEField').value) {
+            console.log('shi jagah shuru');
+            joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
+            joinedDivSet.add(document.getElementById('select-02').value);
+            console.log('shi jagah shuru7');
+            if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
+              JoinQueryDetails["PrimaryDE"] = {
+                "DEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+                "JoinField": document.getElementById('FirstDEField').value
+              }
+            }
+            console.log('shi jagah shuru 8');
+            //Added by ANIL KUMAR
+            var line_ID=FirstDEExtKeyForJoinGlobal+document.getElementById('select-02').value;  
+            var newLine_Div=document.createElement('div');
+            newLine_Div.id=line_ID;
+            document.getElementById(FirstDEExtKeyForJoinGlobal+"##").appendChild(newLine_Div);
+            console.log('shi jagah shuru 77');
+            JoinQueryDetails["DEForJoin"].push({
+              "FirstDEName": DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEName,
+              "FirstDEExtKey": FirstDEExtKeyForJoinGlobal,
+              "FirstDEJoinField": document.getElementById('FirstDEField').value,
+
+              "JoinType": document.getElementById('select-01').value,
+              //"WhereClauseANDOR": document.getElementById('selectWhereClauseANDOR').value,
+
+                  "SecondDEName": DEListMap.SharedDEMap[document.getElementById('select-02').value].DEName,
                   "SecondDEExtKey": document.getElementById('select-02').value,
                   "SecondDEJoinField": document.getElementById('SecondDEField').value,
                   "JoinedLineDivId":line_ID
