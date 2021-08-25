@@ -7096,7 +7096,7 @@ function changeSchmaPosition(e)
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+              joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
             }
           }
           joinTwoDivString += '</select>' +
