@@ -6072,7 +6072,7 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
+      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0, secondDEExtKey;
       for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
@@ -7091,11 +7091,12 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+secondDEExtKey+')" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
             if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              secondDEExtKey=DEListMap.DEMap[DEExtKeyLoop].DEExtKey;
               joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
             }
           }
@@ -7279,20 +7280,21 @@ function changeSchmaPosition(e)
       document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
     }
 
-    function SecondDEChange() {
+    function SecondDEChange(secondDEExt) {
+      console.log("SecondDeExt"+secondDEExt);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
+        if(secondDEExt in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
         }
-       else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
+       else if(secondDEExt in DEListMap.SharedDEMap){
           for (var i in DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
         }
-       else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
+       else if(secondDEExt in DEListMap.DataViewMap){
           for (var i in DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields) {
             document.getElementById('SecondDEField').innerHTML += '<option value="' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[document.getElementById('select-02').value].DEFields[i]["FieldName"] + '</option>';
           }
