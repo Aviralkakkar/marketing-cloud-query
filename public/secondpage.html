@@ -6466,40 +6466,45 @@ function changeSchmaPosition(e)
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
               if(DEExtKeyLoop in DEListMap.DEMap){
+              
+              
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
 
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                }
+                  else{
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                  }
+                  
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
               }
               if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                
+                
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
 
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                }
+                else{
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
+              
               }
               if(DEExtKeyLoop in DEListMap.DataViewMap){
+                
+                
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
 
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                }
+                else{
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
+              
               }
             }
+          } 
             joinTwoDivString += '</select>' +
             '</div>' +
   
