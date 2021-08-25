@@ -6466,14 +6466,17 @@ function changeSchmaPosition(e)
             '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              console.log("hibye")
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                console.log("hibye2")
               if(DEExtKeyLoop in DEListMap.DEMap){
-              
-              
+                
+                console.log("hibye3")
                 if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
+                  console.log("hibye4")
                 }
                   else{
+                    console.log("hibye5")
                     joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
                   }
                   
