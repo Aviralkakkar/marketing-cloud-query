@@ -6828,7 +6828,9 @@ function changeSchmaPosition(e)
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
               '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
+              console.log("helloDFGWddv");
             for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
+              console.log("helloDFGWs");
             if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
                 console.log("helloDFGW");
             }
