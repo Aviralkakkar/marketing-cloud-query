@@ -7283,6 +7283,7 @@ function changeSchmaPosition(e)
     function SecondDEChange(secondDEExt) {
       console.log("SecondDeExt"+secondDEExt);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
+        console.log("SecondDeExt=="+document.getElementById('select-02').value);
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
         if(secondDEExt in DEListMap.DEMap){
           for (var i in DEListMap.DEMap[document.getElementById('select-02').value].DEFields) {
