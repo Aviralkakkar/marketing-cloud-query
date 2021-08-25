@@ -5101,16 +5101,26 @@ document.addEventListener("mouseup", function(){
             success: function (data) {
               if (actionType == "Validate" && data.IsQueryValid == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
+               
+                            
                 document.getElementById('QueryValidateFalseAlert').style.display = 'none';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                setTimeout(function(){
+                               document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+         }, 5000);
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'none';
                 document.getElementById('msgQueryValidateFalseAlert').innerHTML = 'Query Validate ErrorMsg : ' + data.ErrorMsg;
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
+                
+       
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                 setTimeout(function(){
+          document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+        }, 5000);
 
                 console.log('Query Validate ErrorMsg : ' + data.ErrorMsg);
               }
