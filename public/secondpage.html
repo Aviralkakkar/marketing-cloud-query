@@ -4740,18 +4740,21 @@ document.addEventListener("mouseup", function(){
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
       console.log("draggedDeJoinKey=="+draggedDeJoinKey.size); 
-      console.log("countOfJoinTypeWhere=="+countOfJoinTypeWhere); 
+      console.log("countOfJoinTypeWhere=="+countOfJoinTypeWhere); countOfDeWithoutWhereClauseValueMain
+      console.log("countOfDeWithoutWhereClauseValueMain=="+countOfDeWithoutWhereClauseValueMain);
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
         console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
-       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
+       if(((isSetEqual(DESetQueryBox, draggedDeKey)==0) && (countOfDeWithoutWhereClauseValueMain!=DESetQueryBox))|| (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
           console.log("draggedDeName");
           
           console.log("draggedDeName");
+          
+          
+          document.getElementById('DeDragAlert').style.display = 'Block';
           return
           console.log("after return")
-          document.getElementById('DeDragAlert').style.display = 'Block';
       }
     }
      // console.log("draggedDeName"+draggedDeName);
