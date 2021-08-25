@@ -2568,7 +2568,7 @@
                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
                 </svg>
                 </span>
-                <p id="msgQueryValidateFalseAlert" style="padding: 0; text-align: justify; font-size: small;">
+                <p id="msgQueryValidateFalseAlert" style="padding: 0; text-align: justify; font-size:11px;">
                  
                 </p>
                 <div class="slds-notify__close">
@@ -4746,12 +4746,13 @@ document.addEventListener("mouseup", function(){
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
         console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
-      if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
-        console.log("draggedDeName");
-          document.getElementById('DeDragAlert').style.display = 'Block';
+       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
+          console.log("draggedDeName");
+          
           console.log("draggedDeName");
           return
           console.log("after return")
+          document.getElementById('DeDragAlert').style.display = 'Block';
       }
     }
      // console.log("draggedDeName"+draggedDeName);
@@ -5101,16 +5102,26 @@ document.addEventListener("mouseup", function(){
             success: function (data) {
               if (actionType == "Validate" && data.IsQueryValid == true) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
+               
+                            
                 document.getElementById('QueryValidateFalseAlert').style.display = 'none';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                setTimeout(function(){
+                               document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+         }, 5000);
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
                 document.getElementById('QueryValidateTrueAlert').style.display = 'none';
                 document.getElementById('msgQueryValidateFalseAlert').innerHTML = 'Query Validate ErrorMsg : ' + data.ErrorMsg;
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
+                
+       
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                 setTimeout(function(){
+          document.getElementById("QueryValidateFalseAlert").style.display = 'none';
+        }, 5000);
 
                 console.log('Query Validate ErrorMsg : ' + data.ErrorMsg);
               }
@@ -7106,7 +7117,7 @@ function changeSchmaPosition(e)
   
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01" >' +
+      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
       '<option value="Left Outer Join">Left Outer Join</option>' +
       '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
       '<option value="Right Outer Join">Right Outer Join</option>' +
@@ -7122,7 +7133,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7153,7 +7164,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
             '<option value="">Select…</option>';
   
           for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7170,7 +7181,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
             '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
