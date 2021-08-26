@@ -6086,15 +6086,17 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
+      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0, SecondJoinedDeSet;
       for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
+          SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].SecondDEExtKey)
         }
       }
-      for(var j of joinedDivSet){
+      console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
+      /*for(var j of joinedDivSet){
         console.log("j==="+j)
-      }
+      }*/
       console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
@@ -6486,43 +6488,42 @@ function changeSchmaPosition(e)
               console.log("hibye")
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                
-                console.log("hibye3")
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-                  console.log("hibye4")
-                }
-                  else{
-                    console.log("hibye5")
-                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                for(var deName of SecondJoinedDeSet){
+
+                  if(deName==DEExtKeyLoop){
+                    console.log("hibye2==="+deName)
                   }
-                  
-                
-              }
-              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  else{
+                    if(DEExtKeyLoop in DEListMap.DEMap){
                 
                 
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
-                  console.log("hibye90")
-                }
-                else{
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                
+                        console.log("hibye5")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
               
-              }
-              if(DEExtKeyLoop in DEListMap.DataViewMap){
-                
-                
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-                  console.log("hibye46789")
-                }
-                else{
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                
               
-              }
+                      
+                    }
+                    if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                      
+                      console.log("hibye5==")
+                      
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                    if(DEExtKeyLoop in DEListMap.DataViewMap){
+                      
+                      
+                      console.log("hibye5--")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                  }
+                }
+              
             }
           } 
             joinTwoDivString += '</select>' +
