@@ -12,12 +12,12 @@ var moment = require('moment');
 var xml2js = require('xml2js');
 var xml2jsParser = new xml2js.Parser();
 var DEListMap = {
-  "DEMap": {},
-  "SharedDEMap": {},
-  "DataViewMap": {}
+  "DEMap" : {},
+  "SharedDEMap" : {},
+  "DataViewMap" : {}
 };
-var count = 0;
-var DERecords2 = [];
+var count =0 ;
+var DERecords2=[];
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -43,11 +43,11 @@ app.get("/secondpage", function (req, res) {
 })
 
 app.post("/credential", async function (req, res) {
-  var AuthRequest = {
-    "ClientId": req.body.clientid,
-    "ClientSecret": req.body.clientsecret,
-    "ClinentAuthURL": req.body.authurl
-  }
+   var AuthRequest = {
+    "ClientId" : req.body.clientid,
+    "ClientSecret" : req.body.clientsecret,
+    "ClinentAuthURL" : req.body.authurl
+   }
   //var AuthRequest = {
   //  "ClientId" : "sr7id7zht854bwdco8t9qdym",
   //  "ClientSecret" : "vhmEsBaxDl3LVeqYbLUxsg6p",
@@ -57,7 +57,7 @@ app.post("/credential", async function (req, res) {
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   res.send(AuthResponse);
-
+ 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_EnterpriseAttribute": {
@@ -1299,17 +1299,17 @@ app.post("/credential", async function (req, res) {
           if (error) throw new Error(error);
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-            for (var i in TempDEListFetchResult) {
-              if (!["ExpressionBuilderAttributes", "_MobileAddress", "_MobileSubscription", "_PushAddress", "_PushTag", "_MobileLineAddressContact", "_MobileLineAddress", "_MobileLineProfile", "_MobileLineProfileAttribute", "_MobileLineSubscription", "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])) {
+            for(var i in TempDEListFetchResult) {
+              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" , "_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])) {
                 DEListMap.DEMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
-                  "DEName": TempDEListFetchResult[i]["Name"][0],
-                  "DEFields": []
+                  "DEName" : TempDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
                 }
               }
               else {
                 DEListMap.DataViewMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
-                  "DEName": TempDEListFetchResult[i]["Name"][0],
-                  "DEFields": []
+                  "DEName" : TempDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
                 }
               }
             }
@@ -1391,10 +1391,10 @@ app.post("/credential", async function (req, res) {
             if (error) throw new Error(error);
             xml2jsParser.parseString(response.body, async function (err, result) {
               var TempSharedDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
-              for (var i in TempSharedDEListFetchResult) {
+              for(var i in TempSharedDEListFetchResult) {
                 DEListMap.SharedDEMap[TempSharedDEListFetchResult[i]["CustomerKey"][0]] = {
-                  "DEName": TempSharedDEListFetchResult[i]["Name"][0],
-                  "DEFields": []
+                  "DEName" : TempSharedDEListFetchResult[i]["Name"][0],
+                  "DEFields" : []
                 }
               }
               resolve(DEListMap);
@@ -1429,19 +1429,19 @@ app.post("/credential", async function (req, res) {
             }
             for (var val of Array.from(TempFieldSet)) {
               tempVal = JSON.parse(val);
-              if (tempVal.CustomerKey in DEListMap.DEMap) {
+              if(tempVal.CustomerKey in DEListMap.DEMap) {
                 DEListMap.DEMap[tempVal.CustomerKey].DEFields.push({
                   "FieldName": tempVal.FieldName,
                   "FieldType": tempVal.FieldType
                 });
               }
-              else if (tempVal.CustomerKey in DEListMap.SharedDEMap) {
+              else if(tempVal.CustomerKey in DEListMap.SharedDEMap) {
                 DEListMap.SharedDEMap[tempVal.CustomerKey].DEFields.push({
                   "FieldName": tempVal.FieldName,
                   "FieldType": tempVal.FieldType
                 });
               }
-              else if (tempVal.CustomerKey in DEListMap.DataViewMap) {
+              else if(tempVal.CustomerKey in DEListMap.DataViewMap) {
                 DEListMap.DataViewMap[tempVal.CustomerKey].DEFields.push({
                   "FieldName": tempVal.FieldName,
                   "FieldType": tempVal.FieldType
@@ -1478,58 +1478,60 @@ app.post("/credential", async function (req, res) {
       if (error) throw new Error(error);
       if (actionType == "Validate" && JSON.parse(response.body).queryValid == true) {
         resCall.send({
-          'IsQueryValid': JSON.parse(response.body).queryValid,
-          'ErrorMsg': ''
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : ''
         });
       }
       else if (actionType == "Validate" && JSON.parse(response.body).queryValid == false) {
         resCall.send({
-          'IsQueryValid': JSON.parse(response.body).queryValid,
-          'ErrorMsg': JSON.parse(response.body).errors[0].message
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : JSON.parse(response.body).errors[0].message
         });
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == true) {
         resCall.send({
-          'IsQueryValid': JSON.parse(response.body).queryValid,
-          'ErrorMsg': ''
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : ''
         });
         var FolderCheckResult = await FolderCheck();
         var ParentFolderCatagoryID = '';
         var ChildFolderCatagoryID = '';
         var DECreateResult;
-        for (var key in FolderCheckResult) {
-          if (FolderCheckResult[key]["Name"][0] == "Data Extensions" && FolderCheckResult[key]["CustomerKey"][0] == "dataextension_default") {
+        for(var key in FolderCheckResult) {
+          if(FolderCheckResult[key]["Name"][0] == "Data Extensions" && FolderCheckResult[key]["CustomerKey"][0] == "dataextension_default") {
             ParentFolderCatagoryID = FolderCheckResult[key]["ID"][0];
           }
-          if (FolderCheckResult[key]["Name"][0] == "Query App") {
+          if(FolderCheckResult[key]["Name"][0] == "Query App") {
             ChildFolderCatagoryID = FolderCheckResult[key]["ID"][0];
           }
         }
-        if (ChildFolderCatagoryID != '') {
-          DECreateResult = await DECreate(NewDEFieldsList, ChildFolderCatagoryID);
+        if(ChildFolderCatagoryID != '') {
+          DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
         else {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
-          DECreateResult = await DECreate(NewDEFieldsList, ChildFolderCatagoryID);
+          DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
+        console.log('DECreateResult : ' + DECreateResult);
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
-        console.log('Result ID: ' + DECreateResultObjectID + ' NewDENAme ' + NewDEName + ' dynamicQuery ' + dynamicQuery);
+        console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
+        
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
-        console.log('TaskId ' + taskId);
+        console.log('TaskId '+taskId);
         if (taskId) {
-          DERecords2 = [];
+            DERecords2=[];
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
-            console.log('outside if ' + queryStatus);
+            console.log('outside if '+queryStatus);
             if (queryStatus == "Complete") {
               count = 1;
-              console.log('----' + count + '-----');
-              console.log('Inside if ' + NewDEName);
-
-              DERecords = await getDERecords(NewDEName);
-              DERecords2 = DERecords;
-              console.log('Records Server ' + JSON.stringify(DERecords));
+              console.log('----'+count+'-----');
+              console.log('Inside if '+NewDEName);
+      
+               DERecords = await getDERecords(NewDEName);
+                DERecords2=DERecords;
+               console.log('Records Server '+JSON.stringify(DERecords));
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1537,25 +1539,26 @@ app.post("/credential", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get' + queryStatus + ' ' + count);
-            if (queryStatus != "Complete" && count != 1) {
+            console.log('In Derecord get'+queryStatus+' '+count );
+            if (queryStatus != "Complete" && count!=1) {
               resCall1.send("false");
             }
-            else if (count != 1) {
-              resCall1.send("false");
+            else if(count!=1)
+            {
+               resCall1.send("false");
             }
             else {
-              console.log('Server Side ' + JSON.stringify(DERecords2));
+                 console.log('Server Side '+JSON.stringify(DERecords2));
               resCall1.send(DERecords2);
-              count = 0;
+              count=0;
             }
           })
         }
       }
       else if (actionType == "Run" && JSON.parse(response.body).queryValid == false) {
         resCall.send({
-          'IsQueryValid': JSON.parse(response.body).queryValid,
-          'ErrorMsg': JSON.parse(response.body).errors[0].message
+          'IsQueryValid' : JSON.parse(response.body).queryValid,
+          'ErrorMsg' : JSON.parse(response.body).errors[0].message
         });
       }
     });
@@ -1602,7 +1605,7 @@ app.post("/credential", async function (req, res) {
       })
     }
 
-    async function DECreate(NewDEFieldsList, ChildFolderCatagoryID) {
+    async function DECreate(NewDEFieldsList , ChildFolderCatagoryID) {
       return new Promise(function (resolve, reject) {
         var DEListBody = '<?xml version="1.0" encoding="UTF-8"?>' +
           '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
@@ -1708,8 +1711,10 @@ app.post("/credential", async function (req, res) {
           },
           body: DEListBody
         };
+        console.log('DEListBody : ' + DEListBody);
         request(DEListOption, async function (error, response) {
           if (error) throw new Error(error);
+          console.log('response.body : ' + response.body);
           xml2jsParser.parseString(response.body, function (err, result) {
             resolve(result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results']);
           });
@@ -1790,7 +1795,7 @@ app.post("/credential", async function (req, res) {
         //var NextUrl;
         var DEDataOptions = {
           'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/' + key + '/rowset/',
+          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/'+key+'/rowset/',
           'headers': {
             'Authorization': 'Bearer ' + AuthResponse.AccessToken
           }
@@ -1893,33 +1898,33 @@ app.post("/credential", async function (req, res) {
       })
     }
   })
-
+  
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
-        axios.post(AuthRequest.ClinentAuthURL + 'v2/token',
-          {
-            'client_id': AuthRequest.ClientId,
-            'client_secret': AuthRequest.ClientSecret,
-            'grant_type': 'client_credentials'
-          })
-          .then((response) => {
-            resolve({
-              'AccessToken': response.data.access_token,
-              'RestURL': response.data.rest_instance_url,
-              'SoapURL': response.data.soap_instance_url
+        axios.post( AuthRequest.ClinentAuthURL + 'v2/token',
+        {
+          'client_id': AuthRequest.ClientId,
+          'client_secret': AuthRequest.ClientSecret,
+          'grant_type': 'client_credentials'
+        })
+        .then((response) => {
+          resolve({
+              'AccessToken' : response.data.access_token,
+              'RestURL' : response.data.rest_instance_url,
+              'SoapURL' : response.data.soap_instance_url
             });
-          },
-            (error) => {
-              var errorMessage = {
-                error: "This is error"
-              };
-              res.send(errorMessage);
-            })
+        },
+        (error) => {
+          var errorMessage={
+            error:"This is error"
+          };
+          res.send(errorMessage);
+        })
 
       });
     }
-    catch (err) {
+    catch (err) { 
     }
   }
 });

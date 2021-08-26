@@ -2426,44 +2426,87 @@
         </div>
         <!--Khushboo code ended -->
  <!-- Khushboo Refresh Model  -->
-        <div style="display: none;" id="refreshModal">
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-          <div class="slds-modal__container" style="width: 400px;">
-            <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
-              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelRefreshModel()" style=" position: sticky; margin-left: 90%;"> 
-                <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
-                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-              </button> 
-              <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
-            </header>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div class="slds-grid">
-            <div class="slds-col">
-            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;margin-right:10px;">
-              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-            </svg>
-          </div>
-          <div class="slds-col">
-            <p style="color: #16325c;font-size: 14px;">  Refreshing page means you will loose your all current changes.This action cannot be undo. Click Refresh to continue.</p>
-            <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
-          </div>
-          </div>
-        </div>
-          <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
-          <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
-          line-height: 20px;
-          color: #4e8abe">Cancel</button>
-          <button class="slds-button slds-button_brand" onclick="refreshMethod()" style="font-size: 11px;
-          line-height: 20px;
-          color: #edf5fa;">Refresh</button>
-          </footer>
-          </div>
-          </section>
-          <div class="slds-backdrop slds-backdrop_open"></div>
-        </div>
+        
+ <div style="display: none;" id="refreshModal">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container" style="width: 400px;">
+      <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelRefreshModel()" style=" position: sticky; margin-left: 90%;"> 
+          <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+            <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button> 
+        <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
+      </header>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      <div class="slds-grid">
+        <div class="slds-col" style="width: 10%;">
+        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;/* margin-right: 1px; */">
+          <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+        </svg>
+      </div>
+      <div class="slds-col" style="width: 90%;">
+        <p style="color: #16325c;font-size: 14px;">Refreshing page means you will loose your all current changes.This action cannot be undo.</p>
+        <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
+      </div>
+      </div>
+  </div>
+    <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
+    <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
+    line-height: 20px;
+    color: #4e8abe">Cancel</button>
+    <button class="slds-button slds-button_brand" onclick="refreshMethod()" style="font-size: 11px;
+    line-height: 20px;
+    color: #edf5fa;">Refresh</button>
+    </footer>
+    </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
         <!-- Khushboo Refresh Model  ended-->
+        
+        
+         <!--Khushboo query box warning -->
+
+        <div style="display: none;" id="deleteModal">
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 400px;">
+              <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelQueryBoxDeleteModel()" style=" position: sticky; margin-left: 90%;"> 
+                  <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                </button> 
+                <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
+              </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+              <div class="slds-grid">
+                <div class="slds-col" style="width: 10%;">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;/* margin-right: 1px; */">
+                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                </svg>
+              </div>
+              <div class="slds-col" style="width: 90%;">
+                <p style="color: #16325c;font-size: 14px;">The Query Box will be permanently deleted.</p>
+                <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
+              </div>
+              </div>
+          </div>
+            <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
+            <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
+            line-height: 20px;
+            color: #4e8abe">Cancel</button>
+            <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshModalDisplayForQueryDiv()" style="font-size: 11px;
+            line-height: 20px;
+            color: #edf5fa;">Delete</button>
+            </footer>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+          </div>
+        <!--Khushboo query box warning ended -->
         
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
@@ -2758,7 +2801,7 @@
                         
                           
                         </header-->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                        <!--div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2776,7 +2819,7 @@
                           <span class="slds-assistive-text">Close</span>
                           </button>
                           </div>
-                          </div>
+                          </div-->
                           <div  id="DeDragAlert" style="display:none; background: white;">
                             <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
                             width: 100%;
@@ -2868,8 +2911,7 @@
                                 style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
                                 contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
                                
-                                    <div class="expression"></div>
-                                    <div id="expression-free-drop" class="ui-droppable" style="bottom: auto; top: 91px;"></div>
+                                  
                                     
                               </div>
                               
@@ -3858,7 +3900,7 @@
                         else if(NameOfDe in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[ent.' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause-="+FieldWhereClause);
                           }
                         }
@@ -3881,7 +3923,7 @@
               document.getElementById("DEWhereClauseModal").style.display = "block"
               document.getElementById("DEWhereClauseModal").classList.add("show")
             } 
-            else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue ==1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
+            else if(((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(isSetEqual(DESetQueryBox, joinedDivSet)) &&(countOfDeWithoutWhereClauseValue >1)) || ((countOfDeWithoutWhereClauseValue==DESetQueryBox.size) &&(countOfDeWithoutWhereClauseValue >=1)) ||((countOfDeWithWhereClauseValue==1) && (DESetQueryBox.size == 1)) ||((countOfDeWithoutWhereClauseValue == (DESetQueryBox.size-1)) && (countOfDeWithWhereClauseValue==1 ) && (isSetEqual(DESetQueryBox, joinedDivSet)))){
               console.log('calling function validate query');
               document.getElementById('DEWhereClauseModal').style.display = 'none';
               validateQuery(JoinQueryDetails , functionAction);
@@ -4302,12 +4344,35 @@ document.addEventListener("mouseup", function(){
     
     
      //*********** Refresh Method starts *************//
+  
+    function cancelQueryBoxDeleteModel()
+    {
+      document.getElementById('deleteModal').style.display='none';
+    }
+    function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
+    {
+      document.getElementById('deleteModal').style.display='block';
+      document.getElementById('refreshId').addEventListener('click',function()
+      {
+        refreshQueryDiv(DEExtKeyFordeleteDiv);
+      });
+    }
+    function refreshQueryDiv(DEExtKeyFordeleteDiv)
+    {
+      
+          deleteDiv(DEExtKeyFordeleteDiv);
+      
+      document.getElementById('deleteModal').style.display='none';
+      
+    }
      function refreshModalDisplay()
     {
          var obj  =  document.querySelectorAll('.myRefreshClass');
         document.getElementById('refreshModal').style.display='none';
+        console.log('Inside refresh modal '+obj.length);
       if(obj.length!=0)
       {
+        console.log('Inside if working good');
       document.getElementById('refreshModal').style.display='block';
       }
       //var ele = document.getElementById('runQueryAlert').style.display;
@@ -4643,7 +4708,7 @@ document.addEventListener("mouseup", function(){
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[ent.' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
@@ -4741,18 +4806,21 @@ document.addEventListener("mouseup", function(){
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
       console.log("draggedDeJoinKey=="+draggedDeJoinKey.size); 
-      console.log("countOfJoinTypeWhere=="+countOfJoinTypeWhere); 
+      console.log("countOfJoinTypeWhere=="+countOfJoinTypeWhere); countOfDeWithoutWhereClauseValueMain
+      console.log("countOfDeWithoutWhereClauseValueMain=="+countOfDeWithoutWhereClauseValueMain);
       console.log("JoinQueryDetails.DEForJoin=="+JoinQueryDetails.DEForJoin.length);
       //var lengthOfJoinDE= JoinQueryDetails.DEForJoin.length;
       if( DESetQueryBox.size>1 ){
         console.log("draggedDeName"+isSetEqual(DESetQueryBox, draggedDeKey));
-       if((isSetEqual(DESetQueryBox, draggedDeKey)==0) || (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
+       if(((isSetEqual(DESetQueryBox, draggedDeKey)==0) && (countOfDeWithoutWhereClauseValueMain!=DESetQueryBox.size) && (countOfDeWithWhereClauseValueMain!=1))|| (draggedDeJoinKey.size!= countOfJoinTypeWhere) ){
           console.log("draggedDeName");
           
           console.log("draggedDeName");
+          
+          
+          document.getElementById('DeDragAlert').style.display = 'Block';
           return
           console.log("after return")
-          document.getElementById('DeDragAlert').style.display = 'Block';
       }
     }
      // console.log("draggedDeName"+draggedDeName);
@@ -4825,15 +4893,15 @@ document.addEventListener("mouseup", function(){
               }
               console.log(" strQuery1= "+strQuery );
             }
-          else if (k in DEListMap.SharedDEMap) {
-            console.log("in the else-if");
-            for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-              console.log("in the for3");
-              strQuery += ' [ent.' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+            else if (k in DEListMap.SharedDEMap) {
+              console.log("in the else-if");
+              for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
+                console.log("in the for3");
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+              }
+              console.log(" strQuery2= "+strQuery );
             }
-            console.log(" strQuery2= "+strQuery );
-          }
-          else if (k in DEListMap.DataViewMap) {
+            else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4");
@@ -4841,12 +4909,14 @@ document.addEventListener("mouseup", function(){
               }
               console.log(" strQuery3="+strQuery );
             }
-           
+            
+          
+    
         }
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);   
         if(JoinQueryDetails.PrimaryDE.DEName in DEListMap.SharedDEMap)  {
-          strQuery += ' FROM [ent.' + JoinQueryDetails.PrimaryDE.DEName + ']';
+          strQuery += ' FROM ent.[' + JoinQueryDetails.PrimaryDE.DEName + ']';
         }   
         else{
           strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
@@ -4858,7 +4928,7 @@ document.addEventListener("mouseup", function(){
         console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField, JoinQueryDetails.DEForJoin[key].FirstDEExtKey, JoinQueryDetails.DEForJoin[key].SecondDEExtKey);
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
        // strQuery +="Where field 1 is null" ;
         console.log(" strQuery23==="+strQuery);
@@ -4866,14 +4936,14 @@ document.addEventListener("mouseup", function(){
           console.log("in the first");
             
         }
-        else if(countOfDeWithWhereClauseValueMain==1){
+        /*else if(countOfDeWithWhereClauseValueMain==1){
           console.log("in the second");
           var clause=document.getElementById('RichTextEditorForFinalWhereClause').innerHTML ;
           console.log("clause"+ clause);
           strQuery=strQuery+clause; 
 
-        }
-        else if(countOfDeWithWhereClauseValueMain>1){
+        }*/
+        else if(countOfDeWithWhereClauseValueMain>1 || countOfDeWithWhereClauseValueMain==1){
           console.log("in the thui");
           /*if(strQuery.search("WHERE")<1){
             console.log("in the if of search");
@@ -5150,41 +5220,30 @@ document.addEventListener("mouseup", function(){
         document.getElementById('DEListSidebar').style.marginTop = '0px';
       }
 
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField, FirstDEExtKey, SecondDEExtKey) {
-        if(FirstDEExtKey in DEListMap.SharedDEMap){
-          QueryNameOfFirstDE="ent."+FirstDE;
-       }
-        else{
-          QueryNameOfFirstDE=FirstDE;
-        }
-       if(SecondDEExtKey in DEListMap.SharedDEMap){
-        QueryNameOfSecondDE="ent."+SecondDE;
-         }               
-        else{
-          QueryNameOfSecondDE=SecondDE;
-        }
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
+      
         if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
           // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
@@ -5840,7 +5899,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplayForQueryDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
@@ -6083,16 +6142,27 @@ function changeSchmaPosition(e)
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
+      var SecondJoinedDeSet= new Set();
       for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
+          console.log("in the 1st iff")
+          SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].SecondDEExtKey)
+        }
+        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
+          console.log("in the 2nd iff")
+          SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].FirstDEExtKey)
         }
       }
+      console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
+      /*for(var j of joinedDivSet){
+        console.log("j==="+j)
+      }*/
       console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
-      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal) && CountOfFirstDEExtKeyForJoin<=1 ){
+      if(joinedDivSet.has(FirstDEExtKeyForJoinGlobal) ){
         /*for (const val of joinedDivSet) {
           console.log('joinedDivSet===='+val);
         }*/
@@ -6141,8 +6211,8 @@ function changeSchmaPosition(e)
   
               '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-        '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
             for(var i=0;i<7;i++){
               if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
 
@@ -6152,7 +6222,7 @@ function changeSchmaPosition(e)
                 }
             }
          
-          joinTwoDivString += '</select>' +
+             joinTwoDivString += '</select>' +
             '</div>' +
   
   
@@ -6161,25 +6231,56 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
-  
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
-            }
-            else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-              }
-            }
-          }
-          joinTwoDivString += '</select>' +
+              '<option value="">Select..</option>';
+             
+             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+               var counter=0;
+               console.log("hibye="+DEExtKeyLoop)
+               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                 console.log("hibye2")
+                 for(var deName of SecondJoinedDeSet){
+                   console.log("hibye2="+deName)
+                   if(deName==DEExtKeyLoop){
+                     console.log("hibye2==="+deName)
+                     counter=1;
+                     
+                   }
+                 }
+                 if(counter==0){
+                   
+                     if(DEExtKeyLoop in DEListMap.DEMap){
+                 
+                 
+                         console.log("hibye5")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
+               
+                       
+                     }
+                     if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                       
+                       console.log("hibye5==")
+                       
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                     if(DEExtKeyLoop in DEListMap.DataViewMap){
+                       
+                       
+                       console.log("hibye5--")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                   
+                 }
+               
+               }
+             } 
+             joinTwoDivString += '</select>' +
             '</div>' +
   
       
@@ -6199,19 +6300,19 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
-  
-            for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("hello");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+           
+           
 
-            }
-            
-          }
-          joinTwoDivString += '</select>' +
+            '<option value="">Select..</option>';
+  
+              for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+                joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+
+              
+              
+               }
+            joinTwoDivString += '</select>' +
             '</div>' +
   
   
@@ -6223,19 +6324,8 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("helloDFGW");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-
-             
-            }
-            
-          }
-          joinTwoDivString += '</select>' +
+            '<option value="">Select…</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -6249,7 +6339,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6293,17 +6383,17 @@ function changeSchmaPosition(e)
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-              '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
 
             '</div>' +
   
@@ -6316,41 +6406,53 @@ function changeSchmaPosition(e)
             '<option value="">Select..</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              var counter=0;
+              console.log("hibye="+DEExtKeyLoop)
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                console.log("hibye2")
+                for(var deName of SecondJoinedDeSet){
+                  console.log("hibye2="+deName)
+                  if(deName==DEExtKeyLoop){
+                    console.log("hibye2==="+deName)
+                    counter=1;
+                    
+                  }
+                }
+                if(counter==0){
+                  
+                    if(DEExtKeyLoop in DEListMap.DEMap){
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
-              }
-              if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-               
+                        console.log("hibye5")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              
+              
+                      
+                    }
+                    if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                      
+                      console.log("hibye5==")
+                      
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                    if(DEExtKeyLoop in DEListMap.DataViewMap){
+                      
+                      
+                      console.log("hibye5--")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                  
+                }
+              
               }
-
-              }
-              if(DEExtKeyLoop in DEListMap.DataViewMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-               
-              }
-
-              }
-            }
-          joinTwoDivString += '</select>' +
+            } 
+            joinTwoDivString += '</select>' +
             '</div>' +
   
       
@@ -6407,7 +6509,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6473,51 +6575,55 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
-  
+            '<option value="">Select..</option>';
+             
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              console.log("hibye")
+              var counter=0;
+              console.log("hibye="+DEExtKeyLoop)
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                
-                console.log("hibye3")
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-                  console.log("hibye4")
-                }
-                  else{
-                    console.log("hibye5")
-                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                for(var deName of SecondJoinedDeSet){
+                  console.log("hibye2="+deName)
+                  if(deName==DEExtKeyLoop){
+                    console.log("hibye2==="+deName)
+                    counter=1;
+                    
                   }
+                }
+                if(counter==0){
                   
-                
-              }
-              if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                    if(DEExtKeyLoop in DEListMap.DEMap){
                 
                 
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
-
+                        console.log("hibye5")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              
+              
+                      
+                    }
+                    if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                      
+                      console.log("hibye5==")
+                      
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                    if(DEExtKeyLoop in DEListMap.DataViewMap){
+                      
+                      
+                      console.log("hibye5--")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                  
                 }
-                else{
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                
               
               }
-              if(DEExtKeyLoop in DEListMap.DataViewMap){
-                
-                
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
-                }
-                else{
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                
-              
-              }
-            }
-          } 
+            } 
             joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -6533,16 +6639,13 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-              '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+              '<option value="">Select..</option>';
   
               for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-              if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                  console.log("hello");
-              }
-              else{
+              
                 joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
-              }
+              
               
             }
             joinTwoDivString += '</select>' +
@@ -6556,48 +6659,8 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-              '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-              if(SecondDEExtKeyForJoinGlobal in DEListMap.SharedDEMap){
-                for (var i in DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("helloDFGW");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-
-             
-            }
-          }
-          }
-          else if(SecondDEExtKeyForJoinGlobal in DEListMap.DEMap){
-            for (var i in DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("helloDFGW");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-
-             
-            }
-          }
-          }
-          else if(SecondDEExtKeyForJoinGlobal in DEListMap.DataViewMap){
-            for (var i in DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("helloDFGW");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-
-             
-            }
-            
-          }
-          }
-          
-              
-         
-          joinTwoDivString += '</select>' +
+            '<option value="">Select…</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -6611,7 +6674,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6659,14 +6722,14 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
   
             '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
 
             '</div>' +
   
@@ -6677,46 +6740,55 @@ function changeSchmaPosition(e)
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
               '<option value="">Select..</option>';
-  
-            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+             
+             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+               var counter=0;
+               console.log("hibye="+DEExtKeyLoop)
+               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                 console.log("hibye2")
+                 for(var deName of SecondJoinedDeSet){
+                   console.log("hibye2="+deName)
+                   if(deName==DEExtKeyLoop){
+                     console.log("hibye2==="+deName)
+                     counter=1;
+                     
+                   }
+                 }
+                 if(counter==0){
+                   
+                     if(DEExtKeyLoop in DEListMap.DEMap){
+                 
+                 
+                         console.log("hibye5")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
                
-              }
-
-              }
-              if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
                
-              }
-
-              }
-              if(DEExtKeyLoop in DEListMap.DataViewMap){
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                     }
+                     if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                       
+                       console.log("hibye5==")
+                       
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                     if(DEExtKeyLoop in DEListMap.DataViewMap){
+                       
+                       
+                       console.log("hibye5--")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                   
+                 }
                
-              }
-
-              }
-
-
-           
-            }
-            joinTwoDivString += '</select>' +
+               }
+             } 
+             joinTwoDivString += '</select>' +
             '</div>' +
   
             '</div>' +
@@ -6768,7 +6840,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6837,25 +6909,56 @@ function changeSchmaPosition(e)
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           
   
-            '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEName +'</option>';
-  
-            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              if(JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
-              }
-              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-                }
-                else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-                }
-              }
-            }
-            joinTwoDivString += '</select>' +
+              '<option value="">Select..</option>';
+             
+             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+               var counter=0;
+               console.log("hibye="+DEExtKeyLoop)
+               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                 console.log("hibye2")
+                 for(var deName of SecondJoinedDeSet){
+                   console.log("hibye2="+deName)
+                   if(deName==DEExtKeyLoop){
+                     console.log("hibye2==="+deName)
+                     counter=1;
+                     
+                   }
+                 }
+                 if(counter==0){
+                   
+                     if(DEExtKeyLoop in DEListMap.DEMap){
+                 
+                 
+                         console.log("hibye5")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+               
+               
+                       
+                     }
+                     if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                       
+                       console.log("hibye5==")
+                       
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                     if(DEExtKeyLoop in DEListMap.DataViewMap){
+                       
+                       
+                       console.log("hibye5--")
+                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                     }
+                   
+                 }
+               
+               }
+             } 
+             joinTwoDivString += '</select>' +
             '</div>' +
   
             '</div>' +
@@ -6870,19 +6973,17 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-              '<option value="'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].FirstDEJoinField +'</option>';
+            '<option value="">Select</option>';
   
             for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField==DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("hello");
-            }
-            else{
+           
               joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
-            }
             
-          }
-          joinTwoDivString += '</select>' +
+            
+            }
+            joinTwoDivString += '</select>' +
+          
             '</div>' +
   
   
@@ -6893,19 +6994,8 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-              '<option value="'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'">'+ JoinQueryDetails.DEForJoin[key].SecondDEJoinField +'</option>' ;
-            for (var i in DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields) {
-            if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField==DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"]){
-                console.log("helloDFGW");
-            }
-            else{
-              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[SecondDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-
-             
-            }
-            
-          }
-          joinTwoDivString += '</select>' +
+            '<option value="">Select…</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -6919,7 +7009,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6932,8 +7022,8 @@ function changeSchmaPosition(e)
           console.log(" JoinQueryDetails.DEForJoin[key].SecondDEName=="+ JoinQueryDetails.DEForJoin[key].SecondDEName);
          
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-            '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<div class="slds-modal__container">' +
+          '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
           ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
@@ -6969,14 +7059,14 @@ function changeSchmaPosition(e)
   
             '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
              
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -6988,22 +7078,53 @@ function changeSchmaPosition(e)
               '<option value="">Select..</option>';
   
               for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
-                }
-                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  if(DEExtKeyLoop in DEListMap.DEMap){
-                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-                  }
-                  else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-                  }
-                  else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+              var counter=0;
+              console.log("hibye="+DEExtKeyLoop)
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                console.log("hibye2")
+                for(var deName of SecondJoinedDeSet){
+                  console.log("hibye2="+deName)
+                  if(deName==DEExtKeyLoop){
+                    console.log("hibye2==="+deName)
+                    counter=1;
+                    
                   }
                 }
+                if(counter==0){
+                  
+                    if(DEExtKeyLoop in DEListMap.DEMap){
+                
+                
+                        console.log("hibye5")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+              
+              
+                      
+                    }
+                    if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                      
+                      console.log("hibye5==")
+                      
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                    if(DEExtKeyLoop in DEListMap.DataViewMap){
+                      
+                      
+                      console.log("hibye5--")
+                        joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                      
+                      
+                    
+                    }
+                  
+                }
+              
               }
-              joinTwoDivString += '</select>' +
+            } 
+            joinTwoDivString += '</select>' +
             '</div>' +
   
             '</div>' +
@@ -7041,7 +7162,7 @@ function changeSchmaPosition(e)
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
               '<option value="">Select…</option>' +
-            '</select>' +l
+            '</select>' +
             '</div>' +
   
   
@@ -7055,7 +7176,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery('+key+')">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -7080,8 +7201,9 @@ function changeSchmaPosition(e)
                      
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-            '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          
+          '<div class="slds-modal__container">' +
+          '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
           ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
@@ -7095,6 +7217,42 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
+				
+       
+                            
+                             
+                              
+                             
+                             
+                             
+                              
+                              
+                             
+                              
+                              
+                             
+                             
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7113,45 +7271,46 @@ function changeSchmaPosition(e)
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
             '</div>' +
   
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-  
+            
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
             '<option value="">Select…</option>';
   
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                if(DEExtKeyLoop in DEListMap.DEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
               }
             }
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
-  
-            '</div>' +
-  
+            joinTwoDivString += '</select>' +
+            
+              '</div>' +
+    
+              '</div>' +
+    
            
 
   
@@ -7160,16 +7319,18 @@ function changeSchmaPosition(e)
             '<div class="slds-grid slds-wrap">' +
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
+           
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
             '<option value="">Select…</option>';
   
-          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
+            for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            }
+            joinTwoDivString += '</select>' +
+            
+              '</div>' +
   
   
       
@@ -7177,11 +7338,13 @@ function changeSchmaPosition(e)
   
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
+             
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
             '<option value="">Select…</option>' +
             '</select>' +
+            
             '</div>' +
   
   
@@ -7198,6 +7361,7 @@ function changeSchmaPosition(e)
             '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
+            
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
@@ -7254,26 +7418,26 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">Select…</option>';
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<option value=" ">Select…</option>';
   
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                if(DEExtKeyLoop in DEListMap.DEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
+              
               }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
-              }
-             
             }
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
-  
+            joinTwoDivString += '</select>' +
+              '</div>' +
+    
             '</div>' +
   
   
@@ -7285,14 +7449,14 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="">Select…</option>';
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<option value=" ">Select…</option>';
   
-          for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
+            for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            }
+            joinTwoDivString += '</select>' +
+              '</div>' +
   
   
   
@@ -7301,8 +7465,8 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">Select…</option>' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
+            '<option value=" ">Select…</option>' +
             '</select>' +
             '</div>' +
   
@@ -7376,23 +7540,23 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">Select…</option>';
-  
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<option value=" ">Select…</option>';
+    
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                if(DEExtKeyLoop in DEListMap.DEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
               }
             }
-          }
-          joinTwoDivString += '</select>' +
+            joinTwoDivString += '</select>' +
             '</div>' +
   
             '</div>' +
@@ -7406,15 +7570,15 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-            '<option value="">Select…</option>';
-  
-          for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
-  
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<option value=" ">Select…</option>';
+    
+            for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            }
+            joinTwoDivString += '</select>' +
+              '</div>' +
+    
   
            
   
@@ -7423,8 +7587,8 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">Select…</option>' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
+            '<option value=" ">Select…</option>' +
             '</select>' +
             '</div>' +
   
@@ -7491,8 +7655,9 @@ function changeSchmaPosition(e)
     }
     
 
-    function SaveJoinQuery(keyForDEField) {
-      console.log('keyForDEField==============='+keyForDEField);
+    function SaveJoinQuery() {
+     // console.log('keyForDEField==============='+keyForDEField);
+      /*
       if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName==document.getElementById('select-02').value){
         console.log('keyForDEField'+keyForDEField);
         if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
@@ -7526,8 +7691,13 @@ function changeSchmaPosition(e)
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-    
-      else{
+    */
+     // else{
+      console.log('heyya11');
+      if (document.getElementById('select-02').value=="") {
+        console.log('heyyaaaa');
+        document.getElementById('errorBlockOfJoinModalWindow').style.display = 'Block';
+      }
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
           if (document.getElementById('select-02').value) {
@@ -7566,7 +7736,7 @@ function changeSchmaPosition(e)
         }
       }
         }
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
           if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -7603,7 +7773,7 @@ function changeSchmaPosition(e)
         }
       }
         }
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
+        else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
           if (document.getElementById('select-02').value) {
         if (document.getElementById('FirstDEField').value) {
           if (document.getElementById('SecondDEField').value) {
@@ -7897,7 +8067,7 @@ function changeSchmaPosition(e)
         }
 
       document.getElementById('ThirdModal').style.display = 'none';
-      }
+     // }
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
