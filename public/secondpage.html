@@ -6484,8 +6484,9 @@ function changeSchmaPosition(e)
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
-  
+             
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              var counter=0;
               console.log("hibye="+DEExtKeyLoop)
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
@@ -6493,9 +6494,12 @@ function changeSchmaPosition(e)
                   console.log("hibye2="+deName)
                   if(deName==DEExtKeyLoop){
                     console.log("hibye2==="+deName)
-                    break;
+                    counter=1;
+                    
                   }
-                  else{
+                }
+                if(counter==0){
+                  
                     if(DEExtKeyLoop in DEListMap.DEMap){
                 
                 
@@ -6523,7 +6527,7 @@ function changeSchmaPosition(e)
                       
                     
                     }
-                  }
+                  
                 }
               
             }
