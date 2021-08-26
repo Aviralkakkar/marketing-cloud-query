@@ -8286,7 +8286,7 @@ function changeSchmaPosition(e)
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
 
-      document.getElementById('deleteModal').style.display='block';
+     
      
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
@@ -8331,14 +8331,14 @@ function changeSchmaPosition(e)
             }
           }
         }
-        document.getElementById('refreshId').addEventListener('click',function(){
+    
 
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
 		console.log('new log '+  document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
-		 document.getElementById('deleteModal').style.display='none';
-      });
+		
+     
         }
     }
 
