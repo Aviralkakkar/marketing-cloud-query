@@ -5900,7 +5900,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplayForQueryDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
@@ -8249,6 +8249,9 @@ function changeSchmaPosition(e)
     }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
+
+      document.getElementById('deleteModal').style.display='block';
+     
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
 
@@ -8292,12 +8295,15 @@ function changeSchmaPosition(e)
             }
           }
         }
+        document.getElementById('refreshId').addEventListener('click',function(){
+
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
-	      console.log('Final value '+ document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
+      });
         }
     }
+
     function CancelErrorBlockOfJoinModalWindow() {
       document.getElementById('errorBlockOfJoinModalWindow').style.display = 'none';
     }
