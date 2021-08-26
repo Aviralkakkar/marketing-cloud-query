@@ -7198,8 +7198,9 @@ function changeSchmaPosition(e)
                      
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap){
           joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-            '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+          '<form action="/action_page.php">'+
+          '<div class="slds-modal__container">' +
+          '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
           ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
@@ -7213,6 +7214,7 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7246,7 +7248,7 @@ function changeSchmaPosition(e)
   
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-            '<form action="#" method="post">'+
+            
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
@@ -7266,7 +7268,7 @@ function changeSchmaPosition(e)
               }
             }
             joinTwoDivString += '</select>' +
-            '</form>'+
+            
               '</div>' +
     
               '</div>' +
@@ -7279,7 +7281,7 @@ function changeSchmaPosition(e)
             '<div class="slds-grid slds-wrap">' +
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
-            '<form action="#" method="post">'+
+           
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
@@ -7289,7 +7291,7 @@ function changeSchmaPosition(e)
               joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
             }
             joinTwoDivString += '</select>' +
-            '</form>'+
+            
               '</div>' +
   
   
@@ -7298,13 +7300,13 @@ function changeSchmaPosition(e)
   
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
-              '<form action="#" method="post">'+
+             
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
             '<option value=" ">Select…</option>' +
             '</select>' +
-            '</form>'+
+            
             '</div>' +
   
   
@@ -7321,6 +7323,7 @@ function changeSchmaPosition(e)
             '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
             '</footer>' +
             '</div>' +
+            '</form>'+
             '</section>' +
             '<div class="slds-backdrop slds-backdrop_open"></div>';
           }
