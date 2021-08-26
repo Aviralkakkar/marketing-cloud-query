@@ -8334,6 +8334,12 @@ function changeSchmaPosition(e)
     
 	  document.getElementById('deleteId').addEventListener('click',function(){
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
+		   console.log('Set values started ');
+          for (var item of DESetQueryBox.values())
+              {
+                console.log(item);
+              }
+              console.log('Set values ended ');
           //TotalMainDeDragged--;
 		console.log('new log '+  document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
