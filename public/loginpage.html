@@ -1129,21 +1129,21 @@
 						<div class="slds-form-element__control">
 							<input id="clientid" style="padding:5px;" name="clientid"
 								class="slds-input username mt8 mb8" aria-describedby="username-errors"
-								autofocus="autofocus" type="text" value="" required>
+								autofocus="autofocus" type="text" value="sr7id7zht854bwdco8t9qdym" required>
 						</div>
 						<div class="slds-form-element__help">
 							<div class="slds-form-element__label"><label for="clientsecret">Client Secret</label></div>
 							<div class="slds-form-element__control">
 								<input style="padding:5px;" id="clientsecret" name="clientsecret"
 									class="slds-input username mt8 mb8" aria-describedby="username-errors"
-									autofocus="autofocus" type="text" value="" required>
+									autofocus="autofocus" type="text" value="vhmEsBaxDl3LVeqYbLUxsg6p" required>
 							</div>
 
 							<div class="slds-form-element__label"><label for="authurl">Auth URL</label></div>
 							<div class="slds-form-element__control">
 								<input style="padding:5px;" id="authurl" name="authurl"
 									class="slds-input username mt8 mb8" aria-describedby="username-errors"
-									autofocus="autofocus" type="text" value="" required>
+									autofocus="autofocus" type="text" value="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/" required>
 							</div>
 
 						</div>
@@ -1151,18 +1151,19 @@
 
 					<!-- Don't change the style name of the Login input (".submit-btn") without contacting the Security team, as WebMetrics has a dependency on this value.Â&nbsp; -->
 					<button id="submit-btn" 
-						class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070d2;" value="Submit" title="Submit"> 
-						<div class="demo-only" style="height:2rem;position:relative">
-							<div class="slds-spinner_container">
-							  <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
-								<span class="slds-assistive-text">Loading</span>
-								<div class="slds-spinner__dot-a"></div>
-								<div class="slds-spinner__dot-b"></div>
-							  </div>
-							</div>
-						  </div>
-					
-					</button>
+                        class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070D2; height: 45px;border: none;">
+						<p id="submitText" style="display: block;">Submit</p> 
+                        <div style="display: none;" id="submitSpinner" class="demo-only" style="height:2rem;position:relative">
+                            <div class="slds-spinner_container">
+                              <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                              </div>
+                            </div>
+                          </div>
+                    </button>
+
 					<div id="jsBrowserDetectionBottom" style="display:none"></div>
 				</form>
 
@@ -1193,12 +1194,20 @@
 
    $(document).ready(function () {
    $("#submit-btn").click(function () {
-	$('#submit-btn').prop('disabled', true); 
+	$("#submitSpinner").css({'display':'block'});   
+	$('#submit-btn').prop('disabled', true);
+	$("#submit-btn").css({'background-color':'#0067c1'});
+	$("#submitText").css({'display':'none'});
+
 	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
 	  {
 		$('#loginErrorMsg').text("Please provide all credentials");
 		$("#errorBlockOfLoginPage").css({'display':'block'});
-		$('#submit-btn').prop('disabled', false); 
+		$('#submit-btn').prop('disabled', false);
+
+		$("#submitText").css({'display':'block'});
+		$("#submitSpinner").css({'display':'none'});
+		$("#submit-btn").css({'background-color':'#0070D2'}); 
 	  }
 	  else
 	  {
@@ -1231,7 +1240,11 @@
 			{
 				$('#loginErrorMsg').text("Provided credentials being incorrect");
 				$("#errorBlockOfLoginPage").css({'display':'block'});
-				$('#submit-btn').prop('disabled', false); 
+				$('#submit-btn').prop('disabled', false);
+
+				$("#submitText").css({'display':'block'});
+				$("#submitSpinner").css({'display':'none'});
+				$("#submit-btn").css({'background-color':'#0070D2'});
 			}
          });
 		} 
