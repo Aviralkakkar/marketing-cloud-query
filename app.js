@@ -1618,7 +1618,7 @@ app.post("/credential", async function (req, res) {
           '<DeleteAtEndOfRetentionPeriod>false</DeleteAtEndOfRetentionPeriod>' +
           '<Fields>';
         for (var Field of NewDEFieldsList) {
-          if(Field.FieldName) {
+          if(Field.FieldName[0] == '_') {
             Field.FieldName = Field.FieldName.substring(1);
           }
           if (Field.FieldType == 'Number' || Field.FieldType == 'Date' || Field.FieldType == 'Boolean') {
