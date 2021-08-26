@@ -6719,14 +6719,14 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
   
             '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
 
             '</div>' +
   
@@ -7231,17 +7231,17 @@ function changeSchmaPosition(e)
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-      '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-      '<option value="Left Outer Join">Left Outer Join</option>' +
-      '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-      '<option value="Right Outer Join">Right Outer Join</option>' +
-      '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-      '<option value="Inner Join">Inner Join</option>' +
-      '<option value="Full Outer Join">Full Outer Join</option>' +
-      '<option value="Outer Join">Outer Join</option>' +
-      '</select>' +
+            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -7249,7 +7249,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7280,7 +7280,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
             '<option value="">Select…</option>';
   
           for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7297,7 +7297,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
             '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
@@ -7372,7 +7372,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
             '<option value="">Select…</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7403,7 +7403,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
             '<option value="">Select…</option>';
   
           for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7419,7 +7419,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
             '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
@@ -7494,23 +7494,23 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
             '<option value="">Select…</option>';
-  
-          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-            if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-              if(DEExtKeyLoop in DEListMap.DEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.SharedDEMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-              }
-              else if(DEExtKeyLoop in DEListMap.DataViewMap){
-                joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+    
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                if(DEExtKeyLoop in DEListMap.DEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
+                }
+                else if(DEExtKeyLoop in DEListMap.DataViewMap){
+                  joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                }
               }
             }
-          }
-          joinTwoDivString += '</select>' +
+            joinTwoDivString += '</select>' +
             '</div>' +
   
             '</div>' +
@@ -7524,15 +7524,15 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
             '<option value="">Select…</option>';
-  
-          for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
-            joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
-          }
-          joinTwoDivString += '</select>' +
-            '</div>' +
-  
+    
+            for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              joinTwoDivString += '<option value="' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+            }
+            joinTwoDivString += '</select>' +
+              '</div>' +
+    
   
            
   
@@ -7541,7 +7541,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
             '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
