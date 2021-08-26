@@ -2498,7 +2498,7 @@
             <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
             line-height: 20px;
             color: #4e8abe">Cancel</button>
-            <button class="slds-button slds-button_brand" id="refreshId"  style="font-size: 11px;
+            <button class="slds-button slds-button_brand" id="deleteId"  style="font-size: 11px;
             line-height: 20px;
             color: #edf5fa;">Delete</button>
             </footer>
@@ -8285,7 +8285,7 @@ function changeSchmaPosition(e)
     }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
-
+	 document.getElementById('deleteModal').style.display='block';
      
      
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
@@ -8332,12 +8332,12 @@ function changeSchmaPosition(e)
           }
         }
     
-
+	  document.getElementById('deleteId').addEventListener('click',function(){
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
 		console.log('new log '+  document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
-		
+	  });	
      
         }
     }
