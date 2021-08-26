@@ -4351,12 +4351,13 @@ document.addEventListener("mouseup", function(){
     }
     function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
-	    console.log('Important key '+DEExtKeyFordeleteDiv);
+	    console.log('Important key '+DEExtKeyFordeleteDiv+' '+ (DEExtKeyFordeleteDiv!=undefined));
+	     if(DEExtKeyFordeleteDiv!=undefined){
       document.getElementById('deleteModal').style.display='block';
       document.getElementById('refreshId').addEventListener('click',function()
       {
         refreshQueryDiv(DEExtKeyFordeleteDiv);
-      });
+      });}
     }
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
     {console.log('desetbox 1 '+DESetQueryBox);
