@@ -6486,7 +6486,7 @@ function changeSchmaPosition(e)
               if(DEExtKeyLoop in DEListMap.DEMap){
                 
                 console.log("hibye3")
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DEMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DEMap[DEExtKeyLoop].DEName){
                   console.log("hibye4")
                 }
                   else{
@@ -6499,8 +6499,8 @@ function changeSchmaPosition(e)
               if(DEExtKeyLoop in DEListMap.SharedDEMap){
                 
                 
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
-
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.SharedDEMap[DEExtKeyLoop].DEName){
+                  console.log("hibye90")
                 }
                 else{
                   joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
@@ -6511,8 +6511,8 @@ function changeSchmaPosition(e)
               if(DEExtKeyLoop in DEListMap.DataViewMap){
                 
                 
-                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
-
+                if(JoinQueryDetails.DEForJoin[key].FirstDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName || JoinQueryDetails.DEForJoin[key].SecondDEName==DEListMap.DataViewMap[DEExtKeyLoop].DEName){
+                  console.log("hibye46789")
                 }
                 else{
                   joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
