@@ -7874,9 +7874,7 @@ function changeSchmaPosition(e)
       }
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7906,14 +7904,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+       
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7943,14 +7937,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+        
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7980,14 +7970,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+      
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -8017,14 +8003,10 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+          
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -8054,14 +8036,10 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+         
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -8091,18 +8069,11 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+      
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -8136,21 +8107,12 @@ function changeSchmaPosition(e)
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
                 console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
+         
           console.log('shi jagah shuru7');
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DEMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -8183,22 +8145,12 @@ function changeSchmaPosition(e)
                 console.log('shi jagah shuru=====');
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-                console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
+         
           console.log('shi jagah shuru7');
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -8232,12 +8184,7 @@ function changeSchmaPosition(e)
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
                 console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
-          console.log('shi jagah shuru7');
+              
         }
 
       document.getElementById('ThirdModal').style.display = 'none';
