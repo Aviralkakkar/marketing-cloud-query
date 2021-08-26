@@ -16,8 +16,7 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-var count =0 ;
-var DERecords2=[];
+var IsgetDERecordsRun = false;
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1512,26 +1511,20 @@ app.post("/credential", async function (req, res) {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
-        console.log('DECreateResult : ' + DECreateResult);
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
-            DERecords2=[];
+          DERecords = [];
           var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
-            console.log('outside if '+queryStatus);
+            console.log('queryStatus : ' + queryStatus);
             if (queryStatus == "Complete") {
-              count = 1;
-              console.log('----'+count+'-----');
-              console.log('Inside if '+NewDEName);
-      
-               DERecords = await getDERecords(NewDEName);
-                DERecords2=DERecords;
-               console.log('Records Server '+JSON.stringify(DERecords));
+              DERecords = await getDERecords(NewDEName);
+              IsgetDERecordsRun = true;
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1539,18 +1532,14 @@ app.post("/credential", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('In Derecord get'+queryStatus+' '+count );
-            if (queryStatus != "Complete" && count!=1) {
-              resCall1.send("false");
-            }
-            else if(count!=1)
-            {
-               resCall1.send("false");
+            console.log('queryStatus : ' + queryStatus + ' , IsgetDERecordsRun : ' + IsgetDERecordsRun);
+            if(queryStatus == "Complete" && IsgetDERecordsRun == true) {
+              console.log('Server Side '+JSON.stringify(DERecords));
+              resCall1.send(DERecords);
+              IsgetDERecordsRun = false;
             }
             else {
-                 console.log('Server Side '+JSON.stringify(DERecords2));
-              resCall1.send(DERecords2);
-              count=0;
+              resCall1.send("false");
             }
           })
         }
@@ -1714,7 +1703,6 @@ app.post("/credential", async function (req, res) {
           },
           body: DEListBody
         };
-        console.log('DEListBody : ' + DEListBody);
         request(DEListOption, async function (error, response) {
           if (error) throw new Error(error);
           console.log('response.body : ' + response.body);
@@ -1750,7 +1738,9 @@ app.post("/credential", async function (req, res) {
         };
         request(options, async function (error, response) {
           if (error) throw new Error(error);
+          console.log('queryCreateResponse : ' + response.body);
           queryDefinitionId = JSON.parse(response.body).queryDefinitionId;
+          console.log('queryDefinitionId : ' + queryDefinitionId);
           if (queryDefinitionId) {
             var options = {
               'method': 'POST',
