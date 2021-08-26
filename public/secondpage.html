@@ -4321,7 +4321,7 @@ document.addEventListener("mouseup", function(){
     var draggedDeKey=new Set();
     var draggedDeJoinKey=new Set();
     //var TotalMainDeDragged=0;
-    var JoinTypeArray=['Left Outer Join','Left Outer Join with Exclusion','Right Outer Join','Right Outer Join with Exclusion','Inner Join','Full Outer Join','Outer Join'];
+    //var JoinTypeArray=['Left Outer Join','Left Outer Join with Exclusion','Right Outer Join','Right Outer Join with Exclusion','Inner Join','Full Outer Join','Outer Join'];
     var DEDragData = {
       "DEName": '',
       "DEExtKey": '',
@@ -4954,7 +4954,13 @@ document.addEventListener("mouseup", function(){
         console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
+          if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.SharedDEMap){
+            var SecondDeIfShared= 'ent.[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']';
+          }   
+          else{
+            var SecondDeIfShared= '[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']';
+          }
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField, SecondDeIfShared);
         }
        // strQuery +="Where field 1 is null" ;
         console.log(" strQuery23==="+strQuery);
@@ -5246,30 +5252,30 @@ document.addEventListener("mouseup", function(){
         document.getElementById('DEListSidebar').style.marginTop = '0px';
       }
 
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
-      
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField, SecondDeIfShared) {
+        console.log(" SecondDeIfShared======"+SecondDeIfShared)
         if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' LEFT JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' LEFT JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' RIGHT JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' RIGHT JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' INNER JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN ' + SecondDeIfShared + ' ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
           // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
@@ -6198,28 +6204,28 @@ function changeSchmaPosition(e)
          // console.log("sbhFirstDEExtKeyForjoinedDivSetJoinGlobalab==="+joinedDivSet[FirstDEExtKeyForJoinGlobal].DEName);
           console.log("---->>>>>>>"+JoinQueryDetails.DEForJoin[key].FirstDEExtKey);
         
-        if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey == FirstDEExtKeyForJoinGlobal) ){
-          SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
-          console.log("fghuikol");
-          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+          if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey == FirstDEExtKeyForJoinGlobal) ){
+            SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
+            console.log("fghuikol");
+            joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+            '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+            '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+            '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-          '</svg>'+
-          '<span class="slds-assistive-text">Close</span>'+
-          '</button>'+
+            '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+            '</svg>'+
+            '<span class="slds-assistive-text">Close</span>'+
+            '</button>'+
             ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
-          '</header>'+
-          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
-					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
+            '</header>'+
+            ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+            '<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+            ' <span class="slds-assistive-text">warning</span>'+
 						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
 						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
 						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
@@ -6230,14 +6236,14 @@ function changeSchmaPosition(e)
 						'<div class="slds-notify__close">'+
 						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
+						' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+						'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+						'</svg>'+
+						' <span class="slds-assistive-text">Close</span>'+
 						'</button>'+
 						'</div>'+
-					'</div>'+
-					'</div>'+
+            '</div>'+
+            '</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6256,20 +6262,31 @@ function changeSchmaPosition(e)
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
             '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-            '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
+            /*'<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
             for(var i=0;i<7;i++){
               if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
 
-                }
-                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
-                }
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
+              }
             }
          
-             joinTwoDivString += '</select>' +
+             joinTwoDivString += '</select>' +*/
+             
+            
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
+            
             '</div>' +
   
   
@@ -6278,7 +6295,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-              '<option value="">Select..</option>';
+            '<option value="">Select..</option>';
              
              for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
                var counter=0;
@@ -6293,9 +6310,9 @@ function changeSchmaPosition(e)
                      
                    }
                  }
-                 if(counter==0){
+                if(counter==0){
                    
-                     if(DEExtKeyLoop in DEListMap.DEMap){
+                  if(DEExtKeyLoop in DEListMap.DEMap){
                  
                  
                          console.log("hibye5")
@@ -6303,29 +6320,29 @@ function changeSchmaPosition(e)
                
                
                        
-                     }
-                     if(DEExtKeyLoop in DEListMap.SharedDEMap){
+                  }
+                  if(DEExtKeyLoop in DEListMap.SharedDEMap){
                        
-                       console.log("hibye5==")
+                    console.log("hibye5==")
                        
-                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
-                       
-                       
-                     
-                     }
-                     if(DEExtKeyLoop in DEListMap.DataViewMap){
-                       
-                       
-                       console.log("hibye5--")
-                         joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.SharedDEMap[DEExtKeyLoop].DEName + '</option>';
                        
                        
                      
-                     }
+                  }
+                  if(DEExtKeyLoop in DEListMap.DataViewMap){
+                       
+                       
+                    console.log("hibye5--")
+                    joinTwoDivString += '<option value="' + DEExtKeyLoop + '">' + DEListMap.DataViewMap[DEExtKeyLoop].DEName + '</option>';
+                       
+                       
+                     
+                  }
                    
                  }
                
-               }
+                }
              } 
              joinTwoDivString += '</select>' +
             '</div>' +
@@ -6352,13 +6369,13 @@ function changeSchmaPosition(e)
 
             '<option value="">Select..</option>';
   
-              for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
               
-                joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+              joinTwoDivString += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
               
               
-               }
+            }
             joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -6395,26 +6412,26 @@ function changeSchmaPosition(e)
           else if((FirstDEExtKeyForJoinGlobal in DEListMap.DEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey == FirstDEExtKeyForJoinGlobal)){
             //SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
             //FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
-          console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
-          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            console.log("SecondDEExtKeyForJoinGlobal=="+SecondDEExtKeyForJoinGlobal);
+            joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+            '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+            '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+            ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-          '</svg>'+
-          '<span class="slds-assistive-text">Close</span>'+
-          '</button>'+
+            '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+            '</svg>'+
+            '<span class="slds-assistive-text">Close</span>'+
+            '</button>'+
             ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
-          '</header>'+
-          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
-					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
+            '</header>'+
+            ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+            '<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					  '<span class="slds-assistive-text">warning</span>'+
 						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
 						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
 						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
@@ -6425,14 +6442,14 @@ function changeSchmaPosition(e)
 						'<div class="slds-notify__close">'+
 						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
+						' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+						'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+						'</svg>'+
+						' <span class="slds-assistive-text">Close</span>'+
 						'</button>'+
 						'</div>'+
-					'</div>'+
-					'</div>'+
+            '</div>'+
+            '</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6548,8 +6565,8 @@ function changeSchmaPosition(e)
 
             
             
-          }
-          joinTwoDivString += '</select>' +
+            }
+             joinTwoDivString += '</select>' +
             '</div>' +
   
   
@@ -6585,101 +6602,98 @@ function changeSchmaPosition(e)
             break;
           }
           else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal)){
-            SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
-          console.log("fghuikol");
-          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
-            '<div class="slds-modal__container">' +
+              SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
+              console.log("fghuikol");
+              joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+              '<div class="slds-modal__container">' +
               '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+              '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+              ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-          '</svg>'+
-          '<span class="slds-assistive-text">Close</span>'+
-          '</button>'+
-            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+              '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+              '</svg>'+
+              '<span class="slds-assistive-text">Close</span>'+
+              '</button>'+
+              ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
-          '</header>'+
-          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
-					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
-						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
-						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
-						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+              '</header>'+
+              ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+              '<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+              '<span class="slds-assistive-text">warning</span>'+
+              '<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+              '<svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+              '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
 							
-						'</svg>'+
-						'</span>'+
-						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
-						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+						  '</svg>'+
+						  '</span>'+
+						  '<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
+						  '<div class="slds-notify__close">'+
+						  '<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
 							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
 							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
 							'</svg>'+
 							' <span class="slds-assistive-text">Close</span>'+
-						'</button>'+
-						'</div>'+
-					'</div>'+
-					'</div>'+
-            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+						  '</button>'+
+						  '</div>'+
+					    '</div>'+
+					    '</div>'+
+              '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
-            '<div >' +
-            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
-            '</div>' +
+              '<div >' +
+              '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+              '</div>' +
   
-            '<div class="slds-grid slds-wrap">' +
+              '<div class="slds-grid slds-wrap">' +
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+              '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
   
-            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].FirstDEName + '" disabled="" class="slds-input" />' +
-            '</div>' +
-  
-  
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-  
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
-  
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-              '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
-            for(var i=0;i<7;i++){
-              if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
-
-                }
-                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
-                }
-            }
-         
-            joinTwoDivString += '</select>' +
-            '</div>' +
+              '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].FirstDEName + '" disabled="" class="slds-input" />' +
+              '</div>' +
   
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+    
+              '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+    
+              '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+              '<option value="Left Outer Join">Left Outer Join</option>' +
+              '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+              '<option value="Right Outer Join">Right Outer Join</option>' +
+              '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+              '<option value="Inner Join">Inner Join</option>' +
+              '<option value="Full Outer Join">Full Outer Join</option>' +
+              '<option value="Outer Join">Outer Join</option>' +
+              '</select>' +
+              '</div>' +
   
-            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-            '<option value="">Select..</option>';
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+              '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+  
+              '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+              '<option value="">Select..</option>';
              
-            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              var counter=0;
-              console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                console.log("hibye2")
-                for(var deName of SecondJoinedDeSet){
-                  console.log("hibye2="+deName)
-                  if(deName==DEExtKeyLoop){
-                    console.log("hibye2==="+deName)
-                    counter=1;
-                    
+              for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+                var counter=0;
+                console.log("hibye="+DEExtKeyLoop)
+                if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+                  console.log("hibye2")
+                  for(var deName of SecondJoinedDeSet){
+                    console.log("hibye2="+deName)
+                    if(deName==DEExtKeyLoop){
+                      console.log("hibye2==="+deName)
+                      counter=1;
+                      
+                    }
                   }
-                }
-                if(counter==0){
+                  if(counter==0){
                   
                     if(DEExtKeyLoop in DEListMap.DEMap){
                 
@@ -6709,25 +6723,25 @@ function changeSchmaPosition(e)
                     
                     }
                   
-                }
+                  }
               
-              }
-            } 
-            joinTwoDivString += '</select>' +
-            '</div>' +
-  
-            '</div>' +
-  
-  
+                }
+              } 
+              joinTwoDivString += '</select>' +
+              '</div>' +
+    
+              '</div>' +
   
   
   
-            '<div class="slds-grid slds-wrap">' +
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
-            '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
+              '<div class="slds-grid slds-wrap">' +
+  
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
+              '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
+    
+              '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
               '<option value="">Select..</option>';
   
               for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -6736,66 +6750,66 @@ function changeSchmaPosition(e)
 
               
               
-            }
-            joinTwoDivString += '</select>' +
-            '</div>' +
+              }
+              joinTwoDivString += '</select>' +
+              '</div>' +
   
   
   
   
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
-            '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
-  
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-            '<option value="">Select…</option>' +
-            '</select>' +
-            '</div>' +
-  
-  
+              '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
+              '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
+    
+              '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
+              '<option value="">Select…</option>' +
+              '</select>' +
+              '</div>' +
   
   
-            '</div>' +
   
   
-            '</div>' +
+              '</div>' +
+    
+    
+              '</div>' +
+    
+              '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
+              '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
-            '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
-  
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
-            '</footer>' +
-            '</div>' +
-            '</section>' +
-            '<div class="slds-backdrop slds-backdrop_open"></div>';
-            break;
+              '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+              '</footer>' +
+              '</div>' +
+              '</section>' +
+              '<div class="slds-backdrop slds-backdrop_open"></div>';
+              break;
           }
          else if((FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap) &&  (JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal)){
             //SecondDEExtKeyForJoinGlobal=FirstDEExtKeyForJoinGlobal;
            // FirstDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].FirstDEExtKey
-          console.log("SecondDEExtKeyForJoinGlobal===="+SecondDEExtKeyForJoinGlobal);
-          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            console.log("SecondDEExtKeyForJoinGlobal===="+SecondDEExtKeyForJoinGlobal);
+            joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+            '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+            '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+            '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-          '</svg>'+
-          '<span class="slds-assistive-text">Close</span>'+
-          '</button>'+
-            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+            '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+            '</svg>'+
+            '<span class="slds-assistive-text">Close</span>'+
+            '</button>'+
+            '<h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
-          '</header>'+
-          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
-					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
+            '</header>'+
+            '<div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					  '<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					  '<span class="slds-assistive-text">warning</span>'+
 						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
-						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
-						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+						'<svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
 							
 						'</svg>'+
 						'</span>'+
@@ -6803,14 +6817,14 @@ function changeSchmaPosition(e)
 						'<div class="slds-notify__close">'+
 						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
+						'<svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+						'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+						'</svg>'+
+						'<span class="slds-assistive-text">Close</span>'+
 						'</button>'+
 						'</div>'+
-					'</div>'+
-					'</div>'+
+					  '</div>'+
+					  '</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6849,12 +6863,12 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-              '<option value="">Select..</option>';
+            '<option value="">Select..</option>';
              
-             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-               var counter=0;
-               console.log("hibye="+DEExtKeyLoop)
-               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+              var counter=0;
+              console.log("hibye="+DEExtKeyLoop)
+              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                  console.log("hibye2")
                  for(var deName of SecondJoinedDeSet){
                    console.log("hibye2="+deName)
@@ -6894,7 +6908,7 @@ function changeSchmaPosition(e)
                      
                      }
                    
-                 }
+                  }
                
                }
              } 
@@ -6913,11 +6927,11 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
-              '<option value="">Select..</option>';
+            '<option value="">Select..</option>';
   
-              for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+            for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
              
-                joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+              joinTwoDivString += '<option value="' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
 
              
               
@@ -6935,8 +6949,8 @@ function changeSchmaPosition(e)
          
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
            
-           '<option value="">Select…</option>' +
-           '</select>' +
+            '<option value="">Select…</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -6960,26 +6974,26 @@ function changeSchmaPosition(e)
           else if((FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap) && (JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal)){
             SecondDEExtKeyForJoinGlobal=JoinQueryDetails.DEForJoin[key].SecondDEExtKey
             console.log(" JoinQueryDetails.DEForJoin[key].SecondDEName=="+ JoinQueryDetails.DEForJoin[key].SecondDEName);
-          console.log("fghuikol");
-          joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
+            console.log("fghuikol");
+            joinTwoDivString = '<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">' +
             '<div class="slds-modal__container">' +
-              '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
-          '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+            '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
+            '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
+            '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
-          '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-          '</svg>'+
-          '<span class="slds-assistive-text">Close</span>'+
-          '</button>'+
-            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+            '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+            '</svg>'+
+            '<span class="slds-assistive-text">Close</span>'+
+            '</button>'+
+            '<h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
-          '</header>'+
-          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
-					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
+            '</header>'+
+            '<div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					  '<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					  '<span class="slds-assistive-text">warning</span>'+
 						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
 						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
 						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
@@ -6990,14 +7004,14 @@ function changeSchmaPosition(e)
 						'<div class="slds-notify__close">'+
 						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
+						'<svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+						'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+						'</svg>'+
+						'<span class="slds-assistive-text">Close</span>'+
 						'</button>'+
 						'</div>'+
-					'</div>'+
-					'</div>'+
+            '</div>'+
+            '</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7019,17 +7033,14 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
   
             '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-              '<option value="' + JoinQueryDetails.DEForJoin[key].JoinType + '">' + JoinQueryDetails.DEForJoin[key].JoinType + '</option>';
-            for(var i=0;i<7;i++){
-              if(JoinQueryDetails.DEForJoin[key].JoinType==JoinTypeArray[i]){
-
-                }
-                else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
-                  joinTwoDivString += '<option value="'+JoinTypeArray[i]+'">'+JoinTypeArray[i]+'</option>';
-                }
-            }
-         
-          joinTwoDivString += '</select>' +
+            '<option value="Left Outer Join">Left Outer Join</option>' +
+            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+            '<option value="Right Outer Join">Right Outer Join</option>' +
+            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+            '<option value="Inner Join">Inner Join</option>' +
+            '<option value="Full Outer Join">Full Outer Join</option>' +
+            '<option value="Outer Join">Outer Join</option>' +
+            '</select>' +
             '</div>' +
   
   
@@ -7040,9 +7051,9 @@ function changeSchmaPosition(e)
             '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
           
   
-              '<option value="">Select..</option>';
+            '<option value="">Select..</option>';
              
-             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+            for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
                var counter=0;
                console.log("hibye="+DEExtKeyLoop)
                if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
@@ -7053,7 +7064,7 @@ function changeSchmaPosition(e)
                      console.log("hibye2==="+deName)
                      counter=1;
                      
-                   }
+                  }
                  }
                  if(counter==0){
                    
@@ -7087,8 +7098,8 @@ function changeSchmaPosition(e)
                    
                  }
                
-               }
-             } 
+                }
+            } 
              joinTwoDivString += '</select>' +
             '</div>' +
   
@@ -7163,7 +7174,7 @@ function changeSchmaPosition(e)
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
 
-            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+          ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -7171,66 +7182,66 @@ function changeSchmaPosition(e)
           '</header>'+
           ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
 					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
-						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
-						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
-						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+					'<span class="slds-assistive-text">warning</span>'+
+					'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+					'<svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+					'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
 							
-						'</svg>'+
-						'</span>'+
-						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
-						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					'</svg>'+
+					'</span>'+
+					'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+					'<div class="slds-notify__close">'+
+					'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
-						'</button>'+
-						'</div>'+
+					'<svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+					'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+					'</svg>'+
+					'<span class="slds-assistive-text">Close</span>'+
+					'</button>'+
 					'</div>'+
 					'</div>'+
-            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+					'</div>'+
+          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
-            '<div >' +
-            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
-            '</div>' +
+          '<div >' +
+          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+          '</div>' +
   
-            '<div class="slds-grid slds-wrap">' +
+          '<div class="slds-grid slds-wrap">' +
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
   
-            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].SecondDEName + '" disabled="" class="slds-input" />' +
-            '</div>' +
+          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + JoinQueryDetails.DEForJoin[key].SecondDEName + '" disabled="" class="slds-input" />' +
+          '</div>' +
   
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
   
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
              
-            '<option value="Left Outer Join">Left Outer Join</option>' +
-            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-            '<option value="Right Outer Join">Right Outer Join</option>' +
-            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-            '<option value="Inner Join">Inner Join</option>' +
-            '<option value="Full Outer Join">Full Outer Join</option>' +
-            '<option value="Outer Join">Outer Join</option>' +
-            '</select>' +
-            '</div>' +
+          '<option value="Left Outer Join">Left Outer Join</option>' +
+          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+          '<option value="Right Outer Join">Right Outer Join</option>' +
+          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+          '<option value="Inner Join">Inner Join</option>' +
+          '<option value="Full Outer Join">Full Outer Join</option>' +
+          '<option value="Outer Join">Outer Join</option>' +
+          '</select>' +
+          '</div>' +
   
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
+          '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
-              '<option value="">Select..</option>';
+          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+          '<option value="">Select..</option>';
   
-              for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
+          for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
               var counter=0;
               console.log("hibye="+DEExtKeyLoop)
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
@@ -7314,7 +7325,7 @@ function changeSchmaPosition(e)
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
             '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
-              '<option value="">Select…</option>' +
+            '<option value="">Select…</option>' +
             '</select>' +
             '</div>' +
   
@@ -7358,13 +7369,13 @@ function changeSchmaPosition(e)
           '<div class="slds-modal__container">' +
           '<header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">'+
           '<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="CancelThirdModal()" style=" position: sticky; margin-left: 94%;">'+
-          ' <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+          '<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
           
           '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
-            ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
+          ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
@@ -7372,23 +7383,23 @@ function changeSchmaPosition(e)
           '</header>'+
           ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
 					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
-					' <span class="slds-assistive-text">warning</span>'+
-						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
-						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
-						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+					'<span class="slds-assistive-text">warning</span>'+
+					'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+					'<svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+					'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
 							
-						'</svg>'+
-						'</span>'+
-						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
-						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					'</svg>'+
+					'</span>'+
+					'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+					'<div class="slds-notify__close">'+
+					'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
-							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
-							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
-							'</svg>'+
-							' <span class="slds-assistive-text">Close</span>'+
-						'</button>'+
-						'</div>'+
+					'<svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+					'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+					'</svg>'+
+					'<span class="slds-assistive-text">Close</span>'+
+					'</button>'+
+					'</div>'+
 					'</div>'+
 					'</div>'+
 				
@@ -7406,36 +7417,36 @@ function changeSchmaPosition(e)
                               
                              
                              
-            '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
+          '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
-            '<div >' +
-            '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+          '<div >' +
+          '<img id="joinImageDiv" src="Left Outer Join.JPG" alt="Joins" width="200" height="140" style="display: block;margin-left: auto;margin-right: auto;">' +
+          '</div>' +
+  
+          '<div class="slds-grid slds-wrap">' +
+  
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+  
+          '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
+  
+          '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
             '</div>' +
   
-            '<div class="slds-grid slds-wrap">' +
   
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
+          '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
   
-            '<label class="slds-form-element__label" for="text-input-id-1">First DE</label>' +
-  
-            '<input style="width: 180px;" type="text" id="text-input-id-1" value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEName + '" disabled="" class="slds-input" />' +
-            '</div>' +
-  
-  
-            '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
-  
-            '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
+          '<label class="slds-form-element__label" for="select-01">Join Type</label>' +
 
-            '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
-            '<option value="Left Outer Join">Left Outer Join</option>' +
-            '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
-            '<option value="Right Outer Join">Right Outer Join</option>' +
-            '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
-            '<option value="Inner Join">Inner Join</option>' +
-            '<option value="Full Outer Join">Full Outer Join</option>' +
-            '<option value="Outer Join">Outer Join</option>' +
-            '</select>' +
-            '</div>' +
+          '<select onchange="selectJoinChange()" class="slds-select" style="width: 180px;" id="select-01">' +
+          '<option value="Left Outer Join">Left Outer Join</option>' +
+          '<option value="Left Outer Join with Exclusion">Left Outer Join with Exclusion</option>' +
+          '<option value="Right Outer Join">Right Outer Join</option>' +
+          '<option value="Right Outer Join with Exclusion">Right Outer Join with Exclusion</option>' +
+          '<option value="Inner Join">Inner Join</option>' +
+          '<option value="Full Outer Join">Full Outer Join</option>' +
+          '<option value="Outer Join">Outer Join</option>' +
+          '</select>' +
+          '</div>' +
   
   
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small">' +
@@ -8324,6 +8335,7 @@ function changeSchmaPosition(e)
 
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
+		console.log('new log '+  document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
 		 document.getElementById('deleteModal').style.display='none';
       });
