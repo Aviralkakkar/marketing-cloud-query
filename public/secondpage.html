@@ -3857,7 +3857,7 @@
                         else if(NameOfDe in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[ent.' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause-="+FieldWhereClause);
                           }
                         }
@@ -4642,7 +4642,7 @@ document.addEventListener("mouseup", function(){
                         else if(FieldType in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
-                            FieldName = FieldName.replace(regex, '[ent.' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                            FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
                           }
                         }
                         else if(FieldType in DEListMap.DataViewMap) {
@@ -4831,7 +4831,7 @@ document.addEventListener("mouseup", function(){
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
                 console.log("in the for3");
-                strQuery += ' [ent.' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
@@ -4850,7 +4850,7 @@ document.addEventListener("mouseup", function(){
         strQuery = strQuery.slice(0, -1);
         console.log(" strQuery=="+strQuery);   
         if(JoinQueryDetails.PrimaryDE.DEName in DEListMap.SharedDEMap)  {
-          strQuery += ' FROM [ent.' + JoinQueryDetails.PrimaryDE.DEName + ']';
+          strQuery += ' FROM ent.[' + JoinQueryDetails.PrimaryDE.DEName + ']';
         }   
         else{
           strQuery += ' FROM [' + JoinQueryDetails.PrimaryDE.DEName + ']';
@@ -4862,7 +4862,7 @@ document.addEventListener("mouseup", function(){
         console.log("countOfDeWithWhereClauseValueMain "+ countOfDeWithWhereClauseValueMain);
 
         for (var key in JoinQueryDetails.DEForJoin) {
-          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField, JoinQueryDetails.DEForJoin[key].FirstDEExtKey, JoinQueryDetails.DEForJoin[key].SecondDEExtKey);
+          strQuery = JoinTypeQueryStringAdd(strQuery, JoinQueryDetails.DEForJoin[key].JoinType, JoinQueryDetails.DEForJoin[key].FirstDEName, JoinQueryDetails.DEForJoin[key].FirstDEJoinField, JoinQueryDetails.DEForJoin[key].SecondDEName, JoinQueryDetails.DEForJoin[key].SecondDEJoinField);
         }
        // strQuery +="Where field 1 is null" ;
         console.log(" strQuery23==="+strQuery);
@@ -5154,41 +5154,30 @@ document.addEventListener("mouseup", function(){
         document.getElementById('DEListSidebar').style.marginTop = '0px';
       }
 
-      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField, FirstDEExtKey, SecondDEExtKey) {
-        if(FirstDEExtKey in DEListMap.SharedDEMap){
-          QueryNameOfFirstDE="ent."+FirstDE;
-       }
-        else{
-          QueryNameOfFirstDE=FirstDE;
-        }
-       if(SecondDEExtKey in DEListMap.SharedDEMap){
-        QueryNameOfSecondDE="ent."+SecondDE;
-         }               
-        else{
-          QueryNameOfSecondDE=SecondDE;
-        }
+      function JoinTypeQueryStringAdd(queryStr, JoinType, FirstDE, FirstDEJoinField, SecondDE, SecondDEJoinField) {
+      
         if (JoinType == 'Left Outer Join') {
-          queryStr += ' LEFT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Left Outer Join with Exclusion') {
-          queryStr += ' LEFT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' LEFT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Right Outer Join') {
-          queryStr += ' RIGHT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Right Outer Join with Exclusion') {
-          queryStr += ' RIGHT JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']' ;
+          queryStr += ' RIGHT JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']' ;
           //+ ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL';
         }
         else if (JoinType == 'Inner Join') {
-          queryStr += ' INNER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' INNER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Full Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
         }
         else if (JoinType == 'Outer Join') {
-          queryStr += ' FULL OUTER JOIN [' + QueryNameOfSecondDE + '] ON [' + QueryNameOfFirstDE + '].[' + FirstDEJoinField + '] = [' + QueryNameOfSecondDE + '].[' + SecondDEJoinField + ']';
+          queryStr += ' FULL OUTER JOIN [' + SecondDE + '] ON [' + FirstDE + '].[' + FirstDEJoinField + '] = [' + SecondDE + '].[' + SecondDEJoinField + ']';
           // + ' WHERE [' + FirstDE + '].[' + FirstDEJoinField + '] IS NULL OR [' + SecondDE + '].[' + SecondDEJoinField + '] IS NULL';;
         }
         return queryStr;
