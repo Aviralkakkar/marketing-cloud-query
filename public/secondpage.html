@@ -2800,7 +2800,7 @@
                         
                           
                         </header-->
-                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                        <!--div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
                           <span class="slds-assistive-text">warning</span>
                           <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
                           <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2818,7 +2818,7 @@
                           <span class="slds-assistive-text">Close</span>
                           </button>
                           </div>
-                          </div>
+                          </div-->
                           <div  id="DeDragAlert" style="display:none; background: white;">
                             <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
                             width: 100%;
@@ -7214,7 +7214,29 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
-          
+          '<div id="errorBlockOfJoinModalWindow" style="display: none;" class="demo-only" style="height:4rem">'+
+					'<div class="slds-notify_container slds-is-relative">'+
+					'<div class="slds-notify slds-notify_toast slds-theme_error" role="status">'+
+						'<span class="slds-assistive-text">error</span>'+
+						'<span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">'+
+						'<svg class="slds-icon slds-icon_small" aria-hidden="true">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+						'</svg>'+
+						'</span>'+
+						'<div class="slds-notify__content">'+
+						'<h2 id="loginErrorMsg" class="slds-text-heading_small ">Provided credentials being incorrect'+
+						'</div>'+
+						'<div class="slds-notify__close">'+
+						'<button id="CancelErrorPopUp" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style="background: none;border: none;padding: 3;position: sticky;color:white;">'+
+							'<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							'<span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
+				'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7655,6 +7677,11 @@ function changeSchmaPosition(e)
       }
     */
      // else{
+      console.log(heyya11);
+      if (document.getElementById('select-02').value==null) {
+        console.log(heyya);
+        document.getElementById('errorBlockOfJoinModalWindow').style.display = 'block';
+      }
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
           if (document.getElementById('select-02').value) {
