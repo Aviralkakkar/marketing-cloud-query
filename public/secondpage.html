@@ -2498,7 +2498,7 @@
             <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
             line-height: 20px;
             color: #4e8abe">Cancel</button>
-            <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshModalDisplayForQueryDiv()" style="font-size: 11px;
+            <button class="slds-button slds-button_brand" id="refreshId"  style="font-size: 11px;
             line-height: 20px;
             color: #edf5fa;">Delete</button>
             </footer>
@@ -3767,12 +3767,12 @@
       var countOfJoinTypeWhere=0;
       /*added by priyanka*/
 
-      function closerunQueryAlert(){
-        document.getElementById('runQueryAlert').style.display = 'none';
-      }
-   function openModal(functionAction) {
+  function closerunQueryAlert(){
+    document.getElementById('runQueryAlert').style.display = 'none';
+  }
+  function openModal(functionAction) {
     var countOfDeWithWhereClauseValue=0;    
-      var countOfDeWithoutWhereClauseValue=0; 
+    var countOfDeWithoutWhereClauseValue=0; 
      
     
      if (DESetQueryBox.size >0 ) {
@@ -3808,34 +3808,34 @@
                 if(val in DEListMap.DEMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 else if(val in DEListMap.SharedDEMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.SharedDEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.SharedDEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 else if(val in DEListMap.DataViewMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DataViewMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DataViewMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 
@@ -3856,10 +3856,10 @@
                   }
                   
                   
-                }
+            }
    
             
-          }
+      }
       else if(DESetQueryBox.size == 0 ){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
@@ -4351,17 +4351,18 @@ document.addEventListener("mouseup", function(){
     }
     function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
+	    console.log('Important key '+DEExtKeyFordeleteDiv+' '+ (DEExtKeyFordeleteDiv!=undefined));
+	     if(DEExtKeyFordeleteDiv!=undefined){
       document.getElementById('deleteModal').style.display='block';
       document.getElementById('refreshId').addEventListener('click',function()
       {
         refreshQueryDiv(DEExtKeyFordeleteDiv);
-      });
+      });}
     }
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
-    {
-         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
+    {console.log('desetbox 1 '+DESetQueryBox);
           deleteDiv(DEExtKeyFordeleteDiv);
-      
+         console.log('desetbox '+DESetQueryBox);
       document.getElementById('deleteModal').style.display='none';
       
     }
@@ -5899,7 +5900,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplayForQueryDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
@@ -6191,6 +6192,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6365,6 +6387,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6535,6 +6578,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6701,6 +6765,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6867,6 +6952,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7031,12 +7137,34 @@ function changeSchmaPosition(e)
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
+
             ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7226,9 +7354,9 @@ function changeSchmaPosition(e)
 							
 						'</svg>'+
 						'</span>'+
-						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
 						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
 							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
 							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
@@ -7289,7 +7417,7 @@ function changeSchmaPosition(e)
             
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" >' +
             '<option value="">Select…</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7322,7 +7450,7 @@ function changeSchmaPosition(e)
            
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
             '<option value="">Select…</option>';
   
             for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7341,7 +7469,7 @@ function changeSchmaPosition(e)
              
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
             '<option value="">Select…</option>' +
             '</select>' +
             
@@ -7382,6 +7510,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7418,7 +7567,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value=" ">Select…</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7449,7 +7598,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
             '<option value=" ">Select…</option>';
   
             for (var i in DEListMap.SharedDEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7504,6 +7653,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please select all the fields below.</p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7540,7 +7710,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" required>' +
+            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02" >' +
             '<option value=" ">Select…</option>';
     
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7570,7 +7740,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 17%;">' +
             '<label class="slds-form-element__label" for="FirstDEField">First DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="FirstDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="FirstDEField">' +
             '<option value=" ">Select…</option>';
     
             for (var i in DEListMap.DataViewMap[FirstDEExtKeyForJoinGlobal].DEFields) {
@@ -7587,7 +7757,7 @@ function changeSchmaPosition(e)
             '<div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-p-around_small" style="margin-inline-start: 0%;">' +
             '<label class="slds-form-element__label" for="SecondDEField">Second DE Field For Join</label>' +
   
-            '<select class="slds-select" style="width: 180px;" id="SecondDEField" required>' +
+            '<select class="slds-select" style="width: 180px;" id="SecondDEField">' +
             '<option value=" ">Select…</option>' +
             '</select>' +
             '</div>' +
@@ -7694,15 +7864,17 @@ function changeSchmaPosition(e)
     */
      // else{
       console.log('heyya11'+document.getElementById('select-02').value);
-      if (document.getElementById('select-02').value=="") {
+      console.log('heyya12'+document.getElementById('FirstDEField').value);
+      console.log('heyya13'+document.getElementById('SecondDEField').value);
+      if (document.getElementById('select-02').value=="" || document.getElementById('FirstDEField').value=="" || document.getElementById('SecondDEField').value=="") {
         console.log('heyyaaaa');
         document.getElementById('errorBlockOfJoinModalWindow').style.display = 'Block';
+        return;
+        console.log('heyyaaaa222');
       }
         console.log("in the SaveJoinQuery"+document.getElementById('FirstDEField').value);
         if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7732,14 +7904,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+       
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7769,14 +7937,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+        
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7806,14 +7970,10 @@ function changeSchmaPosition(e)
             });
             var line_Color="#353535";
             joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-          }
-        }
-      }
+      
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7843,14 +8003,10 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+          
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DEMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+       
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7880,14 +8036,10 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+         
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.SharedDEMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
-          if (document.getElementById('select-02').value) {
-        if (document.getElementById('FirstDEField').value) {
-          if (document.getElementById('SecondDEField').value) {
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             if (JSON.stringify(JoinQueryDetails["PrimaryDE"]) == '{}') {
@@ -7917,18 +8069,11 @@ function changeSchmaPosition(e)
               });
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-              }
-            }
-          }
+      
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DataViewMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+        
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -7962,21 +8107,12 @@ function changeSchmaPosition(e)
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
                 console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
+         
           console.log('shi jagah shuru7');
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.DEMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -8009,22 +8145,12 @@ function changeSchmaPosition(e)
                 console.log('shi jagah shuru=====');
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
-                console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
+         
           console.log('shi jagah shuru7');
         }
         else if(FirstDEExtKeyForJoinGlobal in DEListMap.DataViewMap && document.getElementById('select-02').value in DEListMap.SharedDEMap){
           console.log('shi jagah shuru');
-          if (document.getElementById('select-02').value) {
-            console.log('shi jagah shuru2');
-        if (document.getElementById('FirstDEField').value) {
-          console.log('shi jagah shuru 4');
-          if (document.getElementById('SecondDEField').value) {
-            console.log('shi jagah shuru');
+         
             joinedDivSet.add(FirstDEExtKeyForJoinGlobal);
             joinedDivSet.add(document.getElementById('select-02').value);
             console.log('shi jagah shuru7');
@@ -8058,12 +8184,7 @@ function changeSchmaPosition(e)
                 var line_Color="#353535";
                 joinQueryBoxLine(FirstDEExtKeyForJoinGlobal, document.getElementById('select-02').value,line_ID,line_Color);
                 console.log('shi jagah shuru===-------------');
-              }
-              console.log('shi jagah shuru===---');
-            }
-            console.log('shi jagah shuru-------------');
-          }
-          console.log('shi jagah shuru7');
+              
         }
 
       document.getElementById('ThirdModal').style.display = 'none';
@@ -8128,6 +8249,9 @@ function changeSchmaPosition(e)
     }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
+
+      document.getElementById('deleteModal').style.display='block';
+     
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
 
@@ -8171,10 +8295,18 @@ function changeSchmaPosition(e)
             }
           }
         }
+        document.getElementById('refreshId').addEventListener('click',function(){
+
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
+		 document.getElementById('deleteModal').style.display='none';
+      });
         }
+    }
+
+    function CancelErrorBlockOfJoinModalWindow() {
+      document.getElementById('errorBlockOfJoinModalWindow').style.display = 'none';
     }
 
   </script>
