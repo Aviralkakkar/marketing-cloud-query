@@ -2426,8 +2426,8 @@
         </div>
         <!--Khushboo code ended -->
  <!-- Khushboo Refresh Model  -->
-        <div style="display: none;" id="refreshModal">
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div style="display: none;" id="refreshModal">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"> aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
           <div class="slds-modal__container" style="width: 400px;">
             <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
               <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelRefreshModel()" style=" position: sticky; margin-left: 90%;"> 
@@ -2455,7 +2455,7 @@
           <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
           line-height: 20px;
           color: #4e8abe">Cancel</button>
-          <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshMethod()" style="font-size: 11px;
+          <button class="slds-button slds-button_brand"  onclick="refreshMethod()" style="font-size: 11px;
           line-height: 20px;
           color: #edf5fa;">Refresh</button>
           </footer>
@@ -2464,6 +2464,48 @@
           <div class="slds-backdrop slds-backdrop_open"></div>
         </div>
         <!-- Khushboo Refresh Model  ended-->
+        
+        
+         <!--Khushboo query box warning -->
+
+        <div style="display: block;" id="deleteModal">
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 400px;">
+              <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelQueryBoxDeleteModel()" style=" position: sticky; margin-left: 90%;"> 
+                  <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                    <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>
+                  <span class="slds-assistive-text">Close</span>
+                </button> 
+                <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
+              </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+              <div class="slds-grid">
+                <div class="slds-col" style="width: 10%;">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;/* margin-right: 1px; */">
+                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                </svg>
+              </div>
+              <div class="slds-col" style="width: 90%;">
+                <p style="color: #16325c;font-size: 14px;">The Query Box will be permanently deleted.</p>
+                <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
+              </div>
+              </div>
+          </div>
+            <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
+            <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
+            line-height: 20px;
+            color: #4e8abe">Cancel</button>
+            <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshModalDisplayForQueryDiv()" style="font-size: 11px;
+            line-height: 20px;
+            color: #edf5fa;">Delete</button>
+            </footer>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+          </div>
+        <!--Khushboo query box warning ended -->
         
         <!--********* Khushboo code started ************-->
         <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
@@ -4309,7 +4351,19 @@ document.addEventListener("mouseup", function(){
         refreshQueryDiv(DEExtKeyFordeleteDiv);
       });
     }
-     function refreshQueryDiv(DEExtKeyFordeleteDiv)
+    function cancelQueryBoxDeleteModel()
+    {
+      document.getElementById('deleteModal').style.display='none';
+    }
+    function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
+    {
+      document.getElementById('deleteModal').style.display='block';
+      document.getElementById('refreshId').addEventListener('click',function()
+      {
+        refreshQueryDiv(DEExtKeyFordeleteDiv);
+      });
+    }
+    function refreshQueryDiv(DEExtKeyFordeleteDiv)
     {
           deleteDiv(DEExtKeyFordeleteDiv);
     }
