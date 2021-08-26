@@ -6091,7 +6091,12 @@ function changeSchmaPosition(e)
       for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
+          console.log("in the 1st iff")
           SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].SecondDEExtKey)
+        }
+        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
+          console.log("in the 2nd iff")
+          SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].FirstDEExtKey)
         }
       }
       console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
