@@ -2426,11 +2426,7 @@
         </div>
         <!--Khushboo code ended -->
  <!-- Khushboo Refresh Model  -->
-<<<<<<< HEAD
-
-=======
         
->>>>>>> c4436ba3912553c9f0d71ba15b34877ce36299fe
  <div style="display: none;" id="refreshModal">
   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
     <div class="slds-modal__container" style="width: 400px;">
@@ -2460,11 +2456,7 @@
     <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
     line-height: 20px;
     color: #4e8abe">Cancel</button>
-<<<<<<< HEAD
-    <button class="slds-button slds-button_brand"  onclick="refreshMethod()" style="font-size: 11px;
-=======
     <button class="slds-button slds-button_brand" onclick="refreshMethod()" style="font-size: 11px;
->>>>>>> c4436ba3912553c9f0d71ba15b34877ce36299fe
     line-height: 20px;
     color: #edf5fa;">Refresh</button>
     </footer>
@@ -2472,47 +2464,6 @@
     </section>
     <div class="slds-backdrop slds-backdrop_open"></div>
   </div>
-<<<<<<< HEAD
-
-        <!--<div style="display: block;" id="refreshModal">
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"> aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-          <div class="slds-modal__container" style="width: 400px;">
-            <header class="slds-modal__header" style="margin:0; padding:0; background-color: white; ">
-              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelRefreshModel()" style=" position: sticky; margin-left: 90%;"> 
-                <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
-                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-              </button> 
-              <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;font-size: 16px;font-weight: 300;line-height: 1.2;color: #16325c;">Are you sure?</h3>
-            </header>
-          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-            <div class="slds-grid">
-            <div class="slds-col">
-            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="fill:orange;margin-right:10px;">
-              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-            </svg>
-          </div>
-          <div class="slds-col">
-            <p style="color: #16325c;font-size: 14px;">  Refreshing page means you will loose your all current changes.This action cannot be undo. Click Refresh to continue.</p>
-            <p style="color: #666666;font-size: 11px;">Are you sure that you want to continue?</p>
-          </div>
-          </div>
-        </div>
-          <footer class="slds-modal__footer slds-modal__footer_directional" style="background: linear-gradient(#edf5fa,#fff);">
-          <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
-          line-height: 20px;
-          color: #4e8abe">Cancel</button>
-          <button class="slds-button slds-button_brand"  onclick="refreshMethod()" style="font-size: 11px;
-          line-height: 20px;
-          color: #edf5fa;">Refresh</button>
-          </footer>
-          </div>
-          </section>
-          <div class="slds-backdrop slds-backdrop_open"></div>
-        </div>-->
-=======
->>>>>>> c4436ba3912553c9f0d71ba15b34877ce36299fe
         <!-- Khushboo Refresh Model  ended-->
         
         
@@ -2547,7 +2498,7 @@
             <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
             line-height: 20px;
             color: #4e8abe">Cancel</button>
-            <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshModalDisplayForQueryDiv()" style="font-size: 11px;
+            <button class="slds-button slds-button_brand" id="refreshId"  style="font-size: 11px;
             line-height: 20px;
             color: #edf5fa;">Delete</button>
             </footer>
@@ -4400,7 +4351,9 @@ document.addEventListener("mouseup", function(){
     }
     function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
+      console.log('Important key '+DEExtKeyFordeleteDiv);
       document.getElementById('deleteModal').style.display='block';
+      document.getElementById('refreshId').value = DEExtKeyFordeleteDiv
       document.getElementById('refreshId').addEventListener('click',function()
       {
         refreshQueryDiv(DEExtKeyFordeleteDiv);
@@ -4409,9 +4362,12 @@ document.addEventListener("mouseup", function(){
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
     {
       
-          deleteDiv(DEExtKeyFordeleteDiv);
       
-      document.getElementById('deleteModal').style.display='none';
+      console.log('desetbox 1 '+DESetQueryBox);
+          deleteDiv(DEExtKeyFordeleteDiv);
+          console.log('desetbox '+DESetQueryBox);
+      
+      document.getElementById('deleteModal 2 ').style.display='none';
       
     }
      function refreshModalDisplay()
@@ -8137,6 +8093,9 @@ function changeSchmaPosition(e)
     }
     function deleteDiv(DEExtKeyFordeleteDiv) {
       var SetValStr = '';
+
+      document.getElementById('deleteModal').style.display='block';
+     
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
 
@@ -8180,9 +8139,12 @@ function changeSchmaPosition(e)
             }
           }
         }
+        document.getElementById('refreshId').addEventListener('click',function(){
+
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
+      });
         }
     }
 
