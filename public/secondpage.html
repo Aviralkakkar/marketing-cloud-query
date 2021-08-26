@@ -4351,6 +4351,7 @@ document.addEventListener("mouseup", function(){
     }
     function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
+	    console.log('Important key '+DEExtKeyFordeleteDiv);
       document.getElementById('deleteModal').style.display='block';
       document.getElementById('refreshId').addEventListener('click',function()
       {
@@ -4358,9 +4359,9 @@ document.addEventListener("mouseup", function(){
       });
     }
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
-    {
+    {console.log('desetbox 1 '+DESetQueryBox);
           deleteDiv(DEExtKeyFordeleteDiv);
-      
+         console.log('desetbox '+DESetQueryBox);
       document.getElementById('deleteModal').style.display='none';
       
     }
@@ -5898,7 +5899,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="deleteDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplayForQueryDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
