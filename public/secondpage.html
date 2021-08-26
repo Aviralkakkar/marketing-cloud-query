@@ -4351,6 +4351,7 @@ document.addEventListener("mouseup", function(){
     }
     function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
+	    console.log('Important key '+DEExtKeyFordeleteDiv);
       document.getElementById('deleteModal').style.display='block';
       document.getElementById('refreshId').addEventListener('click',function()
       {
@@ -4358,10 +4359,9 @@ document.addEventListener("mouseup", function(){
       });
     }
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
-    {
-         DESetQueryBox.delete(DEExtKeyFordeleteDiv);
+    {console.log('desetbox 1 '+DESetQueryBox);
           deleteDiv(DEExtKeyFordeleteDiv);
-      
+         console.log('desetbox '+DESetQueryBox);
       document.getElementById('deleteModal').style.display='none';
       
     }

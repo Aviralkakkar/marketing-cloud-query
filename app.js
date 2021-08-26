@@ -1629,6 +1629,9 @@ app.post("/credential", async function (req, res) {
           '<DeleteAtEndOfRetentionPeriod>false</DeleteAtEndOfRetentionPeriod>' +
           '<Fields>';
         for (var Field of NewDEFieldsList) {
+          if(Field.FieldName) {
+            Field.FieldName = Field.FieldName.substring(1);
+          }
           if (Field.FieldType == 'Number' || Field.FieldType == 'Date' || Field.FieldType == 'Boolean') {
             DEListBody = DEListBody + '<Field xsi:type="ns2:DataExtensionField">' +
               '<CustomerKey>' + Field.FieldName + '</CustomerKey>' +
