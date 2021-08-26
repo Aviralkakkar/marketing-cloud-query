@@ -3767,12 +3767,12 @@
       var countOfJoinTypeWhere=0;
       /*added by priyanka*/
 
-      function closerunQueryAlert(){
-        document.getElementById('runQueryAlert').style.display = 'none';
-      }
-   function openModal(functionAction) {
+  function closerunQueryAlert(){
+    document.getElementById('runQueryAlert').style.display = 'none';
+  }
+  function openModal(functionAction) {
     var countOfDeWithWhereClauseValue=0;    
-      var countOfDeWithoutWhereClauseValue=0; 
+    var countOfDeWithoutWhereClauseValue=0; 
      
     
      if (DESetQueryBox.size >0 ) {
@@ -3808,34 +3808,34 @@
                 if(val in DEListMap.DEMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 else if(val in DEListMap.SharedDEMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.SharedDEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.SharedDEMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 else if(val in DEListMap.DataViewMap){
                   console.log("nitik value128");
                   document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
-                '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
-                ' <span class="slds-size_1-of-1">' +
-                '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DataViewMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
-                ' </span>' +
-                '  </div>' +
-                '</li>';
+                  '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
+                  ' <span class="slds-size_1-of-1">' +
+                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML+'" id="' + val + 'WhereClasueDEList'+'" draggable=true name="' + DEListMap.DataViewMap[val].DEName +'" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
+                  ' </span>' +
+                  '  </div>' +
+                  '</li>';
                 
                 }
                 
@@ -3856,10 +3856,10 @@
                   }
                   
                   
-                }
+            }
    
             
-          }
+      }
       else if(DESetQueryBox.size == 0 ){
         console.log('hi');
         document.getElementById('DESelectAlert').style.display = 'Block';
@@ -6192,6 +6192,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6366,6 +6387,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6536,6 +6578,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6702,6 +6765,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -6868,6 +6952,27 @@ function changeSchmaPosition(e)
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7032,12 +7137,34 @@ function changeSchmaPosition(e)
           '</svg>'+
           '<span class="slds-assistive-text">Close</span>'+
           '</button>'+
+
             ' <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px; margin-bottom: 7px; font-size: 15px; color: #4e8abe; text-align: left; margin-left: 2.1%;" id="DEnamemodal1">Data Extension Fields</h3>'+
         
          
           
             
           '</header>'+
+          ' <div  id="errorBlockOfJoinModalWindow" style="display:none; background: white;">'+
+					'<div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;width: 100%; height: 5vh;padding-top: 0%; border-radius: 0.25rem; justify-content: left;align-items: self-start;">'+
+					' <span class="slds-assistive-text">warning</span>'+
+						'<span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left; margin-left: 2%; margin-top: 1.3%;">'+
+						' <svg class="slds-icon slds-icon_x-small" aria-hidden="true">'+
+						' <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>'+
+							
+						'</svg>'+
+						'</span>'+
+						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
+						'<div class="slds-notify__close">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
+					
+							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
+							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
+							'</svg>'+
+							' <span class="slds-assistive-text">Close</span>'+
+						'</button>'+
+						'</div>'+
+					'</div>'+
+					'</div>'+
             '<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">' +
   
             '<div >' +
@@ -7229,7 +7356,7 @@ function changeSchmaPosition(e)
 						'</span>'+
 						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
 						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
 							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
 							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
@@ -7394,7 +7521,7 @@ function changeSchmaPosition(e)
 						'</span>'+
 						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
 						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
 							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
 							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
@@ -7537,7 +7664,7 @@ function changeSchmaPosition(e)
 						'</span>'+
 						'<p style="padding: 0; float: left; margin-top: 1%;">Please drag all the DE and JoinType atleast one time. </p>'+
 						'<div class="slds-notify__close">'+
-						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">'+
+						'<button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelErrorBlockOfJoinModalWindow()">'+
 					
 							' <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">'+
 							'<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>'+
@@ -8222,6 +8349,9 @@ function changeSchmaPosition(e)
           //TotalMainDeDragged--;
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
         }
+    }
+    function CancelErrorBlockOfJoinModalWindow() {
+      document.getElementById('errorBlockOfJoinModalWindow').style.display = 'none';
     }
 
   </script>
