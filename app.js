@@ -1512,8 +1512,10 @@ app.post("/credential", async function (req, res) {
           ChildFolderCatagoryID = await FolderCreate(ParentFolderCatagoryID);
           DECreateResult = await DECreate(NewDEFieldsList , ChildFolderCatagoryID);
         }
+        console.log('DECreateResult : ' + DECreateResult);
         var DECreateResultObjectID = DECreateResult[0].Object[0].ObjectID[0];
-         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
+        console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
+        
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
         console.log('TaskId '+taskId);
         if (taskId) {
@@ -1709,8 +1711,10 @@ app.post("/credential", async function (req, res) {
           },
           body: DEListBody
         };
+        console.log('DEListBody : ' + DEListBody);
         request(DEListOption, async function (error, response) {
           if (error) throw new Error(error);
+          console.log('response.body : ' + response.body);
           xml2jsParser.parseString(response.body, function (err, result) {
             resolve(result['soap:Envelope']['soap:Body'][0]['CreateResponse'][0]['Results']);
           });
