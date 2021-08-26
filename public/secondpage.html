@@ -6486,13 +6486,14 @@ function changeSchmaPosition(e)
             '<option value="">Select..</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
-              console.log("hibye")
+              console.log("hibye="+DEExtKeyLoop)
               if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
                 for(var deName of SecondJoinedDeSet){
-
+                  console.log("hibye2="+deName)
                   if(deName==DEExtKeyLoop){
                     console.log("hibye2==="+deName)
+                    break;
                   }
                   else{
                     if(DEExtKeyLoop in DEListMap.DEMap){
