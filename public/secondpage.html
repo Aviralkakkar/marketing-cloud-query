@@ -4368,8 +4368,10 @@ document.addEventListener("mouseup", function(){
     {
          var obj  =  document.querySelectorAll('.myRefreshClass');
         document.getElementById('refreshModal').style.display='none';
+        console.log('Inside refresh modal '+obj.length);
       if(obj.length!=0)
       {
+        console.log('Inside if working good');
       document.getElementById('refreshModal').style.display='block';
       }
       //var ele = document.getElementById('runQueryAlert').style.display;
