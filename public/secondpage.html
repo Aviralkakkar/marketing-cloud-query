@@ -2455,7 +2455,7 @@
           <button class="slds-button slds-button_neutral" onclick="cancelRefreshModel()" style="    font-size: 11px;
           line-height: 20px;
           color: #4e8abe">Cancel</button>
-          <button class="slds-button slds-button_brand" onclick="refreshMethod()" style="font-size: 11px;
+          <button class="slds-button slds-button_brand" id="refreshId" onclick="refreshMethod()" style="font-size: 11px;
           line-height: 20px;
           color: #edf5fa;">Refresh</button>
           </footer>
@@ -4301,6 +4301,14 @@ document.addEventListener("mouseup", function(){
     
     
      //*********** Refresh Method starts *************//
+    function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
+    {
+      document.getElementById('refreshModal').style.display='block';
+      document.getElementById('refreshId').addEventListener('click',function()
+      {
+        deleteDiv(DEExtKeyFordeleteDiv);
+      });
+    }
      function refreshModalDisplay()
     {
          var obj  =  document.querySelectorAll('.myRefreshClass');
@@ -5844,7 +5852,7 @@ document.addEventListener("mouseup", function(){
           '                <th>' +
           '                    <td style="width:8em;" ><span style="display: inline-block;width: 100px;white-space: nowrap;overflow: hidden !important;text-overflow: ellipsis;" title="">' + DEDragData.DEName + '</span></td>' +
           '                    <td width="20%">' +
-          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplay();deleteDiv(this.id)" >' +
+          '                        <button class="buttonStyle" id="' + DEDragData.DEExtKey + '" onclick="refreshModalDisplayForQueryDiv(this.id)" >' +
           '                       <span class="slds-icon_container slds-icon-utility-close"'+
           '                        title="Description of icon when needed">'+
           '                        <svg width="18" height="18" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 18 18" class="slds-icon slds-icon-text-default"'+
