@@ -7901,7 +7901,7 @@ function changeSchmaPosition(e)
      // console.log('keyForDEField==============='+keyForDEField);
      var counter=0;
      for (var key in JoinQueryDetails.DEForJoin) {
-        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
           if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
             //CountOfFirstDEExtKeyForJoin++;
             console.log("in the 1st iff")
@@ -7909,12 +7909,12 @@ function changeSchmaPosition(e)
             break 
           }
         }
-        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
+        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
           
           if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
             // CountOfFirstDEExtKeyForJoin++;
             console.log("in the 2nd iff")
-            counter=1;
+            counter=2;
             break 
           }
         }
@@ -7932,6 +7932,30 @@ function changeSchmaPosition(e)
         if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField!=document.getElementById('SecondDEField').value){
           console.log("in the 2== ");
           JoinQueryDetails.DEForJoin[key].SecondDEJoinField=document.getElementById('SecondDEField').value;
+        }
+        if(JoinQueryDetails.DEForJoin[key].JoinType!=document.getElementById('select-01').value){
+          console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
+          console.log("in the 2 ");
+
+          JoinQueryDetails.DEForJoin[key].JoinType = document.getElementById('select-01').value;
+
+          console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[key].JoinType);
+
+          
+        }
+        document.getElementById('ThirdModal').style.display = 'none';
+
+      }
+      else if(counter==2){
+        console.log('key=='+key);
+        if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField!=document.getElementById('FirstDEField').value){
+
+          JoinQueryDetails.DEForJoin[key].SecondDEJoinField=document.getElementById('FirstDEField').value;
+          console.log("in the ");
+        }
+        if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField!=document.getElementById('SecondDEField').value){
+          console.log("in the 2== ");
+          JoinQueryDetails.DEForJoin[key].FirstDEJoinField=document.getElementById('SecondDEField').value;
         }
         if(JoinQueryDetails.DEForJoin[key].JoinType!=document.getElementById('select-01').value){
           console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
