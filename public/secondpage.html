@@ -2498,7 +2498,7 @@
             <button class="slds-button slds-button_neutral" onclick="cancelQueryBoxDeleteModel()" style="    font-size: 11px;
             line-height: 20px;
             color: #4e8abe">Cancel</button>
-            <button class="slds-button slds-button_brand" id="deleteId"  style="font-size: 11px;
+            <button class="slds-button slds-button_brand"   onclick="deleteQueryBox()" style="font-size: 11px;
             line-height: 20px;
             color: #edf5fa;">Delete</button>
             </footer>
@@ -4340,6 +4340,7 @@ document.addEventListener("mouseup", function(){
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
    var data;
+	  var externalKey;
 
     
     
@@ -4349,7 +4350,7 @@ document.addEventListener("mouseup", function(){
     {
       document.getElementById('deleteModal').style.display='none';
     }
-    function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
+   /* function refreshModalDisplayForQueryDiv(DEExtKeyFordeleteDiv)
     {
 	    console.log('Important key '+DEExtKeyFordeleteDiv+' '+ (DEExtKeyFordeleteDiv!=undefined));
 	     if(DEExtKeyFordeleteDiv!=undefined){
@@ -4358,7 +4359,7 @@ document.addEventListener("mouseup", function(){
       {
         refreshQueryDiv(DEExtKeyFordeleteDiv);
       });}
-    }
+    }*/
     function refreshQueryDiv(DEExtKeyFordeleteDiv)
     {console.log('desetbox 1 '+DESetQueryBox);
           deleteDiv(DEExtKeyFordeleteDiv);
@@ -8332,7 +8333,7 @@ function changeSchmaPosition(e)
           }
         }
     
-	  document.getElementById('deleteId').addEventListener('click',function(){
+	 /* document.getElementById('deleteId').addEventListener('click',function(){
           DESetQueryBox.delete(DEExtKeyFordeleteDiv);
 		   console.log('Set values started ');
           for (var item of DESetQueryBox.values())
@@ -8344,11 +8345,16 @@ function changeSchmaPosition(e)
 		console.log('new log '+  document.getElementById(DEExtKeyFordeleteDiv + '##'));
           document.getElementById(DEExtKeyFordeleteDiv + '##').remove();
 		   document.getElementById('deleteModal').style.display='none';
-	  });	
+	  });	*/
      
         }
     }
-
+	function deleteQueryBox()
+	  {
+	   	DESetQueryBox.delete(externalKey);
+		   document.getElementById(externalKey + '##').remove();
+		   document.getElementById('deleteModal').style.display='none';
+	  }
     function CancelErrorBlockOfJoinModalWindow() {
       document.getElementById('errorBlockOfJoinModalWindow').style.display = 'none';
     }
