@@ -6174,9 +6174,10 @@ function changeSchmaPosition(e)
   //**************************************************END***************************************************** 
 
     function joinTwoDiv(FirstDEExtKeyForJoin) {
-      var SecondDEExtKeyForJoinGlobal, CountOfFirstDEExtKeyForJoin=0;
-      var SecondJoinedDeSet= new Set();
-      for (var key in JoinQueryDetails.DEForJoin) {
+      var SecondDEExtKeyForJoinGlobal;
+      //var CountOfFirstDEExtKeyForJoin=0;
+      //var SecondJoinedDeSet= new Set();
+      /*for (var key in JoinQueryDetails.DEForJoin) {
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
           console.log("in the 1st iff")
@@ -6186,12 +6187,12 @@ function changeSchmaPosition(e)
           console.log("in the 2nd iff")
           SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].FirstDEExtKey)
         }
-      }
+      }*/
       console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
       /*for(var j of joinedDivSet){
         console.log("j==="+j)
       }*/
-      console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
+      //console.log("CountOfFirstDEExtKeyForJoin=="+CountOfFirstDEExtKeyForJoin);
       console.log("FirstDEExtKeyForJoin=="+FirstDEExtKeyForJoin);
       FirstDEExtKeyForJoinGlobal = FirstDEExtKeyForJoin;
       var joinTwoDivString = '';
@@ -7831,6 +7832,31 @@ function changeSchmaPosition(e)
     }
 
     function SecondDEChange() {
+      for (var key in JoinQueryDetails.DEForJoin) {
+        console.log("in the for of SecondDEChange")
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+          if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
+            document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
+            document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
+            document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
+            console.log("in the 1st iff")
+            
+            break 
+          }
+        }
+        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
+          
+          if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
+            // CountOfFirstDEExtKeyForJoin++;
+            console.log("in the 2nd iff")
+            document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
+            document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
+            document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
+           
+            break 
+          }
+        }
+      } 
       console.log("SecondDeExt"+secondDEExt);
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         console.log("SecondDeExt=="+document.getElementById('select-02').value);
@@ -7864,42 +7890,55 @@ function changeSchmaPosition(e)
 
     function SaveJoinQuery() {
      // console.log('keyForDEField==============='+keyForDEField);
-      /*
-      if(keyForDEField!=null && JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName==document.getElementById('select-02').value){
-        console.log('keyForDEField'+keyForDEField);
-        if(JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField!=document.getElementById('FirstDEField').value){
+     var counter=0;
+     for (var key in JoinQueryDetails.DEForJoin) {
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+          if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
+            //CountOfFirstDEExtKeyForJoin++;
+            console.log("in the 1st iff")
+            counter=1;
+            break 
+          }
+        }
+        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
+          
+          if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
+            // CountOfFirstDEExtKeyForJoin++;
+            console.log("in the 2nd iff")
+            counter=1;
+            break 
+          }
+        }
+      } 
+      console.log("key"+key)
+     
+      
+      if(counter==1){
+        console.log('key=='+key);
+        if(JoinQueryDetails.DEForJoin[key].FirstDEJoinField!=document.getElementById('FirstDEField').value){
 
-          JoinQueryDetails.DEForJoin[keyForDEField].FirstDEJoinField=document.getElementById('FirstDEField').value;
+          JoinQueryDetails.DEForJoin[key].FirstDEJoinField=document.getElementById('FirstDEField').value;
           console.log("in the ");
         }
-        if(JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField!=document.getElementById('SecondDEField').value){
+        if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField!=document.getElementById('SecondDEField').value){
           console.log("in the 2== ");
-          JoinQueryDetails.DEForJoin[keyForDEField].SecondDEJoinField=document.getElementById('SecondDEField').value;
+          JoinQueryDetails.DEForJoin[key].SecondDEJoinField=document.getElementById('SecondDEField').value;
         }
-        if(JoinQueryDetails.DEForJoin[keyForDEField].JoinType!=document.getElementById('select-01').value){
+        if(JoinQueryDetails.DEForJoin[key].JoinType!=document.getElementById('select-01').value){
           console.log("in the 2 Join tupe document.getElementById('select-01').value==== "+document.getElementById('select-01').value);
           console.log("in the 2 ");
 
-          JoinQueryDetails.DEForJoin[keyForDEField].JoinType = document.getElementById('select-01').value;
+          JoinQueryDetails.DEForJoin[key].JoinType = document.getElementById('select-01').value;
 
-          console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[keyForDEField].JoinType);
+          console.log("in the 2 Join tupe==== "+JoinQueryDetails.DEForJoin[key].JoinType);
 
-          var nameOfBothDE= "["+ JoinQueryDetails.DEForJoin[keyForDEField].FirstDEName+"].["+JoinQueryDetails.DEForJoin[keyForDEField].SecondDEName+"]JoinedDe"  ;
-          console.log("kaam shuru 2"+nameOfBothDE);
-          for(var item of draggedDeJoinKey){
-            console.log("kaam shuru 1"+item);
-            if(nameOfBothDE==item){
-              console.log("kaam shuru");
-              draggedDeJoinKey.delete(item);
-              console.log("kaam khatam");
-            }
-          }
+          
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-    */
-     // else{
+    
+     else if(counter==0){
       console.log('heyya11'+document.getElementById('select-02').value);
       console.log('heyya12'+document.getElementById('FirstDEField').value);
       console.log('heyya13'+document.getElementById('SecondDEField').value);
@@ -8225,7 +8264,7 @@ function changeSchmaPosition(e)
         }
 
       document.getElementById('ThirdModal').style.display = 'none';
-     // }
+     }
     }
     //****************************************Edited By ANIL KUMAR******************************************
     function joinQueryBoxLine(de1, de2,lineid,lineColor) 
