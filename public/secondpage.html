@@ -7841,7 +7841,7 @@ function changeSchmaPosition(e)
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
             console.log("in the 1st iff")
             
-            break 
+            return;
           }
         }
         if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
@@ -7853,7 +7853,7 @@ function changeSchmaPosition(e)
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
            
-            break 
+            return;
           }
         }
       } 
