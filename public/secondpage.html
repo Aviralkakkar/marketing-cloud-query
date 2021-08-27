@@ -3936,7 +3936,7 @@
              }
             
            }
-           var countOfJoinType=0,QueryNameOfFirstDE, QueryNameOfSecondDE;
+           var countOfJoinType=0;
            //if(draggedDeKey.size==0){
             console.log(" @@@@@@@@@@@@sec ");
            if(DESetQueryBox.size > 1){
@@ -3947,25 +3947,14 @@
                   for (var key in JoinQueryDetails.DEForJoin) {
                     console.log(" %%%%%%%%%%%  ");
                         console.log("JoinType===="+JoinQueryDetails.DEForJoin[key].JoinType);
-                        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey in DEListMap.SharedDEMap){
-                          QueryNameOfFirstDE="ent."+JoinQueryDetails.DEForJoin[key].FirstDEName;
-                        }
-                        else{
-                          QueryNameOfFirstDE=JoinQueryDetails.DEForJoin[key].FirstDEName;
-                        }
-                        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey in DEListMap.SharedDEMap){
-                          QueryNameOfSecondDE="ent."+JoinQueryDetails.DEForJoin[key].SecondDEName;
-                        }
-                        else{
-                          QueryNameOfSecondDE=JoinQueryDetails.DEForJoin[key].SecondDEName;
-                        }
+                       
                           console.log(" *********** ");
                           
                               if(JoinQueryDetails.DEForJoin[key].JoinType=='Left Outer Join with Exclusion'){
                                 document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + QueryNameOfSecondDE+ '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName+ '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']JoinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
@@ -3979,7 +3968,7 @@
                               document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + QueryNameOfFirstDE + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL'+'"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
@@ -3993,7 +3982,7 @@
                             document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                                   '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                                   ' <span class="slds-size_1-of-1">' +
-                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + QueryNameOfFirstDE  + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + QueryNameOfSecondDE + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
+                                  '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName  + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+'] joinedDe" draggable=true name= "['+ JoinQueryDetails.DEForJoin[key].FirstDEName+'].['+JoinQueryDetails.DEForJoin[key].SecondDEName+']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >'+"["+ JoinQueryDetails.DEForJoin[key].FirstDEName+"].["+JoinQueryDetails.DEForJoin[key].SecondDEName+"]"+'</span>' + ' </button> </span>' +
                                   ' </span>' +
                                   '  </div>' +
                                   '</li>';
