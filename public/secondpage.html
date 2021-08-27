@@ -7832,16 +7832,17 @@ function changeSchmaPosition(e)
     }
 
     function SecondDEChange() {
+      var counter=0;
       for (var key in JoinQueryDetails.DEForJoin) {
         console.log("in the for of SecondDEChange=="+FirstDEExtKeyForJoinGlobal);
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinGlobal){
           if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
-            document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
+            //document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
             console.log("in the 1st iff")
-            
-            return;
+            counter=1
+            break;
           }
         }
         if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
@@ -7849,11 +7850,11 @@ function changeSchmaPosition(e)
           if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
             // CountOfFirstDEExtKeyForJoin++;
             console.log("in the 2nd iff")
-            document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
+            //document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
-           
-            return;
+            counter=1
+            break;
           }
         }
       } 
@@ -7880,6 +7881,10 @@ function changeSchmaPosition(e)
       }
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+      }
+      if(counter==1){
+        console.log("in the  if counter ")
+        document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
       }
     }
     //--end of code by nitik
