@@ -7850,6 +7850,7 @@ function changeSchmaPosition(e)
             //document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
+            document.getElementById('SaveButton').innerHTML="update";
             counter=2
             break;
           }
@@ -7878,6 +7879,8 @@ function changeSchmaPosition(e)
       }
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        document.getElementById('SaveButton').innerHTML="Save";
+        document.getElementById('FirstDEField').innerHTML = '<option value="">Select…</option>';
       }
       if(counter==1){
         console.log("in the  if counter ")
