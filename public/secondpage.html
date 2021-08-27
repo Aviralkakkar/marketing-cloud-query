@@ -7831,10 +7831,10 @@ function changeSchmaPosition(e)
       document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
     }
 
-    function SecondDEChange(FirstDEExtKeyForJoin) {
+    function SecondDEChange(FirstDEExtKeyForJoinn) {
       for (var key in JoinQueryDetails.DEForJoin) {
-        console.log("in the for of SecondDEChange"+FirstDEExtKeyForJoin);
-        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+        console.log("in the for of SecondDEChange=="+FirstDEExtKeyForJoinn);
+        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoinn){
           if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
             document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
@@ -7857,7 +7857,7 @@ function changeSchmaPosition(e)
           }
         }
       } 
-      console.log("SecondDeExt"+secondDEExt);
+      console.log("SecondDeExt");
       if (DESetQueryBox.has(document.getElementById('select-02').value)) {
         console.log("SecondDeExt=="+document.getElementById('select-02').value);
         var secondDEExt=document.getElementById('select-02').value;
