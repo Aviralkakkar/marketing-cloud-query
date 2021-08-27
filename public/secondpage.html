@@ -8291,7 +8291,7 @@ function changeSchmaPosition(e)
      
       if (joinedDivSet.has(DEExtKeyFordeleteDiv)) {
         console.log('You can not delete Joined Query Box. You need to referesh the page.');
-
+	 document.getElementById('deleteModal').style.display='none';
         document.getElementById("joinQueryboxAlert").style.display = "block";
         setTimeout(function(){
           document.getElementById("joinQueryboxAlert").style.display = 'none';
