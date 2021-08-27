@@ -4922,7 +4922,7 @@ document.addEventListener("mouseup", function(){
             else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
-                console.log("in the for4");
+                console.log("in the for4"+DEListMap.DataViewMap[k].DEName);
                 DENameForQuery = DEListMap.DataViewMap[k].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
