@@ -6296,7 +6296,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
              
              for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6489,7 +6489,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
   
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6679,7 +6679,7 @@ function changeSchmaPosition(e)
   
               '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-              '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+              '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
               '<option value="">Select..</option>';
              
               for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -6864,7 +6864,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
             '<option value="">Select..</option>';
              
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7050,7 +7050,7 @@ function changeSchmaPosition(e)
   
             '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-            '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+            '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
           
   
             '<option value="">Select..</option>';
@@ -7240,7 +7240,7 @@ function changeSchmaPosition(e)
   
           '<label class="slds-form-element__label" for="select-02">Second DE</label>' +
   
-          '<select onchange="SecondDEChange()" class="slds-select" style="width: 180px;" id="select-02">' +
+          '<select onchange="SecondDEChange('+FirstDEExtKeyForJoin+')" class="slds-select" style="width: 180px;" id="select-02">' +
           '<option value="">Select..</option>';
   
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
@@ -7831,7 +7831,7 @@ function changeSchmaPosition(e)
       document.getElementById('joinImageDiv').src = document.getElementById('select-01').value + '.JPG';
     }
 
-    function SecondDEChange() {
+    function SecondDEChange(FirstDEExtKeyForJoin) {
       for (var key in JoinQueryDetails.DEForJoin) {
         console.log("in the for of SecondDEChange"+FirstDEExtKeyForJoin);
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
