@@ -7833,7 +7833,7 @@ function changeSchmaPosition(e)
 
     function SecondDEChange() {
       for (var key in JoinQueryDetails.DEForJoin) {
-        console.log("in the for of SecondDEChange")
+        console.log("in the for of SecondDEChange"+FirstDEExtKeyForJoin);
         if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==document.getElementById('select-02').value){
             document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
