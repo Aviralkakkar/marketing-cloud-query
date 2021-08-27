@@ -7881,6 +7881,34 @@ function changeSchmaPosition(e)
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
         document.getElementById('SaveButton').innerHTML="Save";
         document.getElementById('FirstDEField').innerHTML = '<option value="">Select…</option>';
+        if(FirstDEExtKeyForJoinGlobal in  DEListMap.DEMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in  DEListMap.SharedDEMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in  DEListMap.DataViewMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+      
       }
       if(counter==1){
         console.log("in the  if counter ")
