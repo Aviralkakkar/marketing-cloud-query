@@ -4385,14 +4385,14 @@ document.addEventListener("mouseup", function(){
           hr = '0' + hr;
         }
 
-        timer.innerHTML = "Time  "+hr + ':' + min + ':' + sec;
+        timer.innerHTML = "Time "+hr + ':' + min + ':' + sec;
 
             setTimeout("timerCycle()", 1000);
       }
     }
 
     function resetTimer() {
-        timer.innerHTML = '00:00:00';
+        timer.innerHTML = 'Time 00:00:00';
     }
     //end stop watch code by NITIK
      //*********** Refresh Method starts *************//
@@ -4860,6 +4860,7 @@ document.addEventListener("mouseup", function(){
         }
       }*/
       //document.getElementById('runQueryAlert').style.display = 'block';
+      resetTimer();
       if(actionType=="Validate"){
         console.log("before starting the timer")
         startTimer()
