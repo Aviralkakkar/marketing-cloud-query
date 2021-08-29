@@ -4337,7 +4337,7 @@ document.addEventListener("mouseup", function(){
     var data;
 	  var externalKey;
 
-    
+    //stop watch code by NITIK
     const timer = document.getElementById('stopwatch');
 
     var hr = 0;
@@ -4385,7 +4385,7 @@ document.addEventListener("mouseup", function(){
           hr = '0' + hr;
         }
 
-        timer.innerHTML = hr + ':' + min + ':' + sec;
+        timer.innerHTML = "Time  "+hr + ':' + min + ':' + sec;
 
             setTimeout("timerCycle()", 1000);
       }
@@ -4394,6 +4394,7 @@ document.addEventListener("mouseup", function(){
     function resetTimer() {
         timer.innerHTML = '00:00:00';
     }
+    //end stop watch code by NITIK
      //*********** Refresh Method starts *************//
   
     function cancelQueryBoxDeleteModel()
