@@ -4392,6 +4392,7 @@ document.addEventListener("mouseup", function(){
     }
 
     function resetTimer() {
+      console.log("in the reset the timer")
         timer.innerHTML = 'Time 00:00:00';
     }
     //end stop watch code by NITIK
@@ -4860,7 +4861,7 @@ document.addEventListener("mouseup", function(){
         }
       }*/
       //document.getElementById('runQueryAlert').style.display = 'block';
-      resetTimer();
+      resetTimer()
       if(actionType=="Validate"){
         console.log("before starting the timer")
         startTimer()
