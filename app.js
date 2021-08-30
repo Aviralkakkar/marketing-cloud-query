@@ -16,7 +16,6 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
-var IsgetDERecordsRun = false;
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1524,7 +1523,7 @@ app.post("/credential", async function (req, res) {
             console.log('queryStatus : ' + queryStatus);
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
-              IsgetDERecordsRun = true;
+              queryStatus = "Completed"
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1532,11 +1531,11 @@ app.post("/credential", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('queryStatus : ' + queryStatus + ' , IsgetDERecordsRun : ' + IsgetDERecordsRun);
-            if(queryStatus == "Complete" && IsgetDERecordsRun == true) {
+            console.log('queryStatus : ' + queryStatus);
+            if(queryStatus == "Completed") {
               console.log('Server Side '+JSON.stringify(DERecords));
               resCall1.send(DERecords);
-              IsgetDERecordsRun = false;
+              queryStatus = '';
             }
             else {
               resCall1.send("false");
