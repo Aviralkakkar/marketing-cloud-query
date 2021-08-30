@@ -1295,6 +1295,7 @@ app.post("/credential", async function (req, res) {
         };
         request(ListDEOption, function (error, response) {
           if (error) throw new Error(error);
+          console.log("getDEMap  : " + response.body)
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
