@@ -16,6 +16,7 @@ var DEListMap = {
   "SharedDEMap" : {},
   "DataViewMap" : {}
 };
+var IsgetDERecordsRun = false;
 //Code Faizal
 app.use(express.static(path.join(__dirname, './images')));
 //Code Khatam
@@ -1295,7 +1296,7 @@ app.post("/credential", async function (req, res) {
         };
         request(ListDEOption, function (error, response) {
           if (error) throw new Error(error);
-          console.log("getDEMap  : " + response.body)
+          console.log('DEMap : ' + response.body);
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
@@ -1515,16 +1516,16 @@ app.post("/credential", async function (req, res) {
         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
-        console.log('TaskId '+taskId);
+        console.log('TaskId : '+taskId);
         if (taskId) {
           DERecords = [];
-          var queryStatus = "NotSet";
+          var queryStatus;
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
-            console.log('queryStatus TaskId : ' + queryStatus);
+            console.log('queryStatus : ' + queryStatus);
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
-              queryStatus = "Completed"
+              IsgetDERecordsRun = true;
 
               await QueryDelete(queryDefinitionId);
               console.log('ClearInterval up');
@@ -1532,11 +1533,12 @@ app.post("/credential", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('queryStatus DERecordGet : ' + queryStatus);
-            if(queryStatus == "Completed") {
+            console.log('queryStatus : ' + queryStatus + ' , IsgetDERecordsRun : ' + IsgetDERecordsRun);
+            if(queryStatus == "Complete" && IsgetDERecordsRun == true) {
               console.log('Server Side '+JSON.stringify(DERecords));
-              queryStatus = "NotSet";
               resCall1.send(DERecords);
+              IsgetDERecordsRun = false;
+              queryStatus = 'NotSet';
             }
             else {
               resCall1.send("false");
