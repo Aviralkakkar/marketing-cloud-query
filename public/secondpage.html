@@ -5269,7 +5269,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 setTimeout(function(){
-                               document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+                document.getElementById("QueryValidateTrueAlert").style.display = 'none';
          }, 5000);
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
@@ -5449,11 +5449,6 @@ document.addEventListener("mouseup", function(){
           console.log('in the if of t');
           document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
         }
-      }
-      if(actionType=="Run"){
-        console.log("before stoping the timer")
-        
-        console.log("after stoping the timer")
       }
      
     }
