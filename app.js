@@ -1517,10 +1517,10 @@ app.post("/credential", async function (req, res) {
         console.log('TaskId '+taskId);
         if (taskId) {
           DERecords = [];
-          var queryStatus;
+          var queryStatus = "NotSet";
           var b = setInterval(async function () {
             queryStatus = await queryStatusMethod(taskId);
-            console.log('queryStatus : ' + queryStatus);
+            console.log('queryStatus TaskId : ' + queryStatus);
             if (queryStatus == "Complete") {
               DERecords = await getDERecords(NewDEName);
               queryStatus = "Completed"
@@ -1531,11 +1531,11 @@ app.post("/credential", async function (req, res) {
             }
           }, 10000);
           app.post("/DERecordGet", async (reqCall1, resCall1) => {
-            console.log('queryStatus : ' + queryStatus);
+            console.log('queryStatus DERecordGet : ' + queryStatus);
             if(queryStatus == "Completed") {
               console.log('Server Side '+JSON.stringify(DERecords));
+              queryStatus = "NotSet";
               resCall1.send(DERecords);
-              queryStatus = '';
             }
             else {
               resCall1.send("false");
