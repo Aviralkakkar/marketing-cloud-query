@@ -4899,7 +4899,7 @@ document.addEventListener("mouseup", function(){
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
+                DENameForQuery = DEListMap.DEMap[k].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
                 }
@@ -4910,7 +4910,7 @@ document.addEventListener("mouseup", function(){
             else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-               // console.log("in the for3"+DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName);
+                //console.log("in the for3"+DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName);
                 //DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
