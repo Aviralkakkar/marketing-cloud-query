@@ -955,7 +955,7 @@
       left: 2%;
       width: 98%
     }
-
+   
     .wizard-wrapper {
       width: 100%;
       height: 159px
@@ -2299,12 +2299,7 @@
             <div class="slds-spinner__dot-b"></div>
           </div>
         </div>
-        <section id="stopWatch" style="height:650px;">
-           <p id="timer"> Time : 00:00:00 </p> 
-           <button id="start"> Start </button> 
-           <button id="stop"> Stop </button> 
-           <p id="fulltime"> </p>
-           </section>
+        
       </div>
 
       <div class="main-division-div">
@@ -2655,7 +2650,12 @@
 
                         <!--ends here-->
                       </th>
-                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
+                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
+                        <div id="stopwatch">
+                          Time 00:00:00
+                      </div>
+                       </th>
+                       <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
                         <button class="  slds-button" onclick="refreshModalDisplay()" >
                           <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
@@ -3082,10 +3082,6 @@
       </div>
 
       <!--**** Khushboo code ended ****-->
-
-    </div>
-
-  </div>
 
 
   <div style="display: none; width: 160px;" id="recordResultModal">
@@ -4334,11 +4330,71 @@ document.addEventListener("mouseup", function(){
     var DESetQueryBox = new Set();
     var NewDEFieldsSet = new Set();
     var joinedDivSet = new Set();
-   var data;
+    var data;
 	  var externalKey;
 
-    
-    
+    //stop watch code by NITIK
+    const timer = document.getElementById('stopwatch');
+
+    var hr = 0;
+    var min = 0;
+    var sec = 0;
+    var stoptime = true;
+
+    function startTimer() {
+      if (stoptime == true) {
+            stoptime = false;
+            timerCycle();
+        }
+    }
+    function stopTimer() {
+      if (stoptime == false) {
+        stoptime = true;
+      }
+    }
+
+    function timerCycle() {
+        if (stoptime == false) {
+        sec = parseInt(sec);
+        min = parseInt(min);
+        hr = parseInt(hr);
+
+        sec = sec + 1;
+
+        if (sec == 60) {
+          min = min + 1;
+          sec = 0;
+        }
+        if (min == 60) {
+          hr = hr + 1;
+          min = 0;
+          sec = 0;
+        }
+
+        if (sec < 10 || sec == 0) {
+          sec = '0' + sec;
+        }
+        if (min < 10 || min == 0) {
+          min = '0' + min;
+        }
+        if (hr < 10 || hr == 0) {
+          hr = '0' + hr;
+        }
+
+        timer.innerHTML = "Time "+hr + ':' + min + ':' + sec;
+
+            setTimeout("timerCycle()", 1000);
+      }
+    }
+
+    function resetTimer() {
+      console.log("in the reset the timer")
+        timer.innerHTML = 'Time 00:00:00';
+        hr = 0;
+        min = 0;
+        sec = 0;
+    }
+    //end stop watch code by NITIK
      //*********** Refresh Method starts *************//
   
     function cancelQueryBoxDeleteModel()
@@ -4372,6 +4428,11 @@ document.addEventListener("mouseup", function(){
         console.log('Inside if working good');
       document.getElementById('refreshModal').style.display='block';
       }
+      JoinQueryDetails = {
+      "PrimaryDE": {},
+      "DEForJoin": []
+      }
+      resetTimer()
       //var ele = document.getElementById('runQueryAlert').style.display;
      // console.log('display '+ele);
      // if(ele!='none')
@@ -4800,6 +4861,12 @@ document.addEventListener("mouseup", function(){
         }
       }*/
       //document.getElementById('runQueryAlert').style.display = 'block';
+      resetTimer()
+      if(actionType=="Run"){
+        console.log("before starting the timer")
+        startTimer()
+        console.log("after starting the timer")
+      }
       console.log("draggedDeName000000=="+draggedDeKey.size);
       console.log("DESetQueryBox=="+DESetQueryBox.size); 
       console.log("draggedDeJoinKey=="+draggedDeJoinKey.size); 
@@ -4899,7 +4966,7 @@ document.addEventListener("mouseup", function(){
             console.log("in the if");
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
                 console.log("in the for2");
-                DENameForQuery = DEListMap.DEMap[k].DEName;
+                DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
                 }
@@ -4910,24 +4977,24 @@ document.addEventListener("mouseup", function(){
             else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-                //console.log("in the for3"+DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName);
-                //DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
+              console.log("in the for3"+DEListMap.SharedDEMap[k].DEName);
+                DENameForQuery = DEListMap.SharedDEMap[k].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
                 }
-                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.SharedDEMap[k].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
             else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
-                console.log("in the for4");
-                //DENameForQuery = DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName;
+                console.log("in the for4"+DEListMap.DataViewMap[k].DEName);
+                DENameForQuery = DEListMap.DataViewMap[k].DEName;
                 if(DENameForQuery[0] == '_') {
                   DENameForQuery = DENameForQuery.substring(1);
                 }
-                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DEListMap.DataViewMap[k].DEName + ' ' + Field1.FieldName + '],';
+                strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
             }
@@ -5381,6 +5448,11 @@ document.addEventListener("mouseup", function(){
           console.log('in the if of t');
           document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
         }
+      }
+      if(actionType=="Run"){
+        console.log("before stoping the timer")
+        stopTimer()
+        console.log("after stoping the timer")
       }
      
     }
@@ -6400,7 +6472,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6591,7 +6663,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -6774,7 +6846,7 @@ function changeSchmaPosition(e)
               '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
               '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-              '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+              '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
               '</footer>' +
               '</div>' +
               '</section>' +
@@ -6961,7 +7033,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -7148,7 +7220,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -7337,7 +7409,7 @@ function changeSchmaPosition(e)
             '<footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">' +
             '<button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important;" onclick="CancelThirdModal()">Cancel</button>' +
   
-            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()">Save</button>' +
+            '<button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="SaveJoinQuery()" id="SaveButton">Save</button>' +
             '</footer>' +
             '</div>' +
             '</section>' +
@@ -7835,6 +7907,8 @@ function changeSchmaPosition(e)
             //document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
+            console.log("in the 1st iff 11")
+            document.getElementById('SaveButton').innerHTML="update";
             console.log("in the 1st iff")
             counter=1
             break;
@@ -7848,6 +7922,7 @@ function changeSchmaPosition(e)
             //document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
             document.getElementById('FirstDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
             document.getElementById('select-01').value=JoinQueryDetails.DEForJoin[key].JoinType
+            document.getElementById('SaveButton').innerHTML="update";
             counter=2
             break;
           }
@@ -7876,6 +7951,36 @@ function changeSchmaPosition(e)
       }
       else {
         document.getElementById('SecondDEField').innerHTML = '<option value="">Select…</option>';
+        document.getElementById('SaveButton').innerHTML="Save";
+        document.getElementById('FirstDEField').innerHTML = '<option value="">Select…</option>';
+        if(FirstDEExtKeyForJoinGlobal in  DEListMap.DEMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in  DEListMap.SharedDEMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+        else if(FirstDEExtKeyForJoinGlobal in  DEListMap.DataViewMap){
+          for (var i in DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields) {
+              
+              document.getElementById('FirstDEField').innerHTML += '<option value="' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '">' + DEListMap.DEMap[FirstDEExtKeyForJoinGlobal].DEFields[i]["FieldName"] + '</option>';
+    
+                  
+                  
+          }
+        }
+      
       }
       if(counter==1){
         console.log("in the  if counter ")
