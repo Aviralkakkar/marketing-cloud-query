@@ -4899,11 +4899,11 @@ document.addEventListener("mouseup", function(){
       var DENameForQuery = '';
       if (DESetQueryBox.size == 1) {
         if (Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
+          DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4918,11 +4918,11 @@ document.addEventListener("mouseup", function(){
           }
         }
         else if (Array.from(DESetQueryBox)[0] in DEListMap.SharedDEMap) {
+          DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4937,11 +4937,11 @@ document.addEventListener("mouseup", function(){
           }
         }
         else if (Array.from(DESetQueryBox)[0] in DEListMap.DataViewMap) {
+          DENameForQuery = DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4963,37 +4963,35 @@ document.addEventListener("mouseup", function(){
         for (const k of DESetQueryBox) {
           console.log("in the for");
           if(k in DEListMap.DEMap) {
-            console.log("in the if");
+              DENameForQuery = DEListMap.DEMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
-                console.log("in the for2");
-                DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
                 strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
             else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
+              DENameForQuery = DEListMap.SharedDEMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-              console.log("in the for3"+DEListMap.SharedDEMap[k].DEName);
-                DENameForQuery = DEListMap.SharedDEMap[k].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
                 strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
             else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
+              DENameForQuery = DEListMap.DataViewMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4"+DEListMap.DataViewMap[k].DEName);
-                DENameForQuery = DEListMap.DataViewMap[k].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
+                
                 strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
