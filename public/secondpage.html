@@ -5296,6 +5296,7 @@ document.addEventListener("mouseup", function(){
                   //  document.getElementById('FullPageSpinner').style.display = 'none';
                   //  document.getElementById('DEListSidebar').style.marginTop = '0px';
                   //  clearInterval(b);
+                  //  stopTimer()
                   //}
                 }, 3000);
               }
@@ -5304,6 +5305,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                stopTimer()
 
                 console.log('Query Validate ErrorMsg in Query Run : ' + data.ErrorMsg);
               }
@@ -5363,6 +5365,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 clearInterval(b);
+                stopTimer()
               }
             }
           })
@@ -5451,7 +5454,7 @@ document.addEventListener("mouseup", function(){
       }
       if(actionType=="Run"){
         console.log("before stoping the timer")
-        stopTimer()
+        
         console.log("after stoping the timer")
       }
      
