@@ -59,7 +59,6 @@ app.post("/credential", async function (req, res) {
  
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
-  
       "_Subscribers": {
         "DEName": "_Subscribers",
         "DEFields": [
@@ -1448,6 +1447,7 @@ app.post("/credential", async function (req, res) {
   });
 
   app.post("/validatequery", async (reqCall, resCall) => {
+    AuthResponse = await getacesstoken(AuthRequest);
     NewDEName = moment().format('yyyy-mm-dd:hh:mm:ss');
     var DERecords = [];
     var NewDEFieldsList = reqCall.body.NewDEFieldsList;
