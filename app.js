@@ -59,15 +59,7 @@ app.post("/credential", async function (req, res) {
  
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
-      "_EnterpriseAttribute": {
-        "DEName": "_EnterpriseAttribute",
-        "DEFields": [
-          {
-            "FieldName": "_SubscriberID",
-            "FieldType": "Number"
-          }
-        ]
-      },
+  
       "_Subscribers": {
         "DEName": "_Subscribers",
         "DEFields": [
