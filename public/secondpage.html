@@ -3083,10 +3083,6 @@
 
       <!--**** Khushboo code ended ****-->
 
-    </div>
-
-  </div>
-
 
   <div style="display: none; width: 160px;" id="recordResultModal">
     <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true"
@@ -4903,11 +4899,11 @@ document.addEventListener("mouseup", function(){
       var DENameForQuery = '';
       if (DESetQueryBox.size == 1) {
         if (Array.from(DESetQueryBox)[0] in DEListMap.DEMap) {
+          DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4922,11 +4918,11 @@ document.addEventListener("mouseup", function(){
           }
         }
         else if (Array.from(DESetQueryBox)[0] in DEListMap.SharedDEMap) {
+          DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.SharedDEMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4941,11 +4937,11 @@ document.addEventListener("mouseup", function(){
           }
         }
         else if (Array.from(DESetQueryBox)[0] in DEListMap.DataViewMap) {
+          DENameForQuery = DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName;
+          if(DENameForQuery[0] == '_') {
+            DENameForQuery = DENameForQuery.substring(1);
+          }
           for (var i in DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields) {
-            DENameForQuery = DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DEName;
-            if(DENameForQuery[0] == '_') {
-              DENameForQuery = DENameForQuery.substring(1);
-            }
             strQuery += ' [' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '] as [' + DENameForQuery + ' ' + DEListMap.DataViewMap[Array.from(DESetQueryBox)[0]].DESelectedFields[i]["FieldName"] + '],';
           }
           strQuery = strQuery.slice(0, -1);
@@ -4967,37 +4963,35 @@ document.addEventListener("mouseup", function(){
         for (const k of DESetQueryBox) {
           console.log("in the for");
           if(k in DEListMap.DEMap) {
-            console.log("in the if");
+              DENameForQuery = DEListMap.DEMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.DEMap[k].DESelectedFields) {
-                console.log("in the for2");
-                DENameForQuery = DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
                 strQuery += ' [' +  DEListMap.DEMap[k].DEName+ '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery1= "+strQuery );
             }
             else if (k in DEListMap.SharedDEMap) {
               console.log("in the else-if");
+              DENameForQuery = DEListMap.SharedDEMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.SharedDEMap[k].DESelectedFields) {
-              console.log("in the for3"+DEListMap.SharedDEMap[k].DEName);
-                DENameForQuery = DEListMap.SharedDEMap[k].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
                 strQuery += ' [' + DEListMap.SharedDEMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery2= "+strQuery );
             }
             else if (k in DEListMap.DataViewMap) {
               console.log("in the else=if");
+              DENameForQuery = DEListMap.DataViewMap[k].DEName;
+              if(DENameForQuery[0] == '_') {
+                DENameForQuery = DENameForQuery.substring(1);
+              }
               for (var Field1 of DEListMap.DataViewMap[k].DESelectedFields) {
                 console.log("in the for4"+DEListMap.DataViewMap[k].DEName);
-                DENameForQuery = DEListMap.DataViewMap[k].DEName;
-                if(DENameForQuery[0] == '_') {
-                  DENameForQuery = DENameForQuery.substring(1);
-                }
+                
                 strQuery += ' [' + DEListMap.DataViewMap[k].DEName + '].[' + Field1.FieldName + '] as [' + DENameForQuery + ' ' + Field1.FieldName + '],';
               }
               console.log(" strQuery3="+strQuery );
@@ -5275,7 +5269,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 setTimeout(function(){
-                               document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+                document.getElementById("QueryValidateTrueAlert").style.display = 'none';
          }, 5000);
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
@@ -5300,6 +5294,7 @@ document.addEventListener("mouseup", function(){
                   //  document.getElementById('FullPageSpinner').style.display = 'none';
                   //  document.getElementById('DEListSidebar').style.marginTop = '0px';
                   //  clearInterval(b);
+                  //  stopTimer()
                   //}
                 }, 3000);
               }
@@ -5308,6 +5303,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('QueryValidateFalseAlert').style.display = 'block';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
+                stopTimer()
 
                 console.log('Query Validate ErrorMsg in Query Run : ' + data.ErrorMsg);
               }
@@ -5367,6 +5363,7 @@ document.addEventListener("mouseup", function(){
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 clearInterval(b);
+                stopTimer()
               }
             }
           })
@@ -5452,11 +5449,6 @@ document.addEventListener("mouseup", function(){
           console.log('in the if of t');
           document.getElementById('RichTextEditorForFinalWhereClause').innerHTML='';
         }
-      }
-      if(actionType=="Run"){
-        console.log("before stoping the timer")
-        stopTimer()
-        console.log("after stoping the timer")
       }
      
     }

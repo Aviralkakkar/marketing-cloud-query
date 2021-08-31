@@ -1288,6 +1288,7 @@ app.post("/credential", async function (req, res) {
         };
         request(ListDEOption, function (error, response) {
           if (error) throw new Error(error);
+          console.log('DEMap : ' + response.body);
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
@@ -1507,7 +1508,7 @@ app.post("/credential", async function (req, res) {
         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
-        console.log('TaskId '+taskId);
+        console.log('TaskId : '+taskId);
         if (taskId) {
           DERecords = [];
           var queryStatus;
@@ -1529,6 +1530,7 @@ app.post("/credential", async function (req, res) {
               console.log('Server Side '+JSON.stringify(DERecords));
               resCall1.send(DERecords);
               IsgetDERecordsRun = false;
+              queryStatus = 'NotSet';
             }
             else {
               resCall1.send("false");
