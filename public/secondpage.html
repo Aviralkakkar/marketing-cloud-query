@@ -2582,7 +2582,26 @@
              
                 <!--sucess alert-->
                  <!--sucess alert-->
-             
+              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
+              height: 6vh ; border-radius: 0.25rem;">
+                <span class="slds-assistive-text">check</span>
+                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                </svg>
+                </span>
+                <p style="padding: 0; float: left;">
+                  Valid SQL Query Syntax.
+                </p>
+                <div class="slds-notify__close">
+                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
+                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                </div>
+                </div>
 
                  <!--invalid alert-->
               <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
@@ -2633,26 +2652,7 @@
                       <!--/th-->
                       
                         <div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
-                          <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
-                          height: 6vh ; border-radius: 0.25rem;">
-                            <span class="slds-assistive-text">check</span>
-                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                            </svg>
-                            </span>
-                            <p style="padding: 0; float: left;">
-                              Valid SQL Query Syntax.
-                            </p>
-                            <div class="slds-notify__close">
-                            <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
-                            <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                            </svg>
-                            <span class="slds-assistive-text">Close</span>
-                            </button>
-                            </div>
-                            </div>
+                          
                       </div>
                       
                       <th style="width: 0px;padding-left: 5px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
@@ -5276,14 +5276,18 @@ document.addEventListener("mouseup", function(){
             },
             success: function (data) {
               if (actionType == "Validate" && data.IsQueryValid == true) {
+                console.display("display")
+                document.getElementById('sqlQuery').style.display = 'none';
+                console.display("display2")
                 document.getElementById('QueryValidateTrueAlert').style.display = 'block';
                
-                            
+                console.display("display3")          
                 document.getElementById('QueryValidateFalseAlert').style.display = 'none';
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
                 setTimeout(function(){
                 document.getElementById("QueryValidateTrueAlert").style.display = 'none';
+                document.getElementById('sqlQuery').style.display = 'block';
          }, 5000);
               }
               else if (actionType == "Validate" && data.IsQueryValid == false) {
