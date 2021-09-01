@@ -7990,10 +7990,10 @@ function changeSchmaPosition(e)
         console.log("in the  if counter ")
         document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
       }
-      else if(counter==2){
+      /*else if(counter==2){
         console.log("in the 2nd if counter ")
         document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
-      }
+      }*/
     }
     //--end of code by nitik
     function CancelThirdModal() {
@@ -8013,7 +8013,7 @@ function changeSchmaPosition(e)
             break 
           }
         }
-        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
+        /*if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
           
           if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
             // CountOfFirstDEExtKeyForJoin++;
@@ -8021,7 +8021,7 @@ function changeSchmaPosition(e)
             counter=2;
             break 
           }
-        }
+        }*/
       } 
       console.log("key"+key)
      
@@ -8050,7 +8050,7 @@ function changeSchmaPosition(e)
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-      else if(counter==2){
+      /*else if(counter==2){
         console.log('key=='+key);
         if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField!=document.getElementById('FirstDEField').value){
 
@@ -8073,7 +8073,7 @@ function changeSchmaPosition(e)
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
-      }
+      }*/
     
      else if(counter==0){
       console.log('heyya11'+document.getElementById('select-02').value);
