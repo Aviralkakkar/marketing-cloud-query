@@ -4909,6 +4909,7 @@ document.addEventListener("mouseup", function(){
           }
           strQuery = strQuery.slice(0, -1);
           strQuery += ' FROM [' + DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEName + ']';
+          console.log("strQuery===______"+strQuery);
           var whereClauseValue = document.getElementById(Array.from(DESetQueryBox)[0] + 'WhereClauseValue').innerHTML;
           if (whereClauseValue != '') {
             for (var key in DEListMap.DEMap[Array.from(DESetQueryBox)[0]].DEFields) {
@@ -4956,6 +4957,7 @@ document.addEventListener("mouseup", function(){
             strQuery += ' WHERE ' + whereClauseValue;
           }
         }
+        console.log("strQuery===______+"+strQuery);
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         
