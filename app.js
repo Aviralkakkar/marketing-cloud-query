@@ -560,31 +560,8 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_BusinessUnitUnsubscribes": {
-        "DEName": "_BusinessUnitUnsubscribes",
-        "DEFields": [
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "BusinessUnitID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "UnsubReason",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "UnsubDateUTC",
-            "FieldType": "Date"
-          }
-        ]
-      },
+      
+  
       "_smsmessagetracking": {
         "DEName": "_smsmessagetracking",
         "DEFields": [
@@ -762,60 +739,9 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_MobileLineAddressContactSubscriptionView": {
-        "DEName": "_MobileLineAddressContactSubscriptionView",
-        "DEFields": [
-          {
-            "FieldName": "ChannelID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IsActive",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "ModifiedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_MobileLineOrphanContactView": {
-        "DEName": "_MobileLineOrphanContactView",
-        "DEFields": [
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
+      
+
+  
       "_SMSSubscriptionLog": {
         "DEName": "_SMSSubscriptionLog",
         "DEFields": [
@@ -1291,7 +1217,7 @@ app.post("/credential", async function (req, res) {
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
-              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" , "_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])) {
+              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" ].includes(TempDEListFetchResult[i]["Name"][0])) {
                 DEListMap.DEMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
