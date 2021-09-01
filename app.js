@@ -1217,13 +1217,13 @@ app.post("/credential", async function (req, res) {
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
-              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" ].includes(TempDEListFetchResult[i]["Name"][0])) {
+              if (!["ExpressionBuilderAttributes" , "_MobileAddress" , "_MobileSubscription" , "_PushAddress" , "_PushTag" , "_MobileLineAddressContact" , "_MobileLineAddress" , "_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])) {
                 DEListMap.DEMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
                 }
               }
-              else {
+              else if (!["_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])){
                 DEListMap.DataViewMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
