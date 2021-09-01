@@ -3902,7 +3902,7 @@
                         else if(NameOfDe in DEListMap.SharedDEMap) {
                           for (var key in DEListMap.SharedDEMap[NameOfDe].DEFields) {
                             var regex = new RegExp(DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.SharedDEMap[NameOfDe].DEName + '].[' + DEListMap.SharedDEMap[NameOfDe].DEFields[key]["FieldName"] + ']');
                             console.log("FieldWhereClause-="+FieldWhereClause);
                           }
                         }
