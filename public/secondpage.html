@@ -4441,6 +4441,7 @@ document.addEventListener("mouseup", function(){
       "DEForJoin": []
       }
       resetTimer()
+      document.getElementById("sqlQuery").innerHTML=""
       //var ele = document.getElementById('runQueryAlert').style.display;
      // console.log('display '+ele);
      // if(ele!='none')
@@ -5064,6 +5065,7 @@ document.addEventListener("mouseup", function(){
 
         }
         console.log("strQuery=="+strQuery);
+        document.getElementById("sqlQuery").innerHTML=strQuery;
         //console.log("strQuery.length="+strQuery.length);
         /*var l=strQuery.length;
         //var char=strQuery.charAt(l)
