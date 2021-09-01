@@ -2651,6 +2651,11 @@
                         <!--ends here-->
                       </th>
                       <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
+                        <div id="sqlQuery">
+                          
+                      </div>
+                       </th>
+                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
                         <div id="stopwatch">
                           Time 00:00:00
                       </div>
@@ -4960,6 +4965,8 @@ document.addEventListener("mouseup", function(){
           }
         }
         console.log("strQuery===______+"+strQuery);
+        
+        document.getElementById("sqlQuery").innerHTML=strQuery;
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         
