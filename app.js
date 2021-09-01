@@ -560,31 +560,8 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_BusinessUnitUnsubscribes": {
-        "DEName": "_BusinessUnitUnsubscribes",
-        "DEFields": [
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "BusinessUnitID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "UnsubReason",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "UnsubDateUTC",
-            "FieldType": "Date"
-          }
-        ]
-      },
+      
+  
       "_smsmessagetracking": {
         "DEName": "_smsmessagetracking",
         "DEFields": [
@@ -762,60 +739,9 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_MobileLineAddressContactSubscriptionView": {
-        "DEName": "_MobileLineAddressContactSubscriptionView",
-        "DEFields": [
-          {
-            "FieldName": "ChannelID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IsActive",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "ModifiedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_MobileLineOrphanContactView": {
-        "DEName": "_MobileLineOrphanContactView",
-        "DEFields": [
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
+      
+
+  
       "_SMSSubscriptionLog": {
         "DEName": "_SMSSubscriptionLog",
         "DEFields": [
@@ -939,35 +865,7 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_JourneyActivity ": {
-        "DEName": "_JourneyActivity ",
-        "DEFields": [
-          {
-            "FieldName": "VersionID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityExternalKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "JourneyActivityObjectID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityType",
-            "FieldType": "Text"
-          }
-        ]
-      },
+
       "_Job": {
         "DEName": "_Job",
         "DEFields": [
@@ -1121,152 +1019,8 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_SocialNetworkImpressions ": {
-        "DEName": "_SocialNetworkImpressions ",
-        "DEFields": [
-          {
-            "FieldName": "JobID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ListID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "RegionTitle",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionDescription",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionHTML",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContentRegionID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SocialSharingSiteID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SiteName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CountryCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ReferringURL",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IPAddress",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "TransactionTime",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "PublishedSocialContentStatusID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ShortCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishTime",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_SocialNetworkTracking": {
-        "DEName": "_SocialNetworkTracking ",
-        "DEFields": [
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Email"
-          },
-          {
-            "FieldName": "ListID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "BatchID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SocialSharingSiteID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SiteName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CountryCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishedSocialContentID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionTitle",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionDescription",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionHTML",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContentRegionID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "OYBMemberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "TransactionTime",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "IsUnique",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Domain",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishedSocialContentStatusID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ShortCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishTime",
-            "FieldType": "Date"
-          }
-        ]
-      }
+     
+     
     }
     DEListMap = await getDEMap();
     DEListMap = await getSharedDEMap();
@@ -1297,7 +1051,7 @@ app.post("/credential", async function (req, res) {
                   "DEFields" : []
                 }
               }
-              else {
+              else if (!["_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])){
                 DEListMap.DataViewMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
