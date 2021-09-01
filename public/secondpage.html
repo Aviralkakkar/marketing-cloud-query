@@ -6941,7 +6941,10 @@ function changeSchmaPosition(e)
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
              // var counter=0;
               console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              if(SecondJoinedDeSet.has(DEExtKeyLoop)){
+                console.log('it has the value==========================')
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                  console.log("hibye2")
                  /*for(var deName of SecondJoinedDeSet){
                    console.log("hibye2="+deName)
@@ -7317,7 +7320,10 @@ function changeSchmaPosition(e)
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
              // var counter=0;
               console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              if(SecondJoinedDeSet.has(DEExtKeyLoop)){
+                console.log('it has the value==========================')
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
                 /*for(var deName of SecondJoinedDeSet){
                   console.log("hibye2="+deName)
