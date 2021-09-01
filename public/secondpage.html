@@ -3910,7 +3910,7 @@
                           for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
                             console.log("-----++S");
                             var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
-                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[key].DEName + '].[' + DEListMap.DataViewMap[key].DEFields[key]["FieldWhereClause"] + ']');
+                            FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"] + ']');
                             console.log("FieldWhereClause=="+FieldWhereClause);
                           }
                         }
