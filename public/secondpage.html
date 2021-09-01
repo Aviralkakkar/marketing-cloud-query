@@ -3908,7 +3908,7 @@
                         }
                         else if(NameOfDe in DEListMap.DataViewMap) {
                           for (var key in DEListMap.DataViewMap[NameOfDe].DEFields) {
-                            console.log("-----++S");
+                            console.log("-----++S=>"+key);
                             var regex = new RegExp(DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldWhereClause"], "g")
                             FieldWhereClause = FieldWhereClause.replace(regex, '[' + DEListMap.DataViewMap[NameOfDe].DEName + '].[' + DEListMap.DataViewMap[NameOfDe].DEFields[key]["FieldName"] + ']');
                             
