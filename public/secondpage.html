@@ -2493,498 +2493,514 @@
                 <!--********* Khushboo code started ************-->
                 <div id="main-div" class="slds-float_right" style="width:75%;height:100%;">
 
-
-                    <div id="queryDiv" style="height:100%;position:relative;">
-                        <div style="height:8.9%;">
-                            <table style="height:100%;">
-                                <tbody>
-                                    <tr>
-
-                                        <th style="width: max-content;padding-left: 1%; background: transparent;">
-                                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">warning</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p style="padding: 0; float: left;">Please Select Atleast One DE.
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">warning</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p style="padding: 0; float: left;">Please Join the Query Box.
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelQueryBoxJoinAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <!--alerts and warning-->
-                                        <!--for -->
-                                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">warning</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p style="padding: 0; float: left;">You can not delete Joined Query Box. You need to referesh the page.
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="joinQueryboxAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <!--priyanka added code-->
-
-                                        <!--sucess alert-->
-                                        <!--sucess alert-->
-                                        <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
-                 height: 6vh ; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">check</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                                                </svg>
-                                            </span>
-                                            <p style="padding: 0; float: left;">
-                                                Valid SQL Query Syntax.
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <!--invalid alert-->
-                                        <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
-              height: 7vh ; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">check</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p id="msgQueryValidateFalseAlert" style="padding: 0; text-align: justify; font-size:11px;">
-
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateFalseAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-
-                                        <!--alert for already exist div-->
-                                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
-                                            <span class="slds-assistive-text">warning</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p id="DEListDivAlertPera" style="padding: 0; float: left;">
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDEListDivAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <!--end-->
-
-                                        <!--ends here-->
-                                        </th>
-                                        <th>
-                                            <div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
-
-                                            </div>
-                                        </th>
-                                        <th style="width: 0px;padding-left: 5px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
-                                            <div id="stopwatch">
-                                                Time 00:00:00
-                                            </div>
-                                        </th>
-                                        <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
-                                            <button class="  slds-button" onclick="refreshModalDisplay()">
-                                                <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
-                                                    <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
-                                                        </use>
-
-                                                    </svg>
-                                                </span>
-                                                <span class="tree-label " id="31244-label">
-                                                </span>
-                                            </button>
-                                        </th>
-                                        <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
-                                            <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');" style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button>
-                                        </th>
-                                        <th style="width: 0px;padding-left: 0%;padding-bottom:4px;">
-                                            <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button>
-                                        </th>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        <!--ends here-->
-                    
-            
-            
-            </div>
-              <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;border-top:1px solid #dddbda">
-              
-              <div id="MainDivAlert" style="display:none">
-                      <!--********* nitik code started ************-->
-                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
-                  <span class="slds-assistive-text">error</span>
-                  <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
-                    title="Description of icon when needed">
-                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                    </svg>
-                  </span>
-                  <p>Please create at least one Query Box</p>
-                  <div class="slds-notify__close">
-                    <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
-                      title="Close" onclick="CancelQueryBoxAlert()">
-                      <svg class="slds-button__icon" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
-                <span class="slds-assistive-text">warning</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                </svg>
-                </span>
-                <h6>Please select atleast one DE.
-              
-                </h6>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
-                <svg class="slds-button__icon" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
-           
-             
-                    <!--********* nitik code ended ************-->
-
-
-                            <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
-              </button>
-          
-              <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
-              <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
-
-
-                            <!--    <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
-                onclick='openModal("Validate")'
-                style="background-color: #4e8abe !important;">Validate Query</button>
-              <button
-                class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>-->
-                            <!--      <button
-                class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
-                onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
-        -->
-                            <!--********  Nitik code started *************-->
-
-                            <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
-                    Launch demo modal
-                  </button-->
-                            <!-- Modal -->
-
-                            <!--div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
-                  role="dialog">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                              <button type="button" class="close" aria-label="Close" onclick="closeModal()">
-                                  <span aria-hidden="true">×</span>
-                              </button>
-                          </div>
-                          <div class="modal-body">
-                              ...
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                      </div>
-                  </div>
-              </div-->
-                            <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
-                                <div class="slds-modal__container">
-                                    <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">
-                                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="closeModal()" style=" position: sticky; margin-left: 94%;">
-                                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                            </svg>
-                                            <span class="slds-assistive-text">Close</span>
-                                        </button>
-
-                                        <h3 id="modal-heading-03" style="padding:0; margin:0; margin-top: -25px;
-                    margin-bottom: 7px;
-                    font-size: 15px;
-                    color: #4e8abe; text-align: left;
-                    margin-left: 2.1%;" id="DEnamemodal1">DE Where Clause</h3>
-                                    </header>
-                                    <!--header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd; " >
-                      
-                      <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
-                     
-                      
-                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
-                      onclick="CancelDEWhereClauseModal()" style=" position: sticky; margin-left: 94%;">
-                      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                      </svg>
-                      <span class="slds-assistive-text">Close</span>
-                    </button>
-                    <h3 id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">DE Where Clause</h3>
-                  
-                       
-                        
+    
+                  <div id="queryDiv" style="height:100%;position:relative;" >
+                       <div style="height:8.9%;">
+                     <table style="height:100%;">
+                        <tbody>
+                          <tr>
                           
-                        </header-->
-                                    <!--div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
-                          <span class="slds-assistive-text">warning</span>
-                          <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
-                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
-                          </svg>
-                          </span>
-                          <h6>Please drag all the DE and JoinType atleast one time.
-                        
-                          </h6>
-                          <div class="slds-notify__close">
-                          <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
-                          <svg class="slds-button__icon" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                          </svg>
-                          <span class="slds-assistive-text">Close</span>
-                          </button>
-                          </div>
-                          </div-->
-                                    <div id="DeDragAlert" style="display:none; background: white;">
-                                        <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
-                            width: 100%;
-                            height: 5vh;
-                            padding-top: 0%;
-                            border-radius: 0.25rem;
-                            justify-content: left;
-                            align-items: self-start;">
-                                            <span class="slds-assistive-text">warning</span>
-                                            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
-                              margin-left: 2%;
-                              margin-top: 1.3%;">
-                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-                                                </svg>
-                                            </span>
-                                            <p style="padding: 0;
-                              float: left;
-                              margin-top: 1%;">Please drag all the DE and JoinType atleast one time.
-                                            </p>
-                                            <div class="slds-notify__close">
-                                                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
-                                                    <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Close</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
-          
-          
-                            
-                              <div  id="component-selector-container" class=" slds-float_left " style="height: 570px; width:30%; background-color:white; border: 2px solid lightgray;">
-                                <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="text-align: center; border-bottom: 2px solid #ddd; ">Data Extension Fields</h4>
-                                <div class="slds-scrollable" style="width:auto; ">
-                                  <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
-                                  style="padding-left:0rem; background-color:white; position: relative;">
-                  
-                                </ul>
+                          <th style="width: max-content;padding-left: 1%;">
+                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                              <span class="slds-assistive-text">warning</span>
+                              <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                              <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                              </svg>
+                              </span>
+                              <p style="padding: 0; float: left;">Please Select Atleast One DE.
+                              </p>
+                              <div class="slds-notify__close">
+                              <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDESelectAlert()">
+                              <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Close</span>
+                              </button>
                               </div>
                               </div>
-                           
-                             
-                              <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
-                
-                            </div-->
-                                    <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
-
-
-
-                                        <div id="component-selector-container" class=" slds-float_left " style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
-                                            <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
-                                            <div class="slds-scrollable" style="height: 47%; width:auto; overflow-x: hidden;">
-
-                                                <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree" style="padding-left:0rem; background-color:white; position: relative;">
-
-                                                </ul>
-
-                                            </div>
-                                            <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
-                                            <div id="outer" class="slds-scrollable" style="height: 9%; width:auto; overflow-x: hidden;">
-
-                                                <div class="inner"><button name="AND" id="And" draggable="true" class="slds-button" value="AND" style="width: 83px;  padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 3px;">AND</button></div>
-                                                <div class="inner"><button class="slds-button" draggable="true" value="OR" name="OR" id="Or" style="width: 83px; padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 5px;">OR</button></div>
-
-                                            </div>
-                                            <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
-                                            <div class="slds-scrollable" style="height: 46%; width:auto; overflow-x: hidden;">
-
-                                                <ul aria-labelledby="component-selector-container__heading" id="uoList2" class="slds-tree" role="tree" style="padding-left:0rem; background-color:white; position: relative;">
-
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-                                        <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  " style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; " contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
-
-
-
-                                        </div>
-
-
-                                    </div>
-
-
-                                    <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
-                                        <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
-                                        <button class="slds-button slds-button_neutral" onclick="validateQuery(JoinQueryDetails , 'Validate')" style="font-size:11px; line-height:20px; color:#4e8abe;">Validate</button>
-                                        <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
-                                    </footer>
-
+                              
+                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                                <span class="slds-assistive-text">warning</span>
+                                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                                </svg>
+                                </span>
+                                <p style="padding: 0; float: left;">Please Join the Query Box.
+                                </p>
+                                <div class="slds-notify__close">
+                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelQueryBoxJoinAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                                </button>
                                 </div>
-
-                            </section>
-                            <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
-
-                            <!--****** Nitik code ended *********-->
+                                </div>
+                              <!--alerts and warning-->
+                              <!--for -->
+                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                                <span class="slds-assistive-text">warning</span>
+                                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                                </svg>
+                                </span>
+                                <p style="padding: 0; float: left;">You can not delete Joined Query Box. You need to referesh the page.
+                                </p>
+                                <div class="slds-notify__close">
+                                <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="joinQueryboxAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                                </button>
+                                </div>
+                                </div>
+                              
+                    <!--priyanka added code-->
+                   
+                      <!--sucess alert-->
+                       <!--sucess alert-->
+                    <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
+                    height: 6vh ; border-radius: 0.25rem;">
+                      <span class="slds-assistive-text">check</span>
+                      <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                      </svg>
+                      </span>
+                      <p style="padding: 0; float: left;">
+                        Valid SQL Query Syntax.
+                      </p>
+                      <div class="slds-notify__close">
+                      <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                      </button>
+                      </div>
+                      </div>
+      
+                       <!--invalid alert-->
+                    <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
+                    height: 7vh ; border-radius: 0.25rem;">
+                      <span class="slds-assistive-text">check</span>
+                      <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                      </svg>
+                      </span>
+                      <p id="msgQueryValidateFalseAlert" style="padding: 0; text-align: justify; font-size:11px;">
+                       
+                      </p>
+                      <div class="slds-notify__close">
+                      <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateFalseAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                      </button>
+                      </div>
+                      </div>
+                     
+                     
+                     
+                       <!--alert for already exist div-->
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                        <span class="slds-assistive-text">warning</span>
+                        <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                        <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                        </svg>
+                        </span>
+                        <p id="DEListDivAlertPera" style="padding: 0; float: left;">
+                        </p>
+                        <div class="slds-notify__close">
+                        <button class="slds-button slds-button_icon slds-button_icon-small" style="justify-content: flex-end; " title="Close" onclick="CancelDEListDivAlert()" >
+                        <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                        </button>
                         </div>
-
-                        <div class="slds-table--header-fixed_container " id="right_panel" style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;">
-                            <div class="slds-grid slds-grid_vertical" style="height: 100%;">
-                                <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
-                                    <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll">
-                                        <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                                            <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
-                                                <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
-
-                                            </svg>
-                                            <span class="slds-assistive-text">Description of icon when needed</span></span>
-                                        <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                                            <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
-                                                <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
-
-                                            </svg>
-                                            <span class="slds-assistive-text">Description of icon when needed</span></span>
-                                        <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
-                                            <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
-                                                <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
-
-                                            </svg>
-                                            <span class="slds-assistive-text">Description of icon when needed</span></span>
-                                        <br>
-                                        Result will be shown here
-                                    </div>
-
-
+                        </div>
+                    <!--end-->
+      
+                              <!--ends here-->
+                            </th>
+                            
+                              <div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
+                                
+                            </div>
+                            
+                            <th style="width: 0px;padding-left: 5px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
+                              <div id="stopwatch">
+                                Time 00:00:00
+                            </div>
+                             </th>
+                             <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;padding-right: 5px;">
+                              <button class="  slds-button" onclick="refreshModalDisplay()" >
+                                <span class="slds-icon_container slds-icon-utility-refresh" title="Refresh">
+                                  <svg class="slds-icon slds-icon-text-default slds-icon_small " aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#refresh">
+                                    </use>
+          
+                                  </svg>
+                                </span>
+                                <span class="tree-label " id="31244-label">
+                                </span>
+                              </button>
+                             </th>
+                          <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:4px;">
+                              <button class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate" onclick="openModal('Validate');"  style="height:6vh;background-color: #4E8ABE !important;">Validate Query</button>
+                            </th>
+                          <th style="width: 0px;padding-left: 0%;padding-bottom:4px;"> 
+                             <button class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick="openModal('Run');" style="height:6vh;">Run</button>
+                            </th>
+                          
+                          </tr>
+                        </tbody></table>
+                  
+                  
+                  </div>
+                    <div class="slds-scrollable relationship-grid " id="RelationshipDiv" style="width: 100%;height: 62.5%;position: relative;border-top:1px solid #dddbda">
+                    
+                    <div id="MainDivAlert" style="display:none">
+                            <!--********* nitik code started ************-->
+                      <div class="slds-notify slds-notify_alert slds-alert_error" role="alert" style="display:none; background-color: #ea001e; width:auto;">
+                        <span class="slds-assistive-text">error</span>
+                        <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                          title="Description of icon when needed">
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                          </svg>
+                        </span>
+                        <p>Please create at least one Query Box</p>
+                        <div class="slds-notify__close">
+                          <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse"
+                            title="Close" onclick="CancelQueryBoxAlert()">
+                            <svg class="slds-button__icon" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display:none; background-color: #ea001e;">
+                      <span class="slds-assistive-text">warning</span>
+                      <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                      <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                      </svg>
+                      </span>
+                      <h6>Please select atleast one DE.
+                    
+                      </h6>
+                      <div class="slds-notify__close">
+                      <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDESelectAlert()">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                      </svg>
+                      <span class="slds-assistive-text">Close</span>
+                      </button>
+                      </div>
+                      </div>
+                 
+                   
+                          <!--********* nitik code ended ************-->
+      
+      
+                    <!-- <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails,'Validate')"> Validate Query
+                    </button>
+                
+                    <button class="slds-float_right" onclick="validateQuery(JoinQueryDetails , 'Run')"> RUN </button>
+                    <button class="slds-float_right" onclick="RunQuery()"> RUNQuery </button>-->
+      
+      
+                <!--    <button
+                      class="query-buttons slds-float_right slds-button slds-button_brand slds-m-right_xx-small slds-m-top_xx-small slds-truncate"
+                      onclick='openModal("Validate")'
+                      style="background-color: #4e8abe !important;">Validate Query</button>
+                    <button
+                      class="query-buttons slds-float_right slds-button slds-button_neutral slds-m-right_xx-small slds-m-top_xx-small" onclick='openModal("Run")'>Run</button>-->
+              <!--      <button
+                      class="query-buttons slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate"
+                      onclick="RunQuery()" style="background-color: #4e8abe !important;">Run Query</button>
+              -->       
+                    <!--********  Nitik code started *************-->
+      
+                    <!--button type="button" class="btn btn-primary btn-sm slds-float_right slds-button slds-button_brand slds-m-top_xx-small slds-truncate" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #4e8abe !important;">
+                          Launch demo modal
+                        </button-->
+                        <!-- Modal -->
+                        
+                        <!--div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
+                        role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" aria-label="Close" onclick="closeModal()">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
                                 </div>
-                                <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
-                                    <div class="slds-grid">
-                                        <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
-                                            <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()" data-page="1">
-                                                <span class="slds-icon_container slds-icon-utility-chevronleft" title="Description of icon when needed">
-                                                    <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small" aria-hidden="true">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
-
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Description of icon when needed</span></span>
-                                            </button>
-                                        </div>
-                                        <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
-                                            <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span id="totalRecords"></span> </span>
-                                        </div>
-                                        <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
-                                            <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()" data-page="3">
-                                                <span class="slds-icon_container slds-icon-utility-chevronright" title="Description of icon when needed">
-                                                    <svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small" aria-hidden="true">
-                                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
-
-                                                    </svg>
-                                                    <span class="slds-assistive-text">Description of icon when needed</span>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-
-
-
-                </div>
+                    </div-->
+                    <section role="dialog" id="DEWhereClauseModal" tabindex="-1" aria-labelledby="DEWhereClauseModalLabel" aria-modal="true" aria-describedby="modal-content-id-2" class="modal fade slds-modal slds-fade-in-open">
+                      <div class="slds-modal__container" >
+                        <header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; ">
+                          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                            onclick="closeModal()" style=" position: sticky; margin-left: 94%;">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                          </button>
+                          
+                          <h3 id="modal-heading-03"  style="padding:0; margin:0; margin-top: -25px;
+                          margin-bottom: 7px;
+                          font-size: 15px;
+                          color: #4e8abe; text-align: left;
+                          margin-left: 2.1%;" id="DEnamemodal1">DE Where Clause</h3>
+                          </header>
+                          <!--header class="slds-modal__header" style="margin:0; padding:0; background-color: #e9f0f4; border-bottom: 1px solid #ddd; " >
+                            
+                            <span id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;"> DE Where Clause</span>
+                           
+                            
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                            onclick="CancelDEWhereClauseModal()" style=" position: sticky; margin-left: 94%;">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                          </button>
+                          <h3 id="modal-heading-03" class="slds-modal__title slds-hyphenate" style="font-size: 15px;   padding: 8px 5px; font-family: Arial,Helvetica,sans-serif; float:left!important;">DE Where Clause</h3>
+                        
+                             
+                              
+                                
+                              </header-->
+                              <!--div class="slds-notify slds-notify_alert slds-alert_warning" role="alert"  style="display:none; background-color: #ea001e; width:auto; float:right!important;">
+                                <span class="slds-assistive-text">warning</span>
+                                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed">
+                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                                </svg>
+                                </span>
+                                <h6>Please drag all the DE and JoinType atleast one time.
+                              
+                                </h6>
+                                <div class="slds-notify__close">
+                                <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                                </button>
+                                </div>
+                                </div-->
+                                <div  id="DeDragAlert" style="display:none; background: white;">
+                                  <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" style=" background-color: #c23934;
+                                  width: 100%;
+                                  height: 5vh;
+                                  padding-top: 0%;
+                                  border-radius: 0.25rem;
+                                  justify-content: left;
+                                  align-items: self-start;">
+                                    <span class="slds-assistive-text">warning</span>
+                                    <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;
+                                    margin-left: 2%;
+                                    margin-top: 1.3%;">
+                                    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                                    </svg>
+                                    </span>
+                                    <p style="padding: 0;
+                                    float: left;
+                                    margin-top: 1%;">Please drag all the DE and JoinType atleast one time.
+                                    </p>
+                                    <div class="slds-notify__close">
+                                    <button class="slds-button slds-button_icon slds-button_icon-small" title="Close" onclick="CancelDeDragAlert()">
+                                    <svg class="slds-button__icon" aria-hidden="true" style="fill:white;">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    </div>
+                                    </div>
+                                  </div> 
+                                    
+                           
+                             
+                              <!--div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style="margin:0; padding:0; ">
+                
+                
+                                  
+                                    <div  id="component-selector-container" class=" slds-float_left " style="height: 570px; width:30%; background-color:white; border: 2px solid lightgray;">
+                                      <h4 class="slds-text-title_caps" id="component-selector-container__heading" style="text-align: center; border-bottom: 2px solid #ddd; ">Data Extension Fields</h4>
+                                      <div class="slds-scrollable" style="width:auto; ">
+                                        <ul aria-labelledby="component-selector-container__heading" id="ulList" class="slds-tree" role="tree"
+                                        style="padding-left:0rem; background-color:white; position: relative;">
+                        
+                                      </ul>
+                                    </div>
+                                    </div>
+                                 
+                                   
+                                    <div id="RichTextEditor" class="editor slds-float_right  " style="width:70%; height:605px; border: 2px solid lightgray;font-size: 15px; overflow-x: scroll;overflow-y: scroll;" contenteditable="true" ondrop="drop2(event, this)" ondragover="allowDrop(event,this)"></div>
+                      
+                                  </div-->
+                                  <div class="slds-modal__content slds-p-around_medium" id="grid-2-de" style=" height: 27rem; padding: 0;">
+      
+      
+      
+                                    <div id="component-selector-container" class=" slds-float_left "
+                                      style="height: -webkit-fill-available; width:30%; background-color:white; border: 1px solid lightgray;">
+                                      <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                        style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Data Extensions</h4>
+                                      <div class="slds-scrollable" style="height: 47%; width:auto; overflow-x: hidden;">
+                          
+                                        <ul aria-labelledby="component-selector-container__heading" id="uoList" class="slds-tree" role="tree"
+                                          style="padding-left:0rem; background-color:white; position: relative;">
+                          
+                                        </ul>
+                          
+                                      </div>
+                                      <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                      style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Operators</h4>
+                                    <div id="outer" class="slds-scrollable" style="height: 9%; width:auto; overflow-x: hidden;">
+                        
+                                      <div class="inner"><button name="AND" id="And" draggable="true" class="slds-button" value="AND" style="width: 83px;  padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 3px;">AND</button></div>
+                                      <div class="inner"><button class="slds-button" draggable="true" value="OR" name="OR" id="Or" style="width: 83px; padding: 1px 1px 1px 1px; margin-top: 1px; box-shadow:2px 2px 2px 2px #ADD8E6;margin-inline-start: 5px;">OR</button></div>
+                        
+                                    </div>
+                                      <h4 class="slds-text-title_caps" id="component-selector-container__heading"
+                                        style="border-bottom: 1px solid #ddd; font-size: 14px; padding: 5px 4px 2px 10px; background-color: #F0F2F3; ">Join Type</h4>
+                                      <div class="slds-scrollable" style="height: 46%; width:auto; overflow-x: hidden;">
+                          
+                                        <ul aria-labelledby="component-selector-container__heading" id="uoList2" class="slds-tree" role="tree"
+                                          style="padding-left:0rem; background-color:white; position: relative;">
+                          
+                                        </ul>
+                          
+                                      </div>
+                                    </div>
+                          
+                                    <div id="RichTextEditorForFinalWhereClause" class="editor slds-float_right  "
+                                      style=" width:70%; height:100%; border: 1px solid lightgray; font-size: 15px; position: -webkit-sticky; "
+                                      contenteditable='true' ondrop="drop2(event, this)" ondragover="allowDroping(event,this)">
+                                     
+                                        
+                                          
+                                    </div>
+                                    
+                          
+                                  </div>
+              
+                     
+                              <footer class="slds-modal__footer" style="background:linear-gradient(#edf5fa,#fff); border-top:1px solid #eee; border-radius:0 0 5px 5px; background-repeat:repeat-x;">
+                                  <button class="slds-button slds-button_neutral slds-float_left" style="font-size:11px; line-height:20px; color:#4e8abe; float:left!important" onclick="closeModal()">Cancel</button>
+                                  <button class="slds-button slds-button_neutral" onclick="validateQuery(JoinQueryDetails , 'Validate')"
+                                  style="font-size:11px; line-height:20px; color:#4e8abe;" >Validate</button>
+                                  <button class="slds-button slds-button_brand" style="font-size:11px; line-height:20px; color:#edf5fa; float:right!important;" onclick="validateQuery(JoinQueryDetails , 'Run')">Run</button>
+                                </footer>
+                      
+                      </div>
+                      
+                      </section>
+                    <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+                       
+                            <!--****** Nitik code ended *********-->
+                     </div>
+      
+                      <div class="slds-table--header-fixed_container " id="right_panel"
+                      style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;">
+                      <div class="slds-grid slds-grid_vertical" style="height: 100%;">
+                         <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
+                          <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" >
+                            <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                            <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                              <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+        
+                            </svg>
+                            <span class="slds-assistive-text">Description of icon when needed</span></span>
+                            <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                              <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                                <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+          
+                              </svg>
+                              <span class="slds-assistive-text">Description of icon when needed</span></span>
+                              <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
+                                <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
+                                  <use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use>
+            
+                                </svg>
+                                <span class="slds-assistive-text">Description of icon when needed</span></span>
+                                <br>
+                                Result will be shown here
+                          </div>
+                    
+                          
+                        </div>
+                        <div class="slds-col" style="height:20px;display:none;" id="paginationBar">
+                        <div class="slds-grid">
+                          <div class="slds-col" style="text-align:right;margin-top:0.5%;margin-bottom:0.5%;">
+                            <button class="slds-button slds-button_neutral btn-pagination" id="btn_prev" onclick="prevPage()"
+                              data-page="1">
+                              <span class="slds-icon_container slds-icon-utility-chevronleft"
+                                title="Description of icon when needed">
+                                <svg
+                                  class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                                  aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"></use>
+            
+                                </svg>
+                                <span class="slds-assistive-text">Description of icon when needed</span></span>
+                            </button>
+                          </div>
+                          <div class="slds-col" style="text-align:center;margin-top:0.5%;margin-bottom:0.5%;">
+                            <span class="page-counter "> <span id="page"></span> of <span id="totalPages"></span><span
+                                id="totalRecords"></span> </span>
+                          </div>
+                          <div class="slds-col" style="text-align:left;margin-top:0.5%;margin-bottom:0.5%;">
+                            <button class="slds-button slds-button_neutral btn-pagination" id="btn_next" onclick="nextPage()"
+                              data-page="3">
+                              <span class="slds-icon_container slds-icon-utility-chevronright"
+                                title="Description of icon when needed">
+                                <svg
+                                  class="slds-icon slds-icon-text-default slds-icon_small slds-p-top_xx-small slds-p-bottom_xx-small"
+                                  aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+            
+                                </svg>
+                                <span class="slds-assistive-text">Description of icon when needed</span>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                  </div>
+                 
+                  
+      
+                  
+                    
+                  </div>
 
 
                 <div id="QueryValidateTrueAlert" style="display:none">
