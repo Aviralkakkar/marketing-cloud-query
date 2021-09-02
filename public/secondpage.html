@@ -2288,9 +2288,9 @@
 <body>
 
   <div>
-
+      
     <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
-
+ 
       <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
         <div class="slds-spinner_container">
           <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
@@ -2301,6 +2301,7 @@
         </div>
         
       </div>
+     
 
       <div class="main-division-div">
         <!--   Khushboo code started   -->
@@ -2427,7 +2428,7 @@
         </div>
         <!--Khushboo code ended -->
  <!-- Khushboo Refresh Model  -->
-        
+ 
  <div style="display: none;" id="refreshModal">
   <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
     <div class="slds-modal__container" style="width: 400px;">
@@ -2519,7 +2520,7 @@
                   <tbody>
                     <tr>
                     
-                    <th style="width: max-content;padding-left: 1%;">
+                    <!--th style="width: max-content;padding-left: 1%;"-->
                       <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
@@ -2582,26 +2583,26 @@
              
                 <!--sucess alert-->
                  <!--sucess alert-->
-              <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
-              height: 6vh ; border-radius: 0.25rem;">
-                <span class="slds-assistive-text">check</span>
-                <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-                </svg>
-                </span>
-                <p style="padding: 0; float: left;">
-                  Valid SQL Query Syntax.
-                </p>
-                <div class="slds-notify__close">
-                <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
-                <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">Close</span>
-                </button>
-                </div>
-                </div>
+                 <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
+                 height: 6vh ; border-radius: 0.25rem;">
+                   <span class="slds-assistive-text">check</span>
+                   <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+                   <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                   <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                   </svg>
+                   </span>
+                   <p style="padding: 0; float: left;">
+                     Valid SQL Query Syntax.
+                   </p>
+                   <div class="slds-notify__close">
+                   <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
+                   <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+                   <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                   </svg>
+                   <span class="slds-assistive-text">Close</span>
+                   </button>
+                   </div>
+                   </div>           
 
                  <!--invalid alert-->
               <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
@@ -2649,8 +2650,13 @@
               <!--end-->
 
                         <!--ends here-->
-                      </th>
-                      <th style="width: 0px;padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
+                      <!--/th-->
+                      <th>
+                        <div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
+                          
+                      </div>
+                    </th>
+                      <th style="width: 0px;padding-left: 5px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
                         <div id="stopwatch">
                           Time 00:00:00
                       </div>
@@ -4436,6 +4442,7 @@ document.addEventListener("mouseup", function(){
       "DEForJoin": []
       }
       resetTimer()
+      document.getElementById("sqlQuery").innerHTML=""
       //var ele = document.getElementById('runQueryAlert').style.display;
      // console.log('display '+ele);
      // if(ele!='none')
@@ -4960,6 +4967,8 @@ document.addEventListener("mouseup", function(){
           }
         }
         console.log("strQuery===______+"+strQuery);
+        
+        document.getElementById("sqlQuery").innerHTML=strQuery;
       }
       else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
         
@@ -5057,6 +5066,7 @@ document.addEventListener("mouseup", function(){
 
         }
         console.log("strQuery=="+strQuery);
+        document.getElementById("sqlQuery").innerHTML=strQuery;
         //console.log("strQuery.length="+strQuery.length);
         /*var l=strQuery.length;
         //var char=strQuery.charAt(l)
@@ -6244,19 +6254,19 @@ function changeSchmaPosition(e)
     function joinTwoDiv(FirstDEExtKeyForJoin) {
       var SecondDEExtKeyForJoinGlobal;
       //var CountOfFirstDEExtKeyForJoin=0;
-      //var SecondJoinedDeSet= new Set();
-      /*for (var key in JoinQueryDetails.DEForJoin) {
-        if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
+      var SecondJoinedDeSet= new Set();
+      for (var key in JoinQueryDetails.DEForJoin) {
+        /*if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==FirstDEExtKeyForJoin){
           CountOfFirstDEExtKeyForJoin++;
           console.log("in the 1st iff")
           SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].SecondDEExtKey)
-        }
+        }*/
         if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoin){
           console.log("in the 2nd iff")
           SecondJoinedDeSet.add(JoinQueryDetails.DEForJoin[key].FirstDEExtKey)
         }
-      }*/
-      //console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
+      }
+      console.log("SecondJoinedDeSet==="+SecondJoinedDeSet)
       /*for(var j of joinedDivSet){
         console.log("j==="+j)
       }*/
@@ -6563,7 +6573,10 @@ function changeSchmaPosition(e)
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
               //var counter=0;
               console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              if(SecondJoinedDeSet.has(DEExtKeyLoop)){
+                console.log('it has the value==========================')
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
                 /*for(var deName of SecondJoinedDeSet){
                   console.log("hibye2="+deName)
@@ -6938,7 +6951,10 @@ function changeSchmaPosition(e)
             for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
              // var counter=0;
               console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              if(SecondJoinedDeSet.has(DEExtKeyLoop)){
+                console.log('it has the value==========================')
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                  console.log("hibye2")
                  /*for(var deName of SecondJoinedDeSet){
                    console.log("hibye2="+deName)
@@ -7314,7 +7330,10 @@ function changeSchmaPosition(e)
           for (var DEExtKeyLoop of Array.from(DESetQueryBox)) {
              // var counter=0;
               console.log("hibye="+DEExtKeyLoop)
-              if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
+              if(SecondJoinedDeSet.has(DEExtKeyLoop)){
+                console.log('it has the value==========================')
+              }
+              else if (FirstDEExtKeyForJoinGlobal != DEExtKeyLoop) {
                 console.log("hibye2")
                 /*for(var deName of SecondJoinedDeSet){
                   console.log("hibye2="+deName)
@@ -7987,10 +8006,10 @@ function changeSchmaPosition(e)
         console.log("in the  if counter ")
         document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].SecondDEJoinField
       }
-      else if(counter==2){
+      /*else if(counter==2){
         console.log("in the 2nd if counter ")
         document.getElementById('SecondDEField').value=JoinQueryDetails.DEForJoin[key].FirstDEJoinField
-      }
+      }*/
     }
     //--end of code by nitik
     function CancelThirdModal() {
@@ -8010,7 +8029,7 @@ function changeSchmaPosition(e)
             break 
           }
         }
-        if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
+        /*if(JoinQueryDetails.DEForJoin[key].SecondDEExtKey==FirstDEExtKeyForJoinGlobal){
           
           if(JoinQueryDetails.DEForJoin[key].FirstDEExtKey==document.getElementById('select-02').value){
             // CountOfFirstDEExtKeyForJoin++;
@@ -8018,7 +8037,7 @@ function changeSchmaPosition(e)
             counter=2;
             break 
           }
-        }
+        }*/
       } 
       console.log("key"+key)
      
@@ -8047,7 +8066,7 @@ function changeSchmaPosition(e)
         document.getElementById('ThirdModal').style.display = 'none';
 
       }
-      else if(counter==2){
+      /*else if(counter==2){
         console.log('key=='+key);
         if(JoinQueryDetails.DEForJoin[key].SecondDEJoinField!=document.getElementById('FirstDEField').value){
 
@@ -8070,7 +8089,7 @@ function changeSchmaPosition(e)
         }
         document.getElementById('ThirdModal').style.display = 'none';
 
-      }
+      }*/
     
      else if(counter==0){
       console.log('heyya11'+document.getElementById('select-02').value);
