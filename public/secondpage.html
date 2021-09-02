@@ -2282,28 +2282,28 @@
 <body>
 
     <div>
-
+      <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
+      height: 6vh ; border-radius: 0.25rem; position: absolute;">
+        <span class="slds-assistive-text">check</span>
+        <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
+        <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+        </svg>
+        </span>
+        <p style="padding: 0; float: left;">
+          Valid SQL Query Syntax.
+        </p>
+        <div class="slds-notify__close">
+        <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
+        <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+        </svg>
+        <span class="slds-assistive-text">Close</span>
+        </button>
+        </div>
+        </div>
         <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
-          <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
-          height: 6vh ; border-radius: 0.25rem; position: absolute;">
-            <span class="slds-assistive-text">check</span>
-            <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
-            <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-            </svg>
-            </span>
-            <p style="padding: 0; float: left;">
-              Valid SQL Query Syntax.
-            </p>
-            <div class="slds-notify__close">
-            <button class="slds-button slds-button_icon slds-button_icon-small"  style="justify-content: flex-end; " title="Close" onclick="CancelQueryValidateTrueAlert()">
-            <svg class="slds-button__icon" aria-hidden="true" style=" fill: white;">
-            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-            </svg>
-            <span class="slds-assistive-text">Close</span>
-            </button>
-            </div>
-            </div>
+         
             <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
                 <div class="slds-spinner_container">
                     <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
