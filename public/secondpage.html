@@ -1330,7 +1330,7 @@
 
         }
         #sqlQuery {
-          z-index: 0;
+          z-index: 10;
         }
         .template-attribute-container .attribute-type-icon.typeText,
         #attribute-group-templates .attribute-container .attribute .attribute-type-icon.typeBase16Encrypted {
@@ -2567,7 +2567,7 @@
                           <tr>
                           
                           <th style="width: max-content;padding-left: 1%;">
-                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                            <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DESelectAlert" style="display: none;margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem; Z-INDEX: 99;">
                               <span class="slds-assistive-text">warning</span>
                               <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                               <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2586,7 +2586,7 @@
                               </div>
                               </div>
                               
-                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="QueryBoxJoinAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem; Z-INDEX: 99;">
                                 <span class="slds-assistive-text">warning</span>
                                 <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2606,7 +2606,7 @@
                                 </div>
                               <!--alerts and warning-->
                               <!--for -->
-                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                              <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="joinQueryboxAlert" style="display: none; margin-top:1.5%; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem; Z-INDEX: 99;">
                                 <span class="slds-assistive-text">warning</span>
                                 <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                                 <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2630,7 +2630,7 @@
                       <!--sucess alert-->
                        <!--sucess alert-->
                     <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateTrueAlert" style="display:none; margin-top: 1.5%; background-color: #04844b;
-                    height: 6vh ; border-radius: 0.25rem;">
+                    height: 6vh ; border-radius: 0.25rem; Z-INDEX: 99;">
                       <span class="slds-assistive-text">check</span>
                       <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                       <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -2651,7 +2651,7 @@
                       </div>
       
                        <!--invalid alert-->
-                    <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52);
+                    <div class="slds-notify slds-notify_alert slds-alert_success" role="alert" id="QueryValidateFalseAlert" style="display:none;background-color: rgb(194, 57, 52); Z-INDEX: 99;
                     height: 7vh ; border-radius: 0.25rem;">
                       <span class="slds-assistive-text">check</span>
                       <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
@@ -2675,7 +2675,7 @@
                      
                      
                        <!--alert for already exist div-->
-                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem;">
+                      <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert" id="DEListDivAlert" style="display: none; background-color: rgb(194, 57, 52); height: 6vh; border-radius: 0.25rem; Z-INDEX: 99;">
                         <span class="slds-assistive-text">warning</span>
                         <span class="slds-icon_container slds-icon-utility-warning slds-m-right_x-small" title="Description of icon when needed" style="float: left;">
                         <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
@@ -3073,7 +3073,7 @@
                   <div id="emptyDiv">
 
                   </div>
-                <div id="QueryValidateTrueAlert" style="display:none">
+                <div id="QueryValidateTrueAlert" style="display:none; Z-INDEX: 99;">
                     <div class="demo-only" style="height:4rem">
                         <div class="slds-notify_container slds-is-relative">
                             <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
@@ -3099,7 +3099,7 @@
                     </div>
                 </div>
 
-                <div id="QueryValidateFalseAlert" style="display:none">
+                <div id="QueryValidateFalseAlert" style="display:none; Z-INDEX: 99;">
                     <div class="demo-only" style="height:4rem">
                         <div class="slds-notify_container slds-is-relative">
                             <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
