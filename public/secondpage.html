@@ -2631,11 +2631,13 @@
       
                               <!--ends here-->
                             </th>
+                            <tr>
+
                             
-                              <!--div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
+                              <div id="sqlQuery" style="padding-left: 0px;margin-left: 0px;padding-bottom:0px;padding-right: 6px; height: 40px;" class="slds-scrollable">
                                 
-                            </div-->
-                            
+                              </div>
+                            </tr>
                             <th style="width: 0px;padding-left: 5px;margin-left: 0px;padding-bottom:0px;padding-right: 5px;">
                               <div id="stopwatch">
                                 Time 00:00:00
@@ -4332,7 +4334,7 @@
                 "DEForJoin": []
             }
             resetTimer()
-            //document.getElementById("sqlQuery").innerHTML = ""
+            document.getElementById("sqlQuery").innerHTML = ""
             //var ele = document.getElementById('runQueryAlert').style.display;
             // console.log('display '+ele);
             // if(ele!='none')
@@ -4861,7 +4863,7 @@
                 }
                 console.log("strQuery===______+" + strQuery);
 
-                //document.getElementById("sqlQuery").innerHTML = strQuery;
+                document.getElementById("sqlQuery").innerHTML = strQuery;
             } else if (DESetQueryBox.size > 1 && isSetEqual(DESetQueryBox, joinedDivSet)) {
 
 
@@ -4954,7 +4956,7 @@
 
                 }
                 console.log("strQuery==" + strQuery);
-                //document.getElementById("sqlQuery").innerHTML = strQuery;
+                document.getElementById("sqlQuery").innerHTML = strQuery;
                 //console.log("strQuery.length="+strQuery.length);
                 /*var l=strQuery.length;
                 //var char=strQuery.charAt(l)
