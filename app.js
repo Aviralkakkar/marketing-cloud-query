@@ -1336,43 +1336,7 @@ app.post("/credential", async function (req, res) {
     }
 
   });
-
-  app.post("/RunQuery", async (reqCall, resCall) => {
-    var DERecords = [];
-    DERecords = await getDERecords(NewDEName);
-    resCall.send(DERecords);
-    async function getDERecords(key) {
-      return new Promise(async function (resolve, reject) {
-        //var NextUrl;
-        var DEDataOptions = {
-          'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/' + key + '/rowset/',
-          'headers': {
-            'Authorization': 'Bearer ' + AuthResponse.AccessToken
-          }
-        };
-        request(DEDataOptions, async function (error, response) {
-          if (error) throw new Error(error);
-          var tempResult = JSON.parse(response.body);
-          if (tempResult.count != 0) {
-            for (var i in tempResult.items) {
-              DERecords.push(tempResult.items[i].values);
-            }
-          }
-          /*
-          var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
-          if (looplength >= 2) {
-            NextUrl = tempResult.links.next;
-            for (var i = 2; i <= looplength; i++) {
-              NextUrl = await getMoreDERecords(NextUrl, key);
-            }
-          }*/
-          resolve(DERecords);
-        });
-      })
-    }
-  })
-  
+ 
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {

@@ -5,13 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="/assets/styles/salesforce-lightning-design-system.css" />
-	
+
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
 		integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
 		crossorigin="anonymous" />
-		
-		<link rel="stylesheet"
+
+	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.13.7/styles/salesforce-lightning-design-system.min.css"
 		integrity="sha512-UV/bdfkf/vUvwZ6/aVq8zas293BNyu43i68QdurkfUmSjGRiCxKISDe29R6VPB3YKfeA/lCjGyfXLBIzlpTg5A=="
 		crossorigin="anonymous" />
@@ -26,7 +26,7 @@
 		crossorigin="anonymous" />
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js" ></script> -->
 	<title>Content Buider</title>
-	
+
 	<style>
 		html {
 			font-family: sans-serif;
@@ -1081,8 +1081,11 @@
 			vertical-align: middle;
 			margin-right: 8px
 		}
-		.iframe-class
-		 { overflow-x:hidden; overflow-y:auto; }
+
+		.iframe-class {
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
 	</style>
 </head>
 
@@ -1092,25 +1095,30 @@
 			<div style="height: 60px;">
 				<div id="errorBlockOfLoginPage" style="display: none;" class="demo-only" style="height:4rem">
 					<div class="slds-notify_container slds-is-relative">
-					<div class="slds-notify slds-notify_toast slds-theme_error" role="status">
-						<span class="slds-assistive-text">error</span>
-						<span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
-						<svg class="slds-icon slds-icon_small" aria-hidden="true">
-							<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-						</svg>
-						</span>
-						<div class="slds-notify__content">
-						<h2 id="loginErrorMsg" class="slds-text-heading_small ">Provided credentials being incorrect
+						<div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+							<span class="slds-assistive-text">error</span>
+							<span
+								class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top"
+								title="Description of icon when needed">
+								<svg class="slds-icon slds-icon_small" aria-hidden="true">
+									<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+								</svg>
+							</span>
+							<div class="slds-notify__content">
+								<h2 id="loginErrorMsg" class="slds-text-heading_small ">Provided credentials being
+									incorrect
+							</div>
+							<div class="slds-notify__close">
+								<button id="CancelErrorPopUp"
+									class="slds-button slds-button_icon slds-button_icon-inverse" title="Close"
+									style="background: none;border: none;padding: 3;position: sticky;color:white;">
+									<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+										<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+									</svg>
+									<span class="slds-assistive-text">Close</span>
+								</button>
+							</div>
 						</div>
-						<div class="slds-notify__close">
-						<button id="CancelErrorPopUp" class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" style="background: none;border: none;padding: 3;position: sticky;color:white;">
-							<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-							<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-							</svg>
-							<span class="slds-assistive-text">Close</span>
-						</button>
-						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -1143,112 +1151,111 @@
 							<div class="slds-form-element__control">
 								<input style="padding:5px;" id="authurl" name="authurl"
 									class="slds-input username mt8 mb8" aria-describedby="username-errors"
-									autofocus="autofocus" type="text" value="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/" required>
+									autofocus="autofocus" type="text"
+									value="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/" required>
 							</div>
 
 						</div>
 					</div>
 
 					<!-- Don't change the style name of the Login input (".submit-btn") without contacting the Security team, as WebMetrics has a dependency on this value.Â&nbsp; -->
-					<button id="submit-btn" 
-                        class="submit-btn slds-button slds-button_brand mb16" style="background-color: #0070D2; height: 45px;border: none;">
-						<p id="submitText" style="display: block;">Submit</p> 
-                        <div style="display: none;" id="submitSpinner" class="demo-only" style="height:2rem;position:relative">
-                            <div class="slds-spinner_container">
-                              <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
-                                <span class="slds-assistive-text">Loading</span>
-                                <div class="slds-spinner__dot-a"></div>
-                                <div class="slds-spinner__dot-b"></div>
-                              </div>
-                            </div>
-                          </div>
-                    </button>
+					<button id="submit-btn" class="submit-btn slds-button slds-button_brand mb16"
+						style="background-color: #0070D2; height: 45px;border: none;">
+						<p id="submitText" style="display: block;">Submit</p>
+						<div style="display: none;" id="submitSpinner" class="demo-only"
+							style="height:2rem;position:relative">
+							<div class="slds-spinner_container">
+								<div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+									<span class="slds-assistive-text">Loading</span>
+									<div class="slds-spinner__dot-a"></div>
+									<div class="slds-spinner__dot-b"></div>
+								</div>
+							</div>
+						</div>
+					</button>
 
 					<div id="jsBrowserDetectionBottom" style="display:none"></div>
 				</form>
 
 			</div>
-			
+
 		</div>
 	</div>
-		<div id="marketing-aside" class="bb-hide ">
-			<iframe class="iframe-class"  frameborder="0" id="marketing" name="marketing"
-				sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" scrolling="yes"
-				src="https://cyntexa.com" tabindex="-1" title="Marketing"></iframe>
-		</div>
+	<div id="marketing-aside" class="bb-hide ">
+		<iframe class="iframe-class" frameborder="0" id="marketing" name="marketing"
+			sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" scrolling="yes"
+			src="https://cyntexa.com" tabindex="-1" title="Marketing"></iframe>
+	</div>
 
-		
-	
-		<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
-		<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
+
+
+	<script src="/hub-cas/assets/scripts.js?v=1.3.2"></script>
+	<script type="text/javascript" src="/hub-cas/js/login.js?v=1.3.2"></script>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 
-	$(document).ready(function(){
-	$("#CancelErrorPopUp").click(function(){
-		$("#errorBlockOfLoginPage").css({'display':'none'});
+	$(document).ready(function () {
+		$("#CancelErrorPopUp").click(function () {
+			$("#errorBlockOfLoginPage").css({ 'display': 'none' });
+		});
 	});
-	});
 
-   $(document).ready(function () {
-   $("#submit-btn").click(function () {
-	$("#submitSpinner").css({'display':'block'});   
-	$('#submit-btn').prop('disabled', true);
-	$("#submit-btn").css({'background-color':'#0067c1'});
-	$("#submitText").css({'display':'none'});
+	$(document).ready(function () {
+		$("#submit-btn").click(function () {
+			$("#submitSpinner").css({ 'display': 'block' });
+			$('#submit-btn').prop('disabled', true);
+			$("#submit-btn").css({ 'background-color': '#0067c1' });
+			$("#submitText").css({ 'display': 'none' });
 
-	  if( ($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) 
-	  {
-		$('#loginErrorMsg').text("Please provide all credentials");
-		$("#errorBlockOfLoginPage").css({'display':'block'});
-		$('#submit-btn').prop('disabled', false);
-
-		$("#submitText").css({'display':'block'});
-		$("#submitSpinner").css({'display':'none'});
-		$("#submit-btn").css({'background-color':'#0070D2'}); 
-	  }
-	  else
-	  {
-      $.post("/credential",
-         {
-			clientid: $("#clientid").val(),
-			clientsecret: $("#clientsecret").val(),
-			authurl: $("#authurl").val(),
-         },
-         function (data, status) {
-            if(data.AccessToken)
-			{
-				$.get("/secondpage",
-				{
-					ok:"ok" 
-				},
-				function (data, status) {
-					const nextURL = 'https://marketing-cloud-querybuilder.herokuapp.com/secondpage';
-					const nextTitle = 'Query App';
-					const nextState = { additionalInformation: 'Updated the URL with JS' };
-
-					var newDoc = document.open("text/html", "replace");
-					newDoc.write(data);
-					newDoc.close();
-					window.history.pushState(nextState, nextTitle, nextURL);
-					window.history.replaceState(nextState, nextTitle, nextURL);
-				});
-			}
-			else
-			{
-				$('#loginErrorMsg').text("Provided credentials being incorrect");
-				$("#errorBlockOfLoginPage").css({'display':'block'});
+			if (($.trim($('#clientid').val()) == '') || ($.trim($('#clientsecret').val()) == '') || ($.trim($('#authurl').val()) == '')) {
+				$('#loginErrorMsg').text("Please provide all credentials");
+				$("#errorBlockOfLoginPage").css({ 'display': 'block' });
 				$('#submit-btn').prop('disabled', false);
 
-				$("#submitText").css({'display':'block'});
-				$("#submitSpinner").css({'display':'none'});
-				$("#submit-btn").css({'background-color':'#0070D2'});
+				$("#submitText").css({ 'display': 'block' });
+				$("#submitSpinner").css({ 'display': 'none' });
+				$("#submit-btn").css({ 'background-color': '#0070D2' });
 			}
-         });
-		} 
-   });
-});
+			else {
+				$.post("/credential",
+					{
+						clientid: $("#clientid").val(),
+						clientsecret: $("#clientsecret").val(),
+						authurl: $("#authurl").val(),
+					},
+					function (data, status) {
+						if (data.AccessToken) {
+							$.get("/secondpage",
+								{
+									ok: "ok"
+								},
+								function (data, status) {
+									const nextURL = 'https://marketing-cloud-querybuilder.herokuapp.com/secondpage';
+									const nextTitle = 'Query App';
+									const nextState = { additionalInformation: 'Updated the URL with JS' };
+
+									var newDoc = document.open("text/html", "replace");
+									newDoc.write(data);
+									newDoc.close();
+									window.history.pushState(nextState, nextTitle, nextURL);
+									window.history.replaceState(nextState, nextTitle, nextURL);
+								});
+						}
+						else {
+							$('#loginErrorMsg').text("Provided credentials being incorrect");
+							$("#errorBlockOfLoginPage").css({ 'display': 'block' });
+							$('#submit-btn').prop('disabled', false);
+
+							$("#submitText").css({ 'display': 'block' });
+							$("#submitSpinner").css({ 'display': 'none' });
+							$("#submit-btn").css({ 'background-color': '#0070D2' });
+						}
+					});
+			}
+		});
+	});
 </script>
+
 </html>
