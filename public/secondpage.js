@@ -630,7 +630,9 @@
     };
     function drop(event, target) {
         event.preventDefault();
+        console.log("hello");
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+        console.log("hello 5");
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
         data = DEDragData.DEExtKey;
