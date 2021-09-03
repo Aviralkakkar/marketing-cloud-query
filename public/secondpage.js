@@ -1,4 +1,3 @@
-<><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script></>
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
@@ -601,27 +600,27 @@
             }
         });
     }
-    function allowDrop(_ev, _event) {
-        _ev.preventDefault();
+    function allowDrop(ev, event) {
+        ev.preventDefault();
     }
-    document.ondragstart = function(_event) {
+    document.ondragstart = function(event) {
         var obj = {
-            id: _event.target.id,
-            value: _event.target.value,
-            name: _event.target.name
+            id: event.target.id,
+            value: event.target.value,
+            name: event.target.name
         };
         console.log('Object12 ' + obj.id);
 
             console.log('Object12 ' + JSON.stringify(obj));
-        _event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+        event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
-    document.ondragover = function(_event, _ev) {
-        _event.preventDefault();
+    document.ondragover = function(event, ev) {
+        event.preventDefault();
     };
     
-    function drop(event, _target) {
+    function drop(event, target) {
         event.preventDefault();
-        console.log("hello"+JSON.parse(event.dataTransfer.getData("text/plain")).name);
+        console.log("hello"+event.dataTransfer.getData("text/plain"));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
         console.log("hello 5");
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
@@ -671,7 +670,7 @@
         }
     };
     //script added by nitik for moving 
-    function drop2(event, _target) {
+    function drop2(event, target) {
         event.preventDefault();
         var DEWhereClauseDragData = {
             "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
