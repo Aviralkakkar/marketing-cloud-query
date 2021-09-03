@@ -1,4 +1,3 @@
-
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
@@ -631,7 +630,7 @@
     };
     function drop(event, target) {
         event.preventDefault();
-        console.log("hello");
+        console.log("hello"+event.dataTransfer.getData("text/plain"));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
         console.log("hello 5");
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
