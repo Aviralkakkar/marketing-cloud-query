@@ -609,6 +609,9 @@
             value: event.target.value,
             name: event.target.name
         };
+        console.log('Object12 ' + obj.id);
+
+            console.log('Object12 ' + JSON.stringify(obj));
         event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
     document.ondragover = function(event, ev) {
