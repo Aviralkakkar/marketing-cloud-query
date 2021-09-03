@@ -633,10 +633,11 @@
     };
     function drop(event, _target) {
         event.preventDefault();
-        console.log("hello"+event);
-        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain"));
-        console.log("hello 5");
+        console.log("hello"+event.dataTransfer.getData("text/plain"));
+       // DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+        
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+        console.log("hello 5");
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
         data = DEDragData.DEExtKey;
         data = data.split("WhereClasueDEList");
