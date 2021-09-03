@@ -600,44 +600,30 @@
             }
         });
     }
-    function allowDrop(ev, _event) {
-        ev.preventDefault();
+    function allowDrop(_ev, _event) {
+        _ev.preventDefault();
     }
-    document.ondragstart = function(event) {
+    document.ondragstart = function(_event) {
         var obj = {
-            id: event.target.id,
-            value: event.target.value,
-            name: event.target.name
+            id: _event.target.id,
+            value: _event.target.value,
+            name: _event.target.name
         };
         console.log('Object12 ' + obj.id);
 
             console.log('Object12 ' + JSON.stringify(obj));
-        event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+        _event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
-    document.ondragover = function(event, _ev) {
-        event.preventDefault();
+    document.ondragover = function(_event, _ev) {
+        _event.preventDefault();
     };
-    function allowDroping(ev, _event) {
-        ev.preventDefault();
-    }
-    document.ondragstart = function(event) {
-        var obje = {
-            id: event.target.id,
-            value: event.target.value,
-            name: event.target.name
-        };
-        event.dataTransfer.setData("text/plain", JSON.stringify(obje));
-    };
-    document.ondragover = function(event, _ev) {
-        event.preventDefault();
-    };
+    
     function drop(event, _target) {
         event.preventDefault();
-        console.log("hello"+JSON.stringify(event));
-       // DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-        
-        DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+        console.log("hello"+event.dataTransfer.getData("text/plain"));
+        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
         console.log("hello 5");
+        DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
         data = DEDragData.DEExtKey;
         data = data.split("WhereClasueDEList");
