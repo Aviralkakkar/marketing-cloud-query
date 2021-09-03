@@ -634,7 +634,7 @@
     function drop(event, _target) {
         event.preventDefault();
         console.log("hello"+event.dataTransfer.getData("text/plain"));
-        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain"));
         console.log("hello 5");
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
