@@ -600,7 +600,7 @@
             }
         });
     }
-    function allowDrop(ev, event) {
+    function allowDrop(ev, _event) {
         ev.preventDefault();
     }
     document.ondragstart = function(event) {
@@ -614,10 +614,10 @@
             console.log('Object12 ' + JSON.stringify(obj));
         event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
-    document.ondragover = function(event, ev) {
+    document.ondragover = function(event, _ev) {
         event.preventDefault();
     };
-    function allowDroping(ev, event) {
+    function allowDroping(ev, _event) {
         ev.preventDefault();
     }
     document.ondragstart = function(event) {
@@ -628,10 +628,10 @@
         };
         event.dataTransfer.setData("text/plain", JSON.stringify(obje));
     };
-    document.ondragover = function(event, ev) {
+    document.ondragover = function(event, _ev) {
         event.preventDefault();
     };
-    function drop(event, target) {
+    function drop(event, _target) {
         event.preventDefault();
         console.log("hello"+event.dataTransfer.getData("text/plain"));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
@@ -683,7 +683,7 @@
         }
     };
     //script added by nitik for moving 
-    function drop2(event, target) {
+    function drop2(event, _target) {
         event.preventDefault();
         var DEWhereClauseDragData = {
             "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
