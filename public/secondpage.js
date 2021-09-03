@@ -1,3 +1,4 @@
+<><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script></>
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
