@@ -715,7 +715,7 @@ const { json2xml } = require("xml-js");
          
         }
         function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-            var sel, range, JoineDeWhereClause;
+            var sel, range;
             if (window.getSelection) {
                 sel = window.getSelection();
                 var parentID = window.getSelection().anchorNode.parentNode.id;
@@ -739,6 +739,7 @@ const { json2xml } = require("xml-js");
                         } else {
                             key = FieldKey.split("WhereClasueDEList");
                             FieldId = key[0];
+                            draggedDeKey.add(FieldId);
                             document.getElementById(FieldKey).className = "slds-button slds-button_brand";
                             if (FieldType in DEListMap.DEMap) {
                                 for (var key in DEListMap.DEMap[FieldType].DEFields) {
