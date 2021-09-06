@@ -637,63 +637,67 @@ const { json2xml } = require("xml-js");
     function drop(event, target) {
         event.preventDefault();
         
-        
+        console.log("hello--"+event.dataTransfer.getData("text/plain"));
+        console.log("hello==="+JSON.stringify(event));
         //condition added by nitik
-        if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {
-            console.log("hello--"+event);
-            console.log("hello==="+JSON.stringify(event));
+        if(event.dataTransfer.getData("text/plain")){
+            if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {
             
-            DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-            console.log("DEDragData.DEName--"+DEDragData.DEName);
+           
             
-            DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
-            console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
+                DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+                console.log("DEDragData.DEName--"+DEDragData.DEName);
+                
+                DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+                console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
+                
+                DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+                console.log("DEDragData.DECategory--"+DEDragData.DECategory);
             
-            DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-            console.log("DEDragData.DECategory--"+DEDragData.DECategory);
-        
-            var data = DEDragData.DEExtKey;
-            console.log("data--"+data);
-            data = data.split("WhereClasueDEList");
-            if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
-                document.getElementById('leftsideListInSelectField').innerHTML = '';
-                if (DESetQueryBox.has(DEDragData.DEExtKey)) {
-                    document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
-                    document.getElementById('DEListDivAlert').style.display = 'block';
-                    setTimeout(function() {
-                        document.getElementById("DEListDivAlert").style.display = 'none';
-                    }, 5000);
-                } else {
-                    document.getElementById('DEListDivAlert').style.display = 'none';
-                    document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
-                    if (DEDragData.DECategory == "DEMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                var data = DEDragData.DEExtKey;
+                console.log("data--"+data);
+                data = data.split("WhereClasueDEList");
+                if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
+                    document.getElementById('leftsideListInSelectField').innerHTML = '';
+                    if (DESetQueryBox.has(DEDragData.DEExtKey)) {
+                        document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
+                        document.getElementById('DEListDivAlert').style.display = 'block';
+                        setTimeout(function() {
+                            document.getElementById("DEListDivAlert").style.display = 'none';
+                        }, 5000);
+                    } else {
+                        document.getElementById('DEListDivAlert').style.display = 'none';
+                        document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
+                        if (DEDragData.DECategory == "DEMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                            }
+                        } else if (DEDragData.DECategory == "SharedDEMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+                                    '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                            }
+                        } else if (DEDragData.DECategory == "DataViewMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+                                    '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                              }
                         }
-                    } else if (DEDragData.DECategory == "SharedDEMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                                '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
-                        }
-                    } else if (DEDragData.DECategory == "DataViewMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                                '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
-                          }
+                        document.getElementById('RelationPopup').style.display = 'block';
                     }
-                    document.getElementById('RelationPopup').style.display = 'block';
                 }
             }
         }
+     
     };
     
     //script added by nitik for moving 
