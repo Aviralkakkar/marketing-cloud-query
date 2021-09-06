@@ -610,6 +610,7 @@
         });
     }
     function allowDrop(ev, event) {
+        console.log("in the allow drop")
         ev.preventDefault();
     }
    function drag(event) {
