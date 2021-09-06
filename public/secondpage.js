@@ -38,15 +38,18 @@
     var sec = 0;
     var stoptime = true;
     var dragId = '';
+    console.log("before")
     var DEDragData = {
         "DEName": '',
         "DEExtKey": '',
         "DECategory": ''
     };
+    console.log("after")
     var JoinQueryDetails = {
         "PrimaryDE": {},
         "DEForJoin": []
     }
+
     function move() {
         if (arguments.length == 1) {
             moveUp(arguments[0]);
@@ -631,6 +634,7 @@
     
     function drop(event, target) {
         event.preventDefault();
+        
         console.log("hello--"+event);
         console.log("hello==="+JSON.stringify(event));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
