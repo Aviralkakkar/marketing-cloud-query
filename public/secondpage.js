@@ -622,7 +622,7 @@
         event.preventDefault();
         console.log("hello--"+event);
         console.log("hello==="+JSON.stringify(event));
-        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/javascript")).name;
+        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
         console.log("hello 5");
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
