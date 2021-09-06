@@ -1958,7 +1958,7 @@
 </head>
 <body>
     <div>
-        <div style="width: 100%;height:100%;" ondrop="drop(event, this.id)" ondragover="allowDrop(event,this)">
+        <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this)">
             <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
                 <div class="slds-spinner_container">
                     <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
@@ -2806,20 +2806,7 @@
      <script >
    
     onloadofBody();
-        document.ondragstart = function(event) {
-            var obj = {
-                id: event.target.id,
-                value: event.target.value,
-                name: event.target.name
-            };
-            console.log('Object12 ' + obj.id);
-
-                console.log('Object12 ' + JSON.stringify(obj));
-            event.dataTransfer.setData("text/plain", JSON.stringify(obj));
-        };
-        document.ondragover = function(event, ev) {
-            event.preventDefault();
-        };
+       
     </script> 
      
 </body>
