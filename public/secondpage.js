@@ -638,10 +638,16 @@
         console.log("hello--"+event);
         console.log("hello==="+JSON.stringify(event));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-        console.log("hello 5");
+        console.log("DEDragData.DEName--"+DEDragData.DEName);
+        
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+        console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
+        
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+        console.log("DEDragData.DECategory--"+DEDragData.DECategory);
+
         data = DEDragData.DEExtKey;
+        console.log("data--"+data);
         data = data.split("WhereClasueDEList");
         //condition added by nitik
         if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
