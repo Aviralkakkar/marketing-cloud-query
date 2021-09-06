@@ -381,12 +381,12 @@
             }
         }
     }
-    panel.addEventListener("mousedown", function(e) {
+    function mousedown(e) {
         if (e.offsetY < BORDER_SIZE) {
             m_pos = e.y;
             document.addEventListener("mousemove", resize, false);
         }
-    }, false);
+    }
     document.addEventListener("mouseup", function() {
         document.removeEventListener("mousemove", resize, false);
     }, false);
