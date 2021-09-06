@@ -175,7 +175,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -183,7 +183,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.SharedDEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.SharedDEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -191,7 +191,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DataViewMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DataViewMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -618,7 +618,7 @@
         console.log("in the allow drop")
         ev.preventDefault();
     }
-   function drag(event) {
+   function dragstart(event) {
         var obj = {
             id: event.target.id,
             value: event.target.value,
@@ -1087,7 +1087,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -1098,7 +1098,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -1109,7 +1109,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="drag(event)" ondragover="dragover(event, this)" value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
