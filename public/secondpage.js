@@ -368,7 +368,9 @@
 
     const BORDER_SIZE = 4;
     const panel = document.getElementById("right_panel");
+    console.log("panel=="+panel);
     const table = document.getElementById("tableDiv");
+    console.log("table="+table);
     var hl = screen.height - (screen.height * 20) / 100;
     var hu = screen.height - (screen.height * 75) / 100;
     panel.style.height = hu + "px";
