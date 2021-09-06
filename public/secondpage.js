@@ -1,6 +1,4 @@
-//Priyanka Added Script for up-down right-left 
 
-    var currentSel = null;
     function move() {
         if (arguments.length == 1) {
             moveUp(arguments[0]);
@@ -152,10 +150,7 @@
 
 //nitik code started
 
-    var countOfDeWithWhereClauseValueMain = 0;
-    var countOfDeWithoutWhereClauseValueMain = 0;
-    var OnlyOneDeWhichContainWhereClause;
-    var countOfJoinTypeWhere = 0;
+  
     /*added by priyanka*/
     function closerunQueryAlert() {
         document.getElementById('runQueryAlert').style.display = 'none';
@@ -179,7 +174,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DEMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -187,7 +182,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.SharedDEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.SharedDEMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.SharedDEMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -195,7 +190,7 @@
                         document.getElementById('uoList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DataViewMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="' + document.getElementById(temp).innerHTML + '" id="' + val + 'WhereClasueDEList' + '" draggable=true name="' + DEListMap.DataViewMap[val].DEName + '" >' + '<span  style=" width: 185px; text-align: left; " >' + DEListMap.DataViewMap[val].DEName + ' </span>' + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -254,7 +249,7 @@
                     document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                         '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                         ' <span class="slds-size_1-of-1">' +
-                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL' + '"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']JoinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
+                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL' + '"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']JoinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
                         ' </span>' +
                         '  </div>' +
                         '</li>';
@@ -263,7 +258,7 @@
                     document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                         '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                         ' <span class="slds-size_1-of-1">' +
-                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL' + '"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '] joinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
+                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL' + '"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '] joinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
                         ' </span>' +
                         '  </div>' +
                         '</li>';
@@ -272,7 +267,7 @@
                     document.getElementById('uoList2').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                         '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                         ' <span class="slds-size_1-of-1">' +
-                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '] joinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
+                        '<span > <button  class="btn" style=" width: 185px; margin: 0px 0px 0px 2px; padding: 0px 0px 0px 7px; margin-inline-start: 0px;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].FirstDEJoinField + '] IS NULL OR [' + JoinQueryDetails.DEForJoin[key].SecondDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEJoinField + '] IS NULL"  id="[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + '] joinedDe" draggable=true name= "[' + JoinQueryDetails.DEForJoin[key].FirstDEName + '].[' + JoinQueryDetails.DEForJoin[key].SecondDEName + ']"   >' + '<span  style=" width: 185px; text-align: left; font-size:xx-small;" >' + "[" + JoinQueryDetails.DEForJoin[key].FirstDEName + "].[" + JoinQueryDetails.DEForJoin[key].SecondDEName + "]" + '</span>' + ' </button> </span>' +
                         ' </span>' +
                         '  </div>' +
                         '</li>';
@@ -314,9 +309,10 @@
 
     }
     // Get the modal
-    var modal = document.getElementById('DEWhereClauseModal');
+   
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
+       
         if (event.target == modal) {
             closeModal()
         }
@@ -326,9 +322,7 @@
 // Khushboo  code starting
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
-    var sharedDataExtBool = true;
-    var dataViewsBool = true;
+  
     function showDataExtensions() {
         var de = document.getElementById("dataExtensionButton");
         if (dataExtBool) {
@@ -366,14 +360,7 @@
         }
     }
 
-    const BORDER_SIZE = 4;
-    const panel = document.getElementById("right_panel");
-    const table = document.getElementById("tableDiv");
-    var hl = screen.height - (screen.height * 20) / 100;
-    var hu = screen.height - (screen.height * 75) / 100;
-    panel.style.height = hu + "px";
-    let m_pos;
-    var pHeight = 300;
+    
     function resize(e) {
         const dx = m_pos - e.y;
         m_pos = e.y;
@@ -393,45 +380,21 @@
             }
         }
     }
-    panel.addEventListener("mousedown", function(e) {
+    function mousedown(e) {
         if (e.offsetY < BORDER_SIZE) {
             m_pos = e.y;
             document.addEventListener("mousemove", resize, false);
         }
-    }, false);
+    }
     document.addEventListener("mouseup", function() {
         document.removeEventListener("mousemove", resize, false);
     }, false);
 
 // Khushboo code Ending 
 
-    var draggedDeKey = new Set();
-    var draggedDeJoinKey = new Set();
-    var DEDragData = {
-        "DEName": '',
-        "DEExtKey": '',
-        "DECategory": ''
-    };
-    var JoinQueryDetails = {
-        "PrimaryDE": {},
-        "DEForJoin": []
-    }
-    var NewDEFieldsList = [];
-    var DEListMap = {};
-    var openSelectFieldsDEExtKey = '';
-    var openWhereDEExtKey = '';
-    var FirstDEExtKeyForJoinGlobal;
-    var DESetQueryBox = new Set();
-    var NewDEFieldsSet = new Set();
-    var joinedDivSet = new Set();
-    var data;
-    var externalKey;
-    //stop watch code by NITIK
-    const timer = document.getElementById('stopwatch');
-    var hr = 0;
-    var min = 0;
-    var sec = 0;
-    var stoptime = true;
+   
+    
+   
     function startTimer() {
         if (stoptime == true) {
             stoptime = false;
@@ -518,9 +481,7 @@
         document.getElementById('right_panel').style = "height:29%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;"
         document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
     }
-    var current_page = 1;
-    var records_per_page = 25;
-    var objJSON = [];
+   
     function prevPage() {
         if (current_page > 1) {
             current_page--;
@@ -575,6 +536,58 @@
     };
     //onloadofBody();
     function onloadofBody() {
+        window.currentSel = null;
+        window.BORDER_SIZE = 4;
+        window.panel = document.getElementById("right_panel");
+        console.log("panel=="+panel);
+        window.table = document.getElementById("tableDiv");
+         console.log("table="+table);
+         window.hl = screen.height - (screen.height * 20) / 100;
+         window.hu = screen.height - (screen.height * 75) / 100;
+         panel.style.height = hu + "px";
+         window.m_pos;
+         window.pHeight = 300;
+         window.countOfDeWithWhereClauseValueMain = 0;
+         window.countOfDeWithoutWhereClauseValueMain = 0;
+         window.OnlyOneDeWhichContainWhereClause;
+         window.countOfJoinTypeWhere = 0;
+         window.dataExtBool = true;
+         window.sharedDataExtBool = true;
+         window.dataViewsBool = true;
+         window.modal = document.getElementById('DEWhereClauseModal');
+         window.draggedDeKey = new Set();
+         window.draggedDeJoinKey = new Set();
+         window.NewDEFieldsList = [];
+         window.DEListMap = {};
+         window.openSelectFieldsDEExtKey = '';
+         window.openWhereDEExtKey = '';
+         window.FirstDEExtKeyForJoinGlobal;
+         window.DESetQueryBox = new Set();
+         window.NewDEFieldsSet = new Set();
+         window.joinedDivSet = new Set();
+         window.data;
+         window.externalKey;
+         //stop watch code by NITIK
+         window.timer = document.getElementById('stopwatch');
+         window.hr = 0;
+         window.min = 0;
+         window.sec = 0;
+         window.stoptime = true;
+         window.dragId = '';
+         console.log("before")
+         window.DEDragData = {
+             "DEName": '',
+             "DEExtKey": '',
+             "DECategory": ''
+         };
+         console.log("after")
+         window.JoinQueryDetails = {
+             "PrimaryDE": {},
+             "DEForJoin": []
+         }
+         window.current_page = 1;
+         window.records_per_page = 25;
+         window.objJSON = [];  
         $.ajax({
             url: '/DEListFetch',
             data: {
@@ -587,13 +600,13 @@
             success: function(data) {
                 DEListMap = data;
                 for (var key in DEListMap.DEMap) {
-                    document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
                 }
                 for (var key in DEListMap.SharedDEMap) {
-                    document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="SharedDEMap" name="' + DEListMap.SharedDEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.SharedDEMap[key].DEName + '">' + DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="SharedDEMap" name="' + DEListMap.SharedDEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.SharedDEMap[key].DEName + '">' + DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
                 }
                 for (var key in DEListMap.DataViewMap) {
-                    document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value="DataViewMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DataViewMap" name="' + DEListMap.DataViewMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DataViewMap[key].DEName + '">' + DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value="DataViewMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="dragstart(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="DataViewMap" name="' + DEListMap.DataViewMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DataViewMap[key].DEName + '">' + DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
                 }
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
@@ -601,41 +614,40 @@
         });
     }
     function allowDrop(ev, event) {
+        console.log("in the allow drop")
         ev.preventDefault();
     }
-    document.ondragstart = function(event) {
+   function dragstart(event) {
         var obj = {
             id: event.target.id,
             value: event.target.value,
             name: event.target.name
         };
+        console.log('Object12 ' + obj.id);
+
+            console.log('Object12 ' + JSON.stringify(obj));
         event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
-    document.ondragover = function(event, ev) {
+    function dragover(event, ev) {
         event.preventDefault();
     };
-    function allowDroping(ev, event) {
-        ev.preventDefault();
-    }
-    document.ondragstart = function(event) {
-        var obje = {
-            id: event.target.id,
-            value: event.target.value,
-            name: event.target.name
-        };
-        event.dataTransfer.setData("text/plain", JSON.stringify(obje));
-    };
-    document.ondragover = function(event, ev) {
-        event.preventDefault();
-    };
+    
     function drop(event, target) {
         event.preventDefault();
-        console.log("hello");
+        
+        console.log("hello--"+event);
+        console.log("hello==="+JSON.stringify(event));
         DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-        console.log("hello 5");
+        console.log("DEDragData.DEName--"+DEDragData.DEName);
+        
         DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+        console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
+        
         DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+        console.log("DEDragData.DECategory--"+DEDragData.DECategory);
+
         data = DEDragData.DEExtKey;
+        console.log("data--"+data);
         data = data.split("WhereClasueDEList");
         //condition added by nitik
         if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
@@ -1074,7 +1086,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -1085,7 +1097,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -1096,7 +1108,7 @@
                         document.getElementById('ulList').innerHTML += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                             '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                             ' <span class="slds-size_1-of-1">' +
-                            '<span > <button  class="btn" value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
+                            '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType + '" >' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + ' </button> </span>' +
                             ' </span>' +
                             '  </div>' +
                             '</li>';
@@ -1567,7 +1579,7 @@
 
     }
     //Anil kumar for creating Line
-    var dragId = '';
+
     function schemaAction(elmnt) {
         var myDivId = (elmnt.id).split('#');
         for (var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
