@@ -733,6 +733,7 @@ const { json2xml } = require("xml-js");
                         range.deleteContents();
                         if (FieldKey.charAt(0) == "[") {
                             document.getElementById(FieldKey).className = "slds-button slds-button_brand";
+                            draggedDeJoinKey.add(FieldKey);
                             range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                         } else if (FieldKey == "And" || FieldKey == "Or") {
                             range.insertNode(document.createTextNode(' ' + FieldName + ' '));
