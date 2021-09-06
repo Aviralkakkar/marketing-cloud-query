@@ -313,58 +313,58 @@
    
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        var currentSel = null;
-        const BORDER_SIZE = 4;
-         const panel = document.getElementById("right_panel");
-      console.log("panel=="+panel);
-         const table = document.getElementById("tableDiv");
+        window.currentSel = null;
+        window.BORDER_SIZE = 4;
+        window.panel = document.getElementById("right_panel");
+        console.log("panel=="+panel);
+        window.table = document.getElementById("tableDiv");
          console.log("table="+table);
-         var hl = screen.height - (screen.height * 20) / 100;
-         var hu = screen.height - (screen.height * 75) / 100;
+         window.hl = screen.height - (screen.height * 20) / 100;
+         window.hu = screen.height - (screen.height * 75) / 100;
          panel.style.height = hu + "px";
-         let m_pos;
-         var pHeight = 300;
-         var countOfDeWithWhereClauseValueMain = 0;
-         var countOfDeWithoutWhereClauseValueMain = 0;
-         var OnlyOneDeWhichContainWhereClause;
-         var countOfJoinTypeWhere = 0;
-         var dataExtBool = true;
-         var sharedDataExtBool = true;
-         var dataViewsBool = true;
-         var modal = document.getElementById('DEWhereClauseModal');
-         var draggedDeKey = new Set();
-         var draggedDeJoinKey = new Set();
-         var NewDEFieldsList = [];
-         var DEListMap = {};
-         var openSelectFieldsDEExtKey = '';
-         var openWhereDEExtKey = '';
-         var FirstDEExtKeyForJoinGlobal;
-         var DESetQueryBox = new Set();
-         var NewDEFieldsSet = new Set();
-         var joinedDivSet = new Set();
-         var data;
-         var externalKey;
+         window.m_pos;
+         window.pHeight = 300;
+         window.countOfDeWithWhereClauseValueMain = 0;
+         window.countOfDeWithoutWhereClauseValueMain = 0;
+         window.OnlyOneDeWhichContainWhereClause;
+         window.countOfJoinTypeWhere = 0;
+         window.dataExtBool = true;
+         window.sharedDataExtBool = true;
+         window.dataViewsBool = true;
+         window.modal = document.getElementById('DEWhereClauseModal');
+         window.draggedDeKey = new Set();
+         window.draggedDeJoinKey = new Set();
+         window.NewDEFieldsList = [];
+         window.DEListMap = {};
+         window.openSelectFieldsDEExtKey = '';
+         window.openWhereDEExtKey = '';
+         window.FirstDEExtKeyForJoinGlobal;
+         window.DESetQueryBox = new Set();
+         window.NewDEFieldsSet = new Set();
+         window.joinedDivSet = new Set();
+         window.data;
+         window.externalKey;
          //stop watch code by NITIK
-         const timer = document.getElementById('stopwatch');
-         var hr = 0;
-         var min = 0;
-         var sec = 0;
-         var stoptime = true;
-         var dragId = '';
+         window.timer = document.getElementById('stopwatch');
+         window.hr = 0;
+         window.min = 0;
+         window.sec = 0;
+         window.stoptime = true;
+         window.dragId = '';
          console.log("before")
-         var DEDragData = {
+         window.DEDragData = {
              "DEName": '',
              "DEExtKey": '',
              "DECategory": ''
          };
          console.log("after")
-         var JoinQueryDetails = {
+         window.JoinQueryDetails = {
              "PrimaryDE": {},
              "DEForJoin": []
          }
-         var current_page = 1;
-         var records_per_page = 25;
-         var objJSON = [];  
+         window.current_page = 1;
+         window.records_per_page = 25;
+         window.objJSON = [];  
         if (event.target == modal) {
             closeModal()
         }
