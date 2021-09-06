@@ -313,58 +313,7 @@
    
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        window.currentSel = null;
-        window.BORDER_SIZE = 4;
-        window.panel = document.getElementById("right_panel");
-        console.log("panel=="+panel);
-        window.table = document.getElementById("tableDiv");
-         console.log("table="+table);
-         window.hl = screen.height - (screen.height * 20) / 100;
-         window.hu = screen.height - (screen.height * 75) / 100;
-         panel.style.height = hu + "px";
-         window.m_pos;
-         window.pHeight = 300;
-         window.countOfDeWithWhereClauseValueMain = 0;
-         window.countOfDeWithoutWhereClauseValueMain = 0;
-         window.OnlyOneDeWhichContainWhereClause;
-         window.countOfJoinTypeWhere = 0;
-         window.dataExtBool = true;
-         window.sharedDataExtBool = true;
-         window.dataViewsBool = true;
-         window.modal = document.getElementById('DEWhereClauseModal');
-         window.draggedDeKey = new Set();
-         window.draggedDeJoinKey = new Set();
-         window.NewDEFieldsList = [];
-         window.DEListMap = {};
-         window.openSelectFieldsDEExtKey = '';
-         window.openWhereDEExtKey = '';
-         window.FirstDEExtKeyForJoinGlobal;
-         window.DESetQueryBox = new Set();
-         window.NewDEFieldsSet = new Set();
-         window.joinedDivSet = new Set();
-         window.data;
-         window.externalKey;
-         //stop watch code by NITIK
-         window.timer = document.getElementById('stopwatch');
-         window.hr = 0;
-         window.min = 0;
-         window.sec = 0;
-         window.stoptime = true;
-         window.dragId = '';
-         console.log("before")
-         window.DEDragData = {
-             "DEName": '',
-             "DEExtKey": '',
-             "DECategory": ''
-         };
-         console.log("after")
-         window.JoinQueryDetails = {
-             "PrimaryDE": {},
-             "DEForJoin": []
-         }
-         window.current_page = 1;
-         window.records_per_page = 25;
-         window.objJSON = [];  
+       
         if (event.target == modal) {
             closeModal()
         }
@@ -588,7 +537,58 @@
     };
     //onloadofBody();
     function onloadofBody() {
-      
+        window.currentSel = null;
+        window.BORDER_SIZE = 4;
+        window.panel = document.getElementById("right_panel");
+        console.log("panel=="+panel);
+        window.table = document.getElementById("tableDiv");
+         console.log("table="+table);
+         window.hl = screen.height - (screen.height * 20) / 100;
+         window.hu = screen.height - (screen.height * 75) / 100;
+         panel.style.height = hu + "px";
+         window.m_pos;
+         window.pHeight = 300;
+         window.countOfDeWithWhereClauseValueMain = 0;
+         window.countOfDeWithoutWhereClauseValueMain = 0;
+         window.OnlyOneDeWhichContainWhereClause;
+         window.countOfJoinTypeWhere = 0;
+         window.dataExtBool = true;
+         window.sharedDataExtBool = true;
+         window.dataViewsBool = true;
+         window.modal = document.getElementById('DEWhereClauseModal');
+         window.draggedDeKey = new Set();
+         window.draggedDeJoinKey = new Set();
+         window.NewDEFieldsList = [];
+         window.DEListMap = {};
+         window.openSelectFieldsDEExtKey = '';
+         window.openWhereDEExtKey = '';
+         window.FirstDEExtKeyForJoinGlobal;
+         window.DESetQueryBox = new Set();
+         window.NewDEFieldsSet = new Set();
+         window.joinedDivSet = new Set();
+         window.data;
+         window.externalKey;
+         //stop watch code by NITIK
+         window.timer = document.getElementById('stopwatch');
+         window.hr = 0;
+         window.min = 0;
+         window.sec = 0;
+         window.stoptime = true;
+         window.dragId = '';
+         console.log("before")
+         window.DEDragData = {
+             "DEName": '',
+             "DEExtKey": '',
+             "DECategory": ''
+         };
+         console.log("after")
+         window.JoinQueryDetails = {
+             "PrimaryDE": {},
+             "DEForJoin": []
+         }
+         window.current_page = 1;
+         window.records_per_page = 25;
+         window.objJSON = [];  
         $.ajax({
             url: '/DEListFetch',
             data: {
