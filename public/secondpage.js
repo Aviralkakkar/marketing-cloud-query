@@ -1,9 +1,9 @@
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
-   // const BORDER_SIZE = 4;
-    //const panel = document.getElementById("right_panel");
-   // console.log("panel=="+panel);
+   const BORDER_SIZE = 4;
+    const panel = document.getElementById("right_panel");
+ console.log("panel=="+panel);
     const table = document.getElementById("tableDiv");
     console.log("table="+table);
     var hl = screen.height - (screen.height * 20) / 100;
@@ -612,7 +612,7 @@
     function allowDrop(ev, event) {
         ev.preventDefault();
     }
-    document.ondragstart = function(event) {
+   /* document.ondragstart = function(event) {
         var obj = {
             id: event.target.id,
             value: event.target.value,
@@ -625,7 +625,7 @@
     };
     document.ondragover = function(event, ev) {
         event.preventDefault();
-    };
+    };*/
     
     function drop(event, target) {
         event.preventDefault();
