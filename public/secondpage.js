@@ -1,3 +1,4 @@
+const { json2xml } = require("xml-js");
 
     function move() {
         if (arguments.length == 1) {
@@ -386,9 +387,9 @@
             document.addEventListener("mousemove", resize, false);
         }
     }
-    document.addEventListener("mouseup", function() {
+   function mouseup() {
         document.removeEventListener("mousemove", resize, false);
-    }, false);
+    }
 
 // Khushboo code Ending 
 
@@ -565,7 +566,7 @@
          window.DESetQueryBox = new Set();
          window.NewDEFieldsSet = new Set();
          window.joinedDivSet = new Set();
-         window.data;
+         //window.data;
          window.externalKey;
          //stop watch code by NITIK
          window.timer = document.getElementById('stopwatch');
@@ -635,116 +636,126 @@
     function drop(event, target) {
         event.preventDefault();
         
-        console.log("hello--"+event);
+        console.log("hello--"+event.dataTransfer.getData("text/plain"));
         console.log("hello==="+JSON.stringify(event));
-        DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-        console.log("DEDragData.DEName--"+DEDragData.DEName);
-        
-        DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
-        console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
-        
-        DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-        console.log("DEDragData.DECategory--"+DEDragData.DECategory);
-
-        data = DEDragData.DEExtKey;
-        console.log("data--"+data);
-        data = data.split("WhereClasueDEList");
         //condition added by nitik
-        if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
-            if (DEDragData.DEExtKey && DEDragData.DEName && DEDragData.DECategory) {
-                document.getElementById('leftsideListInSelectField').innerHTML = '';
-                if (DESetQueryBox.has(DEDragData.DEExtKey)) {
-                    document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
-                    document.getElementById('DEListDivAlert').style.display = 'block';
-                    setTimeout(function() {
-                        document.getElementById("DEListDivAlert").style.display = 'none';
-                    }, 5000);
-                } else {
-                    document.getElementById('DEListDivAlert').style.display = 'none';
-                    document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
-                    if (DEDragData.DECategory == "DEMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+        if(event.dataTransfer.getData("text/plain")){
+            if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {
+            
+           
+            
+                DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
+                console.log("DEDragData.DEName--"+DEDragData.DEName);
+                
+                DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
+                console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
+                
+                DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
+                console.log("DEDragData.DECategory--"+DEDragData.DECategory);
+            
+                var data = DEDragData.DEExtKey;
+                console.log("data--"+data);
+                data = data.split("WhereClasueDEList");
+                if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
+                    document.getElementById('leftsideListInSelectField').innerHTML = '';
+                    if (DESetQueryBox.has(DEDragData.DEExtKey)) {
+                        document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
+                        document.getElementById('DEListDivAlert').style.display = 'block';
+                        setTimeout(function() {
+                            document.getElementById("DEListDivAlert").style.display = 'none';
+                        }, 5000);
+                    } else {
+                        document.getElementById('DEListDivAlert').style.display = 'none';
+                        document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
+                        if (DEDragData.DECategory == "DEMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true  label="' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                            }
+                        } else if (DEDragData.DECategory == "SharedDEMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+                                    '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                            }
+                        } else if (DEDragData.DECategory == "DataViewMap") {
+                            document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
+                            DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
+                            for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
+                                document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType +
+                                    '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
+                                    '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
+                              }
                         }
-                    } else if (DEDragData.DECategory == "SharedDEMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                                '" label="' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.SharedDEMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
-                        }
-                    } else if (DEDragData.DECategory == "DataViewMap") {
-                        document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
-                        DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
-                        for (var i = 0; i < DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields.length; i++) {
-                            document.getElementById('leftsideListInSelectField').innerHTML += ' <option value="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldType +
-                                '" id="' + DEDragData.DEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName +
-                                '" label="' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '" style="padding:4%; margin:0;"> ' + DEListMap.DataViewMap[DEDragData.DEExtKey].DEFields[i].FieldName + '</option><br>';
-                          }
+                        document.getElementById('RelationPopup').style.display = 'block';
                     }
-                    document.getElementById('RelationPopup').style.display = 'block';
                 }
             }
         }
+     
     };
+    
     //script added by nitik for moving 
     function drop2(event, target) {
         event.preventDefault();
-        var DEWhereClauseDragData = {
-            "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
-            "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
-            "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
-        }
-        if (DEWhereClauseDragData.FieldName != null) {
+        
+        if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).value && JSON.parse(event.dataTransfer.getData("text/plain")).id) {
+            var DEWhereClauseDragData = {
+                "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
+                "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
+                "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
+            }
+            console.log("DEWhereClauseDragData=="+JSON.stringify(DEWhereClauseDragData));
             insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
-            function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-                var sel, range, JoineDeWhereClause;
-                if (window.getSelection) {
-                    sel = window.getSelection();
-                    var parentID = window.getSelection().anchorNode.parentNode.id;
-                    var anchorID = window.getSelection().anchorNode.id;
-                    var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-                    if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
-                        if (sel.getRangeAt && sel.rangeCount) {
-                            range = sel.getRangeAt(0);
-                            range.deleteContents();
-                            range.insertNode(document.createTextNode(FieldName));
-                        }
-                    } else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
-                        if (sel.getRangeAt && sel.rangeCount) {
-                            range = sel.getRangeAt(0);
-                            range.deleteContents();
-                            if (FieldKey.charAt(0) == "[") {
-                                document.getElementById(FieldKey).className = "slds-button slds-button_brand";
-                                range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
-                            } else if (FieldKey == "And" || FieldKey == "Or") {
-                                range.insertNode(document.createTextNode(' ' + FieldName + ' '));
-                            } else {
-                                key = FieldKey.split("WhereClasueDEList");
-                                FieldId = key[0];
-                                document.getElementById(FieldKey).className = "slds-button slds-button_brand";
-                                if (FieldType in DEListMap.DEMap) {
-                                    for (var key in DEListMap.DEMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
-                                } else if (FieldType in DEListMap.SharedDEMap) {
-                                    for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
-                                } else if (FieldType in DEListMap.DataViewMap) {
-                                    for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
+         
+        }
+        function insertTextAtCaret(FieldName, FieldKey, FieldType) {
+            var sel, range, JoineDeWhereClause;
+            if (window.getSelection) {
+                sel = window.getSelection();
+                var parentID = window.getSelection().anchorNode.parentNode.id;
+                var anchorID = window.getSelection().anchorNode.id;
+                var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
+                    if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                    }
+                } else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                    if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        if (FieldKey.charAt(0) == "[") {
+                            document.getElementById(FieldKey).className = "slds-button slds-button_brand";
+                            range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
+                        } else if (FieldKey == "And" || FieldKey == "Or") {
+                            range.insertNode(document.createTextNode(' ' + FieldName + ' '));
+                        } else {
+                            key = FieldKey.split("WhereClasueDEList");
+                            FieldId = key[0];
+                            document.getElementById(FieldKey).className = "slds-button slds-button_brand";
+                            if (FieldType in DEListMap.DEMap) {
+                                for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
                                 }
-                                range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
+                            } else if (FieldType in DEListMap.SharedDEMap) {
+                                for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                                }
+                            } else if (FieldType in DEListMap.DataViewMap) {
+                                for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
+                                }
                             }
+                            range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                         }
                     }
                 }
@@ -777,6 +788,12 @@
         if (actionType == "Run") {
             startTimer()
         }
+        console.log("DESetQueryBox=="+DESetQueryBox.size);
+        console.log("draggedDeKey=="+draggedDeKey.size);
+        console.log("countOfDeWithoutWhereClauseValueMain=="+countOfDeWithoutWhereClauseValueMain);
+        console.log("countOfDeWithWhereClauseValueMain=="+countOfDeWithWhereClauseValueMain);
+        console.log("draggedDeJoinKey.size=="+draggedDeJoinKey.size);
+        console.log("countOfJoinTypeWhere"+countOfJoinTypeWhere);
         if (DESetQueryBox.size > 1) {
             if (((isSetEqual(DESetQueryBox, draggedDeKey) == 0) && (countOfDeWithoutWhereClauseValueMain != DESetQueryBox.size) && (countOfDeWithWhereClauseValueMain != 1)) || (draggedDeJoinKey.size != countOfJoinTypeWhere)) {
                 document.getElementById('DeDragAlert').style.display = 'Block';
