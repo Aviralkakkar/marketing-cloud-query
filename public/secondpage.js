@@ -1,4 +1,3 @@
-
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
