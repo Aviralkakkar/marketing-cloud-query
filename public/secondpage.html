@@ -1649,7 +1649,7 @@
         }
        /*-------End Here------------*/
     </style>
-    <script type="text/javascript" src="secondpage.js"></script> 
+    <script src="secondpage.js"></script> 
     <!-- Khushboo code started -->
     <style>
         #right_panel {
@@ -1953,6 +1953,8 @@
         /*-------End Here------------*/
     </style>
     <!-- Khushboo code ending  -->
+   
+
 </head>
 <body>
     <div>
@@ -1971,7 +1973,7 @@
                 <div class="sidebar" id="DEListSidebar" style="width: 25%; margin-top: 0px;width: 25%;margin-top: 0px;border-right: 1px solid #dddbda;color:#496277;height:1000vh;">
                     <div class="demo-only-element" style="height: 100%;">
                         <script>
-                           // spinnerOnLoad();
+                           spinnerOnLoad();
                            
                         </script>
                         <div aria-hidden="false" id="example-unique-id-8">
@@ -2801,9 +2803,23 @@
     <div class="slds-col slds-size_9-of-12" id="DETable">
     </div>
 
-     <script type="text/javascript" src="secondpage.js">
-    spinnerOnLoad();
+     <script >
+   
     onloadofBody();
+        document.ondragstart = function(event) {
+            var obj = {
+                id: event.target.id,
+                value: event.target.value,
+                name: event.target.name
+            };
+            console.log('Object12 ' + obj.id);
+
+                console.log('Object12 ' + JSON.stringify(obj));
+            event.dataTransfer.setData("text/plain", JSON.stringify(obj));
+        };
+        document.ondragover = function(event, ev) {
+            event.preventDefault();
+        };
     </script> 
      
 </body>
