@@ -1,54 +1,4 @@
-//Priyanka Added Script for up-down right-left 
 
-    var currentSel = null;
-   const BORDER_SIZE = 4;
-    const panel = document.getElementById("right_panel");
- console.log("panel=="+panel);
-    const table = document.getElementById("tableDiv");
-    console.log("table="+table);
-    var hl = screen.height - (screen.height * 20) / 100;
-    var hu = screen.height - (screen.height * 75) / 100;
-    panel.style.height = hu + "px";
-    let m_pos;
-    var pHeight = 300;
-    var countOfDeWithWhereClauseValueMain = 0;
-    var countOfDeWithoutWhereClauseValueMain = 0;
-    var OnlyOneDeWhichContainWhereClause;
-    var countOfJoinTypeWhere = 0;
-    var dataExtBool = true;
-    var sharedDataExtBool = true;
-    var dataViewsBool = true;
-    var modal = document.getElementById('DEWhereClauseModal');
-    var draggedDeKey = new Set();
-    var draggedDeJoinKey = new Set();
-    var NewDEFieldsList = [];
-    var DEListMap = {};
-    var openSelectFieldsDEExtKey = '';
-    var openWhereDEExtKey = '';
-    var FirstDEExtKeyForJoinGlobal;
-    var DESetQueryBox = new Set();
-    var NewDEFieldsSet = new Set();
-    var joinedDivSet = new Set();
-    var data;
-    var externalKey;
-    //stop watch code by NITIK
-    const timer = document.getElementById('stopwatch');
-    var hr = 0;
-    var min = 0;
-    var sec = 0;
-    var stoptime = true;
-    var dragId = '';
-    console.log("before")
-    var DEDragData = {
-        "DEName": '',
-        "DEExtKey": '',
-        "DECategory": ''
-    };
-    console.log("after")
-    var JoinQueryDetails = {
-        "PrimaryDE": {},
-        "DEForJoin": []
-    }
 
     function move() {
         if (arguments.length == 1) {
@@ -531,9 +481,7 @@
         document.getElementById('right_panel').style = "height:29%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;"
         document.getElementById('tableDiv').innerHTML = '<div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" ><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;"><use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><br>Result will be shown here</div>';
     }
-    var current_page = 1;
-    var records_per_page = 25;
-    var objJSON = [];
+   
     function prevPage() {
         if (current_page > 1) {
             current_page--;
