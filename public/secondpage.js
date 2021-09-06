@@ -1,7 +1,7 @@
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
-    const BORDER_SIZE = 4;
+   // const BORDER_SIZE = 4;
     const panel = document.getElementById("right_panel");
     console.log("panel=="+panel);
     const table = document.getElementById("tableDiv");
