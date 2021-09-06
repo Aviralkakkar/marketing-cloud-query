@@ -39,9 +39,9 @@
     var stoptime = true;
     var dragId = '';
     var DEDragData = {
-        "DEName": ' ',
-        "DEExtKey": ' ',
-        "DECategory": ' '
+        "DEName": '',
+        "DEExtKey": '',
+        "DECategory": ''
     };
     var JoinQueryDetails = {
         "PrimaryDE": {},
