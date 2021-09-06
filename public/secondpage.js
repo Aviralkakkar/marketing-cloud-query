@@ -782,12 +782,12 @@ const { json2xml } = require("xml-js");
         if (actionType == "Run") {
             startTimer()
         }
-        console.log("DESetQueryBox=="+DESetQueryBox.size());
-        console.log("draggedDeKey=="+draggedDeKey.size());
+        console.log("DESetQueryBox=="+DESetQueryBox.size);
+        console.log("draggedDeKey=="+draggedDeKey.size);
         console.log("countOfDeWithoutWhereClauseValueMain=="+countOfDeWithoutWhereClauseValueMain);
         console.log("countOfDeWithWhereClauseValueMain=="+countOfDeWithWhereClauseValueMain);
-        console.log("DESetQueryBox"+DESetQueryBox.size());
-        console.log("DESetQueryBox"+DESetQueryBox.size());
+        console.log("DESetQueryBox"+DESetQueryBox.size);
+        console.log("DESetQueryBox"+DESetQueryBox.size);
         if (DESetQueryBox.size > 1) {
             if (((isSetEqual(DESetQueryBox, draggedDeKey) == 0) && (countOfDeWithoutWhereClauseValueMain != DESetQueryBox.size) && (countOfDeWithWhereClauseValueMain != 1)) || (draggedDeJoinKey.size != countOfJoinTypeWhere)) {
                 document.getElementById('DeDragAlert').style.display = 'Block';
