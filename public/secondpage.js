@@ -703,7 +703,9 @@ const { json2xml } = require("xml-js");
     //script added by nitik for moving 
     function drop2(event, target) {
         event.preventDefault();
-        
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).name);
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).value);
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).id);
         if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).value && JSON.parse(event.dataTransfer.getData("text/plain")).id) {
             var DEWhereClauseDragData = {
                 "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
