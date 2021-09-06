@@ -38,6 +38,15 @@
     var sec = 0;
     var stoptime = true;
     var dragId = '';
+    var DEDragData = {
+        "DEName": ' ',
+        "DEExtKey": ' ',
+        "DECategory": ' '
+    };
+    var JoinQueryDetails = {
+        "PrimaryDE": {},
+        "DEForJoin": []
+    }
     function move() {
         if (arguments.length == 1) {
             moveUp(arguments[0]);
@@ -431,15 +440,7 @@
 // Khushboo code Ending 
 
    
-    var DEDragData = {
-        "DEName": '',
-        "DEExtKey": '',
-        "DECategory": ''
-    };
-    var JoinQueryDetails = {
-        "PrimaryDE": {},
-        "DEForJoin": []
-    }
+    
    
     function startTimer() {
         if (stoptime == true) {
