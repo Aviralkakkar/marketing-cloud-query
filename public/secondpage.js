@@ -1184,7 +1184,7 @@ const { json2xml } = require("xml-js");
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
@@ -1194,7 +1194,7 @@ const { json2xml } = require("xml-js");
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
@@ -1204,7 +1204,7 @@ const { json2xml } = require("xml-js");
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
