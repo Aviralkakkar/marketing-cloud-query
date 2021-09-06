@@ -536,6 +536,58 @@
     };
     //onloadofBody();
     function onloadofBody() {
+        var currentSel = null;
+        const BORDER_SIZE = 4;
+         const panel = document.getElementById("right_panel");
+      console.log("panel=="+panel);
+         const table = document.getElementById("tableDiv");
+         console.log("table="+table);
+         var hl = screen.height - (screen.height * 20) / 100;
+         var hu = screen.height - (screen.height * 75) / 100;
+         panel.style.height = hu + "px";
+         let m_pos;
+         var pHeight = 300;
+         var countOfDeWithWhereClauseValueMain = 0;
+         var countOfDeWithoutWhereClauseValueMain = 0;
+         var OnlyOneDeWhichContainWhereClause;
+         var countOfJoinTypeWhere = 0;
+         var dataExtBool = true;
+         var sharedDataExtBool = true;
+         var dataViewsBool = true;
+         var modal = document.getElementById('DEWhereClauseModal');
+         var draggedDeKey = new Set();
+         var draggedDeJoinKey = new Set();
+         var NewDEFieldsList = [];
+         var DEListMap = {};
+         var openSelectFieldsDEExtKey = '';
+         var openWhereDEExtKey = '';
+         var FirstDEExtKeyForJoinGlobal;
+         var DESetQueryBox = new Set();
+         var NewDEFieldsSet = new Set();
+         var joinedDivSet = new Set();
+         var data;
+         var externalKey;
+         //stop watch code by NITIK
+         const timer = document.getElementById('stopwatch');
+         var hr = 0;
+         var min = 0;
+         var sec = 0;
+         var stoptime = true;
+         var dragId = '';
+         console.log("before")
+         var DEDragData = {
+             "DEName": '',
+             "DEExtKey": '',
+             "DECategory": ''
+         };
+         console.log("after")
+         var JoinQueryDetails = {
+             "PrimaryDE": {},
+             "DEForJoin": []
+         }
+         var current_page = 1;
+         var records_per_page = 25;
+         var objJSON = [];  
         $.ajax({
             url: '/DEListFetch',
             data: {
@@ -551,10 +603,10 @@
                     document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="drag(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
                 }
                 for (var key in DEListMap.SharedDEMap) {
-                    document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="SharedDEMap" name="' + DEListMap.SharedDEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.SharedDEMap[key].DEName + '">' + DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="drag(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="SharedDEMap" name="' + DEListMap.SharedDEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.SharedDEMap[key].DEName + '">' + DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
                 }
                 for (var key in DEListMap.DataViewMap) {
-                    document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value="DataViewMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DataViewMap" name="' + DEListMap.DataViewMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DataViewMap[key].DEName + '">' + DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("dataViews").innerHTML += '<li aria-level="1" role="treeitem" value="DataViewMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart="drag(event)" ondragover="dragover(event, this)" id="' + key + '"draggable=true value="DataViewMap" name="' + DEListMap.DataViewMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DataViewMap[key].DEName + '">' + DEListMap.DataViewMap[key].DEName + ' </span></span></button></li>';
                 }
                 document.getElementById('FullPageSpinner').style.display = 'none';
                 document.getElementById('DEListSidebar').style.marginTop = '0px';
