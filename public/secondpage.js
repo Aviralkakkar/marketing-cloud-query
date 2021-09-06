@@ -596,7 +596,7 @@
             success: function(data) {
                 DEListMap = data;
                 for (var key in DEListMap.DEMap) {
-                    document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
+                    document.getElementById("dataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="DEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" ondragstart = drag(event) ondragover=dragover(event, ev) id="' + key + '"draggable=true value="DEMap" name="' + DEListMap.DEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.DEMap[key].DEName + '">' + DEListMap.DEMap[key].DEName + ' </span></span></button></li>';
                 }
                 for (var key in DEListMap.SharedDEMap) {
                     document.getElementById("sharedDataExtension").innerHTML += '<li aria-level="1" role="treeitem" value="SharedDEMap" draggable="true"><button class="slds-tree__item slds-button my-button" style="color: #425769;" id="' + key + '"draggable=true value="SharedDEMap" name="' + DEListMap.SharedDEMap[key].DEName + '"><span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed"><svg class="slds-icon slds-icon-text-default slds-icon_small slds-p-bottom_xx-small" aria-hidden="true"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#database"></use></svg><span class="slds-assistive-text">Description of icon when needed</span></span><span class="slds-has-flexi-truncate"><span class="slds-tree__item-label " title="' + DEListMap.SharedDEMap[key].DEName + '">' + DEListMap.SharedDEMap[key].DEName + ' </span></span></button></li>';
@@ -612,7 +612,7 @@
     function allowDrop(ev, event) {
         ev.preventDefault();
     }
-   /* document.ondragstart = function(event) {
+   function drag(event) {
         var obj = {
             id: event.target.id,
             value: event.target.value,
@@ -623,9 +623,9 @@
             console.log('Object12 ' + JSON.stringify(obj));
         event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
-    document.ondragover = function(event, ev) {
+    function dragover(event, ev) {
         event.preventDefault();
-    };*/
+    };
     
     function drop(event, target) {
         event.preventDefault();
