@@ -1,6 +1,43 @@
 //Priyanka Added Script for up-down right-left 
 
     var currentSel = null;
+    const BORDER_SIZE = 4;
+    const panel = document.getElementById("right_panel");
+    console.log("panel=="+panel);
+    const table = document.getElementById("tableDiv");
+    console.log("table="+table);
+    var hl = screen.height - (screen.height * 20) / 100;
+    var hu = screen.height - (screen.height * 75) / 100;
+    panel.style.height = hu + "px";
+    let m_pos;
+    var pHeight = 300;
+    var countOfDeWithWhereClauseValueMain = 0;
+    var countOfDeWithoutWhereClauseValueMain = 0;
+    var OnlyOneDeWhichContainWhereClause;
+    var countOfJoinTypeWhere = 0;
+    var dataExtBool = true;
+    var sharedDataExtBool = true;
+    var dataViewsBool = true;
+    var modal = document.getElementById('DEWhereClauseModal');
+    var draggedDeKey = new Set();
+    var draggedDeJoinKey = new Set();
+    var NewDEFieldsList = [];
+    var DEListMap = {};
+    var openSelectFieldsDEExtKey = '';
+    var openWhereDEExtKey = '';
+    var FirstDEExtKeyForJoinGlobal;
+    var DESetQueryBox = new Set();
+    var NewDEFieldsSet = new Set();
+    var joinedDivSet = new Set();
+    var data;
+    var externalKey;
+    //stop watch code by NITIK
+    const timer = document.getElementById('stopwatch');
+    var hr = 0;
+    var min = 0;
+    var sec = 0;
+    var stoptime = true;
+    var dragId = '';
     function move() {
         if (arguments.length == 1) {
             moveUp(arguments[0]);
@@ -152,10 +189,7 @@
 
 //nitik code started
 
-    var countOfDeWithWhereClauseValueMain = 0;
-    var countOfDeWithoutWhereClauseValueMain = 0;
-    var OnlyOneDeWhichContainWhereClause;
-    var countOfJoinTypeWhere = 0;
+  
     /*added by priyanka*/
     function closerunQueryAlert() {
         document.getElementById('runQueryAlert').style.display = 'none';
@@ -314,7 +348,7 @@
 
     }
     // Get the modal
-    var modal = document.getElementById('DEWhereClauseModal');
+   
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -326,9 +360,7 @@
 // Khushboo  code starting
 
     //******** folder hierarchy code *********//
-    var dataExtBool = true;
-    var sharedDataExtBool = true;
-    var dataViewsBool = true;
+  
     function showDataExtensions() {
         var de = document.getElementById("dataExtensionButton");
         if (dataExtBool) {
@@ -366,16 +398,7 @@
         }
     }
 
-    const BORDER_SIZE = 4;
-    const panel = document.getElementById("right_panel");
-    console.log("panel=="+panel);
-    const table = document.getElementById("tableDiv");
-    console.log("table="+table);
-    var hl = screen.height - (screen.height * 20) / 100;
-    var hu = screen.height - (screen.height * 75) / 100;
-    panel.style.height = hu + "px";
-    let m_pos;
-    var pHeight = 300;
+    
     function resize(e) {
         const dx = m_pos - e.y;
         m_pos = e.y;
@@ -407,8 +430,7 @@
 
 // Khushboo code Ending 
 
-    var draggedDeKey = new Set();
-    var draggedDeJoinKey = new Set();
+   
     var DEDragData = {
         "DEName": '',
         "DEExtKey": '',
@@ -418,22 +440,7 @@
         "PrimaryDE": {},
         "DEForJoin": []
     }
-    var NewDEFieldsList = [];
-    var DEListMap = {};
-    var openSelectFieldsDEExtKey = '';
-    var openWhereDEExtKey = '';
-    var FirstDEExtKeyForJoinGlobal;
-    var DESetQueryBox = new Set();
-    var NewDEFieldsSet = new Set();
-    var joinedDivSet = new Set();
-    var data;
-    var externalKey;
-    //stop watch code by NITIK
-    const timer = document.getElementById('stopwatch');
-    var hr = 0;
-    var min = 0;
-    var sec = 0;
-    var stoptime = true;
+   
     function startTimer() {
         if (stoptime == true) {
             stoptime = false;
@@ -1560,7 +1567,7 @@
 
     }
     //Anil kumar for creating Line
-    var dragId = '';
+
     function schemaAction(elmnt) {
         var myDivId = (elmnt.id).split('#');
         for (var ConnectedTwoDiv of JoinQueryDetails.DEForJoin) {
