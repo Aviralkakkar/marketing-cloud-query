@@ -59,15 +59,6 @@ app.post("/credential", async function (req, res) {
  
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
-      "_EnterpriseAttribute": {
-        "DEName": "_EnterpriseAttribute",
-        "DEFields": [
-          {
-            "FieldName": "_SubscriberID",
-            "FieldType": "Number"
-          }
-        ]
-      },
       "_Subscribers": {
         "DEName": "_Subscribers",
         "DEFields": [
@@ -569,348 +560,7 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_BusinessUnitUnsubscribes": {
-        "DEName": "_BusinessUnitUnsubscribes",
-        "DEFields": [
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "BusinessUnitID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "UnsubReason",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "UnsubDateUTC",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_smsmessagetracking": {
-        "DEName": "_smsmessagetracking",
-        "DEFields": [
-          {
-            "FieldName": "MobileMessageTrackingID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "EID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "MID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "Mobile",
-            "FieldType": "Phone"
-          },
-          {
-            "FieldName": "MessageID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "KeywordID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CodeID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ConversationID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CampaignID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "Sent",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Delivered",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Undelivered",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Unsub",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "OptIn",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "OptOut",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Outbound",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Inbound",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "CreateDateTime",
-            "FieldType": "Date and time"
-          },
-          {
-            "FieldName": "ModifiedDateTime",
-            "FieldType": "Date and time"
-          },
-          {
-            "FieldName": "ActionDateTime",
-            "FieldType": "Date and time"
-          },
-          {
-            "FieldName": "MessageText",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IsTest",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "MobileMessageRecurrenceID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ResponseToMobileMessageTrackingID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "IsValid",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "InvalidationCode",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendSplitID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendSegmentID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendJobID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendGroupID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SendPersonID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "SMSStandardStatusCodeId",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "Description",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "Name",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ShortCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "SharedKeyword",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "Ordinal",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "FromName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "JBActivityID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "JBDefinitionID",
-            "FieldType": "Text"
-          }
-        ]
-      },
-      "_MobileLineAddressContactSubscriptionView": {
-        "DEName": "_MobileLineAddressContactSubscriptionView",
-        "DEFields": [
-          {
-            "FieldName": "ChannelID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IsActive",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "ModifiedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_MobileLineOrphanContactView": {
-        "DEName": "_MobileLineOrphanContactView",
-        "DEFields": [
-          {
-            "FieldName": "ContactID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ContactKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "AddressID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_SMSSubscriptionLog": {
-        "DEName": "_SMSSubscriptionLog",
-        "DEFields": [
-          {
-            "FieldName": "LogDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "MobileSubscriptionID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriptionDefinitionID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "MobileNumber",
-            "FieldType": "Phone"
-          },
-          {
-            "FieldName": "OptOutStatusID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "OptOutMethodID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "OptOutDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "OptInStatusID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "OptInMethodID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "OptInDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "Source",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "CreatedDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "ModifiedDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_UndeliverableSms": {
-        "DEName": "_UndeliverableSms",
-        "DEFields": [
-          {
-            "FieldName": "MobileNumber",
-            "FieldType": "Phone"
-          },
-          {
-            "FieldName": "Undeliverable",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "BounceCount",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "FirstBounceDate",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "HoldDate",
-            "FieldType": "Date"
-          }
-        ]
-      },
+
       "_Journey ": {
         "DEName": "_Journey",
         "DEFields": [
@@ -948,35 +598,7 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_JourneyActivity ": {
-        "DEName": "_JourneyActivity ",
-        "DEFields": [
-          {
-            "FieldName": "VersionID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityExternalKey",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "JourneyActivityObjectID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ActivityType",
-            "FieldType": "Text"
-          }
-        ]
-      },
+
       "_Job": {
         "DEName": "_Job",
         "DEFields": [
@@ -1130,152 +752,8 @@ app.post("/credential", async function (req, res) {
           }
         ]
       },
-      "_SocialNetworkImpressions ": {
-        "DEName": "_SocialNetworkImpressions ",
-        "DEFields": [
-          {
-            "FieldName": "JobID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "ListID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "RegionTitle",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionDescription",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionHTML",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContentRegionID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SocialSharingSiteID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SiteName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CountryCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ReferringURL",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "IPAddress",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "TransactionTime",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "PublishedSocialContentStatusID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ShortCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishTime",
-            "FieldType": "Date"
-          }
-        ]
-      },
-      "_SocialNetworkTracking": {
-        "DEName": "_SocialNetworkTracking ",
-        "DEFields": [
-          {
-            "FieldName": "SubscriberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SubscriberKey",
-            "FieldType": "Email"
-          },
-          {
-            "FieldName": "ListID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "BatchID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SocialSharingSiteID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "SiteName",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "CountryCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishedSocialContentID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionTitle",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionDescription",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "RegionHTML",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ContentRegionID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "OYBMemberID",
-            "FieldType": "Number"
-          },
-          {
-            "FieldName": "TransactionTime",
-            "FieldType": "Date"
-          },
-          {
-            "FieldName": "IsUnique",
-            "FieldType": "Boolean"
-          },
-          {
-            "FieldName": "Domain",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishedSocialContentStatusID",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "ShortCode",
-            "FieldType": "Text"
-          },
-          {
-            "FieldName": "PublishTime",
-            "FieldType": "Date"
-          }
-        ]
-      }
+     
+     
     }
     DEListMap = await getDEMap();
     DEListMap = await getSharedDEMap();
@@ -1296,6 +774,7 @@ app.post("/credential", async function (req, res) {
         };
         request(ListDEOption, function (error, response) {
           if (error) throw new Error(error);
+          console.log('DEMap : ' + response.body);
           xml2jsParser.parseString(response.body, async function (err, result) {
             var TempDEListFetchResult = result['soap:Envelope']['soap:Body'][0]['RetrieveResponseMsg'][0]['Results'];
             for(var i in TempDEListFetchResult) {
@@ -1305,7 +784,7 @@ app.post("/credential", async function (req, res) {
                   "DEFields" : []
                 }
               }
-              else {
+              else if (!["_MobileLineProfile" , "_MobileLineProfileAttribute" , "_MobileLineSubscription" , "MobileLineOrphanContact"].includes(TempDEListFetchResult[i]["Name"][0])){
                 DEListMap.DataViewMap[TempDEListFetchResult[i]["CustomerKey"][0]] = {
                   "DEName" : TempDEListFetchResult[i]["Name"][0],
                   "DEFields" : []
@@ -1455,6 +934,7 @@ app.post("/credential", async function (req, res) {
   });
 
   app.post("/validatequery", async (reqCall, resCall) => {
+    AuthResponse = await getacesstoken(AuthRequest);
     NewDEName = moment().format('yyyy-mm-dd:hh:mm:ss');
     var DERecords = [];
     var NewDEFieldsList = reqCall.body.NewDEFieldsList;
@@ -1515,7 +995,7 @@ app.post("/credential", async function (req, res) {
         console.log('Result ID: '+DECreateResultObjectID+' NewDENAme '+NewDEName+' dynamicQuery '+dynamicQuery);
         
         var taskId = await CreateRunQuery(DECreateResultObjectID, NewDEName, dynamicQuery);
-        console.log('TaskId '+taskId);
+        console.log('TaskId : '+taskId);
         if (taskId) {
           DERecords = [];
           var queryStatus;
@@ -1537,6 +1017,7 @@ app.post("/credential", async function (req, res) {
               console.log('Server Side '+JSON.stringify(DERecords));
               resCall1.send(DERecords);
               IsgetDERecordsRun = false;
+              queryStatus = 'NotSet';
             }
             else {
               resCall1.send("false");
@@ -1855,43 +1336,7 @@ app.post("/credential", async function (req, res) {
     }
 
   });
-
-  app.post("/RunQuery", async (reqCall, resCall) => {
-    var DERecords = [];
-    DERecords = await getDERecords(NewDEName);
-    resCall.send(DERecords);
-    async function getDERecords(key) {
-      return new Promise(async function (resolve, reject) {
-        //var NextUrl;
-        var DEDataOptions = {
-          'method': 'GET',
-          'url': AuthResponse.RestURL + 'data/v1/customobjectdata/key/' + key + '/rowset/',
-          'headers': {
-            'Authorization': 'Bearer ' + AuthResponse.AccessToken
-          }
-        };
-        request(DEDataOptions, async function (error, response) {
-          if (error) throw new Error(error);
-          var tempResult = JSON.parse(response.body);
-          if (tempResult.count != 0) {
-            for (var i in tempResult.items) {
-              DERecords.push(tempResult.items[i].values);
-            }
-          }
-          /*
-          var looplength = Math.ceil(tempResult.count / tempResult.pageSize);
-          if (looplength >= 2) {
-            NextUrl = tempResult.links.next;
-            for (var i = 2; i <= looplength; i++) {
-              NextUrl = await getMoreDERecords(NextUrl, key);
-            }
-          }*/
-          resolve(DERecords);
-        });
-      })
-    }
-  })
-  
+ 
   async function getacesstoken(AuthRequest) {
     try {
       return new Promise(function (resolve, reject) {
