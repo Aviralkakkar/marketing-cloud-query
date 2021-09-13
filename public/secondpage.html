@@ -1955,8 +1955,73 @@
     <!-- Khushboo code ending  -->
 </head>
 <body>
+
+    <a
+    href="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=4b3a1hyqartrnbu0fjw4c7y1&redirect_uri=https://sfmc-slack-app.herokuapp.com/&scope=email_read%20email_write%20email_send&state=mystate">
+    Sign In</a>
+
+    
+        <button onclick="getParameters()" >
+            Get URL parameters
+        </button>
+    
+        <script>
+            function getParameters() {
+                let urlString = window.location.href;
+                console.log('Current url ' + urlString);
+                let paramString = urlString.split('?')[1];
+                let authCode;
+                let queryString = new URLSearchParams(paramString);
+        
+                for (let pair of queryString.entries()) {
+                    console.log("Key is:" + pair[0]);
+                    console.log("Value is:" + pair[1]);
+                    authCode = pair[1];
+                }
+                //document.getElementById("urlButton").value = authCode;
+                //var payload = {"code":authCode,"clientId":"4b3a1hyqartrnbu0fjw4c7y1","clientSecret":"zRWL2uqxxIsRA9BWU6zdcPes","authUrl":"https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com"};
+        
+                //console.log('Payload '+payload);
+        
+                $.ajax({
+                        url: '/validatequery2',
+                        data: {
+                        'code':"authCode",
+                        'clientId':'4b3a1hyqartrnbu0fjw4c7y1',
+                        'clientSecret':'zRWL2uqxxIsRA9BWU6zdcPes',
+                        'authUrl':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com'
+                    },
+                        type: "POST",
+                        headers: {
+                            'Content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: function(data) {
+                            
+                        }
+                    });
+        
+        
+            /*	$.ajax({
+                    url: '/credential',
+                    type: 'POST',
+                    dataType:'JSON',
+                    contentType:'application/x-www-form-urlencoded',
+                    data:JSON.stringify({
+                        'code':authCode,
+                        'clientId':'4b3a1hyqartrnbu0fjw4c7y1',
+                        'clientSecret':'zRWL2uqxxIsRA9BWU6zdcPes',
+                        'authUrl':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com'
+                    }),
+                    success: function(data) {
+                       console.log(data);
+                       
+                    }
+                });*/
+            }
+        </script>
+
     <div>
-        <div style="width: 100%;height:100%;" ondrop="drop(event, this.id)" ondragover="allowDrop(event,this)">
+        <div style="width: 100%;height:100%;" ondrop="drop(event, this)" ondragover="allowDrop(event,this);">
             <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
                 <div class="slds-spinner_container">
                     <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
@@ -2802,8 +2867,8 @@
     </div>
 
      <script type="text/javascript" src="secondpage.js">
-    spinnerOnLoad();
-    onloadofBody();
+   // spinnerOnLoad();
+    //onloadofBody();
     </script> 
      
 </body>
