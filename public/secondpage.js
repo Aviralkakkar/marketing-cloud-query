@@ -616,7 +616,6 @@ const { json2xml } = require("xml-js");
         });
     }
     function allowDrop(ev, event) {
-        console.log("in the allow drop")
         ev.preventDefault();
     }
    function dragstart(event) {
@@ -625,10 +624,6 @@ const { json2xml } = require("xml-js");
             value: event.target.value,
             name: event.target.name
         };
-        console.log('Object12 ' + obj.id);
-
-            console.log('Object12 ' + JSON.stringify(obj));
-        event.dataTransfer.setData("text/plain", JSON.stringify(obj));
     };
     function dragover(event, ev) {
         event.preventDefault();
@@ -637,25 +632,13 @@ const { json2xml } = require("xml-js");
     function drop(event, target) {
         event.preventDefault();
         
-        console.log("hello--"+event.dataTransfer.getData("text/plain"));
-        console.log("hello==="+JSON.stringify(event));
-        //condition added by nitik
+        
         if(event.dataTransfer.getData("text/plain")){
-            if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {
-            
-           
-            
-                DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;
-                console.log("DEDragData.DEName--"+DEDragData.DEName);
-                
-                DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;
-                console.log("DEDragData.DEExtKey--"+DEDragData.DEExtKey);
-                
+            if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {            
+                DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;                
+                DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;                
                 DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
-                console.log("DEDragData.DECategory--"+DEDragData.DECategory);
-            
                 var data = DEDragData.DEExtKey;
-                console.log("data--"+data);
                 data = data.split("WhereClasueDEList");
                 if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
                     document.getElementById('leftsideListInSelectField').innerHTML = '';
@@ -703,16 +686,12 @@ const { json2xml } = require("xml-js");
     //script added by nitik for moving 
     function drop2(event, target) {
         event.preventDefault();
-        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).name);
-        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).value);
-        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).id);
         if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).value && JSON.parse(event.dataTransfer.getData("text/plain")).id) {
             var DEWhereClauseDragData = {
                 "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
                 "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
                 "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
             }
-            console.log("DEWhereClauseDragData=="+JSON.stringify(DEWhereClauseDragData));
             insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
          
         }
