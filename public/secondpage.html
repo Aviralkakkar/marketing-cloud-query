@@ -1959,6 +1959,8 @@
 
 </head>
 <body>
+
+  
     <div>
         <div style="width: 100%;height:100%;" ondrop="drop(event, id)" ondragover=" allowDrop(event,this)">
             <div id="FullPageSpinner" class="demo-only" style="height:650px;display:none">
@@ -2406,6 +2408,70 @@
                       style="height:30%;padding-top:0%;padding-bottom: 0%;margin-bottom: 0%;">
                       <div class="slds-grid slds-grid_vertical" style="height: 100%;">
                          <div class="slds-scrollable slds-col " id="tableDiv" style="height:100%;background-color: white;text-align: center;padding-top: 1%;">
+                            <a
+                            href="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=4b3a1hyqartrnbu0fjw4c7y1&redirect_uri=https://sfmc-slack-app.herokuapp.com/&scope=email_read%20email_write%20email_send&state=mystate">
+                            Sign In</a>
+                        
+                            
+                                <button onclick="getParameters()" >
+                                    Get URL parameters
+                                </button>
+                            
+                                <script>
+                                    function getParameters() {
+                                        let urlString = window.location.href;
+                                        console.log('Current url ' + urlString);
+                                        let paramString = urlString.split('?')[1];
+                                        let authCode;
+                                        let queryString = new URLSearchParams(paramString);
+                                
+                                        for (let pair of queryString.entries()) {
+                                            console.log("Key is:" + pair[0]);
+                                            console.log("Value is:" + pair[1]);
+                                            authCode = pair[1];
+                                        }
+                                        //document.getElementById("urlButton").value = authCode;
+                                        //var payload = {"code":authCode,"clientId":"4b3a1hyqartrnbu0fjw4c7y1","clientSecret":"zRWL2uqxxIsRA9BWU6zdcPes","authUrl":"https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com"};
+                                
+                                        //console.log('Payload '+payload);
+                                
+                                        $.ajax({
+                                                url: '/validatequery2',
+                                                data: {
+                                                'code':"authCode",
+                                                'clientId':'4b3a1hyqartrnbu0fjw4c7y1',
+                                                'clientSecret':'zRWL2uqxxIsRA9BWU6zdcPes',
+                                                'authUrl':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com'
+                                            },
+                                                type: "POST",
+                                                headers: {
+                                                    'Content-type': 'application/x-www-form-urlencoded'
+                                                },
+                                                success: function(data) {
+                                                    
+                                                }
+                                            });
+                                
+                                
+                                    /*	$.ajax({
+                                            url: '/credential',
+                                            type: 'POST',
+                                            dataType:'JSON',
+                                            contentType:'application/x-www-form-urlencoded',
+                                            data:JSON.stringify({
+                                                'code':authCode,
+                                                'clientId':'4b3a1hyqartrnbu0fjw4c7y1',
+                                                'clientSecret':'zRWL2uqxxIsRA9BWU6zdcPes',
+                                                'authUrl':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com'
+                                            }),
+                                            success: function(data) {
+                                               console.log(data);
+                                               
+                                            }
+                                        });*/
+                                    }
+                                </script>
+                        
                           <div style="font-size: 17px;color:grey;height: 100%;padding-top:5%;" class="stopScroll" >
                             <span class="slds-icon_container slds-icon-utility-database" title="Description of icon when needed">
                             <svg class="slds-icon slds-icon-text-default slds-icon_small" aria-hidden="true" style="height: 70px;width: 70px;fill: lightgray;">
