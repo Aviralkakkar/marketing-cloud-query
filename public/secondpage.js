@@ -693,54 +693,61 @@
     //script added by nitik for moving 
     function drop2(event, target) {
         event.preventDefault();
-        var DEWhereClauseDragData = {
-            "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
-            "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
-            "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
-        }
-        if (DEWhereClauseDragData.FieldName != null) {
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).name);
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).value);
+        console.log("in the drop2="+JSON.parse(event.dataTransfer.getData("text/plain")).id);
+        if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).value && JSON.parse(event.dataTransfer.getData("text/plain")).id) {
+            var DEWhereClauseDragData = {
+                "FieldType": JSON.parse(event.dataTransfer.getData("text/plain")).name,
+                "FieldName": JSON.parse(event.dataTransfer.getData("text/plain")).value,
+                "FieldKey": JSON.parse(event.dataTransfer.getData("text/plain")).id
+            }
+            console.log("DEWhereClauseDragData=="+JSON.stringify(DEWhereClauseDragData));
             insertTextAtCaret(DEWhereClauseDragData.FieldName, DEWhereClauseDragData.FieldKey, DEWhereClauseDragData.FieldType);
-            function insertTextAtCaret(FieldName, FieldKey, FieldType) {
-                var sel, range, JoineDeWhereClause;
-                if (window.getSelection) {
-                    sel = window.getSelection();
-                    var parentID = window.getSelection().anchorNode.parentNode.id;
-                    var anchorID = window.getSelection().anchorNode.id;
-                    var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
-                    if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
-                        if (sel.getRangeAt && sel.rangeCount) {
-                            range = sel.getRangeAt(0);
-                            range.deleteContents();
-                            range.insertNode(document.createTextNode(FieldName));
-                        }
-                    } else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
-                        if (sel.getRangeAt && sel.rangeCount) {
-                            range = sel.getRangeAt(0);
-                            range.deleteContents();
-                            if (FieldKey.charAt(0) == "[") {
-                                document.getElementById(FieldKey).className = "slds-button slds-button_brand";
-                                range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
-                            } else if (FieldKey == "And" || FieldKey == "Or") {
-                                range.insertNode(document.createTextNode(' ' + FieldName + ' '));
-                            } else {
-                                key = FieldKey.split("WhereClasueDEList");
-                                FieldId = key[0];
-                                document.getElementById(FieldKey).className = "slds-button slds-button_brand";
-                                if (FieldType in DEListMap.DEMap) {
-                                    for (var key in DEListMap.DEMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
-                                } else if (FieldType in DEListMap.SharedDEMap) {
-                                    for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
-                                } else if (FieldType in DEListMap.DataViewMap) {
-                                    for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
-                                        var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
-                                        FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
-                                    }
+         
+        }
+        function insertTextAtCaret(FieldName, FieldKey, FieldType) {
+            var sel, range;
+            if (window.getSelection) {
+                sel = window.getSelection();
+                var parentID = window.getSelection().anchorNode.parentNode.id;
+                var anchorID = window.getSelection().anchorNode.id;
+                var superparentID = window.getSelection().anchorNode.parentNode.parentNode.id;
+                if (parentID == 'RichTextEditor' || anchorID == 'RichTextEditor' || superparentID == 'RichTextEditor') {
+                    if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        range.insertNode(document.createTextNode(FieldName));
+                    }
+                } else if (parentID == 'RichTextEditorForFinalWhereClause' || anchorID == 'RichTextEditorForFinalWhereClause' || superparentID == 'RichTextEditorForFinalWhereClause') {
+                    if (sel.getRangeAt && sel.rangeCount) {
+                        range = sel.getRangeAt(0);
+                        range.deleteContents();
+                        if (FieldKey.charAt(0) == "[") {
+                            document.getElementById(FieldKey).className = "slds-button slds-button_brand";
+                            draggedDeJoinKey.add(FieldKey);
+                            range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
+                        } else if (FieldKey == "And" || FieldKey == "Or") {
+                            range.insertNode(document.createTextNode(' ' + FieldName + ' '));
+                        } else {
+                            key = FieldKey.split("WhereClasueDEList");
+                            FieldId = key[0];
+                            draggedDeKey.add(FieldId);
+                            document.getElementById(FieldKey).className = "slds-button slds-button_brand";
+                            if (FieldType in DEListMap.DEMap) {
+                                for (var key in DEListMap.DEMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.DEMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.DEMap[FieldType].DEName + '].[' + DEListMap.DEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                                }
+                            } else if (FieldType in DEListMap.SharedDEMap) {
+                                for (var key in DEListMap.SharedDEMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.SharedDEMap[FieldType].DEName + '].[' + DEListMap.SharedDEMap[FieldType].DEFields[key]["FieldName"] + ']');
+                                }
+                            } else if (FieldType in DEListMap.DataViewMap) {
+                                for (var key in DEListMap.DataViewMap[FieldType].DEFields) {
+                                    var regex = new RegExp(DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"], "g")
+                                    FieldName = FieldName.replace(regex, '[' + DEListMap.DataViewMap[FieldType].DEName + '].[' + DEListMap.DataViewMap[FieldType].DEFields[key]["FieldName"] + ']');
                                 }
                                 range.insertNode(document.createTextNode(' ( ' + FieldName + ' ) '));
                             }
@@ -1161,7 +1168,7 @@
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
@@ -1171,7 +1178,7 @@
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.SharedDEMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
@@ -1181,7 +1188,7 @@
                 ulListStr += '<li id="component-selector-container-attribute groups" role="treeitem" aria-level="1" aria-selected="true" tabindex="0">' +
                     '<div class="slds-tree__item slds-is-selected" id="listbtn">' +
                     ' <span class="slds-size_1-of-1">' +
-                    '<span > <button  class="btn" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
+                    '<span > <button  class="btn" ondragstart="dragstart(event)" ondragover="dragover(event, this)" value="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + '" id="' + openWhereDEExtKey + '" draggable=true name="' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldType"] + '" >' + DEListMap.DataViewMap[openWhereDEExtKey].DEFields[key]["FieldName"] + ' </button> </span>' +
                     ' </span>' +
                     '  </div>' +
                     '</li>';
