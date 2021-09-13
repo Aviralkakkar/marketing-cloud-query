@@ -59,7 +59,7 @@ app.post("/credential", async function (req, res) {
   app.post("/validatequery2", async (reqCall, resCall) => {
     
     // var NewDEFieldsList = reqCall.body.code;
-     var dynamicQuery = reqCall.body;
+     var dynamicQuery = reqCall.body.code;
      //var actionType = reqCall.body.clientSecret;
     // var url = reqCall.body.authUrl;
      //console.log('one '+NewDEFieldsList);
