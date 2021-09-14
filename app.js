@@ -88,10 +88,10 @@ request(options, function (error, response) {
   if (error) throw new Error(error);
   var body2 = JSON.parse(response.body);
   console.log('Id------------------------ 2' + body2["access_token"]);
-  console.log(response.body.accesstoken);
-  console.log(response.body.refreshtoken);
-  console.log(response.body.tokentype);
-  console.log(response.body.scope);
+  console.log('Id------------------------ 2' + body2["refresh_token"]);
+  console.log('Id------------------------ 2' + body2["token_type"]);
+  console.log('Id------------------------ 2' + body2["scope"]);
+
   console.log("irritation suceesful");
 });
 
