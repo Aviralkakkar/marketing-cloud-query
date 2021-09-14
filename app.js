@@ -56,7 +56,40 @@ app.post("/credential", async function (req, res) {
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   res.send(AuthResponse);
+  app.post("/validatequery1", async (reqCall, resCall) => {
+    var authUrl = reqCall.body.auth_url;
+  
+     var ClientId = reqCall.body.clientId;
+     var redirectUri = reqCall.body.redirect_uri;
 
+     //console.log('one '+NewDEFieldsList);
+     
+     console.log('one 1234'+actionType);
+     console.log('one 1344545'+url);
+     //var request = require('request');
+     
+var options = {
+  'method': 'GET',
+  'url': authUrl,
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    'response_type':'code',
+    'clientId':ClientId,
+    'redirect_uri':redirectUri
+  })
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  
+  console.log('Big successss');
+  
+
+  console.log("irritation suceesful");
+});
+
+ });
   
   app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
@@ -69,6 +102,7 @@ app.post("/credential", async function (req, res) {
      console.log('one 1234'+actionType);
      console.log('one 1344545'+url);
      //var request = require('request');
+     
 var options = {
   'method': 'POST',
   'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/token',

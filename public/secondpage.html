@@ -2409,15 +2409,33 @@
 
 
 
-                            <a
+                            <!--a
         href="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=u3mvtom2ibuf2575y3ylwl88&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate">
-        Sign In</a>
+        Sign In</a-->
+
             <button onclick="getParameters()" >
                 Get URL parameters
             </button>
 
             <script>
                 function getParameters() {
+                    $.ajax({
+                            url: '/validatequery1',
+                            data: {
+                            'auth_url':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize',
+                            
+                            'clientId':'u3mvtom2ibuf2575y3ylwl88',
+                            'redirect_uri':'https://marketing-cloud-querybuilder.herokuapp.com/secondpage',
+                            'scope':'email_read'
+                        },
+                            type: "POST",
+                            headers: {
+                                'Content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function(data) {
+                                console.log("jai hooo")
+                            }
+                        });
                     let urlString = window.location.href;
                     console.log('Current url ' + urlString);
                     let paramString = urlString.split('?')[1];
@@ -2444,6 +2462,7 @@
                                 'Content-type': 'application/x-www-form-urlencoded'
                             },
                             success: function(data) {
+
                             }
                         });
                 /*  $.ajax({
