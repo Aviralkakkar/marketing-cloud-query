@@ -78,9 +78,7 @@ var options = {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    'response_type':'code',
-    'clientId':ClientId,
-    'redirect_uri':redirectUri
+    
   })
 };
 request(options, function (error, response) {
