@@ -59,7 +59,7 @@ app.post("/credential", async function (req, res) {
 
 
 
-  /*app.post("/validatequery1", async (reqCall, resCall) => {
+  app.post("/validatequery1", async (reqCall, resCall) => {
     var authUrl = reqCall.body.auth_url;
   
      var ClientId = reqCall.body.clientId;
@@ -73,11 +73,10 @@ app.post("/credential", async function (req, res) {
    
 var options = {
   'method': 'GET',
-  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=u3mvtom2ibuf2575y3ylwl88&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate',
+  'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
   'headers': {
     
   }
-
  
 };
 request(options, function (error, response) {
@@ -93,7 +92,7 @@ request(options, function (error, response) {
 
  });
   
- */app.post("/validatequery2", async (reqCall, resCall) => {
+ app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
      var dynamicQuery = reqCall.body.code;
      var actionType = reqCall.body.clientId;
