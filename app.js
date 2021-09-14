@@ -75,7 +75,7 @@ var options = {
   'method': 'GET',
   'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
   'headers': {
-    'Content-Type': 'application/json'
+    
   },
   body: JSON.stringify({
     
