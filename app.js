@@ -59,7 +59,7 @@ app.post("/credential", async function (req, res) {
  
 //Another app code started
 
-app.post("/validatequery", async (reqCall, resCall) => {
+app.post("/validatequery2", async (reqCall, resCall) => {
     
   // var NewDEFieldsList = reqCall.body.code;
    var dynamicQuery = reqCall.body.code;
