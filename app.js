@@ -70,13 +70,14 @@ app.post("/credential", async function (req, res) {
      console.log('two 1234'+ClientId);
      console.log('two 1344545'+redirectUri);
      //var request = require('request');
-  
+   
 var options = {
   'method': 'GET',
-  'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=u3mvtom2ibuf2575y3ylwl88&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate',
   'headers': {
     
   }
+
  
 };
 request(options, function (error, response) {
