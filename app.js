@@ -75,13 +75,7 @@ var options = {
   'method': 'GET',
   'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
   'headers': {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    'response_type':'code',
-    'clientId':ClientId,
-    'redirect_uri':redirectUri
-  })
+  }
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
