@@ -56,16 +56,19 @@ app.post("/credential", async function (req, res) {
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   res.send(AuthResponse);
+
+
+
   app.post("/validatequery1", async (reqCall, resCall) => {
     var authUrl = reqCall.body.auth_url;
   
      var ClientId = reqCall.body.clientId;
      var redirectUri = reqCall.body.redirect_uri;
 
-     //console.log('one '+NewDEFieldsList);
+     console.log('one '+authUrl);
      
-     console.log('one 1234'+actionType);
-     console.log('one 1344545'+url);
+     console.log('one 1234'+ClientId);
+     console.log('one 1344545'+redirectUri);
      //var request = require('request');
      
 var options = {
