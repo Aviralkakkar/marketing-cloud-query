@@ -2409,9 +2409,9 @@
 
 
 
-                            <!--a
-        href="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=u3mvtom2ibuf2575y3ylwl88&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate">
-        Sign In</a-->
+                            <a
+        href="https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=u3mvtom2ibuf2575y3ylwl88&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate" onclick="getParameters()">
+        Sign In</a>
 
             <button onclick="getParameters()" >
                 Get URL parameters
@@ -2419,7 +2419,7 @@
 
             <script>
                 function getParameters() {
-                    $.ajax({
+                   /* $.ajax({
                             url: '/validatequery1',
                             data: {
                             'auth_url':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize',
@@ -2434,10 +2434,10 @@
                             success: function(data) {
                                 console.log("jai hooo")
                             }
-                        });
+                        });*/
                    let urlString = window.location.href;
                     console.log('Current url ' + urlString);
-                    /*let paramString = urlString.split('?')[1];
+                    let paramString = urlString.split('?')[1];
                     let authCode;
                     let queryString = new URLSearchParams(paramString);
                     for (let pair of queryString.entries()) {
