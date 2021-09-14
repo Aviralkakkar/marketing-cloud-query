@@ -86,7 +86,10 @@ var options = {
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
-  console.log(response.body);
+  console.log(response.body.access_token);
+  console.log(response.body.refresh_token);
+  console.log(response.body.token_type);
+  console.log(response.body.scope);
   console.log("irritation suceesful");
 });
 
