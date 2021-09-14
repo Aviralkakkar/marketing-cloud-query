@@ -80,7 +80,7 @@ var options = {
     "code": dynamicQuery,
     "client_id": actionType,
     "client_secret": url,
-    "redirect_uri": "https://sfmc-slack-app.herokuapp.com/",
+    "redirect_uri": "https://marketing-cloud-querybuilder.herokuapp.com/secondpage",
     "scope": "email_read"
   })
 };
