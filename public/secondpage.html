@@ -2432,9 +2432,10 @@
                     for (let pair of queryString.entries()) {
                         if(pair[0] === 'code')
                         {
-                            console.log('Inside if condition');
-                          //  authCode = pair[1];
+                            console.log('Inside if condition '+authCode);
+                            authCode = pair[1];
                             checkRedirect = true;
+
                             break;
                         }
                         
@@ -2479,7 +2480,7 @@
                             }
                         });*/
                     window.location.href = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=4b3a1hyqartrnbu0fjw4c7y1&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/secondpage&scope=email_read&state=mystate";
-                   let urlString = window.location.href;
+                 /*  let urlString = window.location.href;
                     console.log('Current url ' + urlString);
                     console.log("hiiiii")
                     let paramString = urlString.split('?')[1];
