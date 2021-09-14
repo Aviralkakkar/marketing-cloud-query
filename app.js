@@ -57,21 +57,6 @@ app.post("/credential", async function (req, res) {
   console.log(AuthResponse);
   res.send(AuthResponse);
  
-//Another app code started
-
-app.post("/validatequery2", async (reqCall, resCall) => {
-    
-  // var NewDEFieldsList = reqCall.body.code;
-   var dynamicQuery = reqCall.body.code;
-   //var actionType = reqCall.body.clientSecret;
-  // var url = reqCall.body.authUrl;
-   //console.log('one '+NewDEFieldsList);
-   console.log('one 12 '+dynamicQuery);
-   //console.log('one 1234'+actionType);
-   //console.log('one 1344545'+url);
-});
-//Another app code ended
-
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_Subscribers": {
