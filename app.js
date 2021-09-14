@@ -61,13 +61,37 @@ app.post("/credential", async function (req, res) {
   app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
      var dynamicQuery = reqCall.body.code;
-     //var actionType = reqCall.body.clientSecret;
-    // var url = reqCall.body.authUrl;
+     var actionType = reqCall.body.clientId;
+     var url = reqCall.body.clientSecret;
+
      //console.log('one '+NewDEFieldsList);
      console.log('one 12 '+dynamicQuery);
-     //console.log('one 1234'+actionType);
-     //console.log('one 1344545'+url);
+     console.log('one 1234'+actionType);
+     console.log('one 1344545'+url);
+     //var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/token',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "grant_type": "authorization_code",
+    "code": dynamicQuery,
+    "client_id": actionType,
+    "client_secret": url,
+    "redirect_uri": "https://sfmc-slack-app.herokuapp.com/",
+    "scope": "email_read"
+  })
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+  console.log("irritation suceesful");
+});
+
  });
+
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_Subscribers": {
