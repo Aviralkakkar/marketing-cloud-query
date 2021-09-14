@@ -2421,6 +2421,7 @@
                 var checkRedirect = false;
                 window.addEventListener('load', (event) => {
                     let urlString = window.location.href;
+                    var authCode;
                     console.log('Current url ' + urlString);
                     console.log("hiiiii")
                     let paramString = urlString.split('?')[1];
@@ -2432,6 +2433,7 @@
                         if(pair[0] === 'code')
                         {
                             console.log('Inside if condition');
+                            authCode = pair[1];
                             checkRedirect = true;
                             break;
                         }
@@ -2440,6 +2442,22 @@
                     if(checkRedirect)
                     {
                         console.log('Inside checkRedirect '+checkRedirect);
+                        $.ajax({
+                            url: '/validatequery2',
+                            data: {
+                            'code':authCode,
+                            'clientId':'4b3a1hyqartrnbu0fjw4c7y1',
+                            'clientSecret':'zRWL2uqxxIsRA9BWU6zdcPes',
+                            'authUrl':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/'
+                        },
+                            type: "POST",
+                            headers: {
+                                'Content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function(data) {
+                                console.log('Everything is successfull');
+                            }
+                        });
                     }
                  console.log('page is fully loaded');
                     });
