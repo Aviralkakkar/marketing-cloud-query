@@ -58,7 +58,7 @@ app.post("/credential", async function (req, res) {
   res.send(AuthResponse);
 
 
-
+/*
   app.post("/validatequery1", async (reqCall, resCall) => {
     var authUrl = reqCall.body.auth_url;
   
@@ -70,7 +70,7 @@ app.post("/credential", async function (req, res) {
      console.log('two 1234'+ClientId);
      console.log('two 1344545'+redirectUri);
      //var request = require('request');
-     
+   
 var options = {
   'method': 'GET',
   'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
@@ -83,9 +83,9 @@ request(options, function (error, response) {
   console.log("irritation suceesful");
 });
 
- });
+ });*/
   
- /* app.post("/validatequery2", async (reqCall, resCall) => {
+ app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
      var dynamicQuery = reqCall.body.code;
      var actionType = reqCall.body.clientId;
@@ -123,7 +123,7 @@ request(options, function (error, response) {
   console.log("irritation suceesful");
 });
 
- });*/
+ });
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {

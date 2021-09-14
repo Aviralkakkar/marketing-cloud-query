@@ -2418,8 +2418,33 @@
             </button>
 
             <script>
+                var checkRedirect = false;
+                window.addEventListener('load', (event) => {
+                    let urlString = window.location.href;
+                    console.log('Current url ' + urlString);
+                    console.log("hiiiii")
+                    let paramString = urlString.split('?')[1];
+                    console.log("byeee")
+                    let authCode;
+                    let queryString = new URLSearchParams(paramString);
+                    console.log("byeee22222")
+                    for (let pair of queryString.entries()) {
+                        if(pair[0] === 'code')
+                        {
+                            console.log('Inside if condition');
+                            checkRedirect = true;
+                            break;
+                        }
+                        
+                    }
+                    if(checkRedirect)
+                    {
+                        console.log('Inside checkRedirect '+checkRedirect);
+                    }
+                 console.log('page is fully loaded');
+                    });
                 function getParameters() {
-                    $.ajax({
+                    /*$.ajax({
                             url: '/validatequery1',
                             data: {
                             'auth_url':'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize',
@@ -2434,12 +2459,16 @@
                             success: function(data) {
                                 console.log("jai hooo")
                             }
-                        });
+                        });*/
+                    window.location.href = "https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=4b3a1hyqartrnbu0fjw4c7y1&redirect_uri=https://marketing-cloud-querybuilder.herokuapp.com/&scope=email_read&state=mystate";
                    let urlString = window.location.href;
                     console.log('Current url ' + urlString);
-                    /*let paramString = urlString.split('?')[1];
+                    console.log("hiiiii")
+                    let paramString = urlString.split('?')[1];
+                    console.log("byeee")
                     let authCode;
                     let queryString = new URLSearchParams(paramString);
+                    console.log("byeee22222")
                     for (let pair of queryString.entries()) {
                         console.log("Key is:" + pair[0]);
                         console.log("Value is:" + pair[1]);
