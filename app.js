@@ -73,7 +73,7 @@ app.post("/credential", async function (req, res) {
      
 var options = {
   'method': 'GET',
-  'url': authUrl,
+  'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
   'headers': {
     'Content-Type': 'application/json'
   },
@@ -94,7 +94,7 @@ request(options, function (error, response) {
 
  });
   
-  app.post("/validatequery2", async (reqCall, resCall) => {
+ /* app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
      var dynamicQuery = reqCall.body.code;
      var actionType = reqCall.body.clientId;
@@ -132,7 +132,7 @@ request(options, function (error, response) {
   console.log("irritation suceesful");
 });
 
- });
+ });*/
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
