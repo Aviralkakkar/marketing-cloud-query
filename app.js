@@ -65,10 +65,10 @@ app.post("/credential", async function (req, res) {
      var ClientId = reqCall.body.clientId;
      var redirectUri = reqCall.body.redirect_uri;
 
-     console.log('one '+authUrl);
+     console.log('two '+authUrl);
      
-     console.log('one 1234'+ClientId);
-     console.log('one 1344545'+redirectUri);
+     console.log('two 1234'+ClientId);
+     console.log('two 1344545'+redirectUri);
      //var request = require('request');
      
 var options = {
