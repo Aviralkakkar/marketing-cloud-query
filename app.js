@@ -58,7 +58,7 @@ app.post("/credential", async function (req, res) {
   res.send(AuthResponse);
 
 
-
+/*
   app.post("/validatequery1", async (reqCall, resCall) => {
     var authUrl = reqCall.body.auth_url;
   
@@ -90,7 +90,7 @@ request(options, function (error, response) {
   console.log("irritation suceesful");
 });
 
- });
+ });*/
   
  app.post("/validatequery2", async (reqCall, resCall) => {
     // var NewDEFieldsList = reqCall.body.code;
