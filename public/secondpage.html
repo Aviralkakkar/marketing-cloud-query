@@ -2421,7 +2421,7 @@
                 var checkRedirect = false;
                 window.addEventListener('load', (event) => {
                     let urlString = window.location.href;
-                    var authCode;
+                    //var authCode;
                     console.log('Current url ' + urlString);
                     console.log("hiiiii")
                     let paramString = urlString.split('?')[1];
@@ -2433,7 +2433,7 @@
                         if(pair[0] === 'code')
                         {
                             console.log('Inside if condition');
-                            authCode = pair[1];
+                          //  authCode = pair[1];
                             checkRedirect = true;
                             break;
                         }
