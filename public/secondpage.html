@@ -2432,8 +2432,9 @@
                     for (let pair of queryString.entries()) {
                         if(pair[0] === 'code')
                         {
-                            console.log('Inside if condition '+authCode);
+                           
                             authCode = pair[1];
+                            console.log('Inside if condition '+authCode);
                             checkRedirect = true;
 
                             break;
@@ -2443,7 +2444,7 @@
                     if(checkRedirect)
                     {
                         console.log('Inside checkRedirect '+checkRedirect);
-                       /* $.ajax({
+                        $.ajax({
                             url: '/validatequery2',
                             data: {
                             'code':authCode,
@@ -2458,7 +2459,7 @@
                             success: function(data) {
                                 console.log('Everything is successfull');
                             }
-                        });*/
+                        });
                     }
                  console.log('page is fully loaded');
                     });
