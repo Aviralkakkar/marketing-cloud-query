@@ -97,7 +97,7 @@ request(options, function (error, response) {
      console.log('one 1344545'+url);
      //var request = require('request');
      
-var options = {
+/*var options = {
   'method': 'POST',
   'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/token',
   'headers': {
@@ -122,7 +122,7 @@ request(options, function (error, response) {
 
   console.log("irritation suceesful");
 });
-
+*/
  });
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
