@@ -1435,5 +1435,14 @@ request(options, function (error, response) {
   }
 });
 
+app.post("/SlackWebhook", async (reqCall, resCall) => {
+   var TriggerWord = reqCall.body.trigger_word;
+   var ChannelId = reqCall.body.channel_id;
+   var Text = reqCall.body.text;
+   console.log("TriggerWord : " + TriggerWord);
+   console.log("ChannelId : " + ChannelId);
+   console.log("Text : " + Text);
+});
+
 app.listen(process.env.PORT || 3000,
   () => console.log("Server is running."));
