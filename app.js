@@ -1436,12 +1436,44 @@ request(options, function (error, response) {
 });
 
 app.post("/SlackWebhook", async (reqCall, resCall) => {
-   var TriggerWord = reqCall.body.trigger_word;
-   var ChannelId = reqCall.body.channel_id;
-   var Text = reqCall.body.text;
-   console.log("TriggerWord : " + TriggerWord);
-   console.log("ChannelId : " + ChannelId);
-   console.log("Text : " + Text);
+  var TriggerWord = reqCall.body.trigger_word;
+  var ChannelId = reqCall.body.channel_id;
+  var Text = reqCall.body.text;
+  console.log("TriggerWord : " + TriggerWord);
+  console.log("ChannelId : " + ChannelId);
+  console.log("Text : " + Text);
+
+  const chart = {
+    type: 'bar',
+    data: {
+      labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+      datasets: [{
+        label: 'Retweets',
+        data: [12, 5, 40, 5]
+      }, {
+        label: 'Likes',
+        data: [80, 42, 215, 30]
+      }]
+    }
+  }
+  const encodedChart = encodeURIComponent(JSON.stringify(chart));
+  const chartUrl = `https://quickchart.io/chart?c=${encodedChart}`;
+
+   var options = {
+    'method': 'POST',
+    'url': 'https://slack.com/api/chat.postMessage',
+    'headers': {
+      'Authorization': 'Bearer xoxb-2449027725202-2449072570898-8w6nfsNZs8rMXfzVSOxsLPly',
+      'Content-type': 'application/json;charset=utf-8',
+    },
+    body: '{ "channel": ' + ChannelId + ', "blocks": [ { "type": "image", "title": { "type": "plain_text", "text": "Latest data" }, "block_id": "quickchart-image", "image_url": "' + chartUrl + '", "alt_text": "Chart showing latest data" } ] }'
+  };
+  request1(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+  });
+
+
 });
 
 app.listen(process.env.PORT || 3000,
