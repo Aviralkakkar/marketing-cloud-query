@@ -1463,7 +1463,7 @@ app.post("/SlackWebhook", async (reqCall, resCall) => {
     'method': 'POST',
     'url': 'https://slack.com/api/chat.postMessage',
     'headers': {
-      'Authorization': 'Bearer xoxb-2449027725202-2449072570898-8w6nfsNZs8rMXfzVSOxsLPly',
+      'Authorization': 'Bearer xoxb-2449027725202-2449072570898-RtOnZw5RG9DE8Lbqxd3BD5pQ',
       'Content-type': 'application/json;charset=utf-8',
     },
     body: '{ "channel": ' + ChannelId + ', "blocks": [ { "type": "image", "title": { "type": "plain_text", "text": "Latest data" }, "block_id": "quickchart-image", "image_url": "' + chartUrl + '", "alt_text": "Chart showing latest data" } ] }'
