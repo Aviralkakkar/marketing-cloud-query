@@ -1459,6 +1459,20 @@ app.post("/SlackWebhook", async (reqCall, resCall) => {
   const encodedChart = encodeURIComponent(JSON.stringify(chart));
   const chartUrl = `https://quickchart.io/chart?c=${encodedChart}`;
 
+  var options = {
+    'method': 'POST',
+    'url':'https://hooks.slack.com/services/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',
+    'headers': {
+      'Content-Type': 'application/json'
+    },
+    body: '{ "channel": ' + ChannelId + ', "blocks": [ { "type": "image", "title": { "type": "plain_text", "text": "Latest data" }, "block_id": "quickchart-image", "image_url": "' + chartUrl + '", "alt_text": "Chart showing latest data" } ] }'
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      console.log(response.body);
+    });
+
+/*
    var options = {
     'method': 'POST',
     'url': 'https://slack.com/api/chat.postMessage',
@@ -1472,6 +1486,7 @@ app.post("/SlackWebhook", async (reqCall, resCall) => {
     if (error) throw new Error(error);
     console.log(response.body);
   });
+  */
 
 
 });
