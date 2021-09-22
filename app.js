@@ -1465,7 +1465,9 @@ app.post("/SlackWebhook", async (reqCall, resCall) => {
     'headers': {
       'Content-Type': 'application/json'
     },
-    body: '{"blocks": [ { "type": "image", "title": { "type": "plain_text", "text": "Latest data" }, "block_id": "quickchart-image", "image_url": "' + chartUrl + '", "alt_text": "Chart showing latest data" } ] }'
+    body: JSON.stringify({
+      "text": "Hello, world."
+    })
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
