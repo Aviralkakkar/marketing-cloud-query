@@ -56,7 +56,75 @@ app.post("/credential", async function (req, res) {
   var AuthResponse = await getacesstoken(AuthRequest);
   console.log(AuthResponse);
   res.send(AuthResponse);
- 
+
+
+/*
+  app.post("/validatequery1", async (reqCall, resCall) => {
+    var authUrl = reqCall.body.auth_url;
+  
+     var ClientId = reqCall.body.clientId;
+     var redirectUri = reqCall.body.redirect_uri;
+
+     console.log('two '+authUrl);
+     
+     console.log('two 1234'+ClientId);
+     console.log('two 1344545'+redirectUri);
+     //var request = require('request');
+   
+var options = {
+  'method': 'GET',
+  'url': authUrl+'?response_type=code&client_id='+ClientId+'&redirect_uri='+redirectUri+'&scope=email_read&state=mystate',
+  'headers': {
+  }
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log('Big successss');
+  console.log("irritation suceesful");
+});
+
+ });*/
+  
+ app.post("/validatequery2", async (reqCall, resCall) => {
+    // var NewDEFieldsList = reqCall.body.code;
+     var dynamicQuery = reqCall.body.code;
+     var actionType = reqCall.body.clientId;
+     var url = reqCall.body.clientSecret;
+
+     //console.log('one '+NewDEFieldsList);
+     console.log('one 12 '+dynamicQuery);
+     console.log('one 1234'+actionType);
+     console.log('one 1344545'+url);
+     //var request = require('request');
+     
+/*var options = {
+  'method': 'POST',
+  'url': 'https://mc6vgk-sxj9p08pqwxqz9hw9-4my.auth.marketingcloudapis.com/v2/token',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "grant_type": "authorization_code",
+    "code": dynamicQuery,
+    "client_id": actionType,
+    "client_secret": url,
+    "redirect_uri": "https://marketing-cloud-querybuilder.herokuapp.com/secondpage",
+    "scope": "email_read"
+  })
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  var body2 = JSON.parse(response.body);
+  console.log('Id------------------------ 2' + body2["access_token"]);
+  console.log('Id------------------------ 2' + body2["refresh_token"]);
+  console.log('Id------------------------ 2' + body2["token_type"]);
+  console.log('Id------------------------ 2' + body2["scope"]);
+
+  console.log("irritation suceesful");
+});
+*/
+ });
+
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
       "_Subscribers": {
