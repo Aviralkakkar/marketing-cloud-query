@@ -1468,7 +1468,7 @@ app.post("/SlackWebhook", async (reqCall, resCall) => {
     },
     body: '{ "channel": ' + ChannelId + ', "blocks": [ { "type": "image", "title": { "type": "plain_text", "text": "Latest data" }, "block_id": "quickchart-image", "image_url": "' + chartUrl + '", "alt_text": "Chart showing latest data" } ] }'
   };
-  request1(options, function (error, response) {
+  request(options, function (error, response) {
     if (error) throw new Error(error);
     console.log(response.body);
   });
