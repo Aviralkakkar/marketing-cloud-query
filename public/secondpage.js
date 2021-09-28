@@ -979,6 +979,9 @@
                             document.getElementById("QueryValidateFalseAlert").style.display = 'none';
                         }, 5000);;
                     } else if (actionType == "Run" && data.IsQueryValid == true) {
+                        document.getElementById('FullPageSpinner').style.display = 'none';
+                        document.getElementById('DEListSidebar').style.marginTop = '0px';
+                        
                         var b = setInterval(function() {
                             DERecordGetClient(b);
                         }, 3000);
