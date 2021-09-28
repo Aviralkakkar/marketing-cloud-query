@@ -633,7 +633,7 @@
     };
     
     function drop(event, target) {
-        console.log('I am drop');
+       
         event.preventDefault();
         
         
@@ -644,6 +644,9 @@
                 DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
                 var data = DEDragData.DEExtKey;
                 data = data.split("WhereClasueDEList");
+                
+                
+                
                 if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
                     document.getElementById('leftsideListInSelectField').innerHTML = '';
                     if (DESetQueryBox.has(DEDragData.DEExtKey)) {
@@ -656,6 +659,9 @@
                         document.getElementById('DEListDivAlert').style.display = 'none';
                         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
                         if (DEDragData.DECategory == "DEMap") {
+                            
+                             console.log('I am drop '+ DEDragData.DECategory);
+                            
                             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
                             DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
                             for (var i = 0; i < DEListMap.DEMap[DEDragData.DEExtKey].DEFields.length; i++) {
@@ -680,6 +686,7 @@
                               }
                         }
                         document.getElementById('RelationPopup').style.display = 'block';
+                        console.log('Finished');
                     }
                 }
             }
