@@ -639,7 +639,7 @@
         console.log('Onject '+event.dataTransfer.getData("text/plain"));
         if(event.dataTransfer.getData("text/plain")){
             
-            console.log('1');
+            console.log('1'+JSON.parse(event.dataTransfer.getData("text/plain")).name);
             
             if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {            
                 console.log('2');
