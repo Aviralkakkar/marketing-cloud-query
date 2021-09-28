@@ -636,7 +636,7 @@
        
         event.preventDefault();
         
-        
+        console.log('Onject '+event.dataTransfer.getData("text/plain"));
         if(event.dataTransfer.getData("text/plain")){
             
             console.log('1');
