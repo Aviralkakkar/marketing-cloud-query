@@ -620,12 +620,13 @@
     }
    function dragstart(event) {
        
-       console.log('I am drag start');
+     
         var obj = {
             id: event.target.id,
             value: event.target.value,
             name: event.target.name
         };
+         console.log('I am drag start '+obj);
     };
     function dragover(event, ev) {
         console.log('I ama dragover');
