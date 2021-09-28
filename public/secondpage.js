@@ -979,6 +979,7 @@
                             document.getElementById("QueryValidateFalseAlert").style.display = 'none';
                         }, 5000);;
                     } else if (actionType == "Run" && data.IsQueryValid == true) {
+                        console.log( 'Spinner'+ document.getElementById('FullPageSpinner'));
                         document.getElementById('FullPageSpinner').style.display = 'none';
                         document.getElementById('DEListSidebar').style.marginTop = '0px';
                         
