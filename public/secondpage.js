@@ -638,7 +638,12 @@
         
         
         if(event.dataTransfer.getData("text/plain")){
+            
+            console.log('1');
+            
             if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {            
+                console.log('2');
+                
                 DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;                
                 DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;                
                 DEDragData.DECategory = JSON.parse(event.dataTransfer.getData("text/plain")).value;
@@ -648,8 +653,11 @@
                 
                 
                 if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
+                    console.log('3');
                     document.getElementById('leftsideListInSelectField').innerHTML = '';
                     if (DESetQueryBox.has(DEDragData.DEExtKey)) {
+                        
+                        console.log('4');
                         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
                         document.getElementById('DEListDivAlert').style.display = 'block';
                         setTimeout(function() {
