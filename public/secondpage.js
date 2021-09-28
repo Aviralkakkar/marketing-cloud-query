@@ -626,6 +626,7 @@
             value: event.target.value,
             name: event.target.name
         };
+        event.dataTransfer.setData("text/plain", JSON.stringify(obj));
          console.log('I am drag start '+obj);
     };
     function dragover(event, ev) {
