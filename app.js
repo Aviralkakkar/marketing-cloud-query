@@ -58,7 +58,6 @@ app.post("/credential", async function (req, res) {
   res.send(AuthResponse);
 
 
-});
 
   app.post("/DEListFetch", async (reqCall, resCall) => {
     DEListMap.DataViewMap = {
