@@ -619,6 +619,8 @@
         ev.preventDefault();
     }
    function dragstart(event) {
+       
+       console.log('I am drag start');
         var obj = {
             id: event.target.id,
             value: event.target.value,
@@ -626,10 +628,12 @@
         };
     };
     function dragover(event, ev) {
+        console.log('I ama dragover');
         event.preventDefault();
     };
     
     function drop(event, target) {
+        console.log('I am drop');
         event.preventDefault();
         
         
