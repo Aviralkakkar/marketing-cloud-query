@@ -627,10 +627,10 @@
             name: event.target.name
         };
         event.dataTransfer.setData("text/plain", JSON.stringify(obj));
-         console.log('I am drag start '+obj);
+        
     };
     function dragover(event, ev) {
-        console.log('I ama dragover');
+      
         event.preventDefault();
     };
     
@@ -638,13 +638,13 @@
        
         event.preventDefault();
         
-        console.log('Onject '+event.dataTransfer.getData("text/plain"));
+      
         if(event.dataTransfer.getData("text/plain")){
             
-            console.log('1'+JSON.parse(event.dataTransfer.getData("text/plain")).name);
+           
             
             if (JSON.parse(event.dataTransfer.getData("text/plain")).name && JSON.parse(event.dataTransfer.getData("text/plain")).id && JSON.parse(event.dataTransfer.getData("text/plain")).value) {            
-                console.log('2');
+               
                 
                 DEDragData.DEName = JSON.parse(event.dataTransfer.getData("text/plain")).name;                
                 DEDragData.DEExtKey = JSON.parse(event.dataTransfer.getData("text/plain")).id;                
@@ -655,11 +655,11 @@
                 
                 
                 if ((DEDragData.DEName != "AND" && DEDragData.DEName != "OR") && (data[1] != "") && (data[0][0] != "[")) {
-                    console.log('3');
+                   
                     document.getElementById('leftsideListInSelectField').innerHTML = '';
                     if (DESetQueryBox.has(DEDragData.DEExtKey)) {
                         
-                        console.log('4');
+                       
                         document.getElementById('DEListDivAlertPera').innerHTML = 'have already selected this ' + DEDragData.DEName + ' Data Extension.'
                         document.getElementById('DEListDivAlert').style.display = 'block';
                         setTimeout(function() {
@@ -670,7 +670,7 @@
                         document.getElementById("modal-heading-01").innerHTML = DEDragData.DEName + " Data Extension Fields";
                         if (DEDragData.DECategory == "DEMap") {
                             
-                             console.log('I am drop '+ DEDragData.DECategory);
+                            
                             
                             document.getElementById('DEnamemodal1').innerHTML = DEDragData.DEName;
                             DEListMap.DEMap[DEDragData.DEExtKey].DEFields.sort((a, b) => a.FieldName.localeCompare(b.FieldName));
@@ -696,7 +696,7 @@
                               }
                         }
                         document.getElementById('RelationPopup').style.display = 'block';
-                        console.log('Finished');
+                        
                     }
                 }
             }
@@ -979,7 +979,7 @@
                             document.getElementById("QueryValidateFalseAlert").style.display = 'none';
                         }, 5000);;
                     } else if (actionType == "Run" && data.IsQueryValid == true) {
-                        console.log( 'Spinner'+ document.getElementById('FullPageSpinner'));
+                
                         document.getElementById('FullPageSpinner').style.display = 'none';
                         document.getElementById('DEListSidebar').style.marginTop = '0px';
                         
